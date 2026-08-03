@@ -1,0 +1,43 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local notes / scratch
+TODO
+LIGHT.txt
+Gemini-film-similarity-notes.txt
+
+# Large local data (download + build; do not publish UCSD dumps)
+/data/
+*.duckdb
+*.duckdb.wal
+
+# Legacy Listopia scraper + static sites (not part of this project)
+/goodreads_scraper/
+/list_page/
+/ranking_page/
+/ranking_explorer/
+
+# Unrelated film experiments
+/films/
+
+# Explorer generated / experimental sweep dumps
+/ucsd_explorer/data/*_sweep.json
+/ucsd_explorer/data/curator_metric_compare.json
+/ucsd_explorer/data/normie_voter_aware_sweep.json
+
+# Runtime prefs / logs
+*.log
+.cache/

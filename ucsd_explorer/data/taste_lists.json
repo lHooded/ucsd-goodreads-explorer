@@ -1,0 +1,1916 @@
+{
+  "literary": [
+    {
+      "kind": "author",
+      "match": "Herman Melville"
+    },
+    {
+      "kind": "author",
+      "match": "Fyodor Dostoevsky"
+    },
+    {
+      "kind": "author",
+      "match": "Vladimir Nabokov"
+    },
+    {
+      "kind": "author",
+      "match": "James Joyce"
+    },
+    {
+      "kind": "author",
+      "match": "David Foster Wallace"
+    },
+    {
+      "kind": "author",
+      "match": "Miguel de Cervantes"
+    },
+    {
+      "kind": "author",
+      "match": "Cormac McCarthy"
+    },
+    {
+      "kind": "author",
+      "match": "Thomas Pynchon"
+    },
+    {
+      "kind": "author",
+      "match": "John Williams"
+    },
+    {
+      "kind": "author",
+      "match": "Albert Camus"
+    },
+    {
+      "kind": "author",
+      "match": "Dante Alighieri"
+    },
+    {
+      "kind": "author",
+      "match": "Leo Tolstoy"
+    },
+    {
+      "kind": "author",
+      "match": "Homer"
+    },
+    {
+      "kind": "author",
+      "match": "Franz Kafka"
+    },
+    {
+      "kind": "author",
+      "match": "Marcel Proust"
+    },
+    {
+      "kind": "author",
+      "match": "William Shakespeare"
+    },
+    {
+      "kind": "author",
+      "match": "Gabriel García Márquez"
+    },
+    {
+      "kind": "author",
+      "match": "George Orwell"
+    },
+    {
+      "kind": "author",
+      "match": "Roberto Bolaño"
+    },
+    {
+      "kind": "author",
+      "match": "Johann Wolfgang von Goethe"
+    },
+    {
+      "kind": "author",
+      "match": "Gene Wolfe"
+    },
+    {
+      "kind": "author",
+      "match": "Joseph Heller"
+    },
+    {
+      "kind": "author",
+      "match": "Louis-Ferdinand Céline"
+    },
+    {
+      "kind": "author",
+      "match": "Fernando Pessoa"
+    },
+    {
+      "kind": "author",
+      "match": "William Faulkner"
+    },
+    {
+      "kind": "author",
+      "match": "Mikhail Bulgakov"
+    },
+    {
+      "kind": "author",
+      "match": "John Milton"
+    },
+    {
+      "kind": "author",
+      "match": "John Steinbeck"
+    },
+    {
+      "kind": "author",
+      "match": "Oscar Wilde"
+    },
+    {
+      "kind": "author",
+      "match": "John Kennedy Toole"
+    },
+    {
+      "kind": "author",
+      "match": "Hermann Hesse"
+    },
+    {
+      "kind": "author",
+      "match": "Knut Hamsun"
+    },
+    {
+      "kind": "author",
+      "match": "Thomas Mann"
+    },
+    {
+      "kind": "author",
+      "match": "Joseph Conrad"
+    },
+    {
+      "kind": "author",
+      "match": "Osamu Dazai"
+    },
+    {
+      "kind": "author",
+      "match": "Aldous Huxley"
+    },
+    {
+      "kind": "author",
+      "match": "Victor Hugo"
+    },
+    {
+      "kind": "author",
+      "match": "Bret Easton Ellis"
+    },
+    {
+      "kind": "author",
+      "match": "Virginia Woolf"
+    },
+    {
+      "kind": "author",
+      "match": "William Gaddis"
+    },
+    {
+      "kind": "author",
+      "match": "Kurt Vonnegut"
+    },
+    {
+      "kind": "author",
+      "match": "F. Scott Fitzgerald"
+    },
+    {
+      "kind": "author",
+      "match": "J.D. Salinger"
+    },
+    {
+      "kind": "author",
+      "match": "Natsume Sōseki"
+    },
+    {
+      "kind": "author",
+      "match": "Yukio Mishima"
+    },
+    {
+      "kind": "author",
+      "match": "Emily Brontë"
+    },
+    {
+      "kind": "author",
+      "match": "Robert Musil"
+    },
+    {
+      "kind": "author",
+      "match": "Ernest Hemingway"
+    },
+    {
+      "kind": "author",
+      "match": "Gustave Flaubert"
+    },
+    {
+      "kind": "author",
+      "match": "Italo Calvino"
+    },
+    {
+      "kind": "author",
+      "match": "Laurence Sterne"
+    },
+    {
+      "kind": "author",
+      "match": "Mikhail Lermontov"
+    },
+    {
+      "kind": "author",
+      "match": "Nikolai Gogol"
+    },
+    {
+      "kind": "author",
+      "match": "William S. Burroughs"
+    },
+    {
+      "kind": "author",
+      "match": "Mary Shelley"
+    },
+    {
+      "kind": "author",
+      "match": "Umberto Eco"
+    },
+    {
+      "kind": "author",
+      "match": "Don DeLillo"
+    },
+    {
+      "kind": "author",
+      "match": "Juan Rulfo"
+    },
+    {
+      "kind": "author",
+      "match": "Ernst Jünger"
+    },
+    {
+      "kind": "author",
+      "match": "William H. Gass"
+    },
+    {
+      "kind": "author",
+      "match": "Michel Houellebecq"
+    },
+    {
+      "kind": "author",
+      "match": "Kazuo Ishiguro"
+    }
+  ],
+  "literary_sf_extras": [
+    {
+      "kind": "author",
+      "match": "M. John Harrison"
+    },
+    {
+      "kind": "author",
+      "match": "Ursula K. Le Guin"
+    },
+    {
+      "kind": "author",
+      "match": "J.G. Ballard"
+    },
+    {
+      "kind": "author",
+      "match": "Stanisław Lem"
+    },
+    {
+      "kind": "author",
+      "match": "Arkady Strugatsky"
+    },
+    {
+      "kind": "author",
+      "match": "Octavia E. Butler"
+    },
+    {
+      "kind": "author",
+      "match": "Samuel R. Delany"
+    },
+    {
+      "kind": "author",
+      "match": "James Tiptree Jr."
+    },
+    {
+      "kind": "author",
+      "match": "China Miéville"
+    },
+    {
+      "kind": "author",
+      "match": "Alfred Bester"
+    },
+    {
+      "kind": "author",
+      "match": "Theodore Sturgeon"
+    },
+    {
+      "kind": "author",
+      "match": "Walter M. Miller Jr."
+    },
+    {
+      "kind": "author",
+      "match": "Christopher Priest"
+    },
+    {
+      "kind": "author",
+      "match": "Mary Doria Russell"
+    },
+    {
+      "kind": "author",
+      "match": "Dan Simmons"
+    }
+  ],
+  "non_literary": [
+    {
+      "kind": "author",
+      "match": "J.K. Rowling"
+    },
+    {
+      "kind": "author",
+      "match": "Suzanne Collins"
+    },
+    {
+      "kind": "author",
+      "match": "Rick Riordan"
+    },
+    {
+      "kind": "author",
+      "match": "Stephenie Meyer"
+    },
+    {
+      "kind": "author",
+      "match": "John Green"
+    },
+    {
+      "kind": "author",
+      "match": "Veronica Roth"
+    },
+    {
+      "kind": "author",
+      "match": "Markus Zusak"
+    },
+    {
+      "kind": "author",
+      "match": "Cassandra Clare"
+    },
+    {
+      "kind": "author",
+      "match": "Richelle Mead"
+    },
+    {
+      "kind": "author",
+      "match": "Christopher Paolini"
+    },
+    {
+      "kind": "author",
+      "match": "James Dashner"
+    },
+    {
+      "kind": "author",
+      "match": "Scott Westerfeld"
+    },
+    {
+      "kind": "author",
+      "match": "Stephen Chbosky"
+    },
+    {
+      "kind": "author",
+      "match": "Jay Asher"
+    },
+    {
+      "kind": "author",
+      "match": "P.C. Cast"
+    },
+    {
+      "kind": "author",
+      "match": "Maggie Stiefvater"
+    },
+    {
+      "kind": "author",
+      "match": "Kiera Cass"
+    },
+    {
+      "kind": "author",
+      "match": "Lauren Kate"
+    },
+    {
+      "kind": "author",
+      "match": "Ally Condie"
+    },
+    {
+      "kind": "author",
+      "match": "Sarah Dessen"
+    },
+    {
+      "kind": "author",
+      "match": "Ally Carter"
+    },
+    {
+      "kind": "author",
+      "match": "Lauren Oliver"
+    },
+    {
+      "kind": "author",
+      "match": "Kami Garcia"
+    },
+    {
+      "kind": "author",
+      "match": "Marie Lu"
+    },
+    {
+      "kind": "author",
+      "match": "Alyson Noel"
+    },
+    {
+      "kind": "author",
+      "match": "Meg Cabot"
+    },
+    {
+      "kind": "author",
+      "match": "Brandon Mull"
+    },
+    {
+      "kind": "author",
+      "match": "Kelley Armstrong"
+    },
+    {
+      "kind": "author",
+      "match": "Alice Sebold"
+    },
+    {
+      "kind": "author",
+      "match": "Dan Brown"
+    },
+    {
+      "kind": "author",
+      "match": "Paulo Coelho"
+    },
+    {
+      "kind": "author",
+      "match": "Kathryn Stockett"
+    },
+    {
+      "kind": "author",
+      "match": "Stieg Larsson"
+    },
+    {
+      "kind": "author",
+      "match": "Arthur Golden"
+    },
+    {
+      "kind": "author",
+      "match": "Gillian Flynn"
+    },
+    {
+      "kind": "author",
+      "match": "Audrey Niffenegger"
+    },
+    {
+      "kind": "author",
+      "match": "Khaled Hosseini"
+    },
+    {
+      "kind": "author",
+      "match": "Andy Weir"
+    },
+    {
+      "kind": "author",
+      "match": "Ernest Cline"
+    },
+    {
+      "kind": "author",
+      "match": "Michael Crichton"
+    },
+    {
+      "kind": "author",
+      "match": "Stephen King"
+    },
+    {
+      "kind": "author",
+      "match": "Max Brooks"
+    },
+    {
+      "kind": "author",
+      "match": "Hugh Howey"
+    },
+    {
+      "kind": "author",
+      "match": "Pierce Brown"
+    },
+    {
+      "kind": "author",
+      "match": "Blake Crouch"
+    },
+    {
+      "kind": "author",
+      "match": "Dennis E. Taylor"
+    },
+    {
+      "kind": "author",
+      "match": "James S.A. Corey"
+    },
+    {
+      "kind": "author",
+      "match": "Martha Wells"
+    }
+  ],
+  "commercial": [
+    {
+      "kind": "author",
+      "match": "J.K. Rowling"
+    },
+    {
+      "kind": "author",
+      "match": "Suzanne Collins"
+    },
+    {
+      "kind": "author",
+      "match": "Rick Riordan"
+    },
+    {
+      "kind": "author",
+      "match": "Stephenie Meyer"
+    },
+    {
+      "kind": "author",
+      "match": "John Green"
+    },
+    {
+      "kind": "author",
+      "match": "Veronica Roth"
+    },
+    {
+      "kind": "author",
+      "match": "Markus Zusak"
+    },
+    {
+      "kind": "author",
+      "match": "Cassandra Clare"
+    },
+    {
+      "kind": "author",
+      "match": "Richelle Mead"
+    },
+    {
+      "kind": "author",
+      "match": "Christopher Paolini"
+    },
+    {
+      "kind": "author",
+      "match": "James Dashner"
+    },
+    {
+      "kind": "author",
+      "match": "Scott Westerfeld"
+    },
+    {
+      "kind": "author",
+      "match": "Stephen Chbosky"
+    },
+    {
+      "kind": "author",
+      "match": "Jay Asher"
+    },
+    {
+      "kind": "author",
+      "match": "P.C. Cast"
+    },
+    {
+      "kind": "author",
+      "match": "Maggie Stiefvater"
+    },
+    {
+      "kind": "author",
+      "match": "Kiera Cass"
+    },
+    {
+      "kind": "author",
+      "match": "Lauren Kate"
+    },
+    {
+      "kind": "author",
+      "match": "Ally Condie"
+    },
+    {
+      "kind": "author",
+      "match": "Sarah Dessen"
+    },
+    {
+      "kind": "author",
+      "match": "Ally Carter"
+    },
+    {
+      "kind": "author",
+      "match": "Lauren Oliver"
+    },
+    {
+      "kind": "author",
+      "match": "Kami Garcia"
+    },
+    {
+      "kind": "author",
+      "match": "Marie Lu"
+    },
+    {
+      "kind": "author",
+      "match": "Alyson Noel"
+    },
+    {
+      "kind": "author",
+      "match": "Meg Cabot"
+    },
+    {
+      "kind": "author",
+      "match": "Brandon Mull"
+    },
+    {
+      "kind": "author",
+      "match": "Kelley Armstrong"
+    },
+    {
+      "kind": "author",
+      "match": "Alice Sebold"
+    },
+    {
+      "kind": "author",
+      "match": "Dan Brown"
+    },
+    {
+      "kind": "author",
+      "match": "Paulo Coelho"
+    },
+    {
+      "kind": "author",
+      "match": "Kathryn Stockett"
+    },
+    {
+      "kind": "author",
+      "match": "Stieg Larsson"
+    },
+    {
+      "kind": "author",
+      "match": "Arthur Golden"
+    },
+    {
+      "kind": "author",
+      "match": "Gillian Flynn"
+    },
+    {
+      "kind": "author",
+      "match": "Audrey Niffenegger"
+    },
+    {
+      "kind": "author",
+      "match": "Khaled Hosseini"
+    },
+    {
+      "kind": "author",
+      "match": "Andy Weir"
+    },
+    {
+      "kind": "author",
+      "match": "Ernest Cline"
+    },
+    {
+      "kind": "author",
+      "match": "Michael Crichton"
+    },
+    {
+      "kind": "author",
+      "match": "Stephen King"
+    },
+    {
+      "kind": "author",
+      "match": "Max Brooks"
+    },
+    {
+      "kind": "author",
+      "match": "Hugh Howey"
+    },
+    {
+      "kind": "author",
+      "match": "Pierce Brown"
+    },
+    {
+      "kind": "author",
+      "match": "Blake Crouch"
+    },
+    {
+      "kind": "author",
+      "match": "Dennis E. Taylor"
+    },
+    {
+      "kind": "author",
+      "match": "James S.A. Corey"
+    },
+    {
+      "kind": "author",
+      "match": "Martha Wells"
+    }
+  ],
+  "dropped_from_literary": [
+    "Holy Bible — Various Authors",
+    "The Catcher in the Rye — J.D. Salinger",
+    "The Lord of the Rings — J.R.R. Tolkien",
+    "Thus Spoke Zarathustra — Friedrich Nietzsche",
+    "The Count of Monte Cristo — Alexandre Dumas",
+    "Dune — Frank Herbert",
+    "Republic — Plato",
+    "The Great Gatsby — F. Scott Fitzgerald",
+    "Meditations — Marcus Aurelius",
+    "Confessions — Augustine of Hippo",
+    "The Hobbit — J.R.R. Tolkien",
+    "Alice in Wonderland — Lewis Carroll",
+    "Das Kapital — Karl Marx",
+    "Phenomenology of Spirit — G.W.F. Hegel",
+    "Bhagavad Gita — Various Authors",
+    "Industrial Society and Its Future — Theodore Kaczynski",
+    "Critique of Pure Reason — Immanuel Kant"
+  ],
+  "non_literary_audit": {
+    "removed_from_non_literary": [
+      {
+        "author": "J.R.R. Tolkien",
+        "reason": "Canonical literary fantasy; Oxford philologist; foundational critical stature — not an anti-literary signal."
+      },
+      {
+        "author": "George R.R. Martin",
+        "reason": "Widely treated as serious epic fantasy with substantial critical respect — fails “less literary merit” test."
+      },
+      {
+        "author": "Connie Willis",
+        "reason": "Highest literary-lover concentration among non-literary 5★ fans (26%); SFWA Grand Master — removed per user."
+      }
+    ],
+    "kept_borderline": [
+      {
+        "author": "Stephen King",
+        "note": "Genre-focused mass market; some career awards but not “less genre / literary prose” for this filter."
+      },
+      {
+        "author": "Khaled Hosseini",
+        "note": "Book-club commercial; sentimental bestsellers rather than critical literary fiction."
+      },
+      {
+        "author": "Gillian Flynn",
+        "note": "Commercial thriller craft, not literary prestige."
+      },
+      {
+        "author": "Audrey Niffenegger",
+        "note": "Crossover bestseller; kept as commercial romantic speculative."
+      },
+      {
+        "author": "Alice Sebold",
+        "note": "Breakout commercial literary-adjacent; kept as anti-signal for mega-book-club taste."
+      },
+      {
+        "author": "Markus Zusak",
+        "note": "User-requested (Book Thief); YA crossover."
+      },
+      {
+        "author": "Maggie Stiefvater",
+        "note": "Stronger YA prose than most peers but still YA franchise space."
+      },
+      {
+        "author": "Martha Wells",
+        "note": "Kept per your request (Murderbot popularity)."
+      }
+    ],
+    "left_off_entirely": [
+      "Orson Scott Card",
+      "Philip Pullman",
+      "Lois Lowry",
+      "Neil Gaiman",
+      "C.S. Lewis",
+      "Douglas Adams",
+      "Madeleine L'Engle"
+    ]
+  },
+  "notes": "Literary = cleaned 2014–2024 poll (+ Ishiguro/Cervantes). literary_sf_extras are optional prestige SF (toggle in UI). Non-literary = YA pulp / airport bestsellers / commercial SF; Tolkien, GRRM, and Connie Willis removed as literarily respected. Scoring: literary hits = ★≥4 or ★=5 (UI toggle); non-literary hits = ★=5 only.",
+  "resolved": {
+    "literary_poll": [
+      {
+        "kind": "author",
+        "match": "Herman Melville",
+        "author_id": "1624",
+        "resolved_name": "Herman Melville",
+        "poll_rank": 1,
+        "poll_title": "Moby-Dick",
+        "prestige": 1.0
+      },
+      {
+        "kind": "author",
+        "match": "Fyodor Dostoevsky",
+        "author_id": "3137322",
+        "resolved_name": "Fyodor Dostoyevsky",
+        "poll_rank": 2,
+        "poll_title": "The Brothers Karamazov",
+        "prestige": 0.9949494949494949
+      },
+      {
+        "kind": "author",
+        "match": "Vladimir Nabokov",
+        "author_id": "5152",
+        "resolved_name": "Vladimir Nabokov",
+        "poll_rank": 3,
+        "poll_title": "Lolita",
+        "prestige": 0.98989898989899
+      },
+      {
+        "kind": "author",
+        "match": "James Joyce",
+        "author_id": "5144",
+        "resolved_name": "James Joyce",
+        "poll_rank": 5,
+        "poll_title": "Ulysses",
+        "prestige": 0.9797979797979798
+      },
+      {
+        "kind": "author",
+        "match": "David Foster Wallace",
+        "author_id": "4339",
+        "resolved_name": "David Foster Wallace",
+        "poll_rank": 6,
+        "poll_title": "Infinite Jest",
+        "prestige": 0.9747474747474747
+      },
+      {
+        "kind": "author",
+        "match": "Miguel de Cervantes",
+        "author_id": "4037220",
+        "resolved_name": "Miguel de Cervantes Saavedra",
+        "poll_rank": 7,
+        "poll_title": "Don Quixote",
+        "prestige": 0.9696969696969697
+      },
+      {
+        "kind": "author",
+        "match": "Cormac McCarthy",
+        "author_id": "4178",
+        "resolved_name": "Cormac McCarthy",
+        "poll_rank": 8,
+        "poll_title": "Blood Meridian",
+        "prestige": 0.9646464646464646
+      },
+      {
+        "kind": "author",
+        "match": "Thomas Pynchon",
+        "author_id": "235",
+        "resolved_name": "Thomas Pynchon",
+        "poll_rank": 9,
+        "poll_title": "Gravity's Rainbow",
+        "prestige": 0.9595959595959596
+      },
+      {
+        "kind": "author",
+        "match": "John Williams",
+        "author_id": "51229",
+        "resolved_name": "John  Williams",
+        "poll_rank": 11,
+        "poll_title": "Stoner",
+        "prestige": 0.9494949494949495
+      },
+      {
+        "kind": "author",
+        "match": "Albert Camus",
+        "author_id": "957894",
+        "resolved_name": "Albert Camus",
+        "poll_rank": 12,
+        "poll_title": "The Stranger",
+        "prestige": 0.9444444444444444
+      },
+      {
+        "kind": "author",
+        "match": "Dante Alighieri",
+        "author_id": "5031312",
+        "resolved_name": "Dante Alighieri",
+        "poll_rank": 13,
+        "poll_title": "The Divine Comedy",
+        "prestige": 0.9393939393939394
+      },
+      {
+        "kind": "author",
+        "match": "Leo Tolstoy",
+        "author_id": "128382",
+        "resolved_name": "Leo Tolstoy",
+        "poll_rank": 14,
+        "poll_title": "Anna Karenina",
+        "prestige": 0.9343434343434344
+      },
+      {
+        "kind": "author",
+        "match": "Homer",
+        "author_id": "903",
+        "resolved_name": "Homer",
+        "poll_rank": 15,
+        "poll_title": "The Iliad",
+        "prestige": 0.9292929292929293
+      },
+      {
+        "kind": "author",
+        "match": "Franz Kafka",
+        "author_id": "5223",
+        "resolved_name": "Franz Kafka",
+        "poll_rank": 18,
+        "poll_title": "The Trial",
+        "prestige": 0.9141414141414141
+      },
+      {
+        "kind": "author",
+        "match": "Marcel Proust",
+        "author_id": "233619",
+        "resolved_name": "Marcel Proust",
+        "poll_rank": 19,
+        "poll_title": "In Search of Lost Time",
+        "prestige": 0.9090909090909091
+      },
+      {
+        "kind": "author",
+        "match": "William Shakespeare",
+        "author_id": "947",
+        "resolved_name": "William Shakespeare",
+        "poll_rank": 20,
+        "poll_title": "Hamlet",
+        "prestige": 0.9040404040404041
+      },
+      {
+        "kind": "author",
+        "match": "Gabriel García Márquez",
+        "author_id": "13450",
+        "resolved_name": "Gabriel Garcia Marquez",
+        "poll_rank": 21,
+        "poll_title": "One Hundred Years of Solitude",
+        "prestige": 0.898989898989899
+      },
+      {
+        "kind": "author",
+        "match": "George Orwell",
+        "author_id": "3706",
+        "resolved_name": "George Orwell",
+        "poll_rank": 22,
+        "poll_title": "1984",
+        "prestige": 0.8939393939393939
+      },
+      {
+        "kind": "author",
+        "match": "Roberto Bolaño",
+        "author_id": "72039",
+        "resolved_name": "Roberto Bolano",
+        "poll_rank": 24,
+        "poll_title": "2666",
+        "prestige": 0.8838383838383839
+      },
+      {
+        "kind": "author",
+        "match": "Johann Wolfgang von Goethe",
+        "author_id": "285217",
+        "resolved_name": "Johann Wolfgang von Goethe",
+        "poll_rank": 25,
+        "poll_title": "Faust",
+        "prestige": 0.8787878787878788
+      },
+      {
+        "kind": "author",
+        "match": "Gene Wolfe",
+        "author_id": "23069",
+        "resolved_name": "Gene Wolfe",
+        "poll_rank": 26,
+        "poll_title": "The Book of the New Sun",
+        "prestige": 0.8737373737373737
+      },
+      {
+        "kind": "author",
+        "match": "Joseph Heller",
+        "author_id": "3167",
+        "resolved_name": "Joseph Heller",
+        "poll_rank": 28,
+        "poll_title": "Catch-22",
+        "prestige": 0.8636363636363636
+      },
+      {
+        "kind": "author",
+        "match": "Louis-Ferdinand Céline",
+        "author_id": "7869",
+        "resolved_name": "Louis-Ferdinand Celine",
+        "poll_rank": 29,
+        "poll_title": "Journey to the End of the Night",
+        "prestige": 0.8585858585858586
+      },
+      {
+        "kind": "author",
+        "match": "Fernando Pessoa",
+        "author_id": "7816",
+        "resolved_name": "Fernando Pessoa",
+        "poll_rank": 31,
+        "poll_title": "Book of Disquiet",
+        "prestige": 0.8484848484848485
+      },
+      {
+        "kind": "author",
+        "match": "William Faulkner",
+        "author_id": "3535",
+        "resolved_name": "William Faulkner",
+        "poll_rank": 32,
+        "poll_title": "The Sound and the Fury",
+        "prestige": 0.8434343434343434
+      },
+      {
+        "kind": "author",
+        "match": "Mikhail Bulgakov",
+        "author_id": "3873",
+        "resolved_name": "Mikhail Bulgakov",
+        "poll_rank": 33,
+        "poll_title": "The Master and Margarita",
+        "prestige": 0.8383838383838383
+      },
+      {
+        "kind": "author",
+        "match": "John Milton",
+        "author_id": "9876",
+        "resolved_name": "John Milton",
+        "poll_rank": 39,
+        "poll_title": "Paradise Lost",
+        "prestige": 0.8080808080808081
+      },
+      {
+        "kind": "author",
+        "match": "John Steinbeck",
+        "author_id": "585",
+        "resolved_name": "John Steinbeck",
+        "poll_rank": 40,
+        "poll_title": "East of Eden",
+        "prestige": 0.803030303030303
+      },
+      {
+        "kind": "author",
+        "match": "Oscar Wilde",
+        "author_id": "3565",
+        "resolved_name": "Oscar Wilde",
+        "poll_rank": 44,
+        "poll_title": "The Picture of Dorian Gray",
+        "prestige": 0.7828282828282829
+      },
+      {
+        "kind": "author",
+        "match": "John Kennedy Toole",
+        "author_id": "3049",
+        "resolved_name": "John Kennedy Toole",
+        "poll_rank": 45,
+        "poll_title": "A Confederacy of Dunces",
+        "prestige": 0.7777777777777778
+      },
+      {
+        "kind": "author",
+        "match": "Hermann Hesse",
+        "author_id": "1113469",
+        "resolved_name": "Hermann Hesse",
+        "poll_rank": 46,
+        "poll_title": "Siddhartha",
+        "prestige": 0.7727272727272727
+      },
+      {
+        "kind": "author",
+        "match": "Knut Hamsun",
+        "author_id": "18317",
+        "resolved_name": "Knut Hamsun",
+        "poll_rank": 47,
+        "poll_title": "Hunger",
+        "prestige": 0.7676767676767677
+      },
+      {
+        "kind": "author",
+        "match": "Thomas Mann",
+        "author_id": "19405",
+        "resolved_name": "Thomas Mann",
+        "poll_rank": 48,
+        "poll_title": "The Magic Mountain",
+        "prestige": 0.7626262626262627
+      },
+      {
+        "kind": "author",
+        "match": "Joseph Conrad",
+        "author_id": "3345",
+        "resolved_name": "Joseph Conrad",
+        "poll_rank": 49,
+        "poll_title": "Heart of Darkness",
+        "prestige": 0.7575757575757576
+      },
+      {
+        "kind": "author",
+        "match": "Osamu Dazai",
+        "author_id": "113561",
+        "resolved_name": "Osamu Dazai",
+        "poll_rank": 50,
+        "poll_title": "No Longer Human",
+        "prestige": 0.7525252525252525
+      },
+      {
+        "kind": "author",
+        "match": "Aldous Huxley",
+        "author_id": "3487",
+        "resolved_name": "Aldous Huxley",
+        "poll_rank": 51,
+        "poll_title": "Brave New World",
+        "prestige": 0.7474747474747474
+      },
+      {
+        "kind": "author",
+        "match": "Victor Hugo",
+        "author_id": "13661",
+        "resolved_name": "Victor Hugo",
+        "poll_rank": 53,
+        "poll_title": "Les Misérables",
+        "prestige": 0.7373737373737373
+      },
+      {
+        "kind": "author",
+        "match": "Bret Easton Ellis",
+        "author_id": "2751",
+        "resolved_name": "Bret Easton Ellis",
+        "poll_rank": 55,
+        "poll_title": "American Psycho",
+        "prestige": 0.7272727272727273
+      },
+      {
+        "kind": "author",
+        "match": "Virginia Woolf",
+        "author_id": "6765",
+        "resolved_name": "Virginia Woolf",
+        "poll_rank": 56,
+        "poll_title": "To the Lighthouse",
+        "prestige": 0.7222222222222222
+      },
+      {
+        "kind": "author",
+        "match": "William Gaddis",
+        "author_id": "15991",
+        "resolved_name": "William Gaddis",
+        "poll_rank": 58,
+        "poll_title": "The Recognitions",
+        "prestige": 0.7121212121212122
+      },
+      {
+        "kind": "author",
+        "match": "Kurt Vonnegut",
+        "author_id": "2778055",
+        "resolved_name": "Kurt Vonnegut Jr.",
+        "poll_rank": 60,
+        "poll_title": "Slaughterhouse-Five",
+        "prestige": 0.702020202020202
+      },
+      {
+        "kind": "author",
+        "match": "F. Scott Fitzgerald",
+        "author_id": "3190",
+        "resolved_name": "F. Scott Fitzgerald",
+        "poll_rank": 62,
+        "poll_title": "The Great Gatsby",
+        "prestige": 0.6919191919191919
+      },
+      {
+        "kind": "author",
+        "match": "J.D. Salinger",
+        "author_id": "819789",
+        "resolved_name": "J.D. Salinger",
+        "poll_rank": 30,
+        "poll_title": "The Catcher in the Rye",
+        "prestige": 0.8535353535353536
+      },
+      {
+        "kind": "author",
+        "match": "Natsume Sōseki",
+        "author_id": "6915837",
+        "resolved_name": "Natsume Soseki",
+        "poll_rank": 91,
+        "poll_title": "Kokoro",
+        "prestige": 0.5454545454545454
+      },
+      {
+        "kind": "author",
+        "match": "Yukio Mishima",
+        "author_id": "35258",
+        "resolved_name": "Yukio Mishima",
+        "poll_rank": 61,
+        "poll_title": "The Sailor Who Fell from Grace with the Sea",
+        "prestige": 0.696969696969697
+      },
+      {
+        "kind": "author",
+        "match": "Emily Brontë",
+        "author_id": "4191",
+        "resolved_name": "Emily Bronte",
+        "poll_rank": 63,
+        "poll_title": "Wuthering Heights",
+        "prestige": 0.6868686868686869
+      },
+      {
+        "kind": "author",
+        "match": "Robert Musil",
+        "author_id": "16747",
+        "resolved_name": "Robert Musil",
+        "poll_rank": 67,
+        "poll_title": "The Man Without Qualities",
+        "prestige": 0.6666666666666667
+      },
+      {
+        "kind": "author",
+        "match": "Ernest Hemingway",
+        "author_id": "1455",
+        "resolved_name": "Ernest Hemingway",
+        "poll_rank": 69,
+        "poll_title": "The Old Man and the Sea",
+        "prestige": 0.6565656565656566
+      },
+      {
+        "kind": "author",
+        "match": "Gustave Flaubert",
+        "author_id": "1461",
+        "resolved_name": "Gustave Flaubert",
+        "poll_rank": 74,
+        "poll_title": "Madame Bovary",
+        "prestige": 0.6313131313131313
+      },
+      {
+        "kind": "author",
+        "match": "Italo Calvino",
+        "author_id": "155517",
+        "resolved_name": "Italo Calvino",
+        "poll_rank": 77,
+        "poll_title": "Invisible Cities",
+        "prestige": 0.6161616161616161
+      },
+      {
+        "kind": "author",
+        "match": "Laurence Sterne",
+        "author_id": "22796",
+        "resolved_name": "Laurence Sterne",
+        "poll_rank": 78,
+        "poll_title": "Tristram Shandy",
+        "prestige": 0.6111111111111112
+      },
+      {
+        "kind": "author",
+        "match": "Mikhail Lermontov",
+        "author_id": "15538",
+        "resolved_name": "Mikhail Lermontov",
+        "poll_rank": 81,
+        "poll_title": "A Hero of Our Time",
+        "prestige": 0.595959595959596
+      },
+      {
+        "kind": "author",
+        "match": "Nikolai Gogol",
+        "author_id": "232932",
+        "resolved_name": "Nikolai Gogol",
+        "poll_rank": 83,
+        "poll_title": "Dead Souls",
+        "prestige": 0.5858585858585859
+      },
+      {
+        "kind": "author",
+        "match": "William S. Burroughs",
+        "author_id": "4462369",
+        "resolved_name": "William S. Burroughs",
+        "poll_rank": 84,
+        "poll_title": "Naked Lunch",
+        "prestige": 0.5808080808080809
+      },
+      {
+        "kind": "author",
+        "match": "Mary Shelley",
+        "author_id": "11139",
+        "resolved_name": "Mary Wollstonecraft Shelley",
+        "poll_rank": 85,
+        "poll_title": "Frankenstein",
+        "prestige": 0.5757575757575757
+      },
+      {
+        "kind": "author",
+        "match": "Umberto Eco",
+        "author_id": "1730",
+        "resolved_name": "Umberto Eco",
+        "poll_rank": 87,
+        "poll_title": "The Name of the Rose",
+        "prestige": 0.5656565656565656
+      },
+      {
+        "kind": "author",
+        "match": "Don DeLillo",
+        "author_id": "233",
+        "resolved_name": "Don DeLillo",
+        "poll_rank": 89,
+        "poll_title": "White Noise",
+        "prestige": 0.5555555555555556
+      },
+      {
+        "kind": "author",
+        "match": "Juan Rulfo",
+        "author_id": "21778",
+        "resolved_name": "Juan Rulfo",
+        "poll_rank": 90,
+        "poll_title": "Pedro Páramo",
+        "prestige": 0.5505050505050505
+      },
+      {
+        "kind": "author",
+        "match": "Ernst Jünger",
+        "author_id": "281443",
+        "resolved_name": "Ernst Junger",
+        "poll_rank": 93,
+        "poll_title": "Storm of Steel",
+        "prestige": 0.5353535353535354
+      },
+      {
+        "kind": "author",
+        "match": "William H. Gass",
+        "author_id": "27855",
+        "resolved_name": "William H. Gass",
+        "poll_rank": 94,
+        "poll_title": "The Tunnel",
+        "prestige": 0.5303030303030303
+      },
+      {
+        "kind": "author",
+        "match": "Michel Houellebecq",
+        "author_id": "32878",
+        "resolved_name": "Michel Houellebecq",
+        "poll_rank": 100,
+        "poll_title": "The Elementary Particles",
+        "prestige": 0.5
+      },
+      {
+        "kind": "author",
+        "match": "Kazuo Ishiguro",
+        "author_id": "4280",
+        "resolved_name": "Kazuo Ishiguro",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.75
+      }
+    ],
+    "literary_sf": [
+      {
+        "kind": "author",
+        "match": "M. John Harrison",
+        "author_id": "10765",
+        "resolved_name": "M. John Harrison",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Ursula K. Le Guin",
+        "author_id": "874602",
+        "resolved_name": "Ursula K. Le Guin",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "J.G. Ballard",
+        "author_id": "7010931",
+        "resolved_name": "J.G. Ballard",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Stanisław Lem",
+        "author_id": "10991",
+        "resolved_name": "Stanislaw Lem",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Arkady Strugatsky",
+        "author_id": "1159886",
+        "resolved_name": "Arkady Strugatsky",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Octavia E. Butler",
+        "author_id": "29535",
+        "resolved_name": "Octavia E. Butler",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Samuel R. Delany",
+        "author_id": "49111",
+        "resolved_name": "Samuel R. Delany",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "James Tiptree Jr.",
+        "author_id": "9860453",
+        "resolved_name": "James Tiptree Jr.",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "China Miéville",
+        "author_id": "33918",
+        "resolved_name": "China Mieville",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Alfred Bester",
+        "author_id": "10992",
+        "resolved_name": "Alfred Bester",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Theodore Sturgeon",
+        "author_id": "12531",
+        "resolved_name": "Theodore Sturgeon",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Walter M. Miller Jr.",
+        "author_id": "6025722",
+        "resolved_name": "Walter M. Miller Jr.",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Christopher Priest",
+        "author_id": "23419",
+        "resolved_name": "Christopher Priest",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Mary Doria Russell",
+        "author_id": "4007",
+        "resolved_name": "Mary Doria Russell",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      },
+      {
+        "kind": "author",
+        "match": "Dan Simmons",
+        "author_id": "2687",
+        "resolved_name": "Dan Simmons",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.72
+      }
+    ],
+    "non_literary": [
+      {
+        "kind": "author",
+        "match": "J.K. Rowling",
+        "author_id": "1077326",
+        "resolved_name": "J.K. Rowling",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Suzanne Collins",
+        "author_id": "153394",
+        "resolved_name": "Suzanne Collins",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Rick Riordan",
+        "author_id": "15872",
+        "resolved_name": "Rick Riordan",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Stephenie Meyer",
+        "author_id": "941441",
+        "resolved_name": "Stephenie Meyer",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "John Green",
+        "author_id": "1406384",
+        "resolved_name": "John Green",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Veronica Roth",
+        "author_id": "4039811",
+        "resolved_name": "Veronica Roth",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Markus Zusak",
+        "author_id": "11466",
+        "resolved_name": "Markus Zusak",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Cassandra Clare",
+        "author_id": "150038",
+        "resolved_name": "Cassandra Clare",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Richelle Mead",
+        "author_id": "137902",
+        "resolved_name": "Richelle Mead",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Christopher Paolini",
+        "author_id": "8349",
+        "resolved_name": "Christopher Paolini",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "James Dashner",
+        "author_id": "348878",
+        "resolved_name": "James Dashner",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Scott Westerfeld",
+        "author_id": "13957",
+        "resolved_name": "Scott Westerfeld",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Stephen Chbosky",
+        "author_id": "12898",
+        "resolved_name": "Stephen Chbosky",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Jay Asher",
+        "author_id": "569269",
+        "resolved_name": "Jay Asher",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "P.C. Cast",
+        "author_id": "17015",
+        "resolved_name": "P.C. Cast",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Maggie Stiefvater",
+        "author_id": "1330292",
+        "resolved_name": "Maggie Stiefvater",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Kiera Cass",
+        "author_id": "2987125",
+        "resolved_name": "Kiera Cass",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Lauren Kate",
+        "author_id": "2905297",
+        "resolved_name": "Lauren Kate",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Ally Condie",
+        "author_id": "1304470",
+        "resolved_name": "Ally Condie",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Sarah Dessen",
+        "author_id": "2987",
+        "resolved_name": "Sarah Dessen",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Ally Carter",
+        "author_id": "56224",
+        "resolved_name": "Ally Carter",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Lauren Oliver",
+        "author_id": "2936493",
+        "resolved_name": "Lauren Oliver",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Kami Garcia",
+        "author_id": "2895706",
+        "resolved_name": "Kami Garcia",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Marie Lu",
+        "author_id": "4342215",
+        "resolved_name": "Marie Lu",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Alyson Noel",
+        "author_id": "200317",
+        "resolved_name": "Alyson Noel",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Meg Cabot",
+        "author_id": "11654",
+        "resolved_name": "Meg Cabot",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Brandon Mull",
+        "author_id": "25052",
+        "resolved_name": "Brandon Mull",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Kelley Armstrong",
+        "author_id": "7581",
+        "resolved_name": "Kelley Armstrong",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Alice Sebold",
+        "author_id": "316",
+        "resolved_name": "Alice Sebold",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Dan Brown",
+        "author_id": "630",
+        "resolved_name": "Dan Brown",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Paulo Coelho",
+        "author_id": "566",
+        "resolved_name": "Paulo Coelho",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Kathryn Stockett",
+        "author_id": "1943477",
+        "resolved_name": "Kathryn Stockett",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Stieg Larsson",
+        "author_id": "706255",
+        "resolved_name": "Stieg Larsson",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Arthur Golden",
+        "author_id": "614",
+        "resolved_name": "Arthur Golden",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Gillian Flynn",
+        "author_id": "2383",
+        "resolved_name": "Gillian Flynn",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Audrey Niffenegger",
+        "author_id": "498072",
+        "resolved_name": "Audrey Niffenegger",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Khaled Hosseini",
+        "author_id": "569",
+        "resolved_name": "Khaled Hosseini",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Andy Weir",
+        "author_id": "6540057",
+        "resolved_name": "Andy Weir",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Ernest Cline",
+        "author_id": "31712",
+        "resolved_name": "Ernest Cline",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Michael Crichton",
+        "author_id": "5194",
+        "resolved_name": "Michael Crichton",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Stephen King",
+        "author_id": "3389",
+        "resolved_name": "Stephen King",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Max Brooks",
+        "author_id": "5791",
+        "resolved_name": "Max Brooks",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Hugh Howey",
+        "author_id": "3064305",
+        "resolved_name": "Hugh Howey",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Pierce Brown",
+        "author_id": "6474348",
+        "resolved_name": "Pierce Brown",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Blake Crouch",
+        "author_id": "442240",
+        "resolved_name": "Blake Crouch",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Dennis E. Taylor",
+        "author_id": "12130438",
+        "resolved_name": "Dennis E. Taylor",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "James S.A. Corey",
+        "author_id": "4192148",
+        "resolved_name": "James S.A. Corey",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      },
+      {
+        "kind": "author",
+        "match": "Martha Wells",
+        "author_id": "87305",
+        "resolved_name": "Martha Wells",
+        "poll_rank": null,
+        "poll_title": null,
+        "prestige": 0.0
+      }
+    ]
+  },
+  "poll_prestige_gamma": 1.35,
+  "poll_prestige_floor": 0.5
+}

@@ -1,0 +1,100 @@
+Moby-Dick - Herman Melville  
+The Brothers Karamazov - Fyodor Dostoevsky  
+Lolita - Vladimir Nabokov  
+Crime and Punishment - Fyodor Dostoevsky  
+Ulysses - James Joyce  
+Infinite Jest - David Foster Wallace  
+Don Quixote - Miguel de Cervantes  
+Blood Meridian - Cormac McCarthy  
+Gravity's Rainbow - Thomas Pynchon  
+Holy Bible - Various Authors  
+Stoner - John Williams  
+The Stranger - Albert Camus  
+The Divine Comedy - Dante Alighieri  
+Anna Karenina - Leo Tolstoy  
+The Iliad - Homer  
+War and Peace - Leo Tolstoy  
+The Odyssey - Homer  
+The Trial - Franz Kafka  
+In Search of Lost Time - Marcel Proust  
+Hamlet - William Shakespeare  
+One Hundred Years of Solitude - Gabriel García Márquez  
+1984 - George Orwell  
+Notes from Underground - Fyodor Dostoevsky  
+2666 - Roberto Bolaño  
+Faust - Johann Wolfgang von Goethe  
+The Book of the New Sun - Gene Wolfe  
+Dubliners - James Joyce  
+Catch-22 - Joseph Heller  
+Journey to the End of the Night - Louis-Ferdinand Céline  
+The Catcher in the Rye - J.D. Salinger  
+Book of Disquiet - Fernando Pessoa  
+The Sound and the Fury - William Faulkner  
+The Master and Margarita - Mikhail Bulgakov  
+The Lord of the Rings - J.R.R. Tolkien  
+The Metamorphosis - Franz Kafka  
+A Portrait of the Artist as a Young Man - James Joyce  
+Thus Spoke Zarathustra - Friedrich Nietzsche  
+The Idiot - Fyodor Dostoevsky  
+Paradise Lost - John Milton  
+East of Eden - John Steinbeck  
+Mason & Dixon - Thomas Pynchon  
+Pale Fire - Vladimir Nabokov  
+The Count of Monte Cristo - Alexandre Dumas  
+The Picture of Dorian Gray - Oscar Wilde  
+A Confederacy of Dunces - John Kennedy Toole  
+Siddhartha - Hermann Hesse  
+Hunger - Knut Hamsun  
+The Magic Mountain - Thomas Mann  
+Heart of Darkness - Joseph Conrad  
+No Longer Human - Osamu Dazai  
+Brave New World - Aldous Huxley  
+Dune - Frank Herbert  
+Les Misérables - Victor Hugo  
+Steppenwolf - Hermann Hesse  
+American Psycho - Bret Easton Ellis  
+To the Lighthouse - Virginia Woolf  
+Republic - Plato  
+The Recognitions - William Gaddis  
+V. - Thomas Pynchon  
+Slaughterhouse-Five - Kurt Vonnegut  
+The Sailor Who Fell from Grace with the Sea - Yukio Mishima  
+The Great Gatsby - F. Scott Fitzgerald  
+Wuthering Heights - Emily Brontë  
+Demons - Fyodor Dostoevsky  
+Meditations - Marcus Aurelius  
+Absalom, Absalom! - William Faulkner  
+The Man Without Qualities - Robert Musil  
+Confessions - Augustine of Hippo  
+The Old Man and the Sea - Ernest Hemingway  
+The Savage Detectives - Roberto Bolaño  
+The Hobbit - J.R.R. Tolkien  
+Finnegans Wake - James Joyce  
+The Crying of Lot 49 - Thomas Pynchon  
+Madame Bovary - Gustave Flaubert  
+The Sun Also Rises - Ernest Hemingway  
+The Waves - Virginia Woolf  
+Invisible Cities - Italo Calvino  
+Tristram Shandy - Laurence Sterne  
+If on a Winter's Night a Traveler - Italo Calvino  
+The Grapes of Wrath - John Steinbeck  
+A Hero of Our Time - Mikhail Lermontov  
+As I Lay Dying - William Faulkner  
+Dead Souls - Nikolai Gogol  
+Naked Lunch - William S. Burroughs  
+Frankenstein - Mary Shelley  
+Alice in Wonderland - Lewis Carroll  
+The Name of the Rose - Umberto Eco  
+Das Kapital - Karl Marx  
+White Noise - Don DeLillo  
+Pedro Páramo - Juan Rulfo  
+Kokoro - Natsume Sōseki  
+Phenomenology of Spirit - G.W.F. Hegel  
+Storm of Steel - Ernst Jünger  
+The Tunnel - William H. Gass  
+JR - William Gaddis  
+Bhagavad Gita - Various Authors  
+Industrial Society and Its Future - Theodore Kaczynski  
+Critique of Pure Reason - Immanuel Kant  
+Animal Farm - George Orwell  
+The Elementary Particles - Michel Houellebecq 

@@ -1,0 +1,20 @@
+{
+  "method": "curator_deep_pct_tilt",
+  "curator_strictness": 0,
+  "curator_strictness_mode": "deweight",
+  "normie_depth": 40,
+  "normie_purity": 55,
+  "n_active": 5669,
+  "med_votes_popular": 1687,
+  "med_votes_obscure": 692,
+  "sf_med_votes_obscure": 69,
+  "s50": 3,
+  "note": "Split depth/purity. vs old combined~65 (~1190 users, SF obscure~16): depth40+purity55 yields ~5669 curators, SF obscure~69, school still ≤3 in top50. Alt for more SF coverage: depth40 purity45 (~7312 users, sf_obsc~152).",
+  "alt_sf": {
+    "curator_strictness": 0,
+    "normie_depth": 40,
+    "normie_purity": 45,
+    "n_active": 7312,
+    "sf_med_votes_obscure": 152
+  }
+}

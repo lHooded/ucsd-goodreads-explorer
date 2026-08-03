@@ -1,0 +1,33 @@
+{
+  "notes": "Manual catalog hygiene overrides. work_ids are Goodreads works. Applied on top of automatic title/shelf heuristics. never_collection / never_comic block false positives; original_years overrides edition reprint years.",
+  "exclude_work_ids": [],
+  "deweight_work_ids": {
+    "112914": 0.05,
+    "21736582": 0.05
+  },
+  "canonical_map": {
+    "44735239": "3393917",
+    "48066472": "3393917"
+  },
+  "never_collection": [],
+  "never_comic": [],
+  "original_years": {
+    "2966408": 1945,
+    "43004540": 1947,
+    "18976038": 1973,
+    "38424": 1911
+  },
+  "force_flags": {
+    "112914": ["derivative"],
+    "3000541": ["collection"],
+    "835372": ["collection"],
+    "21736582": ["derivative", "nonfiction"],
+    "2966408": ["collection"],
+    "1007116": ["collection"],
+    "43004540": ["collection"],
+    "38424": ["collection"],
+    "6795128": ["collection"],
+    "40117": ["collection"],
+    "109894": ["collection"]
+  }
+}

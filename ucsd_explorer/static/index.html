@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UCSD Favorites Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,500;7..72,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">UCSD Goodreads · unordered ratings</p>
+      <h1 id="list-title">Favorites &amp; divisiveness</h1>
+      <p class="lede">
+        These are star ratings, not ordered Listopia ballots. Methods focus on
+        <strong>5★ favorites</strong>, <strong>picky raters</strong>, and
+        <strong>love/hate split</strong> — not fabricated average ranks.
+      </p>
+      <p class="meta" id="data-meta">Starting…</p>
+    </header>
+
+    <div class="layout">
+      <aside class="controls" aria-label="Filters and ranking method">
+        <section>
+          <h2>Method</h2>
+          <label class="field">
+            <span>Score</span>
+            <select id="method"></select>
+          </label>
+          <p class="hint" id="method-blurb"></p>
+          <label class="field">
+            <span>Bayesian m</span>
+            <input type="number" id="bayesian-m" min="1" value="50" />
+          </label>
+          <div id="curator-strictness-wrap" class="taste-controls" hidden>
+            <label class="field">
+              <span>Within-elite weighting</span>
+              <select id="curator-strictness-mode">
+                <option value="deweight" selected>Weighted (curator scores)</option>
+                <option value="gate">Equal votes among elites</option>
+              </select>
+            </label>
+            <label class="field slider-field">
+              <span>Curator strictness <em id="curator-strictness-val">0</em></span>
+              <input type="range" id="curator-strictness" min="0" max="100" step="1" value="0" />
+            </label>
+            <p class="hint" id="curator-strictness-hint">
+              0 = off (all qualifying curators). 100 ≈ top 100 by curator weight
+              (log-linear shrink). This is who votes — not a book-level penalty.
+            </p>
+            <div id="normie-strictness-wrap" hidden>
+              <label class="field slider-field">
+                <span>Normie depth <em id="normie-depth-val">0</em>
+                  <span class="hint" id="normie-deep-readout"></span>
+                </span>
+                <input type="range" id="normie-depth" min="0" max="100" step="1" value="0" />
+              </label>
+              <p class="hint">
+                How many non-normie lit-poll books a curator must have rated ★≥4
+                (plus a mild rare-poll floor). 0 = off.
+              </p>
+              <label class="field slider-field">
+                <span>Normie purity <em id="normie-purity-val">0</em>
+                  <span class="hint" id="normie-purity-readout"></span>
+                </span>
+                <input type="range" id="normie-purity" min="0" max="100" step="1" value="0" />
+              </label>
+              <p class="hint" id="normie-strictness-hint">
+                Share of ★≥4 hits on (deep-poll ∪ school-canon) that are non-normie.
+                Rejects “school-canon only” curators. 0 = off. Never a book-level penalty.
+              </p>
+            </div>
+            <div id="coverage-wrap" class="taste-controls" hidden>
+              <label class="field slider-field">
+                <span>Coverage <em id="coverage-val">100</em>
+                  <span class="hint" id="coverage-readout"></span>
+                </span>
+                <input type="range" id="coverage-weight" min="0" max="100" step="5" value="100" />
+              </label>
+              <p class="hint" id="coverage-hint">
+                Mix of among-raters score (0) and full-cohort score (100, unread → 0).
+                Linear in score space so equal slider travel ≈ equal score change.
+                Bayesian m still guards tiny samples at the low end.
+              </p>
+            </div>
+            <div id="geom-score-wrap" class="taste-controls" hidden>
+              <label class="field slider-field">
+                <span>Star geom ratio <em id="geom-ratio-val">2.0</em>
+                  <span class="hint" id="geom-ratio-readout"></span>
+                </span>
+                <input type="range" id="geom-ratio" min="10" max="50" step="1" value="20" />
+              </label>
+              <p class="hint">
+                Weights for ★5 : ★4 : ★3 = q² : q : 1 (only top-half shelf ratings count).
+              </p>
+              <label class="field slider-field">
+                <span>Percentile power <em id="pct-power-val">2.5</em></span>
+                <input type="range" id="pct-power" min="10" max="60" step="1" value="25" />
+              </label>
+              <p class="hint">
+                Each kept rating contributes pct^x (x≥1). Higher x sharpens true loves vs
+                merely-above-median marks.
+              </p>
+            </div>
+          </div>
+          <label class="field">
+            <span>Min ratings on book <em>(in this dump; 1+ allowed)</em></span>
+            <input type="number" id="min-votes" min="1" value="50" />
+          </label>
+          <label class="field">
+            <span>Max ratings <em>(0 = none; use for gems)</em></span>
+            <input type="number" id="max-n" min="0" value="0" />
+          </label>
+          <label class="field">
+            <span>Result limit</span>
+            <input type="number" id="limit" min="20" max="1000" value="200" />
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span>Year from <em>(blank = any)</em></span>
+              <input type="number" id="year-min" min="0" max="2100" placeholder="e.g. 1950" />
+            </label>
+            <label class="field">
+              <span>Year to</span>
+              <input type="number" id="year-max" min="0" max="2100" placeholder="e.g. 2010" />
+            </label>
+          </div>
+          <p class="hint">
+            Earliest catalogued edition year across all Goodreads editions in the dump
+            (not only popular reprints). Still noisy for classics / translations.
+          </p>
+          <label class="check">
+            <input type="checkbox" id="sf-only" checked />
+            <span>SF only <em>(uncheck = all genres)</em></span>
+          </label>
+        </section>
+
+        <section>
+          <h2>Catalog hygiene</h2>
+          <p class="hint">
+            Soft-deweight collections by default; hide comics, derivatives, nonfiction-primary,
+            and near-duplicates unless you uncheck.
+          </p>
+          <label class="check">
+            <input type="checkbox" id="fiction-only" checked />
+            <span>Fiction-primary only</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="exclude-comics" checked />
+            <span>Exclude comics / manga / graphic novels</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="exclude-picture-books" checked />
+            <span>Exclude picture books / board books</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="exclude-derivatives" checked />
+            <span>Exclude derivatives / study guides</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="collapse-duplicates" checked />
+            <span>Collapse near-duplicates</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="exclude-collections" />
+            <span>Exclude collections / omnibuses</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="apply-format-weight" checked />
+            <span>Soft-deweight flagged formats</span>
+          </label>
+        </section>
+
+        <section>
+          <h2>Presets</h2>
+          <div class="presets">
+            <button type="button" data-preset="curator-pct-love">Curator‰ love</button>
+            <button type="button" data-preset="curator-pure-pct-love">Pure Curator‰ love</button>
+            <button type="button" data-preset="curator-deep-pct-love">Deep Curator‰ love</button>
+            <button type="button" data-preset="curator-pct-tilt">Curator‰ love−tilt</button>
+            <button type="button" data-preset="curator-deep-pct-tilt">Deep Curator‰ love−tilt</button>
+            <button type="button" data-preset="curator-deep-pct-geom">Deep Curator‰ top-half geom</button>
+            <button type="button" data-preset="curator-pct-asymm">Curator‰ love−hate</button>
+            <button type="button" data-preset="curator-pct-gap">Curator‰ top−mid gap</button>
+            <button type="button" data-preset="curator-pure-pct-gem">Pure Curator‰ gem</button>
+            <button type="button" data-preset="curator-pct-gem">Curator‰ gem</button>
+            <button type="button" data-preset="curator-pct-top">Curator‰ top-shelf</button>
+            <button type="button" data-preset="curator-five">Curator 5★ (RYM)</button>
+            <button type="button" data-preset="curator-pure-five">Pure Curator 5★</button>
+            <button type="button" data-preset="curator-gem">Curator gem (RYM)</button>
+            <button type="button" data-preset="curator-mean">Curator mean (RYM)</button>
+            <button type="button" data-preset="combo-five">Combo lit×picky 5★</button>
+            <button type="button" data-preset="picky-rate">Picky 5★ rate</button>
+            <button type="button" data-preset="combo-mean">Combo Bayesian mean</button>
+            <button type="button" data-preset="combo-liked">Combo strong-like</button>
+            <button type="button" data-preset="picky-gem">Picky hidden gem</button>
+            <button type="button" data-preset="cross-five">Cross lit∩stingy</button>
+            <button type="button" data-preset="combo-gem">Combo hidden gem</button>
+            <button type="button" data-preset="combo-love">Combo love density</button>
+            <button type="button" data-preset="combo-power">Combo power-mean</button>
+            <button type="button" data-preset="favorites">Favorites (Bayesian 5★)</button>
+            <button type="button" data-preset="imdb">IMDb/RYM mean</button>
+            <button type="button" data-preset="lit-gem">Literary hidden gem</button>
+            <button type="button" data-preset="lit-five">Lit-weighted 5★</button>
+            <button type="button" data-preset="picky">Picky-weighted love</button>
+            <button type="button" data-preset="divisive">Divisive</button>
+            <button type="button" data-preset="gems">Hidden gems (generic)</button>
+          </div>
+          <p class="hint" id="filter-summary"></p>
+        </section>
+
+        <section>
+          <h2>Search</h2>
+          <label class="field">
+            <span>Title / author / id</span>
+            <input type="search" id="q" placeholder="e.g. Light, 17735, Harrison" />
+          </label>
+        </section>
+
+        <section>
+          <h2>Taste filter</h2>
+          <p class="hint">
+            Keep raters who rate literary signals highly, without ★=5 on
+            non-literary anti-signals (full catalog, not SF-only).
+          </p>
+          <label class="check">
+            <input type="checkbox" id="taste-enabled" />
+            <span>Enable taste filter</span>
+          </label>
+          <div id="taste-controls" class="taste-controls" hidden>
+            <label class="check">
+              <input type="checkbox" id="taste-include-sf" />
+              <span>Include SF literary extras (Le Guin, Lem, Butler…)</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="taste-lit-fours" checked />
+              <span>Count literary ★4 as well as ★5 (off = ★5 only)</span>
+            </label>
+            <label class="field slider-field">
+              <span>Min literary share <em id="taste-min-lit-val">0%</em></span>
+              <input type="range" id="taste-min-lit" min="0" max="100" step="1" value="0" />
+            </label>
+            <label class="field slider-field">
+              <span>Max non-literary share <em id="taste-max-com-val">100%</em></span>
+              <input type="range" id="taste-max-com" min="0" max="100" step="1" value="100" />
+            </label>
+            <label class="field slider-field">
+              <span>Min net (lit − non-lit) <em id="taste-min-net-val">−100%</em></span>
+              <input type="range" id="taste-min-net" min="-100" max="100" step="1" value="-100" />
+            </label>
+            <label class="field slider-field">
+              <span>Min literary books liked (★≥4) <em id="taste-min-lit-hits-val">0</em></span>
+              <input type="range" id="taste-min-lit-hits" min="0" max="30" step="1" value="0" />
+            </label>
+            <label class="field">
+              <span>Min total signal hits</span>
+              <input type="number" id="taste-min-hits" min="1" value="2" />
+            </label>
+            <div class="presets">
+              <button type="button" data-taste-preset="off">Sliders off</button>
+              <button type="button" data-taste-preset="lean">Literary lean</button>
+              <button type="button" data-taste-preset="strict">Literary strict</button>
+            </div>
+            <p class="hint" id="taste-summary"></p>
+
+            <h3 class="taste-subhead">Literary (poll)</h3>
+            <div class="chip-list" id="taste-lit-chips"></div>
+
+            <h3 class="taste-subhead">SF literary extras <em>(optional)</em></h3>
+            <div class="chip-list" id="taste-sf-chips"></div>
+
+            <h3 class="taste-subhead">Non-literary anti-signals <em>(5★ only)</em></h3>
+            <div class="chip-list" id="taste-com-chips"></div>
+            <p class="hint" id="taste-list-note"></p>
+          </div>
+        </section>
+
+        <section class="actions">
+          <button type="button" class="primary" id="rerank">Recompute</button>
+        </section>
+      </aside>
+
+      <main>
+        <div class="results-toolbar">
+          <div class="stats" id="stats-row"></div>
+          <button type="button" id="copy-results" class="ghost" title="Copy title — author for each listed row">
+            Copy list
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table id="results">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>n</th>
+                <th>5★</th>
+                <th>P(5★)</th>
+                <th>σ</th>
+                <th>Polar</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <aside id="drawer" class="drawer" hidden>
+    <div class="drawer-inner">
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+      <div id="drawer-body"></div>
+    </div>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
