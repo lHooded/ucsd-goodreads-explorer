@@ -8,6 +8,7 @@ from typing import Any
 
 from ucsd_explorer.catalog_flags import catalog_sql_bits, parse_catalog_params
 from ucsd_explorer.db import GLOBALS, execute
+from ucsd_explorer.genre_gates import gate_sql_bits, parse_genre_gates
 from ucsd_explorer.genres import (
     SF_PRESET_INCLUDE,
     genre_sql_bits,
@@ -783,11 +784,15 @@ def _curator_user_weight_sql(
 
 
 def parse_sf_only(params: dict[str, Any]) -> bool:
-    """True when the active filter is the SF any-of preset (or legacy sf_only).
+    """True when the active filter is SF-only (Bayesian SF priors / fallbacks).
 
-    Prefer ``parse_genre_params`` / genre SQL for filtering. This flag only
-    selects SF vs all-genre Bayesian priors and legacy ``is_sf`` fallbacks.
+    Prevalence ``genre_gates == ["sf"]`` counts as SF-only. Other gates (or
+    intersections) use all-genre priors. Legacy include-tag SF preset still
+    maps via ``parse_genre_gates``.
     """
+    gates = parse_genre_gates(params)
+    if "genre_gates" in params or "gates" in params or gates:
+        return gates == ["sf"]
     genres = parse_genre_params(params)
     if genres.get("require") or genres.get("exclude"):
         return False
@@ -826,16 +831,22 @@ def _rank_filter_bits(
     work_alias: str,
     score_expr: str | None = None,
     sf_only: bool = False,
+    genre_gates: list[str] | None = None,
 ) -> tuple[str, str, str, list[Any]]:
     """Shared catalog + year + search + genre wiring for rank SQL paths.
 
     Returns ``(joins, where_suffix, scored_expr, extra_args)`` where
-    ``extra_args`` is book ILIKE args + year-range args + genre args.
+    ``extra_args`` is gate args + genre args + book ILIKE + year-range args.
     """
     book_filter, book_args = _book_filter_sql(q, work_alias)
-    genre_where, genre_args = genre_sql_bits(genres, work_alias=work_alias)
+    gates = list(genre_gates or [])
+    gate_where, gate_args = gate_sql_bits(gates, work_alias=work_alias)
+    # Prevalence gates own SF; don't also apply is_sf via include-tag preset.
+    genre_where, genre_args = genre_sql_bits(
+        genres, work_alias=work_alias, sf_via_prevalence=not bool(gates)
+    )
     sf_fallback = ""
-    if not has_genre_tables() and sf_only:
+    if not has_genre_tables() and not gates and sf_only:
         sf_fallback = f" AND {work_alias}.is_sf"
     cat_join, cat_where, scored = catalog_sql_bits(
         catalog, work_alias=work_alias, flags_alias="cf", score_expr=score_expr
@@ -844,9 +855,11 @@ def _rank_filter_bits(
         year_min, year_max, work_alias=work_alias
     )
     joins = f"{cat_join}{year_join}"
-    where_suffix = f"{sf_fallback}{genre_where}{book_filter}{cat_where}{year_where}"
-    # Placeholder order must match where_suffix: genre → book → year
-    return joins, where_suffix, scored, genre_args + book_args + year_args
+    where_suffix = (
+        f"{sf_fallback}{gate_where}{genre_where}{book_filter}{cat_where}{year_where}"
+    )
+    # Placeholder order: gates → genre tags → book → year
+    return joins, where_suffix, scored, gate_args + genre_args + book_args + year_args
 
 
 def rank_books(params: dict[str, Any]) -> dict[str, Any]:
@@ -859,6 +872,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     limit = min(max(1, _int_param(params, "limit", default=200)), 1000)
     q = (params.get("q") or "").strip()
     genres = parse_genre_params(params)
+    genre_gates = parse_genre_gates(params)
     sf_only = parse_sf_only(params)
     picky_max = params.get("picky_max_five_rate")
     if picky_max is None or picky_max == "":
@@ -963,6 +977,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             taste=taste,
             sf_only=sf_only,
             genres=genres,
+            genre_gates=genre_gates,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -987,6 +1002,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             limit=limit,
             sf_only=sf_only,
             genres=genres,
+            genre_gates=genre_gates,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -1004,6 +1020,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             limit=limit,
             sf_only=sf_only,
             genres=genres,
+            genre_gates=genre_gates,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -1018,6 +1035,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
         "limit": limit,
         "sf_only": sf_only,
         "genres": genres,
+        "genre_gates": genre_gates,
         "catalog": catalog,
         "year_min": year_min,
         "year_max": year_max,
@@ -1086,6 +1104,7 @@ def _rank_precomputed(
     limit,
     sf_only=True,
     genres=None,
+    genre_gates=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -1130,6 +1149,7 @@ def _rank_precomputed(
         year_max=year_max,
         q=q,
         genres=genres,
+        genre_gates=genre_gates,
         sf_only=sf_only,
         work_alias="s",
         score_expr=raw_score,
@@ -1164,6 +1184,7 @@ def _rank_dynamic(
     taste,
     sf_only=True,
     genres=None,
+    genre_gates=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -1952,7 +1973,9 @@ def _rank_dynamic(
         year_max=year_max,
         q=q,
         genres=genres,
-        sf_only=False,  # SF already applied when building agg / events
+        genre_gates=genre_gates,
+        # Legacy is_sf event pred when tables missing; prevalence/tags filter works here
+        sf_only=False,
         work_alias="w",
         score_expr=score,
     )
@@ -2001,6 +2024,7 @@ def _picky_rate_rows(
     limit,
     sf_only=True,
     genres=None,
+    genre_gates=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -2038,6 +2062,7 @@ def _picky_rate_rows(
         year_max=year_max,
         q=q,
         genres=genres,
+        genre_gates=genre_gates,
         sf_only=sf_only,
         work_alias="s",
         score_expr=raw,

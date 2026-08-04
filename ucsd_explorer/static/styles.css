@@ -277,6 +277,12 @@ input[type="range"] {
 
 .presets button:hover, .actions button:hover { border-color: var(--accent); }
 
+.presets button.gate-toggle.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, #fff);
+  font-weight: 600;
+}
+
 .actions .primary {
   width: 100%;
   background: var(--accent);

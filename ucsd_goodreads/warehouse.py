@@ -144,6 +144,18 @@ GENRE_SHELF_GROUPS: dict[str, frozenset[str]] = {
             "nonfiction",
         }
     ),
+    # Literary / realist shelves compete with sparse SF cross-tags (Kafka, IJ, …)
+    "literary": frozenset(
+        {
+            "classics",
+            "classic",
+            "literature",
+            "literary-fiction",
+            "literary",
+            "classic-literature",
+            "magical-realism",
+        }
+    ),
 }
 
 
@@ -458,7 +470,10 @@ def open_warehouse(db_path: Path, parquet_dir: Path, *, read_only: bool = False)
             GROUP BY book_id
             """
         )
-        # Convenience: SF-likeness score used by the ballot builder defaults.
+        # Literary shelves are half-weight in the denominator for popular
+        # books (n≥250). Obscure books skip literary so sparse classic tags
+        # do not exclude lesser-known SF; popular literary/mystery pollution
+        # still fails the ratio gate.
         con.execute(
             """
             CREATE OR REPLACE VIEW books_with_genres AS
@@ -473,14 +488,30 @@ def open_warehouse(db_path: Path, parquet_dir: Path, *, read_only: bool = False)
                 g.horror,
                 g.ya,
                 g.history_bio,
+                g.literary,
                 (g.sf_core + 0.35 * g.sf_soft) AS sf_score,
-                (g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror) AS non_sf_score,
+                (g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror
+                 + CASE
+                     WHEN coalesce(b.ratings_count, 0) >= 250
+                     THEN 0.5 * coalesce(g.literary, 0)
+                     ELSE 0
+                   END) AS non_sf_score,
                 CASE
                     WHEN (g.sf_core + 0.35 * g.sf_soft
-                          + g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror) > 0
+                          + g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror
+                          + CASE
+                              WHEN coalesce(b.ratings_count, 0) >= 250
+                              THEN 0.5 * coalesce(g.literary, 0)
+                              ELSE 0
+                            END) > 0
                     THEN (g.sf_core + 0.35 * g.sf_soft)
                          / (g.sf_core + 0.35 * g.sf_soft
-                            + g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror)
+                            + g.fantasy + g.fantasy_extra + g.romance + g.ya + g.horror
+                            + CASE
+                                WHEN coalesce(b.ratings_count, 0) >= 250
+                                THEN 0.5 * coalesce(g.literary, 0)
+                                ELSE 0
+                              END)
                     ELSE NULL
                 END AS sf_ratio
             FROM books b

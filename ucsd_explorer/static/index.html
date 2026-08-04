@@ -138,15 +138,21 @@
         <section id="genre-section">
           <h2>Genres / tags</h2>
           <p class="hint">
-            RYM-style Goodreads shelf filter.
-            <strong>Require</strong> = must have all;
-            <strong>Any of</strong> = at least one;
-            <strong>Exclude</strong> = none of these.
+            <strong>Prevalence gates</strong> (toggle; combine = intersection):
+            shelf mass vs competing genres, not a loose tag OR — so Kafka stays
+            out of SF while New Sun still passes. Soft literary penalty only
+            applies on popular books with strong classic shelving.
+            <strong>Require / Any of / Exclude</strong> are extra Goodreads tags on top.
           </p>
-          <div class="genre-presets presets">
-            <button type="button" id="genre-preset-sf">SF preset</button>
-            <button type="button" id="genre-preset-clear">All genres</button>
+          <div class="genre-presets presets" id="genre-gate-presets">
+            <button type="button" class="gate-toggle" data-gate="sf">Science fiction</button>
+            <button type="button" class="gate-toggle" data-gate="fantasy">Fantasy</button>
+            <button type="button" class="gate-toggle" data-gate="coming_of_age">Coming of age</button>
+            <button type="button" class="gate-toggle" data-gate="lgbtq">LGBTQ / identity</button>
+            <button type="button" class="gate-toggle" data-gate="western">Western</button>
+            <button type="button" id="genre-preset-clear">Clear gates</button>
           </div>
+          <p class="hint" id="gate-summary"></p>
           <label class="field">
             <span>Add tag</span>
             <input type="search" id="genre-search" placeholder="science-fiction, fantasy, lit…" autocomplete="off" />

@@ -20,6 +20,7 @@ from __future__ import annotations
 from typing import Any
 
 from ucsd_explorer.db import execute, resolve_work_id
+from ucsd_explorer.genre_gates import gate_sql_bits, parse_genre_gates
 from ucsd_explorer.genres import genre_sql_bits, parse_genre_params
 from ucsd_explorer.ranking import (
     CURATOR_DEEP_PCT_METHODS,
@@ -158,7 +159,13 @@ def similar_books(book_id: str, params: dict[str, Any]) -> dict[str, Any]:
 
     cohort = _curator_cohort_for_sim(params)
     genres = parse_genre_params(params)
-    genre_where, genre_args = genre_sql_bits(genres, work_alias="s")
+    genre_gates = parse_genre_gates(params)
+    gate_where, gate_args = gate_sql_bits(genre_gates, work_alias="s")
+    genre_where, genre_args = genre_sql_bits(
+        genres, work_alias="s", sf_via_prevalence=not bool(genre_gates)
+    )
+    genre_where = f"{gate_where}{genre_where}"
+    genre_args = gate_args + genre_args
 
     resolved = resolve_work_id(book_id)
     if not resolved:

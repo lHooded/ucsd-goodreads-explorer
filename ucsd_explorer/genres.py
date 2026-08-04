@@ -188,25 +188,47 @@ def parse_genre_params(params: dict[str, Any]) -> dict[str, list[str]]:
     return {"require": require, "include": include, "exclude": exclude}
 
 
+def is_sf_preset_filter(genres: dict[str, list[str]] | None) -> bool:
+    """True when include is the SF shelf preset (use is_sf prevalence gate)."""
+    if not genres:
+        return False
+    inc = set(genres.get("include") or [])
+    if not inc:
+        return False
+    return inc <= set(SF_PRESET_INCLUDE)
+
+
 def genre_sql_bits(
     genres: dict[str, list[str]] | None,
     *,
     work_alias: str = "w",
+    sf_via_prevalence: bool = True,
 ) -> tuple[str, list[Any]]:
-    """Return (where_sql, args) restricting ``work_alias`` by genre lists."""
+    """Return (where_sql, args) restricting ``work_alias`` by genre lists.
+
+    When ``sf_via_prevalence`` is True and include ⊆ SF_PRESET_INCLUDE, the
+    filter uses ``work.is_sf`` (prevalence gate) instead of a loose tag OR.
+    Pass ``sf_via_prevalence=False`` when ``genre_gates`` already applies the
+    SF gate so tags stay as plain shelf filters.
+    """
     if not genres:
-        return "", []
-    if not has_genre_tables():
-        # Fall back to is_sf if SF-only include preset and tables missing
-        inc = set(genres.get("include") or [])
-        if inc and inc <= set(SF_PRESET_INCLUDE) and not genres.get("require") and not genres.get("exclude"):
-            return f" AND {work_alias}.is_sf", []
         return "", []
 
     args: list[Any] = []
     parts: list[str] = []
+    sf_preset = bool(sf_via_prevalence and is_sf_preset_filter(genres))
+
+    if sf_preset:
+        parts.append(f"coalesce({work_alias}.is_sf, FALSE)")
+    elif not has_genre_tables():
+        return "", []
+
+    if not has_genre_tables() and not sf_preset:
+        return "", []
 
     for g in genres.get("require") or []:
+        if not has_genre_tables():
+            break
         parts.append(
             f""" EXISTS (
               SELECT 1 FROM work_genres wg
@@ -216,7 +238,9 @@ def genre_sql_bits(
         args.append(g)
 
     include = genres.get("include") or []
-    if include:
+    if include and not sf_preset:
+        if not has_genre_tables():
+            return "", []
         placeholders = ", ".join(["?"] * len(include))
         parts.append(
             f""" EXISTS (
@@ -227,6 +251,8 @@ def genre_sql_bits(
         args.extend(include)
 
     for g in genres.get("exclude") or []:
+        if not has_genre_tables():
+            break
         parts.append(
             f""" NOT EXISTS (
               SELECT 1 FROM work_genres wg

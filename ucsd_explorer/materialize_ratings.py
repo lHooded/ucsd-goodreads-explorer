@@ -466,10 +466,22 @@ def retarget_is_sf(
     con.execute("CREATE INDEX IF NOT EXISTS idx_are_sf ON all_rating_events(is_sf)")
     con.execute("CREATE INDEX IF NOT EXISTS idx_fse_sf ON five_star_events(is_sf)")
 
-    after = con.execute(
+    con.execute("DETACH wh")
+    con.close()
+
+    # Soft literary + multi-gate prevalence (source of truth for the UI).
+    # Overwrites is_sf from the sf gate after the warehouse-based patch.
+    from ucsd_explorer.genre_gates import materialize_genre_gates
+
+    gate_stats = materialize_genre_gates(db_path=EXPLORER_DB)
+
+    import duckdb as _duck
+
+    con2 = _duck.connect(str(EXPLORER_DB))
+    after = con2.execute(
         "SELECT count(*) FROM work_scores WHERE coalesce(is_sf, FALSE)"
     ).fetchone()[0]
-    wolfe = con.execute(
+    wolfe = con2.execute(
         """
         SELECT title, is_sf, n FROM work_scores
         WHERE author ILIKE 'Gene Wolfe'
@@ -479,13 +491,13 @@ def retarget_is_sf(
         ORDER BY n DESC
         """
     ).fetchall()
-    con.execute("DETACH wh")
-    con.close()
+    con2.close()
 
     stats = {
         "sf_book_ids": n_sf,
         "work_scores_sf_before": int(before),
         "work_scores_sf_after": int(after),
+        "genre_gates": gate_stats,
         "elapsed_s": round(time.time() - t0, 1),
         "wolfe_sample": [
             {"title": t, "is_sf": bool(s), "n": int(n)} for t, s, n in wolfe

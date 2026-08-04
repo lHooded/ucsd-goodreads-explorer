@@ -14,6 +14,7 @@ from ucsd_explorer.db import GLOBALS, META, STATIC, TASTE_PATH, execute, get_con
 from ucsd_explorer.ranking import METHODS, rank_books, work_relevant_hist
 from ucsd_explorer.similarity import SIM_METHODS, similar_books
 from ucsd_explorer.catalog_flags import has_catalog_flags
+from ucsd_explorer.genre_gates import GATE_DEFS, GATE_IDS, has_genre_gates
 from ucsd_explorer.genres import SF_PRESET_INCLUDE, has_genre_tables, search_genres
 from ucsd_explorer.taste_query import (
     has_curator_deep_weights,
@@ -414,6 +415,11 @@ class Handler(BaseHTTPRequestHandler):
                     "curator_deep_weights_available": has_curator_deep_weights(),
                     "catalog_flags_available": has_catalog_flags(),
                     "genres_available": has_genre_tables(),
+                    "genre_gates_available": has_genre_gates(),
+                    "genre_gate_presets": [
+                        {"id": gid, "label": GATE_DEFS[gid]["label"]}
+                        for gid in GATE_IDS
+                    ],
                     "sf_preset_include": list(SF_PRESET_INCLUDE),
                     "note": "Unordered 5★ / literary-weighted / similar-books explorer.",
                 },

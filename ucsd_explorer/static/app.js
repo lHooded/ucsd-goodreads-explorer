@@ -10,6 +10,8 @@ let GENRE_STATE = {
   include: [],
   exclude: [],
 };
+/** Active prevalence gates (intersected). Default SF on first load. */
+let GATE_STATE = ["sf"];
 let TASTE = {
   literary: [],
   literary_sf_extras: [],
@@ -229,6 +231,7 @@ function savePrefs() {
     include: [...GENRE_STATE.include],
     exclude: [...GENRE_STATE.exclude],
   };
+  prefs.genre_gates = [...GATE_STATE];
   try {
     localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
   } catch (_) {
@@ -261,31 +264,79 @@ function loadPrefs() {
   } else if (prefs["sf-only"] === false) {
     GENRE_STATE = { require: [], include: [], exclude: [] };
   }
+  if (Array.isArray(prefs.genre_gates)) {
+    GATE_STATE = [...prefs.genre_gates];
+  } else {
+    // Migrate old SF include-tag preset → prevalence gate
+    const sfPreset = META.sf_preset_include || [];
+    const looksSf =
+      GENRE_STATE.include.length > 0 &&
+      GENRE_STATE.include.every((t) => sfPreset.includes(t)) &&
+      !GENRE_STATE.require.length &&
+      !GENRE_STATE.exclude.length;
+    if (looksSf) {
+      GATE_STATE = ["sf"];
+      GENRE_STATE.include = [];
+    } else if (
+      !GENRE_STATE.require.length &&
+      !GENRE_STATE.include.length &&
+      !GENRE_STATE.exclude.length
+    ) {
+      GATE_STATE = ["sf"];
+    } else {
+      GATE_STATE = [];
+    }
+  }
 }
 
 function applySfPreset() {
-  const preset = META.sf_preset_include || [
-    "science-fiction",
-    "sci-fi",
-    "scifi",
-    "sf",
-    "hard-sf",
-    "hard-science-fiction",
-    "space-opera",
-    "cyberpunk",
-    "military-sf",
-    "military-science-fiction",
-    "speculative-fiction",
-  ];
-  GENRE_STATE.require = [];
-  GENRE_STATE.include = [...preset];
-  GENRE_STATE.exclude = [];
+  GATE_STATE = ["sf"];
+  // Clear legacy SF include tags — prevalence gate owns SF now
+  const sfPreset = new Set(META.sf_preset_include || []);
+  GENRE_STATE.include = GENRE_STATE.include.filter((t) => !sfPreset.has(t));
   renderGenreChips();
+  renderGateToggles();
 }
 
 function clearGenres() {
+  GATE_STATE = [];
   GENRE_STATE = { require: [], include: [], exclude: [] };
   renderGenreChips();
+  renderGateToggles();
+}
+
+function toggleGate(gateId) {
+  const i = GATE_STATE.indexOf(gateId);
+  if (i >= 0) GATE_STATE.splice(i, 1);
+  else GATE_STATE.push(gateId);
+  renderGateToggles();
+  savePrefs();
+  scheduleRank();
+}
+
+function renderGateToggles() {
+  document.querySelectorAll(".gate-toggle[data-gate]").forEach((btn) => {
+    const g = btn.getAttribute("data-gate");
+    btn.classList.toggle("active", GATE_STATE.includes(g));
+  });
+  const labels = {
+    sf: "SF",
+    fantasy: "fantasy",
+    coming_of_age: "coming-of-age",
+    lgbtq: "LGBTQ",
+    western: "western",
+  };
+  const sum = $("gate-summary");
+  if (!sum) return;
+  if (!GATE_STATE.length) {
+    sum.textContent = "No prevalence gate (tag filters only / all genres).";
+    return;
+  }
+  const names = GATE_STATE.map((g) => labels[g] || g);
+  sum.textContent =
+    names.length === 1
+      ? `Gate: ${names[0]} (prevalence)`
+      : `Gates ∩: ${names.join(" ∩ ")} (must pass all)`;
 }
 
 function genreAddBucket() {
@@ -331,11 +382,25 @@ function renderGenreChips() {
       .join("");
   }
   const bits = [];
+  if (GATE_STATE.length) {
+    bits.push(
+      GATE_STATE.length === 1
+        ? `${GATE_STATE[0]} gate`
+        : `gates ∩ ${GATE_STATE.join(" ∩ ")}`
+    );
+  }
   if (GENRE_STATE.require.length) bits.push(`require ${GENRE_STATE.require.join(", ")}`);
-  if (GENRE_STATE.include.length) bits.push(`any of ${GENRE_STATE.include.join(", ")}`);
+  if (GENRE_STATE.include.length) {
+    bits.push(`any of ${GENRE_STATE.include.join(", ")}`);
+  }
   if (GENRE_STATE.exclude.length) bits.push(`exclude ${GENRE_STATE.exclude.join(", ")}`);
   const sum = $("genre-summary");
-  if (sum) sum.textContent = bits.length ? bits.join(" · ") : "No genre filter (all genres).";
+  if (sum) {
+    sum.textContent = bits.length
+      ? bits.join(" · ")
+      : "No genre filter (all genres).";
+  }
+  renderGateToggles();
 }
 
 async function suggestGenres(q) {
@@ -387,6 +452,7 @@ function getParams() {
     genre_require: [...GENRE_STATE.require],
     genre_include: [...GENRE_STATE.include],
     genre_exclude: [...GENRE_STATE.exclude],
+    genre_gates: [...GATE_STATE],
     fiction_only: checked("fiction-only"),
     exclude_derivatives: checked("exclude-derivatives"),
     exclude_comics: checked("exclude-comics"),
@@ -865,15 +931,15 @@ function wire() {
       removeGenreTag(chip.getAttribute("data-bucket"), chip.getAttribute("data-shelf"));
     });
   }
-  $("genre-preset-sf")?.addEventListener("click", () => {
-    applySfPreset();
-    savePrefs();
-    rerank();
-  });
   $("genre-preset-clear")?.addEventListener("click", () => {
     clearGenres();
     savePrefs();
     rerank();
+  });
+  document.querySelectorAll(".gate-toggle[data-gate]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggleGate(btn.getAttribute("data-gate"));
+    });
   });
   document.querySelectorAll("[data-preset]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -1184,15 +1250,15 @@ async function main() {
   ).join("");
   sel.value = "curator_pct_love";
   loadPrefs();
-  const noGenres =
+  const noFilter =
+    !GATE_STATE.length &&
     !GENRE_STATE.require.length &&
     !GENRE_STATE.include.length &&
     !GENRE_STATE.exclude.length;
-  if (noGenres && META.genres_available !== false) {
-    applySfPreset();
-  } else {
-    renderGenreChips();
+  if (noFilter && META.genres_available !== false) {
+    GATE_STATE = ["sf"];
   }
+  renderGenreChips();
   if (![...sel.options].some((o) => o.value === sel.value)) {
     sel.value = "curator_five_rate";
   }
