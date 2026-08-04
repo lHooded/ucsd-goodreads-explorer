@@ -4,6 +4,12 @@ let METHODS = [];
 let META = {};
 let TIMER = null;
 let LAST_RESULTS = [];
+let GENRE_TIMER = null;
+let GENRE_STATE = {
+  require: [],
+  include: [],
+  exclude: [],
+};
 let TASTE = {
   literary: [],
   literary_sf_extras: [],
@@ -185,7 +191,6 @@ const PERSIST_IDS = [
   "year-min",
   "year-max",
   "q",
-  "sf-only",
   "fiction-only",
   "exclude-derivatives",
   "exclude-comics",
@@ -219,6 +224,11 @@ function savePrefs() {
       prefs[id] = v;
     }
   }
+  prefs.genres = {
+    require: [...GENRE_STATE.require],
+    include: [...GENRE_STATE.include],
+    exclude: [...GENRE_STATE.exclude],
+  };
   try {
     localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
   } catch (_) {
@@ -244,6 +254,119 @@ function loadPrefs() {
       el.value = String(prefs[id]);
     }
   }
+  if (prefs.genres && typeof prefs.genres === "object") {
+    GENRE_STATE.require = [...(prefs.genres.require || [])];
+    GENRE_STATE.include = [...(prefs.genres.include || [])];
+    GENRE_STATE.exclude = [...(prefs.genres.exclude || [])];
+  } else if (prefs["sf-only"] === false) {
+    GENRE_STATE = { require: [], include: [], exclude: [] };
+  }
+}
+
+function applySfPreset() {
+  const preset = META.sf_preset_include || [
+    "science-fiction",
+    "sci-fi",
+    "scifi",
+    "sf",
+    "hard-sf",
+    "hard-science-fiction",
+    "space-opera",
+    "cyberpunk",
+    "military-sf",
+    "military-science-fiction",
+    "speculative-fiction",
+  ];
+  GENRE_STATE.require = [];
+  GENRE_STATE.include = [...preset];
+  GENRE_STATE.exclude = [];
+  renderGenreChips();
+}
+
+function clearGenres() {
+  GENRE_STATE = { require: [], include: [], exclude: [] };
+  renderGenreChips();
+}
+
+function genreAddBucket() {
+  const el = document.querySelector('input[name="genre-add-bucket"]:checked');
+  return el?.value || "include";
+}
+
+function addGenreTag(shelf) {
+  const g = String(shelf || "")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-");
+  if (!g) return;
+  const bucket = genreAddBucket();
+  for (const b of ["require", "include", "exclude"]) {
+    GENRE_STATE[b] = GENRE_STATE[b].filter((x) => x !== g);
+  }
+  GENRE_STATE[bucket].push(g);
+  renderGenreChips();
+  savePrefs();
+  scheduleRank();
+}
+
+function removeGenreTag(bucket, shelf) {
+  GENRE_STATE[bucket] = GENRE_STATE[bucket].filter((x) => x !== shelf);
+  renderGenreChips();
+  savePrefs();
+  scheduleRank();
+}
+
+function renderGenreChips() {
+  for (const bucket of ["require", "include", "exclude"]) {
+    const el = $(`genre-${bucket}-chips`);
+    if (!el) continue;
+    const tags = GENRE_STATE[bucket] || [];
+    el.innerHTML = tags
+      .map(
+        (g) =>
+          `<button type="button" class="chip genre-chip" data-bucket="${bucket}" data-shelf="${escapeHtml(
+            g
+          )}" title="Remove">${escapeHtml(g)} ×</button>`
+      )
+      .join("");
+  }
+  const bits = [];
+  if (GENRE_STATE.require.length) bits.push(`require ${GENRE_STATE.require.join(", ")}`);
+  if (GENRE_STATE.include.length) bits.push(`any of ${GENRE_STATE.include.join(", ")}`);
+  if (GENRE_STATE.exclude.length) bits.push(`exclude ${GENRE_STATE.exclude.join(", ")}`);
+  const sum = $("genre-summary");
+  if (sum) sum.textContent = bits.length ? bits.join(" · ") : "No genre filter (all genres).";
+}
+
+async function suggestGenres(q) {
+  const box = $("genre-suggest");
+  if (!box) return;
+  if (!q || q.length < 1) {
+    box.hidden = true;
+    box.innerHTML = "";
+    return;
+  }
+  try {
+    const res = await fetch(`/api/genres?q=${encodeURIComponent(q)}&limit=25`);
+    const data = await res.json();
+    const rows = data.genres || [];
+    if (!rows.length) {
+      box.hidden = true;
+      box.innerHTML = "";
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML = rows
+      .map(
+        (r) =>
+          `<button type="button" data-shelf="${escapeHtml(r.shelf)}">${escapeHtml(
+            r.shelf
+          )} <span class="mono">${Number(r.n_works).toLocaleString()} works</span></button>`
+      )
+      .join("");
+  } catch (_) {
+    box.hidden = true;
+  }
 }
 
 function getParams() {
@@ -261,7 +384,9 @@ function getParams() {
     coverage_weight: intNum("coverage-weight", 100, { min: 0, max: 100 }) / 100,
     limit: intNum("limit", 200, { min: 1 }),
     q: $("q").value.trim(),
-    sf_only: checked("sf-only"),
+    genre_require: [...GENRE_STATE.require],
+    genre_include: [...GENRE_STATE.include],
+    genre_exclude: [...GENRE_STATE.exclude],
     fiction_only: checked("fiction-only"),
     exclude_derivatives: checked("exclude-derivatives"),
     exclude_comics: checked("exclude-comics"),
@@ -311,7 +436,12 @@ async function rerank() {
     return;
   }
   const ms = performance.now() - t0;
-  const scope = data.sf_only === false ? "all genres" : "SF only";
+  const g = data.genres || {};
+  const gBits = [];
+  if ((g.require || []).length) gBits.push(`require:${g.require.join("+")}`);
+  if ((g.include || []).length) gBits.push(`any:${g.include.slice(0, 4).join("|")}${(g.include.length > 4 ? "…" : "")}`);
+  if ((g.exclude || []).length) gBits.push(`ex:${g.exclude.join("|")}`);
+  const scope = gBits.length ? gBits.join(" · ") : "all genres";
   let summary =
     `${data.n_results} books · ${scope} · min n≥${data.min_votes ?? params.min_votes}` +
     `${data.max_n ? ` · max n≤${data.max_n}` : ""} · ${(ms / 1000).toFixed(2)}s`;
@@ -560,7 +690,7 @@ async function openBook(bookId, simMethod) {
     .map(
       (r) => `<div class="sim-row" data-id="${escapeHtml(r.book_id)}">
         <div class="sim-title">${escapeHtml(r.title)}</div>
-        <div class="mono sim-meta">${escapeHtml(r.author)} · ${r.both_fans} shared 5★ · ${r.score.toFixed(4)}</div>
+        <div class="mono sim-meta">${escapeHtml(r.author)} · ${r.both_fans} curator 5★ · ${r.score.toFixed(4)}</div>
       </div>`
     )
     .join("");
@@ -586,8 +716,16 @@ async function openBook(bookId, simMethod) {
       <span>Similarity</span>
       <select id="sim-method">${simOpts}</select>
     </label>
-    <p class="hint">${escapeHtml((simMethods.find((m) => m.id === (sim.method || method)) || {}).blurb || "")}</p>
-    <div class="sim-list" id="sim-list">${simRows || "<p class='hint'>No co-fans found.</p>"}</div>
+    <p class="hint">${escapeHtml(
+      sim.curator_cohort
+        ? `Curator-weighted · ${sim.curator_cohort}${sim.n_curators ? ` · ${Number(sim.n_curators).toLocaleString()} active` : ""}`
+        : (simMethods.find((m) => m.id === (sim.method || method)) || {}).blurb || ""
+    )}</p>
+    <div class="sim-list" id="sim-list">${
+      sim.note
+        ? `<p class='hint'>${escapeHtml(sim.note)}</p>`
+        : simRows || "<p class='hint'>No curator co-favorites found.</p>"
+    }</div>
 
     <h3 class="drawer-h">5★ supporters (by literary weight)</h3>
     ${supporters || "<p class='hint'>No five-star events.</p>"}
@@ -689,6 +827,54 @@ function wire() {
       scheduleRank();
     });
   }
+
+  const genreSearch = $("genre-search");
+  if (genreSearch) {
+    genreSearch.addEventListener("input", () => {
+      if (GENRE_TIMER) clearTimeout(GENRE_TIMER);
+      GENRE_TIMER = setTimeout(() => suggestGenres(genreSearch.value.trim()), 120);
+    });
+    genreSearch.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const q = genreSearch.value.trim();
+        if (q) {
+          addGenreTag(q);
+          genreSearch.value = "";
+          suggestGenres("");
+        }
+      }
+    });
+  }
+  const genreSuggest = $("genre-suggest");
+  if (genreSuggest) {
+    genreSuggest.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-shelf]");
+      if (!btn) return;
+      addGenreTag(btn.getAttribute("data-shelf"));
+      if (genreSearch) genreSearch.value = "";
+      suggestGenres("");
+    });
+  }
+  for (const bucket of ["require", "include", "exclude"]) {
+    const el = $(`genre-${bucket}-chips`);
+    if (!el) continue;
+    el.addEventListener("click", (e) => {
+      const chip = e.target.closest(".genre-chip[data-shelf]");
+      if (!chip) return;
+      removeGenreTag(chip.getAttribute("data-bucket"), chip.getAttribute("data-shelf"));
+    });
+  }
+  $("genre-preset-sf")?.addEventListener("click", () => {
+    applySfPreset();
+    savePrefs();
+    rerank();
+  });
+  $("genre-preset-clear")?.addEventListener("click", () => {
+    clearGenres();
+    savePrefs();
+    rerank();
+  });
   document.querySelectorAll("[data-preset]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const p = btn.getAttribute("data-preset");
@@ -723,7 +909,6 @@ function wire() {
         $("curator-strictness-mode").value = "deweight";
         if ($("normie-depth")) $("normie-depth").value = "40";
         if ($("normie-purity")) $("normie-purity").value = "55";
-        $("sf-only").checked = false;
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pct-tilt") {
@@ -744,7 +929,6 @@ function wire() {
         $("curator-strictness-mode").value = "deweight";
         if ($("normie-depth")) $("normie-depth").value = "40";
         if ($("normie-purity")) $("normie-purity").value = "55";
-        $("sf-only").checked = false;
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-deep-pct-geom") {
@@ -759,7 +943,6 @@ function wire() {
         if ($("geom-ratio")) $("geom-ratio").value = "20";
         if ($("pct-power")) $("pct-power").value = "25";
         if ($("coverage-weight")) $("coverage-weight").value = "80";
-        $("sf-only").checked = false;
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pct-asymm") {
@@ -992,8 +1175,8 @@ async function main() {
   $("data-meta").textContent =
     `${worksBit} · ${(META.n_five_star_events || 0).toLocaleString()} five-stars · ` +
     `global P(5★) ${pct(META.global_p5)} · ${META.ballot_model || ""}`;
-  if ($("sf-only") && META.genre_filter_available === false) {
-    $("sf-only").closest("label").hidden = true;
+  if ($("genre-section") && META.genres_available === false) {
+    $("genre-section").hidden = true;
   }
   const sel = $("method");
   sel.innerHTML = METHODS.map(
@@ -1001,6 +1184,15 @@ async function main() {
   ).join("");
   sel.value = "curator_pct_love";
   loadPrefs();
+  const noGenres =
+    !GENRE_STATE.require.length &&
+    !GENRE_STATE.include.length &&
+    !GENRE_STATE.exclude.length;
+  if (noGenres && META.genres_available !== false) {
+    applySfPreset();
+  } else {
+    renderGenreChips();
+  }
   if (![...sel.options].some((o) => o.value === sel.value)) {
     sel.value = "curator_five_rate";
   }

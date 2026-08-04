@@ -133,10 +133,37 @@
             Earliest catalogued edition year across all Goodreads editions in the dump
             (not only popular reprints). Still noisy for classics / translations.
           </p>
-          <label class="check">
-            <input type="checkbox" id="sf-only" checked />
-            <span>SF only <em>(uncheck = all genres)</em></span>
+        </section>
+
+        <section id="genre-section">
+          <h2>Genres / tags</h2>
+          <p class="hint">
+            RYM-style Goodreads shelf filter.
+            <strong>Require</strong> = must have all;
+            <strong>Any of</strong> = at least one;
+            <strong>Exclude</strong> = none of these.
+          </p>
+          <div class="genre-presets presets">
+            <button type="button" id="genre-preset-sf">SF preset</button>
+            <button type="button" id="genre-preset-clear">All genres</button>
+          </div>
+          <label class="field">
+            <span>Add tag</span>
+            <input type="search" id="genre-search" placeholder="science-fiction, fantasy, lit…" autocomplete="off" />
           </label>
+          <div class="genre-suggest" id="genre-suggest" hidden></div>
+          <div class="genre-add-mode">
+            <label class="check"><input type="radio" name="genre-add-bucket" value="include" checked /> Any of</label>
+            <label class="check"><input type="radio" name="genre-add-bucket" value="require" /> Require</label>
+            <label class="check"><input type="radio" name="genre-add-bucket" value="exclude" /> Exclude</label>
+          </div>
+          <h3 class="taste-subhead">Require <em>(AND)</em></h3>
+          <div class="chip-list" id="genre-require-chips"></div>
+          <h3 class="taste-subhead">Any of <em>(OR)</em></h3>
+          <div class="chip-list" id="genre-include-chips"></div>
+          <h3 class="taste-subhead">Exclude</h3>
+          <div class="chip-list" id="genre-exclude-chips"></div>
+          <p class="hint" id="genre-summary"></p>
         </section>
 
         <section>

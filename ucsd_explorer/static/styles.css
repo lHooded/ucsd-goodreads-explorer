@@ -196,6 +196,60 @@ input[type="range"] {
   background: #f7f0e8;
 }
 
+.chip[data-bucket="require"] {
+  border-color: #1a4f8c;
+  background: #e4eef8;
+}
+.chip[data-bucket="include"] {
+  border-color: #2d6a4f;
+  background: #e8f5ef;
+}
+.chip[data-bucket="exclude"] {
+  border-color: #9b2c2c;
+  background: #f8e8e8;
+}
+.chip.genre-chip {
+  cursor: pointer;
+}
+.chip.genre-chip:hover {
+  opacity: 0.85;
+}
+
+.genre-add-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0.35rem 0 0.55rem;
+  font-size: 0.82rem;
+}
+
+.genre-suggest {
+  border: 1px solid var(--line);
+  background: #fff;
+  max-height: 10rem;
+  overflow: auto;
+  margin: -0.25rem 0 0.5rem;
+}
+.genre-suggest button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.genre-suggest button:hover {
+  background: var(--accent-soft);
+}
+.genre-suggest .mono {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
 .taste-subhead em {
   font-style: normal;
   font-weight: 500;

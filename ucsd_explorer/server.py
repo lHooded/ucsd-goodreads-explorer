@@ -14,6 +14,7 @@ from ucsd_explorer.db import GLOBALS, META, STATIC, TASTE_PATH, execute, get_con
 from ucsd_explorer.ranking import METHODS, rank_books, work_relevant_hist
 from ucsd_explorer.similarity import SIM_METHODS, similar_books
 from ucsd_explorer.catalog_flags import has_catalog_flags
+from ucsd_explorer.genres import SF_PRESET_INCLUDE, has_genre_tables, search_genres
 from ucsd_explorer.taste_query import (
     has_curator_deep_weights,
     has_curator_pct_pure_weights,
@@ -269,15 +270,12 @@ def book_detail(book_id: str, params: dict[str, Any]) -> dict[str, Any]:
 
     if str(params.get("similar") or "1").lower() not in ("0", "false", "no"):
         try:
-            out["similar"] = similar_books(
-                book_id,
-                {
-                    "sim_method": params.get("sim_method") or "cosine",
-                    "limit": sim_limit,
-                    "min_both": min_both,
-                    "lit_weighted": params.get("sim_lit_weighted") or False,
-                },
-            )
+            sim_params = dict(params)
+            sim_params["sim_method"] = params.get("sim_method") or "cosine"
+            sim_params["sim_limit"] = sim_limit
+            sim_params["limit"] = sim_limit
+            sim_params["min_both"] = min_both
+            out["similar"] = similar_books(book_id, sim_params)
         except Exception as e:
             out["similar"] = {"error": str(e), "results": []}
     return out
@@ -415,9 +413,18 @@ class Handler(BaseHTTPRequestHandler):
                     "curator_pct_pure_weights_available": has_curator_pct_pure_weights(),
                     "curator_deep_weights_available": has_curator_deep_weights(),
                     "catalog_flags_available": has_catalog_flags(),
+                    "genres_available": has_genre_tables(),
+                    "sf_preset_include": list(SF_PRESET_INCLUDE),
                     "note": "Unordered 5★ / literary-weighted / similar-books explorer.",
                 },
             )
+        if path == "/api/genres":
+            try:
+                q = qs.get("q") or ""
+                limit = int(qs.get("limit") or 40)
+                return self._json(200, {"genres": search_genres(q, limit=limit)})
+            except Exception as e:
+                return self._json(400, {"error": str(e)})
         if path == "/api/taste":
             try:
                 return self._json(200, taste_payload())

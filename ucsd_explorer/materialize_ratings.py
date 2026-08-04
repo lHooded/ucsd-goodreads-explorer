@@ -362,6 +362,17 @@ def materialize(
     except Exception as e:
         print(f"Catalog flags skipped/failed: {e}", flush=True)
 
+    try:
+        from ucsd_explorer.genres import materialize_genres
+
+        print("Materializing genre tags…", flush=True)
+        genre_meta = materialize_genres(db_path=EXPLORER_DB)
+        meta["genres"] = genre_meta
+        meta["genres_available"] = True
+        META_PATH.write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+    except Exception as e:
+        print(f"Genre tags skipped/failed: {e}", flush=True)
+
     import duckdb as d2
 
     c = d2.connect(str(EXPLORER_DB), read_only=True)

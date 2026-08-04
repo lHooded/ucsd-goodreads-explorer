@@ -8,6 +8,12 @@ from typing import Any
 
 from ucsd_explorer.catalog_flags import catalog_sql_bits, parse_catalog_params
 from ucsd_explorer.db import GLOBALS, execute
+from ucsd_explorer.genres import (
+    SF_PRESET_INCLUDE,
+    genre_sql_bits,
+    has_genre_tables,
+    parse_genre_params,
+)
 from ucsd_explorer.taste_query import (
     has_curator_deep_weights,
     has_curator_pct_pure_weights,
@@ -777,16 +783,18 @@ def _curator_user_weight_sql(
 
 
 def parse_sf_only(params: dict[str, Any]) -> bool:
-    """Default True (SF shelf). Uncheck / sf_only=false → all genres."""
-    if "sf_only" not in params and "genre_sf_only" not in params:
-        return True
-    v = params.get("sf_only", params.get("genre_sf_only"))
-    if v in (None, ""):
-        return True
-    # Explicit falsey
-    if isinstance(v, bool):
-        return v
-    return str(v).strip().lower() not in ("0", "false", "no", "off", "all")
+    """True when the active filter is the SF any-of preset (or legacy sf_only).
+
+    Prefer ``parse_genre_params`` / genre SQL for filtering. This flag only
+    selects SF vs all-genre Bayesian priors and legacy ``is_sf`` fallbacks.
+    """
+    genres = parse_genre_params(params)
+    if genres.get("require") or genres.get("exclude"):
+        return False
+    inc = set(genres.get("include") or [])
+    if not inc:
+        return False
+    return inc <= set(SF_PRESET_INCLUDE)
 
 
 def scope_globals(sf_only: bool) -> tuple[float, float]:
@@ -800,8 +808,12 @@ def scope_globals(sf_only: bool) -> tuple[float, float]:
     return p0, c0
 
 
-def _sf_clause(sf_only: bool, alias: str) -> str:
-    return f" AND {alias}.is_sf" if sf_only else ""
+def _event_sf_pred(sf_only: bool, alias: str = "e") -> str:
+    """Legacy event.is_sf filter when genre tables are unavailable."""
+    if not (sf_only and not has_genre_tables()):
+        return ""
+    col = f"{alias}.is_sf" if alias else "is_sf"
+    return f" AND {col}"
 
 
 def _rank_filter_bits(
@@ -810,17 +822,21 @@ def _rank_filter_bits(
     year_min: int | None,
     year_max: int | None,
     q: str,
-    sf_only: bool,
+    genres: dict[str, list[str]] | None,
     work_alias: str,
     score_expr: str | None = None,
+    sf_only: bool = False,
 ) -> tuple[str, str, str, list[Any]]:
-    """Shared catalog + year + search + SF wiring for rank SQL paths.
+    """Shared catalog + year + search + genre wiring for rank SQL paths.
 
     Returns ``(joins, where_suffix, scored_expr, extra_args)`` where
-    ``extra_args`` is book ILIKE args followed by year-range args.
+    ``extra_args`` is book ILIKE args + year-range args + genre args.
     """
     book_filter, book_args = _book_filter_sql(q, work_alias)
-    sf_filter = _sf_clause(sf_only, work_alias)
+    genre_where, genre_args = genre_sql_bits(genres, work_alias=work_alias)
+    sf_fallback = ""
+    if not has_genre_tables() and sf_only:
+        sf_fallback = f" AND {work_alias}.is_sf"
     cat_join, cat_where, scored = catalog_sql_bits(
         catalog, work_alias=work_alias, flags_alias="cf", score_expr=score_expr
     )
@@ -828,8 +844,9 @@ def _rank_filter_bits(
         year_min, year_max, work_alias=work_alias
     )
     joins = f"{cat_join}{year_join}"
-    where_suffix = f"{sf_filter}{book_filter}{cat_where}{year_where}"
-    return joins, where_suffix, scored, book_args + year_args
+    where_suffix = f"{sf_fallback}{genre_where}{book_filter}{cat_where}{year_where}"
+    # Placeholder order must match where_suffix: genre → book → year
+    return joins, where_suffix, scored, genre_args + book_args + year_args
 
 
 def rank_books(params: dict[str, Any]) -> dict[str, Any]:
@@ -841,6 +858,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     bayesian_m = max(0.0, _float_param(params, "bayesian_m", default=50.0))
     limit = min(max(1, _int_param(params, "limit", default=200)), 1000)
     q = (params.get("q") or "").strip()
+    genres = parse_genre_params(params)
     sf_only = parse_sf_only(params)
     picky_max = params.get("picky_max_five_rate")
     if picky_max is None or picky_max == "":
@@ -944,6 +962,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             limit=limit,
             taste=taste,
             sf_only=sf_only,
+            genres=genres,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -967,6 +986,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             q=q,
             limit=limit,
             sf_only=sf_only,
+            genres=genres,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -983,6 +1003,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             q=q,
             limit=limit,
             sf_only=sf_only,
+            genres=genres,
             catalog=catalog,
             year_min=year_min,
             year_max=year_max,
@@ -996,6 +1017,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
         "bayesian_m": bayesian_m,
         "limit": limit,
         "sf_only": sf_only,
+        "genres": genres,
         "catalog": catalog,
         "year_min": year_min,
         "year_max": year_max,
@@ -1063,6 +1085,7 @@ def _rank_precomputed(
     q,
     limit,
     sf_only=True,
+    genres=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -1106,6 +1129,7 @@ def _rank_precomputed(
         year_min=year_min,
         year_max=year_max,
         q=q,
+        genres=genres,
         sf_only=sf_only,
         work_alias="s",
         score_expr=raw_score,
@@ -1139,6 +1163,7 @@ def _rank_dynamic(
     limit,
     taste,
     sf_only=True,
+    genres=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -1192,7 +1217,7 @@ def _rank_dynamic(
         )
 
     if use_curator:
-        sf_pred = " AND e.is_sf" if sf_only else ""
+        sf_pred = _event_sf_pred(sf_only)
         weight_expr, gate_sql, gate_args, elite_t = _curator_user_weight_sql(
             pct=use_curator_pct,
             mode=curator_strictness_mode,
@@ -1335,7 +1360,7 @@ def _rank_dynamic(
         # gate_args already consumed when building curator_pool
     elif taste:
         # Live lit_weight from eligible (respects SF-extras / ★4 / poll prestige)
-        sf_pred = " AND e.is_sf" if sf_only else ""
+        sf_pred = _event_sf_pred(sf_only)
         filtered = f"""
             filtered AS (
                 SELECT
@@ -1349,7 +1374,7 @@ def _rank_dynamic(
             )
         """
     elif use_weights:
-        sf_pred = " AND e.is_sf" if sf_only else ""
+        sf_pred = _event_sf_pred(sf_only)
         filtered = f"""
             filtered AS (
                 SELECT
@@ -1363,7 +1388,7 @@ def _rank_dynamic(
             )
         """
     else:
-        sf_pred = " AND e.is_sf" if sf_only else ""
+        sf_pred = _event_sf_pred(sf_only)
         filtered = f"""
             filtered AS (
                 SELECT
@@ -1379,7 +1404,7 @@ def _rank_dynamic(
 
     # Aggregation
     if method in PICKY_RATE_METHODS:
-        sf_pred = " AND e.is_sf" if sf_only else ""
+        sf_pred = _event_sf_pred(sf_only)
         if taste:
             ctes[-1] = f"""
                 filtered AS (
@@ -1926,6 +1951,7 @@ def _rank_dynamic(
         year_min=year_min,
         year_max=year_max,
         q=q,
+        genres=genres,
         sf_only=False,  # SF already applied when building agg / events
         work_alias="w",
         score_expr=score,
@@ -1974,6 +2000,7 @@ def _picky_rate_rows(
     q,
     limit,
     sf_only=True,
+    genres=None,
     catalog=None,
     year_min=None,
     year_max=None,
@@ -1983,7 +2010,7 @@ def _picky_rate_rows(
     if max_n > 0:
         where.append("s.n <= ?")
         args.append(max_n)
-    sf_ev = " AND is_sf" if sf_only else ""
+    sf_ev = _event_sf_pred(sf_only, alias="")
     m = float(bayesian_m)
     soft_p = PICKY_GEM_SOFT
     if method == "picky_gem":
@@ -2010,6 +2037,7 @@ def _picky_rate_rows(
         year_min=year_min,
         year_max=year_max,
         q=q,
+        genres=genres,
         sf_only=sf_only,
         work_alias="s",
         score_expr=raw,
@@ -2172,7 +2200,7 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
         user_from = "eligible c"
         weight_expr = "coalesce(c.lit_weight, 1.0)"
 
-    sf_pred = " AND e.is_sf" if sf_only else ""
+    sf_pred = _event_sf_pred(sf_only)
     # Personal percentile of this star on the user's shelf (when available).
     pct_join = ""
     pct_expr = "NULL::DOUBLE"
