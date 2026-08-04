@@ -4,9 +4,14 @@
   "min_deep_share": 0.35,
   "deep_exp": 1.8,
   "rarity_mix": 0.9,
+  "max_com_share": 0.20,
+  "com_exp": 3.0,
   "notes": [
     "These are MATERIALIZATION floors (wide net).",
     "Query-time normie_depth / normie_purity (0=off) filter the wide cohort.",
-    "Legacy normie_strictness still accepted as depth=purity=that value."
+    "Legacy normie_strictness still accepted as depth=purity=that value.",
+    "max_com_share / com_exp bake non-literary anti-signal pollution into deep weights:",
+    "  weight *= (1 - com_share)^com_exp; drop users above max_com_share.",
+    "Query-time applies a tighter com_share cap (see ranking.deep_com_share_cap)."
   ]
 }

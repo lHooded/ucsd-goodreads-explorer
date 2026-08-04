@@ -41,3 +41,4 @@ Gemini-film-similarity-notes.txt
 # Runtime prefs / logs
 *.log
 .cache/
+.tmp/

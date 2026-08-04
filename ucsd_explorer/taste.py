@@ -878,6 +878,9 @@ def _deep_curator_defaults() -> dict[str, float | int]:
         "min_deep_share": 0.35,
         "deep_exp": 1.8,
         "rarity_mix": 0.90,
+        # Non-literary anti-signal pollution (com_hits / (lit+com)).
+        "max_com_share": 0.20,
+        "com_exp": 3.0,
     }
     path = Path(__file__).resolve().parent / "data" / "deep_curator_params.json"
     if path.exists():
@@ -899,11 +902,17 @@ def _materialize_deep_curators(
     min_deep_share: float | None = None,
     deep_exp: float | None = None,
     rarity_mix: float | None = None,
+    max_com_share: float | None = None,
+    com_exp: float | None = None,
 ) -> dict[str, Any]:
     """Curators who go past normie prestige into rarer poll/chart works.
 
     Normie canon (school staples / ubiquitous 'quality') does not mint weight by
     itself — same idea as not following RYM users who only log Kubrick/Hitchcock.
+
+    Commercial anti-signals (non_literary ★=5 hits) also shape the cohort:
+    users above max_com_share are dropped, and remaining weights are scaled by
+    (1 - com_share)^com_exp so "great taste + a few trash 5★s" is downweighted.
     """
     dflt = _deep_curator_defaults()
     min_deep = int(dflt["min_deep"] if min_deep is None else min_deep)
@@ -913,6 +922,10 @@ def _materialize_deep_curators(
     )
     deep_exp = float(dflt["deep_exp"] if deep_exp is None else deep_exp)
     rarity_mix = float(dflt["rarity_mix"] if rarity_mix is None else rarity_mix)
+    max_com_share = float(
+        dflt["max_com_share"] if max_com_share is None else max_com_share
+    )
+    com_exp = float(dflt["com_exp"] if com_exp is None else com_exp)
 
     print("Deep curators (non-normie poll depth)…", flush=True)
     titles = _load_normie_titles()
@@ -1015,6 +1028,10 @@ def _materialize_deep_curators(
                 coalesce(n.n_normie, 0) AS n_normie,
                 d.n_deep::DOUBLE
                     / nullif(d.n_deep + coalesce(n.n_normie, 0), 0) AS deep_share,
+                coalesce(c.com_hits, 0)::DOUBLE
+                    / nullif(
+                        coalesce(c.lit_hits, 0) + coalesce(c.com_hits, 0), 0
+                    ) AS com_share,
                 power(ln(1.0 + d.deep_mass * 5.0), 1.35) AS deep_boost
             FROM user_curator_pct_weight c
             JOIN user_deep d USING (user_id)
@@ -1024,6 +1041,10 @@ def _materialize_deep_curators(
               AND d.n_deep::DOUBLE
                     / nullif(d.n_deep + coalesce(n.n_normie, 0), 0)
                     >= {float(min_deep_share)}
+              AND coalesce(c.com_hits, 0)::DOUBLE
+                    / nullif(
+                        coalesce(c.lit_hits, 0) + coalesce(c.com_hits, 0), 0
+                    ) <= {float(max_com_share)}
         ),
         norms AS (
             SELECT max(deep_boost) AS mx FROM base
@@ -1038,6 +1059,10 @@ def _materialize_deep_curators(
                         {1.0 - float(rarity_mix)}
                         + {float(rarity_mix)} * b.deep_boost
                             / nullif((SELECT mx FROM norms), 0)
+                    )
+                    * power(
+                        greatest(1.0 - coalesce(b.com_share, 0), 0.02),
+                        {float(com_exp)}
                     )
                 )::DOUBLE AS curator_pct_weight
             FROM base b
@@ -1055,9 +1080,24 @@ def _materialize_deep_curators(
         "SELECT min(curator_pct_weight), max(curator_pct_weight), avg(curator_pct_weight) "
         "FROM user_curator_deep_weight"
     ).fetchone()
+    com_stats = con.execute(
+        """
+        SELECT
+          avg(com_share),
+          approx_quantile(com_share, 0.9),
+          count(*) FILTER (WHERE com_share > 0.10)
+        FROM user_curator_deep_weight
+        """
+    ).fetchone()
     print(
         f"  normie works: {len(rows):,} · deep poll works: {n_deep_poll:,} · "
         f"deep curators: {n:,} · weight {bounds[0]:.3f}–{bounds[2]:.3f}–{bounds[1]:.3f}",
+        flush=True,
+    )
+    print(
+        f"  com_share avg={com_stats[0]:.3f} p90={com_stats[1]:.3f} "
+        f">10%={int(com_stats[2]):,} · mint max_com_share={max_com_share:.2f} "
+        f"com_exp={com_exp:.1f}",
         flush=True,
     )
     return {
@@ -1067,6 +1107,8 @@ def _materialize_deep_curators(
         "deep_min_deep": min_deep,
         "deep_min_deep_rare": min_deep_rare,
         "deep_min_deep_share": min_deep_share,
+        "deep_max_com_share": max_com_share,
+        "deep_com_exp": com_exp,
         "curator_deep_weight_min": float(bounds[0]) if bounds[0] is not None else None,
         "curator_deep_weight_avg": float(bounds[2]) if bounds[2] is not None else None,
         "curator_deep_weight_max": float(bounds[1]) if bounds[1] is not None else None,

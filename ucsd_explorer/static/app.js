@@ -108,7 +108,8 @@ function syncCuratorStrictness() {
       pureOut.textContent = " · no share floor";
     } else {
       const share = 0.35 + (np / 100) * 0.45;
-      pureOut.textContent = ` · deep_share ≥ ${share.toFixed(2)}`;
+      const comCap = 0.15 - (np / 100) * 0.07;
+      pureOut.textContent = ` · deep_share ≥ ${share.toFixed(2)} · com ≤ ${comCap.toFixed(2)}`;
     }
   } else if (pureOut) {
     pureOut.textContent = "";
@@ -133,7 +134,7 @@ function syncCuratorStrictness() {
   if (hint) {
     hint.textContent =
       mode === "gate"
-        ? "0 = off (everyone). 100 ≈ top 100 curators by weight, each with equal vote. Log-linear shrink in between."
+        ? "0 = off (everyone). 100 ≈ top 100 curators by weight. Deep methods still soft-penalize commercial anti-signal share. Log-linear shrink in between."
         : "0 = off (everyone, full curator weights). 100 ≈ top 100 by weight (log-linear shrink). Mild within-elite deweight as you raise it.";
   }
 }

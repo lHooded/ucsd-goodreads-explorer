@@ -593,6 +593,17 @@ def normie_purity_params(purity: float) -> dict[str, float | int | bool]:
     return {"enabled": True, "min_deep_share": 0.35 + t * 0.45}
 
 
+def deep_com_share_cap(purity: float) -> float:
+    """Query-time max non-literary anti-signal share for deep curators.
+
+    Independent of school-canon purity, but tightens gently with it:
+    purity 0 → 0.15, purity 100 → 0.08. Materialization already uses a
+    wider floor (≈0.20) and (1−com_share)^com_exp in stored weights.
+    """
+    t = _strictness_t(purity)
+    return 0.15 - t * 0.07
+
+
 def normie_gate_params(
     depth: float = 0.0,
     purity: float = 0.0,
@@ -710,7 +721,18 @@ def _curator_user_weight_sql(
     )
 
     if mode == "gate":
-        weight_expr = "1.0"
+        # Equal votes among elites, but deep cohort still soft-penalizes
+        # commercial anti-signal share so gate mode cannot re-inflate junk.
+        if deep:
+            com = (
+                f"(coalesce({a}.com_hits,0)::DOUBLE"
+                f" / nullif(coalesce({a}.lit_hits,0)+coalesce({a}.com_hits,0),0))"
+            )
+            weight_expr = (
+                f"(power(greatest(1.0 - coalesce({com}, 0), 0.02), 3.0))"
+            )
+        else:
+            weight_expr = "1.0"
     else:
         alpha = curator_deweight_alpha(strictness)
         if alpha <= 1e-12:
@@ -729,6 +751,27 @@ def _curator_user_weight_sql(
         )
         gate_sql = gate_sql + n_sql
         gate_args = list(gate_args) + n_args
+        # Always apply a query-time commercial cap for deep methods.
+        # Use purity when set; otherwise the mid default (purity≈55 → ~0.11).
+        pur_for_com = (
+            float(normie_purity)
+            if _clamp_strictness(normie_purity) > 0
+            else (
+                float(normie_strictness)
+                if normie_strictness is not None
+                and _clamp_strictness(float(normie_strictness)) > 0
+                else 55.0
+            )
+        )
+        com_cap = deep_com_share_cap(pur_for_com)
+        com = (
+            f"(coalesce({a}.com_hits,0)::DOUBLE"
+            f" / nullif(coalesce({a}.lit_hits,0)+coalesce({a}.com_hits,0),0))"
+        )
+        gate_sql = (
+            gate_sql
+            + f"\n        AND coalesce({com}, 0) <= {float(com_cap)}\n    "
+        )
 
     return weight_expr, gate_sql, gate_args, elite_t
 
@@ -980,6 +1023,11 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             out["normie_purity"] = normie_purity
             out["normie_gates"] = normie_gate_params(
                 normie_depth, normie_purity, strictness=legacy_for_gates
+            )
+            out["deep_com_share_cap"] = deep_com_share_cap(
+                normie_purity
+                if normie_purity > 0
+                else (legacy_for_gates if legacy_for_gates else 55.0)
             )
             out["curator_cohort"] = "deep"
             if method == "curator_deep_pct_geom":

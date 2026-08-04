@@ -54,6 +54,8 @@ Rebuild taste / deep-curator tables after editing
   trashy raters land on a comparable shelf scale).
 - **Deep Curator** cohorts are readers with depth on the lit poll beyond a
   school/normie canon (canon is selection-only — never a book-level penalty).
+  Non-literary anti-signal 5★s also shape the cohort: weights scale by
+  `(1 − com_share)^3`, and purity tightens a com_share cap (~0.15→0.08).
 - **Deep Curator‰ top-half geom** keeps ★3–5 in each curator’s top half-shelf,
   weights stars as a geometric sequence `q² : q : 1`, and raises percentiles to
   a power `x`.

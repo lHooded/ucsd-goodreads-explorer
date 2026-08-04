@@ -36,7 +36,10 @@ Useful rebuilds:
 
 Literary-anchored **percentiles** map each user’s star to a personal shelf
 position. Curator cohorts soft-deweight (or gate) by elite weight; deep methods
-add **depth** / **purity** sliders over the non-normie poll.
+add **depth** / **purity** sliders over the non-normie poll, and bake
+**non-literary anti-signal** pollution into weights (`(1−com_share)^3` plus a
+purity-tightened com_share cap) so commercial SF fans are suppressed without
+the separate taste filter.
 
 Notable methods:
 
