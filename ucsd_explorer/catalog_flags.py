@@ -54,7 +54,8 @@ COLLECTION_TITLE_RE = re.compile(
     r"|\bvolumes?\s+\d+\s*[-–—]\s*\d+"
     r"|\b(?:vol\.?|volume)\s*\d+\s*[-–—]\s*(?:vol\.?|volume)?\s*\d+"
     # Multi-volume ranges in the title (omnibus), not a single "#1"
-    r"|[#]\s*\d+\s*[-–—]\s*\d+"
+    # Include decimal novella ranges like "#0.1-0.5"
+    r"|[#]\s*\d+(?:\.\d+)?\s*[-–—]\s*\d+(?:\.\d+)?"
     r"|\bcollection\s*\([^)]*[#]\s*\d"
     r"|\b(?:complete|entire)\s+series\b"
     # Omnibus of a series — NOT bare "Trilogy #1" (that is a single volume)
@@ -64,6 +65,9 @@ COLLECTION_TITLE_RE = re.compile(
     r"|\ba\s+[\w'&.\s]{0,50}\bcollection\b"
     r"|\band\s+other\s+(stories|tales|writings|poems|essays)\b"
     r"|\bother\s+(stories|tales|writings)\b"
+    r"|\bshort\s+fiction\b"
+    r"|\b(?:un)?collected\s+stories\b"
+    r"|\bbest of\b.{0,80}\b(?:stories|fiction|tales|fictions)\b"
     # Explicit multi-novel packaging (Wind/Pinball: Two Novels)
     r"|\b(?:two|three|four|five)\s+novels?\b"
     r"|\b(?:two|three|four)\s+novellas?\b"
@@ -81,7 +85,9 @@ SINGLE_VOLUME_SERIES_RE = re.compile(
 COLLECTION_CUE_RE = re.compile(
     r"(?i)"
     r"\bshort\s+stories\b"
+    r"|\bshort\s+fiction\b"
     r"|\bstories\b"
+    r"|\bfictions\b"
     r"|\btales\b"
     r"|\bfables\b"
     r"|\bpoems\b"
@@ -158,9 +164,14 @@ NONFICTION_SHELVES = (
     "criticism",
     "literary-criticism",
 )
-COLLECTION_SHELVES = (
+# Form shelves: a single short story is often tagged short-stories; that alone
+# must not mark the work as a collection/omnibus.
+SHORT_FORM_SHELVES = (
     "short-stories",
     "short-story",
+)
+# True multi-work packaging shelves.
+BUNDLE_SHELVES = (
     "anthologies",
     "anthology",
     "collections",
@@ -169,6 +180,10 @@ COLLECTION_SHELVES = (
     "box-set",
     "boxed-set",
 )
+COLLECTION_SHELVES = SHORT_FORM_SHELVES + BUNDLE_SHELVES
+
+# Standalone short / novella page ceiling for shelf-only collection calls.
+STANDALONE_SHORT_PAGES = 140
 COMIC_SHELVES = (
     "graphic-novels",
     "graphic-novel",
@@ -310,20 +325,43 @@ def _shelf_comic(comic_n: int, fiction_n: int) -> bool:
     return comic_n >= 10 and comic_n > fiction_n * 1.15
 
 
-def _shelf_collection(title: str, collection_n: int, fiction_n: int) -> bool:
-    """Shelf-based collection signal, gated to avoid single-volume false positives."""
+def _shelf_collection(
+    title: str,
+    collection_n: int,
+    fiction_n: int,
+    *,
+    short_n: int = 0,
+    bundle_n: int = 0,
+    num_pages: int | None = None,
+) -> bool:
+    """Shelf-based collection signal, gated to avoid single-volume false positives.
+
+    Goodreads shelves ``short-stories`` on both anthologies *and* famous standalone
+    shorts (The Last Question, The Lottery). Bundle shelves / title cues / page
+    length separate real collections from single stories.
+    """
     if collection_n < 40:
         return False
     if collection_n < max(fiction_n, 1) * 0.5:
         return False
     # Numbered single installment of a series → not an omnibus
     if SINGLE_VOLUME_SERIES_RE.search(title or "") and not re.search(
-        r"(?i)[#]\s*\d+\s*[-–—]\s*\d+", title or ""
+        r"(?i)[#]\s*\d+(?:\.\d+)?\s*[-–—]\s*\d+(?:\.\d+)?", title or ""
     ):
         return False
-    # Prefer a title cue ("stories", "tales", …) unless shelves are overwhelmingly collection
+
+    # Explicit anthology / omnibus / box-set shelving is enough on its own.
+    if bundle_n >= 30 and bundle_n >= max(fiction_n, 1) * 0.12:
+        return True
+
+    # Prefer a title cue ("stories", "tales", …) with general collection shelves.
     if COLLECTION_CUE_RE.search(title or "") or COLLECTION_TITLE_RE.search(title or ""):
         return True
+
+    # Shelf-only, no title cue: short-stories tags alone are ambiguous (famous
+    # standalones share them). Require length evidence of a real collection.
+    if bundle_n < 30 and (num_pages is None or num_pages < STANDALONE_SHORT_PAGES):
+        return False
     return collection_n >= 120 and collection_n >= max(fiction_n, 1) * 0.9
 
 
@@ -334,6 +372,8 @@ def _pass_shelf_and_meta(con, shelves_pq: Path, books_pq: Path) -> list[tuple]:
     print("Catalog flags: shelf aggregates…", flush=True)
     fiction_list = ", ".join(f"'{s}'" for s in FICTION_SHELVES)
     nonfiction_list = ", ".join(f"'{s}'" for s in NONFICTION_SHELVES)
+    short_list = ", ".join(f"'{s}'" for s in SHORT_FORM_SHELVES)
+    bundle_list = ", ".join(f"'{s}'" for s in BUNDLE_SHELVES)
     collection_list = ", ".join(f"'{s}'" for s in COLLECTION_SHELVES)
     comic_list = ", ".join(f"'{s}'" for s in COMIC_SHELVES)
     picture_list = ", ".join(f"'{s}'" for s in PICTURE_SHELVES)
@@ -351,6 +391,10 @@ def _pass_shelf_and_meta(con, shelves_pq: Path, books_pq: Path) -> list[tuple]:
                      THEN s.count ELSE 0 END)::BIGINT AS nonfiction_n,
             sum(CASE WHEN lower(s.shelf) IN ({collection_list})
                      THEN s.count ELSE 0 END)::BIGINT AS collection_n,
+            sum(CASE WHEN lower(s.shelf) IN ({short_list})
+                     THEN s.count ELSE 0 END)::BIGINT AS short_n,
+            sum(CASE WHEN lower(s.shelf) IN ({bundle_list})
+                     THEN s.count ELSE 0 END)::BIGINT AS bundle_n,
             sum(CASE WHEN lower(s.shelf) IN ({comic_list})
                      THEN s.count ELSE 0 END)::BIGINT AS comic_n,
             sum(CASE WHEN lower(s.shelf) IN ({picture_list})
@@ -384,6 +428,17 @@ def _pass_shelf_and_meta(con, shelves_pq: Path, books_pq: Path) -> list[tuple]:
     )
     con.execute(
         """
+        CREATE TEMP TABLE _work_pages AS
+        SELECT
+            work_id,
+            cast(median(num_pages) AS INTEGER) AS num_pages
+        FROM _book_meta
+        WHERE num_pages IS NOT NULL AND num_pages > 0
+        GROUP BY work_id
+        """
+    )
+    con.execute(
+        """
         CREATE TEMP TABLE _work_meta AS
         SELECT
             ws.work_id,
@@ -395,21 +450,25 @@ def _pass_shelf_and_meta(con, shelves_pq: Path, books_pq: Path) -> list[tuple]:
                 regexp_extract(coalesce(ws.author_url, ''), 'author/show/(\\d+)', 1)
             ) AS author_id,
             coalesce(nullif(bm.language_code, ''), '') AS language_code,
-            bm.num_pages,
+            coalesce(wp.num_pages, bm.num_pages) AS num_pages,
             coalesce(sa.fiction_n, 0) AS fiction_n,
             coalesce(sa.nonfiction_n, 0) AS nonfiction_n,
             coalesce(sa.collection_n, 0) AS collection_n,
+            coalesce(sa.short_n, 0) AS short_n,
+            coalesce(sa.bundle_n, 0) AS bundle_n,
             coalesce(sa.comic_n, 0) AS comic_n,
             coalesce(sa.picture_n, 0) AS picture_n
         FROM work_scores ws
         LEFT JOIN _book_meta bm ON ws.book_id = bm.book_id
+        LEFT JOIN _work_pages wp ON ws.work_id = wp.work_id
         LEFT JOIN _shelf_work_agg sa ON ws.work_id = sa.work_id
         """
     )
     rows = con.execute(
         """
         SELECT work_id, book_id, title, author, n, author_id, language_code,
-               num_pages, fiction_n, nonfiction_n, collection_n, comic_n, picture_n
+               num_pages, fiction_n, nonfiction_n, collection_n, short_n, bundle_n,
+               comic_n, picture_n
         FROM _work_meta
         """
     ).fetchall()
@@ -436,14 +495,22 @@ def _pass_auto_flags(
         fiction_n,
         nonfiction_n,
         collection_n,
+        short_n,
+        bundle_n,
         comic_n,
         picture_n,
     ) in rows:
         wid = str(work_id)
         title_s = title or ""
+        pages = int(num_pages) if num_pages is not None else None
         is_coll_title, is_deriv_title, is_comic_title = _title_flags(title_s)
         is_coll_shelf = _shelf_collection(
-            title_s, int(collection_n or 0), int(fiction_n or 0)
+            title_s,
+            int(collection_n or 0),
+            int(fiction_n or 0),
+            short_n=int(short_n or 0),
+            bundle_n=int(bundle_n or 0),
+            num_pages=pages,
         )
         is_collection = is_coll_title or is_coll_shelf
         is_derivative = is_deriv_title
@@ -457,7 +524,6 @@ def _pass_auto_flags(
                 is_derivative = False
         is_nonfiction = bool(nonfiction_n >= 10 and nonfiction_n > fiction_n * 1.15)
         is_comic = is_comic_title or _shelf_comic(int(comic_n or 0), int(fiction_n or 0))
-        pages = int(num_pages) if num_pages is not None else None
         pic_n = int(picture_n or 0)
         # Picture books: strong picture-* shelves, or short + children's picture signal
         is_picture_book = pic_n >= 40 and (

@@ -501,7 +501,15 @@ def materialize_sf_book_ids(
     min_ratings: int = 50,
     table_name: str = "sf_book_ids",
 ) -> int:
-    """Cache book_ids matching the default SF shelf filter (speedup, not a silo)."""
+    """Cache book_ids matching the default SF shelf filter (speedup, not a silo).
+
+    Primary gate: sf_core + sf_ratio (SF vs fantasy/romance/YA/horror).
+
+    Extra gates recover science-fantasy that is heavily co-shelved as fantasy
+    (Book of the New Sun, some Bas-Lag) without letting YA dystopia through:
+    require either a strong absolute SF core at a softer ratio, or a weaker
+    core that still leans SF-ratio with negligible YA.
+    """
     con.execute(f"DROP TABLE IF EXISTS {table_name}")
     con.execute(
         f"""
@@ -510,8 +518,21 @@ def materialize_sf_book_ids(
                sf_core, sf_soft, fantasy, sf_score, sf_ratio
         FROM books_with_genres
         WHERE sf_core >= {int(min_sf_core)}
-          AND sf_ratio >= {float(min_sf_ratio)}
           AND ratings_count >= {int(min_ratings)}
+          AND (
+            sf_ratio >= {float(min_sf_ratio)}
+            OR (
+              sf_core >= 100
+              AND sf_ratio >= 0.27
+              AND coalesce(ya, 0) < sf_core
+            )
+            OR (
+              sf_core >= 25
+              AND sf_ratio >= 0.32
+              AND coalesce(ya, 0) < 50
+              AND fantasy > 0
+            )
+          )
           AND lower(coalesce(title, '')) NOT LIKE 'harry potter%'
           AND lower(coalesce(title, '')) NOT LIKE 'a game of thrones%'
           AND lower(coalesce(title, '')) NOT LIKE 'a clash of kings%'

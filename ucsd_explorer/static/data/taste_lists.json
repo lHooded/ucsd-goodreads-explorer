@@ -838,10 +838,6 @@
     },
     {
       "kind": "author",
-      "match": "Mario Puzo"
-    },
-    {
-      "kind": "author",
       "match": "Marissa Meyer"
     },
     {
@@ -890,19 +886,11 @@
     },
     {
       "kind": "author",
-      "match": "Orson Scott Card"
-    },
-    {
-      "kind": "author",
       "match": "Patricia Briggs"
     },
     {
       "kind": "author",
       "match": "Patricia Cornwell"
-    },
-    {
-      "kind": "author",
-      "match": "Patrick Rothfuss"
     },
     {
       "kind": "author",
@@ -2017,16 +2005,6 @@
         "nyt_weeks": 0
       },
       {
-        "match": "Mario Puzo",
-        "sources": [
-          "nyt_bestseller",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 9.947,
-        "mean_gap": 0.3424,
-        "nyt_weeks": 51
-      },
-      {
         "match": "Marissa Meyer",
         "sources": [
           "ucsd_gap"
@@ -2144,16 +2122,6 @@
         "nyt_weeks": 192
       },
       {
-        "match": "Orson Scott Card",
-        "sources": [
-          "manual_seed",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 12.0,
-        "mean_gap": 0.3701,
-        "nyt_weeks": 0
-      },
-      {
         "match": "Patricia Briggs",
         "sources": [
           "manual_seed",
@@ -2173,16 +2141,6 @@
         "hybrid_score": 13.576,
         "mean_gap": 0.662,
         "nyt_weeks": 213
-      },
-      {
-        "match": "Patrick Rothfuss",
-        "sources": [
-          "manual_seed",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 12.285,
-        "mean_gap": 0.4103,
-        "nyt_weeks": 0
       },
       {
         "match": "Paula Hawkins",
@@ -2610,6 +2568,20 @@
         "nyt_weeks": 0
       }
     ],
-    "expansion_notes": "Hybrid expansion: UCSD crowd−deep-curator rating gap, Post45 NYT bestsellers (1980+), and manual commercial/YA/romantasy/progression seeds. Protected literary + literary_sf_extras + prior removals. Excluded Pratchett/Abercrombie/George Eliot/etc. false positives."
+    "expansion_notes": "Hybrid expansion: UCSD crowd−deep-curator rating gap, Post45 NYT bestsellers (1980+), and manual commercial/YA/romantasy/progression seeds. Protected literary + literary_sf_extras + prior removals. Excluded Pratchett/Abercrombie/George Eliot/etc. false positives.",
+    "removed_after_loo": [
+      {
+        "match": "Mario Puzo",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      },
+      {
+        "match": "Orson Scott Card",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      },
+      {
+        "match": "Patrick Rothfuss",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      }
+    ]
   }
 }

@@ -838,10 +838,6 @@
     },
     {
       "kind": "author",
-      "match": "Mario Puzo"
-    },
-    {
-      "kind": "author",
       "match": "Marissa Meyer"
     },
     {
@@ -890,19 +886,11 @@
     },
     {
       "kind": "author",
-      "match": "Orson Scott Card"
-    },
-    {
-      "kind": "author",
       "match": "Patricia Briggs"
     },
     {
       "kind": "author",
       "match": "Patricia Cornwell"
-    },
-    {
-      "kind": "author",
-      "match": "Patrick Rothfuss"
     },
     {
       "kind": "author",
@@ -1604,10 +1592,6 @@
     },
     {
       "kind": "author",
-      "match": "Mario Puzo"
-    },
-    {
-      "kind": "author",
       "match": "Marissa Meyer"
     },
     {
@@ -1656,19 +1640,11 @@
     },
     {
       "kind": "author",
-      "match": "Orson Scott Card"
-    },
-    {
-      "kind": "author",
       "match": "Patricia Briggs"
     },
     {
       "kind": "author",
       "match": "Patricia Cornwell"
-    },
-    {
-      "kind": "author",
-      "match": "Patrick Rothfuss"
     },
     {
       "kind": "author",
@@ -2782,16 +2758,6 @@
         "nyt_weeks": 0
       },
       {
-        "match": "Mario Puzo",
-        "sources": [
-          "nyt_bestseller",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 9.947,
-        "mean_gap": 0.3424,
-        "nyt_weeks": 51
-      },
-      {
         "match": "Marissa Meyer",
         "sources": [
           "ucsd_gap"
@@ -2909,16 +2875,6 @@
         "nyt_weeks": 192
       },
       {
-        "match": "Orson Scott Card",
-        "sources": [
-          "manual_seed",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 12.0,
-        "mean_gap": 0.3701,
-        "nyt_weeks": 0
-      },
-      {
         "match": "Patricia Briggs",
         "sources": [
           "manual_seed",
@@ -2938,16 +2894,6 @@
         "hybrid_score": 13.576,
         "mean_gap": 0.662,
         "nyt_weeks": 213
-      },
-      {
-        "match": "Patrick Rothfuss",
-        "sources": [
-          "manual_seed",
-          "ucsd_gap"
-        ],
-        "hybrid_score": 12.285,
-        "mean_gap": 0.4103,
-        "nyt_weeks": 0
       },
       {
         "match": "Paula Hawkins",
@@ -3375,7 +3321,21 @@
         "nyt_weeks": 0
       }
     ],
-    "expansion_notes": "Hybrid expansion: UCSD crowd−deep-curator rating gap, Post45 NYT bestsellers (1980+), and manual commercial/YA/romantasy/progression seeds. Protected literary + literary_sf_extras + prior removals. Excluded Pratchett/Abercrombie/George Eliot/etc. false positives."
+    "expansion_notes": "Hybrid expansion: UCSD crowd−deep-curator rating gap, Post45 NYT bestsellers (1980+), and manual commercial/YA/romantasy/progression seeds. Protected literary + literary_sf_extras + prior removals. Excluded Pratchett/Abercrombie/George Eliot/etc. false positives.",
+    "removed_after_loo": [
+      {
+        "match": "Mario Puzo",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      },
+      {
+        "match": "Orson Scott Card",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      },
+      {
+        "match": "Patrick Rothfuss",
+        "reason": "LOO validation: high score rise when removed + curator-adjacent love; user request 2026-08-04"
+      }
+    ]
   },
   "notes": "Literary = cleaned 2014–2024 poll (+ Ishiguro/Cervantes). literary_sf_extras are optional prestige SF (toggle in UI). Non-literary = YA pulp / airport bestsellers / commercial SF; Tolkien, GRRM, and Connie Willis removed as literarily respected. Scoring: literary hits = ★≥4 or ★=5 (UI toggle); non-literary hits = ★=5 only. Non-literary expanded via hybrid UCSD gap + NYT bestsellers + manual seeds (+147 authors).",
   "resolved": {
@@ -5258,15 +5218,6 @@
       },
       {
         "kind": "author",
-        "match": "Mario Puzo",
-        "author_id": "12605",
-        "resolved_name": "Mario Puzo",
-        "poll_rank": null,
-        "poll_title": null,
-        "prestige": 0.0
-      },
-      {
-        "kind": "author",
         "match": "Marissa Meyer",
         "author_id": "4684322",
         "resolved_name": "Marissa Meyer",
@@ -5375,15 +5326,6 @@
       },
       {
         "kind": "author",
-        "match": "Orson Scott Card",
-        "author_id": "589",
-        "resolved_name": "Orson Scott Card",
-        "poll_rank": null,
-        "poll_title": null,
-        "prestige": 0.0
-      },
-      {
-        "kind": "author",
         "match": "Patricia Briggs",
         "author_id": "40563",
         "resolved_name": "Patricia Briggs",
@@ -5396,15 +5338,6 @@
         "match": "Patricia Cornwell",
         "author_id": "1025097",
         "resolved_name": "Patricia Cornwell",
-        "poll_rank": null,
-        "poll_title": null,
-        "prestige": 0.0
-      },
-      {
-        "kind": "author",
-        "match": "Patrick Rothfuss",
-        "author_id": "108424",
-        "resolved_name": "Patrick Rothfuss",
         "poll_rank": null,
         "poll_title": null,
         "prestige": 0.0

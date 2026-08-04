@@ -377,13 +377,137 @@ def materialize(
     return meta
 
 
+def retarget_is_sf(
+    *,
+    min_sf_core: int = 10,
+    min_sf_ratio: float = 0.55,
+    min_book_ratings: int = 50,
+) -> dict:
+    """Rebuild warehouse sf_book_ids and patch is_sf on the explorer DB in place.
+
+    Avoids a full ratings rematerialize (which drops taste / curator tables).
+    """
+    import duckdb
+    from ucsd_goodreads.warehouse import materialize_sf_book_ids, open_warehouse
+
+    t0 = time.time()
+    wh = open_warehouse(WAREHOUSE_DB, PARQUET, read_only=False)
+    try:
+        n_sf = materialize_sf_book_ids(
+            wh,
+            min_sf_core=min_sf_core,
+            min_sf_ratio=min_sf_ratio,
+            min_ratings=min_book_ratings,
+        )
+        print(f"sf_book_ids rebuilt: {n_sf:,}", flush=True)
+    finally:
+        wh.close()
+
+    if not EXPLORER_DB.exists():
+        raise SystemExit(f"Missing {EXPLORER_DB}")
+
+    con = duckdb.connect(str(EXPLORER_DB))
+    con.execute(f"ATTACH '{WAREHOUSE_DB}' AS wh (READ_ONLY)")
+    con.execute(
+        """
+        CREATE OR REPLACE TEMP TABLE _sf_books AS
+        SELECT DISTINCT book_id::VARCHAR AS book_id FROM wh.sf_book_ids
+        """
+    )
+    con.execute(
+        """
+        CREATE OR REPLACE TEMP TABLE _sf_works AS
+        SELECT DISTINCT work_id::VARCHAR AS work_id
+        FROM wh.sf_book_ids
+        WHERE work_id IS NOT NULL
+        """
+    )
+    before = con.execute(
+        "SELECT count(*) FROM work_scores WHERE coalesce(is_sf, FALSE)"
+    ).fetchone()[0]
+
+    def _retarget(table: str, key: str, sf_table: str) -> None:
+        tables = {r[0] for r in con.execute("SHOW TABLES").fetchall()}
+        if table not in tables:
+            return
+        tmp = f"_{table}_sf_new"
+        con.execute(f"DROP TABLE IF EXISTS {tmp}")
+        con.execute(
+            f"""
+            CREATE TABLE {tmp} AS
+            SELECT t.* EXCLUDE (is_sf),
+                   (s.{key} IS NOT NULL) AS is_sf
+            FROM {table} t
+            LEFT JOIN {sf_table} s USING ({key})
+            """
+        )
+        con.execute(f"DROP TABLE {table}")
+        con.execute(f"ALTER TABLE {tmp} RENAME TO {table}")
+
+    _retarget("books", "book_id", "_sf_books")
+    _retarget("works", "work_id", "_sf_works")
+    _retarget("work_scores", "work_id", "_sf_works")
+    _retarget("all_rating_events", "work_id", "_sf_works")
+    _retarget("five_star_events", "work_id", "_sf_works")
+
+    con.execute("CREATE INDEX IF NOT EXISTS idx_ws_sf ON work_scores(is_sf)")
+    con.execute("CREATE INDEX IF NOT EXISTS idx_ws_n ON work_scores(n)")
+    con.execute("CREATE INDEX IF NOT EXISTS idx_are_sf ON all_rating_events(is_sf)")
+    con.execute("CREATE INDEX IF NOT EXISTS idx_fse_sf ON five_star_events(is_sf)")
+
+    after = con.execute(
+        "SELECT count(*) FROM work_scores WHERE coalesce(is_sf, FALSE)"
+    ).fetchone()[0]
+    wolfe = con.execute(
+        """
+        SELECT title, is_sf, n FROM work_scores
+        WHERE author ILIKE 'Gene Wolfe'
+          AND (title ILIKE '%torturer%' OR title ILIKE '%new sun%'
+               OR title ILIKE '%fifth head%' OR title ILIKE '%claw of%'
+               OR title ILIKE '%sword of the lictor%' OR title ILIKE '%citadel%')
+        ORDER BY n DESC
+        """
+    ).fetchall()
+    con.execute("DETACH wh")
+    con.close()
+
+    stats = {
+        "sf_book_ids": n_sf,
+        "work_scores_sf_before": int(before),
+        "work_scores_sf_after": int(after),
+        "elapsed_s": round(time.time() - t0, 1),
+        "wolfe_sample": [
+            {"title": t, "is_sf": bool(s), "n": int(n)} for t, s, n in wolfe
+        ],
+    }
+    print(
+        f"is_sf retarget: works SF {before:,} → {after:,} in {stats['elapsed_s']}s",
+        flush=True,
+    )
+    for row in wolfe[:10]:
+        print(f"  {row}", flush=True)
+    return stats
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--min-sf-core", type=int, default=10)
     p.add_argument("--min-sf-ratio", type=float, default=0.55)
     p.add_argument("--min-book-ratings", type=int, default=50)
     p.add_argument("--min-user-ratings", type=int, default=5)
+    p.add_argument(
+        "--retarget-sf-only",
+        action="store_true",
+        help="Only rebuild sf_book_ids and patch is_sf (keep taste/curators)",
+    )
     args = p.parse_args()
+    if args.retarget_sf_only:
+        retarget_is_sf(
+            min_sf_core=args.min_sf_core,
+            min_sf_ratio=args.min_sf_ratio,
+            min_book_ratings=args.min_book_ratings,
+        )
+        return
     materialize(
         min_sf_core=args.min_sf_core,
         min_sf_ratio=args.min_sf_ratio,
