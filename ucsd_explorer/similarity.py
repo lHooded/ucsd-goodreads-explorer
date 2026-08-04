@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from ucsd_explorer.db import execute, resolve_work_id
+from ucsd_explorer.db import execute, resolve_work_id, truthy
 from ucsd_explorer.genre_gates import gate_sql_bits, parse_genre_gates
 from ucsd_explorer.genres import genre_sql_bits, parse_genre_params
 from ucsd_explorer.ranking import (
@@ -124,6 +124,8 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
         mode = "deweight"
     normie_depth = _clamp_strictness(_float_param(params, "normie_depth", default=0.0))
     normie_purity = _clamp_strictness(_float_param(params, "normie_purity", default=0.0))
+    personal_power = truthy(params.get("personal_power"))
+    comedy_cap = truthy(params.get("comedy_cap"))
 
     weight_expr, gate_sql, gate_args, elite_t = _curator_user_weight_sql(
         pct=use_pct or use_deep,
@@ -132,6 +134,8 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
         deep=use_deep,
         normie_depth=normie_depth,
         normie_purity=normie_purity,
+        personal_power=bool(personal_power) if use_deep else False,
+        comedy_cap=bool(comedy_cap) if use_deep else False,
     )
     wcol = "curator_pct_weight" if (use_pct or use_deep) else "curator_weight"
     keep_expr = curator_elite_keep_expr(strictness, "n_pass")

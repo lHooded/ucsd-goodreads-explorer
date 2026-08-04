@@ -7,7 +7,7 @@ import math
 from typing import Any
 
 from ucsd_explorer.catalog_flags import catalog_sql_bits, parse_catalog_params
-from ucsd_explorer.db import GLOBALS, execute
+from ucsd_explorer.db import GLOBALS, execute, truthy
 from ucsd_explorer.genre_gates import gate_sql_bits, parse_genre_gates
 from ucsd_explorer.genres import (
     SF_PRESET_INCLUDE,
@@ -21,6 +21,7 @@ from ucsd_explorer.taste_query import (
     has_curator_pct_weights,
     has_curator_pure_weights,
     has_curator_weights,
+    has_deep_taste_signals,
     has_lit_weights,
     has_taste_tables,
     parse_taste_params,
@@ -611,6 +612,13 @@ def deep_com_share_cap(purity: float) -> float:
     return 0.15 - t * 0.07
 
 
+# Absolute ★=5 comedy cap when comedy_cap toggle is on (RYM: don't follow
+# users who 5★ several acclaimed comedies). Soft — Adams/Pratchett are fine.
+DEEP_COMEDY_MAX_FIVES = 2
+# Minimum personal-power ★=5s when personal_power toggle is on.
+DEEP_PERSONAL_MIN_FIVES = 1
+
+
 def normie_gate_params(
     depth: float = 0.0,
     purity: float = 0.0,
@@ -645,6 +653,7 @@ def _normie_gate_sql(
     *,
     strictness: float | None = None,
     alias: str = "c",
+    comedy_as_normie: bool = False,
 ) -> tuple[str, list[Any]]:
     p = normie_gate_params(depth, purity, strictness=strictness)
     if not p.get("enabled"):
@@ -659,8 +668,42 @@ def _normie_gate_sql(
         clauses.append(f"AND {a}.n_deep_rare >= ?")
         args.append(int(p["min_deep_rare"]))
     if float(p["min_deep_share"]) > 1e-12:
-        clauses.append(f"AND {a}.deep_share >= ?")
+        if comedy_as_normie:
+            # Comedy ★≥4 counts like school-canon on the purity axis.
+            share_expr = (
+                f"({a}.n_deep::DOUBLE / nullif("
+                f"{a}.n_deep + coalesce({a}.n_normie, 0)"
+                f" + coalesce({a}.n_comedy, 0), 0))"
+            )
+        else:
+            share_expr = f"{a}.deep_share"
+        clauses.append(f"AND {share_expr} >= ?")
         args.append(float(p["min_deep_share"]))
+    if not clauses:
+        return "", []
+    return "\n        " + "\n        ".join(clauses) + "\n    ", args
+
+
+def _deep_signal_gate_sql(
+    *,
+    personal_power: bool = False,
+    comedy_cap: bool = False,
+    alias: str = "c",
+) -> tuple[str, list[Any]]:
+    """Optional RYM-style taste gates over deep-curator signal columns."""
+    if not (personal_power or comedy_cap):
+        return "", []
+    if not has_deep_taste_signals():
+        return "", []
+    a = alias
+    clauses: list[str] = []
+    args: list[Any] = []
+    if personal_power:
+        clauses.append(f"AND coalesce({a}.n_personal_fives, 0) >= ?")
+        args.append(int(DEEP_PERSONAL_MIN_FIVES))
+    if comedy_cap:
+        clauses.append(f"AND coalesce({a}.n_comedy_fives, 0) <= ?")
+        args.append(int(DEEP_COMEDY_MAX_FIVES))
     if not clauses:
         return "", []
     return "\n        " + "\n        ".join(clauses) + "\n    ", args
@@ -706,6 +749,8 @@ def _curator_user_weight_sql(
     normie_depth: float = 0.0,
     normie_purity: float = 0.0,
     normie_strictness: float | None = None,
+    personal_power: bool = False,
+    comedy_cap: bool = False,
 ) -> tuple[str, str, list[Any], float]:
     """Return (weight_expr, pre_elite_gate_sql, gate_args, elite_t).
 
@@ -755,9 +800,17 @@ def _curator_user_weight_sql(
             normie_purity,
             strictness=normie_strictness,
             alias=a,
+            comedy_as_normie=bool(comedy_cap) and has_deep_taste_signals(),
         )
         gate_sql = gate_sql + n_sql
         gate_args = list(gate_args) + n_args
+        s_sql, s_args = _deep_signal_gate_sql(
+            personal_power=personal_power,
+            comedy_cap=comedy_cap,
+            alias=a,
+        )
+        gate_sql = gate_sql + s_sql
+        gate_args = list(gate_args) + s_args
         # Always apply a query-time commercial cap for deep methods.
         # Use purity when set; otherwise the mid default (purity≈55 → ~0.11).
         pur_for_com = (
@@ -945,6 +998,9 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
         normie_purity = 0.0
         legacy_for_gates = legacy_normie if legacy_normie > 0 else None
 
+    personal_power = truthy(params.get("personal_power"))
+    comedy_cap = truthy(params.get("comedy_cap"))
+
     geom_ratio = max(
         1.0,
         min(8.0, _float_param(params, "geom_ratio", default=PCT_GEOM_RATIO_DEFAULT)),
@@ -986,6 +1042,8 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             normie_depth=normie_depth,
             normie_purity=normie_purity,
             normie_strictness=legacy_for_gates,
+            personal_power=personal_power,
+            comedy_cap=comedy_cap,
             geom_ratio=geom_ratio,
             pct_power=pct_power,
             coverage_weight=coverage_weight,
@@ -1069,6 +1127,15 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
                 if normie_purity > 0
                 else (legacy_for_gates if legacy_for_gates else 55.0)
             )
+            out["personal_power"] = bool(personal_power)
+            out["comedy_cap"] = bool(comedy_cap)
+            out["deep_personal_min_fives"] = (
+                DEEP_PERSONAL_MIN_FIVES if personal_power else 0
+            )
+            out["deep_comedy_max_fives"] = (
+                DEEP_COMEDY_MAX_FIVES if comedy_cap else None
+            )
+            out["deep_taste_signals_available"] = has_deep_taste_signals()
             out["curator_cohort"] = "deep"
             if method == "curator_deep_pct_geom":
                 out["geom_ratio"] = geom_ratio
@@ -1193,6 +1260,8 @@ def _rank_dynamic(
     normie_depth=0.0,
     normie_purity=0.0,
     normie_strictness=None,
+    personal_power=False,
+    comedy_cap=False,
     geom_ratio=PCT_GEOM_RATIO_DEFAULT,
     pct_power=PCT_GEOM_POWER_DEFAULT,
     coverage_weight=PCT_COVERAGE_DEFAULT,
@@ -1248,6 +1317,8 @@ def _rank_dynamic(
             normie_depth=normie_depth if use_deep else 0.0,
             normie_purity=normie_purity if use_deep else 0.0,
             normie_strictness=normie_strictness if use_deep else None,
+            personal_power=bool(personal_power) if use_deep else False,
+            comedy_cap=bool(comedy_cap) if use_deep else False,
         )
         keep_expr = curator_elite_keep_expr(curator_strictness, "n_pass")
         # Rank passers by stored weight, then keep top-K (log-linear in strictness).
@@ -2145,6 +2216,9 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
         normie_purity = 0.0
         legacy_for_gates = legacy_normie if legacy_normie > 0 else None
 
+    personal_power = truthy(params.get("personal_power"))
+    comedy_cap = truthy(params.get("comedy_cap"))
+
     if use_deep:
         curator_table = "user_curator_deep_weight"
     elif method in CURATOR_PURE_PCT_METHODS:
@@ -2184,6 +2258,8 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
             normie_depth=normie_depth if use_deep else 0.0,
             normie_purity=normie_purity if use_deep else 0.0,
             normie_strictness=legacy_for_gates if use_deep else None,
+            personal_power=bool(personal_power) if use_deep else False,
+            comedy_cap=bool(comedy_cap) if use_deep else False,
         )
         wcol = "curator_pct_weight" if (
             use_curator_pct or use_deep or method in CURATOR_PURE_PCT_METHODS

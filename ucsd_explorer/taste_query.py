@@ -42,6 +42,17 @@ def has_curator_deep_weights() -> bool:
     return "user_curator_deep_weight" in tables and "user_star_percentiles" in tables
 
 
+def has_deep_taste_signals() -> bool:
+    """True when deep weights carry comedy / personal-power columns."""
+    if not has_curator_deep_weights():
+        return False
+    from ucsd_explorer.db import execute
+
+    cols = {r[0] for r in execute("DESCRIBE user_curator_deep_weight").fetchall()}
+    need = {"n_comedy", "n_comedy_fives", "n_personal_fives"}
+    return need <= cols
+
+
 def has_prestige() -> bool:
     """True when user_author_likes carries poll-order prestige."""
     if "user_author_likes" not in table_names():

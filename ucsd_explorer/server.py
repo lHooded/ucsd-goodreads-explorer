@@ -22,6 +22,7 @@ from ucsd_explorer.taste_query import (
     has_curator_pct_weights,
     has_curator_pure_weights,
     has_curator_weights,
+    has_deep_taste_signals,
     has_lit_weights,
     has_taste_tables,
     parse_taste_params,
@@ -339,6 +340,7 @@ def taste_payload() -> dict[str, Any]:
         "curator_pure_weights_available": has_curator_pure_weights(),
         "curator_pct_pure_weights_available": has_curator_pct_pure_weights(),
         "curator_deep_weights_available": has_curator_deep_weights(),
+        "deep_taste_signals_available": has_deep_taste_signals(),
     }
 
 
@@ -413,6 +415,7 @@ class Handler(BaseHTTPRequestHandler):
                     "curator_pure_weights_available": has_curator_pure_weights(),
                     "curator_pct_pure_weights_available": has_curator_pct_pure_weights(),
                     "curator_deep_weights_available": has_curator_deep_weights(),
+        "deep_taste_signals_available": has_deep_taste_signals(),
                     "catalog_flags_available": has_catalog_flags(),
                     "genres_available": has_genre_tables(),
                     "genre_gates_available": has_genre_gates(),

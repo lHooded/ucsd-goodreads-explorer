@@ -24,6 +24,8 @@ from ucsd_explorer.db import EXPLORER_DB, NORMIE_PATH, PARQUET, ROOT, TASTE_PATH
 STATIC_TASTE_PATH = Path(__file__).resolve().parent / "static" / "data" / "taste_lists.json"
 POLL_PATH = ROOT / "lit-2014-2024.txt"
 WAREHOUSE_DB = ROOT / "data" / "ucsd_goodreads" / "ucsd.duckdb"
+COMEDY_SIGNALS_PATH = Path(__file__).resolve().parent / "data" / "comedy_signals.json"
+PERSONAL_POWER_PATH = Path(__file__).resolve().parent / "data" / "personal_power_signals.json"
 
 # SF extras are not on the poll chart; give a mid-high default prestige.
 SF_EXTRA_PRESTIGE = 0.72
@@ -865,6 +867,162 @@ def _load_normie_titles() -> list[str]:
     return out
 
 
+def _resolve_titles_to_works(
+    con,
+    titles: list[str] | list[dict[str, str] | str],
+    *,
+    author_hints: dict[str, str] | None = None,
+    limit_exact: int = 3,
+    limit_prefix: int = 2,
+    reject_series_hijacks: bool = False,
+) -> list[tuple[str, str]]:
+    """Match titles against work_scores (exact / series form / prefix).
+
+    ``titles`` may be bare strings or ``{"title": ..., "author": ...}`` dicts.
+    ``author_hints`` maps folded title → author substring required on the hit.
+    """
+    hints = {fold(k): v for k, v in (author_hints or {}).items()}
+    rows: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for entry in titles:
+        author_req: str | None = None
+        if isinstance(entry, dict):
+            t = (entry.get("title") or "").strip()
+            author_req = (entry.get("author") or "").strip() or None
+        else:
+            t = (entry or "").strip()
+        if not t:
+            continue
+        if author_req is None:
+            author_req = hints.get(fold(t))
+        hits = con.execute(
+            """
+            SELECT work_id, title, author FROM work_scores
+            WHERE title = ? OR title ILIKE ? || ' (%'
+            ORDER BY n DESC
+            LIMIT ?
+            """,
+            [t, t, int(limit_exact)],
+        ).fetchall()
+        if not hits:
+            hits = con.execute(
+                """
+                SELECT work_id, title, author FROM work_scores
+                WHERE title ILIKE ?
+                ORDER BY n DESC
+                LIMIT ?
+                """,
+                [t + "%", int(limit_prefix)],
+            ).fetchall()
+        for wid, title, author in hits:
+            if author_req and fold(author_req) not in fold(author or ""):
+                continue
+            # Optional: drop YA/pulp series hijacks of short bare titles
+            # (Hunger (Gone, #2), The Dead (The Enemy #2), …).
+            if (
+                reject_series_hijacks
+                and author_req is None
+                and "(" in (title or "")
+                and fold(title or "").split("(")[0].strip() == fold(t)
+                and any(
+                    tok in fold(title)
+                    for tok in ("#", "gone,", "enemy", "wilds", "darkness", "eirik")
+                )
+            ):
+                continue
+            if wid not in seen:
+                seen.add(wid)
+                rows.append((str(wid), str(title)))
+    return rows
+
+
+def _resolve_authors_to_works(con, authors: list[str], *, limit_per: int = 120) -> list[tuple[str, str]]:
+    """All catalogued works by author name (ILIKE), capped per author."""
+    rows: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for name in authors:
+        name = (name or "").strip()
+        if not name:
+            continue
+        hits = con.execute(
+            """
+            SELECT work_id, title FROM work_scores
+            WHERE author ILIKE ?
+            ORDER BY n DESC
+            LIMIT ?
+            """,
+            [name, limit_per],
+        ).fetchall()
+        if not hits:
+            # last-name fallback (avoid short surnames like Adams)
+            last = name.split()[-1]
+            if len(last) >= 7:
+                hits = con.execute(
+                    """
+                    SELECT work_id, title FROM work_scores
+                    WHERE author ILIKE ?
+                    ORDER BY n DESC
+                    LIMIT ?
+                    """,
+                    [f"%{last}%", limit_per],
+                ).fetchall()
+        for wid, title in hits:
+            if wid not in seen:
+                seen.add(wid)
+                rows.append((str(wid), str(title)))
+    return rows
+
+
+def _materialize_signal_work_tables(con) -> dict[str, int]:
+    """Build comedy_works + personal_power_works for deep-curator toggles."""
+    comedy = {"titles": [], "authors": []}
+    personal = {"include": []}
+    if COMEDY_SIGNALS_PATH.exists():
+        comedy = json.loads(COMEDY_SIGNALS_PATH.read_text(encoding="utf-8"))
+    if PERSONAL_POWER_PATH.exists():
+        personal = json.loads(PERSONAL_POWER_PATH.read_text(encoding="utf-8"))
+
+    comedy_rows = _resolve_titles_to_works(con, list(comedy.get("titles") or []))
+    comedy_rows += _resolve_authors_to_works(con, list(comedy.get("authors") or []))
+    # de-dupe
+    seen: set[str] = set()
+    comedy_uniq: list[tuple[str, str]] = []
+    for wid, title in comedy_rows:
+        if wid not in seen:
+            seen.add(wid)
+            comedy_uniq.append((wid, title))
+
+    personal_rows = _resolve_titles_to_works(
+        con,
+        list(personal.get("include") or []),
+        author_hints=dict(personal.get("author_hints") or {}),
+        reject_series_hijacks=True,
+    )
+
+    con.execute("DROP TABLE IF EXISTS comedy_works")
+    con.execute("CREATE TABLE comedy_works (work_id VARCHAR, title VARCHAR)")
+    if comedy_uniq:
+        con.executemany("INSERT INTO comedy_works VALUES (?, ?)", comedy_uniq)
+    con.execute("CREATE INDEX IF NOT EXISTS idx_comedy_work ON comedy_works(work_id)")
+
+    con.execute("DROP TABLE IF EXISTS personal_power_works")
+    con.execute("CREATE TABLE personal_power_works (work_id VARCHAR, title VARCHAR)")
+    if personal_rows:
+        con.executemany("INSERT INTO personal_power_works VALUES (?, ?)", personal_rows)
+    con.execute(
+        "CREATE INDEX IF NOT EXISTS idx_personal_work ON personal_power_works(work_id)"
+    )
+
+    print(
+        f"  signal works: comedy={len(comedy_uniq):,} · personal_power={len(personal_rows):,}",
+        flush=True,
+    )
+    return {
+        "n_comedy_works": len(comedy_uniq),
+        "n_personal_power_works": len(personal_rows),
+    }
+
+
 def _deep_curator_defaults() -> dict[str, float | int]:
     """Load tuned gates from deep_curator_params.json when present.
 
@@ -933,35 +1091,13 @@ def _materialize_deep_curators(
         print("  no normie_canon.json titles — skipping deep cohort", flush=True)
         return {"n_curator_deep_users": 0, "n_normie_works": 0, "n_deep_poll_works": 0}
 
+    signal_meta = _materialize_signal_work_tables(con)
+
     con.execute("DROP TABLE IF EXISTS normie_works")
     con.execute("CREATE TABLE normie_works (work_id VARCHAR, title VARCHAR)")
-    rows: list[tuple[str, str]] = []
-    seen: set[str] = set()
-    for t in titles:
-        hits = con.execute(
-            """
-            SELECT work_id, title FROM work_scores
-            WHERE title = ? OR title ILIKE ? || ' (%'
-            ORDER BY n DESC
-            LIMIT 2
-            """,
-            [t, t],
-        ).fetchall()
-        if not hits:
-            hits = con.execute(
-                """
-                SELECT work_id, title FROM work_scores
-                WHERE title ILIKE ?
-                ORDER BY n DESC
-                LIMIT 1
-                """,
-                [t + "%"],
-            ).fetchall()
-        for wid, title in hits:
-            if wid not in seen:
-                seen.add(wid)
-                rows.append((str(wid), str(title)))
-    con.executemany("INSERT INTO normie_works VALUES (?, ?)", rows)
+    rows = _resolve_titles_to_works(con, titles, limit_exact=2, limit_prefix=1)
+    if rows:
+        con.executemany("INSERT INTO normie_works VALUES (?, ?)", rows)
     con.execute("CREATE INDEX idx_normie_work ON normie_works(work_id)")
 
     con.execute("DROP TABLE IF EXISTS deep_poll_works")
@@ -1002,6 +1138,27 @@ def _materialize_deep_curators(
             WHERE e.rating >= 4
             GROUP BY e.user_id
         ),
+        user_comedy AS (
+            SELECT
+                e.user_id,
+                count(DISTINCT e.work_id)::BIGINT AS n_comedy,
+                count(DISTINCT e.work_id) FILTER (
+                    WHERE e.rating = 5
+                )::BIGINT AS n_comedy_fives
+            FROM all_rating_events e
+            JOIN comedy_works cy USING (work_id)
+            WHERE e.rating >= 4
+            GROUP BY e.user_id
+        ),
+        user_personal AS (
+            SELECT
+                e.user_id,
+                count(DISTINCT e.work_id)::BIGINT AS n_personal_fives
+            FROM all_rating_events e
+            JOIN personal_power_works pp USING (work_id)
+            WHERE e.rating = 5
+            GROUP BY e.user_id
+        ),
         base AS (
             SELECT
                 c.user_id,
@@ -1026,6 +1183,9 @@ def _materialize_deep_curators(
                 d.n_deep_rare,
                 d.deep_mass,
                 coalesce(n.n_normie, 0) AS n_normie,
+                coalesce(cy.n_comedy, 0) AS n_comedy,
+                coalesce(cy.n_comedy_fives, 0) AS n_comedy_fives,
+                coalesce(pp.n_personal_fives, 0) AS n_personal_fives,
                 d.n_deep::DOUBLE
                     / nullif(d.n_deep + coalesce(n.n_normie, 0), 0) AS deep_share,
                 coalesce(c.com_hits, 0)::DOUBLE
@@ -1036,6 +1196,8 @@ def _materialize_deep_curators(
             FROM user_curator_pct_weight c
             JOIN user_deep d USING (user_id)
             LEFT JOIN user_normie n USING (user_id)
+            LEFT JOIN user_comedy cy USING (user_id)
+            LEFT JOIN user_personal pp USING (user_id)
             WHERE d.n_deep >= {int(min_deep)}
               AND d.n_deep_rare >= {int(min_deep_rare)}
               AND d.n_deep::DOUBLE
@@ -1100,6 +1262,22 @@ def _materialize_deep_curators(
         f"com_exp={com_exp:.1f}",
         flush=True,
     )
+    signal_cov = con.execute(
+        """
+        SELECT
+          avg(n_personal_fives),
+          count(*) FILTER (WHERE n_personal_fives >= 1),
+          avg(n_comedy_fives),
+          approx_quantile(n_comedy_fives, 0.9),
+          count(*) FILTER (WHERE n_comedy_fives >= 3)
+        FROM user_curator_deep_weight
+        """
+    ).fetchone()
+    print(
+        f"  personal ★5 avg={signal_cov[0]:.2f} · ≥1={int(signal_cov[1]):,} · "
+        f"comedy ★5 avg={signal_cov[2]:.2f} p90={signal_cov[3]:.1f} · ≥3={int(signal_cov[4]):,}",
+        flush=True,
+    )
     return {
         "n_normie_works": len(rows),
         "n_deep_poll_works": n_deep_poll,
@@ -1112,6 +1290,9 @@ def _materialize_deep_curators(
         "curator_deep_weight_min": float(bounds[0]) if bounds[0] is not None else None,
         "curator_deep_weight_avg": float(bounds[2]) if bounds[2] is not None else None,
         "curator_deep_weight_max": float(bounds[1]) if bounds[1] is not None else None,
+        **signal_meta,
+        "n_deep_with_personal_five": int(signal_cov[1]),
+        "n_deep_comedy_fives_ge3": int(signal_cov[4]),
     }
 
 

@@ -186,6 +186,8 @@ const PERSIST_IDS = [
   "curator-strictness-mode",
   "normie-depth",
   "normie-purity",
+  "personal-power",
+  "comedy-cap",
   "geom-ratio",
   "pct-power",
   "coverage-weight",
@@ -444,6 +446,8 @@ function getParams() {
     curator_strictness_mode: $("curator-strictness-mode")?.value || "deweight",
     normie_depth: intNum("normie-depth", 0, { min: 0, max: 100 }),
     normie_purity: intNum("normie-purity", 0, { min: 0, max: 100 }),
+    personal_power: $("personal-power")?.checked ? "1" : "0",
+    comedy_cap: $("comedy-cap")?.checked ? "1" : "0",
     geom_ratio: intNum("geom-ratio", 20, { min: 10, max: 50 }) / 10,
     pct_power: intNum("pct-power", 25, { min: 10, max: 60 }) / 10,
     coverage_weight: intNum("coverage-weight", 100, { min: 0, max: 100 }) / 100,
@@ -532,6 +536,8 @@ async function rerank() {
     }
     if (data.normie_depth != null && String(params.method || "").startsWith("curator_deep_")) {
       summary += ` · depth ${Math.round(data.normie_depth)} · purity ${Math.round(data.normie_purity || 0)}`;
+      if (data.personal_power) summary += " · personal★5";
+      if (data.comedy_cap) summary += " · comedy-cap";
     }
     if (data.geom_ratio != null && params.method === "curator_deep_pct_geom") {
       summary += ` · geom q=${Number(data.geom_ratio).toFixed(1)} · pct^${Number(data.pct_power).toFixed(1)}`;
@@ -882,6 +888,14 @@ function wire() {
   if (purityEl) {
     purityEl.addEventListener("input", () => {
       syncCuratorStrictness();
+      scheduleRank();
+    });
+  }
+  for (const id of ["personal-power", "comedy-cap"]) {
+    const el = $(id);
+    if (!el) continue;
+    el.addEventListener("change", () => {
+      savePrefs();
       scheduleRank();
     });
   }
