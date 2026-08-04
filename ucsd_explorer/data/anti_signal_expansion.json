@@ -1,0 +1,1464 @@
+{
+  "n_added": 147,
+  "n_total_non_literary": 195,
+  "added": [
+    {
+      "match": "Abby Jimenez",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Alexander McCall Smith",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.03,
+      "mean_gap": 0.2523,
+      "nyt_weeks": 68
+    },
+    {
+      "match": "Ali Hazelwood",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Amish Tripathi",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.607,
+      "mean_gap": 0.987,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Anne Rice",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.635,
+      "mean_gap": 0.4982,
+      "nyt_weeks": 224
+    },
+    {
+      "match": "B.A. Paris",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.708,
+      "mean_gap": 0.9831,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Becca Fitzpatrick",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.54,
+      "mean_gap": 1.3817,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Brad Meltzer",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.105,
+      "mean_gap": 0.3576,
+      "nyt_weeks": 68
+    },
+    {
+      "match": "Brandon Sanderson",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 17.667,
+      "mean_gap": 0.4243,
+      "nyt_weeks": 16
+    },
+    {
+      "match": "Brent Weeks",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.351,
+      "mean_gap": 0.4839,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Brian Herbert",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.0,
+      "mean_gap": 0.5108,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Bryce O'Connor",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Casey McQuiston",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Cecelia Ahern",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.683,
+      "mean_gap": 0.8866,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Charlaine Harris",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.312,
+      "mean_gap": 0.755,
+      "nyt_weeks": 77
+    },
+    {
+      "match": "Clive Cussler",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 20.38,
+      "mean_gap": 0.5968,
+      "nyt_weeks": 158
+    },
+    {
+      "match": "Colleen Hoover",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.518,
+      "mean_gap": 0.9932,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Colleen McCullough",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.181,
+      "mean_gap": 0.3502,
+      "nyt_weeks": 67
+    },
+    {
+      "match": "Craig Alanson",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Daniel Silva",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.25,
+      "mean_gap": 0.3605,
+      "nyt_weeks": 120
+    },
+    {
+      "match": "Danielle Steel",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 36.841,
+      "mean_gap": 1.096,
+      "nyt_weeks": 957
+    },
+    {
+      "match": "David Baldacci",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 24.92,
+      "mean_gap": 0.4214,
+      "nyt_weeks": 396
+    },
+    {
+      "match": "David Eddings",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.656,
+      "mean_gap": 0.628,
+      "nyt_weeks": 61
+    },
+    {
+      "match": "Dean Koontz",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 22.445,
+      "mean_gap": 0.6953,
+      "nyt_weeks": 246
+    },
+    {
+      "match": "Deborah Harkness",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.131,
+      "mean_gap": 0.7171,
+      "nyt_weeks": 26
+    },
+    {
+      "match": "Diana Gabaldon",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.741,
+      "mean_gap": 0.6361,
+      "nyt_weeks": 48
+    },
+    {
+      "match": "Dick Francis",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.474,
+      "mean_gap": 0.4269,
+      "nyt_weeks": 222
+    },
+    {
+      "match": "E.L. James",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.708,
+      "mean_gap": 1.5497,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Elizabeth George",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 9.958,
+      "mean_gap": 0.2559,
+      "nyt_weeks": 64
+    },
+    {
+      "match": "Elizabeth Gilbert",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.0,
+      "mean_gap": 0.498,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Ellen Hopkins",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.118,
+      "mean_gap": 0.9537,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Elsie Silver",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Emily Giffin",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.676,
+      "mean_gap": 0.9532,
+      "nyt_weeks": 52
+    },
+    {
+      "match": "Emily Henry",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Eoin Colfer",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.325,
+      "mean_gap": 0.5855,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Eric Van Lustbader",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.349,
+      "mean_gap": 0.5051,
+      "nyt_weeks": 74
+    },
+    {
+      "match": "Frank E. Peretti",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.963,
+      "mean_gap": 1.0217,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Gayle Forman",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.962,
+      "mean_gap": 0.8954,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Harlan Coben",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.306,
+      "mean_gap": 0.5616,
+      "nyt_weeks": 106
+    },
+    {
+      "match": "Helen Fielding",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 17.62,
+      "mean_gap": 0.5177,
+      "nyt_weeks": 31
+    },
+    {
+      "match": "Holly Black",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.248,
+      "mean_gap": 0.5649,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Ilona Andrews",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.472,
+      "mean_gap": 0.4814,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "J.D. Robb",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.65,
+      "mean_gap": 0.6491,
+      "nyt_weeks": 101
+    },
+    {
+      "match": "J.R. Ward",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.384,
+      "mean_gap": 0.7315,
+      "nyt_weeks": 23
+    },
+    {
+      "match": "Jack Higgins",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.678,
+      "mean_gap": 0.3595,
+      "nyt_weeks": 143
+    },
+    {
+      "match": "James A. Michener",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.658,
+      "mean_gap": 0.3,
+      "nyt_weeks": 242
+    },
+    {
+      "match": "James Patterson",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 25.016,
+      "mean_gap": 0.9069,
+      "nyt_weeks": 357
+    },
+    {
+      "match": "James Redfield",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.153,
+      "mean_gap": 0.8317,
+      "nyt_weeks": 189
+    },
+    {
+      "match": "Jamie McGuire",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.292,
+      "mean_gap": 1.1271,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Janet Evanovich",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.949,
+      "mean_gap": 0.7188,
+      "nyt_weeks": 214
+    },
+    {
+      "match": "Jay Kristoff",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Jean M. Auel",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.464,
+      "mean_gap": 0.5423,
+      "nyt_weeks": 162
+    },
+    {
+      "match": "Jeaniene Frost",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.793,
+      "mean_gap": 0.702,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Jeffery Deaver",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.223,
+      "mean_gap": 0.5012,
+      "nyt_weeks": 53
+    },
+    {
+      "match": "Jeffrey Archer",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.526,
+      "mean_gap": 0.4945,
+      "nyt_weeks": 175
+    },
+    {
+      "match": "Jennifer L. Armentrout",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Jennifer Weiner",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.714,
+      "mean_gap": 0.7401,
+      "nyt_weeks": 66
+    },
+    {
+      "match": "Jenny Han",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Jim Butcher",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.241,
+      "mean_gap": 0.526,
+      "nyt_weeks": 35
+    },
+    {
+      "match": "Jodi Picoult",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.155,
+      "mean_gap": 0.6898,
+      "nyt_weeks": 128
+    },
+    {
+      "match": "John Grisham",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 32.893,
+      "mean_gap": 0.5111,
+      "nyt_weeks": 789
+    },
+    {
+      "match": "John Grogan",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.638,
+      "mean_gap": 0.712,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "John Jakes",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.088,
+      "mean_gap": 0.5121,
+      "nyt_weeks": 98
+    },
+    {
+      "match": "John Sandford",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.585,
+      "mean_gap": 0.5058,
+      "nyt_weeks": 227
+    },
+    {
+      "match": "John Scalzi",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.0,
+      "mean_gap": 0.3948,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Jojo Moyes",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.898,
+      "mean_gap": 0.6788,
+      "nyt_weeks": 61
+    },
+    {
+      "match": "Jonathan Kellerman",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.368,
+      "mean_gap": 0.4589,
+      "nyt_weeks": 169
+    },
+    {
+      "match": "Karen Marie Moning",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.537,
+      "mean_gap": 0.8392,
+      "nyt_weeks": 18
+    },
+    {
+      "match": "Karin Slaughter",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.133,
+      "mean_gap": 0.6817,
+      "nyt_weeks": 23
+    },
+    {
+      "match": "Kathy Reichs",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.255,
+      "mean_gap": 0.4652,
+      "nyt_weeks": 60
+    },
+    {
+      "match": "Ken Follett",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 14.974,
+      "mean_gap": 0.4419,
+      "nyt_weeks": 291
+    },
+    {
+      "match": "Kerstin Gier",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.946,
+      "mean_gap": 0.7928,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Kevin J. Anderson",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.0,
+      "mean_gap": 0.4988,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Kim Harrison",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.52,
+      "mean_gap": 0.7533,
+      "nyt_weeks": 25
+    },
+    {
+      "match": "Kristin Cashore",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.619,
+      "mean_gap": 0.5776,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Kristin Hannah",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.108,
+      "mean_gap": 0.6374,
+      "nyt_weeks": 121
+    },
+    {
+      "match": "L. Ron Hubbard",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 17.869,
+      "mean_gap": 0.9615,
+      "nyt_weeks": 24
+    },
+    {
+      "match": "Laura Thalassa",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Laurell K. Hamilton",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 19.183,
+      "mean_gap": 0.7435,
+      "nyt_weeks": 65
+    },
+    {
+      "match": "Lauren Weisberger",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.27,
+      "mean_gap": 0.7463,
+      "nyt_weeks": 54
+    },
+    {
+      "match": "Lee Child",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 19.455,
+      "mean_gap": 0.4145,
+      "nyt_weeks": 122
+    },
+    {
+      "match": "Leigh Bardugo",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.655,
+      "mean_gap": 0.6326,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Liane Moriarty",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.354,
+      "mean_gap": 0.4499,
+      "nyt_weeks": 63
+    },
+    {
+      "match": "Lilian Jackson Braun",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.566,
+      "mean_gap": 0.4045,
+      "nyt_weeks": 86
+    },
+    {
+      "match": "Louis L'Amour",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.482,
+      "mean_gap": 0.3545,
+      "nyt_weeks": 130
+    },
+    {
+      "match": "Maeve Binchy",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.25,
+      "mean_gap": 0.451,
+      "nyt_weeks": 114
+    },
+    {
+      "match": "Maria V. Snyder",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.146,
+      "mean_gap": 0.983,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Mario Puzo",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 9.947,
+      "mean_gap": 0.3424,
+      "nyt_weeks": 51
+    },
+    {
+      "match": "Marissa Meyer",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.2,
+      "mean_gap": 0.8119,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Mary Higgins Clark",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 17.185,
+      "mean_gap": 0.7629,
+      "nyt_weeks": 390
+    },
+    {
+      "match": "Matt Dinniman",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Michael Connelly",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.498,
+      "mean_gap": 0.3076,
+      "nyt_weeks": 183
+    },
+    {
+      "match": "Mitch Albom",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.4,
+      "mean_gap": 0.8187,
+      "nyt_weeks": 187
+    },
+    {
+      "match": "Nalini Singh",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.658,
+      "mean_gap": 0.6926,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Natsuki Takaya",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.565,
+      "mean_gap": 0.9409,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Nelson DeMille",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.937,
+      "mean_gap": 0.4528,
+      "nyt_weeks": 139
+    },
+    {
+      "match": "Nicholas Evans",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.116,
+      "mean_gap": 0.5798,
+      "nyt_weeks": 54
+    },
+    {
+      "match": "Nicholas Sparks",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 25.893,
+      "mean_gap": 1.0458,
+      "nyt_weeks": 390
+    },
+    {
+      "match": "Nicola Yoon",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.762,
+      "mean_gap": 0.7013,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Nora Roberts",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 21.489,
+      "mean_gap": 0.7951,
+      "nyt_weeks": 192
+    },
+    {
+      "match": "Orson Scott Card",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.0,
+      "mean_gap": 0.3701,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Patricia Briggs",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.146,
+      "mean_gap": 0.5165,
+      "nyt_weeks": 27
+    },
+    {
+      "match": "Patricia Cornwell",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.576,
+      "mean_gap": 0.662,
+      "nyt_weeks": 213
+    },
+    {
+      "match": "Patrick Rothfuss",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.285,
+      "mean_gap": 0.4103,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Paula Hawkins",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.034,
+      "mean_gap": 0.5537,
+      "nyt_weeks": 94
+    },
+    {
+      "match": "Peter V. Brett",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.221,
+      "mean_gap": 0.4804,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Piers Anthony",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.185,
+      "mean_gap": 0.5543,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Pirateaba",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Pittacus Lore",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.737,
+      "mean_gap": 0.9923,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "R.A. Salvatore",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.211,
+      "mean_gap": 0.6135,
+      "nyt_weeks": 45
+    },
+    {
+      "match": "Rachel Caine",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.646,
+      "mean_gap": 0.6573,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Rainbow Rowell",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.383,
+      "mean_gap": 0.5127,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Rebecca Yarros",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Rhonda Byrne",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.685,
+      "mean_gap": 1.0264,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Rick Yancey",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 1.67,
+      "mean_gap": 0.7328,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Robert B. Parker",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.438,
+      "mean_gap": 0.1967,
+      "nyt_weeks": 194
+    },
+    {
+      "match": "Robert James Waller",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.512,
+      "mean_gap": 0.7187,
+      "nyt_weeks": 221
+    },
+    {
+      "match": "Robert Jordan",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.673,
+      "mean_gap": 0.5053,
+      "nyt_weeks": 71
+    },
+    {
+      "match": "Robert Ludlum",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 22.702,
+      "mean_gap": 0.477,
+      "nyt_weeks": 281
+    },
+    {
+      "match": "Robin Cook",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.201,
+      "mean_gap": 0.5251,
+      "nyt_weeks": 161
+    },
+    {
+      "match": "Rosamunde Pilcher",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.279,
+      "mean_gap": 0.4521,
+      "nyt_weeks": 110
+    },
+    {
+      "match": "Sabaa Tahir",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.968,
+      "mean_gap": 0.7352,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Sarah J. Maas",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.868,
+      "mean_gap": 1.0499,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Scott Turow",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.723,
+      "mean_gap": 0.2535,
+      "nyt_weeks": 156
+    },
+    {
+      "match": "Sherrilyn Kenyon",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.516,
+      "mean_gap": 0.8428,
+      "nyt_weeks": 26
+    },
+    {
+      "match": "Sidney Sheldon",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 14.946,
+      "mean_gap": 0.6181,
+      "nyt_weeks": 288
+    },
+    {
+      "match": "Sophie Kinsella",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.249,
+      "mean_gap": 0.7662,
+      "nyt_weeks": 41
+    },
+    {
+      "match": "Stephanie Perkins",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.198,
+      "mean_gap": 0.9753,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Steve Berry",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.171,
+      "mean_gap": 0.5251,
+      "nyt_weeks": 54
+    },
+    {
+      "match": "Sue Grafton",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.161,
+      "mean_gap": 0.4741,
+      "nyt_weeks": 155
+    },
+    {
+      "match": "Sue Monk Kidd",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.381,
+      "mean_gap": 0.5495,
+      "nyt_weeks": 57
+    },
+    {
+      "match": "Susan Ee",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.098,
+      "mean_gap": 0.8233,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Sylvia Day",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.582,
+      "mean_gap": 1.1628,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Tahereh Mafi",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Taylor Jenkins Reid",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Terry Brooks",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 19.412,
+      "mean_gap": 0.6704,
+      "nyt_weeks": 103
+    },
+    {
+      "match": "Terry Goodkind",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 18.639,
+      "mean_gap": 0.8226,
+      "nyt_weeks": 45
+    },
+    {
+      "match": "Terry McMillan",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 11.268,
+      "mean_gap": 0.7883,
+      "nyt_weeks": 86
+    },
+    {
+      "match": "Tim LaHaye",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.258,
+      "mean_gap": 1.3337,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Timothy Zahn",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.455,
+      "mean_gap": 0.5063,
+      "nyt_weeks": 63
+    },
+    {
+      "match": "Todd Burpo",
+      "sources": [
+        "ucsd_gap"
+      ],
+      "hybrid_score": 2.155,
+      "mean_gap": 1.2232,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Tom Clancy",
+      "sources": [
+        "manual_seed",
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 24.976,
+      "mean_gap": 0.5058,
+      "nyt_weeks": 388
+    },
+    {
+      "match": "Travis Baldree",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "V.E. Schwab",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 12.866,
+      "mean_gap": 0.7076,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Victoria Aveyard",
+      "sources": [
+        "manual_seed",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 13.074,
+      "mean_gap": 0.9256,
+      "nyt_weeks": 0
+    },
+    {
+      "match": "Vince Flynn",
+      "sources": [
+        "nyt_bestseller",
+        "ucsd_gap"
+      ],
+      "hybrid_score": 10.939,
+      "mean_gap": 0.5705,
+      "nyt_weeks": 80
+    },
+    {
+      "match": "Will Wight",
+      "sources": [
+        "manual_seed"
+      ],
+      "hybrid_score": 9.0,
+      "mean_gap": null,
+      "nyt_weeks": 0
+    }
+  ],
+  "method": {
+    "ucsd_gap": "author-level crowd mean/p5 minus deep-curator mean/p5, min n thresholds",
+    "nyt": "Post45 NYT hardcover fiction bestsellers weeks since 1980",
+    "manual": "commercial SF/YA/romantasy/thriller seeds",
+    "protect": "literary, literary_sf_extras, prior audit removals, hand protect list"
+  }
+}
