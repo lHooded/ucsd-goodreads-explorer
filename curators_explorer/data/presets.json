@@ -1,0 +1,37 @@
+{
+  "default_literary": {
+    "id": "default_literary",
+    "label": "Default literary",
+    "deweight": 15,
+    "purity": 55,
+    "notes": "Best everyday: clean head, antis later (med ~771 @ dew15)"
+  },
+  "browse_mass": {
+    "id": "browse_mass",
+    "label": "Browse / mass",
+    "deweight": 25,
+    "purity": 0,
+    "notes": "More voter mass; same deep-anti count pattern @ dew25"
+  },
+  "sharp": {
+    "id": "sharp",
+    "label": "Sharp",
+    "deweight": 15,
+    "purity": 65,
+    "notes": "Smaller mass; avoid 75–90 if mid-list antis matter"
+  },
+  "everyone": {
+    "id": "everyone",
+    "label": "Everyone (debug)",
+    "deweight": 0,
+    "purity": 0,
+    "notes": "True off — equal-weight percentile users"
+  },
+  "elite": {
+    "id": "elite",
+    "label": "Elite",
+    "deweight": 100,
+    "purity": 0,
+    "notes": "Can zero antis in top 1000 but filler creep — not default"
+  }
+}

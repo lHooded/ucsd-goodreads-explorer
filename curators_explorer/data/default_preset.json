@@ -1,0 +1,1459 @@
+{
+  "id": "default_literary",
+  "label": "Default literary",
+  "sliders": {
+    "deweight": 15,
+    "purity": 55,
+    "min_votes": 25,
+    "bayesian_m": 30,
+    "scale_mode": "adjusted",
+    "metric": "love",
+    "sf_only": false,
+    "limit": 200
+  },
+  "positive_authors": [
+    {
+      "author_id": "1624",
+      "name": "Herman Melville",
+      "match": "Herman Melville",
+      "prestige": 1.0,
+      "poll_rank": 1
+    },
+    {
+      "author_id": "3137322",
+      "name": "Fyodor Dostoyevsky",
+      "match": "Fyodor Dostoevsky",
+      "prestige": 0.9949494949494949,
+      "poll_rank": 2
+    },
+    {
+      "author_id": "5152",
+      "name": "Vladimir Nabokov",
+      "match": "Vladimir Nabokov",
+      "prestige": 0.98989898989899,
+      "poll_rank": 3
+    },
+    {
+      "author_id": "5144",
+      "name": "James Joyce",
+      "match": "James Joyce",
+      "prestige": 0.9797979797979798,
+      "poll_rank": 5
+    },
+    {
+      "author_id": "4339",
+      "name": "David Foster Wallace",
+      "match": "David Foster Wallace",
+      "prestige": 0.9747474747474747,
+      "poll_rank": 6
+    },
+    {
+      "author_id": "4037220",
+      "name": "Miguel de Cervantes Saavedra",
+      "match": "Miguel de Cervantes",
+      "prestige": 0.9696969696969697,
+      "poll_rank": 7
+    },
+    {
+      "author_id": "4178",
+      "name": "Cormac McCarthy",
+      "match": "Cormac McCarthy",
+      "prestige": 0.9646464646464646,
+      "poll_rank": 8
+    },
+    {
+      "author_id": "235",
+      "name": "Thomas Pynchon",
+      "match": "Thomas Pynchon",
+      "prestige": 0.9595959595959596,
+      "poll_rank": 9
+    },
+    {
+      "author_id": "51229",
+      "name": "John  Williams",
+      "match": "John Williams",
+      "prestige": 0.9494949494949495,
+      "poll_rank": 11
+    },
+    {
+      "author_id": "957894",
+      "name": "Albert Camus",
+      "match": "Albert Camus",
+      "prestige": 0.9444444444444444,
+      "poll_rank": 12
+    },
+    {
+      "author_id": "5031312",
+      "name": "Dante Alighieri",
+      "match": "Dante Alighieri",
+      "prestige": 0.9393939393939394,
+      "poll_rank": 13
+    },
+    {
+      "author_id": "128382",
+      "name": "Leo Tolstoy",
+      "match": "Leo Tolstoy",
+      "prestige": 0.9343434343434344,
+      "poll_rank": 14
+    },
+    {
+      "author_id": "903",
+      "name": "Homer",
+      "match": "Homer",
+      "prestige": 0.9292929292929293,
+      "poll_rank": 15
+    },
+    {
+      "author_id": "5223",
+      "name": "Franz Kafka",
+      "match": "Franz Kafka",
+      "prestige": 0.9141414141414141,
+      "poll_rank": 18
+    },
+    {
+      "author_id": "233619",
+      "name": "Marcel Proust",
+      "match": "Marcel Proust",
+      "prestige": 0.9090909090909091,
+      "poll_rank": 19
+    },
+    {
+      "author_id": "947",
+      "name": "William Shakespeare",
+      "match": "William Shakespeare",
+      "prestige": 0.9040404040404041,
+      "poll_rank": 20
+    },
+    {
+      "author_id": "13450",
+      "name": "Gabriel Garcia Marquez",
+      "match": "Gabriel García Márquez",
+      "prestige": 0.898989898989899,
+      "poll_rank": 21
+    },
+    {
+      "author_id": "3706",
+      "name": "George Orwell",
+      "match": "George Orwell",
+      "prestige": 0.8939393939393939,
+      "poll_rank": 22
+    },
+    {
+      "author_id": "72039",
+      "name": "Roberto Bolano",
+      "match": "Roberto Bolaño",
+      "prestige": 0.8838383838383839,
+      "poll_rank": 24
+    },
+    {
+      "author_id": "285217",
+      "name": "Johann Wolfgang von Goethe",
+      "match": "Johann Wolfgang von Goethe",
+      "prestige": 0.8787878787878788,
+      "poll_rank": 25
+    },
+    {
+      "author_id": "23069",
+      "name": "Gene Wolfe",
+      "match": "Gene Wolfe",
+      "prestige": 0.8737373737373737,
+      "poll_rank": 26
+    },
+    {
+      "author_id": "3167",
+      "name": "Joseph Heller",
+      "match": "Joseph Heller",
+      "prestige": 0.8636363636363636,
+      "poll_rank": 28
+    },
+    {
+      "author_id": "7869",
+      "name": "Louis-Ferdinand Celine",
+      "match": "Louis-Ferdinand Céline",
+      "prestige": 0.8585858585858586,
+      "poll_rank": 29
+    },
+    {
+      "author_id": "7816",
+      "name": "Fernando Pessoa",
+      "match": "Fernando Pessoa",
+      "prestige": 0.8484848484848485,
+      "poll_rank": 31
+    },
+    {
+      "author_id": "3535",
+      "name": "William Faulkner",
+      "match": "William Faulkner",
+      "prestige": 0.8434343434343434,
+      "poll_rank": 32
+    },
+    {
+      "author_id": "3873",
+      "name": "Mikhail Bulgakov",
+      "match": "Mikhail Bulgakov",
+      "prestige": 0.8383838383838383,
+      "poll_rank": 33
+    },
+    {
+      "author_id": "9876",
+      "name": "John Milton",
+      "match": "John Milton",
+      "prestige": 0.8080808080808081,
+      "poll_rank": 39
+    },
+    {
+      "author_id": "585",
+      "name": "John Steinbeck",
+      "match": "John Steinbeck",
+      "prestige": 0.803030303030303,
+      "poll_rank": 40
+    },
+    {
+      "author_id": "3565",
+      "name": "Oscar Wilde",
+      "match": "Oscar Wilde",
+      "prestige": 0.7828282828282829,
+      "poll_rank": 44
+    },
+    {
+      "author_id": "3049",
+      "name": "John Kennedy Toole",
+      "match": "John Kennedy Toole",
+      "prestige": 0.7777777777777778,
+      "poll_rank": 45
+    },
+    {
+      "author_id": "1113469",
+      "name": "Hermann Hesse",
+      "match": "Hermann Hesse",
+      "prestige": 0.7727272727272727,
+      "poll_rank": 46
+    },
+    {
+      "author_id": "18317",
+      "name": "Knut Hamsun",
+      "match": "Knut Hamsun",
+      "prestige": 0.7676767676767677,
+      "poll_rank": 47
+    },
+    {
+      "author_id": "19405",
+      "name": "Thomas Mann",
+      "match": "Thomas Mann",
+      "prestige": 0.7626262626262627,
+      "poll_rank": 48
+    },
+    {
+      "author_id": "3345",
+      "name": "Joseph Conrad",
+      "match": "Joseph Conrad",
+      "prestige": 0.7575757575757576,
+      "poll_rank": 49
+    },
+    {
+      "author_id": "113561",
+      "name": "Osamu Dazai",
+      "match": "Osamu Dazai",
+      "prestige": 0.7525252525252525,
+      "poll_rank": 50
+    },
+    {
+      "author_id": "3487",
+      "name": "Aldous Huxley",
+      "match": "Aldous Huxley",
+      "prestige": 0.7474747474747474,
+      "poll_rank": 51
+    },
+    {
+      "author_id": "13661",
+      "name": "Victor Hugo",
+      "match": "Victor Hugo",
+      "prestige": 0.7373737373737373,
+      "poll_rank": 53
+    },
+    {
+      "author_id": "2751",
+      "name": "Bret Easton Ellis",
+      "match": "Bret Easton Ellis",
+      "prestige": 0.7272727272727273,
+      "poll_rank": 55
+    },
+    {
+      "author_id": "6765",
+      "name": "Virginia Woolf",
+      "match": "Virginia Woolf",
+      "prestige": 0.7222222222222222,
+      "poll_rank": 56
+    },
+    {
+      "author_id": "15991",
+      "name": "William Gaddis",
+      "match": "William Gaddis",
+      "prestige": 0.7121212121212122,
+      "poll_rank": 58
+    },
+    {
+      "author_id": "2778055",
+      "name": "Kurt Vonnegut Jr.",
+      "match": "Kurt Vonnegut",
+      "prestige": 0.702020202020202,
+      "poll_rank": 60
+    },
+    {
+      "author_id": "3190",
+      "name": "F. Scott Fitzgerald",
+      "match": "F. Scott Fitzgerald",
+      "prestige": 0.6919191919191919,
+      "poll_rank": 62
+    },
+    {
+      "author_id": "819789",
+      "name": "J.D. Salinger",
+      "match": "J.D. Salinger",
+      "prestige": 0.8535353535353536,
+      "poll_rank": 30
+    },
+    {
+      "author_id": "6915837",
+      "name": "Natsume Soseki",
+      "match": "Natsume Sōseki",
+      "prestige": 0.5454545454545454,
+      "poll_rank": 91
+    },
+    {
+      "author_id": "35258",
+      "name": "Yukio Mishima",
+      "match": "Yukio Mishima",
+      "prestige": 0.696969696969697,
+      "poll_rank": 61
+    },
+    {
+      "author_id": "4191",
+      "name": "Emily Bronte",
+      "match": "Emily Brontë",
+      "prestige": 0.6868686868686869,
+      "poll_rank": 63
+    },
+    {
+      "author_id": "16747",
+      "name": "Robert Musil",
+      "match": "Robert Musil",
+      "prestige": 0.6666666666666667,
+      "poll_rank": 67
+    },
+    {
+      "author_id": "1455",
+      "name": "Ernest Hemingway",
+      "match": "Ernest Hemingway",
+      "prestige": 0.6565656565656566,
+      "poll_rank": 69
+    },
+    {
+      "author_id": "1461",
+      "name": "Gustave Flaubert",
+      "match": "Gustave Flaubert",
+      "prestige": 0.6313131313131313,
+      "poll_rank": 74
+    },
+    {
+      "author_id": "155517",
+      "name": "Italo Calvino",
+      "match": "Italo Calvino",
+      "prestige": 0.6161616161616161,
+      "poll_rank": 77
+    },
+    {
+      "author_id": "22796",
+      "name": "Laurence Sterne",
+      "match": "Laurence Sterne",
+      "prestige": 0.6111111111111112,
+      "poll_rank": 78
+    },
+    {
+      "author_id": "15538",
+      "name": "Mikhail Lermontov",
+      "match": "Mikhail Lermontov",
+      "prestige": 0.595959595959596,
+      "poll_rank": 81
+    },
+    {
+      "author_id": "232932",
+      "name": "Nikolai Gogol",
+      "match": "Nikolai Gogol",
+      "prestige": 0.5858585858585859,
+      "poll_rank": 83
+    },
+    {
+      "author_id": "4462369",
+      "name": "William S. Burroughs",
+      "match": "William S. Burroughs",
+      "prestige": 0.5808080808080809,
+      "poll_rank": 84
+    },
+    {
+      "author_id": "11139",
+      "name": "Mary Wollstonecraft Shelley",
+      "match": "Mary Shelley",
+      "prestige": 0.5757575757575757,
+      "poll_rank": 85
+    },
+    {
+      "author_id": "1730",
+      "name": "Umberto Eco",
+      "match": "Umberto Eco",
+      "prestige": 0.5656565656565656,
+      "poll_rank": 87
+    },
+    {
+      "author_id": "233",
+      "name": "Don DeLillo",
+      "match": "Don DeLillo",
+      "prestige": 0.5555555555555556,
+      "poll_rank": 89
+    },
+    {
+      "author_id": "21778",
+      "name": "Juan Rulfo",
+      "match": "Juan Rulfo",
+      "prestige": 0.5505050505050505,
+      "poll_rank": 90
+    },
+    {
+      "author_id": "281443",
+      "name": "Ernst Junger",
+      "match": "Ernst Jünger",
+      "prestige": 0.5353535353535354,
+      "poll_rank": 93
+    },
+    {
+      "author_id": "27855",
+      "name": "William H. Gass",
+      "match": "William H. Gass",
+      "prestige": 0.5303030303030303,
+      "poll_rank": 94
+    },
+    {
+      "author_id": "32878",
+      "name": "Michel Houellebecq",
+      "match": "Michel Houellebecq",
+      "prestige": 0.5,
+      "poll_rank": 100
+    },
+    {
+      "author_id": "4280",
+      "name": "Kazuo Ishiguro",
+      "match": "Kazuo Ishiguro",
+      "prestige": 0.75,
+      "poll_rank": null
+    }
+  ],
+  "negative_authors": [
+    {
+      "author_id": "1077326",
+      "name": "J.K. Rowling",
+      "match": "J.K. Rowling"
+    },
+    {
+      "author_id": "153394",
+      "name": "Suzanne Collins",
+      "match": "Suzanne Collins"
+    },
+    {
+      "author_id": "15872",
+      "name": "Rick Riordan",
+      "match": "Rick Riordan"
+    },
+    {
+      "author_id": "941441",
+      "name": "Stephenie Meyer",
+      "match": "Stephenie Meyer"
+    },
+    {
+      "author_id": "1406384",
+      "name": "John Green",
+      "match": "John Green"
+    },
+    {
+      "author_id": "4039811",
+      "name": "Veronica Roth",
+      "match": "Veronica Roth"
+    },
+    {
+      "author_id": "11466",
+      "name": "Markus Zusak",
+      "match": "Markus Zusak"
+    },
+    {
+      "author_id": "150038",
+      "name": "Cassandra Clare",
+      "match": "Cassandra Clare"
+    },
+    {
+      "author_id": "137902",
+      "name": "Richelle Mead",
+      "match": "Richelle Mead"
+    },
+    {
+      "author_id": "8349",
+      "name": "Christopher Paolini",
+      "match": "Christopher Paolini"
+    },
+    {
+      "author_id": "348878",
+      "name": "James Dashner",
+      "match": "James Dashner"
+    },
+    {
+      "author_id": "13957",
+      "name": "Scott Westerfeld",
+      "match": "Scott Westerfeld"
+    },
+    {
+      "author_id": "12898",
+      "name": "Stephen Chbosky",
+      "match": "Stephen Chbosky"
+    },
+    {
+      "author_id": "569269",
+      "name": "Jay Asher",
+      "match": "Jay Asher"
+    },
+    {
+      "author_id": "17015",
+      "name": "P.C. Cast",
+      "match": "P.C. Cast"
+    },
+    {
+      "author_id": "1330292",
+      "name": "Maggie Stiefvater",
+      "match": "Maggie Stiefvater"
+    },
+    {
+      "author_id": "2987125",
+      "name": "Kiera Cass",
+      "match": "Kiera Cass"
+    },
+    {
+      "author_id": "2905297",
+      "name": "Lauren Kate",
+      "match": "Lauren Kate"
+    },
+    {
+      "author_id": "1304470",
+      "name": "Ally Condie",
+      "match": "Ally Condie"
+    },
+    {
+      "author_id": "2987",
+      "name": "Sarah Dessen",
+      "match": "Sarah Dessen"
+    },
+    {
+      "author_id": "56224",
+      "name": "Ally Carter",
+      "match": "Ally Carter"
+    },
+    {
+      "author_id": "2936493",
+      "name": "Lauren Oliver",
+      "match": "Lauren Oliver"
+    },
+    {
+      "author_id": "2895706",
+      "name": "Kami Garcia",
+      "match": "Kami Garcia"
+    },
+    {
+      "author_id": "4342215",
+      "name": "Marie Lu",
+      "match": "Marie Lu"
+    },
+    {
+      "author_id": "200317",
+      "name": "Alyson Noel",
+      "match": "Alyson Noel"
+    },
+    {
+      "author_id": "11654",
+      "name": "Meg Cabot",
+      "match": "Meg Cabot"
+    },
+    {
+      "author_id": "25052",
+      "name": "Brandon Mull",
+      "match": "Brandon Mull"
+    },
+    {
+      "author_id": "7581",
+      "name": "Kelley Armstrong",
+      "match": "Kelley Armstrong"
+    },
+    {
+      "author_id": "316",
+      "name": "Alice Sebold",
+      "match": "Alice Sebold"
+    },
+    {
+      "author_id": "630",
+      "name": "Dan Brown",
+      "match": "Dan Brown"
+    },
+    {
+      "author_id": "566",
+      "name": "Paulo Coelho",
+      "match": "Paulo Coelho"
+    },
+    {
+      "author_id": "1943477",
+      "name": "Kathryn Stockett",
+      "match": "Kathryn Stockett"
+    },
+    {
+      "author_id": "706255",
+      "name": "Stieg Larsson",
+      "match": "Stieg Larsson"
+    },
+    {
+      "author_id": "614",
+      "name": "Arthur Golden",
+      "match": "Arthur Golden"
+    },
+    {
+      "author_id": "2383",
+      "name": "Gillian Flynn",
+      "match": "Gillian Flynn"
+    },
+    {
+      "author_id": "498072",
+      "name": "Audrey Niffenegger",
+      "match": "Audrey Niffenegger"
+    },
+    {
+      "author_id": "569",
+      "name": "Khaled Hosseini",
+      "match": "Khaled Hosseini"
+    },
+    {
+      "author_id": "6540057",
+      "name": "Andy Weir",
+      "match": "Andy Weir"
+    },
+    {
+      "author_id": "31712",
+      "name": "Ernest Cline",
+      "match": "Ernest Cline"
+    },
+    {
+      "author_id": "5194",
+      "name": "Michael Crichton",
+      "match": "Michael Crichton"
+    },
+    {
+      "author_id": "3389",
+      "name": "Stephen King",
+      "match": "Stephen King"
+    },
+    {
+      "author_id": "5791",
+      "name": "Max Brooks",
+      "match": "Max Brooks"
+    },
+    {
+      "author_id": "3064305",
+      "name": "Hugh Howey",
+      "match": "Hugh Howey"
+    },
+    {
+      "author_id": "6474348",
+      "name": "Pierce Brown",
+      "match": "Pierce Brown"
+    },
+    {
+      "author_id": "442240",
+      "name": "Blake Crouch",
+      "match": "Blake Crouch"
+    },
+    {
+      "author_id": "12130438",
+      "name": "Dennis E. Taylor",
+      "match": "Dennis E. Taylor"
+    },
+    {
+      "author_id": "4192148",
+      "name": "James S.A. Corey",
+      "match": "James S.A. Corey"
+    },
+    {
+      "author_id": "87305",
+      "name": "Martha Wells",
+      "match": "Martha Wells"
+    },
+    {
+      "author_id": "4738",
+      "name": "Alexander McCall Smith",
+      "match": "Alexander McCall Smith"
+    },
+    {
+      "author_id": "4343092",
+      "name": "Amish Tripathi",
+      "match": "Amish Tripathi"
+    },
+    {
+      "author_id": "7577",
+      "name": "Anne Rice",
+      "match": "Anne Rice"
+    },
+    {
+      "author_id": "14425604",
+      "name": "B.A. Paris",
+      "match": "B.A. Paris"
+    },
+    {
+      "author_id": "2876763",
+      "name": "Becca Fitzpatrick",
+      "match": "Becca Fitzpatrick"
+    },
+    {
+      "author_id": "14610",
+      "name": "Brad Meltzer",
+      "match": "Brad Meltzer"
+    },
+    {
+      "author_id": "38550",
+      "name": "Brandon Sanderson",
+      "match": "Brandon Sanderson"
+    },
+    {
+      "author_id": "1370283",
+      "name": "Brent Weeks",
+      "match": "Brent Weeks"
+    },
+    {
+      "author_id": "56",
+      "name": "Brian Herbert",
+      "match": "Brian Herbert"
+    },
+    {
+      "author_id": "14685175",
+      "name": "Bryce O'Connor",
+      "match": "Bryce O'Connor"
+    },
+    {
+      "author_id": "7116",
+      "name": "Cecelia Ahern",
+      "match": "Cecelia Ahern"
+    },
+    {
+      "author_id": "17061",
+      "name": "Charlaine Harris",
+      "match": "Charlaine Harris"
+    },
+    {
+      "author_id": "18411",
+      "name": "Clive Cussler",
+      "match": "Clive Cussler"
+    },
+    {
+      "author_id": "5430144",
+      "name": "Colleen Hoover",
+      "match": "Colleen Hoover"
+    },
+    {
+      "author_id": "4917067",
+      "name": "Colleen McCullough",
+      "match": "Colleen McCullough"
+    },
+    {
+      "author_id": "14851776",
+      "name": "Craig Alanson",
+      "match": "Craig Alanson"
+    },
+    {
+      "author_id": "29085",
+      "name": "Daniel Silva",
+      "match": "Daniel Silva"
+    },
+    {
+      "author_id": "14255",
+      "name": "Danielle Steel",
+      "match": "Danielle Steel"
+    },
+    {
+      "author_id": "9291",
+      "name": "David Baldacci",
+      "match": "David Baldacci"
+    },
+    {
+      "author_id": "8732",
+      "name": "David Eddings",
+      "match": "David Eddings"
+    },
+    {
+      "author_id": "9355",
+      "name": "Dean Koontz",
+      "match": "Dean Koontz"
+    },
+    {
+      "author_id": "3849415",
+      "name": "Deborah Harkness",
+      "match": "Deborah Harkness"
+    },
+    {
+      "author_id": "3617",
+      "name": "Diana Gabaldon",
+      "match": "Diana Gabaldon"
+    },
+    {
+      "author_id": "5561",
+      "name": "Dick Francis",
+      "match": "Dick Francis"
+    },
+    {
+      "author_id": "4725841",
+      "name": "E.L. James",
+      "match": "E.L. James"
+    },
+    {
+      "author_id": "1402383",
+      "name": "Elizabeth  George",
+      "match": "Elizabeth George"
+    },
+    {
+      "author_id": "11679",
+      "name": "Elizabeth Gilbert",
+      "match": "Elizabeth Gilbert"
+    },
+    {
+      "author_id": "2821144",
+      "name": "Ellen Hopkins",
+      "match": "Ellen Hopkins"
+    },
+    {
+      "author_id": "13370",
+      "name": "Emily Giffin",
+      "match": "Emily Giffin"
+    },
+    {
+      "author_id": "13905555",
+      "name": "Emily Henry",
+      "match": "Emily Henry"
+    },
+    {
+      "author_id": "10896",
+      "name": "Eoin Colfer",
+      "match": "Eoin Colfer"
+    },
+    {
+      "author_id": "39467",
+      "name": "Eric Van Lustbader",
+      "match": "Eric Van Lustbader"
+    },
+    {
+      "author_id": "5544",
+      "name": "Frank E. Peretti",
+      "match": "Frank E. Peretti"
+    },
+    {
+      "author_id": "295178",
+      "name": "Gayle Forman",
+      "match": "Gayle Forman"
+    },
+    {
+      "author_id": "24689",
+      "name": "Harlan Coben",
+      "match": "Harlan Coben"
+    },
+    {
+      "author_id": "3090",
+      "name": "Helen Fielding",
+      "match": "Helen Fielding"
+    },
+    {
+      "author_id": "25422",
+      "name": "Holly Black",
+      "match": "Holly Black"
+    },
+    {
+      "author_id": "21748",
+      "name": "Ilona Andrews",
+      "match": "Ilona Andrews"
+    },
+    {
+      "author_id": "17065",
+      "name": "J.D. Robb",
+      "match": "J.D. Robb"
+    },
+    {
+      "author_id": "20248",
+      "name": "J.R. Ward",
+      "match": "J.R. Ward"
+    },
+    {
+      "author_id": "19706",
+      "name": "Jack Higgins",
+      "match": "Jack Higgins"
+    },
+    {
+      "author_id": "7995",
+      "name": "James A. Michener",
+      "match": "James A. Michener"
+    },
+    {
+      "author_id": "3780",
+      "name": "James Patterson",
+      "match": "James Patterson"
+    },
+    {
+      "author_id": "8203",
+      "name": "James Redfield",
+      "match": "James Redfield"
+    },
+    {
+      "author_id": "4464118",
+      "name": "Jamie McGuire",
+      "match": "Jamie McGuire"
+    },
+    {
+      "author_id": "2384",
+      "name": "Janet Evanovich",
+      "match": "Janet Evanovich"
+    },
+    {
+      "author_id": "4735144",
+      "name": "Jay Kristoff",
+      "match": "Jay Kristoff"
+    },
+    {
+      "author_id": "861",
+      "name": "Jean M. Auel",
+      "match": "Jean M. Auel"
+    },
+    {
+      "author_id": "669810",
+      "name": "Jeaniene Frost",
+      "match": "Jeaniene Frost"
+    },
+    {
+      "author_id": "1612",
+      "name": "Jeffery Deaver",
+      "match": "Jeffery Deaver"
+    },
+    {
+      "author_id": "4820",
+      "name": "Jeffrey Archer",
+      "match": "Jeffrey Archer"
+    },
+    {
+      "author_id": "4476934",
+      "name": "Jennifer L. Armentrout",
+      "match": "Jennifer L. Armentrout"
+    },
+    {
+      "author_id": "9212",
+      "name": "Jennifer Weiner",
+      "match": "Jennifer Weiner"
+    },
+    {
+      "author_id": "151371",
+      "name": "Jenny Han",
+      "match": "Jenny Han"
+    },
+    {
+      "author_id": "10746",
+      "name": "Jim Butcher",
+      "match": "Jim Butcher"
+    },
+    {
+      "author_id": "7128",
+      "name": "Jodi Picoult",
+      "match": "Jodi Picoult"
+    },
+    {
+      "author_id": "721",
+      "name": "John Grisham",
+      "match": "John Grisham"
+    },
+    {
+      "author_id": "8002",
+      "name": "John Grogan",
+      "match": "John Grogan"
+    },
+    {
+      "author_id": "5768",
+      "name": "John Jakes",
+      "match": "John Jakes"
+    },
+    {
+      "author_id": "4610",
+      "name": "John Sandford",
+      "match": "John Sandford"
+    },
+    {
+      "author_id": "4763",
+      "name": "John Scalzi",
+      "match": "John Scalzi"
+    },
+    {
+      "author_id": "281810",
+      "name": "Jojo Moyes",
+      "match": "Jojo Moyes"
+    },
+    {
+      "author_id": "43626",
+      "name": "Jonathan Kellerman",
+      "match": "Jonathan Kellerman"
+    },
+    {
+      "author_id": "48206",
+      "name": "Karen Marie Moning",
+      "match": "Karen Marie Moning"
+    },
+    {
+      "author_id": "12504",
+      "name": "Karin Slaughter",
+      "match": "Karin Slaughter"
+    },
+    {
+      "author_id": "26372",
+      "name": "Kathy Reichs",
+      "match": "Kathy Reichs"
+    },
+    {
+      "author_id": "3447",
+      "name": "Ken Follett",
+      "match": "Ken Follett"
+    },
+    {
+      "author_id": "298438",
+      "name": "Kerstin Gier",
+      "match": "Kerstin Gier"
+    },
+    {
+      "author_id": "4845",
+      "name": "Kevin J. Anderson",
+      "match": "Kevin J. Anderson"
+    },
+    {
+      "author_id": "17054",
+      "name": "Kim Harrison",
+      "match": "Kim Harrison"
+    },
+    {
+      "author_id": "1373880",
+      "name": "Kristin Cashore",
+      "match": "Kristin Cashore"
+    },
+    {
+      "author_id": "54493",
+      "name": "Kristin Hannah",
+      "match": "Kristin Hannah"
+    },
+    {
+      "author_id": "33503",
+      "name": "L. Ron Hubbard",
+      "match": "L. Ron Hubbard"
+    },
+    {
+      "author_id": "7152490",
+      "name": "Laura Thalassa",
+      "match": "Laura Thalassa"
+    },
+    {
+      "author_id": "9550",
+      "name": "Laurell K. Hamilton",
+      "match": "Laurell K. Hamilton"
+    },
+    {
+      "author_id": "3490",
+      "name": "Lauren Weisberger",
+      "match": "Lauren Weisberger"
+    },
+    {
+      "author_id": "5091",
+      "name": "Lee Child",
+      "match": "Lee Child"
+    },
+    {
+      "author_id": "4575289",
+      "name": "Leigh Bardugo",
+      "match": "Leigh Bardugo"
+    },
+    {
+      "author_id": "322069",
+      "name": "Liane Moriarty",
+      "match": "Liane Moriarty"
+    },
+    {
+      "author_id": "21625",
+      "name": "Lilian Jackson Braun",
+      "match": "Lilian Jackson Braun"
+    },
+    {
+      "author_id": "858",
+      "name": "Louis L'Amour",
+      "match": "Louis L'Amour"
+    },
+    {
+      "author_id": "3532",
+      "name": "Maeve Binchy",
+      "match": "Maeve Binchy"
+    },
+    {
+      "author_id": "445303",
+      "name": "Maria V. Snyder",
+      "match": "Maria V. Snyder"
+    },
+    {
+      "author_id": "4684322",
+      "name": "Marissa Meyer",
+      "match": "Marissa Meyer"
+    },
+    {
+      "author_id": "99044",
+      "name": "Mary Higgins Clark",
+      "match": "Mary Higgins Clark"
+    },
+    {
+      "author_id": "999015",
+      "name": "Matt Dinniman",
+      "match": "Matt Dinniman"
+    },
+    {
+      "author_id": "12470",
+      "name": "Michael Connelly",
+      "match": "Michael Connelly"
+    },
+    {
+      "author_id": "2331",
+      "name": "Mitch Albom",
+      "match": "Mitch Albom"
+    },
+    {
+      "author_id": "71688",
+      "name": "Nalini Singh",
+      "match": "Nalini Singh"
+    },
+    {
+      "author_id": "26306",
+      "name": "Natsuki Takaya",
+      "match": "Natsuki Takaya"
+    },
+    {
+      "author_id": "1238",
+      "name": "Nelson DeMille",
+      "match": "Nelson DeMille"
+    },
+    {
+      "author_id": "6098",
+      "name": "Nicholas Evans",
+      "match": "Nicholas Evans"
+    },
+    {
+      "author_id": "2345",
+      "name": "Nicholas Sparks",
+      "match": "Nicholas Sparks"
+    },
+    {
+      "author_id": "7353006",
+      "name": "Nicola Yoon",
+      "match": "Nicola Yoon"
+    },
+    {
+      "author_id": "625",
+      "name": "Nora Roberts",
+      "match": "Nora Roberts"
+    },
+    {
+      "author_id": "40563",
+      "name": "Patricia Briggs",
+      "match": "Patricia Briggs"
+    },
+    {
+      "author_id": "1025097",
+      "name": "Patricia Cornwell",
+      "match": "Patricia Cornwell"
+    },
+    {
+      "author_id": "1063732",
+      "name": "Paula Hawkins",
+      "match": "Paula Hawkins"
+    },
+    {
+      "author_id": "1405152",
+      "name": "Peter V. Brett",
+      "match": "Peter V. Brett"
+    },
+    {
+      "author_id": "8516",
+      "name": "Piers Anthony",
+      "match": "Piers Anthony"
+    },
+    {
+      "author_id": "16549356",
+      "name": "Pirateaba",
+      "match": "Pirateaba"
+    },
+    {
+      "author_id": "3380908",
+      "name": "Pittacus Lore",
+      "match": "Pittacus Lore"
+    },
+    {
+      "author_id": "1023510",
+      "name": "R.A. Salvatore",
+      "match": "R.A. Salvatore"
+    },
+    {
+      "author_id": "15292",
+      "name": "Rachel Caine",
+      "match": "Rachel Caine"
+    },
+    {
+      "author_id": "4208569",
+      "name": "Rainbow Rowell",
+      "match": "Rainbow Rowell"
+    },
+    {
+      "author_id": "7539785",
+      "name": "Rebecca Yarros",
+      "match": "Rebecca Yarros"
+    },
+    {
+      "author_id": "29655",
+      "name": "Rhonda Byrne",
+      "match": "Rhonda Byrne"
+    },
+    {
+      "author_id": "3377941",
+      "name": "Rick Yancey",
+      "match": "Rick Yancey"
+    },
+    {
+      "author_id": "397",
+      "name": "Robert B. Parker",
+      "match": "Robert B. Parker"
+    },
+    {
+      "author_id": "28024",
+      "name": "Robert James Waller",
+      "match": "Robert James Waller"
+    },
+    {
+      "author_id": "6252",
+      "name": "Robert Jordan",
+      "match": "Robert Jordan"
+    },
+    {
+      "author_id": "5293",
+      "name": "Robert Ludlum",
+      "match": "Robert Ludlum"
+    },
+    {
+      "author_id": "19697",
+      "name": "Robin Cook",
+      "match": "Robin Cook"
+    },
+    {
+      "author_id": "20849",
+      "name": "Rosamunde Pilcher",
+      "match": "Rosamunde Pilcher"
+    },
+    {
+      "author_id": "7770873",
+      "name": "Sabaa Tahir",
+      "match": "Sabaa Tahir"
+    },
+    {
+      "author_id": "3433047",
+      "name": "Sarah J. Maas",
+      "match": "Sarah J. Maas"
+    },
+    {
+      "author_id": "2749",
+      "name": "Scott Turow",
+      "match": "Scott Turow"
+    },
+    {
+      "author_id": "4430",
+      "name": "Sherrilyn Kenyon",
+      "match": "Sherrilyn Kenyon"
+    },
+    {
+      "author_id": "9068",
+      "name": "Sidney Sheldon",
+      "match": "Sidney Sheldon"
+    },
+    {
+      "author_id": "6160",
+      "name": "Sophie Kinsella",
+      "match": "Sophie Kinsella"
+    },
+    {
+      "author_id": "3095893",
+      "name": "Stephanie Perkins",
+      "match": "Stephanie Perkins"
+    },
+    {
+      "author_id": "3621",
+      "name": "Steve Berry",
+      "match": "Steve Berry"
+    },
+    {
+      "author_id": "9559",
+      "name": "Sue Grafton",
+      "match": "Sue Grafton"
+    },
+    {
+      "author_id": "4711",
+      "name": "Sue Monk Kidd",
+      "match": "Sue Monk Kidd"
+    },
+    {
+      "author_id": "4890182",
+      "name": "Susan Ee",
+      "match": "Susan Ee"
+    },
+    {
+      "author_id": "19823",
+      "name": "Sylvia Day",
+      "match": "Sylvia Day"
+    },
+    {
+      "author_id": "4637539",
+      "name": "Tahereh Mafi",
+      "match": "Tahereh Mafi"
+    },
+    {
+      "author_id": "6572605",
+      "name": "Taylor Jenkins Reid",
+      "match": "Taylor Jenkins Reid"
+    },
+    {
+      "author_id": "9629",
+      "name": "Terry Brooks",
+      "match": "Terry Brooks"
+    },
+    {
+      "author_id": "3441",
+      "name": "Terry Goodkind",
+      "match": "Terry Goodkind"
+    },
+    {
+      "author_id": "20704",
+      "name": "Terry McMillan",
+      "match": "Terry McMillan"
+    },
+    {
+      "author_id": "7625163",
+      "name": "Tim LaHaye",
+      "match": "Tim LaHaye"
+    },
+    {
+      "author_id": "12479",
+      "name": "Timothy Zahn",
+      "match": "Timothy Zahn"
+    },
+    {
+      "author_id": "3446736",
+      "name": "Todd Burpo",
+      "match": "Todd Burpo"
+    },
+    {
+      "author_id": "3892",
+      "name": "Tom Clancy",
+      "match": "Tom Clancy"
+    },
+    {
+      "author_id": "7692645",
+      "name": "Travis Baldree",
+      "match": "Travis Baldree"
+    },
+    {
+      "author_id": "7168230",
+      "name": "V.E. Schwab",
+      "match": "V.E. Schwab"
+    },
+    {
+      "author_id": "7074943",
+      "name": "Victoria Aveyard",
+      "match": "Victoria Aveyard"
+    },
+    {
+      "author_id": "14989",
+      "name": "Vince Flynn",
+      "match": "Vince Flynn"
+    },
+    {
+      "author_id": "7125278",
+      "name": "Will Wight",
+      "match": "Will Wight"
+    }
+  ],
+  "neutral_titles": [
+    "1984",
+    "Animal Farm",
+    "Brave New World",
+    "Fahrenheit 451",
+    "The Catcher in the Rye",
+    "The Great Gatsby",
+    "To Kill a Mockingbird",
+    "Pride and Prejudice",
+    "Jane Eyre",
+    "Wuthering Heights",
+    "Lord of the Flies",
+    "Of Mice and Men",
+    "The Hobbit",
+    "The Little Prince",
+    "Frankenstein",
+    "Dracula",
+    "The Handmaid's Tale",
+    "The Alchemist",
+    "The Kite Runner",
+    "The Book Thief",
+    "Harry Potter and the Sorcerer's Stone",
+    "Harry Potter and the Philosopher's Stone",
+    "The Hunger Games",
+    "The Da Vinci Code",
+    "Slaughterhouse-Five",
+    "Catch-22",
+    "The Old Man and the Sea",
+    "A Christmas Carol",
+    "The Picture of Dorian Gray",
+    "Heart of Darkness",
+    "The Adventures of Huckleberry Finn",
+    "The Scarlet Letter",
+    "A Tale of Two Cities",
+    "Great Expectations",
+    "Charlotte's Web",
+    "The Giver",
+    "Hamlet",
+    "Macbeth",
+    "Romeo and Juliet",
+    "King Lear",
+    "Othello",
+    "Julius Caesar",
+    "A Midsummer Night's Dream",
+    "The Merchant of Venice",
+    "Twelfth Night",
+    "The Tempest",
+    "Much Ado About Nothing",
+    "As You Like It",
+    "Shakespeare's Sonnets",
+    "The Complete Works of William Shakespeare"
+  ],
+  "catalog_defaults": {
+    "exclude_collections": true,
+    "exclude_comics": true,
+    "exclude_picture_books": true,
+    "fiction_only": true,
+    "exclude_derivatives": true,
+    "collapse_duplicates": true,
+    "apply_format_weight": true
+  },
+  "notes": [
+    "Positive pack = literary poll authors (lit-2014-2024).",
+    "Negative pack = non_literary anti-signal authors.",
+    "Neutral titles = school/normie canon for share/purity gate only.",
+    "Defaults from PARETO_TASTE_SIGNALS_REPORT (dew_15 utopia knee)."
+  ]
+}

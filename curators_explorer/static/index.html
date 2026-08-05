@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curators Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,500;7..72,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">UCSD Goodreads · curators</p>
+      <h1>Curators Explorer</h1>
+      <p class="lede">
+        Rank books by how a taste-gated curator cohort rates them.
+        Positive / negative author packs + school-neutral purity; coverage fixed among-raters.
+      </p>
+      <p class="meta" id="data-meta">Starting…</p>
+    </header>
+
+    <div class="layout">
+      <aside class="controls" aria-label="Ranking controls">
+        <section>
+          <h2>Score</h2>
+          <label class="field">
+            <span>Metric</span>
+            <select id="metric"></select>
+          </label>
+          <p class="hint" id="metric-blurb"></p>
+          <label class="field">
+            <span>Scale mode</span>
+            <select id="scale-mode"></select>
+          </label>
+          <p class="hint" id="scale-blurb"></p>
+          <label class="field">
+            <span>Bayesian m</span>
+            <input type="number" id="bayesian-m" min="0" value="30" />
+          </label>
+        </section>
+
+        <section>
+          <h2>Curators</h2>
+          <label class="field slider-field">
+            <span>Deweight <em id="deweight-val">15</em></span>
+            <input type="range" id="deweight" min="0" max="100" step="1" value="15" />
+          </label>
+          <p class="hint">How hard stored curator scores pull (w^expo). 0 = equal votes among whoever is in the cohort — does not remove users. Prefer 15–25; avoid 40+ for mid-list anti-suppression.</p>
+          <label class="field slider-field">
+            <span>Purity <em id="purity-val">55</em></span>
+            <input type="range" id="purity" min="0" max="100" step="1" value="55" />
+          </label>
+          <p class="hint">Positive share vs school-neutral (+ soft anti-signal cap when &gt;0). 0 = off (no share/com gates). Continuous from 0 — does not jump onto mint floors.</p>
+          <label class="field">
+            <span>Min ratings (Kish n)</span>
+            <input type="number" id="min-votes" min="1" value="25" />
+          </label>
+          <label class="field">
+            <span>Limit</span>
+            <input type="number" id="limit" min="10" max="2000" value="200" />
+          </label>
+          <p class="taste-subhead">Presets</p>
+          <div class="presets" id="presets"></div>
+        </section>
+
+        <section>
+          <h2>Catalog</h2>
+          <label class="check"><input type="checkbox" id="sf-only" /> SF only</label>
+          <label class="check"><input type="checkbox" id="fiction-only" checked /> Fiction only</label>
+          <label class="check"><input type="checkbox" id="exclude-comics" checked /> Exclude comics</label>
+          <label class="check"><input type="checkbox" id="exclude-picture" checked /> Exclude picture books</label>
+          <label class="check"><input type="checkbox" id="exclude-derivatives" checked /> Exclude derivatives</label>
+          <label class="check"><input type="checkbox" id="exclude-collections" checked /> Exclude collections</label>
+          <label class="check"><input type="checkbox" id="collapse-duplicates" checked /> Collapse duplicates</label>
+          <label class="check"><input type="checkbox" id="format-weight" checked /> Soft format weight</label>
+        </section>
+
+        <section>
+          <h2>Taste packs</h2>
+          <p class="hint" id="pack-meta">Loading packs…</p>
+          <div class="actions" style="display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.45rem">
+            <button type="button" id="pack-reset">Reset packs</button>
+            <button type="button" id="pack-toggle">Edit packs</button>
+          </div>
+          <div class="pack-panel" id="pack-editor" hidden>
+            <p class="taste-subhead">Positive authors <em id="pos-count"></em></p>
+            <div class="pack-list" id="pos-list"></div>
+            <label class="field">
+              <span>Add positive</span>
+              <input type="search" id="pos-search" placeholder="Author name…" autocomplete="off" />
+            </label>
+            <div class="author-suggest" id="pos-suggest" hidden></div>
+
+            <p class="taste-subhead">Negative authors <em id="neg-count"></em></p>
+            <div class="pack-list" id="neg-list"></div>
+            <label class="field">
+              <span>Add negative</span>
+              <input type="search" id="neg-search" placeholder="Author name…" autocomplete="off" />
+            </label>
+            <div class="author-suggest" id="neg-suggest" hidden></div>
+
+            <p class="taste-subhead">Neutral titles (share gate only) <em id="neu-count"></em></p>
+            <div class="pack-list" id="neu-list"></div>
+            <label class="field">
+              <span>Add neutral title</span>
+              <input type="text" id="neu-add" placeholder="Exact title…" />
+            </label>
+            <button type="button" id="neu-add-btn" class="ghost">Add title</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>Search</h2>
+          <label class="field">
+            <span>Title / author</span>
+            <input type="search" id="q" placeholder="Optional filter…" />
+          </label>
+          <div class="actions">
+            <button type="button" class="primary" id="recompute">Recompute</button>
+          </div>
+        </section>
+      </aside>
+
+      <main>
+        <div class="results-toolbar">
+          <div class="stats" id="stats"></div>
+          <button type="button" class="ghost" id="copy-list">Copy list</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>n</th>
+                <th>Mean</th>
+                <th>Top%</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer-inner">
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+      <h2 id="drawer-title"></h2>
+      <p class="sub" id="drawer-sub"></p>
+      <div class="dual-hist" id="drawer-hists"></div>
+      <p class="hint" id="drawer-note"></p>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
