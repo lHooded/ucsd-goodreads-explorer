@@ -20,7 +20,7 @@ Goodreads edition ID. See `build_brightdata_metadata.py` and
   parsed genres, BrightData/UCSD date diagnostics, chosen date, and provenance.
 - 1,255,255/1,521,963 UCSD works match exactly. Combined work-year coverage rises from 1,181,918
   to 1,423,253. The chosen year is the earlier of modal BrightData `first_published` and minimum
-  valid UCSD edition year; BrightData improves 186,102 works. Candidate coverage is 26,403/26,418.
+  valid UCSD edition year; BrightData improves 186,097 works. Candidate coverage is 26,403/26,418.
 - Known repairs include *Moby-Dick* 1851 (was catalog-min 1923), *Ulysses* 1922 (1934),
   *Brothers Karamazov* 1880 (1912), and *One Hundred Years of Solitude* 1967 (1969).
 
