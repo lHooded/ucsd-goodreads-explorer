@@ -709,6 +709,35 @@ Reuse patterns from:
 | Older Pareto / rebuild notes (purity defaults) | `ucsd_explorer/data/SIMPLIFIED_REBUILD_REPORT.md`, `PARETO_TASTE_SIGNALS_REPORT.md` |
 | Parked idea | `TODO` — trajectory-limit analysis after scoring formula settles |
 
+## Seedless ratings-only center search (2026-08-06)
+
+The renewed strict `(user_id, work_id, rating)` search is complete. See
+`SEEDLESS_CANON_SYNTHESIS.md` for the consolidated result and exact artifact map.
+
+The pass added a nuisance-projected signed spectral census, evidence-floor and
+disjoint-reader subspace trajectories, rotation-invariant bridge readers, nonlinear
+random-start jury attractors, equal-basin centers, and full-incidence cultural
+nestedness contributions. The numerical/structural signals are real and often highly
+stable, but they identify local canons, series/genre ecosystems, or a Goodreads-wide
+love center—not a unique global literary hierarchy. In particular:
+
+- leading-8 half-sample subspace agreement improves from 0.105 at `n>=100` to 0.718
+  at `n>=500` and 0.857 at `n>=2000`;
+- nonlinear paths genuinely contract (mean step correlation 0.939 -> 0.9994), but
+  retain multiple basins;
+- equal-basin center top-200 overlap is about 0.67–0.72 under seed/nonlinearity
+  changes, but its head is Sanderson/Calvin and Hobbes/Harry Potter/social nonfiction;
+- the faithful 120,000-user full-collection nestedness score is extremely stable
+  across anchor panels (Spearman 0.971–0.980) but selects romance/urban fantasy and
+  has zero exact or broad literary overlap through rank 500.
+
+Do not rerun extraction for rank/power changes: the keyed local sparse caches are
+reusable. Do not commit the `seedless_*_matrix*.npz` files. The next defensible
+ratings-adjacent experiment, if desired, is a seedless durability criterion across
+timestamp/account cohorts. Another clusterer or exact in-block nestedness optimizer
+is expected to refine local canons without solving the literary identifiability
+problem.
+
 ### Run pattern
 
 ```bash

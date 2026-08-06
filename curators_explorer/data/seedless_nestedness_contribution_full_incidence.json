@@ -1,0 +1,5070 @@
+{
+  "method": {
+    "purpose": "seedless approximate item nestedness contribution",
+    "allowed_discovery_columns": [
+      "user_id",
+      "work_id",
+      "rating"
+    ],
+    "semantic_data_loaded_after_scores_frozen": true,
+    "panels": 4,
+    "anchors_per_panel": 512,
+    "configuration_constant": 2.400714794971296e-05,
+    "complete_user_collections": true,
+    "runtime_seconds": 14.17715072631836
+  },
+  "matrix": {
+    "sampled_edges": 11618456,
+    "source": "seedless_nestedness_full_incidence_matrix.npz",
+    "shape": [
+      120000,
+      26418
+    ]
+  },
+  "panel_stability": [
+    {
+      "jaccard50": 0.8181818181818182,
+      "jaccard100": 0.8018018018018018,
+      "jaccard200": 0.7543859649122807,
+      "jaccard500": 0.7889087656529516,
+      "spearman": 0.9709191393982737
+    },
+    {
+      "jaccard50": 0.6666666666666666,
+      "jaccard100": 0.6,
+      "jaccard200": 0.7021276595744681,
+      "jaccard500": 0.7574692442882249,
+      "spearman": 0.9723596675753462
+    },
+    {
+      "jaccard50": 0.7543859649122807,
+      "jaccard100": 0.5748031496062992,
+      "jaccard200": 0.6736401673640168,
+      "jaccard500": 0.7271157167530224,
+      "spearman": 0.9786947962818413
+    },
+    {
+      "jaccard50": 0.7543859649122807,
+      "jaccard100": 0.7241379310344828,
+      "jaccard200": 0.762114537444934,
+      "jaccard500": 0.7699115044247787,
+      "spearman": 0.9800119671297276
+    }
+  ],
+  "metrics": {
+    "exact_lit50": 0,
+    "exact_lit200": 0,
+    "exact_lit500": 0,
+    "broad_lit50": 0,
+    "broad_lit200": 0,
+    "broad_lit500": 0,
+    "anti50": 24,
+    "anti200": 79,
+    "anti500": 175,
+    "filler50": 0,
+    "filler200": 0,
+    "filler500": 0
+  },
+  "books": [
+    {
+      "rank": 1,
+      "work_id": "25216800",
+      "title": "Lick (Stage Dive, #1)",
+      "author": "Kylie Scott",
+      "score": 0.039020661561017085,
+      "uncertainty": 0.0020743841696323918,
+      "positive_share": 0.30767238402210195,
+      "sampled_degree": 1544
+    },
+    {
+      "rank": 2,
+      "work_id": "16313158",
+      "title": "Playing for Keeps (Neighbor from Hell, #1)",
+      "author": "R.L. Mathewson",
+      "score": 0.035961459534390686,
+      "uncertainty": 0.002811327547991547,
+      "positive_share": 0.2843712827596792,
+      "sampled_degree": 1773
+    },
+    {
+      "rank": 3,
+      "work_id": "69530",
+      "title": "Moon Called (Mercy Thompson, #1)",
+      "author": "Patricia Briggs",
+      "score": 0.034604548757792966,
+      "uncertainty": 0.00406086158797755,
+      "positive_share": 0.4522725528567591,
+      "sampled_degree": 3106
+    },
+    {
+      "rank": 4,
+      "work_id": "38381",
+      "title": "Magic Bites (Kate Daniels, #1)",
+      "author": "Ilona Andrews",
+      "score": 0.03444496185923378,
+      "uncertainty": 0.0030896563902180424,
+      "positive_share": 0.4784831366193738,
+      "sampled_degree": 2018
+    },
+    {
+      "rank": 5,
+      "work_id": "24581234",
+      "title": "Real (Real, #1)",
+      "author": "Katy Evans",
+      "score": 0.03354003325409086,
+      "uncertainty": 0.0025304939546088104,
+      "positive_share": 0.2783757338551859,
+      "sampled_degree": 1775
+    },
+    {
+      "rank": 6,
+      "work_id": "17276473",
+      "title": "Mystery Man (Dream Man, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.033350998684161096,
+      "uncertainty": 0.002521202085781048,
+      "positive_share": 0.30363761943133416,
+      "sampled_degree": 1212
+    },
+    {
+      "rank": 7,
+      "work_id": "21607771",
+      "title": "Wallbanger (Cocktail, #1)",
+      "author": "Alice Clayton",
+      "score": 0.03320758195963808,
+      "uncertainty": 0.0029588108121042333,
+      "positive_share": 0.2910958904109589,
+      "sampled_degree": 2862
+    },
+    {
+      "rank": 8,
+      "work_id": "2577848",
+      "title": "Blood Bound (Mercy Thompson, #2)",
+      "author": "Patricia Briggs",
+      "score": 0.033045181329810554,
+      "uncertainty": 0.003686594264948037,
+      "positive_share": 0.45772112408747745,
+      "sampled_degree": 2331
+    },
+    {
+      "rank": 9,
+      "work_id": "13662358",
+      "title": "First Grave on the Right (Charley Davidson, #1)",
+      "author": "Darynda Jones",
+      "score": 0.03271133943517316,
+      "uncertainty": 0.0028188203840242773,
+      "positive_share": 0.4902152641878669,
+      "sampled_degree": 1588
+    },
+    {
+      "rank": 10,
+      "work_id": "21459719",
+      "title": "On Dublin Street (On Dublin Street, #1)",
+      "author": "Samantha Young",
+      "score": 0.032170523464314725,
+      "uncertainty": 0.00300237678903038,
+      "positive_share": 0.29487368952289816,
+      "sampled_degree": 2570
+    },
+    {
+      "rank": 11,
+      "work_id": "1178926",
+      "title": "Iron Kissed (Mercy Thompson, #3)",
+      "author": "Patricia Briggs",
+      "score": 0.031698108441266366,
+      "uncertainty": 0.003615842889063786,
+      "positive_share": 0.44427478290117417,
+      "sampled_degree": 2232
+    },
+    {
+      "rank": 12,
+      "work_id": "6527865",
+      "title": "Silver Borne (Mercy Thompson, #5)",
+      "author": "Patricia Briggs",
+      "score": 0.031658789580726945,
+      "uncertainty": 0.003405097702182196,
+      "positive_share": 0.4510675974156786,
+      "sampled_degree": 1930
+    },
+    {
+      "rank": 13,
+      "work_id": "2362332",
+      "title": "Cry Wolf (Alpha & Omega, #1)",
+      "author": "Patricia Briggs",
+      "score": 0.03148148182306769,
+      "uncertainty": 0.0034421024290316204,
+      "positive_share": 0.45520797360039905,
+      "sampled_degree": 1770
+    },
+    {
+      "rank": 14,
+      "work_id": "1810889",
+      "title": "Magic Burns (Kate Daniels, #2)",
+      "author": "Ilona Andrews",
+      "score": 0.03117937688588076,
+      "uncertainty": 0.002339114509207227,
+      "positive_share": 0.4752897049230651,
+      "sampled_degree": 1498
+    },
+    {
+      "rank": 15,
+      "work_id": "23675925",
+      "title": "Rule (Marked Men, #1)",
+      "author": "Jay Crownover",
+      "score": 0.031160654960321964,
+      "uncertainty": 0.002271641439591428,
+      "positive_share": 0.28823529411764703,
+      "sampled_degree": 1747
+    },
+    {
+      "rank": 16,
+      "work_id": "10974973",
+      "title": "River Marked (Mercy Thompson, #6)",
+      "author": "Patricia Briggs",
+      "score": 0.0310124923362722,
+      "uncertainty": 0.003113994046107619,
+      "positive_share": 0.4691493110514754,
+      "sampled_degree": 1634
+    },
+    {
+      "rank": 17,
+      "work_id": "3159812",
+      "title": "Bone Crossed (Mercy Thompson, #4)",
+      "author": "Patricia Briggs",
+      "score": 0.030956154796410076,
+      "uncertainty": 0.0034909755875561594,
+      "positive_share": 0.4477023070572407,
+      "sampled_degree": 2024
+    },
+    {
+      "rank": 18,
+      "work_id": "19143978",
+      "title": "Knight (Unfinished Hero, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.03080383644598743,
+      "uncertainty": 0.002186815891279986,
+      "positive_share": 0.3068915237327807,
+      "sampled_degree": 1036
+    },
+    {
+      "rank": 19,
+      "work_id": "6569140",
+      "title": "Soulless (Parasol Protectorate, #1)",
+      "author": "Gail Carriger",
+      "score": 0.03076483351593276,
+      "uncertainty": 0.001143109918026541,
+      "positive_share": 0.5770184839774951,
+      "sampled_degree": 2190
+    },
+    {
+      "rank": 20,
+      "work_id": "6730978",
+      "title": "Rock Chick (Rock Chick, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.030689231416968554,
+      "uncertainty": 0.0022769345246463446,
+      "positive_share": 0.31194121484210124,
+      "sampled_degree": 1064
+    },
+    {
+      "rank": 21,
+      "work_id": "18968802",
+      "title": "Motorcycle Man (Dream Man, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.030602835054578406,
+      "uncertainty": 0.0023669520965026117,
+      "positive_share": 0.30392156862745096,
+      "sampled_degree": 1020
+    },
+    {
+      "rank": 22,
+      "work_id": "25758268",
+      "title": "Play (Stage Dive, #2)",
+      "author": "Kylie Scott",
+      "score": 0.030592703551403786,
+      "uncertainty": 0.0017966877983352277,
+      "positive_share": 0.31423487203100414,
+      "sampled_degree": 1061
+    },
+    {
+      "rank": 23,
+      "work_id": "1412415",
+      "title": "Halfway to the Grave (Night Huntress, #1)",
+      "author": "Jeaniene Frost",
+      "score": 0.030576419418087277,
+      "uncertainty": 0.004025689325067949,
+      "positive_share": 0.38219904293052837,
+      "sampled_degree": 2712
+    },
+    {
+      "rank": 24,
+      "work_id": "4393420",
+      "title": "Magic Strikes (Kate Daniels, #3)",
+      "author": "Ilona Andrews",
+      "score": 0.03039867471533986,
+      "uncertainty": 0.002199732518759157,
+      "positive_share": 0.4645197805149457,
+      "sampled_degree": 1473
+    },
+    {
+      "rank": 25,
+      "work_id": "6670775",
+      "title": "Magic Bleeds (Kate Daniels, #4)",
+      "author": "Ilona Andrews",
+      "score": 0.03026559809727193,
+      "uncertainty": 0.0026190761094218714,
+      "positive_share": 0.4611180971746575,
+      "sampled_degree": 1446
+    },
+    {
+      "rank": 26,
+      "work_id": "23743714",
+      "title": "Reaper's Property (Reapers MC, #1)",
+      "author": "Joanna Wylde",
+      "score": 0.0292247320920423,
+      "uncertainty": 0.002480737004856936,
+      "positive_share": 0.28584954529757106,
+      "sampled_degree": 1062
+    },
+    {
+      "rank": 27,
+      "work_id": "21863888",
+      "title": "Come Away with Me (With Me in Seattle, #1)",
+      "author": "Kristen Proby",
+      "score": 0.029216810200539567,
+      "uncertainty": 0.0015024650572338137,
+      "positive_share": 0.27765243083534785,
+      "sampled_degree": 1043
+    },
+    {
+      "rank": 28,
+      "work_id": "21912533",
+      "title": "Beautiful Bastard (Beautiful Bastard, #1)",
+      "author": "Christina Lauren",
+      "score": 0.029025955492978733,
+      "uncertainty": 0.002596525426818174,
+      "positive_share": 0.2939239870819903,
+      "sampled_degree": 2328
+    },
+    {
+      "rank": 29,
+      "work_id": "13427398",
+      "title": "Magic Slays (Kate Daniels, #5)",
+      "author": "Ilona Andrews",
+      "score": 0.02884612352171243,
+      "uncertainty": 0.0024480651255646265,
+      "positive_share": 0.45742676137235716,
+      "sampled_degree": 1298
+    },
+    {
+      "rank": 30,
+      "work_id": "22006731",
+      "title": "Own the Wind (Chaos, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.028827722910065048,
+      "uncertainty": 0.002081776048013572,
+      "positive_share": 0.2958675218613968,
+      "sampled_degree": 905
+    },
+    {
+      "rank": 31,
+      "work_id": "25313644",
+      "title": "Axel (Corps Security, #1)",
+      "author": "Harper Sloan",
+      "score": 0.02881482135218397,
+      "uncertainty": 0.0017237172474869294,
+      "positive_share": 0.2832437690203783,
+      "sampled_degree": 802
+    },
+    {
+      "rank": 32,
+      "work_id": "16152936",
+      "title": "The Gamble (Colorado Mountain, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.028368026231014334,
+      "uncertainty": 0.0020124831338262793,
+      "positive_share": 0.3176470588235294,
+      "sampled_degree": 989
+    },
+    {
+      "rank": 33,
+      "work_id": "5360280",
+      "title": "Hunting Ground (Alpha & Omega, #2)",
+      "author": "Patricia Briggs",
+      "score": 0.0282385875824996,
+      "uncertainty": 0.0028773662379809393,
+      "positive_share": 0.46403438087563786,
+      "sampled_degree": 1253
+    },
+    {
+      "rank": 34,
+      "work_id": "15955708",
+      "title": "Frost Burned (Mercy Thompson, #7)",
+      "author": "Patricia Briggs",
+      "score": 0.02818527133304297,
+      "uncertainty": 0.002370164814135777,
+      "positive_share": 0.49657054602662987,
+      "sampled_degree": 1255
+    },
+    {
+      "rank": 35,
+      "work_id": "18682640",
+      "title": "Law Man (Dream Man, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.028116089148864654,
+      "uncertainty": 0.0025099543498471747,
+      "positive_share": 0.3186155456342453,
+      "sampled_degree": 853
+    },
+    {
+      "rank": 36,
+      "work_id": "3863622",
+      "title": "Angels' Blood (Guild Hunter, #1)",
+      "author": "Nalini Singh",
+      "score": 0.02791233651090072,
+      "uncertainty": 0.002608708709255788,
+      "positive_share": 0.3940380261693719,
+      "sampled_degree": 1497
+    },
+    {
+      "rank": 37,
+      "work_id": "172416",
+      "title": "Slave to Sensation (Psy-Changeling #1)",
+      "author": "Nalini Singh",
+      "score": 0.02788024287385574,
+      "uncertainty": 0.0025398712987433547,
+      "positive_share": 0.38489889106327463,
+      "sampled_degree": 1308
+    },
+    {
+      "rank": 38,
+      "work_id": "295059",
+      "title": "Lover Unbound (Black Dagger Brotherhood, #5)",
+      "author": "J.R. Ward",
+      "score": 0.02749574203361225,
+      "uncertainty": 0.003693172280159378,
+      "positive_share": 0.3271484375,
+      "sampled_degree": 2627
+    },
+    {
+      "rank": 39,
+      "work_id": "17912072",
+      "title": "Perfection (Neighbor from Hell, #2)",
+      "author": "R.L. Mathewson",
+      "score": 0.027411006306021776,
+      "uncertainty": 0.002135529818066536,
+      "positive_share": 0.2955129574304037,
+      "sampled_degree": 1123
+    },
+    {
+      "rank": 40,
+      "work_id": "1214837",
+      "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+      "author": "J.R. Ward",
+      "score": 0.027346109702808284,
+      "uncertainty": 0.0042717336901072645,
+      "positive_share": 0.3141215524094912,
+      "sampled_degree": 3224
+    },
+    {
+      "rank": 41,
+      "work_id": "25420107",
+      "title": "Bully (Fall Away, #1)",
+      "author": "Penelope Douglas",
+      "score": 0.027264003808983694,
+      "uncertainty": 0.002229553090372615,
+      "positive_share": 0.29119534907284833,
+      "sampled_degree": 1643
+    },
+    {
+      "rank": 42,
+      "work_id": "21868234",
+      "title": "Tangled (Tangled, #1)",
+      "author": "Emma Chase",
+      "score": 0.02716965055592091,
+      "uncertainty": 0.0023790263083745757,
+      "positive_share": 0.2931311919031311,
+      "sampled_degree": 1823
+    },
+    {
+      "rank": 43,
+      "work_id": "44100599",
+      "title": "The Deal (Off-Campus, #1)",
+      "author": "Elle Kennedy",
+      "score": 0.0271355497393828,
+      "uncertainty": 0.0027296948514048177,
+      "positive_share": 0.28669275929549903,
+      "sampled_degree": 1797
+    },
+    {
+      "rank": 44,
+      "work_id": "6515186",
+      "title": "On the Edge (The Edge, #1)",
+      "author": "Ilona Andrews",
+      "score": 0.027123537154707607,
+      "uncertainty": 0.0020319045372132164,
+      "positive_share": 0.4968045764474749,
+      "sampled_degree": 845
+    },
+    {
+      "rank": 45,
+      "work_id": "2958166",
+      "title": "Lover Revealed (Black Dagger Brotherhood, #4)",
+      "author": "J.R. Ward",
+      "score": 0.027040737859319174,
+      "uncertainty": 0.0037342174527950195,
+      "positive_share": 0.32453407840019566,
+      "sampled_degree": 2690
+    },
+    {
+      "rank": 46,
+      "work_id": "23981243",
+      "title": "Wait for You (Wait for You, #1)",
+      "author": "J. Lynn",
+      "score": 0.027036111557185875,
+      "uncertainty": 0.0022907538354865237,
+      "positive_share": 0.29175012470741724,
+      "sampled_degree": 2351
+    },
+    {
+      "rank": 47,
+      "work_id": "24495112",
+      "title": "Night Broken (Mercy Thompson, #8)",
+      "author": "Patricia Briggs",
+      "score": 0.027033714042091598,
+      "uncertainty": 0.002101670246704993,
+      "positive_share": 0.5161563255439162,
+      "sampled_degree": 1028
+    },
+    {
+      "rank": 48,
+      "work_id": "18034302",
+      "title": "Wild Man (Dream Man, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.027008566282148122,
+      "uncertainty": 0.0020325882782749093,
+      "positive_share": 0.3189221464617281,
+      "sampled_degree": 810
+    },
+    {
+      "rank": 49,
+      "work_id": "2174436",
+      "title": "One Foot in the Grave (Night Huntress, #2)",
+      "author": "Jeaniene Frost",
+      "score": 0.026923970145845702,
+      "uncertainty": 0.003549285887475458,
+      "positive_share": 0.38220095401174164,
+      "sampled_degree": 2015
+    },
+    {
+      "rank": 50,
+      "work_id": "16484134",
+      "title": "Magic Rises (Kate Daniels, #6)",
+      "author": "Ilona Andrews",
+      "score": 0.02683629818885735,
+      "uncertainty": 0.0020116861104291597,
+      "positive_share": 0.492156862745098,
+      "sampled_degree": 971
+    },
+    {
+      "rank": 51,
+      "work_id": "1593685",
+      "title": "Lover Eternal (Black Dagger Brotherhood, #2)",
+      "author": "J.R. Ward",
+      "score": 0.026781430887154477,
+      "uncertainty": 0.004321304201103139,
+      "positive_share": 0.31866514799412915,
+      "sampled_degree": 3297
+    },
+    {
+      "rank": 52,
+      "work_id": "16422",
+      "title": "A Hunger Like No Other (Immortals After Dark #2)",
+      "author": "Kresley Cole",
+      "score": 0.026700911267871417,
+      "uncertainty": 0.00233235758178919,
+      "positive_share": 0.3573299182686773,
+      "sampled_degree": 1474
+    },
+    {
+      "rank": 53,
+      "work_id": "26116272",
+      "title": "Lead (Stage Dive, #3)",
+      "author": "Kylie Scott",
+      "score": 0.02660232306862072,
+      "uncertainty": 0.001645296911860583,
+      "positive_share": 0.3183144574136138,
+      "sampled_degree": 866
+    },
+    {
+      "rank": 54,
+      "work_id": "30640",
+      "title": "Dead Witch Walking (The Hollows, #1)",
+      "author": "Kim Harrison",
+      "score": 0.026476422756640677,
+      "uncertainty": 0.0028963691503067763,
+      "positive_share": 0.4555291401663405,
+      "sampled_degree": 2261
+    },
+    {
+      "rank": 55,
+      "work_id": "4112814",
+      "title": "Night Pleasures (Dark-Hunter #1)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.026323660465907624,
+      "uncertainty": 0.0026036335960440498,
+      "positive_share": 0.39773115688912547,
+      "sampled_degree": 1659
+    },
+    {
+      "rank": 56,
+      "work_id": "25808543",
+      "title": "Until November (Until, #1)",
+      "author": "Aurora Rose Reynolds",
+      "score": 0.026236017256988858,
+      "uncertainty": 0.0019769115926253017,
+      "positive_share": 0.2717053815632343,
+      "sampled_degree": 844
+    },
+    {
+      "rank": 57,
+      "work_id": "42401641",
+      "title": "Stepbrother Dearest",
+      "author": "Penelope Ward",
+      "score": 0.02617674869197244,
+      "uncertainty": 0.001519548652067738,
+      "positive_share": 0.28137254901960784,
+      "sampled_degree": 1094
+    },
+    {
+      "rank": 58,
+      "work_id": "21400430",
+      "title": "The Mighty Storm (The Storm, #1)",
+      "author": "Samantha Towle",
+      "score": 0.026085920432472206,
+      "uncertainty": 0.0017217065510386391,
+      "positive_share": 0.26817815184851557,
+      "sampled_degree": 1236
+    },
+    {
+      "rank": 59,
+      "work_id": "1928049",
+      "title": "Lover Enshrined (Black Dagger Brotherhood, #6)",
+      "author": "J.R. Ward",
+      "score": 0.025798121363682626,
+      "uncertainty": 0.0034060375070386925,
+      "positive_share": 0.32649169256743793,
+      "sampled_degree": 2356
+    },
+    {
+      "rank": 60,
+      "work_id": "16152935",
+      "title": "Sweet Dreams (Colorado Mountain, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.025767519069983483,
+      "uncertainty": 0.0022200123133862162,
+      "positive_share": 0.31797353519010746,
+      "sampled_degree": 846
+    },
+    {
+      "rank": 61,
+      "work_id": "13235522",
+      "title": "Backstage Pass (Sinners on Tour, #1)",
+      "author": "Olivia Cunning",
+      "score": 0.0257289764366822,
+      "uncertainty": 0.002103885491918452,
+      "positive_share": 0.2991989946663597,
+      "sampled_degree": 1047
+    },
+    {
+      "rank": 62,
+      "work_id": "4495840",
+      "title": "Some Girls Bite (Chicagoland Vampires, #1)",
+      "author": "Chloe Neill",
+      "score": 0.025710185734503184,
+      "uncertainty": 0.0029020562298396686,
+      "positive_share": 0.4091947737999309,
+      "sampled_degree": 1350
+    },
+    {
+      "rank": 63,
+      "work_id": "208772",
+      "title": "Visions of Heat (Psy-Changeling #2)",
+      "author": "Nalini Singh",
+      "score": 0.025619398898380486,
+      "uncertainty": 0.0020989326167081216,
+      "positive_share": 0.42915173928117417,
+      "sampled_degree": 834
+    },
+    {
+      "rank": 64,
+      "work_id": "21882391",
+      "title": "Undeniable (Undeniable, #1)",
+      "author": "Madeline Sheehan",
+      "score": 0.02537905093776355,
+      "uncertainty": 0.0018737136274278522,
+      "positive_share": 0.27941176470588236,
+      "sampled_degree": 1015
+    },
+    {
+      "rank": 65,
+      "work_id": "6527880",
+      "title": "Fair Game (Alpha & Omega, #3)",
+      "author": "Patricia Briggs",
+      "score": 0.025069176948440405,
+      "uncertainty": 0.0021189873680968253,
+      "positive_share": 0.49582322123348355,
+      "sampled_degree": 926
+    },
+    {
+      "rank": 66,
+      "work_id": "26116275",
+      "title": "Deep (Stage Dive, #4)",
+      "author": "Kylie Scott",
+      "score": 0.02495528101274041,
+      "uncertainty": 0.001245267471069545,
+      "positive_share": 0.3521293193112216,
+      "sampled_degree": 728
+    },
+    {
+      "rank": 67,
+      "work_id": "23346114",
+      "title": "Never Too Far (Rosemary Beach, #2; Too Far, #2)",
+      "author": "Abbi Glines",
+      "score": 0.02465101201780795,
+      "uncertainty": 0.0025098497896983334,
+      "positive_share": 0.2663856103228963,
+      "sampled_degree": 2167
+    },
+    {
+      "rank": 68,
+      "work_id": "108558",
+      "title": "Darkfever (Fever, #1)",
+      "author": "Karen Marie Moning",
+      "score": 0.024552681358592343,
+      "uncertainty": 0.003237682551260705,
+      "positive_share": 0.3904109589041096,
+      "sampled_degree": 3017
+    },
+    {
+      "rank": 69,
+      "work_id": "14451765",
+      "title": "Second Grave on the Left (Charley Davidson, #2)",
+      "author": "Darynda Jones",
+      "score": 0.024547121945117368,
+      "uncertainty": 0.0023340396208620974,
+      "positive_share": 0.4681372549019608,
+      "sampled_degree": 1020
+    },
+    {
+      "rank": 70,
+      "work_id": "81269",
+      "title": "Night Embrace (Dark-Hunter #2)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02453248946413704,
+      "uncertainty": 0.0023898679438562904,
+      "positive_share": 0.398917923333717,
+      "sampled_degree": 1343
+    },
+    {
+      "rank": 71,
+      "work_id": "44707128",
+      "title": "The Mistake (Off-Campus, #2)",
+      "author": "Elle Kennedy",
+      "score": 0.02439195823053489,
+      "uncertainty": 0.001967891132612176,
+      "positive_share": 0.3024922297686198,
+      "sampled_degree": 1130
+    },
+    {
+      "rank": 72,
+      "work_id": "16371399",
+      "title": "Breathe (Sea Breeze, #1)",
+      "author": "Abbi Glines",
+      "score": 0.02432323037576008,
+      "uncertainty": 0.001952708880078517,
+      "positive_share": 0.2969912686821304,
+      "sampled_degree": 1572
+    },
+    {
+      "rank": 73,
+      "work_id": "7288100",
+      "title": "Once Burned (Night Prince, #1)",
+      "author": "Jeaniene Frost",
+      "score": 0.024274415565004783,
+      "uncertainty": 0.002557019231209341,
+      "positive_share": 0.38472525996700047,
+      "sampled_degree": 1179
+    },
+    {
+      "rank": 74,
+      "work_id": "17088822",
+      "title": "Magic Breaks (Kate Daniels, #7)",
+      "author": "Ilona Andrews",
+      "score": 0.0242292175857812,
+      "uncertainty": 0.0017982828687710035,
+      "positive_share": 0.5112802881466929,
+      "sampled_degree": 759
+    },
+    {
+      "rank": 75,
+      "work_id": "19254508",
+      "title": "Creed (Unfinished Hero, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.024222694692925175,
+      "uncertainty": 0.0017732578314856111,
+      "positive_share": 0.3081378327362379,
+      "sampled_degree": 682
+    },
+    {
+      "rank": 76,
+      "work_id": "3612435",
+      "title": "At Grave's End (Night Huntress, #3)",
+      "author": "Jeaniene Frost",
+      "score": 0.024115652774125765,
+      "uncertainty": 0.0032145067592167518,
+      "positive_share": 0.3780725989025747,
+      "sampled_degree": 1709
+    },
+    {
+      "rank": 77,
+      "work_id": "42102987",
+      "title": "The Hook Up (Game On, #1)",
+      "author": "Kristen Callihan",
+      "score": 0.02407784747629134,
+      "uncertainty": 0.0016675146787111348,
+      "positive_share": 0.31827786124272894,
+      "sampled_degree": 733
+    },
+    {
+      "rank": 78,
+      "work_id": "5164827",
+      "title": "Lover Avenged (Black Dagger Brotherhood, #7)",
+      "author": "J.R. Ward",
+      "score": 0.024076567067446916,
+      "uncertainty": 0.0033036462760956615,
+      "positive_share": 0.3278134937622309,
+      "sampled_degree": 2295
+    },
+    {
+      "rank": 79,
+      "work_id": "7165488",
+      "title": "Changeless (Parasol Protectorate, #2)",
+      "author": "Gail Carriger",
+      "score": 0.02400862814372575,
+      "uncertainty": 0.0007715401850361842,
+      "positive_share": 0.5932398986992058,
+      "sampled_degree": 1149
+    },
+    {
+      "rank": 80,
+      "work_id": "23852412",
+      "title": "Fire Inside (Chaos, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.023927276934160874,
+      "uncertainty": 0.0015142477418352927,
+      "positive_share": 0.32007011055895834,
+      "sampled_degree": 629
+    },
+    {
+      "rank": 81,
+      "work_id": "9315103",
+      "title": "Rock Chick Rescue (Rock Chick, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.023784430271562237,
+      "uncertainty": 0.0018748408223851292,
+      "positive_share": 0.3333333333333333,
+      "sampled_degree": 723
+    },
+    {
+      "rank": 82,
+      "work_id": "14524855",
+      "title": "Dragon Bound (Elder Races, #1)",
+      "author": "Thea Harrison",
+      "score": 0.023748362876245415,
+      "uncertainty": 0.0022663719174339948,
+      "positive_share": 0.3872549019607843,
+      "sampled_degree": 862
+    },
+    {
+      "rank": 83,
+      "work_id": "2158128",
+      "title": "Dark Lover (Black Dagger Brotherhood, #1)",
+      "author": "J.R. Ward",
+      "score": 0.02371151867758907,
+      "uncertainty": 0.005296679786004165,
+      "positive_share": 0.30824688875978473,
+      "sampled_degree": 4590
+    },
+    {
+      "rank": 84,
+      "work_id": "446535",
+      "title": "Caressed by Ice (Psy-Changeling #3)",
+      "author": "Nalini Singh",
+      "score": 0.023645423801242762,
+      "uncertainty": 0.001962981366815861,
+      "positive_share": 0.4128722215801841,
+      "sampled_degree": 791
+    },
+    {
+      "rank": 85,
+      "work_id": "2384",
+      "title": "Fantasy Lover (Dark-Hunterverse #1)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02364258512241038,
+      "uncertainty": 0.0028373512022771843,
+      "positive_share": 0.38362111968074897,
+      "sampled_degree": 1760
+    },
+    {
+      "rank": 86,
+      "work_id": "18115826",
+      "title": "Lady Luck (Colorado Mountain, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.02355771043172865,
+      "uncertainty": 0.0016928753427061772,
+      "positive_share": 0.32354154138443064,
+      "sampled_degree": 729
+    },
+    {
+      "rank": 87,
+      "work_id": "690332",
+      "title": "Kiss of Midnight (Midnight Breed,  #1)",
+      "author": "Lara Adrian",
+      "score": 0.023547906846126922,
+      "uncertainty": 0.002649714204961896,
+      "positive_share": 0.35130846859291665,
+      "sampled_degree": 1385
+    },
+    {
+      "rank": 88,
+      "work_id": "2606334",
+      "title": "Bitten (Women of the Otherworld, #1)",
+      "author": "Kelley Armstrong",
+      "score": 0.02351248621542515,
+      "uncertainty": 0.0026847187696634424,
+      "positive_share": 0.46769404144363225,
+      "sampled_degree": 1911
+    },
+    {
+      "rank": 89,
+      "work_id": "21864517",
+      "title": "Fallen Too Far (Rosemary Beach, #1; Too Far, #1)",
+      "author": "Abbi Glines",
+      "score": 0.023326563992762485,
+      "uncertainty": 0.002712280524005708,
+      "positive_share": 0.26782465447651665,
+      "sampled_degree": 2687
+    },
+    {
+      "rank": 90,
+      "work_id": "7370233",
+      "title": "Lover Mine (Black Dagger Brotherhood, #8)",
+      "author": "J.R. Ward",
+      "score": 0.02326109580610069,
+      "uncertainty": 0.0032824471439146007,
+      "positive_share": 0.3250319150562622,
+      "sampled_degree": 2149
+    },
+    {
+      "rank": 91,
+      "work_id": "6579113",
+      "title": "Archangel's Kiss (Guild Hunter, #2)",
+      "author": "Nalini Singh",
+      "score": 0.023240899488177525,
+      "uncertainty": 0.0023873300628228377,
+      "positive_share": 0.3864565276012173,
+      "sampled_degree": 1081
+    },
+    {
+      "rank": 92,
+      "work_id": "15899099",
+      "title": "Third Grave Dead Ahead (Charley Davidson, #3)",
+      "author": "Darynda Jones",
+      "score": 0.023216270988126057,
+      "uncertainty": 0.002090156904440847,
+      "positive_share": 0.48184637312685386,
+      "sampled_degree": 905
+    },
+    {
+      "rank": 93,
+      "work_id": "1830610",
+      "title": "Mine to Possess (Psy-Changeling #4)",
+      "author": "Nalini Singh",
+      "score": 0.023184620418389614,
+      "uncertainty": 0.0019379240840789991,
+      "positive_share": 0.432764166570361,
+      "sampled_degree": 681
+    },
+    {
+      "rank": 94,
+      "work_id": "21763760",
+      "title": "Down to You (The Bad Boys, #1)",
+      "author": "M. Leighton",
+      "score": 0.0231775151265668,
+      "uncertainty": 0.001541660134991852,
+      "positive_share": 0.28302492512466404,
+      "sampled_degree": 1172
+    },
+    {
+      "rank": 95,
+      "work_id": "1097497",
+      "title": "Naked in Death (In Death, #1)",
+      "author": "J.D. Robb",
+      "score": 0.023145646133691127,
+      "uncertainty": 0.0014436665978285392,
+      "positive_share": 0.4728137830474656,
+      "sampled_degree": 1758
+    },
+    {
+      "rank": 96,
+      "work_id": "24071049",
+      "title": "Forever Too Far (Rosemary Beach, #3; Too Far, #3)",
+      "author": "Abbi Glines",
+      "score": 0.023120884602356666,
+      "uncertainty": 0.0018146394531802334,
+      "positive_share": 0.26947833928091786,
+      "sampled_degree": 1523
+    },
+    {
+      "rank": 97,
+      "work_id": "44100912",
+      "title": "Pucked (Pucked, #1)",
+      "author": "Helena Hunting",
+      "score": 0.023096971727557467,
+      "uncertainty": 0.0014201732289387617,
+      "positive_share": 0.29964655803382256,
+      "sampled_degree": 684
+    },
+    {
+      "rank": 98,
+      "work_id": "19022487",
+      "title": "The Marriage Bargain (Marriage to a Billionaire, #1)",
+      "author": "Jennifer Probst",
+      "score": 0.02309019909462385,
+      "uncertainty": 0.0016175072583176013,
+      "positive_share": 0.29204622238450173,
+      "sampled_degree": 1626
+    },
+    {
+      "rank": 99,
+      "work_id": "12784133",
+      "title": "Lover Unleashed (Black Dagger Brotherhood, #9)",
+      "author": "J.R. Ward",
+      "score": 0.02308997706108438,
+      "uncertainty": 0.0028746046608395764,
+      "positive_share": 0.3333256590307356,
+      "sampled_degree": 1772
+    },
+    {
+      "rank": 100,
+      "work_id": "1232488",
+      "title": "Kitty and the Midnight Hour (Kitty Norville #1)",
+      "author": "Carrie Vaughn",
+      "score": 0.02297198254472562,
+      "uncertainty": 0.0021000647945623105,
+      "positive_share": 0.5527841981586347,
+      "sampled_degree": 776
+    },
+    {
+      "rank": 101,
+      "work_id": "21429192",
+      "title": "Breathe (Colorado Mountain, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.02296772947785584,
+      "uncertainty": 0.0015192760460778667,
+      "positive_share": 0.3182855656997573,
+      "sampled_degree": 711
+    },
+    {
+      "rank": 102,
+      "work_id": "6805023",
+      "title": "Spider's Bite (Elemental Assassin, #1)",
+      "author": "Jennifer Estep",
+      "score": 0.02292995857822478,
+      "uncertainty": 0.0020533101228649457,
+      "positive_share": 0.485769867868562,
+      "sampled_degree": 800
+    },
+    {
+      "rank": 103,
+      "work_id": "18670691",
+      "title": "Fourth Grave Beneath My Feet (Charley Davidson, #4)",
+      "author": "Darynda Jones",
+      "score": 0.02291692960117851,
+      "uncertainty": 0.001723797435052424,
+      "positive_share": 0.5044194843291647,
+      "sampled_degree": 780
+    },
+    {
+      "rank": 104,
+      "work_id": "5776219",
+      "title": "Destined for an Early Grave (Night Huntress, #4)",
+      "author": "Jeaniene Frost",
+      "score": 0.02283359156706512,
+      "uncertainty": 0.0032681744314280808,
+      "positive_share": 0.3687333698462261,
+      "sampled_degree": 1578
+    },
+    {
+      "rank": 105,
+      "work_id": "30158053",
+      "title": "Fire Touched (Mercy Thompson, #9)",
+      "author": "Patricia Briggs",
+      "score": 0.022819717674574705,
+      "uncertainty": 0.001540577886216987,
+      "positive_share": 0.5902866058014562,
+      "sampled_degree": 660
+    },
+    {
+      "rank": 106,
+      "work_id": "21850431",
+      "title": "Music of the Heart (Runaway Train, #1)",
+      "author": "Katie Ashley",
+      "score": 0.022795303861676774,
+      "uncertainty": 0.0009653697876598408,
+      "positive_share": 0.2953811780114797,
+      "sampled_degree": 701
+    },
+    {
+      "rank": 107,
+      "work_id": "23682783",
+      "title": "Jet (Marked Men, #2)",
+      "author": "Jay Crownover",
+      "score": 0.022778659917298293,
+      "uncertainty": 0.0012080433263224443,
+      "positive_share": 0.3228552717747217,
+      "sampled_degree": 784
+    },
+    {
+      "rank": 108,
+      "work_id": "21365702",
+      "title": "Seduction and Snacks (Chocolate Lovers, #1)",
+      "author": "Tara Sivec",
+      "score": 0.02276126458883144,
+      "uncertainty": 0.0014490956496922322,
+      "positive_share": 0.29429991174552006,
+      "sampled_degree": 1049
+    },
+    {
+      "rank": 109,
+      "work_id": "2756601",
+      "title": "The Good, the Bad, and the Undead (The Hollows, #2)",
+      "author": "Kim Harrison",
+      "score": 0.022721019207921224,
+      "uncertainty": 0.0020624034738311206,
+      "positive_share": 0.4782078584858601,
+      "sampled_degree": 1374
+    },
+    {
+      "rank": 110,
+      "work_id": "16101664",
+      "title": "Hearts in Darkness (Hearts in Darkness, #1)",
+      "author": "Laura Kaye",
+      "score": 0.022634581460969846,
+      "uncertainty": 0.0011480391331175517,
+      "positive_share": 0.31419835124619594,
+      "sampled_degree": 792
+    },
+    {
+      "rank": 111,
+      "work_id": "13039143",
+      "title": "The Perfect Play (Play by Play, #1)",
+      "author": "Jaci Burton",
+      "score": 0.022631083448520238,
+      "uncertainty": 0.0015481849156453345,
+      "positive_share": 0.33658846642782847,
+      "sampled_degree": 680
+    },
+    {
+      "rank": 112,
+      "work_id": "13411866",
+      "title": "Bloodfever (Fever, #2)",
+      "author": "Karen Marie Moning",
+      "score": 0.022544284094299524,
+      "uncertainty": 0.0027112181887358473,
+      "positive_share": 0.4032113808708415,
+      "sampled_degree": 2231
+    },
+    {
+      "rank": 113,
+      "work_id": "25382416",
+      "title": "Reaper's Legacy (Reapers MC, #2)",
+      "author": "Joanna Wylde",
+      "score": 0.02251570945335179,
+      "uncertainty": 0.0017245948265770126,
+      "positive_share": 0.2899957625486344,
+      "sampled_degree": 673
+    },
+    {
+      "rank": 114,
+      "work_id": "3349934",
+      "title": "Guilty Pleasures (Anita Blake, Vampire Hunter, #1)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.022497942372966727,
+      "uncertainty": 0.0025411385297577855,
+      "positive_share": 0.4579667242539139,
+      "sampled_degree": 2808
+    },
+    {
+      "rank": 115,
+      "work_id": "26343327",
+      "title": "Archer's Voice",
+      "author": "Mia Sheridan",
+      "score": 0.02243768573638334,
+      "uncertainty": 0.0014805298220583408,
+      "positive_share": 0.2655682821073635,
+      "sampled_degree": 1367
+    },
+    {
+      "rank": 116,
+      "work_id": "25365963",
+      "title": "Cage (Corps Security, #2)",
+      "author": "Harper Sloan",
+      "score": 0.02243304353451729,
+      "uncertainty": 0.001320717558671441,
+      "positive_share": 0.2795275590551181,
+      "sampled_degree": 602
+    },
+    {
+      "rank": 117,
+      "work_id": "42901335",
+      "title": "Ride Steady (Chaos, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.022431230342555744,
+      "uncertainty": 0.0012461925964979005,
+      "positive_share": 0.3555992141453831,
+      "sampled_degree": 479
+    },
+    {
+      "rank": 118,
+      "work_id": "24886836",
+      "title": "Mine (Real, #2)",
+      "author": "Katy Evans",
+      "score": 0.02241961367679219,
+      "uncertainty": 0.001297366339773425,
+      "positive_share": 0.26862745098039215,
+      "sampled_degree": 897
+    },
+    {
+      "rank": 119,
+      "work_id": "19228205",
+      "title": "Checkmate (Neighbor from Hell, #3)",
+      "author": "R.L. Mathewson",
+      "score": 0.02225381224387332,
+      "uncertainty": 0.0018798366980429713,
+      "positive_share": 0.29120493825541083,
+      "sampled_degree": 873
+    },
+    {
+      "rank": 120,
+      "work_id": "15727095",
+      "title": "For You (The 'Burg, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.022227803536450173,
+      "uncertainty": 0.0014994206784839578,
+      "positive_share": 0.3372873842852736,
+      "sampled_degree": 581
+    },
+    {
+      "rank": 121,
+      "work_id": "21935683",
+      "title": "Beautiful Stranger (Beautiful Bastard, #2)",
+      "author": "Christina Lauren",
+      "score": 0.022222480679009404,
+      "uncertainty": 0.001700222911831767,
+      "positive_share": 0.3028001611603546,
+      "sampled_degree": 1231
+    },
+    {
+      "rank": 122,
+      "work_id": "6505300",
+      "title": "Friday Night Bites (Chicagoland Vampires, #2)",
+      "author": "Chloe Neill",
+      "score": 0.02221928548674231,
+      "uncertainty": 0.0023429934700958306,
+      "positive_share": 0.40970607421050614,
+      "sampled_degree": 1026
+    },
+    {
+      "rank": 123,
+      "work_id": "15911884",
+      "title": "Lover Reborn (Black Dagger Brotherhood, #10)",
+      "author": "J.R. Ward",
+      "score": 0.02218353365008363,
+      "uncertainty": 0.0025839311681355955,
+      "positive_share": 0.3401884041287748,
+      "sampled_degree": 1547
+    },
+    {
+      "rank": 124,
+      "work_id": "933973",
+      "title": "Horton Hears a Who!",
+      "author": "Dr. Seuss",
+      "score": 0.0221608980301663,
+      "uncertainty": 0.0010472135429629387,
+      "positive_share": 0.615075208165458,
+      "sampled_degree": 1256
+    },
+    {
+      "rank": 125,
+      "work_id": "464779",
+      "title": "The Darkest Night (Lords of the Underworld #1)",
+      "author": "Gena Showalter",
+      "score": 0.022107014812704433,
+      "uncertainty": 0.002550262916981689,
+      "positive_share": 0.335603967614443,
+      "sampled_degree": 1534
+    },
+    {
+      "rank": 126,
+      "work_id": "2980277",
+      "title": "Night Play (Dark-Hunter #5, Were-Hunter #1)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02209744185663763,
+      "uncertainty": 0.002572509639965898,
+      "positive_share": 0.3890401366025862,
+      "sampled_degree": 1195
+    },
+    {
+      "rank": 127,
+      "work_id": "3436605",
+      "title": "The Eyre Affair (Thursday Next, #1)",
+      "author": "Jasper Fforde",
+      "score": 0.022091776442038868,
+      "uncertainty": 0.0019513228286936336,
+      "positive_share": 0.6009939533390412,
+      "sampled_degree": 2099
+    },
+    {
+      "rank": 128,
+      "work_id": "846763",
+      "title": "The Duke and I (Bridgertons, #1)",
+      "author": "Julia Quinn",
+      "score": 0.02209025367802385,
+      "uncertainty": 0.0017993500768559106,
+      "positive_share": 0.43415928015041627,
+      "sampled_degree": 1334
+    },
+    {
+      "rank": 129,
+      "work_id": "991924",
+      "title": "Dance with the Devil (Dark-Hunter #3)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02207657715504102,
+      "uncertainty": 0.0022071570857487063,
+      "positive_share": 0.3895149840758221,
+      "sampled_degree": 1364
+    },
+    {
+      "rank": 130,
+      "work_id": "26949988",
+      "title": "Dead Heat (Alpha & Omega #4)",
+      "author": "Patricia Briggs",
+      "score": 0.022040768948742948,
+      "uncertainty": 0.001162570088596265,
+      "positive_share": 0.5725503921538294,
+      "sampled_degree": 531
+    },
+    {
+      "rank": 131,
+      "work_id": "21807237",
+      "title": "Losing It (Losing It, #1)",
+      "author": "Cora Carmack",
+      "score": 0.021969934946295348,
+      "uncertainty": 0.0020655660382007802,
+      "positive_share": 0.3144024813478473,
+      "sampled_degree": 2106
+    },
+    {
+      "rank": 132,
+      "work_id": "24065237",
+      "title": "Twisted Perfection (Rosemary Beach, #5; Perfection, #1)",
+      "author": "Abbi Glines",
+      "score": 0.021949384388077302,
+      "uncertainty": 0.0015690360951291173,
+      "positive_share": 0.2717998158167376,
+      "sampled_degree": 1258
+    },
+    {
+      "rank": 133,
+      "work_id": "21962320",
+      "title": "In Flight (Up in the Air, #1)",
+      "author": "R.K. Lilley",
+      "score": 0.021927510522510133,
+      "uncertainty": 0.0011705239990907619,
+      "positive_share": 0.26087640535666323,
+      "sampled_degree": 1193
+    },
+    {
+      "rank": 134,
+      "work_id": "3241481",
+      "title": "Glory in Death (In Death, #2)",
+      "author": "J.D. Robb",
+      "score": 0.02190956839019912,
+      "uncertainty": 0.0009274961747914365,
+      "positive_share": 0.5166666666666666,
+      "sampled_degree": 966
+    },
+    {
+      "rank": 135,
+      "work_id": "17264774",
+      "title": "Gunmetal Magic (Kate Daniels, #5.5)",
+      "author": "Ilona Andrews",
+      "score": 0.021862121405200406,
+      "uncertainty": 0.0016495311190288717,
+      "positive_share": 0.4715686274509803,
+      "sampled_degree": 696
+    },
+    {
+      "rank": 136,
+      "work_id": "3341459",
+      "title": "A Kiss of Shadows (Merry Gentry, #1)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.02180904934236352,
+      "uncertainty": 0.0016968266181687226,
+      "positive_share": 0.4936399217221135,
+      "sampled_degree": 1276
+    },
+    {
+      "rank": 137,
+      "work_id": "24567191",
+      "title": "Leo",
+      "author": "Mia Sheridan",
+      "score": 0.021784440442726795,
+      "uncertainty": 0.0011265785211027363,
+      "positive_share": 0.27219268847028005,
+      "sampled_degree": 779
+    },
+    {
+      "rank": 138,
+      "work_id": "21938104",
+      "title": "Forever My Girl (The Beaumont Series, #1)",
+      "author": "Heidi McLaughlin",
+      "score": 0.021770772761826,
+      "uncertainty": 0.0009651010052467872,
+      "positive_share": 0.2800204168111252,
+      "sampled_degree": 819
+    },
+    {
+      "rank": 139,
+      "work_id": "6579128",
+      "title": "First Drop of Crimson (Night Huntress World, #1)",
+      "author": "Jeaniene Frost",
+      "score": 0.02171860949273054,
+      "uncertainty": 0.002690833894050891,
+      "positive_share": 0.37885058132842175,
+      "sampled_degree": 1208
+    },
+    {
+      "rank": 140,
+      "work_id": "21600625",
+      "title": "Naked (The Blackstone Affair, #1)",
+      "author": "Raine Miller",
+      "score": 0.021689922432259475,
+      "uncertainty": 0.0015491872612118914,
+      "positive_share": 0.278394443714986,
+      "sampled_degree": 1128
+    },
+    {
+      "rank": 141,
+      "work_id": "21464225",
+      "title": "Seducing Cinderella (Fighting for Love, #1)",
+      "author": "Gina L. Maxwell",
+      "score": 0.02167700834898548,
+      "uncertainty": 0.0012920159647550869,
+      "positive_share": 0.28788281520859815,
+      "sampled_degree": 711
+    },
+    {
+      "rank": 142,
+      "work_id": "24064353",
+      "title": "Magic Shifts (Kate Daniels, #8)",
+      "author": "Ilona Andrews",
+      "score": 0.021629384279763127,
+      "uncertainty": 0.0014347000608779564,
+      "positive_share": 0.5108267716535433,
+      "sampled_degree": 602
+    },
+    {
+      "rank": 143,
+      "work_id": "7087993",
+      "title": "This Side of the Grave (Night Huntress, #5)",
+      "author": "Jeaniene Frost",
+      "score": 0.021574044616013928,
+      "uncertainty": 0.0026624022826585167,
+      "positive_share": 0.3903044779555658,
+      "sampled_degree": 1257
+    },
+    {
+      "rank": 144,
+      "work_id": "44995729",
+      "title": "Dirty (Dive Bar, #1)",
+      "author": "Kylie Scott",
+      "score": 0.021549558046106695,
+      "uncertainty": 0.000940179869663226,
+      "positive_share": 0.3679830794079734,
+      "sampled_degree": 513
+    },
+    {
+      "rank": 145,
+      "work_id": "16610933",
+      "title": "At Peace (The 'Burg, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.021531157405181498,
+      "uncertainty": 0.0014638310161041257,
+      "positive_share": 0.34383811783148044,
+      "sampled_degree": 583
+    },
+    {
+      "rank": 146,
+      "work_id": "3146356",
+      "title": "Hostage to Pleasure (Psy-Changeling, #5)",
+      "author": "Nalini Singh",
+      "score": 0.02149224135293936,
+      "uncertainty": 0.0017044910319717955,
+      "positive_share": 0.4155252847236693,
+      "sampled_degree": 656
+    },
+    {
+      "rank": 147,
+      "work_id": "1823830",
+      "title": "Devil in Winter (Wallflowers, #3)",
+      "author": "Lisa Kleypas",
+      "score": 0.02149206470380316,
+      "uncertainty": 0.001405925099370932,
+      "positive_share": 0.4179310080196462,
+      "sampled_degree": 1077
+    },
+    {
+      "rank": 148,
+      "work_id": "2609827",
+      "title": "Dark Prince (Dark, #1)",
+      "author": "Christine Feehan",
+      "score": 0.02146471047050181,
+      "uncertainty": 0.002372047808000826,
+      "positive_share": 0.41116802885537773,
+      "sampled_degree": 1026
+    },
+    {
+      "rank": 149,
+      "work_id": "21539864",
+      "title": "Fifth Grave Past the Light (Charley Davidson, #5)",
+      "author": "Darynda Jones",
+      "score": 0.02146429521474157,
+      "uncertainty": 0.0017455889105981192,
+      "positive_share": 0.49558823529411766,
+      "sampled_degree": 724
+    },
+    {
+      "rank": 150,
+      "work_id": "21850432",
+      "title": "The Proposition (The Proposition, #1)",
+      "author": "Katie Ashley",
+      "score": 0.021426439678257143,
+      "uncertainty": 0.001287643075728249,
+      "positive_share": 0.2879030394082977,
+      "sampled_degree": 866
+    },
+    {
+      "rank": 151,
+      "work_id": "617151",
+      "title": "Two for the Dough (Stephanie Plum, #2)",
+      "author": "Janet Evanovich",
+      "score": 0.02141490792396123,
+      "uncertainty": 0.0019476458580189248,
+      "positive_share": 0.50732421875,
+      "sampled_degree": 2262
+    },
+    {
+      "rank": 152,
+      "work_id": "2322486",
+      "title": "Four to Score (Stephanie Plum, #4)",
+      "author": "Janet Evanovich",
+      "score": 0.02135543725915464,
+      "uncertainty": 0.0016956793091117642,
+      "positive_share": 0.5246969025195695,
+      "sampled_degree": 1891
+    },
+    {
+      "rank": 153,
+      "work_id": "21894970",
+      "title": "Fight with Me (With Me in Seattle, #2)",
+      "author": "Kristen Proby",
+      "score": 0.021352478900578648,
+      "uncertainty": 0.0010110025252919902,
+      "positive_share": 0.2641126391617551,
+      "sampled_degree": 751
+    },
+    {
+      "rank": 154,
+      "work_id": "12932079",
+      "title": "Rock Me (Ross Siblings, #2)",
+      "author": "Cherrie Lynn",
+      "score": 0.02131917049750666,
+      "uncertainty": 0.0012566056877415356,
+      "positive_share": 0.27941176470588236,
+      "sampled_degree": 836
+    },
+    {
+      "rank": 155,
+      "work_id": "23852415",
+      "title": "Raid (Unfinished Hero, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.02128851706305825,
+      "uncertainty": 0.0015559060764857222,
+      "positive_share": 0.2974931622943873,
+      "sampled_degree": 631
+    },
+    {
+      "rank": 156,
+      "work_id": "6478937",
+      "title": "Rosemary and Rue (October Daye, #1)",
+      "author": "Seanan McGuire",
+      "score": 0.02128534753553309,
+      "uncertainty": 0.0023701131348136755,
+      "positive_share": 0.5299019607843138,
+      "sampled_degree": 736
+    },
+    {
+      "rank": 157,
+      "work_id": "2728068",
+      "title": "Faefever (Fever, #3)",
+      "author": "Karen Marie Moning",
+      "score": 0.021282007647660278,
+      "uncertainty": 0.0027419898591459907,
+      "positive_share": 0.3983467236423679,
+      "sampled_degree": 2143
+    },
+    {
+      "rank": 158,
+      "work_id": "40025563",
+      "title": "Burn for Me (Hidden Legacy, #1)",
+      "author": "Ilona Andrews",
+      "score": 0.02127415993768989,
+      "uncertainty": 0.001511321051858465,
+      "positive_share": 0.4673021040366723,
+      "sampled_degree": 598
+    },
+    {
+      "rank": 159,
+      "work_id": "21734801",
+      "title": "Devoured (Devoured, #1)",
+      "author": "Emily Snow",
+      "score": 0.021264049770810426,
+      "uncertainty": 0.0010851344030118996,
+      "positive_share": 0.2889970723063292,
+      "sampled_degree": 740
+    },
+    {
+      "rank": 160,
+      "work_id": "45217167",
+      "title": "The Score (Off-Campus, #3)",
+      "author": "Elle Kennedy",
+      "score": 0.021242009513582377,
+      "uncertainty": 0.0016645490524346436,
+      "positive_share": 0.3197542278207943,
+      "sampled_degree": 926
+    },
+    {
+      "rank": 161,
+      "work_id": "4606059",
+      "title": "Branded by Fire (Psy-Changeling #6)",
+      "author": "Nalini Singh",
+      "score": 0.021172113997767705,
+      "uncertainty": 0.0017226476476536088,
+      "positive_share": 0.4047448725170188,
+      "sampled_degree": 653
+    },
+    {
+      "rank": 162,
+      "work_id": "28204900",
+      "title": "The Will (Magdalene, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.021169107608421424,
+      "uncertainty": 0.0012581930423701813,
+      "positive_share": 0.34381139489194495,
+      "sampled_degree": 526
+    },
+    {
+      "rank": 163,
+      "work_id": "81234",
+      "title": "Seize the Night (Dark-Hunter #6)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02109606587668718,
+      "uncertainty": 0.00216220550642575,
+      "positive_share": 0.39215686274509803,
+      "sampled_degree": 1097
+    },
+    {
+      "rank": 164,
+      "work_id": "613039",
+      "title": "Kiss of the Night (Dark-Hunter, #4)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.02107666616497648,
+      "uncertainty": 0.00229035121837372,
+      "positive_share": 0.3965686274509804,
+      "sampled_degree": 1086
+    },
+    {
+      "rank": 165,
+      "work_id": "1341652",
+      "title": "Three to Get Deadly (Stephanie Plum, #3)",
+      "author": "Janet Evanovich",
+      "score": 0.021011640363169774,
+      "uncertainty": 0.0018216015613325553,
+      "positive_share": 0.51416588949364,
+      "sampled_degree": 2020
+    },
+    {
+      "rank": 166,
+      "work_id": "1874115",
+      "title": "High Five (Stephanie Plum, #5)",
+      "author": "Janet Evanovich",
+      "score": 0.020997023917263193,
+      "uncertainty": 0.0015857457161577676,
+      "positive_share": 0.531075169793945,
+      "sampled_degree": 1727
+    },
+    {
+      "rank": 167,
+      "work_id": "3202442",
+      "title": "Acheron (Dark-Hunter #14)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.020945868086255058,
+      "uncertainty": 0.0020804693864686762,
+      "positive_share": 0.3795403092743947,
+      "sampled_degree": 1257
+    },
+    {
+      "rank": 168,
+      "work_id": "21388954",
+      "title": "The Secret of Ella and Micha (The Secret, #1)",
+      "author": "Jessica Sorensen",
+      "score": 0.02094534317841547,
+      "uncertainty": 0.0011188003293837424,
+      "positive_share": 0.2882851770845324,
+      "sampled_degree": 1335
+    },
+    {
+      "rank": 169,
+      "work_id": "14689744",
+      "title": "Rock Chick Redemption (Rock Chick, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.020943392887096464,
+      "uncertainty": 0.0020045401832868522,
+      "positive_share": 0.30763800608652103,
+      "sampled_degree": 681
+    },
+    {
+      "rank": 170,
+      "work_id": "14321512",
+      "title": "Thoughtless (Thoughtless, #1)",
+      "author": "S.C. Stephens",
+      "score": 0.020934478642451227,
+      "uncertainty": 0.0020622145001383927,
+      "positive_share": 0.2654004479574364,
+      "sampled_degree": 2156
+    },
+    {
+      "rank": 171,
+      "work_id": "21378102",
+      "title": "Written in Red (The Others, #1)",
+      "author": "Anne Bishop",
+      "score": 0.02092489576573352,
+      "uncertainty": 0.001591910789591848,
+      "positive_share": 0.5083333333333333,
+      "sampled_degree": 971
+    },
+    {
+      "rank": 172,
+      "work_id": "3363",
+      "title": "The Viscount Who Loved Me (Bridgertons, #2)",
+      "author": "Julia Quinn",
+      "score": 0.020914154300366247,
+      "uncertainty": 0.0014950977489040223,
+      "positive_share": 0.461105675146771,
+      "sampled_degree": 1002
+    },
+    {
+      "rank": 173,
+      "work_id": "679345",
+      "title": "Mine Till Midnight (The Hathaways, #1)",
+      "author": "Lisa Kleypas",
+      "score": 0.020872095699622173,
+      "uncertainty": 0.0017664146097904109,
+      "positive_share": 0.41794635662484175,
+      "sampled_degree": 981
+    },
+    {
+      "rank": 174,
+      "work_id": "613030",
+      "title": "Unleash the Night (Dark Hunter, #8; Were-Hunter, #2)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.020813400414572886,
+      "uncertainty": 0.001841018967643314,
+      "positive_share": 0.40262902722786775,
+      "sampled_degree": 986
+    },
+    {
+      "rank": 175,
+      "work_id": "6225943",
+      "title": "Dreamfever (Fever, #4)",
+      "author": "Karen Marie Moning",
+      "score": 0.020787545427698995,
+      "uncertainty": 0.0027619100885777435,
+      "positive_share": 0.3902045621330724,
+      "sampled_degree": 2092
+    },
+    {
+      "rank": 176,
+      "work_id": "42911918",
+      "title": "Hero (Hero, #1)",
+      "author": "Samantha Young",
+      "score": 0.02075402242056545,
+      "uncertainty": 0.000428112479763392,
+      "positive_share": 0.33365044832963425,
+      "sampled_degree": 609
+    },
+    {
+      "rank": 177,
+      "work_id": "24897193",
+      "title": "Rome (Marked Men, #3)",
+      "author": "Jay Crownover",
+      "score": 0.020744471047727968,
+      "uncertainty": 0.0008085137877639304,
+      "positive_share": 0.3140404098771139,
+      "sampled_degree": 662
+    },
+    {
+      "rank": 178,
+      "work_id": "2523603",
+      "title": "Undead and Unwed (Undead, #1)",
+      "author": "MaryJanice Davidson",
+      "score": 0.020665765521170186,
+      "uncertainty": 0.0013618466020332248,
+      "positive_share": 0.5034313895108868,
+      "sampled_degree": 1240
+    },
+    {
+      "rank": 179,
+      "work_id": "15727084",
+      "title": "Rock Chick Renegade (Rock Chick, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.020600641141210355,
+      "uncertainty": 0.0018060591578640166,
+      "positive_share": 0.32843137254901966,
+      "sampled_degree": 643
+    },
+    {
+      "rank": 180,
+      "work_id": "24333050",
+      "title": "Falling into You (Falling, #1)",
+      "author": "Jasinda Wilder",
+      "score": 0.02059935565755148,
+      "uncertainty": 0.0010993244956802042,
+      "positive_share": 0.27941176470588236,
+      "sampled_degree": 1019
+    },
+    {
+      "rank": 181,
+      "work_id": "1329428",
+      "title": "Sins of the Night (Dark-Hunter #7)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.020565674704201224,
+      "uncertainty": 0.001796906064243304,
+      "positive_share": 0.40784313725490196,
+      "sampled_degree": 919
+    },
+    {
+      "rank": 182,
+      "work_id": "18323697",
+      "title": "Because of Low (Sea Breeze, #2)",
+      "author": "Abbi Glines",
+      "score": 0.020547855759127855,
+      "uncertainty": 0.001265739039254097,
+      "positive_share": 0.29576814981987626,
+      "sampled_degree": 1174
+    },
+    {
+      "rank": 183,
+      "work_id": "1268422",
+      "title": "Hot Six (Stephanie Plum, #6)",
+      "author": "Janet Evanovich",
+      "score": 0.0205291468369536,
+      "uncertainty": 0.0015045284871379105,
+      "positive_share": 0.5261828018878785,
+      "sampled_degree": 1712
+    },
+    {
+      "rank": 184,
+      "work_id": "3093699",
+      "title": "Immortal in Death (In Death, #3)",
+      "author": "J.D. Robb",
+      "score": 0.020515952086118183,
+      "uncertainty": 0.0008384416558492332,
+      "positive_share": 0.5164461265842291,
+      "sampled_degree": 829
+    },
+    {
+      "rank": 185,
+      "work_id": "24897280",
+      "title": "Driven (Driven, #1)",
+      "author": "K. Bromberg",
+      "score": 0.020513396603841046,
+      "uncertainty": 0.0012328420331934613,
+      "positive_share": 0.2557614826752619,
+      "sampled_degree": 884
+    },
+    {
+      "rank": 186,
+      "work_id": "21826887",
+      "title": "Rock the Heart (Black Falcon, #1)",
+      "author": "Michelle A. Valentine",
+      "score": 0.020511204767550664,
+      "uncertainty": 0.0007691406567184458,
+      "positive_share": 0.28493297122385297,
+      "sampled_degree": 628
+    },
+    {
+      "rank": 187,
+      "work_id": "16152938",
+      "title": "Rock Chick Revenge (Rock Chick, #5)",
+      "author": "Kristen Ashley",
+      "score": 0.02047738930631956,
+      "uncertainty": 0.0017799244879805492,
+      "positive_share": 0.3245155822643399,
+      "sampled_degree": 658
+    },
+    {
+      "rank": 188,
+      "work_id": "24673151",
+      "title": "Neanderthal Seeks Human (Knitting in the City, #1)",
+      "author": "Penny Reid",
+      "score": 0.020464759490382754,
+      "uncertainty": 0.001277057189984175,
+      "positive_share": 0.4035170846334605,
+      "sampled_degree": 717
+    },
+    {
+      "rank": 189,
+      "work_id": "21441527",
+      "title": "My Favorite Mistake (My Favorite Mistake, #1)",
+      "author": "Chelsea M. Cameron",
+      "score": 0.020443532250986992,
+      "uncertainty": 0.0008034013850710317,
+      "positive_share": 0.28039459183301924,
+      "sampled_degree": 958
+    },
+    {
+      "rank": 190,
+      "work_id": "25423841",
+      "title": "Sweet Home (Sweet Home, #1)",
+      "author": "Tillie Cole",
+      "score": 0.02043649400739309,
+      "uncertainty": 0.001075992356456603,
+      "positive_share": 0.2862196155475943,
+      "sampled_degree": 651
+    },
+    {
+      "rank": 191,
+      "work_id": "21880254",
+      "title": "The Edge of Never (The Edge of Never, #1)",
+      "author": "J.A. Redmerski",
+      "score": 0.020414827547237457,
+      "uncertainty": 0.001965154204521124,
+      "positive_share": 0.2892991443152603,
+      "sampled_degree": 2360
+    },
+    {
+      "rank": 192,
+      "work_id": "10463674",
+      "title": "Blameless (Parasol Protectorate, #3)",
+      "author": "Gail Carriger",
+      "score": 0.020406400543338907,
+      "uncertainty": 0.0007689800123838558,
+      "positive_share": 0.581583592341046,
+      "sampled_degree": 981
+    },
+    {
+      "rank": 193,
+      "work_id": "6836876",
+      "title": "Something About You (FBI/US Attorney, #1)",
+      "author": "Julie James",
+      "score": 0.020357463113909992,
+      "uncertainty": 0.001280214573780575,
+      "positive_share": 0.38580620584213443,
+      "sampled_degree": 876
+    },
+    {
+      "rank": 194,
+      "work_id": "19151084",
+      "title": "Lover at Last (Black Dagger Brotherhood, #11)",
+      "author": "J.R. Ward",
+      "score": 0.02034808769757883,
+      "uncertainty": 0.0022278232882559533,
+      "positive_share": 0.35063121138866504,
+      "sampled_degree": 1301
+    },
+    {
+      "rank": 195,
+      "work_id": "2428162",
+      "title": "The Laughing Corpse (Anita Blake, Vampire Hunter, #2)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.02027883920764504,
+      "uncertainty": 0.002030864836734494,
+      "positive_share": 0.4601367569716242,
+      "sampled_degree": 1892
+    },
+    {
+      "rank": 196,
+      "work_id": "2704935",
+      "title": "Pleasure Unbound (Demonica, #1)",
+      "author": "Larissa Ione",
+      "score": 0.020256698714636923,
+      "uncertainty": 0.0021385847265009673,
+      "positive_share": 0.346897663174859,
+      "sampled_degree": 1103
+    },
+    {
+      "rank": 197,
+      "work_id": "7312508",
+      "title": "Twice Bitten (Chicagoland Vampires, #3)",
+      "author": "Chloe Neill",
+      "score": 0.020247258054673912,
+      "uncertainty": 0.0022799614320876973,
+      "positive_share": 0.39325141015310233,
+      "sampled_degree": 993
+    },
+    {
+      "rank": 198,
+      "work_id": "14326785",
+      "title": "Rock Hard (Sinners on Tour, #2)",
+      "author": "Olivia Cunning",
+      "score": 0.020214784652245008,
+      "uncertainty": 0.0014534995553314215,
+      "positive_share": 0.3125582649562772,
+      "sampled_degree": 701
+    },
+    {
+      "rank": 199,
+      "work_id": "18301054",
+      "title": "Twice Tempted (Night Prince, #2)",
+      "author": "Jeaniene Frost",
+      "score": 0.02019297411321246,
+      "uncertainty": 0.00200597292893212,
+      "positive_share": 0.39598116260256555,
+      "sampled_degree": 797
+    },
+    {
+      "rank": 200,
+      "work_id": "6576853",
+      "title": "The Warlord Wants Forever (Immortals After Dark #1)",
+      "author": "Kresley Cole",
+      "score": 0.020186862074984158,
+      "uncertainty": 0.0019402404485531573,
+      "positive_share": 0.3460611641917041,
+      "sampled_degree": 1051
+    },
+    {
+      "rank": 201,
+      "work_id": "1616132",
+      "title": "Hard Eight (Stephanie Plum, #8)",
+      "author": "Janet Evanovich",
+      "score": 0.02014940698427975,
+      "uncertainty": 0.0015716175162530494,
+      "positive_share": 0.5269157390053624,
+      "sampled_degree": 1625
+    },
+    {
+      "rank": 202,
+      "work_id": "3184483",
+      "title": "Ten Big Ones (Stephanie Plum, #10)",
+      "author": "Janet Evanovich",
+      "score": 0.02012453089060391,
+      "uncertainty": 0.0013546710484806414,
+      "positive_share": 0.5368819563356164,
+      "sampled_degree": 1416
+    },
+    {
+      "rank": 203,
+      "work_id": "3207062",
+      "title": "Seven Up (Stephanie Plum, #7)",
+      "author": "Janet Evanovich",
+      "score": 0.020100056704699002,
+      "uncertainty": 0.0015688340308486883,
+      "positive_share": 0.5249606954297129,
+      "sampled_degree": 1653
+    },
+    {
+      "rank": 204,
+      "work_id": "26542165",
+      "title": "Devil's Game (Reapers MC, #3)",
+      "author": "Joanna Wylde",
+      "score": 0.02008632960581842,
+      "uncertainty": 0.0014258664742646723,
+      "positive_share": 0.3079419453996657,
+      "sampled_degree": 561
+    },
+    {
+      "rank": 205,
+      "work_id": "4197",
+      "title": "The Killing Dance (Anita Blake, Vampire Hunter, #6)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.020077389855698645,
+      "uncertainty": 0.0018711198576455115,
+      "positive_share": 0.47137197344691295,
+      "sampled_degree": 1556
+    },
+    {
+      "rank": 206,
+      "work_id": "1341883",
+      "title": "Every Which Way But Dead (The Hollows, #3)",
+      "author": "Kim Harrison",
+      "score": 0.02006999387584113,
+      "uncertainty": 0.002155882560091327,
+      "positive_share": 0.4380357622501055,
+      "sampled_degree": 1390
+    },
+    {
+      "rank": 207,
+      "work_id": "48619088",
+      "title": "Stuck-Up Suit",
+      "author": "Vi Keeland",
+      "score": 0.020068970396897517,
+      "uncertainty": 0.0014558228762000791,
+      "positive_share": 0.2784313725490196,
+      "sampled_degree": 689
+    },
+    {
+      "rank": 208,
+      "work_id": "2621331",
+      "title": "A Quick Bite (Argeneau #1)",
+      "author": "Lynsay Sands",
+      "score": 0.02006819917134977,
+      "uncertainty": 0.002066182357457959,
+      "positive_share": 0.3991178396702492,
+      "sampled_degree": 803
+    },
+    {
+      "rank": 209,
+      "work_id": "48358625",
+      "title": "The Wall of Winnipeg and Me",
+      "author": "Mariana Zapata",
+      "score": 0.020048868287714888,
+      "uncertainty": 0.0012608323750489688,
+      "positive_share": 0.3261364074116877,
+      "sampled_degree": 709
+    },
+    {
+      "rank": 210,
+      "work_id": "659482",
+      "title": "Romancing Mister Bridgerton (Bridgertons, #4)",
+      "author": "Julia Quinn",
+      "score": 0.020038062953662266,
+      "uncertainty": 0.001279792958387214,
+      "positive_share": 0.46911764705882353,
+      "sampled_degree": 918
+    },
+    {
+      "rank": 211,
+      "work_id": "19113823",
+      "title": "Easy (Contours of the Heart, #1)",
+      "author": "Tammara Webber",
+      "score": 0.020000219611331468,
+      "uncertainty": 0.003014650254452537,
+      "positive_share": 0.29655202727495106,
+      "sampled_degree": 3400
+    },
+    {
+      "rank": 212,
+      "work_id": "423977",
+      "title": "Wicked Deeds on a Winter's Night (Immortals After Dark #4)",
+      "author": "Kresley Cole",
+      "score": 0.01999438890660048,
+      "uncertainty": 0.0020028451162704027,
+      "positive_share": 0.3491814014407335,
+      "sampled_degree": 1081
+    },
+    {
+      "rank": 213,
+      "work_id": "41047385",
+      "title": "Alex (Cold Fury Hockey, #1)",
+      "author": "Sawyer Bennett",
+      "score": 0.019987028093841015,
+      "uncertainty": 0.0009869358311215886,
+      "positive_share": 0.34056768236810636,
+      "sampled_degree": 402
+    },
+    {
+      "rank": 214,
+      "work_id": "21910727",
+      "title": "Clean Sweep (Innkeeper Chronicles, #1)",
+      "author": "Ilona Andrews",
+      "score": 0.01998043572549257,
+      "uncertainty": 0.0014413580382947838,
+      "positive_share": 0.5031886669863713,
+      "sampled_degree": 604
+    },
+    {
+      "rank": 215,
+      "work_id": "81236",
+      "title": "Dark Side of the Moon (Dark-Hunter #9, Were-Hunter #3)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.01997293917475096,
+      "uncertainty": 0.001726397574349063,
+      "positive_share": 0.4127450980392157,
+      "sampled_degree": 898
+    },
+    {
+      "rank": 216,
+      "work_id": "8758998",
+      "title": "Archangel's Consort (Guild Hunter, #3)",
+      "author": "Nalini Singh",
+      "score": 0.019931287700181297,
+      "uncertainty": 0.001776004715322577,
+      "positive_share": 0.3937218305789899,
+      "sampled_degree": 786
+    },
+    {
+      "rank": 217,
+      "work_id": "1136422",
+      "title": "Blue Moon (Anita Blake, Vampire Hunter, #8)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.019917906663613486,
+      "uncertainty": 0.0016882845513718772,
+      "positive_share": 0.4787248883928571,
+      "sampled_degree": 1445
+    },
+    {
+      "rank": 218,
+      "work_id": "6224145",
+      "title": "Finger Lickin' Fifteen (Stephanie Plum, #15)",
+      "author": "Janet Evanovich",
+      "score": 0.019916184541838067,
+      "uncertainty": 0.0016356198462098906,
+      "positive_share": 0.5421079390660374,
+      "sampled_degree": 1215
+    },
+    {
+      "rank": 219,
+      "work_id": "23577838",
+      "title": "Beauty from Pain (Beauty, #1)",
+      "author": "Georgia Cates",
+      "score": 0.019898961848559896,
+      "uncertainty": 0.0007970267569073929,
+      "positive_share": 0.26800775104562374,
+      "sampled_degree": 884
+    },
+    {
+      "rank": 220,
+      "work_id": "81224",
+      "title": "Devil May Cry (Dark-Hunter, #11)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.01988257251598345,
+      "uncertainty": 0.0016364522915743296,
+      "positive_share": 0.4007748765194912,
+      "sampled_degree": 946
+    },
+    {
+      "rank": 221,
+      "work_id": "23582083",
+      "title": "Collide (Collide, #1)",
+      "author": "Gail McHugh",
+      "score": 0.01986233450743744,
+      "uncertainty": 0.001260699399750093,
+      "positive_share": 0.2533321720108233,
+      "sampled_degree": 1108
+    },
+    {
+      "rank": 222,
+      "work_id": "21805183",
+      "title": "Rush (Breathless, #1)",
+      "author": "Maya Banks",
+      "score": 0.019859950444303817,
+      "uncertainty": 0.0017254590358501507,
+      "positive_share": 0.30724070450097846,
+      "sampled_degree": 1059
+    },
+    {
+      "rank": 223,
+      "work_id": "2346717",
+      "title": "A Fistful of Charms (The Hollows, #4)",
+      "author": "Kim Harrison",
+      "score": 0.019859583973973288,
+      "uncertainty": 0.0019238082431891192,
+      "positive_share": 0.45541326119488884,
+      "sampled_degree": 1166
+    },
+    {
+      "rank": 224,
+      "work_id": "21500353",
+      "title": "The Perfect Game (The Perfect Game, #1)",
+      "author": "J. Sterling",
+      "score": 0.019820979655358423,
+      "uncertainty": 0.0011769533464300642,
+      "positive_share": 0.2696078431372549,
+      "sampled_degree": 980
+    },
+    {
+      "rank": 225,
+      "work_id": "26616947",
+      "title": "King (King, #1)",
+      "author": "T.M. Frazier",
+      "score": 0.01981804539489709,
+      "uncertainty": 0.0009275955069236758,
+      "positive_share": 0.2963659873398178,
+      "sampled_degree": 617
+    },
+    {
+      "rank": 226,
+      "work_id": "17572318",
+      "title": "The Vincent Boys (The Vincent Boys, #1)",
+      "author": "Abbi Glines",
+      "score": 0.01980164004635534,
+      "uncertainty": 0.001724922074910458,
+      "positive_share": 0.2895696634818311,
+      "sampled_degree": 1521
+    },
+    {
+      "rank": 227,
+      "work_id": "39895498",
+      "title": "Under Locke",
+      "author": "Mariana Zapata",
+      "score": 0.019796648209858353,
+      "uncertainty": 0.0012036317505821328,
+      "positive_share": 0.3130220982937054,
+      "sampled_degree": 568
+    },
+    {
+      "rank": 228,
+      "work_id": "2963636",
+      "title": "Incubus Dreams (Anita Blake, Vampire Hunter, #12)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01976903154095862,
+      "uncertainty": 0.001339272231495843,
+      "positive_share": 0.5156555772994129,
+      "sampled_degree": 1140
+    },
+    {
+      "rank": 229,
+      "work_id": "44701525",
+      "title": "Silence Fallen (Mercy Thompson, #10)",
+      "author": "Patricia Briggs",
+      "score": 0.0197451013700691,
+      "uncertainty": 0.0009693744714337105,
+      "positive_share": 0.625492125984252,
+      "sampled_degree": 438
+    },
+    {
+      "rank": 230,
+      "work_id": "47453830",
+      "title": "The Baller",
+      "author": "Vi Keeland",
+      "score": 0.019738396433482245,
+      "uncertainty": 0.0011158168202738056,
+      "positive_share": 0.2939983834289869,
+      "sampled_degree": 553
+    },
+    {
+      "rank": 231,
+      "work_id": "1183561",
+      "title": "The Lunatic Cafe (Anita Blake, Vampire Hunter #4)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01972323834030989,
+      "uncertainty": 0.00202489804559305,
+      "positive_share": 0.45254403131115456,
+      "sampled_degree": 1670
+    },
+    {
+      "rank": 232,
+      "work_id": "3095104",
+      "title": "Twelve Sharp (Stephanie Plum, #12)",
+      "author": "Janet Evanovich",
+      "score": 0.01966903410137692,
+      "uncertainty": 0.0014145683526764136,
+      "positive_share": 0.5396646329764783,
+      "sampled_degree": 1351
+    },
+    {
+      "rank": 233,
+      "work_id": "13051038",
+      "title": "Love Unscripted (Love, #1)",
+      "author": "Tina Reber",
+      "score": 0.019653802127067924,
+      "uncertainty": 0.0012639363965293224,
+      "positive_share": 0.2871819960861057,
+      "sampled_degree": 1134
+    },
+    {
+      "rank": 234,
+      "work_id": "23678657",
+      "title": "One Week Girlfriend (One Week Girlfriend, #1)",
+      "author": "Monica  Murphy",
+      "score": 0.019638209755869863,
+      "uncertainty": 0.001093631391617673,
+      "positive_share": 0.2721355665553893,
+      "sampled_degree": 1030
+    },
+    {
+      "rank": 235,
+      "work_id": "1943980",
+      "title": "Lean Mean Thirteen (Stephanie Plum, #13)",
+      "author": "Janet Evanovich",
+      "score": 0.019608567446878125,
+      "uncertainty": 0.0014457543095447217,
+      "positive_share": 0.5379398334676336,
+      "sampled_degree": 1349
+    },
+    {
+      "rank": 236,
+      "work_id": "6155268",
+      "title": "The Madness of Lord Ian Mackenzie (Mackenzies & McBrides, #1)",
+      "author": "Jennifer Ashley",
+      "score": 0.019588109341312783,
+      "uncertainty": 0.0016807442816861625,
+      "positive_share": 0.43157093878808894,
+      "sampled_degree": 626
+    },
+    {
+      "rank": 237,
+      "work_id": "65477",
+      "title": "Touch the Dark (Cassandra Palmer, #1)",
+      "author": "Karen Chance",
+      "score": 0.019573499721199435,
+      "uncertainty": 0.002015065129427236,
+      "positive_share": 0.42934242459262684,
+      "sampled_degree": 906
+    },
+    {
+      "rank": 238,
+      "work_id": "12773071",
+      "title": "Hard Bitten (Chicagoland Vampires, #4)",
+      "author": "Chloe Neill",
+      "score": 0.01955913509210294,
+      "uncertainty": 0.002041997998907766,
+      "positive_share": 0.40705516240460177,
+      "sampled_degree": 811
+    },
+    {
+      "rank": 239,
+      "work_id": "3173189",
+      "title": "Fearless Fourteen (Stephanie Plum, #14)",
+      "author": "Janet Evanovich",
+      "score": 0.01949448792557716,
+      "uncertainty": 0.001554294228985662,
+      "positive_share": 0.5352308608588983,
+      "sampled_degree": 1299
+    },
+    {
+      "rank": 240,
+      "work_id": "826485",
+      "title": "To the Nines (Stephanie Plum, #9)",
+      "author": "Janet Evanovich",
+      "score": 0.019492370488584203,
+      "uncertainty": 0.001294624315455543,
+      "positive_share": 0.5208270979624726,
+      "sampled_degree": 1545
+    },
+    {
+      "rank": 241,
+      "work_id": "21900569",
+      "title": "Beyond the Highland Mist (Highlander, #1)",
+      "author": "Karen Marie Moning",
+      "score": 0.01945269181776501,
+      "uncertainty": 0.002521391523894085,
+      "positive_share": 0.3881470396377729,
+      "sampled_degree": 1322
+    },
+    {
+      "rank": 242,
+      "work_id": "21930423",
+      "title": "The Coincidence of Callie & Kayden (The Coincidence, #1)",
+      "author": "Jessica Sorensen",
+      "score": 0.01945109608638931,
+      "uncertainty": 0.0017090655432528742,
+      "positive_share": 0.27641878669275927,
+      "sampled_degree": 1867
+    },
+    {
+      "rank": 243,
+      "work_id": "21544285",
+      "title": "Jagged (Colorado Mountain, #5)",
+      "author": "Kristen Ashley",
+      "score": 0.01943727141231924,
+      "uncertainty": 0.0010773943286250121,
+      "positive_share": 0.3307241309963956,
+      "sampled_degree": 478
+    },
+    {
+      "rank": 244,
+      "work_id": "7392860",
+      "title": "Bayou Moon (The Edge, #2)",
+      "author": "Ilona Andrews",
+      "score": 0.01943046491810123,
+      "uncertainty": 0.0015175709651566237,
+      "positive_share": 0.46214594000897236,
+      "sampled_degree": 564
+    },
+    {
+      "rank": 245,
+      "work_id": "2534676",
+      "title": "Burnt Offerings (Anita Blake, Vampire Hunter, #7)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.019323020494060678,
+      "uncertainty": 0.0018525810426028582,
+      "positive_share": 0.47039349986569967,
+      "sampled_degree": 1504
+    },
+    {
+      "rank": 246,
+      "work_id": "13585210",
+      "title": "Kiss of Snow (Psy-Changeling #10)",
+      "author": "Nalini Singh",
+      "score": 0.019317755811823073,
+      "uncertainty": 0.0014535015616233393,
+      "positive_share": 0.3805664702030124,
+      "sampled_degree": 628
+    },
+    {
+      "rank": 247,
+      "work_id": "23676586",
+      "title": "Play with Me (With Me in Seattle, #3)",
+      "author": "Kristen Proby",
+      "score": 0.019281773064202767,
+      "uncertainty": 0.0007361843945353736,
+      "positive_share": 0.2629974190068955,
+      "sampled_degree": 682
+    },
+    {
+      "rank": 248,
+      "work_id": "21971325",
+      "title": "Down London Road (On Dublin Street, #2)",
+      "author": "Samantha Young",
+      "score": 0.019276760514534492,
+      "uncertainty": 0.0008038814932889645,
+      "positive_share": 0.3064019910518235,
+      "sampled_degree": 894
+    },
+    {
+      "rank": 249,
+      "work_id": "26470551",
+      "title": "Nash (Marked Men, #4)",
+      "author": "Jay Crownover",
+      "score": 0.019272566368513513,
+      "uncertainty": 0.0011312389809485788,
+      "positive_share": 0.31725565572360775,
+      "sampled_degree": 559
+    },
+    {
+      "rank": 250,
+      "work_id": "23676597",
+      "title": "Rock with Me (With Me in Seattle, #4)",
+      "author": "Kristen Proby",
+      "score": 0.019258960558679823,
+      "uncertainty": 0.00042425413080425663,
+      "positive_share": 0.27089263338644554,
+      "sampled_degree": 605
+    },
+    {
+      "rank": 251,
+      "work_id": "87373",
+      "title": "Rapture in Death (In Death, #4)",
+      "author": "J.D. Robb",
+      "score": 0.01925862894924639,
+      "uncertainty": 0.0008708404704555467,
+      "positive_share": 0.5152240070881005,
+      "sampled_degree": 764
+    },
+    {
+      "rank": 252,
+      "work_id": "10865876",
+      "title": "Grave Witch (Alex Craft, #1)",
+      "author": "Kalayna Price",
+      "score": 0.01925274996773476,
+      "uncertainty": 0.0019311579790702142,
+      "positive_share": 0.4632179345888583,
+      "sampled_degree": 732
+    },
+    {
+      "rank": 253,
+      "work_id": "1098613",
+      "title": "Bloody Bones (Anita Blake, Vampire Hunter #5)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.019225046675850548,
+      "uncertainty": 0.0019136234215132452,
+      "positive_share": 0.46328418032452706,
+      "sampled_degree": 1620
+    },
+    {
+      "rank": 254,
+      "work_id": "7087991",
+      "title": "One Grave at a Time (Night Huntress, #6)",
+      "author": "Jeaniene Frost",
+      "score": 0.01922075962569588,
+      "uncertainty": 0.0022724019586514085,
+      "positive_share": 0.3878391082460381,
+      "sampled_degree": 984
+    },
+    {
+      "rank": 255,
+      "work_id": "25655088",
+      "title": "Carter Reed (Carter Reed, #1)",
+      "author": "Tijan",
+      "score": 0.019212039334286724,
+      "uncertainty": 0.00085503199208096,
+      "positive_share": 0.28166435532955814,
+      "sampled_degree": 662
+    },
+    {
+      "rank": 256,
+      "work_id": "6777627",
+      "title": "Nine Rules to Break When Romancing a Rake (Love By Numbers, #1)",
+      "author": "Sarah MacLean",
+      "score": 0.019185526922287796,
+      "uncertainty": 0.0012531335472327923,
+      "positive_share": 0.4698187526484071,
+      "sampled_degree": 787
+    },
+    {
+      "rank": 257,
+      "work_id": "19083644",
+      "title": "Feral Sins (The Phoenix Pack, #1)",
+      "author": "Suzanne Wright",
+      "score": 0.01915675061680377,
+      "uncertainty": 0.0017194567267706316,
+      "positive_share": 0.3289283100273508,
+      "sampled_degree": 651
+    },
+    {
+      "rank": 258,
+      "work_id": "18230763",
+      "title": "Rock Chick Reckoning (Rock Chick, #6)",
+      "author": "Kristen Ashley",
+      "score": 0.019144075156009716,
+      "uncertainty": 0.001578882131679286,
+      "positive_share": 0.31791338582677164,
+      "sampled_degree": 601
+    },
+    {
+      "rank": 259,
+      "work_id": "24941747",
+      "title": "Fixed on You (Fixed, #1)",
+      "author": "Laurelin Paige",
+      "score": 0.01913341670839405,
+      "uncertainty": 0.0011573802479002764,
+      "positive_share": 0.27744862646191504,
+      "sampled_degree": 858
+    },
+    {
+      "rank": 260,
+      "work_id": "21970768",
+      "title": "This Man (This Man, #1)",
+      "author": "Jodi Ellen Malpas",
+      "score": 0.019114952811392805,
+      "uncertainty": 0.0015623393816833796,
+      "positive_share": 0.24866563063581598,
+      "sampled_degree": 1482
+    },
+    {
+      "rank": 261,
+      "work_id": "779381",
+      "title": "Stray (Shifters, #1)",
+      "author": "Rachel Vincent",
+      "score": 0.01908829937445617,
+      "uncertainty": 0.0022137287185533578,
+      "positive_share": 0.4588235294117647,
+      "sampled_degree": 898
+    },
+    {
+      "rank": 262,
+      "work_id": "1823893",
+      "title": "Sugar Daddy (Travises, #1)",
+      "author": "Lisa Kleypas",
+      "score": 0.019080410392591746,
+      "uncertainty": 0.0010266936823899338,
+      "positive_share": 0.44061789745367697,
+      "sampled_degree": 712
+    },
+    {
+      "rank": 263,
+      "work_id": "24495476",
+      "title": "Murder of Crows (The Others, #2)",
+      "author": "Anne Bishop",
+      "score": 0.019071758793871702,
+      "uncertainty": 0.0011842754268253657,
+      "positive_share": 0.5235265772482257,
+      "sampled_degree": 729
+    },
+    {
+      "rank": 264,
+      "work_id": "7096800",
+      "title": "Eternal Kiss of Darkness (Night Huntress World, #2)",
+      "author": "Jeaniene Frost",
+      "score": 0.01905882086886138,
+      "uncertainty": 0.0021551530690644993,
+      "positive_share": 0.3756683616472129,
+      "sampled_degree": 928
+    },
+    {
+      "rank": 265,
+      "work_id": "24064358",
+      "title": "Magic Binds (Kate Daniels, #9)",
+      "author": "Ilona Andrews",
+      "score": 0.019023712832724877,
+      "uncertainty": 0.0009217695671704715,
+      "positive_share": 0.5421414128011579,
+      "sampled_degree": 434
+    },
+    {
+      "rank": 266,
+      "work_id": "7270473",
+      "title": "Sizzling Sixteen (Stephanie Plum, #16)",
+      "author": "Janet Evanovich",
+      "score": 0.018998232225722632,
+      "uncertainty": 0.0014896951924723437,
+      "positive_share": 0.5446078431372549,
+      "sampled_degree": 1098
+    },
+    {
+      "rank": 267,
+      "work_id": "25894056",
+      "title": "Until Trevor (Until, #2)",
+      "author": "Aurora Rose Reynolds",
+      "score": 0.018978110792026423,
+      "uncertainty": 0.001408173101424141,
+      "positive_share": 0.2610539810961744,
+      "sampled_degree": 553
+    },
+    {
+      "rank": 268,
+      "work_id": "81223",
+      "title": "The Dream Hunter (Dark-Hunter #10, Dream-Hunter #1)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.018972858413921573,
+      "uncertainty": 0.0017472519185540783,
+      "positive_share": 0.4,
+      "sampled_degree": 973
+    },
+    {
+      "rank": 269,
+      "work_id": "10894547",
+      "title": "Play of Passion (Psy-Changeling #9)",
+      "author": "Nalini Singh",
+      "score": 0.01895759079478233,
+      "uncertainty": 0.0015955042519186133,
+      "positive_share": 0.4165029469548134,
+      "sampled_degree": 540
+    },
+    {
+      "rank": 270,
+      "work_id": "276710",
+      "title": "On the Prowl (Alpha & Omega, #0.5)",
+      "author": "Patricia Briggs",
+      "score": 0.018931864263787658,
+      "uncertainty": 0.001672785864174116,
+      "positive_share": 0.4737595824184291,
+      "sampled_degree": 664
+    },
+    {
+      "rank": 271,
+      "work_id": "2321294",
+      "title": "Sunshine",
+      "author": "Robin McKinley",
+      "score": 0.01892067874041956,
+      "uncertainty": 0.0005202091067369182,
+      "positive_share": 0.5912727763010902,
+      "sampled_degree": 903
+    },
+    {
+      "rank": 272,
+      "work_id": "18365634",
+      "title": "Rock Chick Regret (Rock Chick, #7)",
+      "author": "Kristen Ashley",
+      "score": 0.018894671063308974,
+      "uncertainty": 0.001487937280259888,
+      "positive_share": 0.328415645143629,
+      "sampled_degree": 586
+    },
+    {
+      "rank": 273,
+      "work_id": "21747190",
+      "title": "Ten Tiny Breaths (Ten Tiny Breaths, #1)",
+      "author": "K.A. Tucker",
+      "score": 0.018850597278509552,
+      "uncertainty": 0.0014527896592341164,
+      "positive_share": 0.3086697585712367,
+      "sampled_degree": 1297
+    },
+    {
+      "rank": 274,
+      "work_id": "25310378",
+      "title": "Kaleidoscope (Colorado Mountain, #6)",
+      "author": "Kristen Ashley",
+      "score": 0.018844070302123938,
+      "uncertainty": 0.0010183414494558559,
+      "positive_share": 0.3451214748696688,
+      "sampled_degree": 451
+    },
+    {
+      "rank": 275,
+      "work_id": "21491232",
+      "title": "Just for Now (Sea Breeze, #4)",
+      "author": "Abbi Glines",
+      "score": 0.018801002689745827,
+      "uncertainty": 0.000882266746154614,
+      "positive_share": 0.2892156862745098,
+      "sampled_degree": 980
+    },
+    {
+      "rank": 276,
+      "work_id": "15093690",
+      "title": "Pushing the Limits (Pushing the Limits, #1)",
+      "author": "Katie McGarry",
+      "score": 0.018792119038710604,
+      "uncertainty": 0.0026426990395857237,
+      "positive_share": 0.3246764539505871,
+      "sampled_degree": 2097
+    },
+    {
+      "rank": 277,
+      "work_id": "40771712",
+      "title": "Vision in Silver (The Others, #3)",
+      "author": "Anne Bishop",
+      "score": 0.018784952462669927,
+      "uncertainty": 0.0010968046140370424,
+      "positive_share": 0.5483465029499881,
+      "sampled_degree": 587
+    },
+    {
+      "rank": 278,
+      "work_id": "24948167",
+      "title": "Beautiful Player (Beautiful Bastard, #3)",
+      "author": "Christina Lauren",
+      "score": 0.01877807579244474,
+      "uncertainty": 0.0012268906599597383,
+      "positive_share": 0.3227040718055395,
+      "sampled_degree": 927
+    },
+    {
+      "rank": 279,
+      "work_id": "228316",
+      "title": "Succubus Blues (Georgina Kincaid, #1)",
+      "author": "Richelle Mead",
+      "score": 0.018767047936166726,
+      "uncertainty": 0.002032299289113486,
+      "positive_share": 0.45654296875,
+      "sampled_degree": 1418
+    },
+    {
+      "rank": 280,
+      "work_id": "16657003",
+      "title": "Effortless (Thoughtless, #2)",
+      "author": "S.C. Stephens",
+      "score": 0.018756070115483255,
+      "uncertainty": 0.001385629370803301,
+      "positive_share": 0.25243713442140553,
+      "sampled_degree": 1655
+    },
+    {
+      "rank": 281,
+      "work_id": "811763",
+      "title": "Eleven on Top (Stephanie Plum, #11)",
+      "author": "Janet Evanovich",
+      "score": 0.018738998461445597,
+      "uncertainty": 0.0014915347400831552,
+      "positive_share": 0.5139442078201144,
+      "sampled_degree": 1484
+    },
+    {
+      "rank": 282,
+      "work_id": "907142",
+      "title": "Full Moon Rising (Riley Jenson Guardian #1)",
+      "author": "Keri Arthur",
+      "score": 0.018678421513416237,
+      "uncertainty": 0.002229022316283623,
+      "positive_share": 0.42156460748844576,
+      "sampled_degree": 814
+    },
+    {
+      "rank": 283,
+      "work_id": "2027280",
+      "title": "Grave Sight (Harper Connelly, #1)",
+      "author": "Charlaine Harris",
+      "score": 0.0186704212550054,
+      "uncertainty": 0.001365801287530625,
+      "positive_share": 0.549412915851272,
+      "sampled_degree": 1272
+    },
+    {
+      "rank": 284,
+      "work_id": "19040270",
+      "title": "While It Lasts (Sea Breeze, #3)",
+      "author": "Abbi Glines",
+      "score": 0.01863808002161093,
+      "uncertainty": 0.0011850448223694437,
+      "positive_share": 0.2795475557610077,
+      "sampled_degree": 1089
+    },
+    {
+      "rank": 285,
+      "work_id": "5790090",
+      "title": "Nice Girls Don't Have Fangs (Jane Jameson, #1)",
+      "author": "Molly Harper",
+      "score": 0.018633738916451602,
+      "uncertainty": 0.001741903921666092,
+      "positive_share": 0.46312245718793993,
+      "sampled_degree": 597
+    },
+    {
+      "rank": 286,
+      "work_id": "1097825",
+      "title": "No Rest for the Wicked (Immortals After Dark #3)",
+      "author": "Kresley Cole",
+      "score": 0.01861436167057181,
+      "uncertainty": 0.0020592774699371855,
+      "positive_share": 0.3553921568627451,
+      "sampled_degree": 1102
+    },
+    {
+      "rank": 287,
+      "work_id": "6227529",
+      "title": "Blaze of Memory (Psy-Changeling #7)",
+      "author": "Nalini Singh",
+      "score": 0.018610203691461595,
+      "uncertainty": 0.0012823532665965254,
+      "positive_share": 0.4211996614328534,
+      "sampled_degree": 513
+    },
+    {
+      "rank": 288,
+      "work_id": "26517398",
+      "title": "It Ain't Me, Babe (Hades Hangmen, #1)",
+      "author": "Tillie Cole",
+      "score": 0.018575489820625474,
+      "uncertainty": 0.0008105056244859433,
+      "positive_share": 0.27812369475426574,
+      "sampled_degree": 613
+    },
+    {
+      "rank": 289,
+      "work_id": "25423130",
+      "title": "Beautiful Oblivion (The Maddox Brothers, #1)",
+      "author": "Jamie McGuire",
+      "score": 0.018560616631703372,
+      "uncertainty": 0.001251758244840262,
+      "positive_share": 0.2959882583170254,
+      "sampled_degree": 1280
+    },
+    {
+      "rank": 290,
+      "work_id": "3341361",
+      "title": "A Caress of Twilight (Merry Gentry, #2)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.018557704579222928,
+      "uncertainty": 0.0013352261858477201,
+      "positive_share": 0.5076052621441505,
+      "sampled_degree": 920
+    },
+    {
+      "rank": 291,
+      "work_id": "6967072",
+      "title": "Shadowfever (Fever, #5)",
+      "author": "Karen Marie Moning",
+      "score": 0.018547912325274772,
+      "uncertainty": 0.0025862039357015493,
+      "positive_share": 0.3953988808708415,
+      "sampled_degree": 2018
+    },
+    {
+      "rank": 292,
+      "work_id": "26694375",
+      "title": "Until Lilly (Until, #3)",
+      "author": "Aurora Rose Reynolds",
+      "score": 0.018538887660203725,
+      "uncertainty": 0.0013295779173376262,
+      "positive_share": 0.2694264319901189,
+      "sampled_degree": 488
+    },
+    {
+      "rank": 293,
+      "work_id": "2953328",
+      "title": "Cerulean Sins (Anita Blake, Vampire Hunter, #11)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01851122077849256,
+      "uncertainty": 0.0014929499660521932,
+      "positive_share": 0.48237212693296494,
+      "sampled_degree": 1205
+    },
+    {
+      "rank": 294,
+      "work_id": "7313984",
+      "title": "Danse Macabre (Anita Blake, Vampire Hunter, #14)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.018507830742079706,
+      "uncertainty": 0.0014240111499806555,
+      "positive_share": 0.48627450980392156,
+      "sampled_degree": 1084
+    },
+    {
+      "rank": 295,
+      "work_id": "1736002",
+      "title": "Circus of the Damned (Anita Blake, Vampire Hunter, #3)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.018446053106389707,
+      "uncertainty": 0.0020482161604987396,
+      "positive_share": 0.44742711136252444,
+      "sampled_degree": 1957
+    },
+    {
+      "rank": 296,
+      "work_id": "41692791",
+      "title": "White Hot (Hidden Legacy, #2)",
+      "author": "Ilona Andrews",
+      "score": 0.018429636845348214,
+      "uncertainty": 0.0011340753550779282,
+      "positive_share": 0.5298206991877494,
+      "sampled_degree": 356
+    },
+    {
+      "rank": 297,
+      "work_id": "2644676",
+      "title": "Narcissus in Chains (Anita Blake, Vampire Hunter, #10)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01841055879849305,
+      "uncertainty": 0.0015416002971278544,
+      "positive_share": 0.4713556655538928,
+      "sampled_degree": 1319
+    },
+    {
+      "rank": 298,
+      "work_id": "23594178",
+      "title": "Fighting for Flight (Fighting, #1)",
+      "author": "J.B. Salsbury",
+      "score": 0.018388769561357536,
+      "uncertainty": 0.0009627338439385839,
+      "positive_share": 0.27385602462756986,
+      "sampled_degree": 508
+    },
+    {
+      "rank": 299,
+      "work_id": "12787590",
+      "title": "Archangel's Blade (Guild Hunter, #4)",
+      "author": "Nalini Singh",
+      "score": 0.018387127897136535,
+      "uncertainty": 0.001630244787896578,
+      "positive_share": 0.3974373049809315,
+      "sampled_degree": 649
+    },
+    {
+      "rank": 300,
+      "work_id": "3909033",
+      "title": "Just the Sexiest Man Alive",
+      "author": "Julie James",
+      "score": 0.018343928769417542,
+      "uncertainty": 0.0010270819574776258,
+      "positive_share": 0.36033938133210064,
+      "sampled_degree": 761
+    },
+    {
+      "rank": 301,
+      "work_id": "3687996",
+      "title": "The Mane Event (Pride, #1)",
+      "author": "Shelly Laurenston",
+      "score": 0.01833609839467662,
+      "uncertainty": 0.0020515277405556494,
+      "positive_share": 0.3590895379236731,
+      "sampled_degree": 517
+    },
+    {
+      "rank": 302,
+      "work_id": "1097463",
+      "title": "Vengeance in Death (In Death, #6)",
+      "author": "J.D. Robb",
+      "score": 0.01830495383693638,
+      "uncertainty": 0.0006613351443397851,
+      "positive_share": 0.5078604722832158,
+      "sampled_degree": 680
+    },
+    {
+      "rank": 303,
+      "work_id": "1823891",
+      "title": "It Happened One Autumn (Wallflowers, #2)",
+      "author": "Lisa Kleypas",
+      "score": 0.018301585052947066,
+      "uncertainty": 0.0012207156037730602,
+      "positive_share": 0.4213738920225624,
+      "sampled_degree": 882
+    },
+    {
+      "rank": 304,
+      "work_id": "2477403",
+      "title": "Obsidian Butterfly (Anita Blake, Vampire Hunter, #9)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01828773256173324,
+      "uncertainty": 0.001805063874352764,
+      "positive_share": 0.4664987463307241,
+      "sampled_degree": 1436
+    },
+    {
+      "rank": 305,
+      "work_id": "25403808",
+      "title": "Tall, Tatted and Tempting (The Reed Brothers, #1)",
+      "author": "Tammy Falkner",
+      "score": 0.018286586633490136,
+      "uncertainty": 0.0007671105314236856,
+      "positive_share": 0.30644752718778523,
+      "sampled_degree": 547
+    },
+    {
+      "rank": 306,
+      "work_id": "23348933",
+      "title": "If You Stay (Beautifully Broken, #1)",
+      "author": "Courtney Cole",
+      "score": 0.018269466824781998,
+      "uncertainty": 0.0007178408094518306,
+      "positive_share": 0.3006327285334566,
+      "sampled_degree": 710
+    },
+    {
+      "rank": 307,
+      "work_id": "1961195",
+      "title": "Ceremony in Death (In Death, #5)",
+      "author": "J.D. Robb",
+      "score": 0.018229054356283376,
+      "uncertainty": 0.0007951197260716006,
+      "positive_share": 0.5090777764937016,
+      "sampled_degree": 703
+    },
+    {
+      "rank": 308,
+      "work_id": "1616066",
+      "title": "Bet Me",
+      "author": "Jennifer Crusie",
+      "score": 0.018208414653015554,
+      "uncertainty": 0.0008000735602923606,
+      "positive_share": 0.48508878883317025,
+      "sampled_degree": 1284
+    },
+    {
+      "rank": 309,
+      "work_id": "47125984",
+      "title": "RoomHate",
+      "author": "Penelope Ward",
+      "score": 0.018182878727136767,
+      "uncertainty": 0.0015937044950689932,
+      "positive_share": 0.2859201047806156,
+      "sampled_degree": 688
+    },
+    {
+      "rank": 310,
+      "work_id": "7164540",
+      "title": "Web of Lies (Elemental Assassin, #2)",
+      "author": "Jennifer Estep",
+      "score": 0.018141778816277015,
+      "uncertainty": 0.001465490489871235,
+      "positive_share": 0.4940993224324366,
+      "sampled_degree": 521
+    },
+    {
+      "rank": 311,
+      "work_id": "14706158",
+      "title": "Drink Deep (Chicagoland Vampires, #5)",
+      "author": "Chloe Neill",
+      "score": 0.018129234312207403,
+      "uncertainty": 0.001661142150855839,
+      "positive_share": 0.41090469586655876,
+      "sampled_degree": 671
+    },
+    {
+      "rank": 312,
+      "work_id": "760678",
+      "title": "Secrets of a Summer Night (Wallflowers, #1)",
+      "author": "Lisa Kleypas",
+      "score": 0.018113121032682956,
+      "uncertainty": 0.001088012216547486,
+      "positive_share": 0.413145729804692,
+      "sampled_degree": 907
+    },
+    {
+      "rank": 313,
+      "work_id": "26121628",
+      "title": "Deacon (Unfinished Hero, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.018096137910206256,
+      "uncertainty": 0.0011853910103914371,
+      "positive_share": 0.31301436350416906,
+      "sampled_degree": 444
+    },
+    {
+      "rank": 314,
+      "work_id": "7294255",
+      "title": "Bonds of Justice (Psy-Changeling #8)",
+      "author": "Nalini Singh",
+      "score": 0.01807974458555289,
+      "uncertainty": 0.0015276365614530713,
+      "positive_share": 0.4169941060903733,
+      "sampled_degree": 496
+    },
+    {
+      "rank": 315,
+      "work_id": "17371693",
+      "title": "Wildest Dreams (Fantasyland, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.018066665619716968,
+      "uncertainty": 0.0010299768798589315,
+      "positive_share": 0.3746864759508612,
+      "sampled_degree": 512
+    },
+    {
+      "rank": 316,
+      "work_id": "21965727",
+      "title": "Mile High (Up in the Air, #2)",
+      "author": "R.K. Lilley",
+      "score": 0.018062798033396065,
+      "uncertainty": 0.0009189007217314814,
+      "positive_share": 0.2584580407505468,
+      "sampled_degree": 1001
+    },
+    {
+      "rank": 317,
+      "work_id": "19215651",
+      "title": "Tempting the Best Man (Gamble Brothers, #1)",
+      "author": "J. Lynn",
+      "score": 0.018054078033918047,
+      "uncertainty": 0.0010688835756150895,
+      "positive_share": 0.31125621171847917,
+      "sampled_degree": 752
+    },
+    {
+      "rank": 318,
+      "work_id": "25365988",
+      "title": "Beck (Corps Security, #3)",
+      "author": "Harper Sloan",
+      "score": 0.018053435205672187,
+      "uncertainty": 0.0011196112466402618,
+      "positive_share": 0.27473539735047914,
+      "sampled_degree": 457
+    },
+    {
+      "rank": 319,
+      "work_id": "3332311",
+      "title": "Dragon Actually (Dragon Kin, #1)",
+      "author": "G.A. Aiken",
+      "score": 0.01805320012994277,
+      "uncertainty": 0.0016050021071819024,
+      "positive_share": 0.4006756338660025,
+      "sampled_degree": 562
+    },
+    {
+      "rank": 320,
+      "work_id": "25473547",
+      "title": "Ruin (Ruin, #1)",
+      "author": "Rachel Van Dyken",
+      "score": 0.018005766013242025,
+      "uncertainty": 0.0009376508578019605,
+      "positive_share": 0.27638680226511037,
+      "sampled_degree": 804
+    },
+    {
+      "rank": 321,
+      "work_id": "14470450",
+      "title": "Smokin' Seventeen (Stephanie Plum, #17)",
+      "author": "Janet Evanovich",
+      "score": 0.01799130126342169,
+      "uncertainty": 0.0014225137747677264,
+      "positive_share": 0.530624304516327,
+      "sampled_degree": 1104
+    },
+    {
+      "rank": 322,
+      "work_id": "11018887",
+      "title": "Simply Irresistible (Lucky Harbor, #1)",
+      "author": "Jill Shalvis",
+      "score": 0.01795818805255537,
+      "uncertainty": 0.0010815380712284764,
+      "positive_share": 0.42941037699364204,
+      "sampled_degree": 596
+    },
+    {
+      "rank": 323,
+      "work_id": "477836",
+      "title": "For a Few Demons More (The Hollows, #5)",
+      "author": "Kim Harrison",
+      "score": 0.01795287358194798,
+      "uncertainty": 0.002172765471978428,
+      "positive_share": 0.4279793463258221,
+      "sampled_degree": 1175
+    },
+    {
+      "rank": 324,
+      "work_id": "41392342",
+      "title": "Marked in Flesh (The Others, #4)",
+      "author": "Anne Bishop",
+      "score": 0.017943669053796404,
+      "uncertainty": 0.0009193441936803959,
+      "positive_share": 0.5744473492876259,
+      "sampled_degree": 453
+    },
+    {
+      "rank": 325,
+      "work_id": "21763059",
+      "title": "All In (The Blackstone Affair, #2)",
+      "author": "Raine Miller",
+      "score": 0.017942525705248374,
+      "uncertainty": 0.0011960034322962786,
+      "positive_share": 0.26764705882352946,
+      "sampled_degree": 864
+    },
+    {
+      "rank": 326,
+      "work_id": "776136",
+      "title": "Nobody's Baby But Mine (Chicago Stars, #3)",
+      "author": "Susan Elizabeth Phillips",
+      "score": 0.017937189610263905,
+      "uncertainty": 0.0007311248108537332,
+      "positive_share": 0.44209330097461386,
+      "sampled_degree": 715
+    },
+    {
+      "rank": 327,
+      "work_id": "2268839",
+      "title": "It Had to Be You (Chicago Stars, #1)",
+      "author": "Susan Elizabeth Phillips",
+      "score": 0.017921525679414206,
+      "uncertainty": 0.0007785769133987184,
+      "positive_share": 0.39793327940213413,
+      "sampled_degree": 929
+    },
+    {
+      "rank": 328,
+      "work_id": "24951197",
+      "title": "Price of a Kiss (Forbidden Men, #1)",
+      "author": "Linda Kage",
+      "score": 0.017915424558686614,
+      "uncertainty": 0.0008429321351437221,
+      "positive_share": 0.3029016911283177,
+      "sampled_degree": 631
+    },
+    {
+      "rank": 329,
+      "work_id": "5757031",
+      "title": "Skinwalker (Jane Yellowrock, #1)",
+      "author": "Faith Hunter",
+      "score": 0.017912196235590434,
+      "uncertainty": 0.001618935718955038,
+      "positive_share": 0.48111541276628533,
+      "sampled_degree": 688
+    },
+    {
+      "rank": 330,
+      "work_id": "19041261",
+      "title": "Games of the Heart (The 'Burg, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.01786277315413949,
+      "uncertainty": 0.0010649067745604483,
+      "positive_share": 0.3561319477747011,
+      "sampled_degree": 437
+    },
+    {
+      "rank": 331,
+      "work_id": "47472732",
+      "title": "Wildfire (Hidden Legacy, #3)",
+      "author": "Ilona Andrews",
+      "score": 0.017855706776980357,
+      "uncertainty": 0.0008742628012449851,
+      "positive_share": 0.5702922699102209,
+      "sampled_degree": 282
+    },
+    {
+      "rank": 332,
+      "work_id": "21450735",
+      "title": "Crash (Crash, #1)",
+      "author": "Nicole  Williams",
+      "score": 0.017815780723937767,
+      "uncertainty": 0.0011496357372532864,
+      "positive_share": 0.2869901385211619,
+      "sampled_degree": 1215
+    },
+    {
+      "rank": 333,
+      "work_id": "21936139",
+      "title": "The Proposal (The Proposition, #2)",
+      "author": "Katie Ashley",
+      "score": 0.017808465627588522,
+      "uncertainty": 0.0008287546978318415,
+      "positive_share": 0.29160310489618246,
+      "sampled_degree": 672
+    },
+    {
+      "rank": 334,
+      "work_id": "15333212",
+      "title": "A Rogue by Any Other Name (The Rules of Scoundrels, #1)",
+      "author": "Sarah MacLean",
+      "score": 0.01779478405744169,
+      "uncertainty": 0.0012909123646734025,
+      "positive_share": 0.5098280055799682,
+      "sampled_degree": 657
+    },
+    {
+      "rank": 335,
+      "work_id": "21522131",
+      "title": "Release Me (Stark Trilogy, #1)",
+      "author": "J. Kenner",
+      "score": 0.017780491026151417,
+      "uncertainty": 0.0011055573742242864,
+      "positive_share": 0.2735294117647059,
+      "sampled_degree": 1019
+    },
+    {
+      "rank": 336,
+      "work_id": "24333997",
+      "title": "Simple Perfection (Rosemary Beach, #6; Perfection, #2)",
+      "author": "Abbi Glines",
+      "score": 0.017776726329372963,
+      "uncertainty": 0.0009077779214402435,
+      "positive_share": 0.2837493740128665,
+      "sampled_degree": 831
+    },
+    {
+      "rank": 337,
+      "work_id": "21496528",
+      "title": "Heart of Obsidian  (Psy-Changeling, #12)",
+      "author": "Nalini Singh",
+      "score": 0.017761604604435863,
+      "uncertainty": 0.0011670471303042457,
+      "positive_share": 0.4314368918521727,
+      "sampled_degree": 453
+    },
+    {
+      "rank": 338,
+      "work_id": "602355",
+      "title": "Undead and Unemployed (Undead, #2)",
+      "author": "MaryJanice Davidson",
+      "score": 0.017745101115548036,
+      "uncertainty": 0.0009779782153297252,
+      "positive_share": 0.5235583034785622,
+      "sampled_degree": 778
+    },
+    {
+      "rank": 339,
+      "work_id": "25632486",
+      "title": "Hell's Knights (The MC Sinners, #1)",
+      "author": "Bella Jewel",
+      "score": 0.01772421711840386,
+      "uncertainty": 0.0013157095592208996,
+      "positive_share": 0.27890877589220797,
+      "sampled_degree": 466
+    },
+    {
+      "rank": 340,
+      "work_id": "151480",
+      "title": "The Secret of the Old Clock (Nancy Drew, #1)",
+      "author": "Carolyn Keene",
+      "score": 0.017718915118864635,
+      "uncertainty": 0.0020605673654216,
+      "positive_share": 0.5993268230671444,
+      "sampled_degree": 928
+    },
+    {
+      "rank": 341,
+      "work_id": "45656922",
+      "title": "Hollywood Dirt (Hollywood Dirt, #1)",
+      "author": "Alessandra Torre",
+      "score": 0.017697341655102103,
+      "uncertainty": 0.0008897911543571909,
+      "positive_share": 0.30480678495738134,
+      "sampled_degree": 550
+    },
+    {
+      "rank": 342,
+      "work_id": "2323791",
+      "title": "Blue-Eyed Devil (Travises, #2)",
+      "author": "Lisa Kleypas",
+      "score": 0.01769716155084158,
+      "uncertainty": 0.0008901425858248452,
+      "positive_share": 0.45072229284641163,
+      "sampled_degree": 632
+    },
+    {
+      "rank": 343,
+      "work_id": "2506307",
+      "title": "The Darkest Kiss (Lords of the Underworld #2)",
+      "author": "Gena Showalter",
+      "score": 0.017682275566511446,
+      "uncertainty": 0.0020866752329150484,
+      "positive_share": 0.3405190286731131,
+      "sampled_degree": 1128
+    },
+    {
+      "rank": 344,
+      "work_id": "27912",
+      "title": "Glass Houses (The Morganville Vampires, #1)",
+      "author": "Rachel Caine",
+      "score": 0.017673628185946314,
+      "uncertainty": 0.0024301694001965237,
+      "positive_share": 0.45062243915117417,
+      "sampled_degree": 2005
+    },
+    {
+      "rank": 345,
+      "work_id": "19268425",
+      "title": "Try Me (One Night with Sole Regret, #1)",
+      "author": "Olivia Cunning",
+      "score": 0.017664859632020306,
+      "uncertainty": 0.0010911752890934764,
+      "positive_share": 0.3069454542641895,
+      "sampled_degree": 517
+    },
+    {
+      "rank": 346,
+      "work_id": "24749971",
+      "title": "The King (Black Dagger Brotherhood, #12)",
+      "author": "J.R. Ward",
+      "score": 0.017663421275613274,
+      "uncertainty": 0.0016042599060573286,
+      "positive_share": 0.37536403559459147,
+      "sampled_degree": 913
+    },
+    {
+      "rank": 347,
+      "work_id": "21447897",
+      "title": "Rock Chick Revolution (Rock Chick, #8)",
+      "author": "Kristen Ashley",
+      "score": 0.0176557462710855,
+      "uncertainty": 0.0011640848429774668,
+      "positive_share": 0.3330120439826678,
+      "sampled_degree": 513
+    },
+    {
+      "rank": 348,
+      "work_id": "7178698",
+      "title": "Married By Morning (The Hathaways, #4)",
+      "author": "Lisa Kleypas",
+      "score": 0.017632565021249325,
+      "uncertainty": 0.0010564372105049025,
+      "positive_share": 0.42493162294387304,
+      "sampled_degree": 662
+    },
+    {
+      "rank": 349,
+      "work_id": "1605350",
+      "title": "Dark Needs at Night's Edge (Immortals After Dark #5)",
+      "author": "Kresley Cole",
+      "score": 0.01763219003341919,
+      "uncertainty": 0.0016664907129582034,
+      "positive_share": 0.33955143701316143,
+      "sampled_degree": 981
+    },
+    {
+      "rank": 350,
+      "work_id": "21849143",
+      "title": "Sixth Grave on the Edge (Charley Davidson, #6)",
+      "author": "Darynda Jones",
+      "score": 0.017619392488491165,
+      "uncertainty": 0.0010893745505027137,
+      "positive_share": 0.48549146852714137,
+      "sampled_degree": 604
+    },
+    {
+      "rank": 351,
+      "work_id": "25338951",
+      "title": "Take a Chance (Rosemary Beach, #7; Chance, #1)",
+      "author": "Abbi Glines",
+      "score": 0.017603488476879772,
+      "uncertainty": 0.001036541833810805,
+      "positive_share": 0.270506375438191,
+      "sampled_degree": 786
+    },
+    {
+      "rank": 352,
+      "work_id": "24946137",
+      "title": "Remy (Real, #3)",
+      "author": "Katy Evans",
+      "score": 0.01755205884920967,
+      "uncertainty": 0.0009688620451362789,
+      "positive_share": 0.2753072645143326,
+      "sampled_degree": 608
+    },
+    {
+      "rank": 353,
+      "work_id": "42869269",
+      "title": "Truth or Beard (Winston Brothers, #1)",
+      "author": "Penny Reid",
+      "score": 0.017521432657832715,
+      "uncertainty": 0.0008976281716389253,
+      "positive_share": 0.3876173754312145,
+      "sampled_degree": 471
+    },
+    {
+      "rank": 354,
+      "work_id": "6447962",
+      "title": "Tempt Me at Twilight (The Hathaways, #3)",
+      "author": "Lisa Kleypas",
+      "score": 0.017518657693608376,
+      "uncertainty": 0.0011679862654051703,
+      "positive_share": 0.42536005066135485,
+      "sampled_degree": 656
+    },
+    {
+      "rank": 355,
+      "work_id": "43788815",
+      "title": "Walk Through Fire (Chaos, #4)",
+      "author": "Kristen Ashley",
+      "score": 0.017505230501605372,
+      "uncertainty": 0.0008237237829604193,
+      "positive_share": 0.36279410849335536,
+      "sampled_degree": 377
+    },
+    {
+      "rank": 356,
+      "work_id": "6522883",
+      "title": "Pleasure of a Dark Prince (Immortals After Dark #9)",
+      "author": "Kresley Cole",
+      "score": 0.017477009496569097,
+      "uncertainty": 0.0013592818945851461,
+      "positive_share": 0.35392156862745094,
+      "sampled_degree": 864
+    },
+    {
+      "rank": 357,
+      "work_id": "27334873",
+      "title": "Seventh Grave and No Body (Charley Davidson, #7)",
+      "author": "Darynda Jones",
+      "score": 0.01746769134464419,
+      "uncertainty": 0.0012334564487605304,
+      "positive_share": 0.52139539470631,
+      "sampled_degree": 501
+    },
+    {
+      "rank": 358,
+      "work_id": "42396239",
+      "title": "Rock Addiction (Rock Kiss, #1)",
+      "author": "Nalini Singh",
+      "score": 0.01745310540116554,
+      "uncertainty": 0.0009751120582838228,
+      "positive_share": 0.4782940025414942,
+      "sampled_degree": 296
+    },
+    {
+      "rank": 359,
+      "work_id": "50572087",
+      "title": "Bossman",
+      "author": "Vi Keeland",
+      "score": 0.01744842661011055,
+      "uncertainty": 0.00117385728325833,
+      "positive_share": 0.2859822409232245,
+      "sampled_degree": 614
+    },
+    {
+      "rank": 360,
+      "work_id": "15789500",
+      "title": "Etiquette & Espionage (Finishing School, #1)",
+      "author": "Gail Carriger",
+      "score": 0.01742167373868323,
+      "uncertainty": 0.0004693215780829394,
+      "positive_share": 0.5580580177276391,
+      "sampled_degree": 1074
+    },
+    {
+      "rank": 361,
+      "work_id": "13210545",
+      "title": "Heartless (Parasol Protectorate, #4)",
+      "author": "Gail Carriger",
+      "score": 0.017421409853021437,
+      "uncertainty": 0.0007638606866040776,
+      "positive_share": 0.5760575780760403,
+      "sampled_degree": 827
+    },
+    {
+      "rank": 362,
+      "work_id": "3241480",
+      "title": "Holiday in Death (In Death, #7)",
+      "author": "J.D. Robb",
+      "score": 0.017412583593891508,
+      "uncertainty": 0.0005965735960946461,
+      "positive_share": 0.5110395238645558,
+      "sampled_degree": 640
+    },
+    {
+      "rank": 363,
+      "work_id": "7366229",
+      "title": "Love in the Afternoon (The Hathaways, #5)",
+      "author": "Lisa Kleypas",
+      "score": 0.017383253756862293,
+      "uncertainty": 0.0011277358270562992,
+      "positive_share": 0.42718117550866186,
+      "sampled_degree": 694
+    },
+    {
+      "rank": 364,
+      "work_id": "40094032",
+      "title": "Reasonable Doubt: Volume 1 (Reasonable Doubt, #1)",
+      "author": "Whitney G.",
+      "score": 0.01736674539476833,
+      "uncertainty": 0.0009421071160348096,
+      "positive_share": 0.27365075696290303,
+      "sampled_degree": 734
+    },
+    {
+      "rank": 365,
+      "work_id": "16978039",
+      "title": "Golden Trail (The 'Burg, #3)",
+      "author": "Kristen Ashley",
+      "score": 0.01735431934540232,
+      "uncertainty": 0.0009934212217420444,
+      "positive_share": 0.35728346456692917,
+      "sampled_degree": 438
+    },
+    {
+      "rank": 366,
+      "work_id": "6984561",
+      "title": "A Local Habitation (October Daye, #2)",
+      "author": "Seanan McGuire",
+      "score": 0.01730254024288661,
+      "uncertainty": 0.002045820335932315,
+      "positive_share": 0.5747548071716968,
+      "sampled_degree": 398
+    },
+    {
+      "rank": 367,
+      "work_id": "101766",
+      "title": "Scandal in Spring (Wallflowers, #4)",
+      "author": "Lisa Kleypas",
+      "score": 0.017287657780233615,
+      "uncertainty": 0.0010877665102433005,
+      "positive_share": 0.4367626497271137,
+      "sampled_degree": 730
+    },
+    {
+      "rank": 368,
+      "work_id": "16494",
+      "title": "Kitty Goes to Washington (Kitty Norville, #2)",
+      "author": "Carrie Vaughn",
+      "score": 0.01728033593709444,
+      "uncertainty": 0.0015575443538835719,
+      "positive_share": 0.5471967189022786,
+      "sampled_degree": 469
+    },
+    {
+      "rank": 369,
+      "work_id": "2007518",
+      "title": "Dark Desires After Dusk (Immortals After Dark #6)",
+      "author": "Kresley Cole",
+      "score": 0.01727678200636503,
+      "uncertainty": 0.001621759894761434,
+      "positive_share": 0.34348106629685277,
+      "sampled_degree": 955
+    },
+    {
+      "rank": 370,
+      "work_id": "83434",
+      "title": "Ill Wind (Weather Warden, #1)",
+      "author": "Rachel Caine",
+      "score": 0.017274650181023095,
+      "uncertainty": 0.00130835413938985,
+      "positive_share": 0.5461689587426326,
+      "sampled_degree": 585
+    },
+    {
+      "rank": 371,
+      "work_id": "18979800",
+      "title": "Until the Sun Falls from the Sky (The Three, #1)",
+      "author": "Kristen Ashley",
+      "score": 0.017256193617848956,
+      "uncertainty": 0.000784779077718747,
+      "positive_share": 0.3538008755781755,
+      "sampled_degree": 444
+    },
+    {
+      "rank": 372,
+      "work_id": "4113404",
+      "title": "Smooth Talking Stranger (Travises, #3)",
+      "author": "Lisa Kleypas",
+      "score": 0.01722578555611494,
+      "uncertainty": 0.0007030549485475563,
+      "positive_share": 0.4234504410801649,
+      "sampled_degree": 622
+    },
+    {
+      "rank": 373,
+      "work_id": "42671149",
+      "title": "The Friend Zone (Game On, #2)",
+      "author": "Kristen Callihan",
+      "score": 0.017221128484173592,
+      "uncertainty": 0.001097017201156569,
+      "positive_share": 0.31825661711244835,
+      "sampled_degree": 516
+    },
+    {
+      "rank": 374,
+      "work_id": "579543",
+      "title": "Tempting the Beast (Breeds, #1; Feline Breeds, #1)",
+      "author": "Lora Leigh",
+      "score": 0.01719278313347191,
+      "uncertainty": 0.002209820527583581,
+      "positive_share": 0.37759765323452216,
+      "sampled_degree": 487
+    },
+    {
+      "rank": 375,
+      "work_id": "21436019",
+      "title": "Walking Disaster (Beautiful, #2)",
+      "author": "Jamie McGuire",
+      "score": 0.017182134272307366,
+      "uncertainty": 0.001948500623669441,
+      "positive_share": 0.27809862707925637,
+      "sampled_degree": 2912
+    },
+    {
+      "rank": 376,
+      "work_id": "6902804",
+      "title": "Dead in the Family (Sookie Stackhouse, #10)",
+      "author": "Charlaine Harris",
+      "score": 0.01715581667984692,
+      "uncertainty": 0.0021608835139454675,
+      "positive_share": 0.48114231994167533,
+      "sampled_degree": 3117
+    },
+    {
+      "rank": 377,
+      "work_id": "17026278",
+      "title": "Tangle of Need (Psy-Changeling #11)",
+      "author": "Nalini Singh",
+      "score": 0.017154824029802118,
+      "uncertainty": 0.0011096081534970794,
+      "positive_share": 0.4166982503906069,
+      "sampled_degree": 453
+    },
+    {
+      "rank": 378,
+      "work_id": "38777648",
+      "title": "Better When He's Bad (Welcome to the Point, #1)",
+      "author": "Jay Crownover",
+      "score": 0.01714699925760558,
+      "uncertainty": 0.001030099276940643,
+      "positive_share": 0.3407297830374753,
+      "sampled_degree": 405
+    },
+    {
+      "rank": 379,
+      "work_id": "42495691",
+      "title": "Sustained (The Legal Briefs, #2)",
+      "author": "Emma Chase",
+      "score": 0.01713761034006242,
+      "uncertainty": 0.0008800891321883604,
+      "positive_share": 0.3338254593175853,
+      "sampled_degree": 473
+    },
+    {
+      "rank": 380,
+      "work_id": "1615880",
+      "title": "Natural Born Charmer (Chicago Stars, #7)",
+      "author": "Susan Elizabeth Phillips",
+      "score": 0.01712700701416604,
+      "uncertainty": 0.0005491222107020196,
+      "positive_share": 0.47328094302554025,
+      "sampled_degree": 632
+    },
+    {
+      "rank": 381,
+      "work_id": "702043",
+      "title": "Kiss of Crimson (Midnight Breed, #2)",
+      "author": "Lara Adrian",
+      "score": 0.017093186492723792,
+      "uncertainty": 0.0021160450573899205,
+      "positive_share": 0.3392365399479489,
+      "sampled_degree": 892
+    },
+    {
+      "rank": 382,
+      "work_id": "14419515",
+      "title": "Hounded (The Iron Druid Chronicles, #1)",
+      "author": "Kevin Hearne",
+      "score": 0.01709289969978557,
+      "uncertainty": 0.0009195486836959723,
+      "positive_share": 0.44298185027435627,
+      "sampled_degree": 1484
+    },
+    {
+      "rank": 383,
+      "work_id": "3341458",
+      "title": "Seduced by Moonlight (Merry Gentry, #3)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.017059487013703623,
+      "uncertainty": 0.0012820524049863217,
+      "positive_share": 0.49852652259332025,
+      "sampled_degree": 823
+    },
+    {
+      "rank": 384,
+      "work_id": "13029341",
+      "title": "How to Flirt with a Naked Werewolf (Naked Werewolf, #1)",
+      "author": "Molly Harper",
+      "score": 0.01705906819180041,
+      "uncertainty": 0.0014833781775479959,
+      "positive_share": 0.4625984251968504,
+      "sampled_degree": 456
+    },
+    {
+      "rank": 385,
+      "work_id": "1329431",
+      "title": "Upon the Midnight Clear (Dark-Hunter #12, Dream-Hunter #2)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.017022023196259443,
+      "uncertainty": 0.001326609934792023,
+      "positive_share": 0.4190300088601256,
+      "sampled_degree": 716
+    },
+    {
+      "rank": 386,
+      "work_id": "3159808",
+      "title": "An Ice Cold Grave (Harper Connelly, #3)",
+      "author": "Charlaine Harris",
+      "score": 0.01701180821518826,
+      "uncertainty": 0.0011584693689290445,
+      "positive_share": 0.5917543048653646,
+      "sampled_degree": 769
+    },
+    {
+      "rank": 387,
+      "work_id": "3627605",
+      "title": "Kiss of a Demon King (Immortals After Dark #7)",
+      "author": "Kresley Cole",
+      "score": 0.017000988434517472,
+      "uncertainty": 0.001589711065989308,
+      "positive_share": 0.3411764705882353,
+      "sampled_degree": 918
+    },
+    {
+      "rank": 388,
+      "work_id": "260380",
+      "title": "Loyalty in Death (In Death, #9)",
+      "author": "J.D. Robb",
+      "score": 0.016997380883467413,
+      "uncertainty": 0.0005479640968197086,
+      "positive_share": 0.5174603205296784,
+      "sampled_degree": 538
+    },
+    {
+      "rank": 389,
+      "work_id": "1284999",
+      "title": "Ramona the Pest (Ramona, #2)",
+      "author": "Beverly Cleary",
+      "score": 0.016992574985324627,
+      "uncertainty": 0.0013557741774992513,
+      "positive_share": 0.6192389922570207,
+      "sampled_degree": 800
+    },
+    {
+      "rank": 390,
+      "work_id": "3093655",
+      "title": "Conspiracy in Death (In Death, #8)",
+      "author": "J.D. Robb",
+      "score": 0.016988741949678286,
+      "uncertainty": 0.0005235019081071528,
+      "positive_share": 0.5007444734928763,
+      "sampled_degree": 604
+    },
+    {
+      "rank": 391,
+      "work_id": "3159815",
+      "title": "Storm Born (Dark Swan #1)",
+      "author": "Richelle Mead",
+      "score": 0.016986321228679532,
+      "uncertainty": 0.0021902428099059745,
+      "positive_share": 0.4428664831920335,
+      "sampled_degree": 825
+    },
+    {
+      "rank": 392,
+      "work_id": "22957415",
+      "title": "The Redemption of Callie & Kayden (The Coincidence, #2)",
+      "author": "Jessica Sorensen",
+      "score": 0.016976558312814354,
+      "uncertainty": 0.0008416245751510916,
+      "positive_share": 0.2929118995338803,
+      "sampled_degree": 955
+    },
+    {
+      "rank": 393,
+      "work_id": "1703667",
+      "title": "The Harlequin (Anita Blake, Vampire Hunter #15)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01696649206896828,
+      "uncertainty": 0.001517075609487187,
+      "positive_share": 0.46225490196078434,
+      "sampled_degree": 1015
+    },
+    {
+      "rank": 394,
+      "work_id": "1878138",
+      "title": "Dream Chaser (Dark-Hunter #13, Dream-Hunter #3)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.016961839724871818,
+      "uncertainty": 0.0014911910152514368,
+      "positive_share": 0.4204909665241342,
+      "sampled_degree": 748
+    },
+    {
+      "rank": 395,
+      "work_id": "174338",
+      "title": "Dark Desire (Dark, #2)",
+      "author": "Christine Feehan",
+      "score": 0.01695924570779168,
+      "uncertainty": 0.0017234595322912505,
+      "positive_share": 0.4272272326469997,
+      "sampled_degree": 608
+    },
+    {
+      "rank": 396,
+      "work_id": "15468342",
+      "title": "Fate's Edge (The Edge, #3)",
+      "author": "Ilona Andrews",
+      "score": 0.01695191760549389,
+      "uncertainty": 0.0012041482724009995,
+      "positive_share": 0.48251254096196555,
+      "sampled_degree": 393
+    },
+    {
+      "rank": 397,
+      "work_id": "846764",
+      "title": "An Offer From a Gentleman (Bridgertons, #3)",
+      "author": "Julia Quinn",
+      "score": 0.01694590074055244,
+      "uncertainty": 0.0012408199271387438,
+      "positive_share": 0.45806367733733966,
+      "sampled_degree": 807
+    },
+    {
+      "rank": 398,
+      "work_id": "17088789",
+      "title": "Steel's Edge (The Edge, #4)",
+      "author": "Ilona Andrews",
+      "score": 0.01693391803951023,
+      "uncertainty": 0.0009215022154597387,
+      "positive_share": 0.5105918712823618,
+      "sampled_degree": 341
+    },
+    {
+      "rank": 399,
+      "work_id": "98895",
+      "title": "One Fish, Two Fish, Red Fish, Blue Fish",
+      "author": "Dr. Seuss",
+      "score": 0.016892846846232074,
+      "uncertainty": 0.0011930906145059153,
+      "positive_share": 0.5092983656433463,
+      "sampled_degree": 1630
+    },
+    {
+      "rank": 400,
+      "work_id": "13402106",
+      "title": "Dreams of a Dark Warrior (Immortals After Dark #11)",
+      "author": "Kresley Cole",
+      "score": 0.016857692691796343,
+      "uncertainty": 0.0012604644934364044,
+      "positive_share": 0.37586867752995107,
+      "sampled_degree": 774
+    },
+    {
+      "rank": 401,
+      "work_id": "17441876",
+      "title": "The Golden Dynasty (Fantasyland, #2)",
+      "author": "Kristen Ashley",
+      "score": 0.01683713387770821,
+      "uncertainty": 0.001182976831002787,
+      "positive_share": 0.3578202410349594,
+      "sampled_degree": 514
+    },
+    {
+      "rank": 402,
+      "work_id": "6863789",
+      "title": "Pride Mates (Shifters Unbound, #1)",
+      "author": "Jennifer Ashley",
+      "score": 0.01681070821369403,
+      "uncertainty": 0.001664687301668907,
+      "positive_share": 0.40374035161285315,
+      "sampled_degree": 396
+    },
+    {
+      "rank": 403,
+      "work_id": "2884160",
+      "title": "Stuart Little",
+      "author": "E.B. White",
+      "score": 0.016799855312670347,
+      "uncertainty": 0.0014403193577002713,
+      "positive_share": 0.5376425666585127,
+      "sampled_degree": 1293
+    },
+    {
+      "rank": 404,
+      "work_id": "2722196",
+      "title": "Micah (Anita Blake, Vampire Hunter, #13)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.016768711804339767,
+      "uncertainty": 0.001424369199651904,
+      "positive_share": 0.4748014274202832,
+      "sampled_degree": 1050
+    },
+    {
+      "rank": 405,
+      "work_id": "42797145",
+      "title": "Shards of Hope (Psy-Changeling, #14)",
+      "author": "Nalini Singh",
+      "score": 0.01676036288929653,
+      "uncertainty": 0.0008131754161887514,
+      "positive_share": 0.5108822722334345,
+      "sampled_degree": 273
+    },
+    {
+      "rank": 406,
+      "work_id": "13210557",
+      "title": "Timeless (Parasol Protectorate, #5)",
+      "author": "Gail Carriger",
+      "score": 0.01675485919418497,
+      "uncertainty": 0.0006402835801720239,
+      "positive_share": 0.6161738094597313,
+      "sampled_degree": 705
+    },
+    {
+      "rank": 407,
+      "work_id": "15702803",
+      "title": "Lothaire (Immortals After Dark #12)",
+      "author": "Kresley Cole",
+      "score": 0.016747793810763523,
+      "uncertainty": 0.0013176492785722572,
+      "positive_share": 0.35575234022882235,
+      "sampled_degree": 846
+    },
+    {
+      "rank": 408,
+      "work_id": "726205",
+      "title": "His Majesty's Dragon (Temeraire, #1)",
+      "author": "Naomi Novik",
+      "score": 0.01673905739021309,
+      "uncertainty": 0.001075834996069559,
+      "positive_share": 0.5362275047005104,
+      "sampled_degree": 1260
+    },
+    {
+      "rank": 409,
+      "work_id": "11164541",
+      "title": "A Lot like Love (FBI/US Attorney, #2)",
+      "author": "Julie James",
+      "score": 0.016737597603729962,
+      "uncertainty": 0.0007220671027215224,
+      "positive_share": 0.42007641972061943,
+      "sampled_degree": 600
+    },
+    {
+      "rank": 410,
+      "work_id": "41391574",
+      "title": "Where I Belong (Alabama Summer, #1)",
+      "author": "J.  Daniels",
+      "score": 0.016730155347800008,
+      "uncertainty": 0.0012115976890215562,
+      "positive_share": 0.28564343060058667,
+      "sampled_degree": 487
+    },
+    {
+      "rank": 411,
+      "work_id": "894153",
+      "title": "Hop On Pop",
+      "author": "Dr. Seuss",
+      "score": 0.016711705057228625,
+      "uncertainty": 0.0009525338773503268,
+      "positive_share": 0.6022506645094187,
+      "sampled_degree": 683
+    },
+    {
+      "rank": 412,
+      "work_id": "6828809",
+      "title": "The Darkest Hour (KGI, #1)",
+      "author": "Maya Banks",
+      "score": 0.01667832727077757,
+      "uncertainty": 0.0015333782137911427,
+      "positive_share": 0.39755367943938247,
+      "sampled_degree": 477
+    },
+    {
+      "rank": 413,
+      "work_id": "26694387",
+      "title": "Until Nico (Until, #4)",
+      "author": "Aurora Rose Reynolds",
+      "score": 0.016671193366262327,
+      "uncertainty": 0.0013732920757640924,
+      "positive_share": 0.26450079668332227,
+      "sampled_degree": 468
+    },
+    {
+      "rank": 414,
+      "work_id": "49842522",
+      "title": "Idol (VIP, #1)",
+      "author": "Kristen Callihan",
+      "score": 0.01663875357735172,
+      "uncertainty": 0.0011012998201112225,
+      "positive_share": 0.3551596545993881,
+      "sampled_degree": 415
+    },
+    {
+      "rank": 415,
+      "work_id": "15038778",
+      "title": "Gabriel's Inferno (Gabriel's Inferno, #1)",
+      "author": "Sylvain Reynard",
+      "score": 0.016616488729985834,
+      "uncertainty": 0.0019415411267273872,
+      "positive_share": 0.2673430620107632,
+      "sampled_degree": 2257
+    },
+    {
+      "rank": 416,
+      "work_id": "1214135",
+      "title": "The Outlaw Demon Wails (The Hollows, #6)",
+      "author": "Kim Harrison",
+      "score": 0.016615732418581608,
+      "uncertainty": 0.001991706247463004,
+      "positive_share": 0.4202762531596543,
+      "sampled_degree": 1125
+    },
+    {
+      "rank": 417,
+      "work_id": "3341405",
+      "title": "A Lick of Frost (Merry Gentry, #6)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01661568267244787,
+      "uncertainty": 0.0010751831240414056,
+      "positive_share": 0.5044127277630108,
+      "sampled_degree": 741
+    },
+    {
+      "rank": 418,
+      "work_id": "21751013",
+      "title": "Charade (Games, #1)",
+      "author": "Nyrae Dawn",
+      "score": 0.0166112362730048,
+      "uncertainty": 0.00110066868837274,
+      "positive_share": 0.28899322007781497,
+      "sampled_degree": 748
+    },
+    {
+      "rank": 419,
+      "work_id": "1200805",
+      "title": "Little House in the Big Woods (Little House, #1)",
+      "author": "Laura Ingalls Wilder",
+      "score": 0.01660874954974589,
+      "uncertainty": 0.0025261425003343914,
+      "positive_share": 0.5005073920621331,
+      "sampled_degree": 2716
+    },
+    {
+      "rank": 420,
+      "work_id": "7897939",
+      "title": "Unleashed (Ross Siblings, #1)",
+      "author": "Cherrie Lynn",
+      "score": 0.016605005379240985,
+      "uncertainty": 0.0009837207137806082,
+      "positive_share": 0.2904094410841081,
+      "sampled_degree": 536
+    },
+    {
+      "rank": 421,
+      "work_id": "16695709",
+      "title": "Biting Cold (Chicagoland Vampires, #6)",
+      "author": "Chloe Neill",
+      "score": 0.016586572494512994,
+      "uncertainty": 0.00133550062705926,
+      "positive_share": 0.4299141051621985,
+      "sampled_degree": 544
+    },
+    {
+      "rank": 422,
+      "work_id": "2617385",
+      "title": "Match Me If You Can (Chicago Stars, #6)",
+      "author": "Susan Elizabeth Phillips",
+      "score": 0.016574923036606248,
+      "uncertainty": 0.0006871286289724007,
+      "positive_share": 0.4730525722143959,
+      "sampled_degree": 729
+    },
+    {
+      "rank": 423,
+      "work_id": "47769820",
+      "title": "Magic Stars (Kate Daniels, #8.5, Grey Wolf, #1)",
+      "author": "Ilona Andrews",
+      "score": 0.016566919802442587,
+      "uncertainty": 0.0010097983296836553,
+      "positive_share": 0.5414183343188821,
+      "sampled_degree": 339
+    },
+    {
+      "rank": 424,
+      "work_id": "2570338",
+      "title": "Crocodile on the Sandbank (Amelia Peabody #1)",
+      "author": "Elizabeth Peters",
+      "score": 0.016562654597694536,
+      "uncertainty": 0.0005097553206655081,
+      "positive_share": 0.5995041933128178,
+      "sampled_degree": 871
+    },
+    {
+      "rank": 425,
+      "work_id": "27621610",
+      "title": "Sweep in Peace (Innkeeper Chronicles, #2)",
+      "author": "Ilona Andrews",
+      "score": 0.016562499326554393,
+      "uncertainty": 0.0012753957435583168,
+      "positive_share": 0.5167303383025739,
+      "sampled_degree": 387
+    },
+    {
+      "rank": 426,
+      "work_id": "41075121",
+      "title": "Dragon's Lair (Wind Dragons MC, #1)",
+      "author": "Chantal Fernando",
+      "score": 0.016528623681981568,
+      "uncertainty": 0.001085018527275143,
+      "positive_share": 0.34943436761011093,
+      "sampled_degree": 366
+    },
+    {
+      "rank": 427,
+      "work_id": "1118162",
+      "title": "When He Was Wicked (Bridgertons, #6)",
+      "author": "Julia Quinn",
+      "score": 0.01650192781481922,
+      "uncertainty": 0.0013001740677480945,
+      "positive_share": 0.45463615701683424,
+      "sampled_degree": 707
+    },
+    {
+      "rank": 428,
+      "work_id": "19192337",
+      "title": "Reckless (Thoughtless, #3)",
+      "author": "S.C. Stephens",
+      "score": 0.016501781876277634,
+      "uncertainty": 0.0009347494150274204,
+      "positive_share": 0.24708331835035063,
+      "sampled_degree": 1239
+    },
+    {
+      "rank": 429,
+      "work_id": "25389285",
+      "title": "Worth the Fight (MMA Fighter, #1)",
+      "author": "Vi Keeland",
+      "score": 0.016496592002092882,
+      "uncertainty": 0.0009525507139196825,
+      "positive_share": 0.2717357254459106,
+      "sampled_degree": 454
+    },
+    {
+      "rank": 430,
+      "work_id": "1171182",
+      "title": "Dragonsong (Harper Hall, #1)",
+      "author": "Anne McCaffrey",
+      "score": 0.016486130883924466,
+      "uncertainty": 0.0003479986004508681,
+      "positive_share": 0.5495108894810716,
+      "sampled_degree": 855
+    },
+    {
+      "rank": 431,
+      "work_id": "3516587",
+      "title": "White Witch, Black Curse (The Hollows, #7)",
+      "author": "Kim Harrison",
+      "score": 0.0164856696373696,
+      "uncertainty": 0.001968861112664262,
+      "positive_share": 0.4346705805609915,
+      "sampled_degree": 1002
+    },
+    {
+      "rank": 432,
+      "work_id": "43117391",
+      "title": "Rock Hard (Rock Kiss, #2)",
+      "author": "Nalini Singh",
+      "score": 0.016464673668780426,
+      "uncertainty": 0.0006805438584246147,
+      "positive_share": 0.43663366336633663,
+      "sampled_degree": 275
+    },
+    {
+      "rank": 433,
+      "work_id": "10074436",
+      "title": "Venom (Elemental Assassin, #3)",
+      "author": "Jennifer Estep",
+      "score": 0.016459405813353763,
+      "uncertainty": 0.0015096154096743255,
+      "positive_share": 0.47492087386135556,
+      "sampled_degree": 489
+    },
+    {
+      "rank": 434,
+      "work_id": "21411971",
+      "title": "Entwined with You (Crossfire, #3)",
+      "author": "Sylvia Day",
+      "score": 0.01645797015820971,
+      "uncertainty": 0.002305616127504337,
+      "positive_share": 0.2766442942759295,
+      "sampled_degree": 2613
+    },
+    {
+      "rank": 435,
+      "work_id": "42490126",
+      "title": "Eighth Grave After Dark (Charley Davidson, #8)",
+      "author": "Darynda Jones",
+      "score": 0.01644986227535773,
+      "uncertainty": 0.0010772726614642078,
+      "positive_share": 0.5531496062992126,
+      "sampled_degree": 411
+    },
+    {
+      "rank": 436,
+      "work_id": "13167517",
+      "title": "Tangled Threads (Elemental Assassin, #4)",
+      "author": "Jennifer Estep",
+      "score": 0.016445933108432953,
+      "uncertainty": 0.0011325497598462003,
+      "positive_share": 0.5051726614794453,
+      "sampled_degree": 434
+    },
+    {
+      "rank": 437,
+      "work_id": "2029611",
+      "title": "The Mouse and the Motorcycle (Ralph S. Mouse, #1)",
+      "author": "Beverly Cleary",
+      "score": 0.01642907357347782,
+      "uncertainty": 0.0015113104497136134,
+      "positive_share": 0.5266643643758874,
+      "sampled_degree": 1002
+    },
+    {
+      "rank": 438,
+      "work_id": "7355830",
+      "title": "Demon from the Dark (Immortals After Dark #10)",
+      "author": "Kresley Cole",
+      "score": 0.016423537925548164,
+      "uncertainty": 0.0013613761195378027,
+      "positive_share": 0.35100029031178104,
+      "sampled_degree": 874
+    },
+    {
+      "rank": 439,
+      "work_id": "24034716",
+      "title": "Hard as It Gets (Hard Ink, #1)",
+      "author": "Laura Kaye",
+      "score": 0.016416141660651556,
+      "uncertainty": 0.0010767338137479092,
+      "positive_share": 0.36715968504673635,
+      "sampled_degree": 363
+    },
+    {
+      "rank": 440,
+      "work_id": "16696160",
+      "title": "Explosive Eighteen (Stephanie Plum, #18)",
+      "author": "Janet Evanovich",
+      "score": 0.016411485287259553,
+      "uncertainty": 0.0015276821823709754,
+      "positive_share": 0.5156862745098039,
+      "sampled_degree": 1013
+    },
+    {
+      "rank": 441,
+      "work_id": "21899204",
+      "title": "Up to Me (The Bad Boys, #2)",
+      "author": "M. Leighton",
+      "score": 0.016405338446652106,
+      "uncertainty": 0.0007862869894924327,
+      "positive_share": 0.2777244886166647,
+      "sampled_degree": 659
+    },
+    {
+      "rank": 442,
+      "work_id": "16186138",
+      "title": "Archangel's Storm (Guild Hunter, #5)",
+      "author": "Nalini Singh",
+      "score": 0.01639586216565018,
+      "uncertainty": 0.0011021572681214425,
+      "positive_share": 0.41728494934319504,
+      "sampled_degree": 484
+    },
+    {
+      "rank": 443,
+      "work_id": "25040765",
+      "title": "Fueled (Driven, #2)",
+      "author": "K. Bromberg",
+      "score": 0.016388637095558517,
+      "uncertainty": 0.0008766667701191512,
+      "positive_share": 0.24092414962055547,
+      "sampled_degree": 746
+    },
+    {
+      "rank": 444,
+      "work_id": "21970115",
+      "title": "Grounded (Up in the Air, #3)",
+      "author": "R.K. Lilley",
+      "score": 0.016369123362924027,
+      "uncertainty": 0.000835388833025193,
+      "positive_share": 0.25428993515214304,
+      "sampled_degree": 884
+    },
+    {
+      "rank": 445,
+      "work_id": "803205",
+      "title": "Grave Peril (The Dresden Files, #3)",
+      "author": "Jim Butcher",
+      "score": 0.016359573013691068,
+      "uncertainty": 0.0007822492761984823,
+      "positive_share": 0.39805050605430525,
+      "sampled_degree": 2420
+    },
+    {
+      "rank": 446,
+      "work_id": "3341382",
+      "title": "A Stroke of Midnight (Merry Gentry, #4)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.016354242158301956,
+      "uncertainty": 0.0012208201484883567,
+      "positive_share": 0.4810942255094572,
+      "sampled_degree": 802
+    },
+    {
+      "rank": 447,
+      "work_id": "40357587",
+      "title": "Reasonable Doubt: Volume 2 (Reasonable Doubt, #2)",
+      "author": "Whitney G.",
+      "score": 0.016352635752089516,
+      "uncertainty": 0.0006011034524317194,
+      "positive_share": 0.28129219062282645,
+      "sampled_degree": 587
+    },
+    {
+      "rank": 448,
+      "work_id": "21961950",
+      "title": "Fallen Crest High (Fallen Crest High, #1)",
+      "author": "Tijan",
+      "score": 0.016346112608799937,
+      "uncertainty": 0.0011182273217482512,
+      "positive_share": 0.2892162290542613,
+      "sampled_degree": 853
+    },
+    {
+      "rank": 449,
+      "work_id": "16497",
+      "title": "Kitty Takes a Holiday (Kitty Norville, #3)",
+      "author": "Carrie Vaughn",
+      "score": 0.016335369648856183,
+      "uncertainty": 0.0013728274943833369,
+      "positive_share": 0.5573498106013972,
+      "sampled_degree": 417
+    },
+    {
+      "rank": 450,
+      "work_id": "13313623",
+      "title": "When Beauty Tamed the Beast (Fairy Tales, #2)",
+      "author": "Eloisa James",
+      "score": 0.016314185926279135,
+      "uncertainty": 0.0009198623775037227,
+      "positive_share": 0.5110607490370187,
+      "sampled_degree": 529
+    },
+    {
+      "rank": 451,
+      "work_id": "108358",
+      "title": "Pack Challenge (Magnus Pack, #1)",
+      "author": "Shelly Laurenston",
+      "score": 0.016308775435081413,
+      "uncertainty": 0.001641814588800487,
+      "positive_share": 0.3646653543307087,
+      "sampled_degree": 456
+    },
+    {
+      "rank": 452,
+      "work_id": "2501537",
+      "title": "Witness in Death (In Death, #10)",
+      "author": "J.D. Robb",
+      "score": 0.01630104786142496,
+      "uncertainty": 0.0004426392424656054,
+      "positive_share": 0.4916502946954813,
+      "sampled_degree": 540
+    },
+    {
+      "rank": 453,
+      "work_id": "2978308",
+      "title": "Seduce Me at Sunrise (The Hathaways, #2)",
+      "author": "Lisa Kleypas",
+      "score": 0.01629969421878472,
+      "uncertainty": 0.0010221161578868822,
+      "positive_share": 0.4054788320043145,
+      "sampled_degree": 668
+    },
+    {
+      "rank": 454,
+      "work_id": "4400647",
+      "title": "Bad Moon Rising (Dark-Hunter #18; Were-Hunter #4; Hellchaser #2)",
+      "author": "Sherrilyn Kenyon",
+      "score": 0.016299619681972813,
+      "uncertainty": 0.0012150024788176548,
+      "positive_share": 0.42050733849531957,
+      "sampled_degree": 720
+    },
+    {
+      "rank": 455,
+      "work_id": "2738513",
+      "title": "The Darkest Pleasure (Lords of the Underworld #3)",
+      "author": "Gena Showalter",
+      "score": 0.016265540204351475,
+      "uncertainty": 0.0018007552856019818,
+      "positive_share": 0.35245098039215683,
+      "sampled_degree": 973
+    },
+    {
+      "rank": 456,
+      "work_id": "2823886",
+      "title": "Swallowing Darkness (Merry Gentry, #7)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.016261318736670197,
+      "uncertainty": 0.0011564191165098756,
+      "positive_share": 0.5147058823529412,
+      "sampled_degree": 696
+    },
+    {
+      "rank": 457,
+      "work_id": "23905943",
+      "title": "Forever Black (Forever, #1)",
+      "author": "Sandi Lynn",
+      "score": 0.01625684089112045,
+      "uncertainty": 0.0007932091188439988,
+      "positive_share": 0.27460629921259844,
+      "sampled_degree": 603
+    },
+    {
+      "rank": 458,
+      "work_id": "42748194",
+      "title": "The Game Plan (Game On, #3)",
+      "author": "Kristen Callihan",
+      "score": 0.016239285498239404,
+      "uncertainty": 0.0011264153720603604,
+      "positive_share": 0.3509168879777602,
+      "sampled_degree": 402
+    },
+    {
+      "rank": 459,
+      "work_id": "21932118",
+      "title": "Unbeautifully (Undeniable, #2)",
+      "author": "Madeline Sheehan",
+      "score": 0.016232630593245624,
+      "uncertainty": 0.0011285669767567158,
+      "positive_share": 0.2654426210562811,
+      "sampled_degree": 625
+    },
+    {
+      "rank": 460,
+      "work_id": "43082760",
+      "title": "Spider's Trap (Elemental Assassin, #13)",
+      "author": "Jennifer Estep",
+      "score": 0.016228335635034515,
+      "uncertainty": 0.0009117494951875723,
+      "positive_share": 0.5490531062124249,
+      "sampled_degree": 93
+    },
+    {
+      "rank": 461,
+      "work_id": "18699235",
+      "title": "Play It Safe",
+      "author": "Kristen Ashley",
+      "score": 0.016218213784988465,
+      "uncertainty": 0.000793097490163058,
+      "positive_share": 0.38227296069216643,
+      "sampled_degree": 387
+    },
+    {
+      "rank": 462,
+      "work_id": "24852550",
+      "title": "Before Jamaica Lane (On Dublin Street, #3)",
+      "author": "Samantha Young",
+      "score": 0.01620039273053878,
+      "uncertainty": 0.00043495960715538034,
+      "positive_share": 0.3156862745098039,
+      "sampled_degree": 696
+    },
+    {
+      "rank": 463,
+      "work_id": "802336",
+      "title": "The Borrowers (The Borrowers, #1)",
+      "author": "Mary Norton",
+      "score": 0.016177498098539918,
+      "uncertainty": 0.0012646820806541336,
+      "positive_share": 0.578921568627451,
+      "sampled_degree": 1087
+    },
+    {
+      "rank": 464,
+      "work_id": "4198",
+      "title": "Mistral's Kiss (Merry Gentry, #5)",
+      "author": "Laurell K. Hamilton",
+      "score": 0.01617529973195148,
+      "uncertainty": 0.0011846790108616806,
+      "positive_share": 0.48503698139373624,
+      "sampled_degree": 775
+    },
+    {
+      "rank": 465,
+      "work_id": "24490654",
+      "title": "The Bet (The Bet, #1)",
+      "author": "Rachel Van Dyken",
+      "score": 0.016171620992182955,
+      "uncertainty": 0.0004790534428377676,
+      "positive_share": 0.30143013983589506,
+      "sampled_degree": 640
+    },
+    {
+      "rank": 466,
+      "work_id": "25040772",
+      "title": "Crashed (Driven, #3)",
+      "author": "K. Bromberg",
+      "score": 0.016171155989324726,
+      "uncertainty": 0.0008395499089380728,
+      "positive_share": 0.24544859201047803,
+      "sampled_degree": 670
+    },
+    {
+      "rank": 467,
+      "work_id": "21943079",
+      "title": "Frigid (Frigid, #1)",
+      "author": "J. Lynn",
+      "score": 0.01615941519168905,
+      "uncertainty": 0.0009779413008668453,
+      "positive_share": 0.31896224243121907,
+      "sampled_degree": 882
+    },
+    {
+      "rank": 468,
+      "work_id": "23584227",
+      "title": "Shield of Winter (Psy-Changeling, #13)",
+      "author": "Nalini Singh",
+      "score": 0.016143755055141148,
+      "uncertainty": 0.0009966417038370663,
+      "positive_share": 0.44254059764093207,
+      "sampled_degree": 334
+    },
+    {
+      "rank": 469,
+      "work_id": "38310",
+      "title": "Love Bites (Argeneau #2)",
+      "author": "Lynsay Sands",
+      "score": 0.016140143426689662,
+      "uncertainty": 0.0012968856061717526,
+      "positive_share": 0.4174040499358012,
+      "sampled_degree": 510
+    },
+    {
+      "rank": 470,
+      "work_id": "24486783",
+      "title": "Be with Me (Wait for You, #2)",
+      "author": "J. Lynn",
+      "score": 0.016134634547780486,
+      "uncertainty": 0.0010237085084741286,
+      "positive_share": 0.30980392156862746,
+      "sampled_degree": 840
+    },
+    {
+      "rank": 471,
+      "work_id": "103828",
+      "title": "Make Way for Ducklings",
+      "author": "Robert McCloskey",
+      "score": 0.016128603511076745,
+      "uncertainty": 0.0016102700679062425,
+      "positive_share": 0.518396324808148,
+      "sampled_degree": 859
+    },
+    {
+      "rank": 472,
+      "work_id": "41392349",
+      "title": "Etched in Bone (The Others, #5)",
+      "author": "Anne Bishop",
+      "score": 0.016126063473582922,
+      "uncertainty": 0.0007236271210637348,
+      "positive_share": 0.59417387390913,
+      "sampled_degree": 305
+    },
+    {
+      "rank": 473,
+      "work_id": "17030827",
+      "title": "Fury (New Species, #1)",
+      "author": "Laurann Dohner",
+      "score": 0.01611548979882078,
+      "uncertainty": 0.0013649991958493994,
+      "positive_share": 0.3382558823074424,
+      "sampled_degree": 509
+    },
+    {
+      "rank": 474,
+      "work_id": "2642843",
+      "title": "The Bride (Lairds' Fiancées, #1)",
+      "author": "Julie Garwood",
+      "score": 0.016087791878005218,
+      "uncertainty": 0.001429290016257562,
+      "positive_share": 0.40656804961670323,
+      "sampled_degree": 818
+    },
+    {
+      "rank": 475,
+      "work_id": "2971170",
+      "title": "Dragonsinger (Harper Hall, #2)",
+      "author": "Anne McCaffrey",
+      "score": 0.016084438095937705,
+      "uncertainty": 0.00046069229693464285,
+      "positive_share": 0.5397559613236256,
+      "sampled_degree": 767
+    },
+    {
+      "rank": 476,
+      "work_id": "855288",
+      "title": "Fool Moon (The Dresden Files, #2)",
+      "author": "Jim Butcher",
+      "score": 0.016079619159489696,
+      "uncertainty": 0.0009046820245219372,
+      "positive_share": 0.3978460203644814,
+      "sampled_degree": 2792
+    },
+    {
+      "rank": 477,
+      "work_id": "23984106",
+      "title": "Second Chance Boyfriend (One Week Girlfriend, #2)",
+      "author": "Monica  Murphy",
+      "score": 0.0160687088779653,
+      "uncertainty": 0.0007303772915634578,
+      "positive_share": 0.2740196078431372,
+      "sampled_degree": 690
+    },
+    {
+      "rank": 478,
+      "work_id": "42826388",
+      "title": "The Hooker and the Hermit (Rugby, #1)",
+      "author": "L.H. Cosway",
+      "score": 0.01606359300204352,
+      "uncertainty": 0.0011489022212147304,
+      "positive_share": 0.36752461585237506,
+      "sampled_degree": 427
+    },
+    {
+      "rank": 479,
+      "work_id": "16018629",
+      "title": "Flat-Out Love (Flat-Out Love, #1)",
+      "author": "Jessica Park",
+      "score": 0.016063068569752866,
+      "uncertainty": 0.0008596270234399245,
+      "positive_share": 0.3489908292083957,
+      "sampled_degree": 1176
+    },
+    {
+      "rank": 480,
+      "work_id": "50395229",
+      "title": "Royally Screwed (Royally, #1)",
+      "author": "Emma Chase",
+      "score": 0.016060058826199878,
+      "uncertainty": 0.0010033168557225967,
+      "positive_share": 0.33873157186392955,
+      "sampled_degree": 558
+    },
+    {
+      "rank": 481,
+      "work_id": "13809",
+      "title": "Horton Hatches the Egg",
+      "author": "Dr. Seuss",
+      "score": 0.016051699176076108,
+      "uncertainty": 0.0008516822818362227,
+      "positive_share": 0.6072834645669292,
+      "sampled_degree": 456
+    },
+    {
+      "rank": 482,
+      "work_id": "25003085",
+      "title": "Craving Constellations (The Aces, #1)",
+      "author": "Nicole Jacquelyn",
+      "score": 0.01604108686014399,
+      "uncertainty": 0.0010620243011427652,
+      "positive_share": 0.29232283464566927,
+      "sampled_degree": 418
+    },
+    {
+      "rank": 483,
+      "work_id": "40167154",
+      "title": "Reaper's Stand (Reapers MC, #4)",
+      "author": "Joanna Wylde",
+      "score": 0.016027553785712117,
+      "uncertainty": 0.001047171485127237,
+      "positive_share": 0.31576045597850566,
+      "sampled_degree": 415
+    },
+    {
+      "rank": 484,
+      "work_id": "545467",
+      "title": "Divided in Death (In Death, #18)",
+      "author": "J.D. Robb",
+      "score": 0.01601230377487684,
+      "uncertainty": 0.0004879756458061605,
+      "positive_share": 0.5221631545687693,
+      "sampled_degree": 459
+    },
+    {
+      "rank": 485,
+      "work_id": "42462101",
+      "title": "Manwhore (Manwhore, #1)",
+      "author": "Katy Evans",
+      "score": 0.015988209898673857,
+      "uncertainty": 0.0009919666751691614,
+      "positive_share": 0.3044386463526379,
+      "sampled_degree": 513
+    },
+    {
+      "rank": 486,
+      "work_id": "13341300",
+      "title": "To Sir Phillip, With Love (Bridgertons, #5)",
+      "author": "Julia Quinn",
+      "score": 0.015945774849435445,
+      "uncertainty": 0.0012513950618220984,
+      "positive_share": 0.4465686274509804,
+      "sampled_degree": 689
+    },
+    {
+      "rank": 487,
+      "work_id": "14452295",
+      "title": "Grave Mercy (His Fair Assassin, #1)",
+      "author": "Robin LaFevers",
+      "score": 0.01594448252835376,
+      "uncertainty": 0.0015356895168071954,
+      "positive_share": 0.46794060089789336,
+      "sampled_degree": 1714
+    },
+    {
+      "rank": 488,
+      "work_id": "26743920",
+      "title": "Unexpected Fate (Hope Town, #1)",
+      "author": "Harper Sloan",
+      "score": 0.015927669223267465,
+      "uncertainty": 0.0009111859048388405,
+      "positive_share": 0.30970255012502135,
+      "sampled_degree": 344
+    },
+    {
+      "rank": 489,
+      "work_id": "86053",
+      "title": "Judgment in Death (In Death, #11)",
+      "author": "J.D. Robb",
+      "score": 0.01592428625266866,
+      "uncertainty": 0.0004440372229262043,
+      "positive_share": 0.49533302136348867,
+      "sampled_degree": 543
+    },
+    {
+      "rank": 490,
+      "work_id": "14735184",
+      "title": "One Salt Sea (October Daye, #5)",
+      "author": "Seanan McGuire",
+      "score": 0.015915623416451925,
+      "uncertainty": 0.0019938245618691145,
+      "positive_share": 0.5615817530944727,
+      "sampled_degree": 350
+    },
+    {
+      "rank": 491,
+      "work_id": "255087",
+      "title": "Single White Vampire (Argeneau #3)",
+      "author": "Lynsay Sands",
+      "score": 0.015912628108118526,
+      "uncertainty": 0.0012846809962176998,
+      "positive_share": 0.42182254845845646,
+      "sampled_degree": 475
+    },
+    {
+      "rank": 492,
+      "work_id": "15311332",
+      "title": "Deadlocked (Sookie Stackhouse, #12)",
+      "author": "Charlaine Harris",
+      "score": 0.015907405752284096,
+      "uncertainty": 0.001411217672569026,
+      "positive_share": 0.5347626759393826,
+      "sampled_degree": 1916
+    },
+    {
+      "rank": 493,
+      "work_id": "12401364",
+      "title": "Dead Reckoning (Sookie Stackhouse, #11)",
+      "author": "Charlaine Harris",
+      "score": 0.01588070882947292,
+      "uncertainty": 0.0018789710021840183,
+      "positive_share": 0.48558280332681014,
+      "sampled_degree": 2479
+    },
+    {
+      "rank": 494,
+      "work_id": "5228078",
+      "title": "Dead and Gone (Sookie Stackhouse, #9)",
+      "author": "Charlaine Harris",
+      "score": 0.01586577627987284,
+      "uncertainty": 0.0023615379779554154,
+      "positive_share": 0.4587397566046967,
+      "sampled_degree": 3519
+    },
+    {
+      "rank": 495,
+      "work_id": "255117",
+      "title": "How to Marry a Millionaire Vampire (Love at Stake, #1)",
+      "author": "Kerrelyn Sparks",
+      "score": 0.01586346264314971,
+      "uncertainty": 0.0018762318026559633,
+      "positive_share": 0.3917437112369506,
+      "sampled_degree": 719
+    },
+    {
+      "rank": 496,
+      "work_id": "17843610",
+      "title": "Double Time (Sinners on Tour, #5)",
+      "author": "Olivia Cunning",
+      "score": 0.015854707467967626,
+      "uncertainty": 0.0008139984930015727,
+      "positive_share": 0.3311988537041907,
+      "sampled_degree": 454
+    },
+    {
+      "rank": 497,
+      "work_id": "17328606",
+      "title": "Dead Ever After (Sookie Stackhouse, #13)",
+      "author": "Charlaine Harris",
+      "score": 0.015846868962072724,
+      "uncertainty": 0.0009912416957147555,
+      "positive_share": 0.5644420782011434,
+      "sampled_degree": 1534
+    },
+    {
+      "rank": 498,
+      "work_id": "21876920",
+      "title": "Beautifully Damaged (Beautifully Damaged, #1)",
+      "author": "L.A. Fiore",
+      "score": 0.015846297584348253,
+      "uncertainty": 0.0009678326039362693,
+      "positive_share": 0.27714621072660617,
+      "sampled_degree": 554
+    },
+    {
+      "rank": 499,
+      "work_id": "24956525",
+      "title": "One More Chance (Rosemary Beach, #8; Chance, #2)",
+      "author": "Abbi Glines",
+      "score": 0.015834130140718626,
+      "uncertainty": 0.0008178615021300732,
+      "positive_share": 0.2729916618968798,
+      "sampled_degree": 600
+    },
+    {
+      "rank": 500,
+      "work_id": "21805187",
+      "title": "Fever (Breathless, #2)",
+      "author": "Maya Banks",
+      "score": 0.015830151966382617,
+      "uncertainty": 0.0014033033318357202,
+      "positive_share": 0.32351460191768183,
+      "sampled_degree": 745
+    }
+  ]
+}

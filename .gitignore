@@ -43,3 +43,6 @@ Gemini-film-similarity-notes.txt
 .cache/
 .tmp/
 /papers/
+
+# Rebuildable seedless-research sparse matrices
+/curators_explorer/data/seedless_*_matrix*.npz
