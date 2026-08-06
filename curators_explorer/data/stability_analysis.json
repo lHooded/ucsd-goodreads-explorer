@@ -1,0 +1,532 @@
+{
+  "meta": {
+    "n_boot": 25,
+    "top_frac": 0.06,
+    "seed": 42,
+    "method": "Fix user affinity scores; bootstrap-resample gated + anti-like user pools; re-pick top_frac; contrastive book rank.",
+    "plain_english": "Same scoring recipe, many random reshuffles of which users we listen to. Stable books keep showing up near the top."
+  },
+  "baseline": {
+    "n_focus": 6739,
+    "n_anti": 13684,
+    "Q": 71.96000000000001,
+    "pos50": 22,
+    "anti50": 0,
+    "classic50": 22,
+    "normie50": 6,
+    "top15": [
+      {
+        "rank": 1,
+        "title": "Ulysses",
+        "author": "James Joyce"
+      },
+      {
+        "rank": 2,
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville"
+      },
+      {
+        "rank": 3,
+        "title": "Paradise Lost",
+        "author": "John Milton"
+      },
+      {
+        "rank": 4,
+        "title": "Hamlet",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 5,
+        "title": "Mrs. Dalloway",
+        "author": "Virginia Woolf"
+      },
+      {
+        "rank": 6,
+        "title": "Lolita",
+        "author": "Vladimir Nabokov"
+      },
+      {
+        "rank": 7,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky"
+      },
+      {
+        "rank": 8,
+        "title": "A Streetcar Named Desire",
+        "author": "Tennessee Williams"
+      },
+      {
+        "rank": 9,
+        "title": "Macbeth",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 10,
+        "title": "The Trial",
+        "author": "Franz Kafka"
+      },
+      {
+        "rank": 11,
+        "title": "The Poisonwood Bible",
+        "author": "Barbara Kingsolver"
+      },
+      {
+        "rank": 12,
+        "title": "Invisible Man",
+        "author": "Ralph Ellison"
+      },
+      {
+        "rank": 13,
+        "title": "King Lear",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 14,
+        "title": "Life After Life",
+        "author": "Kate Atkinson"
+      },
+      {
+        "rank": 15,
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad"
+      }
+    ]
+  },
+  "summary": {
+    "jaccard_top50_mean": 0.5772343020690456,
+    "jaccard_top50_sd": 0.03931850582806454,
+    "jaccard_top100_mean": 0.570950225222586,
+    "jaccard_top100_sd": 0.03137237371778532,
+    "jaccard_top200_mean": 0.5561217243368427,
+    "jaccard_top200_sd": 0.017422728972473395,
+    "Q_mean": 66.52,
+    "Q_sd": 4.460968691513837,
+    "pos50_mean": 21.96,
+    "pos50_sd": 1.3686976778431872,
+    "anti50_mean": 0.04,
+    "anti50_sd": 0.2,
+    "n_sticky_in_baseline_top50": 25,
+    "n_fragile_in_baseline_top50": 8
+  },
+  "sticky_baseline_top50": [
+    {
+      "work_id": "2368224",
+      "title": "Ulysses",
+      "author": "James Joyce",
+      "base_rank": 1,
+      "in_top50_rate": 0.84,
+      "mean_rank": 66.56,
+      "sd_rank": 138.36999915684999
+    },
+    {
+      "work_id": "2409320",
+      "title": "Moby-Dick or, The Whale",
+      "author": "Herman Melville",
+      "base_rank": 2,
+      "in_top50_rate": 1.0,
+      "mean_rank": 1.92,
+      "sd_rank": 0.9539392014169457
+    },
+    {
+      "work_id": "1031493",
+      "title": "Paradise Lost",
+      "author": "John Milton",
+      "base_rank": 3,
+      "in_top50_rate": 1.0,
+      "mean_rank": 6.72,
+      "sd_rank": 4.0877866871939394
+    },
+    {
+      "work_id": "1885548",
+      "title": "Hamlet",
+      "author": "William Shakespeare",
+      "base_rank": 4,
+      "in_top50_rate": 1.0,
+      "mean_rank": 2.72,
+      "sd_rank": 1.369914839202301
+    },
+    {
+      "work_id": "841320",
+      "title": "Mrs. Dalloway",
+      "author": "Virginia Woolf",
+      "base_rank": 5,
+      "in_top50_rate": 0.96,
+      "mean_rank": 62.6,
+      "sd_rank": 263.28137673092897
+    },
+    {
+      "work_id": "1268631",
+      "title": "Lolita",
+      "author": "Vladimir Nabokov",
+      "base_rank": 6,
+      "in_top50_rate": 1.0,
+      "mean_rank": 9.72,
+      "sd_rank": 3.409789827345179
+    },
+    {
+      "work_id": "3393917",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoyevsky",
+      "base_rank": 7,
+      "in_top50_rate": 1.0,
+      "mean_rank": 8.96,
+      "sd_rank": 4.596012764705222
+    },
+    {
+      "work_id": "142449",
+      "title": "A Streetcar Named Desire",
+      "author": "Tennessee Williams",
+      "base_rank": 8,
+      "in_top50_rate": 1.0,
+      "mean_rank": 11.84,
+      "sd_rank": 8.284926070883191
+    },
+    {
+      "work_id": "1896522",
+      "title": "Macbeth",
+      "author": "William Shakespeare",
+      "base_rank": 9,
+      "in_top50_rate": 1.0,
+      "mean_rank": 14.28,
+      "sd_rank": 4.430199393556307
+    },
+    {
+      "work_id": "810663",
+      "title": "The Poisonwood Bible",
+      "author": "Barbara Kingsolver",
+      "base_rank": 11,
+      "in_top50_rate": 1.0,
+      "mean_rank": 24.4,
+      "sd_rank": 7.2571803523590805
+    },
+    {
+      "work_id": "2342136",
+      "title": "King Lear",
+      "author": "William Shakespeare",
+      "base_rank": 13,
+      "in_top50_rate": 0.88,
+      "mean_rank": 27.48,
+      "sd_rank": 11.229128787814899
+    },
+    {
+      "work_id": "21443207",
+      "title": "Life After Life",
+      "author": "Kate Atkinson",
+      "base_rank": 14,
+      "in_top50_rate": 0.8,
+      "mean_rank": 161.52,
+      "sd_rank": 455.34530120923984
+    },
+    {
+      "work_id": "2877220",
+      "title": "Heart of Darkness",
+      "author": "Joseph Conrad",
+      "base_rank": 15,
+      "in_top50_rate": 1.0,
+      "mean_rank": 11.8,
+      "sd_rank": 4.752192476461084
+    },
+    {
+      "work_id": "1643555",
+      "title": "Their Eyes Were Watching God",
+      "author": "Zora Neale Hurston",
+      "base_rank": 17,
+      "in_top50_rate": 1.0,
+      "mean_rank": 14.6,
+      "sd_rank": 6.493586579592718
+    },
+    {
+      "work_id": "3356006",
+      "title": "The Odyssey",
+      "author": "Homer",
+      "base_rank": 18,
+      "in_top50_rate": 1.0,
+      "mean_rank": 29.12,
+      "sd_rank": 5.8117696673790045
+    },
+    {
+      "work_id": "121842",
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes Saavedra",
+      "base_rank": 19,
+      "in_top50_rate": 1.0,
+      "mean_rank": 8.44,
+      "sd_rank": 4.735328218121034
+    },
+    {
+      "work_id": "859375",
+      "title": "The Arabian Nights",
+      "author": "Anonymous",
+      "base_rank": 22,
+      "in_top50_rate": 0.84,
+      "mean_rank": 32.88,
+      "sd_rank": 19.590218647750376
+    },
+    {
+      "work_id": "2931549",
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck",
+      "base_rank": 25,
+      "in_top50_rate": 1.0,
+      "mean_rank": 26.36,
+      "sd_rank": 8.911041839575587
+    },
+    {
+      "work_id": "736076",
+      "title": "Beloved",
+      "author": "Toni Morrison",
+      "base_rank": 26,
+      "in_top50_rate": 1.0,
+      "mean_rank": 24.28,
+      "sd_rank": 9.462733924893659
+    },
+    {
+      "work_id": "1235619",
+      "title": "The Things They Carried",
+      "author": "Tim O'Brien",
+      "base_rank": 29,
+      "in_top50_rate": 0.96,
+      "mean_rank": 21.24,
+      "sd_rank": 11.959236318985145
+    },
+    {
+      "work_id": "4912783",
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "base_rank": 30,
+      "in_top50_rate": 0.8,
+      "mean_rank": 38.16,
+      "sd_rank": 16.040781360852304
+    },
+    {
+      "work_id": "2373750",
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka",
+      "base_rank": 33,
+      "in_top50_rate": 1.0,
+      "mean_rank": 24.64,
+      "sd_rank": 8.361020671345495
+    },
+    {
+      "work_id": "2766347",
+      "title": "Madame Bovary",
+      "author": "Gustave Flaubert",
+      "base_rank": 36,
+      "in_top50_rate": 0.96,
+      "mean_rank": 19.72,
+      "sd_rank": 11.186003158709847
+    },
+    {
+      "work_id": "1057468",
+      "title": "Vanity Fair",
+      "author": "William Makepeace Thackeray",
+      "base_rank": 38,
+      "in_top50_rate": 0.92,
+      "mean_rank": 26.48,
+      "sd_rank": 14.271533437814826
+    },
+    {
+      "work_id": "3295655",
+      "title": "One Hundred Years of Solitude",
+      "author": "Gabriel Garcia Marquez",
+      "base_rank": 42,
+      "in_top50_rate": 0.96,
+      "mean_rank": 28.24,
+      "sd_rank": 10.129494887044796
+    }
+  ],
+  "fragile_baseline_top50": [
+    {
+      "work_id": "2722054",
+      "title": "Death of a Salesman",
+      "author": "Arthur Miller",
+      "base_rank": 20,
+      "in_top50_rate": 0.4,
+      "mean_rank": 57.16,
+      "sd_rank": 24.30651490170211
+    },
+    {
+      "work_id": "1352495",
+      "title": "Middlesex",
+      "author": "Jeffrey Eugenides",
+      "base_rank": 24,
+      "in_top50_rate": 0.2,
+      "mean_rank": 71.56,
+      "sd_rank": 28.48256776813963
+    },
+    {
+      "work_id": "3627",
+      "title": "The Haunting of Hill House",
+      "author": "Shirley Jackson",
+      "base_rank": 31,
+      "in_top50_rate": 0.36,
+      "mean_rank": 101.36,
+      "sd_rank": 176.27414255452595
+    },
+    {
+      "work_id": "812415",
+      "title": "The Virgin Suicides",
+      "author": "Jeffrey Eugenides",
+      "base_rank": 41,
+      "in_top50_rate": 0.24,
+      "mean_rank": 66.6,
+      "sd_rank": 18.916483112178472
+    },
+    {
+      "work_id": "1361856",
+      "title": "Le Morte d'Arthur: King Arthur and the Legends of the Round Table",
+      "author": "Thomas Malory",
+      "base_rank": 44,
+      "in_top50_rate": 0.08,
+      "mean_rank": 284.5,
+      "sd_rank": 360.3518017890733
+    },
+    {
+      "work_id": "2375385",
+      "title": "Alice's Adventures in Wonderland & Through the Looking-Glass",
+      "author": "Lewis Carroll",
+      "base_rank": 46,
+      "in_top50_rate": 0.24,
+      "mean_rank": 57.88,
+      "sd_rank": 11.222447742508464
+    },
+    {
+      "work_id": "825843",
+      "title": "Things Fall Apart (The African Trilogy, #1)",
+      "author": "Chinua Achebe",
+      "base_rank": 47,
+      "in_top50_rate": 0.12,
+      "mean_rank": 89.32,
+      "sd_rank": 33.30005005001244
+    },
+    {
+      "work_id": "2833018",
+      "title": "Candide",
+      "author": "Voltaire",
+      "base_rank": 49,
+      "in_top50_rate": 0.12,
+      "mean_rank": 81.24,
+      "sd_rank": 25.448117153665155
+    }
+  ],
+  "frequent_non_baseline_top50": [
+    {
+      "work_id": "2507928",
+      "title": "Anna Karenina",
+      "author": "Leo Tolstoy",
+      "in_top50_rate": 0.96,
+      "mean_rank": 33.0
+    },
+    {
+      "work_id": "808243",
+      "title": "Out of the Dust",
+      "author": "Karen Hesse",
+      "in_top50_rate": 0.68,
+      "mean_rank": 4.235294117647059
+    },
+    {
+      "work_id": "1508178",
+      "title": "The Tale of Despereaux",
+      "author": "Kate DiCamillo",
+      "in_top50_rate": 0.64,
+      "mean_rank": 43.24
+    },
+    {
+      "work_id": "987048",
+      "title": "Charlotte's Web",
+      "author": "E.B. White",
+      "in_top50_rate": 0.6,
+      "mean_rank": 46.72
+    },
+    {
+      "work_id": "1993854",
+      "title": "Frindle",
+      "author": "Andrew Clements",
+      "in_top50_rate": 0.52,
+      "mean_rank": 91.0
+    }
+  ],
+  "jaccard_vs_baseline_each_boot": {
+    "top50": [
+      0.6129032258064516,
+      0.639344262295082,
+      0.5384615384615384,
+      0.639344262295082,
+      0.5873015873015873,
+      0.5625,
+      0.5384615384615384,
+      0.5873015873015873,
+      0.5625,
+      0.5625,
+      0.5151515151515151,
+      0.5151515151515151,
+      0.639344262295082,
+      0.5384615384615384,
+      0.6129032258064516,
+      0.6129032258064516,
+      0.5384615384615384,
+      0.5625,
+      0.5151515151515151,
+      0.5625,
+      0.5873015873015873,
+      0.6129032258064516,
+      0.5873015873015873,
+      0.6129032258064516,
+      0.5873015873015873
+    ],
+    "top100": [
+      0.5873015873015873,
+      0.5384615384615384,
+      0.5625,
+      0.6129032258064516,
+      0.5625,
+      0.5873015873015873,
+      0.5384615384615384,
+      0.5503875968992248,
+      0.5503875968992248,
+      0.5384615384615384,
+      0.6260162601626016,
+      0.5384615384615384,
+      0.6129032258064516,
+      0.5748031496062992,
+      0.6260162601626016,
+      0.5267175572519084,
+      0.5384615384615384,
+      0.6,
+      0.5267175572519084,
+      0.5873015873015873,
+      0.5748031496062992,
+      0.6,
+      0.5503875968992248,
+      0.5625,
+      0.6
+    ],
+    "top200": [
+      0.556420233463035,
+      0.5625,
+      0.5503875968992248,
+      0.5503875968992248,
+      0.5267175572519084,
+      0.556420233463035,
+      0.556420233463035,
+      0.6,
+      0.5503875968992248,
+      0.5384615384615384,
+      0.5686274509803921,
+      0.5384615384615384,
+      0.556420233463035,
+      0.5936254980079682,
+      0.5444015444015444,
+      0.5625,
+      0.556420233463035,
+      0.5384615384615384,
+      0.5625,
+      0.5625,
+      0.5503875968992248,
+      0.5384615384615384,
+      0.5748031496062992,
+      0.5325670498084292,
+      0.5748031496062992
+    ]
+  }
+}

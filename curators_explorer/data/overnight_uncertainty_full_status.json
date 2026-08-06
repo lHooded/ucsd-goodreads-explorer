@@ -1,0 +1,8 @@
+{
+  "mode": "full",
+  "status": "complete",
+  "completed_replicates": 5000,
+  "runtime_seconds": 133.35254526138306,
+  "report": "/home/ifrankling/unsw/novels/curators_explorer/data/OVERNIGHT_UNCERTAINTY_FULL_REPORT.md",
+  "results": "/home/ifrankling/unsw/novels/curators_explorer/data/overnight_uncertainty_full.json"
+}

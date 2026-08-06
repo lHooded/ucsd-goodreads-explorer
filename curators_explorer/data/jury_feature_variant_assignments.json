@@ -1,0 +1,415 @@
+{
+  "population": {
+    "n_analysis_users": 23867,
+    "n_baseline_broad": 20000,
+    "n_added_for_alternative_juries": 3867,
+    "all_juries_complete": true
+  },
+  "jury_reconstruction": {
+    "teacher": {
+      "n_jury": 3286,
+      "sum_w": 2318.715924939447,
+      "kish_n_eff": 2677.5257820455827,
+      "mean_deep_share": 0.700996836320071,
+      "mean_com_share": 0.013904063820848269,
+      "mean_n_deep": 16.893183201460744,
+      "n_pass_purity": 10525
+    },
+    "generic_features": {
+      "n_behavior_users": 626152,
+      "seconds": 35.46576547622681
+    },
+    "rich_features": {
+      "n_rich_users": 597522,
+      "n_user_author_rows": 18466508,
+      "n_teacher_covered": 3264,
+      "seconds": 6.970073938369751
+    },
+    "frame": {
+      "n_candidates": 626152,
+      "n_teacher_covered": 3286,
+      "teacher_weight_covered": 2318.7159249394576,
+      "min_log_n": 3.044522437723423,
+      "max_log_n": 9.779114097696372
+    },
+    "models": [
+      {
+        "label": "rich_behavior_global",
+        "description": "generic + author/series/year behavior",
+        "n_features": 51,
+        "role": "plausible",
+        "with_baseline_n": 4929,
+        "with_baseline_jaccard": 1.0,
+        "top_coefficients": [
+          [
+            "mean_pub_year_5",
+            -0.17017724079213808
+          ],
+          [
+            "series_share_5",
+            -0.14474644658454375
+          ],
+          [
+            "n_megastar_authors_5_log",
+            -0.11151680883522844
+          ],
+          [
+            "n_midpop_authors_5_log",
+            0.1095237527513554
+          ],
+          [
+            "log_n_ge4",
+            0.0789098635957932
+          ],
+          [
+            "log_n_rated",
+            0.07619691378822188
+          ],
+          [
+            "n_authors_5_log",
+            0.058478927336114636
+          ],
+          [
+            "singleton_author_share_5",
+            -0.05832710960476224
+          ],
+          [
+            "popular_likes_per_log_shelf",
+            -0.052172850225698106
+          ],
+          [
+            "author_div_5",
+            -0.04485238165852682
+          ],
+          [
+            "p5_mid_exposed",
+            -0.04261869353332511
+          ],
+          [
+            "binge_max_5_log",
+            -0.040806018857661094
+          ],
+          [
+            "midpop_span_per_logn5",
+            0.04032909630627411
+          ],
+          [
+            "midpop_likes_per_log_shelf",
+            -0.030957343045327122
+          ],
+          [
+            "author_hhi_5",
+            0.028578300515643678
+          ]
+        ]
+      },
+      {
+        "label": "rich_no_direct_activity",
+        "description": "rich behavior without direct shelf-size variables",
+        "n_features": 47,
+        "role": "plausible",
+        "with_baseline_n": 4421,
+        "with_baseline_jaccard": 0.8131322420452456,
+        "top_coefficients": [
+          [
+            "mean_pub_year_5",
+            -0.1761325149626049
+          ],
+          [
+            "n_midpop_authors_5_log",
+            0.1487524533173029
+          ],
+          [
+            "series_share_5",
+            -0.14370212231801546
+          ],
+          [
+            "n_megastar_authors_5_log",
+            -0.11785371699188738
+          ],
+          [
+            "n_authors_5_log",
+            0.10623018140716026
+          ],
+          [
+            "singleton_author_share_5",
+            -0.06133129920312719
+          ],
+          [
+            "author_div_5",
+            -0.05180943052553848
+          ],
+          [
+            "p5_mid_exposed",
+            -0.0488670768559415
+          ],
+          [
+            "binge_max_5_log",
+            -0.03897378419993443
+          ],
+          [
+            "mega_rated_share",
+            -0.030699467152826176
+          ],
+          [
+            "mean_work_mean_all",
+            0.028962531500545625
+          ],
+          [
+            "author_hhi_5",
+            0.02512978260768787
+          ],
+          [
+            "depth_ge4",
+            0.023377559280106732
+          ],
+          [
+            "p5_rare_exposed",
+            -0.023202058382677252
+          ],
+          [
+            "popular_likes_per_log_shelf",
+            -0.019761909247725324
+          ]
+        ]
+      },
+      {
+        "label": "generic_behavior_only",
+        "description": "generic rating/popularity behavior; no author/series/year panel",
+        "n_features": 37,
+        "role": "adversarial_ablation",
+        "with_baseline_n": 375,
+        "with_baseline_jaccard": 0.039544447959506485,
+        "top_coefficients": [
+          [
+            "mega_rated_share",
+            -0.11334157153016029
+          ],
+          [
+            "popular_likes_per_log_shelf",
+            -0.10278466739327555
+          ],
+          [
+            "rare_rated_share",
+            -0.09551277105661618
+          ],
+          [
+            "log_n_rated",
+            0.09386699325872527
+          ],
+          [
+            "log_n_ge4",
+            0.09385082439464654
+          ],
+          [
+            "log_n5",
+            0.08441916448826453
+          ],
+          [
+            "mega_loved_share",
+            -0.08296035296709947
+          ],
+          [
+            "mid_rated_share",
+            -0.07923071387992019
+          ],
+          [
+            "p5_mega_exposed",
+            -0.07458679270681326
+          ],
+          [
+            "mean_work_mean_5",
+            -0.0681947634495639
+          ],
+          [
+            "rare_loved_share",
+            -0.06401928250005706
+          ],
+          [
+            "p5_mid_exposed",
+            -0.0487779119525412
+          ],
+          [
+            "std_logn_all",
+            0.043972122793735614
+          ],
+          [
+            "depth_ge4",
+            0.03907277613056847
+          ],
+          [
+            "mean_work_mean_low",
+            0.0336860879888194
+          ]
+        ]
+      }
+    ],
+    "seconds": 108.03959608078003
+  },
+  "embedding": {
+    "n_fit_users": 20000,
+    "n_projected_users": 3867,
+    "n_items": 32578,
+    "n_events_all_users": 5695288,
+    "embedding_dim": 24,
+    "singular_values": [
+      11.214597702026367,
+      7.93691349029541,
+      7.140233516693115,
+      6.678636074066162,
+      6.296952247619629,
+      6.1650190353393555,
+      6.071222305297852,
+      5.991547107696533,
+      5.9452900886535645,
+      5.832234859466553,
+      5.6891045570373535,
+      5.425583839416504,
+      5.4113640785217285,
+      5.3526692390441895,
+      5.301489353179932,
+      5.154237270355225,
+      5.088551998138428,
+      5.046506404876709,
+      5.028963088989258,
+      4.9789299964904785,
+      4.933570861816406,
+      4.875936508178711,
+      4.832056999206543,
+      4.769013404846191
+    ],
+    "signal": "baseline-frozen centered rating residual × mild inverse-popularity weight",
+    "seconds": 3.3343594074249268
+  },
+  "calibration": [
+    {
+      "partition": "k6_s11",
+      "k": 6,
+      "temperature": 0.03907169458021792,
+      "weighted_mean_max_membership": 0.8999999999998128,
+      "weighted_mean_effective_memberships": 1.2920130671716235,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.9946
+    },
+    {
+      "partition": "k6_s29",
+      "k": 6,
+      "temperature": 0.036416900759098536,
+      "weighted_mean_max_membership": 0.899999999999443,
+      "weighted_mean_effective_memberships": 1.2890130182451853,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99025
+    },
+    {
+      "partition": "k6_s47",
+      "k": 6,
+      "temperature": 0.03907426673262898,
+      "weighted_mean_max_membership": 0.8999999999994918,
+      "weighted_mean_effective_memberships": 1.2920375460425548,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99485
+    },
+    {
+      "partition": "k10_s11",
+      "k": 10,
+      "temperature": 0.03814964830725372,
+      "weighted_mean_max_membership": 0.8999999999995908,
+      "weighted_mean_effective_memberships": 1.2902668339879675,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.9942
+    },
+    {
+      "partition": "k10_s29",
+      "k": 10,
+      "temperature": 0.035938633175428975,
+      "weighted_mean_max_membership": 0.9000000000003452,
+      "weighted_mean_effective_memberships": 1.2904058870750656,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99475
+    },
+    {
+      "partition": "k10_s47",
+      "k": 10,
+      "temperature": 0.03542624977763541,
+      "weighted_mean_max_membership": 0.8999999999995281,
+      "weighted_mean_effective_memberships": 1.2921220302223027,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99505
+    },
+    {
+      "partition": "k16_s11",
+      "k": 16,
+      "temperature": 0.03754868739586027,
+      "weighted_mean_max_membership": 0.8999999999995935,
+      "weighted_mean_effective_memberships": 1.2892119548542835,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99505
+    },
+    {
+      "partition": "k16_s29",
+      "k": 16,
+      "temperature": 0.037017124490068554,
+      "weighted_mean_max_membership": 0.8999999999994913,
+      "weighted_mean_effective_memberships": 1.2914193115765793,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99505
+    },
+    {
+      "partition": "k16_s47",
+      "k": 16,
+      "temperature": 0.03643470133450434,
+      "weighted_mean_max_membership": 0.9000000000001819,
+      "weighted_mean_effective_memberships": 1.2899067167419973,
+      "argmax_fidelity": null,
+      "argmax_fidelity_baseline": 0.99505
+    }
+  ],
+  "validation": {
+    "baseline_jury_mismatches": 0,
+    "partitions": {
+      "k6_s11": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k6_s29": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k6_s47": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k10_s11": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k10_s29": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k10_s47": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k16_s11": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k16_s29": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      },
+      "k16_s47": {
+        "hard_label_mismatches": 0,
+        "max_fuzzy_weight_error": 0.0
+      }
+    }
+  },
+  "jury_sizes": {
+    "rich_behavior_global": 4929,
+    "rich_no_direct_activity": 4929,
+    "generic_behavior_only": 4929
+  },
+  "runtime_seconds": 274.41670417785645,
+  "output": "/home/ifrankling/unsw/novels/curators_explorer/data/jury_feature_variant_assignments.parquet"
+}

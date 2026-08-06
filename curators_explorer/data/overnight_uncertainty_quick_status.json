@@ -1,0 +1,9 @@
+{
+  "mode": "quick",
+  "status": "running",
+  "completed_replicates": 4,
+  "max_replicates": 4,
+  "bootstrap_elapsed_seconds": 0.032470703125,
+  "replicates_per_second": 123.18796992481202,
+  "updated_unix": 1785939207.3784208
+}

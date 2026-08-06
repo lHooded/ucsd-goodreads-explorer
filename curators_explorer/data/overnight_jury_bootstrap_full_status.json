@@ -1,0 +1,8 @@
+{
+  "mode": "full",
+  "status": "complete",
+  "completed_replicates": 5000,
+  "runtime_seconds": 25434.244917154312,
+  "report": "/home/ifrankling/unsw/novels/curators_explorer/data/OVERNIGHT_JURY_BOOTSTRAP_FULL_REPORT.md",
+  "results": "/home/ifrankling/unsw/novels/curators_explorer/data/overnight_jury_bootstrap_full.json"
+}

@@ -1,0 +1,2406 @@
+{
+  "meta": {
+    "allowed": "(user_id, work_id, rating) and counts derived from them",
+    "min_work_n": 25,
+    "min_user_n": 20,
+    "papers": [
+      "Lizardo 2018 method of reflections (Poetics)",
+      "Airoldi 2024 nested relational legitimacy (Poetics)",
+      "Feldkamp et al. 2024 Measuring Literary Quality (JCLS)",
+      "Walsh & Antoniak Goodreads Classics (JCA)"
+    ],
+    "eval": {
+      "n_pos_works": 1985,
+      "n_anti_works": 7124,
+      "n_fillers": 81
+    }
+  },
+  "methods": {
+    "baseline_bayes_p5": {
+      "elapsed_ms": 162,
+      "metrics": {
+        "Q": -97.01,
+        "geo_n": 332.4167081738726,
+        "pos50": 0,
+        "anti50": 12,
+        "anti1000": 106,
+        "anti_med": 399,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.106,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "The Way of Kings, Part 2 (The Stormlight Archive #1.2)",
+            "author": "Brandon Sanderson",
+            "n": 893.0
+          },
+          {
+            "rank": 2,
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "n": 23734.0
+          },
+          {
+            "rank": 3,
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "n": 10709.0
+          },
+          {
+            "rank": 4,
+            "title": "பொன்னியின் செல்வன் [Ponniyin Selvan]",
+            "author": "Kalki",
+            "n": 438.0
+          },
+          {
+            "rank": 5,
+            "title": "Words of Radiance, Part 2 (The Stormlight Archive #2.2)",
+            "author": "Brandon Sanderson",
+            "n": 241.0
+          },
+          {
+            "rank": 6,
+            "title": "Still (Grip, #2)",
+            "author": "Kennedy Ryan",
+            "n": 206.0
+          },
+          {
+            "rank": 7,
+            "title": "Mark of the Lion Trilogy",
+            "author": "Francine Rivers",
+            "n": 647.0
+          },
+          {
+            "rank": 8,
+            "title": "Beyond the World of Man (Dwellers of Ahwahnee, #3)",
+            "author": "Sheryl Seal",
+            "n": 88.0
+          },
+          {
+            "rank": 9,
+            "title": "Beyond Oria Falls (Dwellers of Ahwahnee, #2)",
+            "author": "Sheryl Seal",
+            "n": 89.0
+          },
+          {
+            "rank": 10,
+            "title": "A Court of Thorns and Roses Coloring Book",
+            "author": "Sarah J. Maas",
+            "n": 129.0
+          },
+          {
+            "rank": 11,
+            "title": "Percy Jackson Collection: Percy Jackson and the Lightning Thief, the Last Olympian, the Titans Curse, the Sea of Monsters, the Battle of the Labyrinth, the Demigod Files and the Red Pyramid",
+            "author": "Rick Riordan",
+            "n": 262.0
+          },
+          {
+            "rank": 12,
+            "title": "Cornered Coyote (Coyote #3)",
+            "author": "Dianne Harman",
+            "n": 105.0
+          },
+          {
+            "rank": 13,
+            "title": "Drive",
+            "author": "Kate  Stewart",
+            "n": 210.0
+          },
+          {
+            "rank": 14,
+            "title": "Coyote in Provence (Coyote #2)",
+            "author": "Dianne Harman",
+            "n": 112.0
+          },
+          {
+            "rank": 15,
+            "title": "Marley (Carnage, #3)",
+            "author": "Lesley  Jones",
+            "n": 220.0
+          },
+          {
+            "rank": 16,
+            "title": "Some Kind of Perfect (Calloway Sisters, #4.5; Addicted, #3.5)",
+            "author": "Krista Ritchie",
+            "n": 477.0
+          },
+          {
+            "rank": 17,
+            "title": "Untitled (Throne of Glass, #7)",
+            "author": "Sarah J. Maas",
+            "n": 148.0
+          },
+          {
+            "rank": 18,
+            "title": "Le Monogramme",
+            "author": "Odysseus Elytis",
+            "n": 295.0
+          },
+          {
+            "rank": 19,
+            "title": "Deadly Secrets (The Greek Isles Series, #2)",
+            "author": "Angel Sefer",
+            "n": 89.0
+          },
+          {
+            "rank": 20,
+            "title": "Words of Radiance, Part 1 (The Stormlight Archive #2.1)",
+            "author": "Brandon Sanderson",
+            "n": 279.0
+          }
+        ]
+      }
+    },
+    "picky_top10pct": {
+      "elapsed_ms": 1500,
+      "metrics": {
+        "Q": -76.11,
+        "geo_n": 193.19432281283898,
+        "pos50": 3,
+        "anti50": 12,
+        "anti1000": 81,
+        "anti_med": 339,
+        "filler50": 0,
+        "pos_share50": 0.06,
+        "anti_share1000": 0.081,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "n": 1128.0
+          },
+          {
+            "rank": 2,
+            "title": "பொன்னியின் செல்வன் [Ponniyin Selvan]",
+            "author": "Kalki",
+            "n": 49.0
+          },
+          {
+            "rank": 3,
+            "title": "Special Forces - Soldiers (Special Forces, #1)",
+            "author": "Aleksandr Voinov",
+            "n": 48.0
+          },
+          {
+            "rank": 4,
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "n": 1389.0
+          },
+          {
+            "rank": 5,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 1107.0
+          },
+          {
+            "rank": 6,
+            "title": "The Way of Kings, Part 2 (The Stormlight Archive #1.2)",
+            "author": "Brandon Sanderson",
+            "n": 73.0
+          },
+          {
+            "rank": 7,
+            "title": "Shahnameh: The Persian Book of Kings",
+            "author": "Abolqasem Ferdowsi",
+            "n": 54.0
+          },
+          {
+            "rank": 8,
+            "title": "The Way of Kings (The Stormlight Archive, #1)",
+            "author": "Brandon Sanderson",
+            "n": 1628.0
+          },
+          {
+            "rank": 9,
+            "title": "A Little Life",
+            "author": "Hanya Yanagihara",
+            "n": 1337.0
+          },
+          {
+            "rank": 10,
+            "title": "Worm",
+            "author": "Wildbow",
+            "n": 58.0
+          },
+          {
+            "rank": 11,
+            "title": "Assassin's Fate (The Fitz and the Fool, #3)",
+            "author": "Robin Hobb",
+            "n": 180.0
+          },
+          {
+            "rank": 12,
+            "title": "The Heart's Invisible Furies",
+            "author": "John Boyne",
+            "n": 89.0
+          },
+          {
+            "rank": 13,
+            "title": "Crush",
+            "author": "Richard Siken",
+            "n": 129.0
+          },
+          {
+            "rank": 14,
+            "title": "Wildfire (Hidden Legacy, #3)",
+            "author": "Ilona Andrews",
+            "n": 307.0
+          },
+          {
+            "rank": 15,
+            "title": "Acheron (Dark-Hunter #14)",
+            "author": "Sherrilyn Kenyon",
+            "n": 945.0
+          },
+          {
+            "rank": 16,
+            "title": "Mark of the Lion Trilogy",
+            "author": "Francine Rivers",
+            "n": 41.0
+          },
+          {
+            "rank": 17,
+            "title": "حصن المسلم: من أذكار الكتاب والسنة",
+            "author": "s`yd bn `ly bn whf lqHTny",
+            "n": 39.0
+          },
+          {
+            "rank": 18,
+            "title": "Time Regained (In Search of Lost Time, #7)",
+            "author": "Marcel Proust",
+            "n": 45.0
+          },
+          {
+            "rank": 19,
+            "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+            "author": "Patrick Rothfuss",
+            "n": 4460.0
+          },
+          {
+            "rank": 20,
+            "title": "In Other Lands",
+            "author": "Sarah Rees Brennan",
+            "n": 34.0
+          }
+        ]
+      }
+    },
+    "depth_top5pct_p5": {
+      "elapsed_ms": 1255,
+      "metrics": {
+        "Q": -36.86,
+        "geo_n": 133.3184125580344,
+        "pos50": 0,
+        "anti50": 3,
+        "anti1000": 61,
+        "anti_med": 564,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.061,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Ends Here (Road to Nowhere, #2)",
+            "author": "M.  Robinson",
+            "n": 133.0
+          },
+          {
+            "rank": 2,
+            "title": "Crashed (Driven, #3)",
+            "author": "K. Bromberg",
+            "n": 324.0
+          },
+          {
+            "rank": 3,
+            "title": "Cornered Coyote (Coyote #3)",
+            "author": "Dianne Harman",
+            "n": 71.0
+          },
+          {
+            "rank": 4,
+            "title": "Preppy: The Life & Death of Samuel Clearwater, Part One (King, #5)",
+            "author": "T.M. Frazier",
+            "n": 156.0
+          },
+          {
+            "rank": 5,
+            "title": "Preppy: The Life & Death of Samuel Clearwater, Part Three (King, #7)",
+            "author": "T.M. Frazier",
+            "n": 121.0
+          },
+          {
+            "rank": 6,
+            "title": "Fueled (Driven, #2)",
+            "author": "K. Bromberg",
+            "n": 348.0
+          },
+          {
+            "rank": 7,
+            "title": "Among the Shrouded",
+            "author": "Amalie Jahn",
+            "n": 68.0
+          },
+          {
+            "rank": 8,
+            "title": "Road to Nowhere (Road to Nowhere, #1)",
+            "author": "M.  Robinson",
+            "n": 149.0
+          },
+          {
+            "rank": 9,
+            "title": "Beyond Bridalveil Fall  (Dwellers of Awahnee, #1)",
+            "author": "Sheryl Seal",
+            "n": 66.0
+          },
+          {
+            "rank": 10,
+            "title": "Ride Steady (Chaos, #3)",
+            "author": "Kristen Ashley",
+            "n": 243.0
+          },
+          {
+            "rank": 11,
+            "title": "Blue Coyote Motel (Coyote #1)",
+            "author": "Dianne Harman",
+            "n": 87.0
+          },
+          {
+            "rank": 12,
+            "title": "Spellbound in His Arms (The Greek Isles Series, #1)",
+            "author": "Angel Sefer",
+            "n": 71.0
+          },
+          {
+            "rank": 13,
+            "title": "The Clay Lion (The Clay Lion, #1)",
+            "author": "Amalie Jahn",
+            "n": 71.0
+          },
+          {
+            "rank": 14,
+            "title": "Archer's Voice",
+            "author": "Mia Sheridan",
+            "n": 391.0
+          },
+          {
+            "rank": 15,
+            "title": "Conviction (Salvation, #4)",
+            "author": "Corinne Michaels",
+            "n": 156.0
+          },
+          {
+            "rank": 16,
+            "title": "A Thousand Boy Kisses",
+            "author": "Tillie Cole",
+            "n": 125.0
+          },
+          {
+            "rank": 17,
+            "title": "Out of the Box Regifted (Out of the Box, #2)",
+            "author": "Jennifer Theriot",
+            "n": 79.0
+          },
+          {
+            "rank": 18,
+            "title": "Acheron (Dark-Hunter #14)",
+            "author": "Sherrilyn Kenyon",
+            "n": 421.0
+          },
+          {
+            "rank": 19,
+            "title": "Stay (Bleeding Stars, #5)",
+            "author": "A.L. Jackson",
+            "n": 93.0
+          },
+          {
+            "rank": 20,
+            "title": "Elude (Eagle Elite, #6)",
+            "author": "Rachel Van Dyken",
+            "n": 89.0
+          }
+        ]
+      }
+    },
+    "audience_depth": {
+      "elapsed_ms": 1114,
+      "metrics": {
+        "Q": 0.0,
+        "geo_n": 110.66401003641359,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 0,
+        "anti_med": null,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.0,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Moth to a Flame",
+            "author": "Ashley Antoinette",
+            "n": 137.0
+          },
+          {
+            "rank": 2,
+            "title": "Dog Days of Summer (Rolling Thunder #1)",
+            "author": "P.J. Fiala",
+            "n": 97.0
+          },
+          {
+            "rank": 3,
+            "title": "Tagged: The Apocalypse",
+            "author": "Joseph M. Chiron",
+            "n": 79.0
+          },
+          {
+            "rank": 4,
+            "title": "The Riding School (Pony Tales, #1)",
+            "author": "C.P. Mandara",
+            "n": 110.0
+          },
+          {
+            "rank": 5,
+            "title": "The Dopeman's Wife (The Dopeman, #1)",
+            "author": "JaQuavis Coleman",
+            "n": 100.0
+          },
+          {
+            "rank": 6,
+            "title": "Tale of the Murda Mamas (The Cartel, #2)",
+            "author": "Ashley Antoinette",
+            "n": 152.0
+          },
+          {
+            "rank": 7,
+            "title": "Out of the Box Awakening (Out of the Box, #1)",
+            "author": "Jennifer Theriot",
+            "n": 105.0
+          },
+          {
+            "rank": 8,
+            "title": "Bitch (Bitch, #1)",
+            "author": "Deja King",
+            "n": 130.0
+          },
+          {
+            "rank": 9,
+            "title": "Cornered Coyote (Coyote #3)",
+            "author": "Dianne Harman",
+            "n": 87.0
+          },
+          {
+            "rank": 10,
+            "title": "Out of the Box Regifted (Out of the Box, #2)",
+            "author": "Jennifer Theriot",
+            "n": 90.0
+          },
+          {
+            "rank": 11,
+            "title": "Daddy Morebucks (Daddy's Girl, #1)",
+            "author": "Normandie Alleman",
+            "n": 100.0
+          },
+          {
+            "rank": 12,
+            "title": "The Last Chapter (The Cartel, #3)",
+            "author": "Ashley Antoinette",
+            "n": 166.0
+          },
+          {
+            "rank": 13,
+            "title": "Thugs and the Women Who Love Them (Thug #1)",
+            "author": "Wahida Clark",
+            "n": 135.0
+          },
+          {
+            "rank": 14,
+            "title": "Coyote in Provence (Coyote #2)",
+            "author": "Dianne Harman",
+            "n": 87.0
+          },
+          {
+            "rank": 15,
+            "title": "Every Thug Needs a Lady (Thug #2)",
+            "author": "Wahida Clark",
+            "n": 118.0
+          },
+          {
+            "rank": 16,
+            "title": "Rescued by the Buccaneer (Pirates of the Jolie Rouge Trilogy, #1)",
+            "author": "Normandie Alleman",
+            "n": 68.0
+          },
+          {
+            "rank": 17,
+            "title": "Baby (Species Intervention #6609, #1)",
+            "author": "J.K. Accinni",
+            "n": 120.0
+          },
+          {
+            "rank": 18,
+            "title": "The Cartel (The Cartel, #1)",
+            "author": "Ashley Antoinette",
+            "n": 222.0
+          },
+          {
+            "rank": 19,
+            "title": "Bitch Reloaded (Bitch, #2)",
+            "author": "Deja King",
+            "n": 95.0
+          },
+          {
+            "rank": 20,
+            "title": "CRUSH",
+            "author": "Ivy Symone",
+            "n": 51.0
+          }
+        ]
+      }
+    },
+    "contrastive_lift": {
+      "elapsed_ms": 4078,
+      "metrics": {
+        "Q": 5.01,
+        "geo_n": 54.61175775260151,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 1,
+        "anti_med": 551,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.001,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "A House Without Windows",
+            "author": "Stevie Turner",
+            "n": 44.0
+          },
+          {
+            "rank": 2,
+            "title": "The Clay Lion (The Clay Lion, #1)",
+            "author": "Amalie Jahn",
+            "n": 74.0
+          },
+          {
+            "rank": 3,
+            "title": "Among the Shrouded",
+            "author": "Amalie Jahn",
+            "n": 41.0
+          },
+          {
+            "rank": 4,
+            "title": "The Gordonston Ladies Dog Walking Club",
+            "author": "Duncan Whitehead",
+            "n": 93.0
+          },
+          {
+            "rank": 5,
+            "title": "The Branches of Time",
+            "author": "Luca  Rossi",
+            "n": 84.0
+          },
+          {
+            "rank": 6,
+            "title": "Baby (Species Intervention #6609, #1)",
+            "author": "J.K. Accinni",
+            "n": 74.0
+          },
+          {
+            "rank": 7,
+            "title": "Lone Wolf Rising (The Winters Family Saga, #1)",
+            "author": "Jami Brumfield",
+            "n": 66.0
+          },
+          {
+            "rank": 8,
+            "title": "Pompeii: City on Fire (Seven Wonders, #6)",
+            "author": "T.L. Higley",
+            "n": 48.0
+          },
+          {
+            "rank": 9,
+            "title": "Demigods and Monsters (Sphinx, #2)",
+            "author": "Raye Wagner",
+            "n": 46.0
+          },
+          {
+            "rank": 10,
+            "title": "The Reluctant Duchess (Ladies of the Manor, #2)",
+            "author": "Roseanna M. White",
+            "n": 44.0
+          },
+          {
+            "rank": 11,
+            "title": "Sexy Motherpucker (Bad Motherpuckers, #2)",
+            "author": "Lili Valente",
+            "n": 62.0
+          },
+          {
+            "rank": 12,
+            "title": "Tempted (Bad Boy Next Door, #2)",
+            "author": "Lauren Landish",
+            "n": 41.0
+          },
+          {
+            "rank": 13,
+            "title": "The Shadow Within (Legends of the Guardian-King, #2)",
+            "author": "Karen Hancock",
+            "n": 44.0
+          },
+          {
+            "rank": 14,
+            "title": "Needing to Fall",
+            "author": "Ryan Michele",
+            "n": 43.0
+          },
+          {
+            "rank": 15,
+            "title": "Destiny on Ice (Boys of Winter #1)",
+            "author": "S.R. Grey",
+            "n": 58.0
+          },
+          {
+            "rank": 16,
+            "title": "The Witch and the Gentleman",
+            "author": "J.R. Rain",
+            "n": 57.0
+          },
+          {
+            "rank": 17,
+            "title": "A Broken Us (London Lovers, #2)",
+            "author": "Amy Daws",
+            "n": 43.0
+          },
+          {
+            "rank": 18,
+            "title": "Their Lost Daughters (DI Jackman & DS Evans, #2)",
+            "author": "Joy Ellis",
+            "n": 42.0
+          },
+          {
+            "rank": 19,
+            "title": "Just a Little Junk",
+            "author": "Stylo Fantome",
+            "n": 60.0
+          },
+          {
+            "rank": 20,
+            "title": "Daddy Morebucks (Daddy's Girl, #1)",
+            "author": "Normandie Alleman",
+            "n": 94.0
+          }
+        ]
+      }
+    },
+    "anti_blockbuster_picky": {
+      "elapsed_ms": 4523,
+      "metrics": {
+        "Q": -26.37,
+        "geo_n": 132.59722615632134,
+        "pos50": 4,
+        "anti50": 5,
+        "anti1000": 43,
+        "anti_med": 313,
+        "filler50": 0,
+        "pos_share50": 0.08,
+        "anti_share1000": 0.043,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "لا تصالح",
+            "author": "'ml dnql",
+            "n": 136.0
+          },
+          {
+            "rank": 2,
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "n": 1495.0
+          },
+          {
+            "rank": 3,
+            "title": "Shahnameh: The Persian Book of Kings",
+            "author": "Abolqasem Ferdowsi",
+            "n": 97.0
+          },
+          {
+            "rank": 4,
+            "title": "The Way of Kings, Part 2 (The Stormlight Archive #1.2)",
+            "author": "Brandon Sanderson",
+            "n": 104.0
+          },
+          {
+            "rank": 5,
+            "title": "Mrityunjaya",
+            "author": "Shivaji Sawant",
+            "n": 53.0
+          },
+          {
+            "rank": 6,
+            "title": "பொன்னியின் செல்வன் [Ponniyin Selvan]",
+            "author": "Kalki",
+            "n": 51.0
+          },
+          {
+            "rank": 7,
+            "title": "زمن الخيول البيضاء",
+            "author": "Ibrahim Nasrallah - ibrhym nSr llh",
+            "n": 199.0
+          },
+          {
+            "rank": 8,
+            "title": "حصن المسلم: من أذكار الكتاب والسنة",
+            "author": "s`yd bn `ly bn whf lqHTny",
+            "n": 50.0
+          },
+          {
+            "rank": 9,
+            "title": "Assassin's Fate (The Fitz and the Fool, #3)",
+            "author": "Robin Hobb",
+            "n": 244.0
+          },
+          {
+            "rank": 10,
+            "title": "Checkmate (The Lymond Chronicles, #6)",
+            "author": "Dorothy Dunnett",
+            "n": 85.0
+          },
+          {
+            "rank": 11,
+            "title": "Tutunamayanlar",
+            "author": "Oguz Atay",
+            "n": 92.0
+          },
+          {
+            "rank": 12,
+            "title": "مثنوی معنوی",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 74.0
+          },
+          {
+            "rank": 13,
+            "title": "The King's Men (All for the Game, #3)",
+            "author": "Nora Sakavic",
+            "n": 135.0
+          },
+          {
+            "rank": 14,
+            "title": "Crush",
+            "author": "Richard Siken",
+            "n": 211.0
+          },
+          {
+            "rank": 15,
+            "title": "Fade (In The Company of Shadows, #4)",
+            "author": "Santino Hassell",
+            "n": 46.0
+          },
+          {
+            "rank": 16,
+            "title": "Mark of the Lion Trilogy",
+            "author": "Francine Rivers",
+            "n": 66.0
+          },
+          {
+            "rank": 17,
+            "title": "In the Shadow of Young Girls in Flower (In Search of Lost Time, #2)",
+            "author": "Marcel Proust",
+            "n": 159.0
+          },
+          {
+            "rank": 18,
+            "title": "Wolfsong (Green Creek, #1)",
+            "author": "T.J. Klune",
+            "n": 81.0
+          },
+          {
+            "rank": 19,
+            "title": "Worm",
+            "author": "Wildbow",
+            "n": 70.0
+          },
+          {
+            "rank": 20,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 1480.0
+          }
+        ]
+      }
+    },
+    "cocitation_pmi": {
+      "elapsed_ms": 144258,
+      "metrics": {
+        "Q": -3.42,
+        "geo_n": 394.86317180754367,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 24,
+        "anti_med": 858,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.024,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "يوتوبيا",
+            "author": "Ahmed Khaled Towfik",
+            "n": 1107.0
+          },
+          {
+            "rank": 2,
+            "title": "رباعيات صلاح جاهين",
+            "author": "SlH jhyn",
+            "n": 929.0
+          },
+          {
+            "rank": 3,
+            "title": "تراب الماس",
+            "author": "'Hmd mrd",
+            "n": 1297.0
+          },
+          {
+            "rank": 4,
+            "title": "الطنطورية",
+            "author": "Radwa Ashour",
+            "n": 1429.0
+          },
+          {
+            "rank": 5,
+            "title": "الفيل الأزرق",
+            "author": "'Hmd mrd",
+            "n": 954.0
+          },
+          {
+            "rank": 6,
+            "title": "ثلاثية غرناطة",
+            "author": "Radwa Ashour",
+            "n": 2416.0
+          },
+          {
+            "rank": 7,
+            "title": "ڤيرتيجو",
+            "author": "'Hmd mrd",
+            "n": 485.0
+          },
+          {
+            "rank": 8,
+            "title": "الأسود يليق بك",
+            "author": "'Hlm mstGnmy",
+            "n": 1020.0
+          },
+          {
+            "rank": 9,
+            "title": "عزازيل",
+            "author": "ywsf zydn",
+            "n": 2224.0
+          },
+          {
+            "rank": 10,
+            "title": "المانيفستو",
+            "author": "mSTf~ brhym",
+            "n": 561.0
+          },
+          {
+            "rank": 11,
+            "title": "هيبتا",
+            "author": "mHmd Sdq",
+            "n": 910.0
+          },
+          {
+            "rank": 12,
+            "title": "الحرافيش",
+            "author": "Naguib Mahfouz",
+            "n": 939.0
+          },
+          {
+            "rank": 13,
+            "title": "في قلبي أنثى عبرية",
+            "author": "khwl@ Hmdy",
+            "n": 1049.0
+          },
+          {
+            "rank": 14,
+            "title": "قمر على سمرقند",
+            "author": "mHmd lmnsy qndyl",
+            "n": 543.0
+          },
+          {
+            "rank": 15,
+            "title": "ساق البامبو",
+            "author": "s`wd lsn`wsy",
+            "n": 2390.0
+          },
+          {
+            "rank": 16,
+            "title": "1/4 جرام",
+            "author": "Essam Youssef",
+            "n": 640.0
+          },
+          {
+            "rank": 17,
+            "title": "أرض النفاق",
+            "author": "ywsf lsb`y",
+            "n": 384.0
+          },
+          {
+            "rank": 18,
+            "title": "لا تصالح",
+            "author": "'ml dnql",
+            "n": 562.0
+          },
+          {
+            "rank": 19,
+            "title": "واحة الغروب",
+            "author": "bh Thr",
+            "n": 470.0
+          },
+          {
+            "rank": 20,
+            "title": "ويسترن يونيون فرع الهرم: ديوان بالعامية المصرية",
+            "author": "mSTf~ brhym",
+            "n": 362.0
+          }
+        ]
+      }
+    },
+    "hits_rarity_weighted": {
+      "elapsed_ms": 144730,
+      "metrics": {
+        "Q": -385.71,
+        "geo_n": 20975.724315661006,
+        "pos50": 1,
+        "anti50": 36,
+        "anti1000": 478,
+        "anti_med": 429,
+        "filler50": 5,
+        "pos_share50": 0.02,
+        "anti_share1000": 0.478,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+            "author": "George R.R. Martin",
+            "n": 54100.0
+          },
+          {
+            "rank": 2,
+            "title": "The Book Thief",
+            "author": "Markus Zusak",
+            "n": 51369.0
+          },
+          {
+            "rank": 3,
+            "title": "City of Glass (The Mortal Instruments, #3)",
+            "author": "Cassandra Clare",
+            "n": 29904.0
+          },
+          {
+            "rank": 4,
+            "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+            "author": "J.R.R. Tolkien",
+            "n": 53247.0
+          },
+          {
+            "rank": 5,
+            "title": "City of Bones (The Mortal Instruments, #1)",
+            "author": "Cassandra Clare",
+            "n": 34575.0
+          },
+          {
+            "rank": 6,
+            "title": "Clockwork Angel (The Infernal Devices, #1)",
+            "author": "Cassandra Clare",
+            "n": 23340.0
+          },
+          {
+            "rank": 7,
+            "title": "City of Ashes (The Mortal Instruments, #2)",
+            "author": "Cassandra Clare",
+            "n": 24425.0
+          },
+          {
+            "rank": 8,
+            "title": "Clockwork Princess (The Infernal Devices, #3)",
+            "author": "Cassandra Clare",
+            "n": 20147.0
+          },
+          {
+            "rank": 9,
+            "title": "The Lightning Thief (Percy Jackson and the Olympians, #1)",
+            "author": "Rick Riordan",
+            "n": 31261.0
+          },
+          {
+            "rank": 10,
+            "title": "The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)",
+            "author": "C.S. Lewis",
+            "n": 38306.0
+          },
+          {
+            "rank": 11,
+            "title": "Clockwork Prince (The Infernal Devices, #2)",
+            "author": "Cassandra Clare",
+            "n": 20192.0
+          },
+          {
+            "rank": 12,
+            "title": "The Help",
+            "author": "Kathryn Stockett",
+            "n": 45156.0
+          },
+          {
+            "rank": 13,
+            "title": "The Giver (The Giver, #1)",
+            "author": "Lois Lowry",
+            "n": 34754.0
+          },
+          {
+            "rank": 14,
+            "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+            "author": "Rick Riordan",
+            "n": 22215.0
+          },
+          {
+            "rank": 15,
+            "title": "Jane Eyre",
+            "author": "Charlotte Bronte",
+            "n": 39996.0
+          },
+          {
+            "rank": 16,
+            "title": "Insurgent (Divergent, #2)",
+            "author": "Veronica Roth",
+            "n": 28795.0
+          },
+          {
+            "rank": 17,
+            "title": "Crown of Midnight (Throne of Glass, #2)",
+            "author": "Sarah J. Maas",
+            "n": 16678.0
+          },
+          {
+            "rank": 18,
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "n": 16839.0
+          },
+          {
+            "rank": 19,
+            "title": "City of Lost Souls (The Mortal Instruments, #5)",
+            "author": "Cassandra Clare",
+            "n": 16574.0
+          },
+          {
+            "rank": 20,
+            "title": "City of Heavenly Fire (The Mortal Instruments, #6)",
+            "author": "Cassandra Clare",
+            "n": 15511.0
+          }
+        ]
+      }
+    },
+    "lizardo_neg_delta2": {
+      "elapsed_ms": 99757,
+      "metrics": {
+        "Q": 6.73,
+        "geo_n": 144.06601772579504,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 5,
+        "anti_med": 923,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.005,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Daun Yang Jatuh Tak Pernah Membenci Angin",
+            "author": "Tere Liye",
+            "n": 173.0
+          },
+          {
+            "rank": 2,
+            "title": "Sunset Bersama Rosie",
+            "author": "Tere Liye",
+            "n": 115.0
+          },
+          {
+            "rank": 3,
+            "title": "Rembulan Tenggelam Di Wajahmu",
+            "author": "Tere Liye",
+            "n": 254.0
+          },
+          {
+            "rank": 4,
+            "title": "Ayahku (Bukan) Pembohong",
+            "author": "Tere Liye",
+            "n": 135.0
+          },
+          {
+            "rank": 5,
+            "title": "Bidadari Bidadari Surga",
+            "author": "Tere Liye",
+            "n": 234.0
+          },
+          {
+            "rank": 6,
+            "title": "Fierce (Storm MC, #2)",
+            "author": "Nina  Levine",
+            "n": 129.0
+          },
+          {
+            "rank": 7,
+            "title": "Storm (Storm MC, #1)",
+            "author": "Nina  Levine",
+            "n": 146.0
+          },
+          {
+            "rank": 8,
+            "title": "Hafalan Shalat Delisa",
+            "author": "Tere Liye",
+            "n": 306.0
+          },
+          {
+            "rank": 9,
+            "title": "Ketika Cinta Bertasbih",
+            "author": "Habiburrahman El-Shirazy",
+            "n": 159.0
+          },
+          {
+            "rank": 10,
+            "title": "Bulletproof (A Matter of Time #5)",
+            "author": "Mary Calmes",
+            "n": 112.0
+          },
+          {
+            "rank": 11,
+            "title": "أسطورة بعد منتصف الليل",
+            "author": "'Hmd khld twfyq",
+            "n": 254.0
+          },
+          {
+            "rank": 12,
+            "title": "حلقة الرعب",
+            "author": "'Hmd khld twfyq",
+            "n": 242.0
+          },
+          {
+            "rank": 13,
+            "title": "أسطورة إيجور",
+            "author": "'Hmd khld twfyq",
+            "n": 164.0
+          },
+          {
+            "rank": 14,
+            "title": "أسطورة الكاهن الأخير",
+            "author": "'Hmd khld twfyq",
+            "n": 140.0
+          },
+          {
+            "rank": 15,
+            "title": "Ketika Cinta Bertasbih: Episode 2",
+            "author": "Habiburrahman El-Shirazy",
+            "n": 136.0
+          },
+          {
+            "rank": 16,
+            "title": "حكايات التاروت",
+            "author": "'Hmd khld twfyq",
+            "n": 167.0
+          },
+          {
+            "rank": 17,
+            "title": "Revive (Storm MC, #3)",
+            "author": "Nina  Levine",
+            "n": 87.0
+          },
+          {
+            "rank": 18,
+            "title": "Kau, Aku & Sepucuk Angpau Merah",
+            "author": "Tere Liye",
+            "n": 142.0
+          },
+          {
+            "rank": 19,
+            "title": "أسطورة البيت",
+            "author": "'Hmd khld twfyq",
+            "n": 114.0
+          },
+          {
+            "rank": 20,
+            "title": "Burlian (Serial Anak-Anak Mamak, Buku 2)",
+            "author": "Tere Liye",
+            "n": 98.0
+          }
+        ]
+      }
+    },
+    "lizardo_niche_enthusiasts": {
+      "elapsed_ms": 106093,
+      "metrics": {
+        "Q": -30.87,
+        "geo_n": 225.7831548460323,
+        "pos50": 0,
+        "anti50": 3,
+        "anti1000": 51,
+        "anti_med": 663,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.051,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "رياض الصالحين",
+            "author": "yHy~ bn shrf lnwwy",
+            "n": 368.0
+          },
+          {
+            "rank": 2,
+            "title": "حصن المسلم: من أذكار الكتاب والسنة",
+            "author": "s`yd bn `ly bn whf lqHTny",
+            "n": 135.0
+          },
+          {
+            "rank": 3,
+            "title": "Tutunamayanlar",
+            "author": "Oguz Atay",
+            "n": 233.0
+          },
+          {
+            "rank": 4,
+            "title": "لا تصالح",
+            "author": "'ml dnql",
+            "n": 534.0
+          },
+          {
+            "rank": 5,
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "n": 608.0
+          },
+          {
+            "rank": 6,
+            "title": "Bluestar's Prophecy (Warriors Super Edition, #2)",
+            "author": "Erin Hunter",
+            "n": 136.0
+          },
+          {
+            "rank": 7,
+            "title": "The Last Hope (Warriors: Omen of the Stars, #6)",
+            "author": "Erin Hunter",
+            "n": 114.0
+          },
+          {
+            "rank": 8,
+            "title": "مثنوی معنوی",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 143.0
+          },
+          {
+            "rank": 9,
+            "title": "ديوان الإمام الشافعي",
+            "author": "mHmd bn drys lshf`y",
+            "n": 344.0
+          },
+          {
+            "rank": 10,
+            "title": "The Coldest Winter Ever",
+            "author": "Sister Souljah",
+            "n": 586.0
+          },
+          {
+            "rank": 11,
+            "title": "The Lightning-Struck Heart (Tales From Verania, #1)",
+            "author": "T.J. Klune",
+            "n": 164.0
+          },
+          {
+            "rank": 12,
+            "title": "The Darkest Hour (Warriors, #6)",
+            "author": "Erin Hunter",
+            "n": 335.0
+          },
+          {
+            "rank": 13,
+            "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+            "author": "J.K. Rowling",
+            "n": 15131.0
+          },
+          {
+            "rank": 14,
+            "title": "The Nightingale",
+            "author": "Kristin Hannah",
+            "n": 1710.0
+          },
+          {
+            "rank": 15,
+            "title": "Shahnameh: The Persian Book of Kings",
+            "author": "Abolqasem Ferdowsi",
+            "n": 136.0
+          },
+          {
+            "rank": 16,
+            "title": "Wolfsong (Green Creek, #1)",
+            "author": "T.J. Klune",
+            "n": 165.0
+          },
+          {
+            "rank": 17,
+            "title": "Mark of the Lion Trilogy",
+            "author": "Francine Rivers",
+            "n": 94.0
+          },
+          {
+            "rank": 18,
+            "title": "Bumi Manusia",
+            "author": "Pramoedya Ananta Toer",
+            "n": 645.0
+          },
+          {
+            "rank": 19,
+            "title": "Tehlikeli Oyunlar",
+            "author": "Oguz Atay",
+            "n": 140.0
+          },
+          {
+            "rank": 20,
+            "title": "في ظلال القرآن",
+            "author": "Sayed Qutb",
+            "n": 222.0
+          }
+        ]
+      }
+    },
+    "lizardo_high_order": {
+      "elapsed_ms": 177254,
+      "metrics": {
+        "Q": 8.72,
+        "geo_n": 299.2231557224684,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 1,
+        "anti_med": 922,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.001,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "تراب الماس",
+            "author": "'Hmd mrd",
+            "n": 1241.0
+          },
+          {
+            "rank": 2,
+            "title": "في قلبي أنثى عبرية",
+            "author": "khwl@ Hmdy",
+            "n": 997.0
+          },
+          {
+            "rank": 3,
+            "title": "يوتوبيا",
+            "author": "Ahmed Khaled Towfik",
+            "n": 1043.0
+          },
+          {
+            "rank": 4,
+            "title": "الجزار",
+            "author": "Hsn ljndy",
+            "n": 375.0
+          },
+          {
+            "rank": 5,
+            "title": "الفيل الأزرق",
+            "author": "'Hmd mrd",
+            "n": 914.0
+          },
+          {
+            "rank": 6,
+            "title": "هيبتا",
+            "author": "mHmd Sdq",
+            "n": 866.0
+          },
+          {
+            "rank": 7,
+            "title": "1/4 جرام",
+            "author": "Essam Youssef",
+            "n": 610.0
+          },
+          {
+            "rank": 8,
+            "title": "ڤيرتيجو",
+            "author": "'Hmd mrd",
+            "n": 475.0
+          },
+          {
+            "rank": 9,
+            "title": "ترنيمة سلام",
+            "author": "'Hmd `bd lmjyd",
+            "n": 358.0
+          },
+          {
+            "rank": 10,
+            "title": "المانيفستو",
+            "author": "mSTf~ brhym",
+            "n": 536.0
+          },
+          {
+            "rank": 11,
+            "title": "رغم الفراق",
+            "author": "nwr `bdlmjyd",
+            "n": 273.0
+          },
+          {
+            "rank": 12,
+            "title": "أنت لي",
+            "author": "mn~ lmrshwd",
+            "n": 538.0
+          },
+          {
+            "rank": 13,
+            "title": "المرتد",
+            "author": "Hsn ljndy",
+            "n": 248.0
+          },
+          {
+            "rank": 14,
+            "title": "نصف ميت دفن حيًا",
+            "author": "Hsn ljndy",
+            "n": 255.0
+          },
+          {
+            "rank": 15,
+            "title": "أرض زيكولا",
+            "author": "`mrw `bd lHmyd",
+            "n": 260.0
+          },
+          {
+            "rank": 16,
+            "title": "ويسترن يونيون فرع الهرم: ديوان بالعامية المصرية",
+            "author": "mSTf~ brhym",
+            "n": 352.0
+          },
+          {
+            "rank": 17,
+            "title": "الرجل ذو اللحية السوداء",
+            "author": "smy@ 'Hmd",
+            "n": 172.0
+          },
+          {
+            "rank": 18,
+            "title": "\"حكايات فرغلي المستكاوي \"حكايتى مع كفر السحلاوية",
+            "author": "Hsn ljndy",
+            "n": 203.0
+          },
+          {
+            "rank": 19,
+            "title": "رباعيات صلاح جاهين",
+            "author": "SlH jhyn",
+            "n": 884.0
+          },
+          {
+            "rank": 20,
+            "title": "كيغار",
+            "author": "mn~ slm@",
+            "n": 157.0
+          }
+        ]
+      }
+    },
+    "feldkamp_dual_axis": {
+      "elapsed_ms": 76658,
+      "metrics": {
+        "Q": -44.43,
+        "geo_n": 110.97258044047955,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 102,
+        "anti_med": 657,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.102,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "ليتها تقرأ",
+            "author": "khld lbtly",
+            "n": 154.0
+          },
+          {
+            "rank": 2,
+            "title": "One Night at the Call Center",
+            "author": "Chetan Bhagat",
+            "n": 90.0
+          },
+          {
+            "rank": 3,
+            "title": "نيكروفيليا",
+            "author": "shyryn hny'y",
+            "n": 90.0
+          },
+          {
+            "rank": 4,
+            "title": "حبيبتي بكماء",
+            "author": "mHmd lslm",
+            "n": 62.0
+          },
+          {
+            "rank": 5,
+            "title": "ظل الأفعى",
+            "author": "ywsf zydn",
+            "n": 248.0
+          },
+          {
+            "rank": 6,
+            "title": "The 3 Mistakes of My Life",
+            "author": "Chetan Bhagat",
+            "n": 194.0
+          },
+          {
+            "rank": 7,
+            "title": "Revolution 2020: Love, Corruption, Ambition",
+            "author": "Chetan Bhagat",
+            "n": 169.0
+          },
+          {
+            "rank": 8,
+            "title": "السنجة",
+            "author": "'Hmd khld twfyq",
+            "n": 146.0
+          },
+          {
+            "rank": 9,
+            "title": "في ديسمبر تنتهي كل الأحلام",
+            "author": "'thyr `bdllh lnshmy",
+            "n": 267.0
+          },
+          {
+            "rank": 10,
+            "title": "فلتغفري",
+            "author": "'thyr `bdllh lnshmy",
+            "n": 325.0
+          },
+          {
+            "rank": 11,
+            "title": "الرجال من بولاق والنساء من أول فيصل",
+            "author": "yhb m`wD",
+            "n": 66.0
+          },
+          {
+            "rank": 12,
+            "title": "\"حكايات فرغلي المستكاوي \"حكايتى مع كفر السحلاوية",
+            "author": "Hsn ljndy",
+            "n": 203.0
+          },
+          {
+            "rank": 13,
+            "title": "بضع ساعات في يوم ما",
+            "author": "mHmd Sdq",
+            "n": 64.0
+          },
+          {
+            "rank": 14,
+            "title": "انستا_حياة#",
+            "author": "mHmd Sdq",
+            "n": 58.0
+          },
+          {
+            "rank": 15,
+            "title": "مالك",
+            "author": "mHmwd bkry",
+            "n": 35.0
+          },
+          {
+            "rank": 16,
+            "title": "Ketika Cinta Bertasbih",
+            "author": "Habiburrahman El-Shirazy",
+            "n": 159.0
+          },
+          {
+            "rank": 17,
+            "title": "محال",
+            "author": "ywsf zydn",
+            "n": 217.0
+          },
+          {
+            "rank": 18,
+            "title": "يوميات اتنين مخطوبين",
+            "author": "hb@ syd `bd l`Ty",
+            "n": 84.0
+          },
+          {
+            "rank": 19,
+            "title": "الرجل ذو اللحية السوداء",
+            "author": "smy@ 'Hmd",
+            "n": 172.0
+          },
+          {
+            "rank": 20,
+            "title": "أنا عشقت",
+            "author": "mHmd lmnsy qndyl",
+            "n": 139.0
+          }
+        ]
+      }
+    },
+    "nested_community_portfolio": {
+      "elapsed_ms": 106617,
+      "metrics": {
+        "Q": 2.88,
+        "geo_n": 119.6608266976621,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 5,
+        "anti_med": 538,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.005,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "حكايات التاروت",
+            "author": "'Hmd khld twfyq",
+            "n": 154.0
+          },
+          {
+            "rank": 2,
+            "title": "أسطورة آخر الليل",
+            "author": "'Hmd khld twfyq",
+            "n": 140.0
+          },
+          {
+            "rank": 3,
+            "title": "The Major Works",
+            "author": "William Wordsworth",
+            "n": 135.0
+          },
+          {
+            "rank": 4,
+            "title": "اغتصاب ولكن تحت سقف واحد",
+            "author": "d` `bd lrHmn",
+            "n": 142.0
+          },
+          {
+            "rank": 5,
+            "title": "قطة في عرين الأسد",
+            "author": "mn~ slm@",
+            "n": 114.0
+          },
+          {
+            "rank": 6,
+            "title": "اكتشفت زوجى فى الأتوبيس",
+            "author": "msh`r Gly@",
+            "n": 129.0
+          },
+          {
+            "rank": 7,
+            "title": "أسطورة المواجهة",
+            "author": "'Hmd khld twfyq",
+            "n": 93.0
+          },
+          {
+            "rank": 8,
+            "title": "أسطورة إيجور",
+            "author": "'Hmd khld twfyq",
+            "n": 144.0
+          },
+          {
+            "rank": 9,
+            "title": "أسطورة النافاراي",
+            "author": "'Hmd khld twfyq",
+            "n": 87.0
+          },
+          {
+            "rank": 10,
+            "title": "Poetry and Prose",
+            "author": "Percy Bysshe Shelley",
+            "n": 89.0
+          },
+          {
+            "rank": 11,
+            "title": "أسطورة رفعت",
+            "author": "'Hmd khld twfyq",
+            "n": 88.0
+          },
+          {
+            "rank": 12,
+            "title": "أسطورتنا",
+            "author": "'Hmd khld twfyq",
+            "n": 100.0
+          },
+          {
+            "rank": 13,
+            "title": "أماريتا",
+            "author": "`mrw `bd lHmyd",
+            "n": 160.0
+          },
+          {
+            "rank": 14,
+            "title": "حلقة الرعب",
+            "author": "'Hmd khld twfyq",
+            "n": 204.0
+          },
+          {
+            "rank": 15,
+            "title": "مزرعة الدموع",
+            "author": "mn~ slm@",
+            "n": 67.0
+          },
+          {
+            "rank": 16,
+            "title": "أسطورة الجنرال العائد",
+            "author": "'Hmd khld twfyq",
+            "n": 100.0
+          },
+          {
+            "rank": 17,
+            "title": "إيماچو",
+            "author": "d` `bd lrHmn",
+            "n": 81.0
+          },
+          {
+            "rank": 18,
+            "title": "مع وقف التنفيذ",
+            "author": "msh`r Gly@",
+            "n": 68.0
+          },
+          {
+            "rank": 19,
+            "title": "المتحف الأسود",
+            "author": "'Hmd khld twfyq",
+            "n": 97.0
+          },
+          {
+            "rank": 20,
+            "title": "Robert Browning's Poetry",
+            "author": "Robert Browning",
+            "n": 66.0
+          }
+        ]
+      },
+      "communities": [
+        {
+          "community": 0,
+          "size": 100,
+          "dense_users": 3133,
+          "rank_in_comm": 1,
+          "title": "An Autobiography",
+          "author": "Angela Y. Davis"
+        },
+        {
+          "community": 0,
+          "size": 100,
+          "dense_users": 3133,
+          "rank_in_comm": 2,
+          "title": "This Bridge Called My Back: Writings by Radical Women of Color",
+          "author": "Cherrie L. Moraga"
+        },
+        {
+          "community": 0,
+          "size": 100,
+          "dense_users": 3133,
+          "rank_in_comm": 3,
+          "title": "The Mis-Education of the Negro",
+          "author": "Carter G. Woodson"
+        },
+        {
+          "community": 0,
+          "size": 100,
+          "dense_users": 3133,
+          "rank_in_comm": 4,
+          "title": "Soul on Ice",
+          "author": "Eldridge Cleaver"
+        },
+        {
+          "community": 0,
+          "size": 100,
+          "dense_users": 3133,
+          "rank_in_comm": 5,
+          "title": "Race Matters",
+          "author": "Cornel West"
+        },
+        {
+          "community": 1,
+          "size": 98,
+          "dense_users": 1961,
+          "rank_in_comm": 1,
+          "title": "The Hard Thing About Hard Things: Building a Business When There Are No Easy Answers",
+          "author": "Ben Horowitz"
+        },
+        {
+          "community": 1,
+          "size": 98,
+          "dense_users": 1961,
+          "rank_in_comm": 2,
+          "title": "Smartcuts: How Hackers, Innovators, and Icons Accelerate Success",
+          "author": "Shane Snow"
+        },
+        {
+          "community": 1,
+          "size": 98,
+          "dense_users": 1961,
+          "rank_in_comm": 3,
+          "title": "The Inevitable: Understanding the 12 Technological Forces That Will Shape Our Future",
+          "author": "Kevin Kelly"
+        },
+        {
+          "community": 1,
+          "size": 98,
+          "dense_users": 1961,
+          "rank_in_comm": 4,
+          "title": "The Start-Up of You: Adapt to the Future, Invest in Yourself, and Transform Your Career",
+          "author": "Reid Hoffman"
+        },
+        {
+          "community": 1,
+          "size": 98,
+          "dense_users": 1961,
+          "rank_in_comm": 5,
+          "title": "Hooked: How to Build Habit-Forming Products",
+          "author": "Nir Eyal"
+        },
+        {
+          "community": 2,
+          "size": 91,
+          "dense_users": 1721,
+          "rank_in_comm": 1,
+          "title": "The Missing",
+          "author": "C.L. Taylor"
+        },
+        {
+          "community": 2,
+          "size": 91,
+          "dense_users": 1721,
+          "rank_in_comm": 2,
+          "title": "Between You and Me",
+          "author": "Lisa     Hall"
+        },
+        {
+          "community": 2,
+          "size": 91,
+          "dense_users": 1721,
+          "rank_in_comm": 3,
+          "title": "The Lie",
+          "author": "C.L. Taylor"
+        },
+        {
+          "community": 2,
+          "size": 91,
+          "dense_users": 1721,
+          "rank_in_comm": 4,
+          "title": "The Secret (DS Imogen Grey, #2)",
+          "author": "Katerina Diamond"
+        },
+        {
+          "community": 2,
+          "size": 91,
+          "dense_users": 1721,
+          "rank_in_comm": 5,
+          "title": "Lying in Wait",
+          "author": "Liz Nugent"
+        },
+        {
+          "community": 3,
+          "size": 74,
+          "dense_users": 3083,
+          "rank_in_comm": 1,
+          "title": "The Major Works",
+          "author": "William Wordsworth"
+        },
+        {
+          "community": 3,
+          "size": 74,
+          "dense_users": 3083,
+          "rank_in_comm": 2,
+          "title": "The Complete Poems",
+          "author": "William Blake"
+        },
+        {
+          "community": 3,
+          "size": 74,
+          "dense_users": 3083,
+          "rank_in_comm": 3,
+          "title": "The Complete Poems",
+          "author": "Samuel Taylor Coleridge"
+        },
+        {
+          "community": 3,
+          "size": 74,
+          "dense_users": 3083,
+          "rank_in_comm": 4,
+          "title": "The Complete Poems",
+          "author": "Percy Bysshe Shelley"
+        },
+        {
+          "community": 3,
+          "size": 74,
+          "dense_users": 3083,
+          "rank_in_comm": 5,
+          "title": "Poetry and Prose",
+          "author": "Percy Bysshe Shelley"
+        },
+        {
+          "community": 4,
+          "size": 72,
+          "dense_users": 1726,
+          "rank_in_comm": 1,
+          "title": "West Side Story",
+          "author": "Irving Shulman"
+        },
+        {
+          "community": 4,
+          "size": 72,
+          "dense_users": 1726,
+          "rank_in_comm": 2,
+          "title": "Fiddler on the Roof",
+          "author": "Joseph Stein"
+        },
+        {
+          "community": 4,
+          "size": 72,
+          "dense_users": 1726,
+          "rank_in_comm": 3,
+          "title": "Sweeney Todd: The Demon Barber of Fleet Street",
+          "author": "Stephen Sondheim"
+        },
+        {
+          "community": 4,
+          "size": 72,
+          "dense_users": 1726,
+          "rank_in_comm": 4,
+          "title": "The Odd Couple",
+          "author": "Neil Simon"
+        },
+        {
+          "community": 4,
+          "size": 72,
+          "dense_users": 1726,
+          "rank_in_comm": 5,
+          "title": "Crimes of the Heart",
+          "author": "Beth Henley"
+        },
+        {
+          "community": 5,
+          "size": 69,
+          "dense_users": 1961,
+          "rank_in_comm": 1,
+          "title": "Sacred Contracts: Awakening Your Divine Potential",
+          "author": "Caroline Myss"
+        },
+        {
+          "community": 5,
+          "size": 69,
+          "dense_users": 1961,
+          "rank_in_comm": 2,
+          "title": "Why People Don't Heal and How They Can: A Practical Programme for Healing Body, Mind and Spirit",
+          "author": "Caroline Myss"
+        },
+        {
+          "community": 5,
+          "size": 69,
+          "dense_users": 1961,
+          "rank_in_comm": 3,
+          "title": "Heal Your Body: The Mental Causes for Physical Illness and the Metaphysical Way to Overcome Them",
+          "author": "Louise L. Hay"
+        },
+        {
+          "community": 5,
+          "size": 69,
+          "dense_users": 1961,
+          "rank_in_comm": 4,
+          "title": "Soul Stories",
+          "author": "Gary Zukav"
+        },
+        {
+          "community": 5,
+          "size": 69,
+          "dense_users": 1961,
+          "rank_in_comm": 5,
+          "title": "A Course in Miracles",
+          "author": "Foundation for Inner Peace"
+        },
+        {
+          "community": 6,
+          "size": 67,
+          "dense_users": 1472,
+          "rank_in_comm": 1,
+          "title": "The Seventh Wish",
+          "author": "Kate Messner"
+        },
+        {
+          "community": 6,
+          "size": 67,
+          "dense_users": 1472,
+          "rank_in_comm": 2,
+          "title": "A Handful of Stars",
+          "author": "Cynthia Lord"
+        },
+        {
+          "community": 6,
+          "size": 67,
+          "dense_users": 1472,
+          "rank_in_comm": 3,
+          "title": "Ms. Bixby's Last Day",
+          "author": "John David  Anderson"
+        },
+        {
+          "community": 6,
+          "size": 67,
+          "dense_users": 1472,
+          "rank_in_comm": 4,
+          "title": "All Rise for the Honorable Perry T. Cook",
+          "author": "Leslie Connor"
+        },
+        {
+          "community": 6,
+          "size": 67,
+          "dense_users": 1472,
+          "rank_in_comm": 5,
+          "title": "Some Kind of Courage",
+          "author": "Dan Gemeinhart"
+        },
+        {
+          "community": 7,
+          "size": 67,
+          "dense_users": 1421,
+          "rank_in_comm": 1,
+          "title": "اغتصاب ولكن تحت سقف واحد",
+          "author": "d` `bd lrHmn"
+        },
+        {
+          "community": 7,
+          "size": 67,
+          "dense_users": 1421,
+          "rank_in_comm": 2,
+          "title": "قطة في عرين الأسد",
+          "author": "mn~ slm@"
+        },
+        {
+          "community": 7,
+          "size": 67,
+          "dense_users": 1421,
+          "rank_in_comm": 3,
+          "title": "اكتشفت زوجى فى الأتوبيس",
+          "author": "msh`r Gly@"
+        },
+        {
+          "community": 7,
+          "size": 67,
+          "dense_users": 1421,
+          "rank_in_comm": 4,
+          "title": "أماريتا",
+          "author": "`mrw `bd lHmyd"
+        },
+        {
+          "community": 7,
+          "size": 67,
+          "dense_users": 1421,
+          "rank_in_comm": 5,
+          "title": "مزرعة الدموع",
+          "author": "mn~ slm@"
+        },
+        {
+          "community": 8,
+          "size": 66,
+          "dense_users": 2305,
+          "rank_in_comm": 1,
+          "title": "Batman: Knightfall, Vol. 1: Broken Bat",
+          "author": "Doug Moench"
+        },
+        {
+          "community": 8,
+          "size": 66,
+          "dense_users": 2305,
+          "rank_in_comm": 2,
+          "title": "Batman: Knightfall, Vol. 3: Knightsend",
+          "author": "Doug Moench"
+        },
+        {
+          "community": 8,
+          "size": 66,
+          "dense_users": 2305,
+          "rank_in_comm": 3,
+          "title": "Batman: Dark Victory",
+          "author": "Jeph Loeb"
+        },
+        {
+          "community": 8,
+          "size": 66,
+          "dense_users": 2305,
+          "rank_in_comm": 4,
+          "title": "Batman: A Death in the Family",
+          "author": "Jim Starlin"
+        },
+        {
+          "community": 8,
+          "size": 66,
+          "dense_users": 2305,
+          "rank_in_comm": 5,
+          "title": "Batman: No Man's Land, Vol. 1",
+          "author": "Bob Gale"
+        },
+        {
+          "community": 9,
+          "size": 66,
+          "dense_users": 2120,
+          "rank_in_comm": 1,
+          "title": "They Both Die at the End",
+          "author": "Adam Silvera"
+        },
+        {
+          "community": 9,
+          "size": 66,
+          "dense_users": 2120,
+          "rank_in_comm": 2,
+          "title": "Ramona Blue",
+          "author": "Julie   Murphy"
+        },
+        {
+          "community": 9,
+          "size": 66,
+          "dense_users": 2120,
+          "rank_in_comm": 3,
+          "title": "History Is All You Left Me",
+          "author": "Adam Silvera"
+        },
+        {
+          "community": 9,
+          "size": 66,
+          "dense_users": 2120,
+          "rank_in_comm": 4,
+          "title": "Dear Martin",
+          "author": "Nic Stone"
+        },
+        {
+          "community": 9,
+          "size": 66,
+          "dense_users": 2120,
+          "rank_in_comm": 5,
+          "title": "True Letters from a Fictional Life",
+          "author": "Kenneth Logan"
+        },
+        {
+          "community": 10,
+          "size": 66,
+          "dense_users": 501,
+          "rank_in_comm": 1,
+          "title": "حكايات التاروت",
+          "author": "'Hmd khld twfyq"
+        },
+        {
+          "community": 10,
+          "size": 66,
+          "dense_users": 501,
+          "rank_in_comm": 2,
+          "title": "أسطورة آخر الليل",
+          "author": "'Hmd khld twfyq"
+        },
+        {
+          "community": 10,
+          "size": 66,
+          "dense_users": 501,
+          "rank_in_comm": 3,
+          "title": "أسطورة المواجهة",
+          "author": "'Hmd khld twfyq"
+        },
+        {
+          "community": 10,
+          "size": 66,
+          "dense_users": 501,
+          "rank_in_comm": 4,
+          "title": "أسطورة إيجور",
+          "author": "'Hmd khld twfyq"
+        },
+        {
+          "community": 10,
+          "size": 66,
+          "dense_users": 501,
+          "rank_in_comm": 5,
+          "title": "أسطورة النافاراي",
+          "author": "'Hmd khld twfyq"
+        },
+        {
+          "community": 11,
+          "size": 61,
+          "dense_users": 2463,
+          "rank_in_comm": 1,
+          "title": "Mrs. McGinty's Dead (Hercule Poirot, #28)",
+          "author": "Agatha Christie"
+        },
+        {
+          "community": 11,
+          "size": 61,
+          "dense_users": 2463,
+          "rank_in_comm": 2,
+          "title": "Third Girl (Hercule Poirot, #35)",
+          "author": "Agatha Christie"
+        },
+        {
+          "community": 11,
+          "size": 61,
+          "dense_users": 2463,
+          "rank_in_comm": 3,
+          "title": "After the Funeral (Hercule Poirot, #29)",
+          "author": "Agatha Christie"
+        },
+        {
+          "community": 11,
+          "size": 61,
+          "dense_users": 2463,
+          "rank_in_comm": 4,
+          "title": "Appointment with Death (Hercule Poirot, #19)",
+          "author": "Agatha Christie"
+        },
+        {
+          "community": 11,
+          "size": 61,
+          "dense_users": 2463,
+          "rank_in_comm": 5,
+          "title": "The Clocks (Hercule Poirot, #34)",
+          "author": "Agatha Christie"
+        }
+      ]
+    },
+    "nested_mass_community_reflections": {
+      "elapsed_ms": 92060,
+      "metrics": {
+        "Q": 0.0,
+        "geo_n": 800.569867229252,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 0,
+        "anti_med": null,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.0,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "The Unadulterated Cat",
+            "author": "Terry Pratchett",
+            "n": 92.0
+          },
+          {
+            "rank": 2,
+            "title": "The Dark Side of the Sun",
+            "author": "Terry Pratchett",
+            "n": 65.0
+          },
+          {
+            "rank": 3,
+            "title": "The First Discworld Novels the Colour of Magic and the Light Fantastic",
+            "author": "Terry Pratchett",
+            "n": 132.0
+          },
+          {
+            "rank": 4,
+            "title": "The Wit and Wisdom of Discworld",
+            "author": "Terry Pratchett",
+            "n": 47.0
+          },
+          {
+            "rank": 5,
+            "title": "The Discworld Mapp: Being the Onlie True and Mostlie Accurate Mappe of the Fantastyk and Magical Dyscworlde",
+            "author": "Terry Pratchett",
+            "n": 64.0
+          },
+          {
+            "rank": 6,
+            "title": "Eric (Discworld, #9; Rincewind #4)",
+            "author": "Terry Pratchett",
+            "n": 629.0
+          },
+          {
+            "rank": 7,
+            "title": "The Amazing Maurice and His Educated Rodents (Discworld, #28)",
+            "author": "Terry Pratchett",
+            "n": 625.0
+          },
+          {
+            "rank": 8,
+            "title": "The Last Hero (Discworld, #27; Rincewind #7)",
+            "author": "Terry Pratchett",
+            "n": 677.0
+          },
+          {
+            "rank": 9,
+            "title": "The Last Continent (Discworld, #22; Rincewind #6)",
+            "author": "Terry Pratchett",
+            "n": 812.0
+          },
+          {
+            "rank": 10,
+            "title": "Unseen Academicals (Discworld, #37; Rincewind #8)",
+            "author": "Terry Pratchett",
+            "n": 692.0
+          },
+          {
+            "rank": 11,
+            "title": "Nation",
+            "author": "Terry Pratchett",
+            "n": 544.0
+          },
+          {
+            "rank": 12,
+            "title": "The Hollow Chocolate Bunnies of the Apocalypse",
+            "author": "Robert Rankin",
+            "n": 44.0
+          },
+          {
+            "rank": 13,
+            "title": "Interesting Times: The Play",
+            "author": "Stephen Briggs",
+            "n": 453.0
+          },
+          {
+            "rank": 14,
+            "title": "Interesting Times (Discworld, #17; Rincewind #5)",
+            "author": "Terry Pratchett",
+            "n": 680.0
+          },
+          {
+            "rank": 15,
+            "title": "Sourcery (Discworld, #5; Rincewind #3)",
+            "author": "Terry Pratchett",
+            "n": 975.0
+          },
+          {
+            "rank": 16,
+            "title": "Maskerade (Discworld, #18; Witches #5)",
+            "author": "Terry Pratchett",
+            "n": 976.0
+          },
+          {
+            "rank": 17,
+            "title": "Moving Pictures (Discworld, #10; Industrial Revolution, #1)",
+            "author": "Terry Pratchett",
+            "n": 976.0
+          },
+          {
+            "rank": 18,
+            "title": "Carpe Jugulum (Discworld #23; Witches #6)",
+            "author": "Terry Pratchett",
+            "n": 1116.0
+          },
+          {
+            "rank": 19,
+            "title": "Pyramids (Discworld, #7)",
+            "author": "Terry Pratchett",
+            "n": 1050.0
+          },
+          {
+            "rank": 20,
+            "title": "Soul Music (Discworld, #16; Death, #3)",
+            "author": "Terry Pratchett",
+            "n": 1208.0
+          }
+        ]
+      }
+    }
+  }
+}

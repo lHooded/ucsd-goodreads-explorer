@@ -1,0 +1,17 @@
+{
+  "mode": "quick",
+  "source_rows": 500000,
+  "user_work_rows": 471053,
+  "users": 1034,
+  "works": 133192,
+  "rated": 224424,
+  "read_unrated": 14238,
+  "shelved_unread": 232391,
+  "reviewed": 32788,
+  "reviewed_unrated": 894,
+  "collapsed_edition_duplicates": 3403,
+  "read_unrated_share_of_read": 0.059657591070216454,
+  "extract_seconds": 0.4728424549102783,
+  "output_bytes": 2638609,
+  "output": "/home/ifrankling/unsw/novels/curators_explorer/data/observation_ladder_quick.parquet"
+}

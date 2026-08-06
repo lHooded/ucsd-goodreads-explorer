@@ -1,0 +1,42 @@
+{
+  "classic_terms": {
+    "mean_pub_year_5": -1.9012346876955795,
+    "series_share_5": -1.8212200057247054,
+    "mega_catalog_share_5": -0.46261706198882335,
+    "mean_logn_5": -0.01961639413670377,
+    "depth_ge4": -0.08880922677662223,
+    "midpop_span_per_logn5": 0.9806407917631904,
+    "author_hhi_5": -1.2690798258406097,
+    "mid_catalog_share_5": 0.18212531097922705,
+    "std_logn_5": 0.43292011523251356,
+    "singleton_author_share_5": 1.340847761675726,
+    "binge_mean_5": -1.1318641460829169,
+    "author_div_5": 1.4379395559101378
+  },
+  "anti_terms": {
+    "series_share_5": 1.6637603126457146,
+    "binge_mean_5": 1.6968789698255913,
+    "binge_max_5": 1.4483678956491874,
+    "author_hhi_5": 1.3831488408511805,
+    "mean_pub_year_5": 1.4046697786592408,
+    "singleton_author_share_5": -1.0007583555194617,
+    "author_div_5": -1.0333553916241276
+  },
+  "normie_terms": {
+    "mega_catalog_share_5": 1.2182459397545355,
+    "mean_logn_5": 0.49012298251282554,
+    "p5_blockbuster": 0.6501667286438928,
+    "n_megastar_authors_5": 0.3007404139814429,
+    "midpop_span_per_logn5": -0.6600301362527526,
+    "depth_ge4": -0.19002663620077162
+  },
+  "gates": {
+    "series_gate": 0.4203696342245127,
+    "mega_gate": 0.2638387710461936,
+    "binge_gate": 2.5508830428861273,
+    "span_gate": 4.294830987426897
+  },
+  "lambda_anti": 0.9723529995112972,
+  "lambda_normie": 0.5573960146825813,
+  "top_frac": 0.03
+}

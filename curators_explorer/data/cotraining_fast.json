@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "memory_mode": "single-process compact pool",
+    "max_sticky_likers": 25000,
+    "max_focus_pool": 50000,
+    "max_anti_pool": 30000,
+    "max_edges_per_user": 220,
+    "n_rounds": 10,
+    "candidates_per_round": 16,
+    "final_boots": 20
+  },
+  "start_metrics": {
+    "proxy": -68.43307553100585,
+    "sticky_in_50": 3,
+    "anti50": 9,
+    "series20": 6,
+    "mean_sticky_rank": 1075.8
+  },
+  "history": [
+    {
+      "round": 0,
+      "proxy": -68.43307553100585,
+      "sticky_in_50": 3,
+      "anti50": 9,
+      "series20": 6,
+      "mean_sticky_rank": 1075.8
+    },
+    {
+      "round": 1,
+      "best_proxy": -40.145085083007814,
+      "improved": true,
+      "sticky_in_50": 3,
+      "anti50": 6,
+      "series20": 5,
+      "mean_sticky_rank": 828.6,
+      "elapsed_s": 3.4900710582733154
+    },
+    {
+      "round": 2,
+      "best_proxy": -7.593884075927733,
+      "improved": true,
+      "sticky_in_50": 1,
+      "anti50": 2,
+      "series20": 2,
+      "mean_sticky_rank": 737.88,
+      "elapsed_s": 3.5385396480560303
+    },
+    {
+      "round": 3,
+      "best_proxy": -4.422080853271485,
+      "improved": true,
+      "sticky_in_50": 1,
+      "anti50": 2,
+      "series20": 1,
+      "mean_sticky_rank": 634.28,
+      "elapsed_s": 3.498861312866211
+    },
+    {
+      "round": 4,
+      "best_proxy": 6.666356143188477,
+      "improved": true,
+      "sticky_in_50": 0,
+      "anti50": 0,
+      "series20": 3,
+      "mean_sticky_rank": 458.08,
+      "elapsed_s": 3.5580103397369385
+    },
+    {
+      "round": 5,
+      "best_proxy": 10.891054309082032,
+      "improved": true,
+      "sticky_in_50": 1,
+      "anti50": 0,
+      "series20": 3,
+      "mean_sticky_rank": 402.68,
+      "elapsed_s": 3.4884533882141113
+    },
+    {
+      "round": 6,
+      "best_proxy": 21.958384146118163,
+      "improved": true,
+      "sticky_in_50": 3,
+      "anti50": 0,
+      "series20": 1,
+      "mean_sticky_rank": 311.56,
+      "elapsed_s": 3.5098330974578857
+    },
+    {
+      "round": 7,
+      "best_proxy": 21.958384146118163,
+      "improved": false,
+      "sticky_in_50": 3,
+      "anti50": 0,
+      "series20": 1,
+      "mean_sticky_rank": 311.56,
+      "elapsed_s": 3.5404765605926514
+    },
+    {
+      "round": 8,
+      "best_proxy": 25.184247860717775,
+      "improved": true,
+      "sticky_in_50": 4,
+      "anti50": 0,
+      "series20": 1,
+      "mean_sticky_rank": 277.52,
+      "elapsed_s": 3.515657424926758
+    },
+    {
+      "round": 9,
+      "best_proxy": 27.987603591918944,
+      "improved": true,
+      "sticky_in_50": 5,
+      "anti50": 0,
+      "series20": 1,
+      "mean_sticky_rank": 287.6,
+      "elapsed_s": 3.5112619400024414
+    },
+    {
+      "round": 10,
+      "best_proxy": 27.987603591918944,
+      "improved": false,
+      "sticky_in_50": 5,
+      "anti50": 0,
+      "series20": 1,
+      "mean_sticky_rank": 287.6,
+      "elapsed_s": 3.5284504890441895
+    }
+  ],
+  "stability_start": {
+    "ok": true,
+    "j50_mean": 0.41662925207923784,
+    "j50_sd": 0.04130907257049122,
+    "j200_mean": 0.4826136751382689,
+    "anti50_mean": 9.9,
+    "sticky_frac_mean": 0.11600000000000002
+  },
+  "stability_best": {
+    "ok": true,
+    "j50_mean": 0.37653501807212836,
+    "j50_sd": 0.037483883359400456,
+    "j200_mean": 0.5256393579095939,
+    "anti50_mean": 0.1,
+    "sticky_frac_mean": 0.11800000000000002
+  },
+  "best_metrics": {
+    "proxy": -68.43307553100585,
+    "sticky_in_50": 3,
+    "mean_sticky_rank": 1075.8,
+    "anti50": 9,
+    "series20": 6,
+    "sep": 34.64984893798828,
+    "n_gated": 46301,
+    "n_focus": 2778
+  },
+  "veto": {
+    "accepted": false,
+    "reasons": [
+      "J50 stability dropped"
+    ]
+  },
+  "adopted_top15": [
+    {
+      "rank": 1,
+      "work_id": "2956372",
+      "title": "A Tale of Two Cities",
+      "author": "Charles Dickens"
+    },
+    {
+      "rank": 2,
+      "work_id": "30518",
+      "title": "Where the Sidewalk Ends",
+      "author": "Shel Silverstein"
+    },
+    {
+      "rank": 3,
+      "work_id": "987048",
+      "title": "Charlotte's Web",
+      "author": "E.B. White"
+    },
+    {
+      "rank": 4,
+      "work_id": "4836639",
+      "title": "Frankenstein",
+      "author": "Mary Wollstonecraft Shelley"
+    },
+    {
+      "rank": 5,
+      "work_id": "1835605",
+      "title": "The Adventures of Huckleberry Finn",
+      "author": "Mark Twain"
+    },
+    {
+      "rank": 6,
+      "work_id": "3358283",
+      "title": "Gone with the Wind",
+      "author": "Margaret Mitchell"
+    },
+    {
+      "rank": 7,
+      "work_id": "1679789",
+      "title": "Holes (Holes, #1)",
+      "author": "Louis Sachar"
+    },
+    {
+      "rank": 8,
+      "work_id": "2588213",
+      "title": "Thirteen Reasons Why",
+      "author": "Jay Asher"
+    },
+    {
+      "rank": 9,
+      "work_id": "3356006",
+      "title": "The Odyssey",
+      "author": "Homer"
+    },
+    {
+      "rank": 10,
+      "work_id": "2765786",
+      "title": "Charlie and the Chocolate Factory (Charlie Bucket, #1)",
+      "author": "Roald Dahl"
+    },
+    {
+      "rank": 11,
+      "work_id": "2628323",
+      "title": "Inkheart (Inkworld, #1)",
+      "author": "Cornelia Funke"
+    },
+    {
+      "rank": 12,
+      "work_id": "948387",
+      "title": "A Wrinkle in Time (A Wrinkle in Time Quintet, #1)",
+      "author": "Madeleine L'Engle"
+    },
+    {
+      "rank": 13,
+      "work_id": "1885548",
+      "title": "Hamlet",
+      "author": "William Shakespeare"
+    },
+    {
+      "rank": 14,
+      "work_id": "1536771",
+      "title": "The Golden Compass (His Dark Materials, #1)",
+      "author": "Philip Pullman"
+    },
+    {
+      "rank": 15,
+      "work_id": "1896522",
+      "title": "Macbeth",
+      "author": "William Shakespeare"
+    }
+  ],
+  "weights_path": null
+}

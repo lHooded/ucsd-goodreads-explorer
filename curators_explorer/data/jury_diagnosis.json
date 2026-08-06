@@ -1,0 +1,1344 @@
+{
+  "meta": {
+    "n_focus": 4774,
+    "n_deep_all": 19841,
+    "n_deep_capped": 4774,
+    "overlap_focus_deep_all": 1957,
+    "overlap_focus_deep_capped": 871,
+    "jaccard_focus_deep_capped": 0.1003803157773424,
+    "pct_focus_in_deep_all": 0.40992878089652285,
+    "pct_deep_capped_in_focus": 0.18244658567239214,
+    "mean_affinity_focus": 20.5300456638438,
+    "mean_affinity_deep_capped": 15.299992096065273,
+    "mean_series_deep_capped": 0.09975602082568044,
+    "mean_series_focus": 0.09323315071698046,
+    "cohorts": {
+      "n_focus": 4774,
+      "n_anti": 13684,
+      "thr_c": 18.847782237992767,
+      "thr_a": 14.34456569209796
+    }
+  },
+  "common_books": {
+    "focus": [
+      {
+        "rank": 1,
+        "work_id": "2977639",
+        "title": "Jane Eyre",
+        "author": "Charlotte Bronte",
+        "n_users": 1360,
+        "w_hits": 1360.0,
+        "exposure": 0.28487641390867197
+      },
+      {
+        "rank": 2,
+        "work_id": "1885548",
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "n_users": 1268,
+        "w_hits": 1268.0,
+        "exposure": 0.26560536237955595
+      },
+      {
+        "rank": 3,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 1217,
+        "w_hits": 1217.0,
+        "exposure": 0.25492249685798074
+      },
+      {
+        "rank": 4,
+        "work_id": "1268631",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "n_users": 1069,
+        "w_hits": 1069.0,
+        "exposure": 0.2239212400502723
+      },
+      {
+        "rank": 5,
+        "work_id": "2507928",
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "n_users": 1057,
+        "w_hits": 1057.0,
+        "exposure": 0.22140762463343108
+      },
+      {
+        "rank": 6,
+        "work_id": "3295655",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "n_users": 1049,
+        "w_hits": 1049.0,
+        "exposure": 0.2197318810222036
+      },
+      {
+        "rank": 7,
+        "work_id": "1565818",
+        "title": "Wuthering Heights",
+        "author": "Emily Bronte",
+        "n_users": 1023,
+        "w_hits": 1023.0,
+        "exposure": 0.21428571428571427
+      },
+      {
+        "rank": 8,
+        "work_id": "1835605",
+        "title": "The Adventures of Huckleberry Finn",
+        "author": "Mark Twain",
+        "n_users": 981,
+        "w_hits": 981.0,
+        "exposure": 0.20548806032677
+      },
+      {
+        "rank": 9,
+        "work_id": "2180358",
+        "title": "The Little Prince",
+        "author": "Antoine de Saint-Exupery",
+        "n_users": 974,
+        "w_hits": 974.0,
+        "exposure": 0.20402178466694595
+      },
+      {
+        "rank": 10,
+        "work_id": "1858012",
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "n_users": 923,
+        "w_hits": 923.0,
+        "exposure": 0.19333891914537077
+      },
+      {
+        "rank": 11,
+        "work_id": "2931549",
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "n_users": 900,
+        "w_hits": 900.0,
+        "exposure": 0.18852115626309174
+      },
+      {
+        "rank": 12,
+        "work_id": "3324344",
+        "title": "The Stranger",
+        "author": "Albert Camus",
+        "n_users": 887,
+        "w_hits": 887.0,
+        "exposure": 0.1857980728948471
+      },
+      {
+        "rank": 13,
+        "work_id": "4836639",
+        "title": "Frankenstein",
+        "author": "Mary Wollstonecraft Shelley",
+        "n_users": 886,
+        "w_hits": 886.0,
+        "exposure": 0.18558860494344365
+      },
+      {
+        "rank": 14,
+        "work_id": "40283",
+        "title": "Of Mice and Men",
+        "author": "John Steinbeck",
+        "n_users": 871,
+        "w_hits": 871.0,
+        "exposure": 0.18244658567239214
+      },
+      {
+        "rank": 15,
+        "work_id": "3356006",
+        "title": "The Odyssey",
+        "author": "Homer",
+        "n_users": 829,
+        "w_hits": 829.0,
+        "exposure": 0.17364893171344783
+      },
+      {
+        "rank": 16,
+        "work_id": "1683562",
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut Jr.",
+        "n_users": 826,
+        "w_hits": 826.0,
+        "exposure": 0.17302052785923755
+      },
+      {
+        "rank": 17,
+        "work_id": "3208463",
+        "title": "Les Mis\u00e9rables",
+        "author": "Victor Hugo",
+        "n_users": 820,
+        "w_hits": 820.0,
+        "exposure": 0.17176372015081692
+      },
+      {
+        "rank": 18,
+        "work_id": "1896522",
+        "title": "Macbeth",
+        "author": "William Shakespeare",
+        "n_users": 807,
+        "w_hits": 807.0,
+        "exposure": 0.16904063678257228
+      },
+      {
+        "rank": 19,
+        "work_id": "3204877",
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "n_users": 795,
+        "w_hits": 795.0,
+        "exposure": 0.16652702136573105
+      },
+      {
+        "rank": 20,
+        "work_id": "987048",
+        "title": "Charlotte's Web",
+        "author": "E.B. White",
+        "n_users": 790,
+        "w_hits": 790.0,
+        "exposure": 0.16547968160871387
+      },
+      {
+        "rank": 21,
+        "work_id": "3244642",
+        "title": "Little Women (Little Women, #1)",
+        "author": "Louisa May Alcott",
+        "n_users": 783,
+        "w_hits": 783.0,
+        "exposure": 0.16401340594888983
+      },
+      {
+        "rank": 22,
+        "work_id": "2373750",
+        "title": "The Metamorphosis",
+        "author": "Franz Kafka",
+        "n_users": 767,
+        "w_hits": 767.0,
+        "exposure": 0.16066191872643484
+      },
+      {
+        "rank": 23,
+        "work_id": "2100252",
+        "title": "One Flew Over the Cuckoo's Nest",
+        "author": "Ken Kesey",
+        "n_users": 760,
+        "w_hits": 760.0,
+        "exposure": 0.1591956430666108
+      },
+      {
+        "rank": 24,
+        "work_id": "3358283",
+        "title": "Gone with the Wind",
+        "author": "Margaret Mitchell",
+        "n_users": 758,
+        "w_hits": 758.0,
+        "exposure": 0.15877670716380393
+      },
+      {
+        "rank": 25,
+        "work_id": "2612809",
+        "title": "Great Expectations",
+        "author": "Charles Dickens",
+        "n_users": 733,
+        "w_hits": 733.0,
+        "exposure": 0.15354000837871806
+      }
+    ],
+    "deep_capped_equal": [
+      {
+        "rank": 1,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 2116,
+        "w_hits": 2116.0,
+        "exposure": 0.44323418516966906
+      },
+      {
+        "rank": 2,
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 1741,
+        "w_hits": 1741.0,
+        "exposure": 0.3646837033933808
+      },
+      {
+        "rank": 3,
+        "work_id": "3295655",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "n_users": 1524,
+        "w_hits": 1524.0,
+        "exposure": 0.3192291579388354
+      },
+      {
+        "rank": 4,
+        "work_id": "1268631",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "n_users": 1514,
+        "w_hits": 1514.0,
+        "exposure": 0.317134478424801
+      },
+      {
+        "rank": 5,
+        "work_id": "3324344",
+        "title": "The Stranger",
+        "author": "Albert Camus",
+        "n_users": 1410,
+        "w_hits": 1410.0,
+        "exposure": 0.29534981147884376
+      },
+      {
+        "rank": 6,
+        "work_id": "2373750",
+        "title": "The Metamorphosis",
+        "author": "Franz Kafka",
+        "n_users": 1254,
+        "w_hits": 1254.0,
+        "exposure": 0.2626728110599078
+      },
+      {
+        "rank": 7,
+        "work_id": "2965832",
+        "title": "The Trial",
+        "author": "Franz Kafka",
+        "n_users": 1148,
+        "w_hits": 1148.0,
+        "exposure": 0.2404692082111437
+      },
+      {
+        "rank": 8,
+        "work_id": "2507928",
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "n_users": 1124,
+        "w_hits": 1124.0,
+        "exposure": 0.23544197737746125
+      },
+      {
+        "rank": 9,
+        "work_id": "1885548",
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "n_users": 1091,
+        "w_hits": 1091.0,
+        "exposure": 0.2285295349811479
+      },
+      {
+        "rank": 10,
+        "work_id": "876183",
+        "title": "The Master and Margarita",
+        "author": "Mikhail Bulgakov",
+        "n_users": 1084,
+        "w_hits": 1084.0,
+        "exposure": 0.22706325932132385
+      },
+      {
+        "rank": 11,
+        "work_id": "2409320",
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville",
+        "n_users": 1018,
+        "w_hits": 1018.0,
+        "exposure": 0.21323837452869712
+      },
+      {
+        "rank": 12,
+        "work_id": "1683562",
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut Jr.",
+        "n_users": 1005,
+        "w_hits": 1005.0,
+        "exposure": 0.21051529116045245
+      },
+      {
+        "rank": 13,
+        "work_id": "4912783",
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "n_users": 994,
+        "w_hits": 994.0,
+        "exposure": 0.20821114369501467
+      },
+      {
+        "rank": 14,
+        "work_id": "2368224",
+        "title": "Ulysses",
+        "author": "James Joyce",
+        "n_users": 960,
+        "w_hits": 960.0,
+        "exposure": 0.20108923334729786
+      },
+      {
+        "rank": 15,
+        "work_id": "3356006",
+        "title": "The Odyssey",
+        "author": "Homer",
+        "n_users": 923,
+        "w_hits": 923.0,
+        "exposure": 0.19333891914537077
+      },
+      {
+        "rank": 16,
+        "work_id": "6552198",
+        "title": "The Idiot",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 913,
+        "w_hits": 913.0,
+        "exposure": 0.1912442396313364
+      },
+      {
+        "rank": 17,
+        "work_id": "1168289",
+        "title": "The Sound and the Fury",
+        "author": "William Faulkner",
+        "n_users": 893,
+        "w_hits": 893.0,
+        "exposure": 0.1870548806032677
+      },
+      {
+        "rank": 18,
+        "work_id": "121842",
+        "title": "Don Quixote",
+        "author": "Miguel de Cervantes Saavedra",
+        "n_users": 834,
+        "w_hits": 834.0,
+        "exposure": 0.17469627147046501
+      },
+      {
+        "rank": 19,
+        "work_id": "814330",
+        "title": "Catch-22 (Catch-22, #1)",
+        "author": "Joseph Heller",
+        "n_users": 798,
+        "w_hits": 798.0,
+        "exposure": 0.16715542521994134
+      },
+      {
+        "rank": 20,
+        "work_id": "3204877",
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "n_users": 779,
+        "w_hits": 779.0,
+        "exposure": 0.16317553414327607
+      },
+      {
+        "rank": 21,
+        "work_id": "2931549",
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "n_users": 771,
+        "w_hits": 771.0,
+        "exposure": 0.1614997905320486
+      },
+      {
+        "rank": 22,
+        "work_id": "2180358",
+        "title": "The Little Prince",
+        "author": "Antoine de Saint-Exupery",
+        "n_users": 770,
+        "w_hits": 770.0,
+        "exposure": 0.16129032258064516
+      },
+      {
+        "rank": 23,
+        "work_id": "4489585",
+        "title": "The Unbearable Lightness of Being",
+        "author": "Milan Kundera",
+        "n_users": 765,
+        "w_hits": 765.0,
+        "exposure": 0.16024298282362798
+      },
+      {
+        "rank": 24,
+        "work_id": "1896522",
+        "title": "Macbeth",
+        "author": "William Shakespeare",
+        "n_users": 763,
+        "w_hits": 763.0,
+        "exposure": 0.1598240469208211
+      },
+      {
+        "rank": 25,
+        "work_id": "1858012",
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "n_users": 763,
+        "w_hits": 763.0,
+        "exposure": 0.1598240469208211
+      }
+    ],
+    "deep_capped_weighted": [
+      {
+        "rank": 1,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 2116,
+        "w_hits": 1379.1357671817348,
+        "exposure": 0.44323418516966906
+      },
+      {
+        "rank": 2,
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 1741,
+        "w_hits": 1195.207170711511,
+        "exposure": 0.3646837033933808
+      },
+      {
+        "rank": 3,
+        "work_id": "1268631",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "n_users": 1514,
+        "w_hits": 1038.0322157875987,
+        "exposure": 0.317134478424801
+      },
+      {
+        "rank": 4,
+        "work_id": "3295655",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "n_users": 1524,
+        "w_hits": 972.3748829070436,
+        "exposure": 0.3192291579388354
+      },
+      {
+        "rank": 5,
+        "work_id": "3324344",
+        "title": "The Stranger",
+        "author": "Albert Camus",
+        "n_users": 1410,
+        "w_hits": 918.2106026638621,
+        "exposure": 0.29534981147884376
+      },
+      {
+        "rank": 6,
+        "work_id": "2373750",
+        "title": "The Metamorphosis",
+        "author": "Franz Kafka",
+        "n_users": 1254,
+        "w_hits": 820.0786737812484,
+        "exposure": 0.2626728110599078
+      },
+      {
+        "rank": 7,
+        "work_id": "2965832",
+        "title": "The Trial",
+        "author": "Franz Kafka",
+        "n_users": 1148,
+        "w_hits": 819.2788265021687,
+        "exposure": 0.2404692082111437
+      },
+      {
+        "rank": 8,
+        "work_id": "2368224",
+        "title": "Ulysses",
+        "author": "James Joyce",
+        "n_users": 960,
+        "w_hits": 756.0491591521504,
+        "exposure": 0.20108923334729786
+      },
+      {
+        "rank": 9,
+        "work_id": "2507928",
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "n_users": 1124,
+        "w_hits": 750.3312263938544,
+        "exposure": 0.23544197737746125
+      },
+      {
+        "rank": 10,
+        "work_id": "876183",
+        "title": "The Master and Margarita",
+        "author": "Mikhail Bulgakov",
+        "n_users": 1084,
+        "w_hits": 741.4694513789859,
+        "exposure": 0.22706325932132385
+      },
+      {
+        "rank": 11,
+        "work_id": "2409320",
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville",
+        "n_users": 1018,
+        "w_hits": 730.3063557442142,
+        "exposure": 0.21323837452869712
+      },
+      {
+        "rank": 12,
+        "work_id": "1885548",
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "n_users": 1091,
+        "w_hits": 714.9334846797681,
+        "exposure": 0.2285295349811479
+      },
+      {
+        "rank": 13,
+        "work_id": "4912783",
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "n_users": 994,
+        "w_hits": 685.3213817263309,
+        "exposure": 0.20821114369501467
+      },
+      {
+        "rank": 14,
+        "work_id": "1168289",
+        "title": "The Sound and the Fury",
+        "author": "William Faulkner",
+        "n_users": 893,
+        "w_hits": 657.8676709273094,
+        "exposure": 0.1870548806032677
+      },
+      {
+        "rank": 15,
+        "work_id": "1683562",
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut Jr.",
+        "n_users": 1005,
+        "w_hits": 657.3802463137181,
+        "exposure": 0.21051529116045245
+      },
+      {
+        "rank": 16,
+        "work_id": "3356006",
+        "title": "The Odyssey",
+        "author": "Homer",
+        "n_users": 923,
+        "w_hits": 653.2066119217701,
+        "exposure": 0.19333891914537077
+      },
+      {
+        "rank": 17,
+        "work_id": "6552198",
+        "title": "The Idiot",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 913,
+        "w_hits": 630.9909609841737,
+        "exposure": 0.1912442396313364
+      },
+      {
+        "rank": 18,
+        "work_id": "121842",
+        "title": "Don Quixote",
+        "author": "Miguel de Cervantes Saavedra",
+        "n_users": 834,
+        "w_hits": 603.7297051817901,
+        "exposure": 0.17469627147046501
+      },
+      {
+        "rank": 19,
+        "work_id": "1065465",
+        "title": "Blood Meridian, or the Evening Redness in the West",
+        "author": "Cormac McCarthy",
+        "n_users": 712,
+        "w_hits": 532.7151524263736,
+        "exposure": 0.14914118139924593
+      },
+      {
+        "rank": 20,
+        "work_id": "814330",
+        "title": "Catch-22 (Catch-22, #1)",
+        "author": "Joseph Heller",
+        "n_users": 798,
+        "w_hits": 509.45327550910116,
+        "exposure": 0.16715542521994134
+      },
+      {
+        "rank": 21,
+        "work_id": "1896522",
+        "title": "Macbeth",
+        "author": "William Shakespeare",
+        "n_users": 763,
+        "w_hits": 506.5060813836212,
+        "exposure": 0.1598240469208211
+      },
+      {
+        "rank": 22,
+        "work_id": "2877220",
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad",
+        "n_users": 712,
+        "w_hits": 506.4594041197453,
+        "exposure": 0.14914118139924593
+      },
+      {
+        "rank": 23,
+        "work_id": "19376",
+        "title": "Notes from Underground, White Nights, The Dream of a Ridiculous Man, and Selections from The House of the Dead",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 729,
+        "w_hits": 504.4097729307897,
+        "exposure": 0.1527021365731043
+      },
+      {
+        "rank": 24,
+        "work_id": "2931549",
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "n_users": 771,
+        "w_hits": 499.42401956467296,
+        "exposure": 0.1614997905320486
+      },
+      {
+        "rank": 25,
+        "work_id": "3271542",
+        "title": "Infinite Jest",
+        "author": "David Foster Wallace",
+        "n_users": 644,
+        "w_hits": 497.1132884618729,
+        "exposure": 0.1348973607038123
+      }
+    ],
+    "jaccard_focus_deep_equal": 0.3888888888888889,
+    "jaccard_focus_deep_weighted": 0.28205128205128205
+  },
+  "pairwise_overlap_top50": {
+    "focus_vs_deep_equal": 0.2345679012345679,
+    "focus_vs_deep_weighted": 0.2345679012345679,
+    "deep_equal_vs_weighted": 0.639344262295082
+  },
+  "methods": {
+    "pairwise_focus_equal": {
+      "probe": {
+        "Q_clean": 48.5,
+        "pos50": 19,
+        "anti50": 0,
+        "anti1000": 17,
+        "filler50": 0,
+        "sticky50": 6,
+        "top50_mean_n_c": 935.18,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "fill": {
+        "classic50": 20,
+        "classic200": 57,
+        "test50": 9,
+        "test200": 24,
+        "normie50": 3,
+        "normie200": 14,
+        "anti50": 0,
+        "anti200": 1
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.20930232558139536,
+        "hits@50": 9,
+        "recall@100": 0.3023255813953488,
+        "hits@100": 13,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 136.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8605927552140505,
+          "n_c": 1772.0,
+          "exposure_5": 0.14830330959363217
+        },
+        {
+          "rank": 2,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8492605233219568,
+          "n_c": 3466.0,
+          "exposure_5": 0.25492249685798074
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.8460099750623442,
+          "n_c": 3158.0,
+          "exposure_5": 0.26560536237955595
+        },
+        {
+          "rank": 4,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire",
+          "score": 0.839607201309329,
+          "n_c": 561.0,
+          "exposure_5": 0.047130289065772935
+        },
+        {
+          "rank": 5,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "score": 0.8245614035087719,
+          "n_c": 235.0,
+          "exposure_5": 0.02534562211981567
+        },
+        {
+          "rank": 6,
+          "title": "Leaves of Grass",
+          "author": "Walt Whitman",
+          "score": 0.8228699551569506,
+          "n_c": 842.0,
+          "exposure_5": 0.08923334729786343
+        },
+        {
+          "rank": 7,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8225165562913908,
+          "n_c": 705.0,
+          "exposure_5": 0.053414327607876
+        },
+        {
+          "rank": 8,
+          "title": "The Things They Carried",
+          "author": "Tim O'Brien",
+          "score": 0.8204182041820418,
+          "n_c": 763.0,
+          "exposure_5": 0.07163803937997486
+        },
+        {
+          "rank": 9,
+          "title": "Les Mis\u00e9rables",
+          "author": "Victor Hugo",
+          "score": 0.8172043010752688,
+          "n_c": 2182.0,
+          "exposure_5": 0.17176372015081692
+        },
+        {
+          "rank": 10,
+          "title": "Rebecca",
+          "author": "Daphne du Maurier",
+          "score": 0.8170823885109598,
+          "n_c": 1273.0,
+          "exposure_5": 0.12316715542521994
+        },
+        {
+          "rank": 11,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "score": 0.8129191669608189,
+          "n_c": 2783.0,
+          "exposure_5": 0.22140762463343108
+        },
+        {
+          "rank": 12,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.8125421443020904,
+          "n_c": 1433.0,
+          "exposure_5": 0.1384583158776707
+        },
+        {
+          "rank": 13,
+          "title": "Journey to the End of the Night",
+          "author": "Louis-Ferdinand Celine",
+          "score": 0.8115384615384615,
+          "n_c": 470.0,
+          "exposure_5": 0.032677000418935905
+        },
+        {
+          "rank": 14,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.7909604519774011,
+          "n_c": 304.0,
+          "exposure_5": 0.02387934645999162
+        },
+        {
+          "rank": 15,
+          "title": "Anne of Green Gables (Anne of Green Gables, #1)",
+          "author": "L.M. Montgomery",
+          "score": 0.7682656826568265,
+          "n_c": 1305.0,
+          "exposure_5": 0.10787599497276916
+        }
+      ],
+      "top50_ids": [
+        "3393910",
+        "3393917",
+        "1885548",
+        "2089235",
+        "2886568",
+        "28117",
+        "1559207",
+        "1235619",
+        "3208463",
+        "46663",
+        "2507928",
+        "4912783",
+        "1551463",
+        "866393",
+        "3464264",
+        "6552198",
+        "389834",
+        "2574991",
+        "391568",
+        "1487216",
+        "50717723",
+        "1858012",
+        "922581",
+        "814207",
+        "833257",
+        "68476",
+        "4232388",
+        "2529422",
+        "1064574",
+        "2870411",
+        "16721",
+        "1118349",
+        "3281465",
+        "180461",
+        "2912834",
+        "142449",
+        "1782584",
+        "48287641",
+        "3244521",
+        "3295655",
+        "2936587",
+        "1461747",
+        "809292",
+        "4830806",
+        "1384549",
+        "2327623",
+        "25491300",
+        "256076",
+        "1795311",
+        "575450"
+      ]
+    },
+    "pairwise_deep_capped_equal": {
+      "probe": {
+        "Q_clean": 114.0,
+        "pos50": 38,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1765.7,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "fill": {
+        "classic50": 34,
+        "classic200": 73,
+        "test50": 17,
+        "test200": 28,
+        "normie50": 2,
+        "normie200": 8,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6511627906976745,
+        "hits@200": 28,
+        "recall@500": 0.7906976744186046,
+        "hits@500": 34,
+        "median_rank": 82.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9370164035902196,
+          "n_c": 6412.0,
+          "exposure_5": 0.44323418516966906
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.926357938718663,
+          "n_c": 5694.0,
+          "exposure_5": 0.3646837033933808
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8764659890539485,
+          "n_c": 1229.0,
+          "exposure_5": 0.0860913280268119
+        },
+        {
+          "rank": 4,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.8751908396946566,
+          "n_c": 2570.0,
+          "exposure_5": 0.20821114369501467
+        },
+        {
+          "rank": 5,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.8714788732394366,
+          "n_c": 1654.0,
+          "exposure_5": 0.10138248847926268
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.8702290076335878,
+          "n_c": 1260.0,
+          "exposure_5": 0.1009635525764558
+        },
+        {
+          "rank": 7,
+          "title": "East of Eden",
+          "author": "John Steinbeck",
+          "score": 0.8672172808132147,
+          "n_c": 1524.0,
+          "exposure_5": 0.11981566820276497
+        },
+        {
+          "rank": 8,
+          "title": "The Dead",
+          "author": "James Joyce",
+          "score": 0.8670212765957447,
+          "n_c": 326.0,
+          "exposure_5": 0.028068705488060328
+        },
+        {
+          "rank": 9,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace",
+          "score": 0.8536789297658862,
+          "n_c": 2342.0,
+          "exposure_5": 0.1348973607038123
+        },
+        {
+          "rank": 10,
+          "title": "Swann's Way (In Search of Lost Time, #1)",
+          "author": "Marcel Proust",
+          "score": 0.8523690773067332,
+          "n_c": 1955.0,
+          "exposure_5": 0.1284038542103058
+        },
+        {
+          "rank": 11,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "score": 0.8452463566967384,
+          "n_c": 2832.0,
+          "exposure_5": 0.2404692082111437
+        },
+        {
+          "rank": 12,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire",
+          "score": 0.8437500000000001,
+          "n_c": 718.0,
+          "exposure_5": 0.07457059069962296
+        },
+        {
+          "rank": 13,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann",
+          "score": 0.8430034129692833,
+          "n_c": 1415.0,
+          "exposure_5": 0.10976120653540009
+        },
+        {
+          "rank": 14,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "score": 0.8418367346938775,
+          "n_c": 342.0,
+          "exposure_5": 0.036447423544197735
+        },
+        {
+          "rank": 15,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8373893805309734,
+          "n_c": 1758.0,
+          "exposure_5": 0.1045245077503142
+        }
+      ],
+      "top50_ids": [
+        "3393917",
+        "3393910",
+        "1559207",
+        "4912783",
+        "866393",
+        "3294830",
+        "2574991",
+        "750536",
+        "3271542",
+        "4830806",
+        "2965832",
+        "2089235",
+        "647489",
+        "2886568",
+        "1487216",
+        "1222661",
+        "809248",
+        "876183",
+        "1065465",
+        "50717723",
+        "1885548",
+        "6552198",
+        "17046445",
+        "1551463",
+        "2377563",
+        "2368224",
+        "983806",
+        "3295655",
+        "1268631",
+        "814207",
+        "2507928",
+        "2373750",
+        "3138328",
+        "43024334",
+        "2435598",
+        "6057263",
+        "348971",
+        "26129550",
+        "1064574",
+        "1168289",
+        "19376",
+        "2095349",
+        "3208463",
+        "2503920",
+        "17952027",
+        "881096",
+        "865827",
+        "2342136",
+        "2338253",
+        "121842"
+      ]
+    },
+    "pairwise_deep_capped_weighted": {
+      "probe": {
+        "Q_clean": 114.0,
+        "pos50": 38,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1706.26,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "fill": {
+        "classic50": 33,
+        "classic200": 68,
+        "test50": 16,
+        "test200": 27,
+        "normie50": 3,
+        "normie200": 7,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6511627906976745,
+        "hits@200": 28,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 71.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9384371154627839,
+          "n_c": 6412.0,
+          "exposure_5": 0.44323418516966906
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9281203282805679,
+          "n_c": 5694.0,
+          "exposure_5": 0.3646837033933808
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.8913396024645258,
+          "n_c": 1654.0,
+          "exposure_5": 0.10138248847926268
+        },
+        {
+          "rank": 4,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8905965657733559,
+          "n_c": 1229.0,
+          "exposure_5": 0.0860913280268119
+        },
+        {
+          "rank": 5,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.8862920976204935,
+          "n_c": 1260.0,
+          "exposure_5": 0.1009635525764558
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.8856415271289113,
+          "n_c": 2570.0,
+          "exposure_5": 0.20821114369501467
+        },
+        {
+          "rank": 7,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann",
+          "score": 0.8714618432801846,
+          "n_c": 1415.0,
+          "exposure_5": 0.10976120653540009
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace",
+          "score": 0.8711207087952684,
+          "n_c": 2342.0,
+          "exposure_5": 0.1348973607038123
+        },
+        {
+          "rank": 9,
+          "title": "The Dead",
+          "author": "James Joyce",
+          "score": 0.8670212765957447,
+          "n_c": 326.0,
+          "exposure_5": 0.028068705488060328
+        },
+        {
+          "rank": 10,
+          "title": "East of Eden",
+          "author": "John Steinbeck",
+          "score": 0.8611328629361037,
+          "n_c": 1524.0,
+          "exposure_5": 0.11981566820276497
+        },
+        {
+          "rank": 11,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8590056481106235,
+          "n_c": 1758.0,
+          "exposure_5": 0.1045245077503142
+        },
+        {
+          "rank": 12,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri",
+          "score": 0.8589142720529512,
+          "n_c": 1037.0,
+          "exposure_5": 0.09886887306242145
+        },
+        {
+          "rank": 13,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "score": 0.8541266843211469,
+          "n_c": 342.0,
+          "exposure_5": 0.036447423544197735
+        },
+        {
+          "rank": 14,
+          "title": "Pale Fire",
+          "author": "Vladimir Nabokov",
+          "score": 0.8488760977485625,
+          "n_c": 1255.0,
+          "exposure_5": 0.10473397570171764
+        },
+        {
+          "rank": 15,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov",
+          "score": 0.8422389445381271,
+          "n_c": 3376.0,
+          "exposure_5": 0.22706325932132385
+        }
+      ],
+      "top50_ids": [
+        "3393917",
+        "3393910",
+        "866393",
+        "1559207",
+        "3294830",
+        "4912783",
+        "647489",
+        "3271542",
+        "750536",
+        "2574991",
+        "1487216",
+        "809248",
+        "2886568",
+        "1222661",
+        "876183",
+        "2965832",
+        "6552198",
+        "17046445",
+        "50717723",
+        "4830806",
+        "1065465",
+        "2089235",
+        "2368224",
+        "1268631",
+        "1885548",
+        "983806",
+        "2435598",
+        "2377563",
+        "814207",
+        "1551463",
+        "170957",
+        "3295655",
+        "2507928",
+        "2373750",
+        "2204679",
+        "2095349",
+        "348971",
+        "1118349",
+        "1794732",
+        "121842",
+        "849134",
+        "9404417",
+        "16721",
+        "3293141",
+        "2342136",
+        "17228383",
+        "1308344",
+        "745010",
+        "1168289",
+        "2503920"
+      ]
+    }
+  }
+}

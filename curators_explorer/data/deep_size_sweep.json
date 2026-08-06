@@ -1,0 +1,2270 @@
+{
+  "meta": {
+    "n_deep": 19841,
+    "ref": {
+      "mode": "all+stored_w",
+      "probe": {
+        "Q_clean": 71.5,
+        "pos50": 24,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 3206.84,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.16279069767441862,
+        "hits@50": 7,
+        "recall@100": 0.2558139534883721,
+        "hits@100": 11,
+        "recall@200": 0.5116279069767442,
+        "hits@200": 22,
+        "recall@500": 0.6744186046511628,
+        "hits@500": 29,
+        "median_rank": 155.0
+      },
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9305054847786475,
+          "n_c": 19679.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.928964606904069,
+          "n_c": 12545.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 3,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "score": 0.9072853175449176,
+          "n_c": 774.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.9061850759218872,
+          "n_c": 3200.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 5,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay",
+          "score": 0.90336757982569,
+          "n_c": 997.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin",
+          "score": 0.8983700072497895,
+          "n_c": 1065.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic",
+          "score": 0.8966624412173624,
+          "n_c": 463.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8953316862475743,
+          "n_c": 5941.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 9,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay",
+          "score": 0.8885610965251696,
+          "n_c": 628.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa",
+          "score": 0.8868547782736497,
+          "n_c": 2769.0,
+          "n_a": 0.0
+        }
+      ]
+    },
+    "note": "App prefers deweight over equal elite. Kish n_eff at expo~1 is ~9k; top-4774 only holds ~58% of stored weight mass."
+  },
+  "mass_profile": {
+    "cum_mass": [
+      {
+        "top_k": 500,
+        "n": 500,
+        "mass": 668.9900816499827,
+        "mass_frac": 0.134206259465981
+      },
+      {
+        "top_k": 1000,
+        "n": 1000,
+        "mass": 1099.8799583340863,
+        "mass_frac": 0.22064718015781748
+      },
+      {
+        "top_k": 2000,
+        "n": 2000,
+        "mass": 1743.6865392865802,
+        "mass_frac": 0.34980137155646174
+      },
+      {
+        "top_k": 3000,
+        "n": 3000,
+        "mass": 2241.560404853507,
+        "mass_frac": 0.4496799661969203
+      },
+      {
+        "top_k": 4774,
+        "n": 4774,
+        "mass": 2913.2792183135803,
+        "mass_frac": 0.5844336372006252
+      },
+      {
+        "top_k": 6000,
+        "n": 6000,
+        "mass": 3280.1782107767535,
+        "mass_frac": 0.6580373313822712
+      },
+      {
+        "top_k": 8000,
+        "n": 8000,
+        "mass": 3760.122155871038,
+        "mass_frac": 0.7543190004102888
+      },
+      {
+        "top_k": 10000,
+        "n": 10000,
+        "mass": 4129.3718386889705,
+        "mass_frac": 0.8283942671433496
+      },
+      {
+        "top_k": 15000,
+        "n": 15000,
+        "mass": 4732.797859226113,
+        "mass_frac": 0.9494477047085166
+      },
+      {
+        "top_k": 19841,
+        "n": 19841,
+        "mass": 4984.790458447738,
+        "mass_frac": 1.0000000000000013
+      }
+    ],
+    "kish_by_expo": {
+      "0.0": {
+        "sum_w": 19841.0,
+        "kish_n_eff": 19841.0
+      },
+      "0.6": {
+        "sum_w": 7837.642619560779,
+        "kish_n_eff": 14758.896051054924
+      },
+      "1.0": {
+        "sum_w": 4984.790458447732,
+        "kish_n_eff": 9401.107461645091
+      },
+      "2.0": {
+        "sum_w": 2643.1073164526297,
+        "kish_n_eff": 2121.7181811619243
+      },
+      "4.0": {
+        "sum_w": 3292.6221532680856,
+        "kish_n_eff": 106.21612289573689
+      }
+    },
+    "total_stored_mass": 4984.790458447732
+  },
+  "weird_subsets": {
+    "high_com": {
+      "n": 1881,
+      "mean_com_share": 0.17728463854709126,
+      "mean_deep_share": 0.5118411778117379,
+      "mean_n_deep": 8.475279106858054,
+      "mean_n_normie": 9.213716108452951
+    },
+    "floor_deep_share": {
+      "n": 3099
+    },
+    "hyper_active": {
+      "n_rated_p99": 1501.0,
+      "n_above_2k": 103
+    },
+    "top500_vs_bottom_half": {
+      "top500": {
+        "deep_share": 0.746937161657243,
+        "com_share": 0.005432716529440846,
+        "n_deep": 27.182,
+        "n_normie": 11.214,
+        "n_rated": 596.15
+      },
+      "bottom_half": {
+        "deep_share": 0.5186917486704086,
+        "com_share": 0.057903183898040965,
+        "n_deep": 5.283439169438565,
+        "n_normie": 6.20834593286967,
+        "n_rated": 177.37969962705372
+      }
+    }
+  },
+  "runs": [
+    {
+      "cap": 2000,
+      "cap_label": "2000",
+      "mode": "equal",
+      "n_jury": 2000,
+      "n_pairs": 268496,
+      "probe": {
+        "Q_clean": 126.0,
+        "pos50": 42,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 12,
+        "top50_mean_n_c": 890.82,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.46511627906976744,
+        "hits@50": 20,
+        "recall@100": 0.6046511627906976,
+        "hits@100": 26,
+        "recall@200": 0.7209302325581395,
+        "hits@200": 31,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 45.0
+      },
+      "jaccard50_vs_full_stored_w": 0.3333333333333333,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 4,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 5,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 8,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov"
+        },
+        {
+          "rank": 9,
+          "title": "Pale Fire",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 10,
+          "title": "Stoner",
+          "author": "John  Williams"
+        }
+      ]
+    },
+    {
+      "cap": 2000,
+      "cap_label": "2000",
+      "mode": "stored_w",
+      "n_jury": 2000,
+      "n_pairs": 268496,
+      "probe": {
+        "Q_clean": 132.0,
+        "pos50": 44,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 11,
+        "top50_mean_n_c": 874.42,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.4418604651162791,
+        "hits@50": 19,
+        "recall@100": 0.627906976744186,
+        "hits@100": 27,
+        "recall@200": 0.7441860465116279,
+        "hits@200": 32,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 59.0
+      },
+      "jaccard50_vs_full_stored_w": 0.35135135135135137,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 4,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 5,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov"
+        },
+        {
+          "rank": 9,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 10,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        }
+      ]
+    },
+    {
+      "cap": 2000,
+      "cap_label": "2000",
+      "mode": "pow2",
+      "n_jury": 2000,
+      "n_pairs": 268496,
+      "probe": {
+        "Q_clean": 134.5,
+        "pos50": 45,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 11,
+        "top50_mean_n_c": 865.18,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.4186046511627907,
+        "hits@50": 18,
+        "recall@100": 0.6046511627906976,
+        "hits@100": 26,
+        "recall@200": 0.7209302325581395,
+        "hits@200": 31,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 58.0
+      },
+      "jaccard50_vs_full_stored_w": 0.3333333333333333,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 4,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 5,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 9,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 10,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov"
+        }
+      ]
+    },
+    {
+      "cap": 3000,
+      "cap_label": "3000",
+      "mode": "equal",
+      "n_jury": 3000,
+      "n_pairs": 400324,
+      "probe": {
+        "Q_clean": 122.5,
+        "pos50": 41,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 12,
+        "top50_mean_n_c": 1272.52,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.4186046511627907,
+        "hits@50": 18,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6744186046511628,
+        "hits@200": 29,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 56.0
+      },
+      "jaccard50_vs_full_stored_w": 0.3888888888888889,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 6,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 10,
+          "title": "East of Eden",
+          "author": "John Steinbeck"
+        }
+      ]
+    },
+    {
+      "cap": 3000,
+      "cap_label": "3000",
+      "mode": "stored_w",
+      "n_jury": 3000,
+      "n_pairs": 400324,
+      "probe": {
+        "Q_clean": 128.5,
+        "pos50": 43,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 11,
+        "top50_mean_n_c": 1257.36,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.4186046511627907,
+        "hits@50": 18,
+        "recall@100": 0.5581395348837209,
+        "hits@100": 24,
+        "recall@200": 0.6976744186046512,
+        "hits@200": 30,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 58.0
+      },
+      "jaccard50_vs_full_stored_w": 0.3888888888888889,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        },
+        {
+          "rank": 10,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        }
+      ]
+    },
+    {
+      "cap": 3000,
+      "cap_label": "3000",
+      "mode": "pow2",
+      "n_jury": 3000,
+      "n_pairs": 400324,
+      "probe": {
+        "Q_clean": 128.5,
+        "pos50": 43,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 11,
+        "top50_mean_n_c": 1236.66,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.37209302325581395,
+        "hits@50": 16,
+        "recall@100": 0.5581395348837209,
+        "hits@100": 24,
+        "recall@200": 0.6976744186046512,
+        "hits@200": 30,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 67.0
+      },
+      "jaccard50_vs_full_stored_w": 0.3888888888888889,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 4,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 10,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        }
+      ]
+    },
+    {
+      "cap": 4774,
+      "cap_label": "4774",
+      "mode": "equal",
+      "n_jury": 4774,
+      "n_pairs": 626050,
+      "probe": {
+        "Q_clean": 114.0,
+        "pos50": 38,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1765.7,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6511627906976745,
+        "hits@200": 28,
+        "recall@500": 0.7906976744186046,
+        "hits@500": 34,
+        "median_rank": 82.0
+      },
+      "jaccard50_vs_full_stored_w": 0.4492753623188406,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 5,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 7,
+          "title": "East of Eden",
+          "author": "John Steinbeck"
+        },
+        {
+          "rank": 8,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 9,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 10,
+          "title": "Swann's Way (In Search of Lost Time, #1)",
+          "author": "Marcel Proust"
+        }
+      ]
+    },
+    {
+      "cap": 4774,
+      "cap_label": "4774",
+      "mode": "stored_w",
+      "n_jury": 4774,
+      "n_pairs": 626050,
+      "probe": {
+        "Q_clean": 114.0,
+        "pos50": 38,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1706.26,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6511627906976745,
+        "hits@200": 28,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 71.0
+      },
+      "jaccard50_vs_full_stored_w": 0.4925373134328358,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 4,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 5,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 10,
+          "title": "East of Eden",
+          "author": "John Steinbeck"
+        }
+      ]
+    },
+    {
+      "cap": 4774,
+      "cap_label": "4774",
+      "mode": "pow2",
+      "n_jury": 4774,
+      "n_pairs": 626050,
+      "probe": {
+        "Q_clean": 117.0,
+        "pos50": 39,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 8,
+        "top50_mean_n_c": 1615.46,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.627906976744186,
+        "hits@200": 27,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 89.0
+      },
+      "jaccard50_vs_full_stored_w": 0.42857142857142855,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 5,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 10,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        }
+      ]
+    },
+    {
+      "cap": 6000,
+      "cap_label": "6000",
+      "mode": "equal",
+      "n_jury": 6000,
+      "n_pairs": 780781,
+      "probe": {
+        "Q_clean": 111.0,
+        "pos50": 37,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 7,
+        "top50_mean_n_c": 2064.86,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.3023255813953488,
+        "hits@50": 13,
+        "recall@100": 0.4883720930232558,
+        "hits@100": 21,
+        "recall@200": 0.627906976744186,
+        "hits@200": 27,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 85.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5151515151515151,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 5,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 6,
+          "title": "East of Eden",
+          "author": "John Steinbeck"
+        },
+        {
+          "rank": 7,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 10,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        }
+      ]
+    },
+    {
+      "cap": 6000,
+      "cap_label": "6000",
+      "mode": "stored_w",
+      "n_jury": 6000,
+      "n_pairs": 780781,
+      "probe": {
+        "Q_clean": 101.5,
+        "pos50": 34,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 8,
+        "top50_mean_n_c": 1971.14,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.27906976744186046,
+        "hits@50": 12,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.627906976744186,
+        "hits@200": 27,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 79.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5625,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 5,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 6,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 7,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 8,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 9,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 10,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        }
+      ]
+    },
+    {
+      "cap": 6000,
+      "cap_label": "6000",
+      "mode": "pow2",
+      "n_jury": 6000,
+      "n_pairs": 780781,
+      "probe": {
+        "Q_clean": 113.5,
+        "pos50": 38,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 8,
+        "top50_mean_n_c": 1920.3,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.3023255813953488,
+        "hits@50": 13,
+        "recall@100": 0.46511627906976744,
+        "hits@100": 20,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7906976744186046,
+        "hits@500": 34,
+        "median_rank": 99.0
+      },
+      "jaccard50_vs_full_stored_w": 0.47058823529411764,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 5,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 6,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        },
+        {
+          "rank": 10,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky"
+        }
+      ]
+    },
+    {
+      "cap": 8000,
+      "cap_label": "8000",
+      "mode": "equal",
+      "n_jury": 8000,
+      "n_pairs": 1025506,
+      "probe": {
+        "Q_clean": 99.0,
+        "pos50": 33,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 6,
+        "top50_mean_n_c": 2343.08,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.2558139534883721,
+        "hits@50": 11,
+        "recall@100": 0.46511627906976744,
+        "hits@100": 20,
+        "recall@200": 0.627906976744186,
+        "hits@200": 27,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 95.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5873015873015873,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 5,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 6,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 7,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        },
+        {
+          "rank": 8,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 9,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire"
+        },
+        {
+          "rank": 10,
+          "title": "Blood Meridian, or the Evening Redness in the West",
+          "author": "Cormac McCarthy"
+        }
+      ]
+    },
+    {
+      "cap": 8000,
+      "cap_label": "8000",
+      "mode": "stored_w",
+      "n_jury": 8000,
+      "n_pairs": 1025506,
+      "probe": {
+        "Q_clean": 96.0,
+        "pos50": 32,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 7,
+        "top50_mean_n_c": 2351.38,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.23255813953488372,
+        "hits@50": 10,
+        "recall@100": 0.5116279069767442,
+        "hits@100": 22,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 83.0
+      },
+      "jaccard50_vs_full_stored_w": 0.6129032258064516,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 5,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 6,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 7,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 8,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 9,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 10,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        }
+      ]
+    },
+    {
+      "cap": 8000,
+      "cap_label": "8000",
+      "mode": "pow2",
+      "n_jury": 8000,
+      "n_pairs": 1025506,
+      "probe": {
+        "Q_clean": 98.5,
+        "pos50": 33,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 5,
+        "top50_mean_n_c": 2039.9,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.23255813953488372,
+        "hits@50": 10,
+        "recall@100": 0.4186046511627907,
+        "hits@100": 18,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 118.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5384615384615384,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 5,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 6,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 10,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri"
+        }
+      ]
+    },
+    {
+      "cap": 10000,
+      "cap_label": "10000",
+      "mode": "equal",
+      "n_jury": 10000,
+      "n_pairs": 1266522,
+      "probe": {
+        "Q_clean": 96.0,
+        "pos50": 32,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 5,
+        "top50_mean_n_c": 2609.9,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.2558139534883721,
+        "hits@50": 11,
+        "recall@100": 0.4418604651162791,
+        "hits@100": 19,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7209302325581395,
+        "hits@500": 31,
+        "median_rank": 102.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5873015873015873,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 5,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        },
+        {
+          "rank": 6,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 7,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 8,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 9,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic"
+        },
+        {
+          "rank": 10,
+          "title": "East of Eden",
+          "author": "John Steinbeck"
+        }
+      ]
+    },
+    {
+      "cap": 10000,
+      "cap_label": "10000",
+      "mode": "stored_w",
+      "n_jury": 10000,
+      "n_pairs": 1266522,
+      "probe": {
+        "Q_clean": 93.0,
+        "pos50": 31,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 7,
+        "top50_mean_n_c": 2787.32,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.23255813953488372,
+        "hits@50": 10,
+        "recall@100": 0.46511627906976744,
+        "hits@100": 20,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 98.0
+      },
+      "jaccard50_vs_full_stored_w": 0.639344262295082,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 7,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 8,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 9,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 10,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        }
+      ]
+    },
+    {
+      "cap": 10000,
+      "cap_label": "10000",
+      "mode": "pow2",
+      "n_jury": 10000,
+      "n_pairs": 1266522,
+      "probe": {
+        "Q_clean": 83.5,
+        "pos50": 28,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 2053.66,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.11627906976744186,
+        "hits@50": 5,
+        "recall@100": 0.37209302325581395,
+        "hits@100": 16,
+        "recall@200": 0.5581395348837209,
+        "hits@200": 24,
+        "recall@500": 0.6976744186046512,
+        "hits@500": 30,
+        "median_rank": 136.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5384615384615384,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 5,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 6,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 7,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 8,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        },
+        {
+          "rank": 9,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 10,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        }
+      ]
+    },
+    {
+      "cap": 15000,
+      "cap_label": "15000",
+      "mode": "equal",
+      "n_jury": 15000,
+      "n_pairs": 1847950,
+      "probe": {
+        "Q_clean": 80.5,
+        "pos50": 27,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 5,
+        "top50_mean_n_c": 3090.26,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.20930232558139536,
+        "hits@50": 9,
+        "recall@100": 0.3023255813953488,
+        "hits@100": 13,
+        "recall@200": 0.5348837209302325,
+        "hits@200": 23,
+        "recall@500": 0.6976744186046512,
+        "hits@500": 30,
+        "median_rank": 128.0
+      },
+      "jaccard50_vs_full_stored_w": 0.6129032258064516,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 5,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic"
+        },
+        {
+          "rank": 6,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 7,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 8,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 9,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 10,
+          "title": "Stoner",
+          "author": "John  Williams"
+        }
+      ]
+    },
+    {
+      "cap": 15000,
+      "cap_label": "15000",
+      "mode": "stored_w",
+      "n_jury": 15000,
+      "n_pairs": 1847950,
+      "probe": {
+        "Q_clean": 77.0,
+        "pos50": 26,
+        "anti50": 0,
+        "anti1000": 2,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 2837.42,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.16279069767441862,
+        "hits@50": 7,
+        "recall@100": 0.32558139534883723,
+        "hits@100": 14,
+        "recall@200": 0.5348837209302325,
+        "hits@200": 23,
+        "recall@500": 0.6976744186046512,
+        "hits@500": 30,
+        "median_rank": 124.0
+      },
+      "jaccard50_vs_full_stored_w": 0.8518518518518519,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 4,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 5,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 6,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 7,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic"
+        },
+        {
+          "rank": 8,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 9,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        },
+        {
+          "rank": 10,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        }
+      ]
+    },
+    {
+      "cap": 15000,
+      "cap_label": "15000",
+      "mode": "pow2",
+      "n_jury": 15000,
+      "n_pairs": 1847950,
+      "probe": {
+        "Q_clean": 68.5,
+        "pos50": 23,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 2,
+        "top50_mean_n_c": 2248.94,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 36,
+        "recall@50": 0.09302325581395349,
+        "hits@50": 4,
+        "recall@100": 0.32558139534883723,
+        "hits@100": 14,
+        "recall@200": 0.5348837209302325,
+        "hits@200": 23,
+        "recall@500": 0.6744186046511628,
+        "hits@500": 29,
+        "median_rank": 165.0
+      },
+      "jaccard50_vs_full_stored_w": 0.6666666666666666,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 4,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 5,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 6,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 7,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 8,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 9,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 10,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy"
+        }
+      ]
+    },
+    {
+      "cap": null,
+      "cap_label": "all",
+      "mode": "equal",
+      "n_jury": 19841,
+      "n_pairs": 2365710,
+      "probe": {
+        "Q_clean": 78.0,
+        "pos50": 26,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 3390.88,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.13953488372093023,
+        "hits@50": 6,
+        "recall@100": 0.2558139534883721,
+        "hits@100": 11,
+        "recall@200": 0.46511627906976744,
+        "hits@200": 20,
+        "recall@500": 0.7209302325581395,
+        "hits@500": 31,
+        "median_rank": 187.0
+      },
+      "jaccard50_vs_full_stored_w": 0.5384615384615384,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        },
+        {
+          "rank": 4,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 6,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 7,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 8,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace"
+        },
+        {
+          "rank": 9,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic"
+        },
+        {
+          "rank": 10,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        }
+      ]
+    },
+    {
+      "cap": null,
+      "cap_label": "all",
+      "mode": "stored_w",
+      "n_jury": 19841,
+      "n_pairs": 2365710,
+      "probe": {
+        "Q_clean": 71.5,
+        "pos50": 24,
+        "anti50": 0,
+        "anti1000": 1,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 3206.84,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.16279069767441862,
+        "hits@50": 7,
+        "recall@100": 0.2558139534883721,
+        "hits@100": 11,
+        "recall@200": 0.5116279069767442,
+        "hits@200": 22,
+        "recall@500": 0.6744186046511628,
+        "hits@500": 29,
+        "median_rank": 155.0
+      },
+      "jaccard50_vs_full_stored_w": 1.0,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 5,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 6,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 7,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic"
+        },
+        {
+          "rank": 8,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 9,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay"
+        },
+        {
+          "rank": 10,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa"
+        }
+      ]
+    },
+    {
+      "cap": null,
+      "cap_label": "all",
+      "mode": "pow2",
+      "n_jury": 19841,
+      "n_pairs": 2365710,
+      "probe": {
+        "Q_clean": 62.0,
+        "pos50": 21,
+        "anti50": 0,
+        "anti1000": 2,
+        "filler50": 0,
+        "sticky50": 2,
+        "top50_mean_n_c": 2481.82,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 36,
+        "recall@50": 0.09302325581395349,
+        "hits@50": 4,
+        "recall@100": 0.20930232558139536,
+        "hits@100": 9,
+        "recall@200": 0.4418604651162791,
+        "hits@200": 19,
+        "recall@500": 0.6046511627906976,
+        "hits@500": 26,
+        "median_rank": 200.0
+      },
+      "jaccard50_vs_full_stored_w": 0.6129032258064516,
+      "top10": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 3,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin"
+        },
+        {
+          "rank": 4,
+          "title": "Stoner",
+          "author": "John  Williams"
+        },
+        {
+          "rank": 5,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot"
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano"
+        },
+        {
+          "rank": 7,
+          "title": "The Dead",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 8,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon"
+        },
+        {
+          "rank": 9,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann"
+        },
+        {
+          "rank": 10,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay"
+        }
+      ]
+    }
+  ],
+  "recommendation": {
+    "best_overall": {
+      "cap": "2000",
+      "mode": "equal",
+      "heldout@50": 0.46511627906976744,
+      "pos50": 42
+    },
+    "best_all_weighted": {
+      "mode": "stored_w",
+      "heldout@50": 0.16279069767441862,
+      "pos50": 24
+    },
+    "best_equal_cap": {
+      "cap": "2000",
+      "heldout@50": 0.46511627906976744,
+      "pos50": 42
+    }
+  }
+}

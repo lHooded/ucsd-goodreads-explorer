@@ -1,0 +1,302 @@
+{
+  "threshold_n_a": 30,
+  "n": 37,
+  "books": [
+    {
+      "rank": 2,
+      "title": "Les Fleurs du Mal",
+      "author": "Charles Baudelaire",
+      "work_id": "2089235",
+      "n_focus_pairs": 561.0,
+      "n_anti_pairs": 24.0
+    },
+    {
+      "rank": 3,
+      "title": "Stoner",
+      "author": "John  Williams",
+      "work_id": "1559207",
+      "n_focus_pairs": 717.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 4,
+      "title": "Four Quartets",
+      "author": "T.S. Eliot",
+      "work_id": "2886568",
+      "n_focus_pairs": 235.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 5,
+      "title": "Leaves of Grass",
+      "author": "Walt Whitman",
+      "work_id": "28117",
+      "n_focus_pairs": 842.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 6,
+      "title": "Journey to the End of the Night",
+      "author": "Louis-Ferdinand Celine",
+      "work_id": "1551463",
+      "n_focus_pairs": 470.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 7,
+      "title": "Gravity's Rainbow",
+      "author": "Thomas Pynchon",
+      "work_id": "866393",
+      "n_focus_pairs": 316.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 8,
+      "title": "The Idiot",
+      "author": "Fyodor Dostoyevsky",
+      "work_id": "6552198",
+      "n_focus_pairs": 1054.0,
+      "n_anti_pairs": 25.0
+    },
+    {
+      "rank": 9,
+      "title": "The Waste Land",
+      "author": "T.S. Eliot",
+      "work_id": "389834",
+      "n_focus_pairs": 369.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 10,
+      "title": "The Tin Drum",
+      "author": "Gunter Grass",
+      "work_id": "922581",
+      "n_focus_pairs": 466.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 11,
+      "title": "Notes from Underground",
+      "author": "Fyodor Dostoyevsky",
+      "work_id": "50717723",
+      "n_focus_pairs": 357.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 12,
+      "title": "Demons",
+      "author": "Fyodor Dostoyevsky",
+      "work_id": "1487216",
+      "n_focus_pairs": 357.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 13,
+      "title": "Giovanni's Room",
+      "author": "James     Baldwin",
+      "work_id": "814207",
+      "n_focus_pairs": 305.0,
+      "n_anti_pairs": 6.0
+    },
+    {
+      "rank": 16,
+      "title": "Memoirs of Hadrian",
+      "author": "Marguerite Yourcenar",
+      "work_id": "1064574",
+      "n_focus_pairs": 249.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 17,
+      "title": "Metamorphoses",
+      "author": "Ovid",
+      "work_id": "2870411",
+      "n_focus_pairs": 539.0,
+      "n_anti_pairs": 24.0
+    },
+    {
+      "rank": 18,
+      "title": "Shakespeare's Sonnets",
+      "author": "William Shakespeare",
+      "work_id": "1118349",
+      "n_focus_pairs": 345.0,
+      "n_anti_pairs": 25.0
+    },
+    {
+      "rank": 19,
+      "title": "Johnny Got His Gun",
+      "author": "Dalton Trumbo",
+      "work_id": "180461",
+      "n_focus_pairs": 246.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 20,
+      "title": "Sophie's Choice",
+      "author": "William Styron",
+      "work_id": "2912834",
+      "n_focus_pairs": 626.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 21,
+      "title": "The Underground Railroad",
+      "author": "Colson Whitehead",
+      "work_id": "48287641",
+      "n_focus_pairs": 333.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 24,
+      "title": "Swann's Way (In Search of Lost Time, #1)",
+      "author": "Marcel Proust",
+      "work_id": "4830806",
+      "n_focus_pairs": 786.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 26,
+      "title": "Faust: First Part",
+      "author": "Johann Wolfgang von Goethe",
+      "work_id": "16721",
+      "n_focus_pairs": 551.0,
+      "n_anti_pairs": 10.0
+    },
+    {
+      "rank": 27,
+      "title": "Cyrano de Bergerac",
+      "author": "Edmond Rostand",
+      "work_id": "2327623",
+      "n_focus_pairs": 320.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 29,
+      "title": "Eugene Onegin",
+      "author": "Alexander Pushkin",
+      "work_id": "1795311",
+      "n_focus_pairs": 629.0,
+      "n_anti_pairs": 1.0
+    },
+    {
+      "rank": 30,
+      "title": "My \u00c1ntonia",
+      "author": "Willa Cather",
+      "work_id": "575450",
+      "n_focus_pairs": 804.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 32,
+      "title": "A Gentleman in Moscow",
+      "author": "Amor Towles",
+      "work_id": "45743836",
+      "n_focus_pairs": 177.0,
+      "n_anti_pairs": 12.0
+    },
+    {
+      "rank": 33,
+      "title": "The Story of a New Name (The Neapolitan Novels #2)",
+      "author": "Elena Ferrante",
+      "work_id": "26129550",
+      "n_focus_pairs": 132.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 34,
+      "title": "Song of Myself",
+      "author": "Walt Whitman",
+      "work_id": "738965",
+      "n_focus_pairs": 132.0,
+      "n_anti_pairs": 9.0
+    },
+    {
+      "rank": 35,
+      "title": "My Name Is Asher Lev",
+      "author": "Chaim Potok",
+      "work_id": "924688",
+      "n_focus_pairs": 175.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 36,
+      "title": "A Constellation of Vital Phenomena",
+      "author": "Anthony Marra",
+      "work_id": "19926928",
+      "n_focus_pairs": 216.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 39,
+      "title": "\u0631\u0628\u0627\u0639\u064a\u0627\u062a \u062e\u064a\u0627\u0645",
+      "author": "Omar Khayyam",
+      "work_id": "1231363",
+      "n_focus_pairs": 252.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 40,
+      "title": "Every Man Dies Alone",
+      "author": "Hans Fallada",
+      "work_id": "1481990",
+      "n_focus_pairs": 125.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 43,
+      "title": "2666",
+      "author": "Roberto Bolano",
+      "work_id": "3294830",
+      "n_focus_pairs": 288.0,
+      "n_anti_pairs": 21.0
+    },
+    {
+      "rank": 44,
+      "title": "Chess Story",
+      "author": "Stefan Zweig",
+      "work_id": "57593",
+      "n_focus_pairs": 328.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 45,
+      "title": "Revolutionary Road",
+      "author": "Richard Yates",
+      "work_id": "1235136",
+      "n_focus_pairs": 656.0,
+      "n_anti_pairs": 10.0
+    },
+    {
+      "rank": 47,
+      "title": "A Season in Hell/The Drunken Boat",
+      "author": "Arthur Rimbaud",
+      "work_id": "2095349",
+      "n_focus_pairs": 120.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 48,
+      "title": "Angle of Repose",
+      "author": "Wallace Stegner",
+      "work_id": "283706",
+      "n_focus_pairs": 360.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 49,
+      "title": "Crossing to Safety",
+      "author": "Wallace Stegner",
+      "work_id": "1488871",
+      "n_focus_pairs": 118.0,
+      "n_anti_pairs": 0.0
+    },
+    {
+      "rank": 50,
+      "title": "The Dead",
+      "author": "James Joyce",
+      "work_id": "750536",
+      "n_focus_pairs": 198.0,
+      "n_anti_pairs": 0.0
+    }
+  ]
+}

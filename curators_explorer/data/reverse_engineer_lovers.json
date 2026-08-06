@@ -1,0 +1,1273 @@
+{
+  "meta": {
+    "purpose": "reverse-engineer classic-lover cohort (seed-informed; bias acknowledged)",
+    "min_seed_n": 2000,
+    "seeds": {
+      "min_seed_n": 2000,
+      "n_seeds": 80,
+      "n_train": 41,
+      "n_test": 39,
+      "top12": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick",
+          "author": "Herman Melville",
+          "n": 31475,
+          "split": "train"
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoevsky",
+          "n": 15001,
+          "split": "test"
+        },
+        {
+          "rank": 3,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "n": 47579,
+          "split": "train"
+        },
+        {
+          "rank": 4,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoevsky",
+          "n": 37267,
+          "split": "test"
+        },
+        {
+          "rank": 5,
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "n": 8443,
+          "split": "train"
+        },
+        {
+          "rank": 6,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace",
+          "n": 4598,
+          "split": "test"
+        },
+        {
+          "rank": 7,
+          "title": "Don Quixote",
+          "author": "Miguel de Cervantes",
+          "n": 15298,
+          "split": "train"
+        },
+        {
+          "rank": 8,
+          "title": "Blood Meridian",
+          "author": "Cormac McCarthy",
+          "n": 6348,
+          "split": "test"
+        },
+        {
+          "rank": 9,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "n": 2385,
+          "split": "train"
+        },
+        {
+          "rank": 11,
+          "title": "Stoner",
+          "author": "John Williams",
+          "n": 6637,
+          "split": "train"
+        },
+        {
+          "rank": 12,
+          "title": "The Stranger",
+          "author": "Albert Camus",
+          "n": 43833,
+          "split": "test"
+        },
+        {
+          "rank": 13,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri",
+          "n": 10670,
+          "split": "train"
+        }
+      ]
+    }
+  },
+  "sweep": [
+    {
+      "min_hits": 2,
+      "n_lovers": 83391,
+      "test_in_top50": 1,
+      "test_in_top200": 4,
+      "test_recall_top200": 0.10256410256410256,
+      "test_median_rank": 724,
+      "pos50": 4,
+      "anti50": 11,
+      "Q": -88.58
+    },
+    {
+      "min_hits": 3,
+      "n_lovers": 43490,
+      "test_in_top50": 1,
+      "test_in_top200": 8,
+      "test_recall_top200": 0.20512820512820512,
+      "test_median_rank": 517,
+      "pos50": 5,
+      "anti50": 9,
+      "Q": -68.06
+    },
+    {
+      "min_hits": 4,
+      "n_lovers": 24118,
+      "test_in_top50": 5,
+      "test_in_top200": 10,
+      "test_recall_top200": 0.2564102564102564,
+      "test_median_rank": 391,
+      "pos50": 10,
+      "anti50": 4,
+      "Q": -27.47
+    },
+    {
+      "min_hits": 5,
+      "n_lovers": 14112,
+      "test_in_top50": 5,
+      "test_in_top200": 15,
+      "test_recall_top200": 0.38461538461538464,
+      "test_median_rank": 242,
+      "pos50": 12,
+      "anti50": 3,
+      "Q": -12.68
+    },
+    {
+      "min_hits": 8,
+      "n_lovers": 3420,
+      "test_in_top50": 9,
+      "test_in_top200": 28,
+      "test_recall_top200": 0.717948717948718,
+      "test_median_rank": 80,
+      "pos50": 17,
+      "anti50": 0,
+      "Q": 26.13
+    }
+  ],
+  "primary": {
+    "lovers": {
+      "seed_split": "train",
+      "min_hits": 3,
+      "n_lovers": 43490,
+      "avg_seed_hits_5": 4.447160266727983,
+      "avg_n_rated": 286.43543343297307,
+      "avg_five_rate": 0.43520952267928487,
+      "avg_mean_rating": 4.108417577511797,
+      "avg_depth_ge4": 0.12979808090355507,
+      "avg_mean_logn_5": 8.662903047227667,
+      "med_seed_hits": 4.0,
+      "med_n_rated": 184.0
+    },
+    "controls": {
+      "n_controls": 43490
+    },
+    "contrasts": {
+      "lover": {
+        "n_rated": 286.43543343297307,
+        "five_rate": 0.43520952267928276,
+        "mean_rating": 4.1084175775117915,
+        "n5": 108.38482409749368,
+        "depth_ge4": 0.1297980809035558,
+        "mean_logn_5": 8.66290304722762,
+        "p5_blockbuster": 0.47496903569002946,
+        "n_authors_5": 159.88332950103472,
+        "author_diversity_5": 1.8812389593918954
+      },
+      "control": {
+        "n_rated": 182.7391124396413,
+        "five_rate": 0.3682471782129692,
+        "mean_rating": 4.001873091237329,
+        "n5": 59.24913773281214,
+        "depth_ge4": 0.1322396731267127,
+        "mean_logn_5": 8.532359194172585,
+        "p5_blockbuster": 0.40840389288425344,
+        "n_authors_5": 95.59967808691653,
+        "author_diversity_5": 2.857884845017564
+      },
+      "effects": {
+        "n_rated": {
+          "lover_mean": 286.43543343297307,
+          "control_mean": 182.7391124396413,
+          "diff": 103.69632099333177,
+          "cohen_d": 0.3494538452991728
+        },
+        "five_rate": {
+          "lover_mean": 0.43520952267928276,
+          "control_mean": 0.3682471782129692,
+          "diff": 0.06696234446631355,
+          "cohen_d": 0.31695955616466254
+        },
+        "mean_rating": {
+          "lover_mean": 4.1084175775117915,
+          "control_mean": 4.001873091237329,
+          "diff": 0.10654448627446289,
+          "cohen_d": 0.26115975624660853
+        },
+        "n5": {
+          "lover_mean": 108.38482409749368,
+          "control_mean": 59.24913773281214,
+          "diff": 49.13568636468154,
+          "cohen_d": 0.3735614094168294
+        },
+        "depth_ge4": {
+          "lover_mean": 0.1297980809035558,
+          "control_mean": 0.1322396731267127,
+          "diff": -0.002441592223156902,
+          "cohen_d": -0.1160581762933534
+        },
+        "mean_logn_5": {
+          "lover_mean": 8.66290304722762,
+          "control_mean": 8.532359194172585,
+          "diff": 0.13054385305503402,
+          "cohen_d": 0.11165530745742773
+        },
+        "p5_blockbuster": {
+          "lover_mean": 0.47496903569002946,
+          "control_mean": 0.40840389288425344,
+          "diff": 0.06656514280577602,
+          "cohen_d": 0.3075504396633708
+        },
+        "n_authors_5": {
+          "lover_mean": 159.88332950103472,
+          "control_mean": 95.59967808691653,
+          "diff": 64.2836514141182,
+          "cohen_d": 0.4604868336800768
+        },
+        "author_diversity_5": {
+          "lover_mean": 1.8812389593918954,
+          "control_mean": 2.857884845017564,
+          "diff": -0.9766458856256683,
+          "cohen_d": -0.20601468558178648
+        }
+      },
+      "blockbuster_n_thr": 8312.0
+    },
+    "heldout": {
+      "n_ranked_ex_train": 1969,
+      "test_in_top50": 1,
+      "test_in_top100": 4,
+      "test_in_top200": 8,
+      "test_in_top500": 13,
+      "n_test_seeds": 39,
+      "test_recall_top200": 0.20512820512820512,
+      "test_median_rank": 517,
+      "test_first_rank": 7,
+      "eval_vs_literary_poll": {
+        "Q": -68.06,
+        "geo_n": 382.82615840351923,
+        "pos50": 5,
+        "anti50": 9,
+        "anti1000": 101,
+        "anti_med": 544,
+        "filler50": 1,
+        "pos_share50": 0.1,
+        "anti_share1000": 0.101,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "n": 1041.0
+          },
+          {
+            "rank": 2,
+            "title": "Tutunamayanlar",
+            "author": "Oguz Atay",
+            "n": 322.0
+          },
+          {
+            "rank": 3,
+            "title": "The Return of the King (The Lord of the Rings, #3)",
+            "author": "J.R.R. Tolkien",
+            "n": 10850.0
+          },
+          {
+            "rank": 4,
+            "title": "Tehlikeli Oyunlar",
+            "author": "Oguz Atay",
+            "n": 181.0
+          },
+          {
+            "rank": 5,
+            "title": "Le Monogramme",
+            "author": "Odysseus Elytis",
+            "n": 103.0
+          },
+          {
+            "rank": 6,
+            "title": "The Knight in the Panther's Skin",
+            "author": "Shota Rustaveli",
+            "n": 108.0
+          },
+          {
+            "rank": 7,
+            "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+            "author": "J.R.R. Tolkien",
+            "n": 20420.0
+          },
+          {
+            "rank": 8,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 807.0
+          },
+          {
+            "rank": 9,
+            "title": "Мастер и Маргарита. Собачье сердце",
+            "author": "Mikhail Bulgakov",
+            "n": 71.0
+          },
+          {
+            "rank": 10,
+            "title": "The Essential Neruda: Selected Poems",
+            "author": "Pablo Neruda",
+            "n": 203.0
+          },
+          {
+            "rank": 11,
+            "title": "Двенадцать стульев / Золотой телёнок",
+            "author": "Ilya Ilf",
+            "n": 110.0
+          },
+          {
+            "rank": 12,
+            "title": "The Two Towers (The Lord of the Rings, #2)",
+            "author": "J.R.R. Tolkien",
+            "n": 11149.0
+          },
+          {
+            "rank": 13,
+            "title": "Checkmate (The Lymond Chronicles, #6)",
+            "author": "Dorothy Dunnett",
+            "n": 97.0
+          },
+          {
+            "rank": 14,
+            "title": "The Last Question",
+            "author": "Isaac Asimov",
+            "n": 363.0
+          },
+          {
+            "rank": 15,
+            "title": "Puslu Kıtalar Atlası",
+            "author": "Ihsan Oktay Anar",
+            "n": 433.0
+          },
+          {
+            "rank": 16,
+            "title": "A Game of Thrones: The Book of Ice and Fire RPG rulebook",
+            "author": "Simone Cooper",
+            "n": 63.0
+          },
+          {
+            "rank": 17,
+            "title": "Ježeva kućica",
+            "author": "Branko Copic",
+            "n": 111.0
+          },
+          {
+            "rank": 18,
+            "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)",
+            "author": "J.K. Rowling",
+            "n": 126.0
+          },
+          {
+            "rank": 19,
+            "title": "The Hitchhiker's Guide to the Galaxy: A Trilogy in Four Parts",
+            "author": "Douglas Adams",
+            "n": 539.0
+          },
+          {
+            "rank": 20,
+            "title": "The Green Mile, Part 6: Coffey on the Mile",
+            "author": "Stephen King",
+            "n": 285.0
+          }
+        ]
+      },
+      "top30_ex_train": [
+        {
+          "rank": 1,
+          "title": "Words of Radiance (The Stormlight Archive, #2)",
+          "author": "Brandon Sanderson",
+          "n": 1041.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 2,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay",
+          "n": 322.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 3,
+          "title": "The Return of the King (The Lord of the Rings, #3)",
+          "author": "J.R.R. Tolkien",
+          "n": 10850.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 4,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay",
+          "n": 181.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 5,
+          "title": "Le Monogramme",
+          "author": "Odysseus Elytis",
+          "n": 103.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 6,
+          "title": "The Knight in the Panther's Skin",
+          "author": "Shota Rustaveli",
+          "n": 108.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 7,
+          "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+          "author": "J.R.R. Tolkien",
+          "n": 20420.0,
+          "is_test_seed": true,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 8,
+          "title": "The Hate U Give",
+          "author": "Angie Thomas",
+          "n": 807.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 9,
+          "title": "Мастер и Маргарита. Собачье сердце",
+          "author": "Mikhail Bulgakov",
+          "n": 71.0,
+          "is_test_seed": false,
+          "is_pos_poll": true
+        },
+        {
+          "rank": 10,
+          "title": "The Essential Neruda: Selected Poems",
+          "author": "Pablo Neruda",
+          "n": 203.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 11,
+          "title": "Двенадцать стульев / Золотой телёнок",
+          "author": "Ilya Ilf",
+          "n": 110.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 12,
+          "title": "The Two Towers (The Lord of the Rings, #2)",
+          "author": "J.R.R. Tolkien",
+          "n": 11149.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 13,
+          "title": "Checkmate (The Lymond Chronicles, #6)",
+          "author": "Dorothy Dunnett",
+          "n": 97.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 14,
+          "title": "The Last Question",
+          "author": "Isaac Asimov",
+          "n": 363.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 15,
+          "title": "Puslu Kıtalar Atlası",
+          "author": "Ihsan Oktay Anar",
+          "n": 433.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 16,
+          "title": "A Game of Thrones: The Book of Ice and Fire RPG rulebook",
+          "author": "Simone Cooper",
+          "n": 63.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 17,
+          "title": "Ježeva kućica",
+          "author": "Branko Copic",
+          "n": 111.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 18,
+          "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)",
+          "author": "J.K. Rowling",
+          "n": 126.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 19,
+          "title": "The Hitchhiker's Guide to the Galaxy: A Trilogy in Four Parts",
+          "author": "Douglas Adams",
+          "n": 539.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 20,
+          "title": "The Green Mile, Part 6: Coffey on the Mile",
+          "author": "Stephen King",
+          "n": 285.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 21,
+          "title": "Cuentos completos 1",
+          "author": "Julio Cortazar",
+          "n": 155.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 22,
+          "title": "Rita Hayworth and Shawshank Redemption: A Story from Different Seasons",
+          "author": "Stephen King",
+          "n": 372.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 23,
+          "title": "The Fortress",
+          "author": "Mesa Selimovic",
+          "n": 108.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 24,
+          "title": "The Moonlight Sonata",
+          "author": "Yiannis Ritsos",
+          "n": 75.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 25,
+          "title": "Assassin's Fate (The Fitz and the Fool, #3)",
+          "author": "Robin Hobb",
+          "n": 143.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 26,
+          "title": "The Poetry of Pablo Neruda",
+          "author": "Pablo Neruda",
+          "n": 500.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 27,
+          "title": "The Essential Rumi",
+          "author": "Jalaluddin Mevlana Rumi",
+          "n": 730.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 28,
+          "title": "The Way of Kings (The Stormlight Archive, #1)",
+          "author": "Brandon Sanderson",
+          "n": 1607.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        },
+        {
+          "rank": 29,
+          "title": "Time Regained (In Search of Lost Time, #7)",
+          "author": "Marcel Proust",
+          "n": 258.0,
+          "is_test_seed": false,
+          "is_pos_poll": true
+        },
+        {
+          "rank": 30,
+          "title": "The Dark Tower Series Collection: The Gunslinger, The Drawing of the Three, The Waste Lands, Wizard and Glass, Wolves of the Calla, Song of Susannah, The Dark Tower",
+          "author": "Stephen King",
+          "n": 138.0,
+          "is_test_seed": false,
+          "is_pos_poll": false
+        }
+      ]
+    },
+    "emergent_likes": [
+      {
+        "title": "Words of Radiance (The Stormlight Archive, #2)",
+        "author": "Brandon Sanderson",
+        "n_lovers": 1041,
+        "n5": 780,
+        "bayes_p5": 0.7352941176470589,
+        "catalog_n": 10709
+      },
+      {
+        "title": "Tutunamayanlar",
+        "author": "Oguz Atay",
+        "n_lovers": 322,
+        "n5": 251,
+        "bayes_p5": 0.734375,
+        "catalog_n": 965
+      },
+      {
+        "title": "The Return of the King (The Lord of the Rings, #3)",
+        "author": "J.R.R. Tolkien",
+        "n_lovers": 10850,
+        "n5": 7960,
+        "bayes_p5": 0.7323069852941176,
+        "catalog_n": 49797
+      },
+      {
+        "title": "Tehlikeli Oyunlar",
+        "author": "Oguz Atay",
+        "n_lovers": 181,
+        "n5": 146,
+        "bayes_p5": 0.7274881516587678,
+        "catalog_n": 491
+      },
+      {
+        "title": "Le Monogramme",
+        "author": "Odysseus Elytis",
+        "n_lovers": 103,
+        "n5": 88,
+        "bayes_p5": 0.7180451127819549,
+        "catalog_n": 295
+      },
+      {
+        "title": "The Knight in the Panther's Skin",
+        "author": "Shota Rustaveli",
+        "n_lovers": 108,
+        "n5": 91,
+        "bayes_p5": 0.7137681159420289,
+        "catalog_n": 191
+      },
+      {
+        "title": "The Hate U Give",
+        "author": "Angie Thomas",
+        "n_lovers": 807,
+        "n5": 580,
+        "bayes_p5": 0.7019115890083633,
+        "catalog_n": 11481
+      },
+      {
+        "title": "Мастер и Маргарита. Собачье сердце",
+        "author": "Mikhail Bulgakov",
+        "n_lovers": 71,
+        "n5": 63,
+        "bayes_p5": 0.698019801980198,
+        "catalog_n": 141
+      },
+      {
+        "title": "The Essential Neruda: Selected Poems",
+        "author": "Pablo Neruda",
+        "n_lovers": 203,
+        "n5": 151,
+        "bayes_p5": 0.6802575107296137,
+        "catalog_n": 551
+      },
+      {
+        "title": "Двенадцать стульев / Золотой телёнок",
+        "author": "Ilya Ilf",
+        "n_lovers": 110,
+        "n5": 87,
+        "bayes_p5": 0.675,
+        "catalog_n": 231
+      },
+      {
+        "title": "The Two Towers (The Lord of the Rings, #2)",
+        "author": "J.R.R. Tolkien",
+        "n_lovers": 11149,
+        "n5": 7530,
+        "bayes_p5": 0.6742553001162894,
+        "catalog_n": 52144
+      },
+      {
+        "title": "Checkmate (The Lymond Chronicles, #6)",
+        "author": "Dorothy Dunnett",
+        "n_lovers": 97,
+        "n5": 78,
+        "bayes_p5": 0.6732283464566929,
+        "catalog_n": 362
+      },
+      {
+        "title": "The Last Question",
+        "author": "Isaac Asimov",
+        "n_lovers": 363,
+        "n5": 257,
+        "bayes_p5": 0.6730279898218829,
+        "catalog_n": 1568
+      },
+      {
+        "title": "Puslu Kıtalar Atlası",
+        "author": "Ihsan Oktay Anar",
+        "n_lovers": 433,
+        "n5": 304,
+        "bayes_p5": 0.6727861771058316,
+        "catalog_n": 1568
+      },
+      {
+        "title": "A Game of Thrones: The Book of Ice and Fire RPG rulebook",
+        "author": "Simone Cooper",
+        "n_lovers": 63,
+        "n5": 55,
+        "bayes_p5": 0.6720430107526881,
+        "catalog_n": 440
+      },
+      {
+        "title": "Ježeva kućica",
+        "author": "Branko Copic",
+        "n_lovers": 111,
+        "n5": 87,
+        "bayes_p5": 0.6702127659574468,
+        "catalog_n": 254
+      },
+      {
+        "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5, Part 1)",
+        "author": "J.K. Rowling",
+        "n_lovers": 126,
+        "n5": 97,
+        "bayes_p5": 0.6698717948717948,
+        "catalog_n": 1653
+      },
+      {
+        "title": "The Hitchhiker's Guide to the Galaxy: A Trilogy in Four Parts",
+        "author": "Douglas Adams",
+        "n_lovers": 539,
+        "n5": 373,
+        "bayes_p5": 0.6687170474516696,
+        "catalog_n": 2031
+      },
+      {
+        "title": "The Green Mile, Part 6: Coffey on the Mile",
+        "author": "Stephen King",
+        "n_lovers": 285,
+        "n5": 203,
+        "bayes_p5": 0.6682539682539682,
+        "catalog_n": 1569
+      },
+      {
+        "title": "Cuentos completos 1",
+        "author": "Julio Cortazar",
+        "n_lovers": 155,
+        "n5": 116,
+        "bayes_p5": 0.6675675675675675,
+        "catalog_n": 399
+      },
+      {
+        "title": "Rita Hayworth and Shawshank Redemption: A Story from Different Seasons",
+        "author": "Stephen King",
+        "n_lovers": 372,
+        "n5": 260,
+        "bayes_p5": 0.6654228855721394,
+        "catalog_n": 1766
+      },
+      {
+        "title": "The Fortress",
+        "author": "Mesa Selimovic",
+        "n_lovers": 108,
+        "n5": 84,
+        "bayes_p5": 0.6630434782608695,
+        "catalog_n": 264
+      },
+      {
+        "title": "The Moonlight Sonata",
+        "author": "Yiannis Ritsos",
+        "n_lovers": 75,
+        "n5": 62,
+        "bayes_p5": 0.6619047619047619,
+        "catalog_n": 181
+      },
+      {
+        "title": "Assassin's Fate (The Fitz and the Fool, #3)",
+        "author": "Robin Hobb",
+        "n_lovers": 143,
+        "n5": 107,
+        "bayes_p5": 0.661849710982659,
+        "catalog_n": 1299
+      },
+      {
+        "title": "The Poetry of Pablo Neruda",
+        "author": "Pablo Neruda",
+        "n_lovers": 500,
+        "n5": 343,
+        "bayes_p5": 0.6613207547169812,
+        "catalog_n": 1362
+      }
+    ]
+  },
+  "proxy": {
+    "n_proxy_lovers": 20390,
+    "proxy_directions": {
+      "five_rate": 1,
+      "p5_blockbuster": 1,
+      "mean_logn_5": 1
+    },
+    "seed_recovery": {
+      "seed_in_top50": 0,
+      "seed_in_top200": 1,
+      "seed_in_top500": 4,
+      "n_seeds": 80
+    },
+    "eval": {
+      "Q": -460.18,
+      "geo_n": 962.2970766331874,
+      "pos50": 0,
+      "anti50": 47,
+      "anti1000": 548,
+      "anti_med": 382,
+      "filler50": 1,
+      "pos_share50": 0.0,
+      "anti_share1000": 0.548,
+      "top20": [
+        {
+          "rank": 1,
+          "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+          "author": "J.K. Rowling",
+          "n": 7478.0
+        },
+        {
+          "rank": 2,
+          "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+          "author": "J.K. Rowling",
+          "n": 7414.0
+        },
+        {
+          "rank": 3,
+          "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+          "author": "J.K. Rowling",
+          "n": 7680.0
+        },
+        {
+          "rank": 4,
+          "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+          "author": "J.K. Rowling",
+          "n": 8006.0
+        },
+        {
+          "rank": 5,
+          "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+          "author": "Sarah J. Maas",
+          "n": 1282.0
+        },
+        {
+          "rank": 6,
+          "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+          "author": "J.K. Rowling",
+          "n": 7560.0
+        },
+        {
+          "rank": 7,
+          "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+          "author": "Rick Riordan",
+          "n": 2920.0
+        },
+        {
+          "rank": 8,
+          "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+          "author": "J.R. Ward",
+          "n": 1173.0
+        },
+        {
+          "rank": 9,
+          "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+          "author": "J.K. Rowling",
+          "n": 7886.0
+        },
+        {
+          "rank": 10,
+          "title": "Clockwork Princess (The Infernal Devices, #3)",
+          "author": "Cassandra Clare",
+          "n": 2439.0
+        },
+        {
+          "rank": 11,
+          "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+          "author": "J.K. Rowling",
+          "n": 12012.0
+        },
+        {
+          "rank": 12,
+          "title": "Queen of Shadows (Throne of Glass, #4)",
+          "author": "Sarah J. Maas",
+          "n": 1191.0
+        },
+        {
+          "rank": 13,
+          "title": "Shadow Kiss (Vampire Academy, #3)",
+          "author": "Richelle Mead",
+          "n": 2389.0
+        },
+        {
+          "rank": 14,
+          "title": "The Mark of Athena (The Heroes of Olympus, #3)",
+          "author": "Rick Riordan",
+          "n": 1822.0
+        },
+        {
+          "rank": 15,
+          "title": "Last Sacrifice (Vampire Academy, #6)",
+          "author": "Richelle Mead",
+          "n": 2032.0
+        },
+        {
+          "rank": 16,
+          "title": "Clockwork Prince (The Infernal Devices, #2)",
+          "author": "Cassandra Clare",
+          "n": 2911.0
+        },
+        {
+          "rank": 17,
+          "title": "The Return of the King (The Lord of the Rings, #3)",
+          "author": "J.R.R. Tolkien",
+          "n": 1583.0
+        },
+        {
+          "rank": 18,
+          "title": "Winter (The Lunar Chronicles, #4)",
+          "author": "Marissa Meyer",
+          "n": 929.0
+        },
+        {
+          "rank": 19,
+          "title": "City of Heavenly Fire (The Mortal Instruments, #6)",
+          "author": "Cassandra Clare",
+          "n": 2233.0
+        },
+        {
+          "rank": 20,
+          "title": "The House of Hades (The Heroes of Olympus, #4)",
+          "author": "Rick Riordan",
+          "n": 1442.0
+        }
+      ]
+    },
+    "top20": [
+      {
+        "rank": 1,
+        "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+        "author": "J.K. Rowling",
+        "n": 7478.0
+      },
+      {
+        "rank": 2,
+        "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+        "author": "J.K. Rowling",
+        "n": 7414.0
+      },
+      {
+        "rank": 3,
+        "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+        "author": "J.K. Rowling",
+        "n": 7680.0
+      },
+      {
+        "rank": 4,
+        "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+        "author": "J.K. Rowling",
+        "n": 8006.0
+      },
+      {
+        "rank": 5,
+        "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+        "author": "Sarah J. Maas",
+        "n": 1282.0
+      },
+      {
+        "rank": 6,
+        "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+        "author": "J.K. Rowling",
+        "n": 7560.0
+      },
+      {
+        "rank": 7,
+        "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+        "author": "Rick Riordan",
+        "n": 2920.0
+      },
+      {
+        "rank": 8,
+        "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+        "author": "J.R. Ward",
+        "n": 1173.0
+      },
+      {
+        "rank": 9,
+        "title": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+        "author": "J.K. Rowling",
+        "n": 7886.0
+      },
+      {
+        "rank": 10,
+        "title": "Clockwork Princess (The Infernal Devices, #3)",
+        "author": "Cassandra Clare",
+        "n": 2439.0
+      },
+      {
+        "rank": 11,
+        "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+        "author": "J.K. Rowling",
+        "n": 12012.0
+      },
+      {
+        "rank": 12,
+        "title": "Queen of Shadows (Throne of Glass, #4)",
+        "author": "Sarah J. Maas",
+        "n": 1191.0
+      },
+      {
+        "rank": 13,
+        "title": "Shadow Kiss (Vampire Academy, #3)",
+        "author": "Richelle Mead",
+        "n": 2389.0
+      },
+      {
+        "rank": 14,
+        "title": "The Mark of Athena (The Heroes of Olympus, #3)",
+        "author": "Rick Riordan",
+        "n": 1822.0
+      },
+      {
+        "rank": 15,
+        "title": "Last Sacrifice (Vampire Academy, #6)",
+        "author": "Richelle Mead",
+        "n": 2032.0
+      },
+      {
+        "rank": 16,
+        "title": "Clockwork Prince (The Infernal Devices, #2)",
+        "author": "Cassandra Clare",
+        "n": 2911.0
+      },
+      {
+        "rank": 17,
+        "title": "The Return of the King (The Lord of the Rings, #3)",
+        "author": "J.R.R. Tolkien",
+        "n": 1583.0
+      },
+      {
+        "rank": 18,
+        "title": "Winter (The Lunar Chronicles, #4)",
+        "author": "Marissa Meyer",
+        "n": 929.0
+      },
+      {
+        "rank": 19,
+        "title": "City of Heavenly Fire (The Mortal Instruments, #6)",
+        "author": "Cassandra Clare",
+        "n": 2233.0
+      },
+      {
+        "rank": 20,
+        "title": "The House of Hades (The Heroes of Olympus, #4)",
+        "author": "Rick Riordan",
+        "n": 1442.0
+      }
+    ]
+  },
+  "all_seed_emergent": [
+    {
+      "title": "Words of Radiance (The Stormlight Archive, #2)",
+      "author": "Brandon Sanderson",
+      "n_lovers": 1894,
+      "n5": 1428,
+      "bayes_p5": 0.7461018711018711,
+      "catalog_n": 10709
+    },
+    {
+      "title": "Le Monogramme",
+      "author": "Odysseus Elytis",
+      "n_lovers": 139,
+      "n5": 118,
+      "bayes_p5": 0.742603550295858,
+      "catalog_n": 295
+    },
+    {
+      "title": "The Return of the King (The Lord of the Rings, #3)",
+      "author": "J.R.R. Tolkien",
+      "n_lovers": 17477,
+      "n5": 12922,
+      "bayes_p5": 0.7385331581653053,
+      "catalog_n": 49797
+    },
+    {
+      "title": "Мастер и Маргарита. Собачье сердце",
+      "author": "Mikhail Bulgakov",
+      "n_lovers": 88,
+      "n5": 79,
+      "bayes_p5": 0.7330508474576272,
+      "catalog_n": 141
+    },
+    {
+      "title": "The Hate U Give",
+      "author": "Angie Thomas",
+      "n_lovers": 1517,
+      "n5": 1119,
+      "bayes_p5": 0.7281835811247576,
+      "catalog_n": 11481
+    },
+    {
+      "title": "Tehlikeli Oyunlar",
+      "author": "Oguz Atay",
+      "n_lovers": 264,
+      "n5": 206,
+      "bayes_p5": 0.7261904761904762,
+      "catalog_n": 491
+    },
+    {
+      "title": "Tutunamayanlar",
+      "author": "Oguz Atay",
+      "n_lovers": 478,
+      "n5": 361,
+      "bayes_p5": 0.7253937007874016,
+      "catalog_n": 965
+    },
+    {
+      "title": "Checkmate (The Lymond Chronicles, #6)",
+      "author": "Dorothy Dunnett",
+      "n_lovers": 128,
+      "n5": 106,
+      "bayes_p5": 0.7183544303797469,
+      "catalog_n": 362
+    },
+    {
+      "title": "The Knight in the Panther's Skin",
+      "author": "Shota Rustaveli",
+      "n_lovers": 123,
+      "n5": 102,
+      "bayes_p5": 0.7156862745098039,
+      "catalog_n": 191
+    },
+    {
+      "title": "Pawn in Frankincense (The Lymond Chronicles, #4)",
+      "author": "Dorothy Dunnett",
+      "n_lovers": 122,
+      "n5": 99,
+      "bayes_p5": 0.7006578947368421,
+      "catalog_n": 350
+    },
+    {
+      "title": "The Moonlight Sonata",
+      "author": "Yiannis Ritsos",
+      "n_lovers": 104,
+      "n5": 86,
+      "bayes_p5": 0.6977611940298507,
+      "catalog_n": 181
+    },
+    {
+      "title": "Ježeva kućica",
+      "author": "Branko Copic",
+      "n_lovers": 145,
+      "n5": 114,
+      "bayes_p5": 0.6942857142857143,
+      "catalog_n": 254
+    },
+    {
+      "title": "Shahnameh: The Persian Book of Kings",
+      "author": "Abolqasem Ferdowsi",
+      "n_lovers": 170,
+      "n5": 130,
+      "bayes_p5": 0.6875,
+      "catalog_n": 437
+    },
+    {
+      "title": "Assassin's Fate (The Fitz and the Fool, #3)",
+      "author": "Robin Hobb",
+      "n_lovers": 239,
+      "n5": 177,
+      "bayes_p5": 0.6858736059479554,
+      "catalog_n": 1299
+    },
+    {
+      "title": "A Game of Thrones: The Book of Ice and Fire RPG rulebook",
+      "author": "Simone Cooper",
+      "n_lovers": 92,
+      "n5": 76,
+      "bayes_p5": 0.6844262295081968,
+      "catalog_n": 440
+    },
+    {
+      "title": "Двенадцать стульев / Золотой телёнок",
+      "author": "Ilya Ilf",
+      "n_lovers": 152,
+      "n5": 117,
+      "bayes_p5": 0.6840659340659341,
+      "catalog_n": 231
+    },
+    {
+      "title": "The Two Towers (The Lord of the Rings, #2)",
+      "author": "J.R.R. Tolkien",
+      "n_lovers": 18019,
+      "n5": 12313,
+      "bayes_p5": 0.6826139952351931,
+      "catalog_n": 52144
+    },
+    {
+      "title": "The Last Question",
+      "author": "Isaac Asimov",
+      "n_lovers": 593,
+      "n5": 417,
+      "bayes_p5": 0.6813804173354735,
+      "catalog_n": 1568
+    },
+    {
+      "title": "Cuentos completos 1",
+      "author": "Julio Cortazar",
+      "n_lovers": 202,
+      "n5": 150,
+      "bayes_p5": 0.6788793103448276,
+      "catalog_n": 399
+    },
+    {
+      "title": "The Fortress",
+      "author": "Mesa Selimovic",
+      "n_lovers": 156,
+      "n5": 118,
+      "bayes_p5": 0.6747311827956989,
+      "catalog_n": 264
+    }
+  ]
+}

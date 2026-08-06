@@ -1,0 +1,1667 @@
+{
+  "meta": {
+    "allowed": "(user_id, work_id, rating, author_id from author_url)",
+    "papers": [
+      "Airoldi 2024 nested relational legitimacy",
+      "Lizardo 2018 reflections (person×item; here item=author)",
+      "Vlegels & Lievens 2017 artist-preference networks (Poetics)",
+      "arXiv:2303.05080 — prefer author-similarity over book-similarity"
+    ],
+    "eval_authors": {
+      "n_pos": 62,
+      "n_anti": 188
+    },
+    "eval_works": {
+      "n_pos": 1985,
+      "n_anti": 7124
+    }
+  },
+  "methods": {
+    "author_neg_delta2": {
+      "elapsed_ms": 207959,
+      "author_metrics": {
+        "Q_author": 0.0,
+        "pos50": 0,
+        "anti50": 0,
+        "anti200": 0,
+        "top20": [
+          {
+            "rank": 1,
+            "author_id": "7276454",
+            "author": "Nina  Levine",
+            "score": 2.0695584851717013,
+            "n_eff": 478.0
+          },
+          {
+            "rank": 2,
+            "author_id": "7170947",
+            "author": "Ryan Michele",
+            "score": 2.0615719272670874,
+            "n_eff": 339.0
+          },
+          {
+            "rank": 3,
+            "author_id": "7164384",
+            "author": "Chelle Bliss",
+            "score": 1.9832080751134697,
+            "n_eff": 545.0
+          },
+          {
+            "rank": 4,
+            "author_id": "8219684",
+            "author": "River Savage",
+            "score": 1.9617224619684102,
+            "n_eff": 604.0
+          },
+          {
+            "rank": 5,
+            "author_id": "54070",
+            "author": "Keisha Ervin",
+            "score": 1.9494520784709852,
+            "n_eff": 185.0
+          },
+          {
+            "rank": 6,
+            "author_id": "7154678",
+            "author": "Lani Lynn Vale",
+            "score": 1.9473764593978473,
+            "n_eff": 328.0
+          },
+          {
+            "rank": 7,
+            "author_id": "7201427",
+            "author": "Jani Kay",
+            "score": 1.9331431004891937,
+            "n_eff": 212.0
+          },
+          {
+            "rank": 8,
+            "author_id": "1009204",
+            "author": "Shan",
+            "score": 1.9318889428655934,
+            "n_eff": 121.0
+          },
+          {
+            "rank": 9,
+            "author_id": "9860469",
+            "author": "Jordan Marie",
+            "score": 1.9298668853619951,
+            "n_eff": 330.0
+          },
+          {
+            "rank": 10,
+            "author_id": "8110729",
+            "author": "M.N. Forgy",
+            "score": 1.9274982268571061,
+            "n_eff": 251.0
+          },
+          {
+            "rank": 11,
+            "author_id": "7023103",
+            "author": "M.J. Fields",
+            "score": 1.9053050441955925,
+            "n_eff": 270.0
+          },
+          {
+            "rank": 12,
+            "author_id": "152751",
+            "author": "Wahida Clark",
+            "score": 1.9042585289974696,
+            "n_eff": 276.0
+          },
+          {
+            "rank": 13,
+            "author_id": "7171978",
+            "author": "Emily Minton",
+            "score": 1.9041963752120674,
+            "n_eff": 253.0
+          },
+          {
+            "rank": 14,
+            "author_id": "2790128",
+            "author": "JaQuavis Coleman",
+            "score": 1.9041536358398585,
+            "n_eff": 157.0
+          },
+          {
+            "rank": 15,
+            "author_id": "7236200",
+            "author": "Lila Rose",
+            "score": 1.8897166384483746,
+            "n_eff": 309.0
+          },
+          {
+            "rank": 16,
+            "author_id": "6980925",
+            "author": "Chelsea Camaron",
+            "score": 1.8842760255414261,
+            "n_eff": 273.0
+          },
+          {
+            "rank": 17,
+            "author_id": "7341481",
+            "author": "A.C. Bextor",
+            "score": 1.8754379082818924,
+            "n_eff": 265.0
+          },
+          {
+            "rank": 18,
+            "author_id": "132113",
+            "author": "Kiki Swinson",
+            "score": 1.8725494248714127,
+            "n_eff": 193.0
+          },
+          {
+            "rank": 19,
+            "author_id": "7232339",
+            "author": "Victoria Ashley",
+            "score": 1.8720033942461167,
+            "n_eff": 566.0
+          },
+          {
+            "rank": 20,
+            "author_id": "7203641",
+            "author": "A.M. Madden",
+            "score": 1.8699749574960665,
+            "n_eff": 284.0
+          }
+        ]
+      },
+      "work_metrics": {
+        "Q": 0.0,
+        "geo_n": 598.6522882286214,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 0,
+        "anti_med": null,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.0,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Storm (Storm MC, #1)",
+            "author": "Nina  Levine",
+            "n": 1949.0
+          },
+          {
+            "rank": 2,
+            "title": "Ravage Me (Ravage MC, #1)",
+            "author": "Ryan Michele",
+            "n": 1520.0
+          },
+          {
+            "rank": 3,
+            "title": "Throttle Me (Men of Inked, #1)",
+            "author": "Chelle Bliss",
+            "n": 1878.0
+          },
+          {
+            "rank": 4,
+            "title": "Incandescent (Knights Rebels MC, #1)",
+            "author": "River Savage",
+            "n": 2494.0
+          },
+          {
+            "rank": 5,
+            "title": "Torn",
+            "author": "Keisha Ervin",
+            "n": 181.0
+          },
+          {
+            "rank": 6,
+            "title": "Center Mass (Code 11-KPD SWAT,  #1)",
+            "author": "Lani Lynn Vale",
+            "n": 675.0
+          },
+          {
+            "rank": 7,
+            "title": "Ryder (Scorpio Stinger MC, #0.5)",
+            "author": "Jani Kay",
+            "n": 736.0
+          },
+          {
+            "rank": 8,
+            "title": "Rozalyn",
+            "author": "Shan",
+            "n": 121.0
+          },
+          {
+            "rank": 9,
+            "title": "Breaking Dragon (Savage Brothers MC, #1)",
+            "author": "Jordan Marie",
+            "n": 709.0
+          },
+          {
+            "rank": 10,
+            "title": "What Doesn't Destroy Us (The Devil's Dust, #1)",
+            "author": "M.N. Forgy",
+            "n": 1005.0
+          },
+          {
+            "rank": 11,
+            "title": "Jase (Men of Steel, #1)",
+            "author": "M.J. Fields",
+            "n": 627.0
+          },
+          {
+            "rank": 12,
+            "title": "Thugs and the Women Who Love Them (Thug #1)",
+            "author": "Wahida Clark",
+            "n": 321.0
+          },
+          {
+            "rank": 13,
+            "title": "Renegade Reject (Renegade Sons MC, #2)",
+            "author": "Emily Minton",
+            "n": 1020.0
+          },
+          {
+            "rank": 14,
+            "title": "The Dopeman's Wife (The Dopeman, #1)",
+            "author": "JaQuavis Coleman",
+            "n": 221.0
+          },
+          {
+            "rank": 15,
+            "title": "Holding Out (Hawks Motorcycle Club, #1)",
+            "author": "Lila Rose",
+            "n": 1381.0
+          },
+          {
+            "rank": 16,
+            "title": "One Ride (Hellions Ride, #1)",
+            "author": "Chelsea Camaron",
+            "n": 823.0
+          },
+          {
+            "rank": 17,
+            "title": "Holding On (Lights of Peril, #1)",
+            "author": "A.C. Bextor",
+            "n": 697.0
+          },
+          {
+            "rank": 18,
+            "title": "Wifey (Wifey, #1)",
+            "author": "Kiki Swinson",
+            "n": 279.0
+          },
+          {
+            "rank": 19,
+            "title": "Slade (Walk of Shame, #1)",
+            "author": "Victoria Ashley",
+            "n": 1569.0
+          },
+          {
+            "rank": 20,
+            "title": "Back-Up (Back-Up, #1)",
+            "author": "A.M. Madden",
+            "n": 911.0
+          }
+        ]
+      }
+    },
+    "author_niche_enthusiasts": {
+      "elapsed_ms": 3971,
+      "author_metrics": {
+        "Q_author": 0.0,
+        "pos50": 0,
+        "anti50": 0,
+        "anti200": 0,
+        "top20": [
+          {
+            "rank": 1,
+            "author_id": "7170947",
+            "author": "Ryan Michele",
+            "score": 0.8929539295392954,
+            "n_eff": 339.0
+          },
+          {
+            "rank": 2,
+            "author_id": "7276454",
+            "author": "Nina  Levine",
+            "score": 0.8927165354330708,
+            "n_eff": 478.0
+          },
+          {
+            "rank": 3,
+            "author_id": "8219684",
+            "author": "River Savage",
+            "score": 0.8919558359621451,
+            "n_eff": 604.0
+          },
+          {
+            "rank": 4,
+            "author_id": "6451625",
+            "author": "Crystal Spears",
+            "score": 0.8825757575757576,
+            "n_eff": 366.0
+          },
+          {
+            "rank": 5,
+            "author_id": "7178194",
+            "author": "Bella Jewel",
+            "score": 0.8824599708879185,
+            "n_eff": 1344.0
+          },
+          {
+            "rank": 6,
+            "author_id": "7232339",
+            "author": "Victoria Ashley",
+            "score": 0.8783557046979866,
+            "n_eff": 566.0
+          },
+          {
+            "rank": 7,
+            "author_id": "7164384",
+            "author": "Chelle Bliss",
+            "score": 0.8739130434782608,
+            "n_eff": 545.0
+          },
+          {
+            "rank": 8,
+            "author_id": "7154678",
+            "author": "Lani Lynn Vale",
+            "score": 0.8729050279329609,
+            "n_eff": 328.0
+          },
+          {
+            "rank": 9,
+            "author_id": "6456709",
+            "author": "Ella Fox",
+            "score": 0.8711072664359861,
+            "n_eff": 548.0
+          },
+          {
+            "rank": 10,
+            "author_id": "8110729",
+            "author": "M.N. Forgy",
+            "score": 0.8665480427046264,
+            "n_eff": 251.0
+          },
+          {
+            "rank": 11,
+            "author_id": "7341481",
+            "author": "A.C. Bextor",
+            "score": 0.8661016949152542,
+            "n_eff": 265.0
+          },
+          {
+            "rank": 12,
+            "author_id": "7034050",
+            "author": "D.H. Sidebottom",
+            "score": 0.8652073732718893,
+            "n_eff": 404.0
+          },
+          {
+            "rank": 13,
+            "author_id": "7203641",
+            "author": "A.M. Madden",
+            "score": 0.8646496815286624,
+            "n_eff": 284.0
+          },
+          {
+            "rank": 14,
+            "author_id": "4318269",
+            "author": "Nicole Edwards",
+            "score": 0.8624694376528117,
+            "n_eff": 788.0
+          },
+          {
+            "rank": 15,
+            "author_id": "6540645",
+            "author": "Michelle A. Valentine",
+            "score": 0.8623595505617978,
+            "n_eff": 1216.0
+          },
+          {
+            "rank": 16,
+            "author_id": "7127521",
+            "author": "Jamie Begley",
+            "score": 0.8609898107714702,
+            "n_eff": 657.0
+          },
+          {
+            "rank": 17,
+            "author_id": "8379774",
+            "author": "Adriana Locke",
+            "score": 0.85859375,
+            "n_eff": 610.0
+          },
+          {
+            "rank": 18,
+            "author_id": "515767",
+            "author": "Kimberly Knight",
+            "score": 0.8569078947368421,
+            "n_eff": 274.0
+          },
+          {
+            "rank": 19,
+            "author_id": "7056720",
+            "author": "Dawn Martens",
+            "score": 0.8536231884057971,
+            "n_eff": 315.0
+          },
+          {
+            "rank": 20,
+            "author_id": "7122060",
+            "author": "Harper Sloan",
+            "score": 0.8534669555796316,
+            "n_eff": 1816.0
+          }
+        ]
+      },
+      "work_metrics": {
+        "Q": 7.29,
+        "geo_n": 1129.0178479303747,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 1,
+        "anti_med": 779,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.001,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Ravage Me (Ravage MC, #1)",
+            "author": "Ryan Michele",
+            "n": 1520.0
+          },
+          {
+            "rank": 2,
+            "title": "Storm (Storm MC, #1)",
+            "author": "Nina  Levine",
+            "n": 1949.0
+          },
+          {
+            "rank": 3,
+            "title": "Incandescent (Knights Rebels MC, #1)",
+            "author": "River Savage",
+            "n": 2494.0
+          },
+          {
+            "rank": 4,
+            "title": "Seize Me (Breakneck, #1)",
+            "author": "Crystal Spears",
+            "n": 1764.0
+          },
+          {
+            "rank": 5,
+            "title": "Hell's Knights (The MC Sinners, #1)",
+            "author": "Bella Jewel",
+            "n": 2737.0
+          },
+          {
+            "rank": 6,
+            "title": "Slade (Walk of Shame, #1)",
+            "author": "Victoria Ashley",
+            "n": 1569.0
+          },
+          {
+            "rank": 7,
+            "title": "Throttle Me (Men of Inked, #1)",
+            "author": "Chelle Bliss",
+            "n": 1878.0
+          },
+          {
+            "rank": 8,
+            "title": "Center Mass (Code 11-KPD SWAT,  #1)",
+            "author": "Lani Lynn Vale",
+            "n": 675.0
+          },
+          {
+            "rank": 9,
+            "title": "Broken Hart (The Hart Family, #1)",
+            "author": "Ella Fox",
+            "n": 1779.0
+          },
+          {
+            "rank": 10,
+            "title": "What Doesn't Destroy Us (The Devil's Dust, #1)",
+            "author": "M.N. Forgy",
+            "n": 1005.0
+          },
+          {
+            "rank": 11,
+            "title": "Holding On (Lights of Peril, #1)",
+            "author": "A.C. Bextor",
+            "n": 697.0
+          },
+          {
+            "rank": 12,
+            "title": "Shocking Heaven (Room 103, #1)",
+            "author": "D.H. Sidebottom",
+            "n": 528.0
+          },
+          {
+            "rank": 13,
+            "title": "Back-Up (Back-Up, #1)",
+            "author": "A.M. Madden",
+            "n": 911.0
+          },
+          {
+            "rank": 14,
+            "title": "Kaleb (Alluring Indulgence, #1)",
+            "author": "Nicole Edwards",
+            "n": 1978.0
+          },
+          {
+            "rank": 15,
+            "title": "Rock the Heart (Black Falcon, #1)",
+            "author": "Michelle A. Valentine",
+            "n": 3806.0
+          },
+          {
+            "rank": 16,
+            "title": "Razer's Ride (The Last Riders, #1)",
+            "author": "Jamie Begley",
+            "n": 1626.0
+          },
+          {
+            "rank": 17,
+            "title": "Sacrifice",
+            "author": "Adriana Locke",
+            "n": 854.0
+          },
+          {
+            "rank": 18,
+            "title": "Where I Need to Be (B&S, #1)",
+            "author": "Kimberly Knight",
+            "n": 1427.0
+          },
+          {
+            "rank": 19,
+            "title": "Renegade Lady (Renegade Sons MC, #1)",
+            "author": "Dawn Martens",
+            "n": 1580.0
+          },
+          {
+            "rank": 20,
+            "title": "Axel (Corps Security, #1)",
+            "author": "Harper Sloan",
+            "n": 4667.0
+          }
+        ]
+      }
+    },
+    "author_high_order": {
+      "elapsed_ms": 395,
+      "author_metrics": {
+        "Q_author": 0.0,
+        "pos50": 0,
+        "anti50": 0,
+        "anti200": 0,
+        "top20": [
+          {
+            "rank": 1,
+            "author_id": "7276454",
+            "author": "Nina  Levine",
+            "score": 2.973781164889129,
+            "n_eff": 478.0
+          },
+          {
+            "rank": 2,
+            "author_id": "7170947",
+            "author": "Ryan Michele",
+            "score": 2.9150853492826623,
+            "n_eff": 339.0
+          },
+          {
+            "rank": 3,
+            "author_id": "8219684",
+            "author": "River Savage",
+            "score": 2.88663829258051,
+            "n_eff": 604.0
+          },
+          {
+            "rank": 4,
+            "author_id": "7232339",
+            "author": "Victoria Ashley",
+            "score": 2.8479438971562336,
+            "n_eff": 566.0
+          },
+          {
+            "rank": 5,
+            "author_id": "7122060",
+            "author": "Harper Sloan",
+            "score": 2.835505209189651,
+            "n_eff": 1816.0
+          },
+          {
+            "rank": 6,
+            "author_id": "7164384",
+            "author": "Chelle Bliss",
+            "score": 2.83155542309753,
+            "n_eff": 545.0
+          },
+          {
+            "rank": 7,
+            "author_id": "6451625",
+            "author": "Crystal Spears",
+            "score": 2.8214369334074187,
+            "n_eff": 366.0
+          },
+          {
+            "rank": 8,
+            "author_id": "7178194",
+            "author": "Bella Jewel",
+            "score": 2.815779053137866,
+            "n_eff": 1344.0
+          },
+          {
+            "rank": 9,
+            "author_id": "6540645",
+            "author": "Michelle A. Valentine",
+            "score": 2.8116411546669173,
+            "n_eff": 1216.0
+          },
+          {
+            "rank": 10,
+            "author_id": "7127521",
+            "author": "Jamie Begley",
+            "score": 2.8069008233638377,
+            "n_eff": 657.0
+          },
+          {
+            "rank": 11,
+            "author_id": "7341481",
+            "author": "A.C. Bextor",
+            "score": 2.801910766556434,
+            "n_eff": 265.0
+          },
+          {
+            "rank": 12,
+            "author_id": "7056720",
+            "author": "Dawn Martens",
+            "score": 2.788393543976512,
+            "n_eff": 315.0
+          },
+          {
+            "rank": 13,
+            "author_id": "7154678",
+            "author": "Lani Lynn Vale",
+            "score": 2.7814488322040125,
+            "n_eff": 328.0
+          },
+          {
+            "rank": 14,
+            "author_id": "8110729",
+            "author": "M.N. Forgy",
+            "score": 2.7807176539527108,
+            "n_eff": 251.0
+          },
+          {
+            "rank": 15,
+            "author_id": "6456709",
+            "author": "Ella Fox",
+            "score": 2.7778786896985452,
+            "n_eff": 548.0
+          },
+          {
+            "rank": 16,
+            "author_id": "4318269",
+            "author": "Nicole Edwards",
+            "score": 2.7770140977286437,
+            "n_eff": 788.0
+          },
+          {
+            "rank": 17,
+            "author_id": "7215619",
+            "author": "Aurora Rose Reynolds",
+            "score": 2.7754518076115477,
+            "n_eff": 1778.0
+          },
+          {
+            "rank": 18,
+            "author_id": "7171978",
+            "author": "Emily Minton",
+            "score": 2.7709625511648106,
+            "n_eff": 253.0
+          },
+          {
+            "rank": 19,
+            "author_id": "8379774",
+            "author": "Adriana Locke",
+            "score": 2.7614504991106896,
+            "n_eff": 610.0
+          },
+          {
+            "rank": 20,
+            "author_id": "7074841",
+            "author": "Kim Jones",
+            "score": 2.752023111800465,
+            "n_eff": 313.0
+          }
+        ]
+      },
+      "work_metrics": {
+        "Q": 6.84,
+        "geo_n": 1590.6902332169293,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 2,
+        "anti_med": 784,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.002,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Storm (Storm MC, #1)",
+            "author": "Nina  Levine",
+            "n": 1949.0
+          },
+          {
+            "rank": 2,
+            "title": "Ravage Me (Ravage MC, #1)",
+            "author": "Ryan Michele",
+            "n": 1520.0
+          },
+          {
+            "rank": 3,
+            "title": "Incandescent (Knights Rebels MC, #1)",
+            "author": "River Savage",
+            "n": 2494.0
+          },
+          {
+            "rank": 4,
+            "title": "Slade (Walk of Shame, #1)",
+            "author": "Victoria Ashley",
+            "n": 1569.0
+          },
+          {
+            "rank": 5,
+            "title": "Axel (Corps Security, #1)",
+            "author": "Harper Sloan",
+            "n": 4667.0
+          },
+          {
+            "rank": 6,
+            "title": "Throttle Me (Men of Inked, #1)",
+            "author": "Chelle Bliss",
+            "n": 1878.0
+          },
+          {
+            "rank": 7,
+            "title": "Seize Me (Breakneck, #1)",
+            "author": "Crystal Spears",
+            "n": 1764.0
+          },
+          {
+            "rank": 8,
+            "title": "Hell's Knights (The MC Sinners, #1)",
+            "author": "Bella Jewel",
+            "n": 2737.0
+          },
+          {
+            "rank": 9,
+            "title": "Rock the Heart (Black Falcon, #1)",
+            "author": "Michelle A. Valentine",
+            "n": 3806.0
+          },
+          {
+            "rank": 10,
+            "title": "Razer's Ride (The Last Riders, #1)",
+            "author": "Jamie Begley",
+            "n": 1626.0
+          },
+          {
+            "rank": 11,
+            "title": "Holding On (Lights of Peril, #1)",
+            "author": "A.C. Bextor",
+            "n": 697.0
+          },
+          {
+            "rank": 12,
+            "title": "Renegade Lady (Renegade Sons MC, #1)",
+            "author": "Dawn Martens",
+            "n": 1580.0
+          },
+          {
+            "rank": 13,
+            "title": "Center Mass (Code 11-KPD SWAT,  #1)",
+            "author": "Lani Lynn Vale",
+            "n": 675.0
+          },
+          {
+            "rank": 14,
+            "title": "What Doesn't Destroy Us (The Devil's Dust, #1)",
+            "author": "M.N. Forgy",
+            "n": 1005.0
+          },
+          {
+            "rank": 15,
+            "title": "Broken Hart (The Hart Family, #1)",
+            "author": "Ella Fox",
+            "n": 1779.0
+          },
+          {
+            "rank": 16,
+            "title": "Kaleb (Alluring Indulgence, #1)",
+            "author": "Nicole Edwards",
+            "n": 1978.0
+          },
+          {
+            "rank": 17,
+            "title": "Until November (Until, #1)",
+            "author": "Aurora Rose Reynolds",
+            "n": 5097.0
+          },
+          {
+            "rank": 18,
+            "title": "Renegade Reject (Renegade Sons MC, #2)",
+            "author": "Emily Minton",
+            "n": 1020.0
+          },
+          {
+            "rank": 19,
+            "title": "Sacrifice",
+            "author": "Adriana Locke",
+            "n": 854.0
+          },
+          {
+            "rank": 20,
+            "title": "Saving Dallas (Saving Dallas, #1)",
+            "author": "Kim Jones",
+            "n": 1190.0
+          }
+        ]
+      }
+    },
+    "author_pmi_portfolio": {
+      "elapsed_ms": 103496,
+      "author_metrics": {
+        "Q_author": -4.25,
+        "pos50": 0,
+        "anti50": 1,
+        "anti200": 1,
+        "top20": [
+          {
+            "rank": 1,
+            "author_id": "4968409",
+            "author": "Rhys Ford",
+            "score": 1.1344827586206896,
+            "n_eff": 270.0
+          },
+          {
+            "rank": 2,
+            "author_id": "8073851",
+            "author": "Renae Kaye",
+            "score": 1.132642487046632,
+            "n_eff": 173.0
+          },
+          {
+            "rank": 3,
+            "author_id": "2980235",
+            "author": "J.L. Merrow",
+            "score": 1.1320388349514563,
+            "n_eff": 289.0
+          },
+          {
+            "rank": 4,
+            "author_id": "4769304",
+            "author": "Kaje Harper",
+            "score": 1.1318181818181818,
+            "n_eff": 420.0
+          },
+          {
+            "rank": 5,
+            "author_id": "3152411",
+            "author": "Mary Calmes",
+            "score": 1.1306930693069308,
+            "n_eff": 687.0
+          },
+          {
+            "rank": 6,
+            "author_id": "2738500",
+            "author": "Z.A. Maxfield",
+            "score": 1.1306930693069308,
+            "n_eff": 384.0
+          },
+          {
+            "rank": 7,
+            "author_id": "3200239",
+            "author": "Shannon Delany",
+            "score": 1.1298148148148148,
+            "n_eff": 412.0
+          },
+          {
+            "rank": 8,
+            "author_id": "4620386",
+            "author": "Cardeno C.",
+            "score": 1.1296875,
+            "n_eff": 364.0
+          },
+          {
+            "rank": 9,
+            "author_id": "6535608",
+            "author": "Miles  Cameron",
+            "score": 1.1271698113207547,
+            "n_eff": 510.0
+          },
+          {
+            "rank": 10,
+            "author_id": "3220024",
+            "author": "Courtney Allison Moulton",
+            "score": 1.1227817993795244,
+            "n_eff": 947.0
+          },
+          {
+            "rank": 11,
+            "author_id": "2891503",
+            "author": "Bree Despain",
+            "score": 1.1203742384682331,
+            "n_eff": 1129.0
+          },
+          {
+            "rank": 12,
+            "author_id": "1122774",
+            "author": "Madeleine Urban",
+            "score": 1.12,
+            "n_eff": 305.0
+          },
+          {
+            "rank": 13,
+            "author_id": "2313312",
+            "author": "Jocelyn Davies",
+            "score": 1.1192929292929292,
+            "n_eff": 475.0
+          },
+          {
+            "rank": 14,
+            "author_id": "3092531",
+            "author": "Lyn Gala",
+            "score": 1.1171270718232045,
+            "n_eff": 161.0
+          },
+          {
+            "rank": 15,
+            "author_id": "3292500",
+            "author": "Marie Sexton",
+            "score": 1.1155844155844157,
+            "n_eff": 596.0
+          },
+          {
+            "rank": 16,
+            "author_id": "345630",
+            "author": "Carrie Jones",
+            "score": 1.115136612021858,
+            "n_eff": 1810.0
+          },
+          {
+            "rank": 17,
+            "author_id": "5819370",
+            "author": "N.R. Walker",
+            "score": 1.1123434704830053,
+            "n_eff": 539.0
+          },
+          {
+            "rank": 18,
+            "author_id": "7125278",
+            "author": "Will Wight",
+            "score": 1.109539295392954,
+            "n_eff": 349.0
+          },
+          {
+            "rank": 19,
+            "author_id": "6425833",
+            "author": "Leta Blake",
+            "score": 1.1086294416243654,
+            "n_eff": 177.0
+          },
+          {
+            "rank": 20,
+            "author_id": "4228385",
+            "author": "Sue  Brown",
+            "score": 1.1084967320261438,
+            "n_eff": 133.0
+          }
+        ]
+      },
+      "work_metrics": {
+        "Q": -2.8600000000000003,
+        "geo_n": 870.4539403541362,
+        "pos50": 0,
+        "anti50": 1,
+        "anti1000": 7,
+        "anti_med": 464,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.007,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Dirty Kiss (Cole McGinnis, #1)",
+            "author": "Rhys Ford",
+            "n": 492.0
+          },
+          {
+            "rank": 2,
+            "title": "Loving Jay (Loving You, #1)",
+            "author": "Renae Kaye",
+            "n": 422.0
+          },
+          {
+            "rank": 3,
+            "title": "Muscling Through",
+            "author": "J.L. Merrow",
+            "n": 658.0
+          },
+          {
+            "rank": 4,
+            "title": "Life Lessons (Life Lessons, #1)",
+            "author": "Kaje Harper",
+            "n": 640.0
+          },
+          {
+            "rank": 5,
+            "title": "Change of Heart (Change of Heart, #1)",
+            "author": "Mary Calmes",
+            "n": 902.0
+          },
+          {
+            "rank": 6,
+            "title": "St. Nacho's (St. Nacho's, #1)",
+            "author": "Z.A. Maxfield",
+            "n": 623.0
+          },
+          {
+            "rank": 7,
+            "title": "13 to Life (13 to Life, #1)",
+            "author": "Shannon Delany",
+            "n": 1731.0
+          },
+          {
+            "rank": 8,
+            "title": "Wake Me Up Inside (Mates #1)",
+            "author": "Cardeno C.",
+            "n": 558.0
+          },
+          {
+            "rank": 9,
+            "title": "The Red Knight (The Traitor Son Cycle, #1)",
+            "author": "Miles  Cameron",
+            "n": 1264.0
+          },
+          {
+            "rank": 10,
+            "title": "Angelfire (Angelfire, #1)",
+            "author": "Courtney Allison Moulton",
+            "n": 3443.0
+          },
+          {
+            "rank": 11,
+            "title": "The Dark Divine (The Dark Divine, #1)",
+            "author": "Bree Despain",
+            "n": 4576.0
+          },
+          {
+            "rank": 12,
+            "title": "Caught Running",
+            "author": "Madeleine Urban",
+            "n": 902.0
+          },
+          {
+            "rank": 13,
+            "title": "A Beautiful Dark (A Beautiful Dark, #1)",
+            "author": "Jocelyn Davies",
+            "n": 2196.0
+          },
+          {
+            "rank": 14,
+            "title": "Claimings, Tails, and Other Alien Artifacts (Claimings, #1)",
+            "author": "Lyn Gala",
+            "n": 312.0
+          },
+          {
+            "rank": 15,
+            "title": "Promises (Coda Books, #1)",
+            "author": "Marie Sexton",
+            "n": 1253.0
+          },
+          {
+            "rank": 16,
+            "title": "Need (Need, #1)",
+            "author": "Carrie Jones",
+            "n": 7333.0
+          },
+          {
+            "rank": 17,
+            "title": "Sixty Five Hours",
+            "author": "N.R. Walker",
+            "n": 489.0
+          },
+          {
+            "rank": 18,
+            "title": "House of Blades (Traveler's Gate, #1)",
+            "author": "Will Wight",
+            "n": 750.0
+          },
+          {
+            "rank": 19,
+            "title": "Training Season (Training Season, #1)",
+            "author": "Leta Blake",
+            "n": 275.0
+          },
+          {
+            "rank": 20,
+            "title": "Nothing Ever Happens",
+            "author": "Sue  Brown",
+            "n": 229.0
+          }
+        ]
+      },
+      "communities": [
+        {
+          "size": 209,
+          "dense_users": 3216,
+          "heads": [
+            {
+              "author_id": "4968409",
+              "author": "Rhys Ford",
+              "score": 0.9344827586206896
+            },
+            {
+              "author_id": "8073851",
+              "author": "Renae Kaye",
+              "score": 0.9326424870466321
+            },
+            {
+              "author_id": "2980235",
+              "author": "J.L. Merrow",
+              "score": 0.9320388349514563
+            },
+            {
+              "author_id": "4769304",
+              "author": "Kaje Harper",
+              "score": 0.9318181818181818
+            },
+            {
+              "author_id": "3152411",
+              "author": "Mary Calmes",
+              "score": 0.9306930693069307
+            }
+          ]
+        },
+        {
+          "size": 171,
+          "dense_users": 35718,
+          "heads": [
+            {
+              "author_id": "3200239",
+              "author": "Shannon Delany",
+              "score": 0.9398148148148148
+            },
+            {
+              "author_id": "3220024",
+              "author": "Courtney Allison Moulton",
+              "score": 0.9327817993795243
+            },
+            {
+              "author_id": "2891503",
+              "author": "Bree Despain",
+              "score": 0.9303742384682332
+            },
+            {
+              "author_id": "2313312",
+              "author": "Jocelyn Davies",
+              "score": 0.9292929292929293
+            },
+            {
+              "author_id": "345630",
+              "author": "Carrie Jones",
+              "score": 0.9251366120218579
+            }
+          ]
+        },
+        {
+          "size": 136,
+          "dense_users": 21288,
+          "heads": [
+            {
+              "author_id": "6535608",
+              "author": "Miles  Cameron",
+              "score": 0.9471698113207547
+            },
+            {
+              "author_id": "7125278",
+              "author": "Will Wight",
+              "score": 0.9295392953929539
+            },
+            {
+              "author_id": "6524620",
+              "author": "Brian  McClellan",
+              "score": 0.928180158247109
+            },
+            {
+              "author_id": "8427407",
+              "author": "James Islington",
+              "score": 0.9188405797101449
+            },
+            {
+              "author_id": "7086094",
+              "author": "Brian Staveley",
+              "score": 0.9159034138218152
+            }
+          ]
+        },
+        {
+          "size": 131,
+          "dense_users": 12605,
+          "heads": [
+            {
+              "author_id": "15241064",
+              "author": "Jane  Corry",
+              "score": 0.8181818181818182
+            },
+            {
+              "author_id": "3314351",
+              "author": "Peter Swanson",
+              "score": 0.8163265306122449
+            },
+            {
+              "author_id": "16363007",
+              "author": "Lisa     Hall",
+              "score": 0.8159509202453987
+            },
+            {
+              "author_id": "7078175",
+              "author": "C.L. Taylor",
+              "score": 0.7888040712468194
+            },
+            {
+              "author_id": "222216",
+              "author": "Tammy Cohen",
+              "score": 0.7841726618705036
+            }
+          ]
+        },
+        {
+          "size": 129,
+          "dense_users": 9869,
+          "heads": [
+            {
+              "author_id": "28055",
+              "author": "James Robinson",
+              "score": 0.8715846994535519
+            },
+            {
+              "author_id": "171132",
+              "author": "Peter J. Tomasi",
+              "score": 0.8663594470046083
+            },
+            {
+              "author_id": "321800",
+              "author": "Mark Chiarello",
+              "score": 0.8653846153846154
+            },
+            {
+              "author_id": "3488182",
+              "author": "Michael  Green",
+              "score": 0.848
+            },
+            {
+              "author_id": "1226213",
+              "author": "Tony S. Daniel",
+              "score": 0.8461538461538461
+            }
+          ]
+        },
+        {
+          "size": 115,
+          "dense_users": 7055,
+          "heads": [
+            {
+              "author_id": "7154678",
+              "author": "Lani Lynn Vale",
+              "score": 0.9339080459770115
+            },
+            {
+              "author_id": "7171978",
+              "author": "Emily Minton",
+              "score": 0.9267399267399268
+            },
+            {
+              "author_id": "7127521",
+              "author": "Jamie Begley",
+              "score": 0.9246676514032496
+            },
+            {
+              "author_id": "6571986",
+              "author": "Nicole  James",
+              "score": 0.9191176470588235
+            },
+            {
+              "author_id": "6451625",
+              "author": "Crystal Spears",
+              "score": 0.9145077720207254
+            }
+          ]
+        },
+        {
+          "size": 115,
+          "dense_users": 10621,
+          "heads": [
+            {
+              "author_id": "1279042",
+              "author": "Brad Taylor",
+              "score": 0.8814814814814815
+            },
+            {
+              "author_id": "4095460",
+              "author": "Ben Coes",
+              "score": 0.8730650154798761
+            },
+            {
+              "author_id": "1648",
+              "author": "Steve Martini",
+              "score": 0.852
+            },
+            {
+              "author_id": "76671",
+              "author": "Kyle Mills",
+              "score": 0.8290909090909091
+            },
+            {
+              "author_id": "2961590",
+              "author": "Mark Greaney",
+              "score": 0.8263736263736263
+            }
+          ]
+        },
+        {
+          "size": 114,
+          "dense_users": 19755,
+          "heads": [
+            {
+              "author_id": "5085738",
+              "author": "J. Sterling",
+              "score": 0.9493036211699164
+            },
+            {
+              "author_id": "7033774",
+              "author": "Kimberly Lauren",
+              "score": 0.9492682926829268
+            },
+            {
+              "author_id": "2952211",
+              "author": "Nicole Reed",
+              "score": 0.9446153846153846
+            },
+            {
+              "author_id": "6880914",
+              "author": "K.A. Robinson",
+              "score": 0.9426386233269598
+            },
+            {
+              "author_id": "5416410",
+              "author": "A. Meredith Walters",
+              "score": 0.9421641791044776
+            }
+          ]
+        },
+        {
+          "size": 111,
+          "dense_users": 7842,
+          "heads": [
+            {
+              "author_id": "4230687",
+              "author": "Ashwin Sanghi",
+              "score": 0.8496583143507973
+            },
+            {
+              "author_id": "4071652",
+              "author": "Durjoy Datta",
+              "score": 0.8195876288659794
+            },
+            {
+              "author_id": "1164847",
+              "author": "Ravi Subramanian",
+              "score": 0.8145161290322581
+            },
+            {
+              "author_id": "1984197",
+              "author": "Rashmi Bansal",
+              "score": 0.8023952095808383
+            },
+            {
+              "author_id": "3302329",
+              "author": "Novoneel Chakraborty",
+              "score": 0.8020833333333334
+            }
+          ]
+        },
+        {
+          "size": 104,
+          "dense_users": 12560,
+          "heads": [
+            {
+              "author_id": "4930653",
+              "author": "Raine Miller",
+              "score": 0.9318403115871471
+            },
+            {
+              "author_id": "6459302",
+              "author": "J. Kenner",
+              "score": 0.9148003894839338
+            },
+            {
+              "author_id": "6872165",
+              "author": "J.C. Reed",
+              "score": 0.910958904109589
+            },
+            {
+              "author_id": "6654493",
+              "author": "J.L. Mac",
+              "score": 0.9065934065934066
+            },
+            {
+              "author_id": "6576110",
+              "author": "Jodi Ellen Malpas",
+              "score": 0.9
+            }
+          ]
+        },
+        {
+          "size": 104,
+          "dense_users": 12686,
+          "heads": [
+            {
+              "author_id": "5767872",
+              "author": "Gordon Andrews",
+              "score": 0.9394449116904963
+            },
+            {
+              "author_id": "234115",
+              "author": "Faith Hunter",
+              "score": 0.9043062200956937
+            },
+            {
+              "author_id": "46540",
+              "author": "Eileen Wilks",
+              "score": 0.8894117647058823
+            },
+            {
+              "author_id": "5921279",
+              "author": "J.C. Daniels",
+              "score": 0.8842105263157894
+            },
+            {
+              "author_id": "2937372",
+              "author": "Linda  Robertson",
+              "score": 0.8790322580645161
+            }
+          ]
+        },
+        {
+          "size": 102,
+          "dense_users": 12016,
+          "heads": [
+            {
+              "author_id": "269342",
+              "author": "Lisa Graff",
+              "score": 0.8408163265306122
+            },
+            {
+              "author_id": "326609",
+              "author": "Kwame Alexander",
+              "score": 0.8174532502226179
+            },
+            {
+              "author_id": "1010796",
+              "author": "Kate Messner",
+              "score": 0.8157248157248157
+            },
+            {
+              "author_id": "715443",
+              "author": "Linda Urban",
+              "score": 0.8111111111111111
+            },
+            {
+              "author_id": "138514",
+              "author": "Barbara O'Connor",
+              "score": 0.8103448275862069
+            }
+          ]
+        }
+      ]
+    },
+    "cross_author_book_pmi": {
+      "elapsed_ms": 73693,
+      "work_metrics": {
+        "Q": -2.6499999999999995,
+        "geo_n": 382.7102922613691,
+        "pos50": 0,
+        "anti50": 0,
+        "anti1000": 16,
+        "anti_med": 535,
+        "filler50": 0,
+        "pos_share50": 0.0,
+        "anti_share1000": 0.016,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "ثلاثية غرناطة",
+            "author": "Radwa Ashour",
+            "n": 2416.0
+          },
+          {
+            "rank": 2,
+            "title": "ساق البامبو",
+            "author": "s`wd lsn`wsy",
+            "n": 2390.0
+          },
+          {
+            "rank": 3,
+            "title": "يوتوبيا",
+            "author": "Ahmed Khaled Towfik",
+            "n": 1107.0
+          },
+          {
+            "rank": 4,
+            "title": "رباعيات صلاح جاهين",
+            "author": "SlH jhyn",
+            "n": 929.0
+          },
+          {
+            "rank": 5,
+            "title": "تراب الماس",
+            "author": "'Hmd mrd",
+            "n": 1297.0
+          },
+          {
+            "rank": 6,
+            "title": "أحببتك أكثر مما ينبغي",
+            "author": "'thyr `bdllh lnshmy",
+            "n": 769.0
+          },
+          {
+            "rank": 7,
+            "title": "رأيت رام الله",
+            "author": "Mourid Barghouti",
+            "n": 862.0
+          },
+          {
+            "rank": 8,
+            "title": "في قلبي أنثى عبرية",
+            "author": "khwl@ Hmdy",
+            "n": 1049.0
+          },
+          {
+            "rank": 9,
+            "title": "لا تصالح",
+            "author": "'ml dnql",
+            "n": 562.0
+          },
+          {
+            "rank": 10,
+            "title": "الأسود يليق بك",
+            "author": "'Hlm mstGnmy",
+            "n": 1020.0
+          },
+          {
+            "rank": 11,
+            "title": "عزازيل",
+            "author": "ywsf zydn",
+            "n": 2224.0
+          },
+          {
+            "rank": 12,
+            "title": "أفراح الروح",
+            "author": "Sayed Qutb",
+            "n": 442.0
+          },
+          {
+            "rank": 13,
+            "title": "قمر على سمرقند",
+            "author": "mHmd lmnsy qndyl",
+            "n": 543.0
+          },
+          {
+            "rank": 14,
+            "title": "أنت لي",
+            "author": "mn~ lmrshwd",
+            "n": 556.0
+          },
+          {
+            "rank": 15,
+            "title": "هيبتا",
+            "author": "mHmd Sdq",
+            "n": 910.0
+          },
+          {
+            "rank": 16,
+            "title": "تلك العتمة الباهرة",
+            "author": "Tahar ben Jelloun",
+            "n": 703.0
+          },
+          {
+            "rank": 17,
+            "title": "1/4 جرام",
+            "author": "Essam Youssef",
+            "n": 640.0
+          },
+          {
+            "rank": 18,
+            "title": "ويسترن يونيون فرع الهرم: ديوان بالعامية المصرية",
+            "author": "mSTf~ brhym",
+            "n": 362.0
+          },
+          {
+            "rank": 19,
+            "title": "زمن الخيول البيضاء",
+            "author": "Ibrahim Nasrallah - ibrhym nSr llh",
+            "n": 677.0
+          },
+          {
+            "rank": 20,
+            "title": "مأساة الحلاج",
+            "author": "SlH `bd lSbwr",
+            "n": 393.0
+          }
+        ]
+      }
+    }
+  }
+}

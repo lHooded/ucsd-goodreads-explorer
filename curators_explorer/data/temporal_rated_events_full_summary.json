@@ -1,0 +1,30 @@
+{
+  "mode": "full",
+  "source": "/home/ifrankling/unsw/novels/data/ucsd_goodreads/raw/goodreads_interactions_dedup.json.gz",
+  "source_bytes": 11492470942,
+  "output": "/home/ifrankling/unsw/novels/curators_explorer/data/temporal_rated_events_full.parquet",
+  "output_bytes": 1566396349,
+  "elapsed_seconds": 374.4499626159668,
+  "rows": 99282051,
+  "users": 811050,
+  "works": 523822,
+  "duplicate_user_work_rows": 427908,
+  "coverage": {
+    "added_at": 1.0,
+    "updated_at": 1.0,
+    "read_at": 0.39953466513297553,
+    "started_at": 0.27605904313963053
+  },
+  "quality": {
+    "added_equals_updated": 0.3705440976435912,
+    "updated_before_added": 0.0011693251582806242,
+    "read_before_added": 0.23734910518342361,
+    "started_after_read": 9.850836053836328e-05
+  },
+  "ranges_epoch": {
+    "added_min": -58979894400,
+    "added_max": 1509778583,
+    "read_min": -62153798400,
+    "read_max": 87179007600
+  }
+}

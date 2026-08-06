@@ -15,8 +15,8 @@
       <p class="eyebrow">UCSD Goodreads · curators</p>
       <h1>Curators Explorer</h1>
       <p class="lede">
-        Rank books by how a taste-gated curator cohort rates them.
-        Positive / negative author packs + school-neutral purity; coverage fixed among-raters.
+        Browse fixed distributed-consensus and community-esteem rankings, or rank books
+        with a live taste-gated curator cohort.
       </p>
       <p class="meta" id="data-meta">Starting…</p>
     </header>
@@ -30,6 +30,10 @@
             <select id="metric"></select>
           </label>
           <p class="hint" id="metric-blurb"></p>
+          <p class="fixed-note" id="fixed-metric-note" hidden>
+            This is a fixed research result containing the full evidence-eligible tail.
+            Search, Limit, and SF-only filter the view; other controls do not recompute it.
+          </p>
           <label class="field">
             <span>Scale mode</span>
             <select id="scale-mode"></select>
@@ -59,7 +63,7 @@
           </label>
           <label class="field">
             <span>Limit</span>
-            <input type="number" id="limit" min="10" max="2000" value="200" />
+            <input type="number" id="limit" min="10" max="5000" value="200" />
           </label>
           <p class="taste-subhead">Presets</p>
           <div class="presets" id="presets"></div>
@@ -135,10 +139,11 @@
                 <th>#</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>n</th>
-                <th>Mean</th>
-                <th>Top%</th>
-                <th>Score</th>
+                <th id="n-header">n</th>
+                <th id="mean-header">Mean</th>
+                <th id="top-header">Top%</th>
+                <th id="score-header">Score</th>
+                <th id="tier-header">Stability</th>
               </tr>
             </thead>
             <tbody id="results"></tbody>

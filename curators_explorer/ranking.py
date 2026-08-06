@@ -12,9 +12,33 @@ from curators_explorer.catalog import (
 )
 from curators_explorer.cohort import build_cohort_ctes, clamp01_100
 from curators_explorer.db import GLOBALS, META, execute
+from curators_explorer.distributed_canon import (
+    DISTRIBUTED_CANON_METRIC,
+    DISTRIBUTED_ESTEEM_METRIC,
+    DISTRIBUTED_METRICS,
+    rank_distributed_canon,
+)
 from curators_explorer.taste_packs import get_active_pack
 
 METRICS = [
+    {
+        "id": DISTRIBUTED_CANON_METRIC,
+        "label": "Distributed canon (research)",
+        "blurb": (
+            "Conservative cross-community consensus: esteem minus disagreement and evidence "
+            "penalties. Fixed cap-120 model; the evidence-light tail is exploratory."
+        ),
+        "fixed": True,
+    },
+    {
+        "id": DISTRIBUTED_ESTEEM_METRIC,
+        "label": "Community esteem (research)",
+        "blurb": (
+            "Average estimated esteem across balanced literary-reader communities, without "
+            "subtracting the disagreement penalty. Community contestation remains visible."
+        ),
+        "fixed": True,
+    },
     {
         "id": "love",
         "label": "Love",
@@ -251,6 +275,9 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             metric = "love"
     if metric not in {m["id"] for m in METRICS}:
         metric = "love"
+
+    if metric in DISTRIBUTED_METRICS:
+        return rank_distributed_canon(params)
 
     scale_mode = str(params.get("scale_mode") or "adjusted").strip().lower()
     if scale_mode not in {s["id"] for s in SCALE_MODES}:

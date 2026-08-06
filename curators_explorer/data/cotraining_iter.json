@@ -1,0 +1,499 @@
+{
+  "meta": {
+    "steps_requested": 3,
+    "steps_accepted": 3,
+    "step_size": 0.25,
+    "cheap_boots": 5,
+    "full_boots": 12,
+    "memory_mode": "single-process sparse full loose\u222aanti pool"
+  },
+  "start": {
+    "eval": {
+      "Q": 54.0,
+      "geo_n": 433.1514536323772,
+      "pos50": 22,
+      "anti50": 0,
+      "anti1000": 0,
+      "anti_med": null,
+      "filler50": 6,
+      "pos_share50": 0.44,
+      "anti_share1000": 0.0,
+      "top20": [
+        {
+          "rank": 1,
+          "title": "",
+          "author": "",
+          "n": 1891.0
+        },
+        {
+          "rank": 2,
+          "title": "",
+          "author": "",
+          "n": 2066.0
+        },
+        {
+          "rank": 3,
+          "title": "",
+          "author": "",
+          "n": 1090.0
+        },
+        {
+          "rank": 4,
+          "title": "",
+          "author": "",
+          "n": 1508.0
+        },
+        {
+          "rank": 5,
+          "title": "",
+          "author": "",
+          "n": 1841.0
+        },
+        {
+          "rank": 6,
+          "title": "",
+          "author": "",
+          "n": 1535.0
+        },
+        {
+          "rank": 7,
+          "title": "",
+          "author": "",
+          "n": 112.0
+        },
+        {
+          "rank": 8,
+          "title": "",
+          "author": "",
+          "n": 1307.0
+        },
+        {
+          "rank": 9,
+          "title": "",
+          "author": "",
+          "n": 1055.0
+        },
+        {
+          "rank": 10,
+          "title": "",
+          "author": "",
+          "n": 1667.0
+        },
+        {
+          "rank": 11,
+          "title": "",
+          "author": "",
+          "n": 1082.0
+        },
+        {
+          "rank": 12,
+          "title": "",
+          "author": "",
+          "n": 1119.0
+        },
+        {
+          "rank": 13,
+          "title": "",
+          "author": "",
+          "n": 1930.0
+        },
+        {
+          "rank": 14,
+          "title": "",
+          "author": "",
+          "n": 1668.0
+        },
+        {
+          "rank": 15,
+          "title": "",
+          "author": "",
+          "n": 1682.0
+        },
+        {
+          "rank": 16,
+          "title": "",
+          "author": "",
+          "n": 1848.0
+        },
+        {
+          "rank": 17,
+          "title": "",
+          "author": "",
+          "n": 1722.0
+        },
+        {
+          "rank": 18,
+          "title": "",
+          "author": "",
+          "n": 2162.0
+        },
+        {
+          "rank": 19,
+          "title": "",
+          "author": "",
+          "n": 1361.0
+        },
+        {
+          "rank": 20,
+          "title": "",
+          "author": "",
+          "n": 1957.0
+        }
+      ]
+    },
+    "sticky_in_50": 12,
+    "sep": 37.58147430419922,
+    "cheap_stab": {
+      "j50_mean": 0.5750039743683811,
+      "j50_sd": 0.0661073815050523,
+      "j200_mean": 0.4973198817338226,
+      "anti50_mean": 0.0,
+      "sticky_fraction_in_top50_mean": 0.536,
+      "n_sticky_still_ge_70pct": 13,
+      "n_sticky": 25
+    },
+    "full_stab": {
+      "j50_mean": 0.5872087252879352,
+      "j50_sd": 0.05709214724312999,
+      "j200_mean": 0.4912173326882037,
+      "anti50_mean": 0.0,
+      "sticky_fraction_in_top50_mean": 0.5100000000000001,
+      "n_sticky_still_ge_70pct": 12,
+      "n_sticky": 25
+    }
+  },
+  "end": {
+    "eval": {
+      "Q": 66.23,
+      "geo_n": 522.5720162316442,
+      "pos50": 26,
+      "anti50": 0,
+      "anti1000": 1,
+      "anti_med": 73,
+      "filler50": 6,
+      "pos_share50": 0.52,
+      "anti_share1000": 0.001,
+      "top20": [
+        {
+          "rank": 1,
+          "title": "",
+          "author": "",
+          "n": 1221.0
+        },
+        {
+          "rank": 2,
+          "title": "",
+          "author": "",
+          "n": 1304.0
+        },
+        {
+          "rank": 3,
+          "title": "",
+          "author": "",
+          "n": 861.0
+        },
+        {
+          "rank": 4,
+          "title": "",
+          "author": "",
+          "n": 81.0
+        },
+        {
+          "rank": 5,
+          "title": "",
+          "author": "",
+          "n": 940.0
+        },
+        {
+          "rank": 6,
+          "title": "",
+          "author": "",
+          "n": 799.0
+        },
+        {
+          "rank": 7,
+          "title": "",
+          "author": "",
+          "n": 664.0
+        },
+        {
+          "rank": 8,
+          "title": "",
+          "author": "",
+          "n": 1264.0
+        },
+        {
+          "rank": 9,
+          "title": "",
+          "author": "",
+          "n": 1018.0
+        },
+        {
+          "rank": 10,
+          "title": "",
+          "author": "",
+          "n": 1221.0
+        },
+        {
+          "rank": 11,
+          "title": "",
+          "author": "",
+          "n": 947.0
+        },
+        {
+          "rank": 12,
+          "title": "",
+          "author": "",
+          "n": 1059.0
+        },
+        {
+          "rank": 13,
+          "title": "",
+          "author": "",
+          "n": 1222.0
+        },
+        {
+          "rank": 14,
+          "title": "",
+          "author": "",
+          "n": 695.0
+        },
+        {
+          "rank": 15,
+          "title": "",
+          "author": "",
+          "n": 1250.0
+        },
+        {
+          "rank": 16,
+          "title": "",
+          "author": "",
+          "n": 1024.0
+        },
+        {
+          "rank": 17,
+          "title": "",
+          "author": "",
+          "n": 1181.0
+        },
+        {
+          "rank": 18,
+          "title": "",
+          "author": "",
+          "n": 1179.0
+        },
+        {
+          "rank": 19,
+          "title": "",
+          "author": "",
+          "n": 874.0
+        },
+        {
+          "rank": 20,
+          "title": "",
+          "author": "",
+          "n": 1657.0
+        }
+      ]
+    },
+    "sticky_in_50": 14,
+    "sep": 52.037506103515625,
+    "full_stab": {
+      "j50_mean": 0.6214581935004652,
+      "j50_sd": 0.05783572018337926,
+      "j200_mean": 0.5455105175364091,
+      "anti50_mean": 0.0,
+      "sticky_fraction_in_top50_mean": 0.5033333333333333,
+      "n_sticky_still_ge_70pct": 12,
+      "n_sticky": 25
+    }
+  },
+  "history": [
+    {
+      "step": 1,
+      "cheap_ok": true,
+      "reasons": [
+        "cheap gate ok",
+        "cheap-stab ok"
+      ],
+      "point": {
+        "Q": 60.67,
+        "pos50": 24,
+        "anti50": 0,
+        "sticky_in_50": 13,
+        "sep": 43.77172088623047
+      },
+      "gates": {
+        "series_gate": 0.37538667455050423,
+        "mega_gate": 0.26442178519481546,
+        "binge_gate": 2.2978515663981978,
+        "span_gate": 4.553619096085803
+      },
+      "cheap_stab": {
+        "j50_mean": 0.5925819252432156,
+        "anti50_mean": 0.0,
+        "n_sticky_still_ge_70pct": 12,
+        "n_sticky": 25,
+        "sticky_fraction_in_top50_mean": 0.504
+      },
+      "accepted": true
+    },
+    {
+      "step": 2,
+      "cheap_ok": true,
+      "reasons": [
+        "cheap gate ok",
+        "cheap-stab ok"
+      ],
+      "point": {
+        "Q": 63.31,
+        "pos50": 25,
+        "anti50": 0,
+        "sticky_in_50": 14,
+        "sep": 48.46867370605469
+      },
+      "gates": {
+        "series_gate": 0.36951113291116194,
+        "mega_gate": 0.2607312534670564,
+        "binge_gate": 2.178143255137001,
+        "span_gate": 4.924854937364397
+      },
+      "cheap_stab": {
+        "j50_mean": 0.6147278268179908,
+        "anti50_mean": 0.0,
+        "n_sticky_still_ge_70pct": 13,
+        "n_sticky": 25,
+        "sticky_fraction_in_top50_mean": 0.504
+      },
+      "accepted": true
+    },
+    {
+      "step": 3,
+      "cheap_ok": true,
+      "reasons": [
+        "cheap gate ok",
+        "cheap-stab ok"
+      ],
+      "point": {
+        "Q": 66.23,
+        "pos50": 26,
+        "anti50": 0,
+        "sticky_in_50": 14,
+        "sep": 52.037506103515625
+      },
+      "gates": {
+        "series_gate": 0.3651044766816552,
+        "mega_gate": 0.25796335467123704,
+        "binge_gate": 2.088362021691103,
+        "span_gate": 5.203281818323342
+      },
+      "cheap_stab": {
+        "j50_mean": 0.6079507777022319,
+        "anti50_mean": 0.0,
+        "n_sticky_still_ge_70pct": 12,
+        "n_sticky": 25,
+        "sticky_fraction_in_top50_mean": 0.504
+      },
+      "accepted": true
+    }
+  ],
+  "veto": {
+    "accepted": true,
+    "reasons": [
+      "passed: anti controlled + stability not worsened materially"
+    ]
+  },
+  "top15": [
+    {
+      "rank": 1,
+      "work_id": "1885548",
+      "title": "Hamlet",
+      "author": "William Shakespeare"
+    },
+    {
+      "rank": 2,
+      "work_id": "1268631",
+      "title": "Lolita",
+      "author": "Vladimir Nabokov"
+    },
+    {
+      "rank": 3,
+      "work_id": "810663",
+      "title": "The Poisonwood Bible",
+      "author": "Barbara Kingsolver"
+    },
+    {
+      "rank": 4,
+      "work_id": "24501333",
+      "title": "Dr. Seuss's Green Eggs and Ham: For Soprano, Boy Soprano, and Orchestra",
+      "author": "Robert Kapilow"
+    },
+    {
+      "rank": 5,
+      "work_id": "3208463",
+      "title": "Les Mis\u00e9rables",
+      "author": "Victor Hugo"
+    },
+    {
+      "rank": 6,
+      "work_id": "3020535",
+      "title": "Where the Wild Things Are",
+      "author": "Maurice Sendak"
+    },
+    {
+      "rank": 7,
+      "work_id": "995103",
+      "title": "Othello",
+      "author": "William Shakespeare"
+    },
+    {
+      "rank": 8,
+      "work_id": "2507928",
+      "title": "Anna Karenina",
+      "author": "Leo Tolstoy"
+    },
+    {
+      "rank": 9,
+      "work_id": "1896522",
+      "title": "Macbeth",
+      "author": "William Shakespeare"
+    },
+    {
+      "rank": 10,
+      "work_id": "3393917",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoyevsky"
+    },
+    {
+      "rank": 11,
+      "work_id": "2409320",
+      "title": "Moby-Dick or, The Whale",
+      "author": "Herman Melville"
+    },
+    {
+      "rank": 12,
+      "work_id": "2373750",
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka"
+    },
+    {
+      "rank": 13,
+      "work_id": "1385044",
+      "title": "The Bell Jar",
+      "author": "Sylvia Plath"
+    },
+    {
+      "rank": 14,
+      "work_id": "4912783",
+      "title": "War and Peace",
+      "author": "Leo Tolstoy"
+    },
+    {
+      "rank": 15,
+      "work_id": "2931549",
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck"
+    }
+  ],
+  "weights_path": "/home/ifrankling/unsw/novels/curators_explorer/data/cotrained_weights.json"
+}

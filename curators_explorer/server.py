@@ -10,6 +10,10 @@ from typing import Any
 from urllib.parse import parse_qs, urlparse
 
 from curators_explorer.db import GLOBALS, META, STATIC, execute, get_con, resolve_work_id
+from curators_explorer.distributed_canon import (
+    DISTRIBUTED_METRICS,
+    distributed_canon_detail,
+)
 from curators_explorer.hist import book_hists
 from curators_explorer.ranking import METRICS, SCALE_MODES, rank_books
 from curators_explorer.taste_packs import (
@@ -51,7 +55,17 @@ def book_detail(book_id: str, params: dict[str, Any]) -> dict[str, Any]:
     ).fetchone()
     if not row:
         return {"error": "not found"}
+    metric = str(params.get("metric") or params.get("method") or "").strip().lower()
+    metric_detail = (
+        distributed_canon_detail(work_id, metric)
+        if metric in DISTRIBUTED_METRICS
+        else None
+    )
     hists = book_hists(work_id, params)
+    if metric_detail:
+        # The live taste-pack curator histogram is a different jury from the
+        # fixed research model, so do not imply that it generated this score.
+        hists.pop("curators", None)
     return {
         "book": {
             "work_id": row[0],
@@ -76,6 +90,7 @@ def book_detail(book_id: str, params: dict[str, Any]) -> dict[str, Any]:
             "polarization": float(row[17]) if row[17] is not None else None,
         },
         "histograms": hists,
+        "metric_detail": metric_detail,
     }
 
 

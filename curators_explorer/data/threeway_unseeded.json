@@ -1,0 +1,1899 @@
+{
+  "meta": {
+    "allowed_inference": "(user, rating, work, author[, pub_year]) features only",
+    "seeds_used_for": "cohort labels + contrast / weight fitting only",
+    "seeds": {
+      "n_classic": 195,
+      "n_anti": 3258,
+      "n_normie": 50,
+      "n_classic_train": 41,
+      "n_classic_test": 39
+    },
+    "cohorts": {
+      "n_classic_excl": 31803,
+      "n_anti_excl": 221879,
+      "n_normie_excl": 33571,
+      "n_classic_soft": 60442,
+      "thresholds": {
+        "classic_hits": 6,
+        "anti_hits": 10,
+        "normie_hits": 4
+      }
+    }
+  },
+  "contrasts": {
+    "means": {
+      "classic": {
+        "five_rate": 0.3977075229132728,
+        "mean_rating": 4.049096414437508,
+        "n_rated": 230.16347514385436,
+        "n5": 75.2595038203943,
+        "mean_logn_5": 8.476412909154366,
+        "std_logn_5": 2.055513466852432,
+        "depth_ge4": 0.13265384825003396,
+        "p5_blockbuster": 0.433929852051527,
+        "series_share_5": 0.1706658070873869,
+        "mean_pub_year_5": 1968.9624709143695,
+        "n_authors_5": 53.19982391598277,
+        "binge_mean_5": 1.4311845926911284,
+        "binge_max_5": 6.352136590887652,
+        "author_hhi_5": 0.043271720075998124,
+        "singleton_author_share_5": 0.790280305601692,
+        "author_div_5": 0.7502142199900194,
+        "n_midpop_authors_5": 29.671540420715026,
+        "midpop_author_frac_5": 0.5844273456693285,
+        "midpop_span_per_logn5": 6.770649382450106,
+        "n_megastar_authors_5": 9.475049523629846,
+        "mid_catalog_share_5": 0.44010634614187494,
+        "mega_catalog_share_5": 0.16255075732126412
+      },
+      "anti": {
+        "five_rate": 0.44639476997954164,
+        "mean_rating": 4.140618153350885,
+        "n_rated": 244.9818775098139,
+        "n5": 92.38206860496037,
+        "mean_logn_5": 8.887742530360836,
+        "std_logn_5": 1.88900674618336,
+        "depth_ge4": 0.12564252850121108,
+        "p5_blockbuster": 0.4968300390492731,
+        "series_share_5": 0.6076653655887145,
+        "mean_pub_year_5": 1998.5552627475263,
+        "n_authors_5": 46.70394674574881,
+        "binge_mean_5": 2.107737487968092,
+        "binge_max_5": 11.054795631853398,
+        "author_hhi_5": 0.07424916017143608,
+        "singleton_author_share_5": 0.6684656975208211,
+        "author_div_5": 0.5569944822936823,
+        "n_midpop_authors_5": 25.973873147075658,
+        "midpop_author_frac_5": 0.5857286302683041,
+        "midpop_span_per_logn5": 5.68826046214078,
+        "n_megastar_authors_5": 9.545166509674193,
+        "mid_catalog_share_5": 0.448922224881665,
+        "mega_catalog_share_5": 0.21732684637705896
+      },
+      "normie": {
+        "five_rate": 0.3674404434748155,
+        "mean_rating": 3.9858072730317984,
+        "n_rated": 148.11369932382115,
+        "n5": 43.12031217419797,
+        "mean_logn_5": 9.244639843844364,
+        "std_logn_5": 2.036978560983244,
+        "depth_ge4": 0.12180690377201732,
+        "p5_blockbuster": 0.4040634721218805,
+        "series_share_5": 0.2799256932345732,
+        "mean_pub_year_5": 1975.2620124939465,
+        "n_authors_5": 33.080754222394326,
+        "binge_mean_5": 1.327039163468777,
+        "binge_max_5": 4.798039974978404,
+        "author_hhi_5": 0.05955407175058992,
+        "singleton_author_share_5": 0.840813742865648,
+        "author_div_5": 0.8025857617017078,
+        "n_midpop_authors_5": 17.81308272020494,
+        "midpop_author_frac_5": 0.5357141932414785,
+        "midpop_span_per_logn5": 4.635031249108666,
+        "n_megastar_authors_5": 9.787078132912335,
+        "mid_catalog_share_5": 0.3501288483211817,
+        "mega_catalog_share_5": 0.31503083377700725
+      }
+    },
+    "contrasts": {
+      "five_rate": {
+        "classic": 0.3977075229132728,
+        "anti": 0.44639476997954164,
+        "normie": 0.3674404434748155,
+        "d_vs_anti": -0.23146812663631644,
+        "d_vs_normie": 0.1438952620762582,
+        "separates_both": false,
+        "min_abs_d": 0.1438952620762582,
+        "direction": 0
+      },
+      "mean_rating": {
+        "classic": 4.049096414437508,
+        "anti": 4.140618153350885,
+        "normie": 3.9858072730317984,
+        "d_vs_anti": -0.22453393511593345,
+        "d_vs_normie": 0.1552697767618103,
+        "separates_both": false,
+        "min_abs_d": 0.1552697767618103,
+        "direction": 0
+      },
+      "n_rated": {
+        "classic": 230.16347514385436,
+        "anti": 244.9818775098139,
+        "normie": 148.11369932382115,
+        "d_vs_anti": -0.05939975275801747,
+        "d_vs_normie": 0.32889756109987645,
+        "separates_both": false,
+        "min_abs_d": 0.05939975275801747,
+        "direction": 0
+      },
+      "n5": {
+        "classic": 75.2595038203943,
+        "anti": 92.38206860496037,
+        "normie": 43.12031217419797,
+        "d_vs_anti": -0.1775630486880911,
+        "d_vs_normie": 0.3332872687515473,
+        "separates_both": false,
+        "min_abs_d": 0.1775630486880911,
+        "direction": 0
+      },
+      "mean_logn_5": {
+        "classic": 8.476412909154366,
+        "anti": 8.887742530360836,
+        "normie": 9.244639843844364,
+        "d_vs_anti": -0.33688623557518643,
+        "d_vs_normie": -0.6291914482990012,
+        "separates_both": true,
+        "min_abs_d": 0.33688623557518643,
+        "direction": -1
+      },
+      "std_logn_5": {
+        "classic": 2.055513466852432,
+        "anti": 1.88900674618336,
+        "normie": 2.036978560983244,
+        "d_vs_anti": 0.37702041080325205,
+        "d_vs_normie": 0.04196850311459532,
+        "separates_both": false,
+        "min_abs_d": 0.04196850311459532,
+        "direction": 1
+      },
+      "depth_ge4": {
+        "classic": 0.13265384825003396,
+        "anti": 0.12564252850121108,
+        "normie": 0.12180690377201732,
+        "d_vs_anti": 0.32520402715163993,
+        "d_vs_normie": 0.503110705674702,
+        "separates_both": true,
+        "min_abs_d": 0.32520402715163993,
+        "direction": 1
+      },
+      "p5_blockbuster": {
+        "classic": 0.433929852051527,
+        "anti": 0.4968300390492731,
+        "normie": 0.4040634721218805,
+        "d_vs_anti": -0.2887207939800384,
+        "d_vs_normie": 0.13709092672341375,
+        "separates_both": false,
+        "min_abs_d": 0.13709092672341375,
+        "direction": 0
+      },
+      "series_share_5": {
+        "classic": 0.1706658070873869,
+        "anti": 0.6076653655887145,
+        "normie": 0.2799256932345732,
+        "d_vs_anti": -1.5492234724178917,
+        "d_vs_normie": -0.3873413071478269,
+        "separates_both": true,
+        "min_abs_d": 0.3873413071478269,
+        "direction": -1
+      },
+      "mean_pub_year_5": {
+        "classic": 1968.9624709143695,
+        "anti": 1998.5552627475263,
+        "normie": 1975.2620124939465,
+        "d_vs_anti": -1.8525342465972716,
+        "d_vs_normie": -0.39435672645641323,
+        "separates_both": true,
+        "min_abs_d": 0.39435672645641323,
+        "direction": -1
+      },
+      "n_authors_5": {
+        "classic": 53.19982391598277,
+        "anti": 46.70394674574881,
+        "normie": 33.080754222394326,
+        "d_vs_anti": 0.13375324695436286,
+        "d_vs_normie": 0.4142613578885839,
+        "separates_both": true,
+        "min_abs_d": 0.13375324695436286,
+        "direction": 1
+      },
+      "binge_mean_5": {
+        "classic": 1.4311845926911284,
+        "anti": 2.107737487968092,
+        "normie": 1.327039163468777,
+        "d_vs_anti": -0.688824524206237,
+        "d_vs_normie": 0.10603446712466265,
+        "separates_both": false,
+        "min_abs_d": 0.10603446712466265,
+        "direction": 0
+      },
+      "binge_max_5": {
+        "classic": 6.352136590887652,
+        "anti": 11.054795631853398,
+        "normie": 4.798039974978404,
+        "d_vs_anti": -0.5264875094216905,
+        "d_vs_normie": 0.1739893216971793,
+        "separates_both": false,
+        "min_abs_d": 0.1739893216971793,
+        "direction": 0
+      },
+      "author_hhi_5": {
+        "classic": 0.043271720075998124,
+        "anti": 0.07424916017143608,
+        "normie": 0.05955407175058992,
+        "d_vs_anti": -0.43634496845664783,
+        "d_vs_normie": -0.22935149599066174,
+        "separates_both": true,
+        "min_abs_d": 0.22935149599066174,
+        "direction": -1
+      },
+      "singleton_author_share_5": {
+        "classic": 0.790280305601692,
+        "anti": 0.6684656975208211,
+        "normie": 0.840813742865648,
+        "d_vs_anti": 0.7401160512911076,
+        "d_vs_normie": -0.30702892399519344,
+        "separates_both": false,
+        "min_abs_d": 0.30702892399519344,
+        "direction": 0
+      },
+      "author_div_5": {
+        "classic": 0.7502142199900194,
+        "anti": 0.5569944822936823,
+        "normie": 0.8025857617017078,
+        "d_vs_anti": 0.9189071652130107,
+        "d_vs_normie": -0.2490666093738047,
+        "separates_both": false,
+        "min_abs_d": 0.2490666093738047,
+        "direction": 0
+      },
+      "n_midpop_authors_5": {
+        "classic": 29.671540420715026,
+        "anti": 25.973873147075658,
+        "normie": 17.81308272020494,
+        "d_vs_anti": 0.1839371724944738,
+        "d_vs_normie": 0.5898884399705125,
+        "separates_both": true,
+        "min_abs_d": 0.1839371724944738,
+        "direction": 1
+      },
+      "midpop_author_frac_5": {
+        "classic": 0.5844273456693285,
+        "anti": 0.5857286302683041,
+        "normie": 0.5357141932414785,
+        "d_vs_anti": -0.008041101306354319,
+        "d_vs_normie": 0.3010159298992557,
+        "separates_both": false,
+        "min_abs_d": 0.008041101306354319,
+        "direction": 0
+      },
+      "midpop_span_per_logn5": {
+        "classic": 6.770649382450106,
+        "anti": 5.68826046214078,
+        "normie": 4.635031249108666,
+        "d_vs_anti": 0.31393295743288696,
+        "d_vs_normie": 0.6194085175553913,
+        "separates_both": true,
+        "min_abs_d": 0.31393295743288696,
+        "direction": 1
+      },
+      "n_megastar_authors_5": {
+        "classic": 9.475049523629846,
+        "anti": 9.545166509674193,
+        "normie": 9.787078132912335,
+        "d_vs_anti": -0.011956274220621047,
+        "d_vs_normie": -0.05320678807986546,
+        "separates_both": false,
+        "min_abs_d": 0.011956274220621047,
+        "direction": -1
+      },
+      "mid_catalog_share_5": {
+        "classic": 0.44010634614187494,
+        "anti": 0.448922224881665,
+        "normie": 0.3501288483211817,
+        "d_vs_anti": -0.052717791208389805,
+        "d_vs_normie": 0.5380535603507647,
+        "separates_both": false,
+        "min_abs_d": 0.052717791208389805,
+        "direction": 0
+      },
+      "mega_catalog_share_5": {
+        "classic": 0.16255075732126412,
+        "anti": 0.21732684637705896,
+        "normie": 0.31503083377700725,
+        "d_vs_anti": -0.3420322250895461,
+        "d_vs_normie": -0.952114339139088,
+        "separates_both": true,
+        "min_abs_d": 0.3420322250895461,
+        "direction": -1
+      }
+    },
+    "gold": [
+      "mean_pub_year_5",
+      "series_share_5",
+      "mega_catalog_share_5",
+      "mean_logn_5",
+      "depth_ge4",
+      "midpop_span_per_logn5",
+      "author_hhi_5",
+      "n_midpop_authors_5",
+      "n_authors_5"
+    ]
+  },
+  "affinity": {
+    "weights": {
+      "classic_terms": {
+        "mean_pub_year_5": -1.4,
+        "series_share_5": -1.5,
+        "mega_catalog_share_5": -1.3,
+        "mean_logn_5": -1.0,
+        "depth_ge4": 0.9,
+        "midpop_span_per_logn5": 1.2,
+        "author_hhi_5": -0.8,
+        "mid_catalog_share_5": 0.5,
+        "std_logn_5": 0.4,
+        "singleton_author_share_5": 0.6,
+        "binge_mean_5": -0.7,
+        "author_div_5": 0.5
+      },
+      "anti_terms": {
+        "series_share_5": 1.6,
+        "binge_mean_5": 1.2,
+        "binge_max_5": 0.8,
+        "author_hhi_5": 1.0,
+        "mean_pub_year_5": 1.0,
+        "singleton_author_share_5": -0.8,
+        "author_div_5": -0.6
+      },
+      "normie_terms": {
+        "mega_catalog_share_5": 1.5,
+        "mean_logn_5": 1.3,
+        "p5_blockbuster": 0.8,
+        "n_megastar_authors_5": 0.6,
+        "midpop_span_per_logn5": -0.7,
+        "depth_ge4": -0.5
+      },
+      "lambda_anti": 0.85,
+      "lambda_normie": 0.75
+    },
+    "cohort_mean_affinity": {
+      "classic": {
+        "focus": 10.727002943007934,
+        "classic_raw": 6.061177817073674,
+        "anti_raw": -4.805087795194268,
+        "normie_raw": -0.775334000025535
+      },
+      "anti": {
+        "focus": -4.764191927261259,
+        "classic_raw": -2.1663622621448058,
+        "anti_raw": 2.353765552473667,
+        "normie_raw": 0.796171927351796
+      },
+      "normie": {
+        "focus": 3.8097416166988682,
+        "classic_raw": 1.7787159018166783,
+        "anti_raw": -4.223129404038245,
+        "normie_raw": 2.078179038067088
+      }
+    },
+    "overlap_top8pct": {
+      "n_aff_top8pct_gated": 8984,
+      "classic": {
+        "n_overlap": 4163,
+        "frac_of_top": 0.4633793410507569,
+        "recall_of_cohort": 0.13089960066660378
+      },
+      "anti": {
+        "n_overlap": 937,
+        "frac_of_top": 0.10429652715939448,
+        "recall_of_cohort": 0.004223022458186669
+      },
+      "normie": {
+        "n_overlap": 453,
+        "frac_of_top": 0.050422974176313445,
+        "recall_of_cohort": 0.01349378928241637
+      }
+    }
+  },
+  "rankings": {
+    "unseeded_gated_weighted": {
+      "elapsed_ms": 576,
+      "eval_literary_poll": {
+        "Q": 21.66,
+        "geo_n": 89.32980100447884,
+        "pos50": 8,
+        "anti50": 0,
+        "anti1000": 18,
+        "anti_med": 666,
+        "filler50": 0,
+        "pos_share50": 0.16,
+        "anti_share1000": 0.018,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 226.20911926116943
+          },
+          {
+            "rank": 2,
+            "title": "Duino Elegies and The Sonnets to Orpheus",
+            "author": "Rainer Maria Rilke",
+            "n": 33.79598301901248
+          },
+          {
+            "rank": 3,
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "n": 236.98812953212388
+          },
+          {
+            "rank": 4,
+            "title": "Refugee",
+            "author": "Alan Gratz",
+            "n": 29.219835243946317
+          },
+          {
+            "rank": 5,
+            "title": "The War that Saved My Life (The War That Saved My Life #1)",
+            "author": "Kimberly Brubaker Bradley",
+            "n": 173.32729234520755
+          },
+          {
+            "rank": 6,
+            "title": "Geography III",
+            "author": "Elizabeth Bishop",
+            "n": 57.77600840398486
+          },
+          {
+            "rank": 7,
+            "title": "Life and Fate",
+            "author": "Vasily Grossman",
+            "n": 130.2073129740077
+          },
+          {
+            "rank": 8,
+            "title": "The Selected Poetry of Rainer Maria Rilke",
+            "author": "Rainer Maria Rilke",
+            "n": 217.7564367399285
+          },
+          {
+            "rank": 9,
+            "title": "The Selected Poems",
+            "author": "Osip Mandelstam",
+            "n": 36.86496288079536
+          },
+          {
+            "rank": 10,
+            "title": "Residence on Earth",
+            "author": "Pablo Neruda",
+            "n": 42.44284669537574
+          },
+          {
+            "rank": 11,
+            "title": "The Essential Neruda: Selected Poems",
+            "author": "Pablo Neruda",
+            "n": 77.084672411735
+          },
+          {
+            "rank": 12,
+            "title": "Poems of Paul Celan",
+            "author": "Paul Celan",
+            "n": 115.83909721434819
+          },
+          {
+            "rank": 13,
+            "title": "A Monster Calls",
+            "author": "Patrick Ness",
+            "n": 219.560778817982
+          },
+          {
+            "rank": 14,
+            "title": "الساعة الخامسة والعشرون",
+            "author": "Constantin Virgil Gheorghiu",
+            "n": 34.38133645760919
+          },
+          {
+            "rank": 15,
+            "title": "Complete Poems and Selected Letters",
+            "author": "John Keats",
+            "n": 55.42508826023381
+          },
+          {
+            "rank": 16,
+            "title": "Shahnameh: The Persian Book of Kings",
+            "author": "Abolqasem Ferdowsi",
+            "n": 35.311723598287706
+          },
+          {
+            "rank": 17,
+            "title": "Peter Pan (A Little Golden Book)",
+            "author": "Eugene Bradley Coco",
+            "n": 110.92381418983507
+          },
+          {
+            "rank": 18,
+            "title": "Complete Poems, 1904-1962",
+            "author": "E.E. Cummings",
+            "n": 119.77937188797848
+          },
+          {
+            "rank": 19,
+            "title": "The Compleat Works of Wllm Shkspr",
+            "author": "Reduced Shakespeare Company",
+            "n": 43.04982527056805
+          },
+          {
+            "rank": 20,
+            "title": "The Essential Rumi",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 201.1105467457129
+          }
+        ]
+      },
+      "seed_counts": {
+        "classic50": 2,
+        "classic200": 18,
+        "test50": 2,
+        "test200": 8,
+        "normie50": 1,
+        "normie200": 4,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "top25": [
+        {
+          "rank": 1,
+          "title": "The Hate U Give",
+          "author": "Angie Thomas",
+          "n": 226.20911926116943
+        },
+        {
+          "rank": 2,
+          "title": "Duino Elegies and The Sonnets to Orpheus",
+          "author": "Rainer Maria Rilke",
+          "n": 33.79598301901248
+        },
+        {
+          "rank": 3,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa",
+          "n": 236.98812953212388
+        },
+        {
+          "rank": 4,
+          "title": "Refugee",
+          "author": "Alan Gratz",
+          "n": 29.219835243946317
+        },
+        {
+          "rank": 5,
+          "title": "The War that Saved My Life (The War That Saved My Life #1)",
+          "author": "Kimberly Brubaker Bradley",
+          "n": 173.32729234520755
+        },
+        {
+          "rank": 6,
+          "title": "Geography III",
+          "author": "Elizabeth Bishop",
+          "n": 57.77600840398486
+        },
+        {
+          "rank": 7,
+          "title": "Life and Fate",
+          "author": "Vasily Grossman",
+          "n": 130.2073129740077
+        },
+        {
+          "rank": 8,
+          "title": "The Selected Poetry of Rainer Maria Rilke",
+          "author": "Rainer Maria Rilke",
+          "n": 217.7564367399285
+        },
+        {
+          "rank": 9,
+          "title": "The Selected Poems",
+          "author": "Osip Mandelstam",
+          "n": 36.86496288079536
+        },
+        {
+          "rank": 10,
+          "title": "Residence on Earth",
+          "author": "Pablo Neruda",
+          "n": 42.44284669537574
+        },
+        {
+          "rank": 11,
+          "title": "The Essential Neruda: Selected Poems",
+          "author": "Pablo Neruda",
+          "n": 77.084672411735
+        },
+        {
+          "rank": 12,
+          "title": "Poems of Paul Celan",
+          "author": "Paul Celan",
+          "n": 115.83909721434819
+        },
+        {
+          "rank": 13,
+          "title": "A Monster Calls",
+          "author": "Patrick Ness",
+          "n": 219.560778817982
+        },
+        {
+          "rank": 14,
+          "title": "الساعة الخامسة والعشرون",
+          "author": "Constantin Virgil Gheorghiu",
+          "n": 34.38133645760919
+        },
+        {
+          "rank": 15,
+          "title": "Complete Poems and Selected Letters",
+          "author": "John Keats",
+          "n": 55.42508826023381
+        },
+        {
+          "rank": 16,
+          "title": "Shahnameh: The Persian Book of Kings",
+          "author": "Abolqasem Ferdowsi",
+          "n": 35.311723598287706
+        },
+        {
+          "rank": 17,
+          "title": "Peter Pan (A Little Golden Book)",
+          "author": "Eugene Bradley Coco",
+          "n": 110.92381418983507
+        },
+        {
+          "rank": 18,
+          "title": "Complete Poems, 1904-1962",
+          "author": "E.E. Cummings",
+          "n": 119.77937188797848
+        },
+        {
+          "rank": 19,
+          "title": "The Compleat Works of Wllm Shkspr",
+          "author": "Reduced Shakespeare Company",
+          "n": 43.04982527056805
+        },
+        {
+          "rank": 20,
+          "title": "The Essential Rumi",
+          "author": "Jalaluddin Mevlana Rumi",
+          "n": 201.1105467457129
+        },
+        {
+          "rank": 21,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "n": 290.3643518445083
+        },
+        {
+          "rank": 22,
+          "title": "Full Woman, Fleshly Apple, Hot Moon: Selected Poems",
+          "author": "Pablo Neruda",
+          "n": 30.537047608743283
+        },
+        {
+          "rank": 23,
+          "title": "Paradise Lost and Paradise Regained",
+          "author": "John Milton",
+          "n": 72.22640327146337
+        },
+        {
+          "rank": 24,
+          "title": "The Three Little Pigs",
+          "author": "Elizabeth Ross",
+          "n": 61.401477781222304
+        },
+        {
+          "rank": 25,
+          "title": "Jayber Crow",
+          "author": "Wendell Berry",
+          "n": 25.28225235623747
+        }
+      ]
+    },
+    "unseeded_gated_top8_hard": {
+      "elapsed_ms": 419,
+      "eval_literary_poll": {
+        "Q": 29.5,
+        "geo_n": 243.22077886874146,
+        "pos50": 10,
+        "anti50": 0,
+        "anti1000": 11,
+        "anti_med": 700,
+        "filler50": 1,
+        "pos_share50": 0.2,
+        "anti_share1000": 0.011,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 365.0
+          },
+          {
+            "rank": 2,
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "n": 402.0
+          },
+          {
+            "rank": 3,
+            "title": "The Selected Poetry of Rainer Maria Rilke",
+            "author": "Rainer Maria Rilke",
+            "n": 308.0
+          },
+          {
+            "rank": 4,
+            "title": "The War that Saved My Life (The War That Saved My Life #1)",
+            "author": "Kimberly Brubaker Bradley",
+            "n": 254.0
+          },
+          {
+            "rank": 5,
+            "title": "Life and Fate",
+            "author": "Vasily Grossman",
+            "n": 158.0
+          },
+          {
+            "rank": 6,
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "n": 1861.0
+          },
+          {
+            "rank": 7,
+            "title": "Hamlet",
+            "author": "William Shakespeare",
+            "n": 2549.0
+          },
+          {
+            "rank": 8,
+            "title": "A Monster Calls",
+            "author": "Patrick Ness",
+            "n": 424.0
+          },
+          {
+            "rank": 9,
+            "title": "A Season in Hell/The Drunken Boat",
+            "author": "Arthur Rimbaud",
+            "n": 235.0
+          },
+          {
+            "rank": 10,
+            "title": "In the Shadow of Young Girls in Flower (In Search of Lost Time, #2)",
+            "author": "Marcel Proust",
+            "n": 227.0
+          },
+          {
+            "rank": 11,
+            "title": "Complete Poems and Selected Letters",
+            "author": "John Keats",
+            "n": 71.0
+          },
+          {
+            "rank": 12,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky",
+            "n": 2781.0
+          },
+          {
+            "rank": 13,
+            "title": "Four Quartets",
+            "author": "T.S. Eliot",
+            "n": 392.0
+          },
+          {
+            "rank": 14,
+            "title": "The Essential Rumi",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 374.0
+          },
+          {
+            "rank": 15,
+            "title": "Poems of Paul Celan",
+            "author": "Paul Celan",
+            "n": 150.0
+          },
+          {
+            "rank": 16,
+            "title": "Duino Elegies",
+            "author": "Rainer Maria Rilke",
+            "n": 227.0
+          },
+          {
+            "rank": 17,
+            "title": "The Essential Neruda: Selected Poems",
+            "author": "Pablo Neruda",
+            "n": 106.0
+          },
+          {
+            "rank": 18,
+            "title": "Complete Poems, 1904-1962",
+            "author": "E.E. Cummings",
+            "n": 244.0
+          },
+          {
+            "rank": 19,
+            "title": "Time Regained (In Search of Lost Time, #7)",
+            "author": "Marcel Proust",
+            "n": 124.0
+          },
+          {
+            "rank": 20,
+            "title": "Les Fleurs du Mal",
+            "author": "Charles Baudelaire",
+            "n": 671.0
+          }
+        ]
+      },
+      "seed_counts": {
+        "classic50": 7,
+        "classic200": 32,
+        "test50": 4,
+        "test200": 16,
+        "normie50": 2,
+        "normie200": 6,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "top25": [
+        {
+          "rank": 1,
+          "title": "The Hate U Give",
+          "author": "Angie Thomas",
+          "n": 365.0
+        },
+        {
+          "rank": 2,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa",
+          "n": 402.0
+        },
+        {
+          "rank": 3,
+          "title": "The Selected Poetry of Rainer Maria Rilke",
+          "author": "Rainer Maria Rilke",
+          "n": 308.0
+        },
+        {
+          "rank": 4,
+          "title": "The War that Saved My Life (The War That Saved My Life #1)",
+          "author": "Kimberly Brubaker Bradley",
+          "n": 254.0
+        },
+        {
+          "rank": 5,
+          "title": "Life and Fate",
+          "author": "Vasily Grossman",
+          "n": 158.0
+        },
+        {
+          "rank": 6,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "n": 1861.0
+        },
+        {
+          "rank": 7,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "n": 2549.0
+        },
+        {
+          "rank": 8,
+          "title": "A Monster Calls",
+          "author": "Patrick Ness",
+          "n": 424.0
+        },
+        {
+          "rank": 9,
+          "title": "A Season in Hell/The Drunken Boat",
+          "author": "Arthur Rimbaud",
+          "n": 235.0
+        },
+        {
+          "rank": 10,
+          "title": "In the Shadow of Young Girls in Flower (In Search of Lost Time, #2)",
+          "author": "Marcel Proust",
+          "n": 227.0
+        },
+        {
+          "rank": 11,
+          "title": "Complete Poems and Selected Letters",
+          "author": "John Keats",
+          "n": 71.0
+        },
+        {
+          "rank": 12,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "n": 2781.0
+        },
+        {
+          "rank": 13,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "n": 392.0
+        },
+        {
+          "rank": 14,
+          "title": "The Essential Rumi",
+          "author": "Jalaluddin Mevlana Rumi",
+          "n": 374.0
+        },
+        {
+          "rank": 15,
+          "title": "Poems of Paul Celan",
+          "author": "Paul Celan",
+          "n": 150.0
+        },
+        {
+          "rank": 16,
+          "title": "Duino Elegies",
+          "author": "Rainer Maria Rilke",
+          "n": 227.0
+        },
+        {
+          "rank": 17,
+          "title": "The Essential Neruda: Selected Poems",
+          "author": "Pablo Neruda",
+          "n": 106.0
+        },
+        {
+          "rank": 18,
+          "title": "Complete Poems, 1904-1962",
+          "author": "E.E. Cummings",
+          "n": 244.0
+        },
+        {
+          "rank": 19,
+          "title": "Time Regained (In Search of Lost Time, #7)",
+          "author": "Marcel Proust",
+          "n": 124.0
+        },
+        {
+          "rank": 20,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire",
+          "n": 671.0
+        },
+        {
+          "rank": 21,
+          "title": "Autobiography of Red",
+          "author": "Anne Carson",
+          "n": 266.0
+        },
+        {
+          "rank": 22,
+          "title": "The Poetry of Pablo Neruda",
+          "author": "Pablo Neruda",
+          "n": 227.0
+        },
+        {
+          "rank": 23,
+          "title": "Wonder (Wonder #1)",
+          "author": "R.J. Palacio",
+          "n": 692.0
+        },
+        {
+          "rank": 24,
+          "title": "Illuminations",
+          "author": "Arthur Rimbaud",
+          "n": 295.0
+        },
+        {
+          "rank": 25,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "n": 861.0
+        }
+      ]
+    },
+    "unseeded_gated_top4": {
+      "elapsed_ms": 402,
+      "eval_literary_poll": {
+        "Q": 27.15,
+        "geo_n": 88.65041731953849,
+        "pos50": 11,
+        "anti50": 0,
+        "anti1000": 25,
+        "anti_med": 665,
+        "filler50": 0,
+        "pos_share50": 0.22,
+        "anti_share1000": 0.025,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "n": 109.01734006445818
+          },
+          {
+            "rank": 2,
+            "title": "The War that Saved My Life (The War That Saved My Life #1)",
+            "author": "Kimberly Brubaker Bradley",
+            "n": 92.85216005409818
+          },
+          {
+            "rank": 3,
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "n": 132.97010483035965
+          },
+          {
+            "rank": 4,
+            "title": "Geography III",
+            "author": "Elizabeth Bishop",
+            "n": 41.42063571833108
+          },
+          {
+            "rank": 5,
+            "title": "A Monster Calls",
+            "author": "Patrick Ness",
+            "n": 100.73930599240676
+          },
+          {
+            "rank": 6,
+            "title": "The Selected Poetry of Rainer Maria Rilke",
+            "author": "Rainer Maria Rilke",
+            "n": 137.41198771850404
+          },
+          {
+            "rank": 7,
+            "title": "Complete Poems, 1904-1962",
+            "author": "E.E. Cummings",
+            "n": 63.61261827888974
+          },
+          {
+            "rank": 8,
+            "title": "Peter Pan (A Little Golden Book)",
+            "author": "Eugene Bradley Coco",
+            "n": 59.47684431274627
+          },
+          {
+            "rank": 9,
+            "title": "The Essential Rumi",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 100.73861286503059
+          },
+          {
+            "rank": 10,
+            "title": "Hamlet",
+            "author": "William Shakespeare",
+            "n": 965.5638513464361
+          },
+          {
+            "rank": 11,
+            "title": "Paradise Lost and Paradise Regained",
+            "author": "John Milton",
+            "n": 50.19431740917057
+          },
+          {
+            "rank": 12,
+            "title": "Four Quartets",
+            "author": "T.S. Eliot",
+            "n": 192.6508959407718
+          },
+          {
+            "rank": 13,
+            "title": "Life and Fate",
+            "author": "Vasily Grossman",
+            "n": 94.35883411495746
+          },
+          {
+            "rank": 14,
+            "title": "Poems of Paul Celan",
+            "author": "Paul Celan",
+            "n": 85.61390705270273
+          },
+          {
+            "rank": 15,
+            "title": "The Man Without Qualities",
+            "author": "Robert Musil",
+            "n": 41.459953743401464
+          },
+          {
+            "rank": 16,
+            "title": "Echo",
+            "author": "Pam Munoz Ryan",
+            "n": 46.63024837503713
+          },
+          {
+            "rank": 17,
+            "title": "The Riverside Chaucer",
+            "author": "Geoffrey Chaucer",
+            "n": 56.451658522539674
+          },
+          {
+            "rank": 18,
+            "title": "Autobiography of Red",
+            "author": "Anne Carson",
+            "n": 70.4972417290812
+          },
+          {
+            "rank": 19,
+            "title": "These Is My Words: The Diary of Sarah Agnes Prine, 1881-1901, Arizona Territories (Sarah Agnes Prine, #1)",
+            "author": "Nancy E. Turner",
+            "n": 25.601535994576818
+          },
+          {
+            "rank": 20,
+            "title": "All American Boys",
+            "author": "Jason Reynolds",
+            "n": 27.949745865842615
+          }
+        ]
+      },
+      "seed_counts": {
+        "classic50": 7,
+        "classic200": 31,
+        "test50": 4,
+        "test200": 12,
+        "normie50": 2,
+        "normie200": 5,
+        "anti50": 0,
+        "anti200": 2
+      },
+      "top25": [
+        {
+          "rank": 1,
+          "title": "The Hate U Give",
+          "author": "Angie Thomas",
+          "n": 109.01734006445818
+        },
+        {
+          "rank": 2,
+          "title": "The War that Saved My Life (The War That Saved My Life #1)",
+          "author": "Kimberly Brubaker Bradley",
+          "n": 92.85216005409818
+        },
+        {
+          "rank": 3,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa",
+          "n": 132.97010483035965
+        },
+        {
+          "rank": 4,
+          "title": "Geography III",
+          "author": "Elizabeth Bishop",
+          "n": 41.42063571833108
+        },
+        {
+          "rank": 5,
+          "title": "A Monster Calls",
+          "author": "Patrick Ness",
+          "n": 100.73930599240676
+        },
+        {
+          "rank": 6,
+          "title": "The Selected Poetry of Rainer Maria Rilke",
+          "author": "Rainer Maria Rilke",
+          "n": 137.41198771850404
+        },
+        {
+          "rank": 7,
+          "title": "Complete Poems, 1904-1962",
+          "author": "E.E. Cummings",
+          "n": 63.61261827888974
+        },
+        {
+          "rank": 8,
+          "title": "Peter Pan (A Little Golden Book)",
+          "author": "Eugene Bradley Coco",
+          "n": 59.47684431274627
+        },
+        {
+          "rank": 9,
+          "title": "The Essential Rumi",
+          "author": "Jalaluddin Mevlana Rumi",
+          "n": 100.73861286503059
+        },
+        {
+          "rank": 10,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "n": 965.5638513464361
+        },
+        {
+          "rank": 11,
+          "title": "Paradise Lost and Paradise Regained",
+          "author": "John Milton",
+          "n": 50.19431740917057
+        },
+        {
+          "rank": 12,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "n": 192.6508959407718
+        },
+        {
+          "rank": 13,
+          "title": "Life and Fate",
+          "author": "Vasily Grossman",
+          "n": 94.35883411495746
+        },
+        {
+          "rank": 14,
+          "title": "Poems of Paul Celan",
+          "author": "Paul Celan",
+          "n": 85.61390705270273
+        },
+        {
+          "rank": 15,
+          "title": "The Man Without Qualities",
+          "author": "Robert Musil",
+          "n": 41.459953743401464
+        },
+        {
+          "rank": 16,
+          "title": "Echo",
+          "author": "Pam Munoz Ryan",
+          "n": 46.63024837503713
+        },
+        {
+          "rank": 17,
+          "title": "The Riverside Chaucer",
+          "author": "Geoffrey Chaucer",
+          "n": 56.451658522539674
+        },
+        {
+          "rank": 18,
+          "title": "Autobiography of Red",
+          "author": "Anne Carson",
+          "n": 70.4972417290812
+        },
+        {
+          "rank": 19,
+          "title": "These Is My Words: The Diary of Sarah Agnes Prine, 1881-1901, Arizona Territories (Sarah Agnes Prine, #1)",
+          "author": "Nancy E. Turner",
+          "n": 25.601535994576818
+        },
+        {
+          "rank": 20,
+          "title": "All American Boys",
+          "author": "Jason Reynolds",
+          "n": 27.949745865842615
+        },
+        {
+          "rank": 21,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "n": 705.372500814656
+        },
+        {
+          "rank": 22,
+          "title": "The Crossover",
+          "author": "Kwame Alexander",
+          "n": 55.0044759630262
+        },
+        {
+          "rank": 23,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri",
+          "n": 341.4101658388355
+        },
+        {
+          "rank": 24,
+          "title": "In the Shadow of Young Girls in Flower (In Search of Lost Time, #2)",
+          "author": "Marcel Proust",
+          "n": 66.1054644999035
+        },
+        {
+          "rank": 25,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "n": 279.2922364026088
+        }
+      ]
+    },
+    "unseeded_contrastive": {
+      "elapsed_ms": 745,
+      "eval_literary_poll": {
+        "Q": 71.76,
+        "geo_n": 84.8070840427355,
+        "pos50": 22,
+        "anti50": 0,
+        "anti1000": 3,
+        "anti_med": 926,
+        "filler50": 1,
+        "pos_share50": 0.44,
+        "anti_share1000": 0.003,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "n": 37.0
+          },
+          {
+            "rank": 2,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "n": 300.0
+          },
+          {
+            "rank": 3,
+            "title": "Paradise Lost",
+            "author": "John Milton",
+            "n": 43.0
+          },
+          {
+            "rank": 4,
+            "title": "Hamlet",
+            "author": "William Shakespeare",
+            "n": 427.0
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf",
+            "n": 40.0
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "n": 138.0
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky",
+            "n": 123.0
+          },
+          {
+            "rank": 8,
+            "title": "Macbeth",
+            "author": "William Shakespeare",
+            "n": 373.0
+          },
+          {
+            "rank": 9,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams",
+            "n": 63.0
+          },
+          {
+            "rank": 10,
+            "title": "The Trial",
+            "author": "Franz Kafka",
+            "n": 31.0
+          },
+          {
+            "rank": 11,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver",
+            "n": 105.0
+          },
+          {
+            "rank": 12,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison",
+            "n": 30.0
+          },
+          {
+            "rank": 13,
+            "title": "Life After Life",
+            "author": "Kate Atkinson",
+            "n": 30.0
+          },
+          {
+            "rank": 14,
+            "title": "King Lear",
+            "author": "William Shakespeare",
+            "n": 116.0
+          },
+          {
+            "rank": 15,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad",
+            "n": 88.0
+          },
+          {
+            "rank": 16,
+            "title": "Bud, Not Buddy",
+            "author": "Christopher Paul Curtis",
+            "n": 37.0
+          },
+          {
+            "rank": 17,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston",
+            "n": 44.0
+          },
+          {
+            "rank": 18,
+            "title": "The Odyssey",
+            "author": "Homer",
+            "n": 595.0
+          },
+          {
+            "rank": 19,
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes Saavedra",
+            "n": 75.0
+          },
+          {
+            "rank": 20,
+            "title": "Death of a Salesman",
+            "author": "Arthur Miller",
+            "n": 71.0
+          }
+        ]
+      },
+      "seed_counts": {
+        "classic50": 22,
+        "classic200": 40,
+        "test50": 7,
+        "test200": 13,
+        "normie50": 6,
+        "normie200": 19,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "top25": [
+        {
+          "rank": 1,
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "n": 37.0
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville",
+          "n": 300.0
+        },
+        {
+          "rank": 3,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "n": 43.0
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "n": 427.0
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf",
+          "n": 40.0
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "n": 138.0
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "n": 123.0
+        },
+        {
+          "rank": 8,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "n": 373.0
+        },
+        {
+          "rank": 9,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams",
+          "n": 63.0
+        },
+        {
+          "rank": 10,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "n": 31.0
+        },
+        {
+          "rank": 11,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver",
+          "n": 105.0
+        },
+        {
+          "rank": 12,
+          "title": "Invisible Man",
+          "author": "Ralph Ellison",
+          "n": 30.0
+        },
+        {
+          "rank": 13,
+          "title": "Life After Life",
+          "author": "Kate Atkinson",
+          "n": 30.0
+        },
+        {
+          "rank": 14,
+          "title": "King Lear",
+          "author": "William Shakespeare",
+          "n": 116.0
+        },
+        {
+          "rank": 15,
+          "title": "Heart of Darkness",
+          "author": "Joseph Conrad",
+          "n": 88.0
+        },
+        {
+          "rank": 16,
+          "title": "Bud, Not Buddy",
+          "author": "Christopher Paul Curtis",
+          "n": 37.0
+        },
+        {
+          "rank": 17,
+          "title": "Their Eyes Were Watching God",
+          "author": "Zora Neale Hurston",
+          "n": 44.0
+        },
+        {
+          "rank": 18,
+          "title": "The Odyssey",
+          "author": "Homer",
+          "n": 595.0
+        },
+        {
+          "rank": 19,
+          "title": "Don Quixote",
+          "author": "Miguel de Cervantes Saavedra",
+          "n": 75.0
+        },
+        {
+          "rank": 20,
+          "title": "Death of a Salesman",
+          "author": "Arthur Miller",
+          "n": 71.0
+        },
+        {
+          "rank": 21,
+          "title": "Waiting for Godot",
+          "author": "Samuel Beckett",
+          "n": 34.0
+        },
+        {
+          "rank": 22,
+          "title": "The Absolutely True Diary of a Part-Time Indian",
+          "author": "Sherman Alexie",
+          "n": 58.0
+        },
+        {
+          "rank": 23,
+          "title": "The Arabian Nights",
+          "author": "Anonymous",
+          "n": 54.0
+        },
+        {
+          "rank": 24,
+          "title": "Middlesex",
+          "author": "Jeffrey Eugenides",
+          "n": 67.0
+        },
+        {
+          "rank": 25,
+          "title": "The Grapes of Wrath",
+          "author": "John Steinbeck",
+          "n": 200.0
+        }
+      ]
+    },
+    "seeded_classic_oracle": {
+      "eval_literary_poll": {
+        "Q": 50.41,
+        "geo_n": 345.2513098827234,
+        "pos50": 15,
+        "anti50": 0,
+        "anti1000": 5,
+        "anti_med": 791,
+        "filler50": 0,
+        "pos_share50": 0.3,
+        "anti_share1000": 0.005,
+        "top20": [
+          {
+            "rank": 1,
+            "title": "Tutunamayanlar",
+            "author": "Oguz Atay",
+            "n": 386.0
+          },
+          {
+            "rank": 2,
+            "title": "Tehlikeli Oyunlar",
+            "author": "Oguz Atay",
+            "n": 218.0
+          },
+          {
+            "rank": 3,
+            "title": "Le Monogramme",
+            "author": "Odysseus Elytis",
+            "n": 102.0
+          },
+          {
+            "rank": 4,
+            "title": "The Moonlight Sonata",
+            "author": "Yiannis Ritsos",
+            "n": 68.0
+          },
+          {
+            "rank": 5,
+            "title": "The Knight in the Panther's Skin",
+            "author": "Shota Rustaveli",
+            "n": 98.0
+          },
+          {
+            "rank": 6,
+            "title": "Мастер и Маргарита. Собачье сердце",
+            "author": "Mikhail Bulgakov",
+            "n": 59.0
+          },
+          {
+            "rank": 7,
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "n": 6761.0
+          },
+          {
+            "rank": 8,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky",
+            "n": 11729.0
+          },
+          {
+            "rank": 9,
+            "title": "The Return of the King (The Lord of the Rings, #3)",
+            "author": "J.R.R. Tolkien",
+            "n": 6256.0
+          },
+          {
+            "rank": 10,
+            "title": "Shahnameh: The Persian Book of Kings",
+            "author": "Abolqasem Ferdowsi",
+            "n": 129.0
+          },
+          {
+            "rank": 11,
+            "title": "Cuentos completos 1",
+            "author": "Julio Cortazar",
+            "n": 161.0
+          },
+          {
+            "rank": 12,
+            "title": "The Fortress",
+            "author": "Mesa Selimovic",
+            "n": 113.0
+          },
+          {
+            "rank": 13,
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "n": 779.0
+          },
+          {
+            "rank": 14,
+            "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+            "author": "J.R.R. Tolkien",
+            "n": 11735.0
+          },
+          {
+            "rank": 15,
+            "title": "The Last Question",
+            "author": "Isaac Asimov",
+            "n": 297.0
+          },
+          {
+            "rank": 16,
+            "title": "Death and the Dervish",
+            "author": "Mesa Selimovic",
+            "n": 243.0
+          },
+          {
+            "rank": 17,
+            "title": "The Compleat Works of Wllm Shkspr",
+            "author": "Reduced Shakespeare Company",
+            "n": 193.0
+          },
+          {
+            "rank": 18,
+            "title": "Двенадцать стульев / Золотой телёнок",
+            "author": "Ilya Ilf",
+            "n": 102.0
+          },
+          {
+            "rank": 19,
+            "title": "مثنوی معنوی",
+            "author": "Jalaluddin Mevlana Rumi",
+            "n": 110.0
+          },
+          {
+            "rank": 20,
+            "title": "The Library of Babel",
+            "author": "Jorge Luis Borges",
+            "n": 252.0
+          }
+        ]
+      },
+      "seed_counts": {
+        "classic50": 11,
+        "classic200": 28,
+        "test50": 8,
+        "test200": 17,
+        "normie50": 3,
+        "normie200": 8,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "top25": [
+        {
+          "rank": 1,
+          "title": "Tutunamayanlar",
+          "author": "Oguz Atay",
+          "n": 386.0
+        },
+        {
+          "rank": 2,
+          "title": "Tehlikeli Oyunlar",
+          "author": "Oguz Atay",
+          "n": 218.0
+        },
+        {
+          "rank": 3,
+          "title": "Le Monogramme",
+          "author": "Odysseus Elytis",
+          "n": 102.0
+        },
+        {
+          "rank": 4,
+          "title": "The Moonlight Sonata",
+          "author": "Yiannis Ritsos",
+          "n": 68.0
+        },
+        {
+          "rank": 5,
+          "title": "The Knight in the Panther's Skin",
+          "author": "Shota Rustaveli",
+          "n": 98.0
+        },
+        {
+          "rank": 6,
+          "title": "Мастер и Маргарита. Собачье сердце",
+          "author": "Mikhail Bulgakov",
+          "n": 59.0
+        },
+        {
+          "rank": 7,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "n": 6761.0
+        },
+        {
+          "rank": 8,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "n": 11729.0
+        },
+        {
+          "rank": 9,
+          "title": "The Return of the King (The Lord of the Rings, #3)",
+          "author": "J.R.R. Tolkien",
+          "n": 6256.0
+        },
+        {
+          "rank": 10,
+          "title": "Shahnameh: The Persian Book of Kings",
+          "author": "Abolqasem Ferdowsi",
+          "n": 129.0
+        },
+        {
+          "rank": 11,
+          "title": "Cuentos completos 1",
+          "author": "Julio Cortazar",
+          "n": 161.0
+        },
+        {
+          "rank": 12,
+          "title": "The Fortress",
+          "author": "Mesa Selimovic",
+          "n": 113.0
+        },
+        {
+          "rank": 13,
+          "title": "The Book of Disquiet",
+          "author": "Fernando Pessoa",
+          "n": 779.0
+        },
+        {
+          "rank": 14,
+          "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+          "author": "J.R.R. Tolkien",
+          "n": 11735.0
+        },
+        {
+          "rank": 15,
+          "title": "The Last Question",
+          "author": "Isaac Asimov",
+          "n": 297.0
+        },
+        {
+          "rank": 16,
+          "title": "Death and the Dervish",
+          "author": "Mesa Selimovic",
+          "n": 243.0
+        },
+        {
+          "rank": 17,
+          "title": "The Compleat Works of Wllm Shkspr",
+          "author": "Reduced Shakespeare Company",
+          "n": 193.0
+        },
+        {
+          "rank": 18,
+          "title": "Двенадцать стульев / Золотой телёнок",
+          "author": "Ilya Ilf",
+          "n": 102.0
+        },
+        {
+          "rank": 19,
+          "title": "مثنوی معنوی",
+          "author": "Jalaluddin Mevlana Rumi",
+          "n": 110.0
+        },
+        {
+          "rank": 20,
+          "title": "The Library of Babel",
+          "author": "Jorge Luis Borges",
+          "n": 252.0
+        },
+        {
+          "rank": 21,
+          "title": "Puslu Kıtalar Atlası",
+          "author": "Ihsan Oktay Anar",
+          "n": 477.0
+        },
+        {
+          "rank": 22,
+          "title": "East of Eden",
+          "author": "John Steinbeck",
+          "n": 5796.0
+        },
+        {
+          "rank": 23,
+          "title": "Time Regained (In Search of Lost Time, #7)",
+          "author": "Marcel Proust",
+          "n": 258.0
+        },
+        {
+          "rank": 24,
+          "title": "الساعة الخامسة والعشرون",
+          "author": "Constantin Virgil Gheorghiu",
+          "n": 65.0
+        },
+        {
+          "rank": 25,
+          "title": "Büyük Saat - Bütün Şiirleri",
+          "author": "Turgut Uyar",
+          "n": 73.0
+        }
+      ]
+    }
+  }
+}

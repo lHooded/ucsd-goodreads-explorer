@@ -42,3 +42,4 @@ Gemini-film-similarity-notes.txt
 *.log
 .cache/
 .tmp/
+/papers/

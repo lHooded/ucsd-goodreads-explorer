@@ -1,0 +1,17 @@
+{
+  "mode": "full",
+  "source_rows": 228648342,
+  "user_work_rows": 210633872,
+  "users": 870607,
+  "works": 523869,
+  "rated": 98854143,
+  "read_unrated": 7008040,
+  "shelved_unread": 104771689,
+  "reviewed": 13630476,
+  "reviewed_unrated": 440527,
+  "collapsed_edition_duplicates": 1315690,
+  "read_unrated_share_of_read": 0.06619965507418263,
+  "extract_seconds": 101.67513036727905,
+  "output_bytes": 1175431887,
+  "output": "/home/ifrankling/unsw/novels/curators_explorer/data/observation_ladder_full.parquet"
+}

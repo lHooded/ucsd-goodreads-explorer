@@ -1,0 +1,2817 @@
+{
+  "meta": {
+    "purpose": "ratings-behavior reconstruction of p65/s25 deep teacher",
+    "purity": 65.0,
+    "strictness": 25.0,
+    "folds": 5,
+    "ridge_alpha": 0.03,
+    "leakage_guard": "teacher labels only; no mint/poll/taste fields in predictors",
+    "runtime_seconds": 111.84101462364197
+  },
+  "teacher": {
+    "n_jury": 3286,
+    "sum_w": 2318.715924939447,
+    "kish_n_eff": 2677.5257820455827,
+    "mean_deep_share": 0.700996836320071,
+    "mean_com_share": 0.013904063820848269,
+    "mean_n_deep": 16.893183201460744,
+    "n_pass_purity": 10525
+  },
+  "behavior_materialization": {
+    "n_behavior_users": 626152,
+    "seconds": 31.465937614440918
+  },
+  "rich_behavior_materialization": {
+    "n_rich_users": 597522,
+    "n_user_author_rows": 18466508,
+    "n_teacher_covered": 3264,
+    "seconds": 7.095017194747925
+  },
+  "frame": {
+    "n_candidates": 626152,
+    "n_teacher_covered": 3286,
+    "teacher_weight_covered": 2318.715924939457,
+    "min_log_n": 3.044522437723423,
+    "max_log_n": 9.779114097696372
+  },
+  "old_focus_approx": {
+    "n_rich_eligible_before_gates": 449286,
+    "n_gated": 79348,
+    "n_focus": 4743,
+    "threshold": 18.668268202182233,
+    "target_historical_n": 4774,
+    "historical_threshold": 18.847782237992767,
+    "note": "approximate because rich features were restaged with a lower-memory query"
+  },
+  "excluded_work_guard": {
+    "n_excluded_works": 9617,
+    "n_eval_ids_added": 73
+  },
+  "profile_materialization": {
+    "n_users_scored": 614633,
+    "mean_profile_books": 50.02888227608996,
+    "n_fold_work_profiles": 123079,
+    "seconds": 8.711502075195312
+  },
+  "profile_half_stability": {
+    "half0_vs_half1_jaccard": 0.3368592351505289,
+    "half0_vs_full_love_jaccard": 0.6009744214372716,
+    "half1_vs_full_love_jaccard": 0.5467168745587196
+  },
+  "top_profile_anchors": [
+    {
+      "work_id": "140013",
+      "title": "ABC of Reading",
+      "author": "Ezra Pound",
+      "coef": 3.0,
+      "pos_readers": 45.6,
+      "neg_readers": 96.8
+    },
+    {
+      "work_id": "6838035",
+      "title": "A Naked Singularity",
+      "author": "Sergio de la Pava",
+      "coef": 3.0,
+      "pos_readers": 53.6,
+      "neg_readers": 101.6
+    },
+    {
+      "work_id": "1902723",
+      "title": "Pricksongs and Descants",
+      "author": "Robert Coover",
+      "coef": 3.0,
+      "pos_readers": 37.6,
+      "neg_readers": 60.0
+    },
+    {
+      "work_id": "933258",
+      "title": "1919 (U.S.A., #2)",
+      "author": "John dos Passos",
+      "coef": 3.0,
+      "pos_readers": 39.2,
+      "neg_readers": 119.2
+    },
+    {
+      "work_id": "96210",
+      "title": "The Golem",
+      "author": "Gustav Meyrink",
+      "coef": 3.0,
+      "pos_readers": 80.0,
+      "neg_readers": 264.8
+    },
+    {
+      "work_id": "1588962",
+      "title": "Woodcutters",
+      "author": "Thomas Bernhard",
+      "coef": 3.0,
+      "pos_readers": 64.8,
+      "neg_readers": 73.6
+    },
+    {
+      "work_id": "6503267",
+      "title": "USA: The 42nd Parallel / 1919 / The Big Money",
+      "author": "John dos Passos",
+      "coef": 3.0,
+      "pos_readers": 60.8,
+      "neg_readers": 147.2
+    },
+    {
+      "work_id": "95382",
+      "title": "The Cantos",
+      "author": "Ezra Pound",
+      "coef": 3.0,
+      "pos_readers": 92.0,
+      "neg_readers": 273.6
+    },
+    {
+      "work_id": "1455030",
+      "title": "Pornografia",
+      "author": "Witold Gombrowicz",
+      "coef": 3.0,
+      "pos_readers": 41.6,
+      "neg_readers": 86.4
+    },
+    {
+      "work_id": "2089466",
+      "title": "Duino Elegies",
+      "author": "Rainer Maria Rilke",
+      "coef": 3.0,
+      "pos_readers": 107.2,
+      "neg_readers": 331.2
+    },
+    {
+      "work_id": "17952027",
+      "title": "The Rings of Saturn",
+      "author": "W.G. Sebald",
+      "coef": 3.0,
+      "pos_readers": 180.0,
+      "neg_readers": 337.6
+    },
+    {
+      "work_id": "1228744",
+      "title": "Mr. Sammler's Planet",
+      "author": "Saul Bellow",
+      "coef": 3.0,
+      "pos_readers": 42.4,
+      "neg_readers": 130.4
+    },
+    {
+      "work_id": "902938",
+      "title": "The Street of Crocodiles",
+      "author": "Bruno Schulz",
+      "coef": 3.0,
+      "pos_readers": 160.0,
+      "neg_readers": 337.6
+    },
+    {
+      "work_id": "152173",
+      "title": "Maldoror and the Complete Works",
+      "author": "Comte de Lautreamont",
+      "coef": 3.0,
+      "pos_readers": 83.2,
+      "neg_readers": 119.2
+    },
+    {
+      "work_id": "25733",
+      "title": "Either/Or: A Fragment of Life",
+      "author": "Soren Kierkegaard",
+      "coef": 3.0,
+      "pos_readers": 104.0,
+      "neg_readers": 252.0
+    },
+    {
+      "work_id": "2257631",
+      "title": "Cosmos",
+      "author": "Witold Gombrowicz",
+      "coef": 3.0,
+      "pos_readers": 48.0,
+      "neg_readers": 76.0
+    },
+    {
+      "work_id": "110898",
+      "title": "Manifestoes of Surrealism",
+      "author": "Andre Breton",
+      "coef": 3.0,
+      "pos_readers": 44.8,
+      "neg_readers": 123.2
+    },
+    {
+      "work_id": "29006",
+      "title": "Spring Torrents",
+      "author": "Ivan Turgenev",
+      "coef": 3.0,
+      "pos_readers": 58.4,
+      "neg_readers": 172.0
+    },
+    {
+      "work_id": "983387",
+      "title": "At Swim-Two-Birds",
+      "author": "Flann O'Brien",
+      "coef": 3.0,
+      "pos_readers": 188.0,
+      "neg_readers": 457.6
+    },
+    {
+      "work_id": "1468307",
+      "title": "The Book of Sand and Shakespeare's Memory",
+      "author": "Jorge Luis Borges",
+      "coef": 3.0,
+      "pos_readers": 122.4,
+      "neg_readers": 346.4
+    },
+    {
+      "work_id": "306152",
+      "title": "Against Nature",
+      "author": "Joris-Karl Huysmans",
+      "coef": 3.0,
+      "pos_readers": 160.8,
+      "neg_readers": 424.0
+    },
+    {
+      "work_id": "395326",
+      "title": "Forty Stories",
+      "author": "Donald Barthelme",
+      "coef": 3.0,
+      "pos_readers": 81.6,
+      "neg_readers": 124.8
+    },
+    {
+      "work_id": "119993",
+      "title": "Culture and Value",
+      "author": "Ludwig Wittgenstein",
+      "coef": 3.0,
+      "pos_readers": 35.0,
+      "neg_readers": 51.25
+    },
+    {
+      "work_id": "3432165",
+      "title": "Ghosts",
+      "author": "Cesar Aira",
+      "coef": 3.0,
+      "pos_readers": 48.8,
+      "neg_readers": 86.4
+    },
+    {
+      "work_id": "1025689",
+      "title": "Dictionary of the Khazars",
+      "author": "Milorad Pavic",
+      "coef": 3.0,
+      "pos_readers": 87.2,
+      "neg_readers": 295.2
+    },
+    {
+      "work_id": "2193696",
+      "title": "Austerlitz",
+      "author": "W.G. Sebald",
+      "coef": 3.0,
+      "pos_readers": 203.2,
+      "neg_readers": 622.4
+    },
+    {
+      "work_id": "2903020",
+      "title": "Speedboat",
+      "author": "Renata Adler",
+      "coef": 3.0,
+      "pos_readers": 81.6,
+      "neg_readers": 254.4
+    },
+    {
+      "work_id": "1491908",
+      "title": "Watt",
+      "author": "Samuel Beckett",
+      "coef": 3.0,
+      "pos_readers": 81.6,
+      "neg_readers": 98.4
+    },
+    {
+      "work_id": "2454838",
+      "title": "Crowds and Power",
+      "author": "Elias Canetti",
+      "coef": 3.0,
+      "pos_readers": 32.8,
+      "neg_readers": 56.0
+    },
+    {
+      "work_id": "10275",
+      "title": "The 42nd Parallel (U.S.A., #1)",
+      "author": "John dos Passos",
+      "coef": 3.0,
+      "pos_readers": 74.4,
+      "neg_readers": 273.6
+    }
+  ],
+  "chosen_model": "rich_behavior_global",
+  "preliminary_selection": {
+    "k": 4929,
+    "overlap": 1377,
+    "precision": 0.2793670115642118,
+    "teacher_recall": 0.4190505173463177,
+    "jaccard": 0.20137467095642,
+    "teacher_weight_recall": 0.5092940007650677
+  },
+  "chosen_coefficients": [
+    [
+      "mean_pub_year_5",
+      -0.1701751865856658
+    ],
+    [
+      "series_share_5",
+      -0.14475104963447502
+    ],
+    [
+      "n_megastar_authors_5_log",
+      -0.11151443415465276
+    ],
+    [
+      "n_midpop_authors_5_log",
+      0.1095153305008981
+    ],
+    [
+      "log_n_ge4",
+      0.07891522291447074
+    ],
+    [
+      "log_n_rated",
+      0.07620504268157687
+    ],
+    [
+      "n_authors_5_log",
+      0.05848019697580311
+    ],
+    [
+      "singleton_author_share_5",
+      -0.05832591042867058
+    ],
+    [
+      "popular_likes_per_log_shelf",
+      -0.05216427030571341
+    ],
+    [
+      "author_div_5",
+      -0.04485179757969056
+    ],
+    [
+      "p5_mid_exposed",
+      -0.04262406459440077
+    ],
+    [
+      "binge_max_5_log",
+      -0.040805184044558386
+    ],
+    [
+      "midpop_span_per_logn5",
+      0.040326312502128855
+    ],
+    [
+      "midpop_likes_per_log_shelf",
+      -0.030957913457410863
+    ],
+    [
+      "author_hhi_5",
+      0.028577852346611515
+    ],
+    [
+      "mean_logn_all",
+      0.02816046141354602
+    ],
+    [
+      "mean_work_mean_all",
+      0.0268884530310776
+    ],
+    [
+      "mega_rated_share",
+      -0.02579516891754735
+    ],
+    [
+      "rare_rated_share",
+      -0.02264815130355618
+    ],
+    [
+      "binge_mean_5",
+      -0.021712291004760013
+    ],
+    [
+      "log_n5",
+      -0.01896368487202201
+    ],
+    [
+      "p5_rare_exposed",
+      -0.018248775149876936
+    ],
+    [
+      "mid_rated_share",
+      -0.017017860443666797
+    ],
+    [
+      "p5_mega_exposed",
+      -0.015099610784387669
+    ],
+    [
+      "depth_ge4",
+      0.014541971752867233
+    ],
+    [
+      "mean_work_mean_5",
+      -0.013857854875000552
+    ],
+    [
+      "five_rate",
+      0.01373658554529524
+    ],
+    [
+      "mega_loved_share",
+      -0.01208643506685252
+    ],
+    [
+      "mid_loved_share",
+      0.011905441285829085
+    ],
+    [
+      "mega_catalog_share_5",
+      -0.010403679370033433
+    ],
+    [
+      "mean_abs_residual",
+      -0.010388396091744242
+    ],
+    [
+      "p4",
+      -0.009948828402113984
+    ],
+    [
+      "mean_logn_5",
+      0.009004853272631045
+    ],
+    [
+      "midpop_author_frac_5",
+      -0.008913088099438232
+    ],
+    [
+      "depth_5",
+      0.008330905300464693
+    ],
+    [
+      "mean_rating",
+      0.008267668543277725
+    ],
+    [
+      "mean_work_mean_low",
+      0.007978621630800188
+    ],
+    [
+      "p5_blockbuster",
+      -0.007449743539892211
+    ],
+    [
+      "p5",
+      0.007151690325902045
+    ],
+    [
+      "std_logn_all",
+      0.007018416194942876
+    ],
+    [
+      "mean_logn_low",
+      -0.006640116124742121
+    ],
+    [
+      "std_logn_5",
+      0.0046173026223292855
+    ],
+    [
+      "sd_residual",
+      -0.004457469511204978
+    ],
+    [
+      "rating_pop_corr",
+      -0.003943594887076857
+    ],
+    [
+      "rare_loved_share",
+      -0.0028126804308692193
+    ],
+    [
+      "mean_residual",
+      0.002574112580661167
+    ],
+    [
+      "mid_catalog_share_5",
+      0.0017327651423464305
+    ],
+    [
+      "p3",
+      -0.001251521153493551
+    ],
+    [
+      "p1",
+      -0.001171355879070131
+    ],
+    [
+      "n_levels",
+      -0.00041981945052092177
+    ],
+    [
+      "p2",
+      -0.00024585374047952186
+    ]
+  ],
+  "rich_linear_coefficients": [
+    [
+      "mean_pub_year_5",
+      -0.1701751865856658
+    ],
+    [
+      "series_share_5",
+      -0.14475104963447502
+    ],
+    [
+      "n_megastar_authors_5_log",
+      -0.11151443415465276
+    ],
+    [
+      "n_midpop_authors_5_log",
+      0.1095153305008981
+    ],
+    [
+      "log_n_ge4",
+      0.07891522291447074
+    ],
+    [
+      "log_n_rated",
+      0.07620504268157687
+    ],
+    [
+      "n_authors_5_log",
+      0.05848019697580311
+    ],
+    [
+      "singleton_author_share_5",
+      -0.05832591042867058
+    ],
+    [
+      "popular_likes_per_log_shelf",
+      -0.05216427030571341
+    ],
+    [
+      "author_div_5",
+      -0.04485179757969056
+    ],
+    [
+      "p5_mid_exposed",
+      -0.04262406459440077
+    ],
+    [
+      "binge_max_5_log",
+      -0.040805184044558386
+    ],
+    [
+      "midpop_span_per_logn5",
+      0.040326312502128855
+    ],
+    [
+      "midpop_likes_per_log_shelf",
+      -0.030957913457410863
+    ],
+    [
+      "author_hhi_5",
+      0.028577852346611515
+    ],
+    [
+      "mean_logn_all",
+      0.02816046141354602
+    ],
+    [
+      "mean_work_mean_all",
+      0.0268884530310776
+    ],
+    [
+      "mega_rated_share",
+      -0.02579516891754735
+    ],
+    [
+      "rare_rated_share",
+      -0.02264815130355618
+    ],
+    [
+      "binge_mean_5",
+      -0.021712291004760013
+    ],
+    [
+      "log_n5",
+      -0.01896368487202201
+    ],
+    [
+      "p5_rare_exposed",
+      -0.018248775149876936
+    ],
+    [
+      "mid_rated_share",
+      -0.017017860443666797
+    ],
+    [
+      "p5_mega_exposed",
+      -0.015099610784387669
+    ],
+    [
+      "depth_ge4",
+      0.014541971752867233
+    ],
+    [
+      "mean_work_mean_5",
+      -0.013857854875000552
+    ],
+    [
+      "five_rate",
+      0.01373658554529524
+    ],
+    [
+      "mega_loved_share",
+      -0.01208643506685252
+    ],
+    [
+      "mid_loved_share",
+      0.011905441285829085
+    ],
+    [
+      "mega_catalog_share_5",
+      -0.010403679370033433
+    ],
+    [
+      "mean_abs_residual",
+      -0.010388396091744242
+    ],
+    [
+      "p4",
+      -0.009948828402113984
+    ],
+    [
+      "mean_logn_5",
+      0.009004853272631045
+    ],
+    [
+      "midpop_author_frac_5",
+      -0.008913088099438232
+    ],
+    [
+      "depth_5",
+      0.008330905300464693
+    ],
+    [
+      "mean_rating",
+      0.008267668543277725
+    ],
+    [
+      "mean_work_mean_low",
+      0.007978621630800188
+    ],
+    [
+      "p5_blockbuster",
+      -0.007449743539892211
+    ],
+    [
+      "p5",
+      0.007151690325902045
+    ],
+    [
+      "std_logn_all",
+      0.007018416194942876
+    ],
+    [
+      "mean_logn_low",
+      -0.006640116124742121
+    ],
+    [
+      "std_logn_5",
+      0.0046173026223292855
+    ],
+    [
+      "sd_residual",
+      -0.004457469511204978
+    ],
+    [
+      "rating_pop_corr",
+      -0.003943594887076857
+    ],
+    [
+      "rare_loved_share",
+      -0.0028126804308692193
+    ],
+    [
+      "mean_residual",
+      0.002574112580661167
+    ],
+    [
+      "mid_catalog_share_5",
+      0.0017327651423464305
+    ],
+    [
+      "p3",
+      -0.001251521153493551
+    ],
+    [
+      "p1",
+      -0.001171355879070131
+    ],
+    [
+      "n_levels",
+      -0.00041981945052092177
+    ],
+    [
+      "p2",
+      -0.00024585374047952186
+    ]
+  ],
+  "models": {
+    "activity_baseline": {
+      "roc_auc": 0.7688320914067153,
+      "average_precision": 0.013901184851939405,
+      "primary": {
+        "k": 3286,
+        "overlap": 59,
+        "precision": 0.017954960438222763,
+        "teacher_recall": 0.017954960438222763,
+        "jaccard": 0.009058805465991094,
+        "teacher_weight_recall": 0.028588527752606122
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 28,
+          "precision": 0.01704199634814364,
+          "teacher_recall": 0.00852099817407182,
+          "jaccard": 0.005713119771475209,
+          "teacher_weight_recall": 0.015396516979088129
+        },
+        {
+          "k": 2464,
+          "overlap": 44,
+          "precision": 0.017857142857142856,
+          "teacher_recall": 0.013390139987827145,
+          "jaccard": 0.0077111812127585,
+          "teacher_weight_recall": 0.021235519179099497
+        },
+        {
+          "k": 3286,
+          "overlap": 59,
+          "precision": 0.017954960438222763,
+          "teacher_recall": 0.017954960438222763,
+          "jaccard": 0.009058805465991094,
+          "teacher_weight_recall": 0.028588527752606122
+        },
+        {
+          "k": 4108,
+          "overlap": 71,
+          "precision": 0.017283349561830575,
+          "teacher_recall": 0.021606816798539256,
+          "jaccard": 0.009695479994537758,
+          "teacher_weight_recall": 0.03348870513470185
+        },
+        {
+          "k": 4929,
+          "overlap": 86,
+          "precision": 0.017447758165956583,
+          "teacher_recall": 0.026171637248934874,
+          "jaccard": 0.010579407061139131,
+          "teacher_weight_recall": 0.04032087841477379
+        },
+        {
+          "k": 6572,
+          "overlap": 113,
+          "precision": 0.017194157029823492,
+          "teacher_recall": 0.034388314059646985,
+          "jaccard": 0.01159569009748589,
+          "teacher_weight_recall": 0.05087054461092884
+        },
+        {
+          "k": 9858,
+          "overlap": 161,
+          "precision": 0.01633191316697099,
+          "teacher_recall": 0.04899573950091297,
+          "jaccard": 0.012400831857043826,
+          "teacher_weight_recall": 0.07229422169560328
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -0.021441390694681445,
+        "0.1": 0.09146558039899721,
+        "0.5": 0.3498693914494162,
+        "0.9": 0.6950627007879573,
+        "0.99": 0.9570156705755414
+      },
+      "n_features": 11,
+      "matched_activity": false
+    },
+    "generic_behavior_global": {
+      "roc_auc": 0.8789784778457364,
+      "average_precision": 0.03100953590722282,
+      "primary": {
+        "k": 3286,
+        "overlap": 104,
+        "precision": 0.03164942178940962,
+        "teacher_recall": 0.03164942178940962,
+        "jaccard": 0.016079158936301793,
+        "teacher_weight_recall": 0.04771716045515534
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 41,
+          "precision": 0.024954351795496044,
+          "teacher_recall": 0.012477175897748022,
+          "jaccard": 0.008387888707037643,
+          "teacher_weight_recall": 0.021337049061153687
+        },
+        {
+          "k": 2464,
+          "overlap": 70,
+          "precision": 0.028409090909090908,
+          "teacher_recall": 0.02130249543517955,
+          "jaccard": 0.01232394366197183,
+          "teacher_weight_recall": 0.03370030307214472
+        },
+        {
+          "k": 3286,
+          "overlap": 104,
+          "precision": 0.03164942178940962,
+          "teacher_recall": 0.03164942178940962,
+          "jaccard": 0.016079158936301793,
+          "teacher_weight_recall": 0.04771716045515534
+        },
+        {
+          "k": 4108,
+          "overlap": 140,
+          "precision": 0.034079844206426485,
+          "teacher_recall": 0.0426049908703591,
+          "jaccard": 0.01929969671905156,
+          "teacher_weight_recall": 0.06322977303085489
+        },
+        {
+          "k": 4929,
+          "overlap": 178,
+          "precision": 0.036112801785352,
+          "teacher_recall": 0.054169202678027994,
+          "jaccard": 0.02214756750031106,
+          "teacher_weight_recall": 0.07742387205099342
+        },
+        {
+          "k": 6572,
+          "overlap": 281,
+          "precision": 0.042757151552038956,
+          "teacher_recall": 0.08551430310407791,
+          "jaccard": 0.029341129790122166,
+          "teacher_weight_recall": 0.1203749249601866
+        },
+        {
+          "k": 9858,
+          "overlap": 428,
+          "precision": 0.043416514505984986,
+          "teacher_recall": 0.13024954351795495,
+          "jaccard": 0.033658383139351995,
+          "teacher_weight_recall": 0.17683425967814792
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -0.5231968696095846,
+        "0.1": -0.09523462504447816,
+        "0.5": 0.32340541626183295,
+        "0.9": 0.6533286135318804,
+        "0.99": 0.8945630613827122
+      },
+      "n_features": 37,
+      "matched_activity": false
+    },
+    "rich_behavior_global": {
+      "roc_auc": 0.9808289501580465,
+      "average_precision": 0.23706088377683698,
+      "primary": {
+        "k": 3286,
+        "overlap": 1042,
+        "precision": 0.3171028606208156,
+        "teacher_recall": 0.3171028606208156,
+        "jaccard": 0.18842676311030743,
+        "teacher_weight_recall": 0.4059400755727444
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 592,
+          "precision": 0.3603164942178941,
+          "teacher_recall": 0.18015824710894704,
+          "jaccard": 0.1364998847129352,
+          "teacher_weight_recall": 0.24915420818707
+        },
+        {
+          "k": 2464,
+          "overlap": 853,
+          "precision": 0.34618506493506496,
+          "teacher_recall": 0.2595861229458308,
+          "jaccard": 0.17418827853788033,
+          "teacher_weight_recall": 0.34163282747499635
+        },
+        {
+          "k": 3286,
+          "overlap": 1042,
+          "precision": 0.3171028606208156,
+          "teacher_recall": 0.3171028606208156,
+          "jaccard": 0.18842676311030743,
+          "teacher_weight_recall": 0.4059400755727444
+        },
+        {
+          "k": 4108,
+          "overlap": 1230,
+          "precision": 0.2994157740993184,
+          "teacher_recall": 0.37431527693244065,
+          "jaccard": 0.19954574951330306,
+          "teacher_weight_recall": 0.4661033644127581
+        },
+        {
+          "k": 4929,
+          "overlap": 1377,
+          "precision": 0.2793670115642118,
+          "teacher_recall": 0.4190505173463177,
+          "jaccard": 0.20137467095642,
+          "teacher_weight_recall": 0.5092940007650677
+        },
+        {
+          "k": 6572,
+          "overlap": 1641,
+          "precision": 0.2496956786366403,
+          "teacher_recall": 0.4993913572732806,
+          "jaccard": 0.19970792259948886,
+          "teacher_weight_recall": 0.5857476638909472
+        },
+        {
+          "k": 9858,
+          "overlap": 2053,
+          "precision": 0.2082572529924934,
+          "teacher_recall": 0.6247717589774803,
+          "jaccard": 0.18510504012262194,
+          "teacher_weight_recall": 0.6986158112273663
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -0.4464506555069919,
+        "0.1": -0.1924389884403777,
+        "0.5": 0.14345580130222785,
+        "0.9": 0.514469021679748,
+        "0.99": 0.8211734723959911
+      },
+      "n_features": 51,
+      "matched_activity": false
+    },
+    "rich_behavior_no_direct_activity": {
+      "roc_auc": 0.9804048425598044,
+      "average_precision": 0.2222227027176105,
+      "primary": {
+        "k": 3286,
+        "overlap": 1006,
+        "precision": 0.3061472915398661,
+        "teacher_recall": 0.3061472915398661,
+        "jaccard": 0.1807402084081926,
+        "teacher_weight_recall": 0.39120707602424754
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 557,
+          "precision": 0.33901399878271454,
+          "teacher_recall": 0.16950699939135727,
+          "jaccard": 0.12740164684354988,
+          "teacher_weight_recall": 0.2363020820194153
+        },
+        {
+          "k": 2464,
+          "overlap": 804,
+          "precision": 0.3262987012987013,
+          "teacher_recall": 0.2446743761412051,
+          "jaccard": 0.1625556004852406,
+          "teacher_weight_recall": 0.3231136733688883
+        },
+        {
+          "k": 3286,
+          "overlap": 1006,
+          "precision": 0.3061472915398661,
+          "teacher_recall": 0.3061472915398661,
+          "jaccard": 0.1807402084081926,
+          "teacher_weight_recall": 0.39120707602424754
+        },
+        {
+          "k": 4108,
+          "overlap": 1181,
+          "precision": 0.2874878286270691,
+          "teacher_recall": 0.35940353012781495,
+          "jaccard": 0.19008530500563334,
+          "teacher_weight_recall": 0.4465912434192406
+        },
+        {
+          "k": 4929,
+          "overlap": 1339,
+          "precision": 0.2716575370257659,
+          "teacher_recall": 0.40748630553864884,
+          "jaccard": 0.19473531122745782,
+          "teacher_weight_recall": 0.4970089851019366
+        },
+        {
+          "k": 6572,
+          "overlap": 1571,
+          "precision": 0.2390444309190505,
+          "teacher_recall": 0.478088861838101,
+          "jaccard": 0.18957403161578376,
+          "teacher_weight_recall": 0.5655338126594742
+        },
+        {
+          "k": 9858,
+          "overlap": 1998,
+          "precision": 0.20267802799756543,
+          "teacher_recall": 0.6080340839926963,
+          "jaccard": 0.1792571326036246,
+          "teacher_weight_recall": 0.6820209687434463
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -0.4571152869865551,
+        "0.1": -0.19924182818209651,
+        "0.5": 0.15909248193127706,
+        "0.9": 0.514805503908216,
+        "0.99": 0.8238407892816823
+      },
+      "n_features": 47,
+      "matched_activity": false
+    },
+    "rich_behavior_activity_matched": {
+      "roc_auc": 0.9737898922616989,
+      "average_precision": 0.1492519364338781,
+      "primary": {
+        "k": 3286,
+        "overlap": 673,
+        "precision": 0.20480827754108338,
+        "teacher_recall": 0.20480827754108338,
+        "jaccard": 0.11408713341244278,
+        "teacher_weight_recall": 0.24327169248021333
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 324,
+          "precision": 0.1972002434570907,
+          "teacher_recall": 0.09860012172854535,
+          "jaccard": 0.07035830618892508,
+          "teacher_weight_recall": 0.11674448780855545
+        },
+        {
+          "k": 2464,
+          "overlap": 501,
+          "precision": 0.20332792207792208,
+          "teacher_recall": 0.15246500304321364,
+          "jaccard": 0.09544675176224042,
+          "teacher_weight_recall": 0.1798829493739907
+        },
+        {
+          "k": 3286,
+          "overlap": 673,
+          "precision": 0.20480827754108338,
+          "teacher_recall": 0.20480827754108338,
+          "jaccard": 0.11408713341244278,
+          "teacher_weight_recall": 0.24327169248021333
+        },
+        {
+          "k": 4108,
+          "overlap": 841,
+          "precision": 0.20472249269717624,
+          "teacher_recall": 0.2559342665855143,
+          "jaccard": 0.12833816572562184,
+          "teacher_weight_recall": 0.3048733916364223
+        },
+        {
+          "k": 4929,
+          "overlap": 967,
+          "precision": 0.19618583891255834,
+          "teacher_recall": 0.2942787583688375,
+          "jaccard": 0.13341611479028698,
+          "teacher_weight_recall": 0.3464253935887424
+        },
+        {
+          "k": 6572,
+          "overlap": 1232,
+          "precision": 0.18746195982958003,
+          "teacher_recall": 0.37492391965916005,
+          "jaccard": 0.14282402040343148,
+          "teacher_weight_recall": 0.4336291806727683
+        },
+        {
+          "k": 9858,
+          "overlap": 1653,
+          "precision": 0.16768107121119902,
+          "teacher_recall": 0.503043213633597,
+          "jaccard": 0.1438517100339396,
+          "teacher_weight_recall": 0.5638772457348862
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -0.655554097094968,
+        "0.1": -0.3087310470180861,
+        "0.5": 0.09740826752456984,
+        "0.9": 0.5302167151963803,
+        "0.99": 0.8764841419173532
+      },
+      "n_features": 47,
+      "matched_activity": true
+    },
+    "behavior_binned_matched": {
+      "roc_auc": 0.9584874808353311,
+      "average_precision": 0.21703816884377777,
+      "primary": {
+        "k": 3286,
+        "overlap": 956,
+        "precision": 0.2909312233718807,
+        "teacher_recall": 0.2909312233718807,
+        "jaccard": 0.17022792022792022,
+        "teacher_weight_recall": 0.33716580226222503
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 598,
+          "precision": 0.3639683505782106,
+          "teacher_recall": 0.1819841752891053,
+          "jaccard": 0.13807434772569846,
+          "teacher_weight_recall": 0.22350765236545692
+        },
+        {
+          "k": 2464,
+          "overlap": 792,
+          "precision": 0.32142857142857145,
+          "teacher_recall": 0.24102251978088862,
+          "jaccard": 0.15974183138362244,
+          "teacher_weight_recall": 0.28596165454722355
+        },
+        {
+          "k": 3286,
+          "overlap": 956,
+          "precision": 0.2909312233718807,
+          "teacher_recall": 0.2909312233718807,
+          "jaccard": 0.17022792022792022,
+          "teacher_weight_recall": 0.33716580226222503
+        },
+        {
+          "k": 4108,
+          "overlap": 1095,
+          "precision": 0.2665530671859786,
+          "teacher_recall": 0.3332318928788801,
+          "jaccard": 0.17383711700269885,
+          "teacher_weight_recall": 0.38198213132240766
+        },
+        {
+          "k": 4929,
+          "overlap": 1208,
+          "precision": 0.24508013795901806,
+          "teacher_recall": 0.3676202069385271,
+          "jaccard": 0.17239902954188668,
+          "teacher_weight_recall": 0.41745084824034234
+        },
+        {
+          "k": 6572,
+          "overlap": 1400,
+          "precision": 0.2130249543517955,
+          "teacher_recall": 0.426049908703591,
+          "jaccard": 0.1655237644833294,
+          "teacher_weight_recall": 0.4766022973626933
+        },
+        {
+          "k": 9858,
+          "overlap": 1670,
+          "precision": 0.16940555893690404,
+          "teacher_recall": 0.5082166768107121,
+          "jaccard": 0.14554645284992157,
+          "teacher_weight_recall": 0.5597202816935676
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -8.235097907101595,
+        "0.1": -5.849485995170959,
+        "0.5": -2.6389843550715097,
+        "0.9": 0.10909182833819185,
+        "0.99": 1.5038937955640634
+      },
+      "n_features": 30,
+      "matched_activity": true
+    },
+    "profile_mean": {
+      "roc_auc": 0.9767991997426836,
+      "average_precision": 0.16573206892445622,
+      "primary": {
+        "k": 3286,
+        "overlap": 744,
+        "precision": 0.22641509433962265,
+        "teacher_recall": 0.22641509433962265,
+        "jaccard": 0.1276595744680851,
+        "teacher_weight_recall": 0.26994189156504456
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 395,
+          "precision": 0.2404138770541692,
+          "teacher_recall": 0.1202069385270846,
+          "jaccard": 0.08711954124393471,
+          "teacher_weight_recall": 0.14867195207579095
+        },
+        {
+          "k": 2464,
+          "overlap": 581,
+          "precision": 0.23579545454545456,
+          "teacher_recall": 0.17681071211199026,
+          "jaccard": 0.11240085122847746,
+          "teacher_weight_recall": 0.21387337917792829
+        },
+        {
+          "k": 3286,
+          "overlap": 744,
+          "precision": 0.22641509433962265,
+          "teacher_recall": 0.22641509433962265,
+          "jaccard": 0.1276595744680851,
+          "teacher_weight_recall": 0.26994189156504456
+        },
+        {
+          "k": 4108,
+          "overlap": 909,
+          "precision": 0.2212755598831548,
+          "teacher_recall": 0.27662811929397446,
+          "jaccard": 0.14016962220508866,
+          "teacher_weight_recall": 0.3233895818118869
+        },
+        {
+          "k": 4929,
+          "overlap": 1047,
+          "precision": 0.21241631162507607,
+          "teacher_recall": 0.31862446743761413,
+          "jaccard": 0.14606584821428573,
+          "teacher_weight_recall": 0.3698462741789317
+        },
+        {
+          "k": 6572,
+          "overlap": 1288,
+          "precision": 0.19598295800365187,
+          "teacher_recall": 0.39196591600730374,
+          "jaccard": 0.15029171528588098,
+          "teacher_weight_recall": 0.44749975024604643
+        },
+        {
+          "k": 9858,
+          "overlap": 1697,
+          "precision": 0.17214445120714142,
+          "teacher_recall": 0.5164333536214242,
+          "jaccard": 0.1482484493753822,
+          "teacher_weight_recall": 0.5734373589168663
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -1.848465405438797,
+        "0.1": -1.38435875508805,
+        "0.5": -0.6063921748452437,
+        "0.9": 0.35016938942763653,
+        "0.99": 1.2911122830031223
+      },
+      "n_features": 1,
+      "matched_activity": true
+    },
+    "profile_evidence": {
+      "roc_auc": 0.987959703732937,
+      "average_precision": 0.4290788531089121,
+      "primary": {
+        "k": 3286,
+        "overlap": 1465,
+        "precision": 0.445830797321972,
+        "teacher_recall": 0.445830797321972,
+        "jaccard": 0.28686117094184455,
+        "teacher_weight_recall": 0.5425545339919846
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 953,
+          "precision": 0.5800365185636032,
+          "teacher_recall": 0.2900182592818016,
+          "jaccard": 0.23968812877263582,
+          "teacher_weight_recall": 0.38732266488931766
+        },
+        {
+          "k": 2464,
+          "overlap": 1249,
+          "precision": 0.5068993506493507,
+          "teacher_recall": 0.3800973828362751,
+          "jaccard": 0.27749389024661186,
+          "teacher_weight_recall": 0.48036163931147613
+        },
+        {
+          "k": 3286,
+          "overlap": 1465,
+          "precision": 0.445830797321972,
+          "teacher_recall": 0.445830797321972,
+          "jaccard": 0.28686117094184455,
+          "teacher_weight_recall": 0.5425545339919846
+        },
+        {
+          "k": 4108,
+          "overlap": 1674,
+          "precision": 0.40749756572541385,
+          "teacher_recall": 0.5094339622641509,
+          "jaccard": 0.29265734265734267,
+          "teacher_weight_recall": 0.6022933298031059
+        },
+        {
+          "k": 4929,
+          "overlap": 1832,
+          "precision": 0.37167782511665653,
+          "teacher_recall": 0.5575167376749848,
+          "jaccard": 0.28701237662541124,
+          "teacher_weight_recall": 0.6459573792034978
+        },
+        {
+          "k": 6572,
+          "overlap": 2081,
+          "precision": 0.31664637857577604,
+          "teacher_recall": 0.6332927571515521,
+          "jaccard": 0.2675839012472676,
+          "teacher_weight_recall": 0.7117829099502837
+        },
+        {
+          "k": 9858,
+          "overlap": 2419,
+          "precision": 0.24538445932237776,
+          "teacher_recall": 0.7361533779671333,
+          "jaccard": 0.22554778554778554,
+          "teacher_weight_recall": 0.7951214351187368
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -11.027268896310781,
+        "0.1": -6.524531159842936,
+        "0.5": -2.6284209386444086,
+        "0.9": 2.187790317219219,
+        "0.99": 10.47982868522851
+      },
+      "n_features": 1,
+      "matched_activity": true
+    },
+    "profile_love": {
+      "roc_auc": 0.97716125688791,
+      "average_precision": 0.1676921165512803,
+      "primary": {
+        "k": 3286,
+        "overlap": 752,
+        "precision": 0.2288496652465003,
+        "teacher_recall": 0.2288496652465003,
+        "jaccard": 0.12920962199312716,
+        "teacher_weight_recall": 0.272517298926081
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 396,
+          "precision": 0.24102251978088862,
+          "teacher_recall": 0.12051125989044431,
+          "jaccard": 0.08735936465916612,
+          "teacher_weight_recall": 0.15031600984932353
+        },
+        {
+          "k": 2464,
+          "overlap": 587,
+          "precision": 0.2382305194805195,
+          "teacher_recall": 0.1786366402921485,
+          "jaccard": 0.1136935889986442,
+          "teacher_weight_recall": 0.2163330942025968
+        },
+        {
+          "k": 3286,
+          "overlap": 752,
+          "precision": 0.2288496652465003,
+          "teacher_recall": 0.2288496652465003,
+          "jaccard": 0.12920962199312716,
+          "teacher_weight_recall": 0.272517298926081
+        },
+        {
+          "k": 4108,
+          "overlap": 921,
+          "precision": 0.22419668938656281,
+          "teacher_recall": 0.2802799756542909,
+          "jaccard": 0.14228333075853544,
+          "teacher_weight_recall": 0.32780553448312144
+        },
+        {
+          "k": 4929,
+          "overlap": 1055,
+          "precision": 0.21403935889632786,
+          "teacher_recall": 0.3210590383444918,
+          "jaccard": 0.1473463687150838,
+          "teacher_weight_recall": 0.3728080700230048
+        },
+        {
+          "k": 6572,
+          "overlap": 1306,
+          "precision": 0.19872185027388922,
+          "teacher_recall": 0.39744370054777844,
+          "jaccard": 0.15271281571562206,
+          "teacher_weight_recall": 0.45286217616290003
+        },
+        {
+          "k": 9858,
+          "overlap": 1718,
+          "precision": 0.17427470075065937,
+          "teacher_recall": 0.5228241022519781,
+          "jaccard": 0.1503588307369158,
+          "teacher_weight_recall": 0.5796589383623957
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -1.849589063851492,
+        "0.1": -1.3896301892047287,
+        "0.5": -0.6162174787844256,
+        "0.9": 0.34736749698087277,
+        "0.99": 1.2977400413915225
+      },
+      "n_features": 1,
+      "matched_activity": true
+    },
+    "profile_half0": {
+      "roc_auc": 0.9731683924891995,
+      "average_precision": 0.1425012022631487,
+      "primary": {
+        "k": 3286,
+        "overlap": 640,
+        "precision": 0.19476567255021301,
+        "teacher_recall": 0.19476567255021301,
+        "jaccard": 0.1078894133513149,
+        "teacher_weight_recall": 0.2323095835465229
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 334,
+          "precision": 0.20328667072428486,
+          "teacher_recall": 0.10164333536214243,
+          "jaccard": 0.07268770402611534,
+          "teacher_weight_recall": 0.12078271112818473
+        },
+        {
+          "k": 2464,
+          "overlap": 500,
+          "precision": 0.20292207792207792,
+          "teacher_recall": 0.15216068167985392,
+          "jaccard": 0.09523809523809523,
+          "teacher_weight_recall": 0.18186664829473145
+        },
+        {
+          "k": 3286,
+          "overlap": 640,
+          "precision": 0.19476567255021301,
+          "teacher_recall": 0.19476567255021301,
+          "jaccard": 0.1078894133513149,
+          "teacher_weight_recall": 0.2323095835465229
+        },
+        {
+          "k": 4108,
+          "overlap": 786,
+          "precision": 0.19133398247322297,
+          "teacher_recall": 0.23919659160073037,
+          "jaccard": 0.11894673123486683,
+          "teacher_weight_recall": 0.28339499674856966
+        },
+        {
+          "k": 4929,
+          "overlap": 924,
+          "precision": 0.18746195982958003,
+          "teacher_recall": 0.28119293974437004,
+          "jaccard": 0.12673158688794403,
+          "teacher_weight_recall": 0.3287929536144018
+        },
+        {
+          "k": 6572,
+          "overlap": 1175,
+          "precision": 0.17878880097382835,
+          "teacher_recall": 0.3575776019476567,
+          "jaccard": 0.13532189335483127,
+          "teacher_weight_recall": 0.40825153864758
+        },
+        {
+          "k": 9858,
+          "overlap": 1547,
+          "precision": 0.15692838303915602,
+          "teacher_recall": 0.47078514911746805,
+          "jaccard": 0.1333965680779512,
+          "teacher_weight_recall": 0.5275728043964028
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -1.9238117918984032,
+        "0.1": -1.3872400666229214,
+        "0.5": -0.6253254311366242,
+        "0.9": 0.34254251083789333,
+        "0.99": 1.326630754305908
+      },
+      "n_features": 1,
+      "matched_activity": true
+    },
+    "profile_half1": {
+      "roc_auc": 0.9727194453618881,
+      "average_precision": 0.13346211358319754,
+      "primary": {
+        "k": 3286,
+        "overlap": 612,
+        "precision": 0.1862446743761412,
+        "teacher_recall": 0.1862446743761412,
+        "jaccard": 0.10268456375838926,
+        "teacher_weight_recall": 0.22466370751467185
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 294,
+          "precision": 0.1789409616555082,
+          "teacher_recall": 0.0894704808277541,
+          "jaccard": 0.0634304207119741,
+          "teacher_weight_recall": 0.11013410024448309
+        },
+        {
+          "k": 2464,
+          "overlap": 465,
+          "precision": 0.18871753246753248,
+          "teacher_recall": 0.14150943396226415,
+          "jaccard": 0.0879848628192999,
+          "teacher_weight_recall": 0.17451888684622327
+        },
+        {
+          "k": 3286,
+          "overlap": 612,
+          "precision": 0.1862446743761412,
+          "teacher_recall": 0.1862446743761412,
+          "jaccard": 0.10268456375838926,
+          "teacher_weight_recall": 0.22466370751467185
+        },
+        {
+          "k": 4108,
+          "overlap": 751,
+          "precision": 0.18281402142161635,
+          "teacher_recall": 0.2285453438831406,
+          "jaccard": 0.11305133222941442,
+          "teacher_weight_recall": 0.2709375746590704
+        },
+        {
+          "k": 4929,
+          "overlap": 866,
+          "precision": 0.17569486711300467,
+          "teacher_recall": 0.263542300669507,
+          "jaccard": 0.11783916179071982,
+          "teacher_weight_recall": 0.30892946994149506
+        },
+        {
+          "k": 6572,
+          "overlap": 1099,
+          "precision": 0.16722458916615945,
+          "teacher_recall": 0.3344491783323189,
+          "jaccard": 0.1254709441717091,
+          "teacher_weight_recall": 0.3851178729760139
+        },
+        {
+          "k": 9858,
+          "overlap": 1499,
+          "precision": 0.15205924122540068,
+          "teacher_recall": 0.4561777236762021,
+          "jaccard": 0.1287247745813654,
+          "teacher_weight_recall": 0.5116603047357908
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -1.940345833187003,
+        "0.1": -1.4077915757007764,
+        "0.5": -0.5519920504795416,
+        "0.9": 0.42001837789587754,
+        "0.99": 1.3798097627991495
+      },
+      "n_features": 1,
+      "matched_activity": true
+    },
+    "profile_love_plus_behavior": {
+      "roc_auc": 0.9815384890584288,
+      "average_precision": 0.2105963068887834,
+      "primary": {
+        "k": 3286,
+        "overlap": 909,
+        "precision": 0.27662811929397446,
+        "teacher_recall": 0.27662811929397446,
+        "jaccard": 0.16051562775913827,
+        "teacher_weight_recall": 0.3284804243377514
+      },
+      "size_sweep": [
+        {
+          "k": 1643,
+          "overlap": 512,
+          "precision": 0.31162507608034085,
+          "teacher_recall": 0.15581253804017042,
+          "jaccard": 0.11591577994113651,
+          "teacher_weight_recall": 0.19348077349217055
+        },
+        {
+          "k": 2464,
+          "overlap": 711,
+          "precision": 0.2885551948051948,
+          "teacher_recall": 0.21637248934875228,
+          "jaccard": 0.1410994244889859,
+          "teacher_weight_recall": 0.2631781008229395
+        },
+        {
+          "k": 3286,
+          "overlap": 909,
+          "precision": 0.27662811929397446,
+          "teacher_recall": 0.27662811929397446,
+          "jaccard": 0.16051562775913827,
+          "teacher_weight_recall": 0.3284804243377514
+        },
+        {
+          "k": 4108,
+          "overlap": 1084,
+          "precision": 0.2638753651411879,
+          "teacher_recall": 0.32988435788192333,
+          "jaccard": 0.1717908082408875,
+          "teacher_weight_recall": 0.38666092894796206
+        },
+        {
+          "k": 4929,
+          "overlap": 1225,
+          "precision": 0.24852911341042808,
+          "teacher_recall": 0.37279367011564213,
+          "jaccard": 0.17525035765379113,
+          "teacher_weight_recall": 0.43197679573870906
+        },
+        {
+          "k": 6572,
+          "overlap": 1497,
+          "precision": 0.22778454047474134,
+          "teacher_recall": 0.4555690809494827,
+          "jaccard": 0.17904556871187657,
+          "teacher_weight_recall": 0.5188997098337436
+        },
+        {
+          "k": 9858,
+          "overlap": 1913,
+          "precision": 0.19405558936904038,
+          "teacher_recall": 0.5821667681071211,
+          "jaccard": 0.17033211646336036,
+          "teacher_weight_recall": 0.6409784480734989
+        }
+      ],
+      "score_quantiles": {
+        "0.01": -2.251086143543256,
+        "0.1": -1.4006116059222848,
+        "0.5": -0.10110052699961238,
+        "0.9": 1.5291540248229707,
+        "0.99": 3.0803434737216384
+      },
+      "n_features": 31,
+      "matched_activity": true
+    }
+  },
+  "overlap_preliminary_teacher": {
+    "n_a": 4929,
+    "n_b": 3286,
+    "intersection": 1377,
+    "jaccard": 0.20137467095642,
+    "a_in_b": 0.2793670115642118,
+    "b_in_a": 0.4190505173463177
+  },
+  "overlap_old_focus_teacher": {
+    "n_a": 4743,
+    "n_b": 3286,
+    "intersection": 576,
+    "jaccard": 0.07728431504092312,
+    "a_in_b": 0.12144212523719165,
+    "b_in_a": 0.17528910529519173
+  },
+  "overlap_preliminary_old_focus": {
+    "n_a": 4929,
+    "n_b": 4743,
+    "intersection": 1054,
+    "jaccard": 0.1223021582733813,
+    "a_in_b": 0.2138364779874214,
+    "b_in_a": 0.2222222222222222
+  },
+  "pairwise": {
+    "preliminary": {
+      "n_pairs": 578391,
+      "probe": {
+        "Q_clean": 108.5,
+        "pos50": 37,
+        "anti50": 0,
+        "anti1000": 5,
+        "filler50": 0,
+        "sticky50": 10,
+        "top50_mean_n_c": 1531.38,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.3488372093023256,
+        "hits@50": 15,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.627906976744186,
+        "hits@200": 27,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 73.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.9305041298775278,
+          "n_c": 6972.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9300714440355056,
+          "n_c": 4569.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 3,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9156212407630177,
+          "n_c": 5769.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 4,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.8830188679245283,
+          "n_c": 480.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 5,
+          "title": "Shakespeare's Sonnets",
+          "author": "William Shakespeare",
+          "score": 0.8668407310704961,
+          "n_c": 716.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.862962962962963,
+          "n_c": 2650.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "Notes from Underground",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8575712143928036,
+          "n_c": 617.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "Les Misérables",
+          "author": "Victor Hugo",
+          "score": 0.8549391871848115,
+          "n_c": 3321.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 9,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8541996830427893,
+          "n_c": 1212.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann",
+          "score": 0.8497652582159624,
+          "n_c": 802.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 11,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "score": 0.8486358866736622,
+          "n_c": 3762.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 12,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8414239482200647,
+          "n_c": 568.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 13,
+          "title": "The Idiot",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8290223586146427,
+          "n_c": 2231.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 14,
+          "title": "Invisible Man",
+          "author": "Ralph Ellison",
+          "score": 0.8226002430133658,
+          "n_c": 773.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 15,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "score": 0.8197247706422018,
+          "n_c": 4310.0,
+          "n_a": 0.0
+        }
+      ],
+      "top50_work_ids": [
+        "1885548",
+        "3393910",
+        "3393917",
+        "3294830",
+        "1118349",
+        "4912783",
+        "50717723",
+        "3208463",
+        "1487216",
+        "647489",
+        "1896522",
+        "1559207",
+        "6552198",
+        "170957",
+        "2507928",
+        "16721",
+        "876183",
+        "866393",
+        "2886568",
+        "1222101",
+        "859375",
+        "1031493",
+        "4830806",
+        "3135610",
+        "1551463",
+        "391568",
+        "2342136",
+        "2089235",
+        "24839",
+        "1168289",
+        "3295655",
+        "809248",
+        "3356006",
+        "2377563",
+        "3458174",
+        "2870411",
+        "2503920",
+        "2158162",
+        "2965832",
+        "13183177",
+        "814207",
+        "2338253",
+        "849134",
+        "121842",
+        "750536",
+        "261212",
+        "28117",
+        "6057263",
+        "3293141",
+        "2095349"
+      ]
+    },
+    "rich_global": {
+      "n_pairs": 381499,
+      "probe": {
+        "Q_clean": 115.0,
+        "pos50": 39,
+        "anti50": 0,
+        "anti1000": 4,
+        "filler50": 0,
+        "sticky50": 11,
+        "top50_mean_n_c": 1210.92,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.37209302325581395,
+        "hits@50": 16,
+        "recall@100": 0.5116279069767442,
+        "hits@100": 22,
+        "recall@200": 0.6511627906976745,
+        "hits@200": 28,
+        "recall@500": 0.813953488372093,
+        "hits@500": 35,
+        "median_rank": 75.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.9355397344621897,
+          "n_c": 5147.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9336734693877552,
+          "n_c": 3478.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 3,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9125592417061612,
+          "n_c": 4170.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 4,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann",
+          "score": 0.8807749627421758,
+          "n_c": 621.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 5,
+          "title": "Notes from Underground",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8772635814889336,
+          "n_c": 447.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "Shakespeare's Sonnets",
+          "author": "William Shakespeare",
+          "score": 0.8758389261744967,
+          "n_c": 546.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.873405299313052,
+          "n_c": 969.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.8716924613080379,
+          "n_c": 1953.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 9,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.8666666666666667,
+          "n_c": 325.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "Les Misérables",
+          "author": "Victor Hugo",
+          "score": 0.8666081614743308,
+          "n_c": 2229.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 11,
+          "title": "The Idiot",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8382009345794392,
+          "n_c": 1662.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 12,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8351893095768373,
+          "n_c": 399.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 13,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov",
+          "score": 0.8346570397111913,
+          "n_c": 1335.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 14,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "score": 0.8303108808290156,
+          "n_c": 3038.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 15,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.8237704918032788,
+          "n_c": 438.0,
+          "n_a": 0.0
+        }
+      ],
+      "top50_work_ids": [
+        "1885548",
+        "3393910",
+        "3393917",
+        "647489",
+        "50717723",
+        "1118349",
+        "1487216",
+        "4912783",
+        "3294830",
+        "3208463",
+        "6552198",
+        "1559207",
+        "876183",
+        "2507928",
+        "866393",
+        "3135610",
+        "1896522",
+        "15956900",
+        "16721",
+        "170957",
+        "1031493",
+        "1222101",
+        "2870411",
+        "2342136",
+        "1168289",
+        "2089235",
+        "391568",
+        "481854",
+        "3293141",
+        "1551463",
+        "24839",
+        "4830806",
+        "859375",
+        "1493394",
+        "1222661",
+        "2886568",
+        "2965832",
+        "750536",
+        "3356006",
+        "809248",
+        "2377563",
+        "121842",
+        "2368224",
+        "19376",
+        "2635502",
+        "3295655",
+        "3458174",
+        "2095349",
+        "1795311",
+        "2682703"
+      ]
+    },
+    "teacher": {
+      "n_pairs": 431559,
+      "probe": {
+        "Q_clean": 129.0,
+        "pos50": 43,
+        "anti50": 0,
+        "anti1000": 0,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1432.54,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 38,
+        "recall@50": 0.4418604651162791,
+        "hits@50": 19,
+        "recall@100": 0.5348837209302325,
+        "hits@100": 23,
+        "recall@200": 0.6744186046511628,
+        "hits@200": 29,
+        "recall@500": 0.7906976744186046,
+        "hits@500": 34,
+        "median_rank": 54.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9355322338830585,
+          "n_c": 4619.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 2,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.9269906456764774,
+          "n_c": 4333.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 3,
+          "title": "The Divine Comedy",
+          "author": "Dante Alighieri",
+          "score": 0.8919597989949748,
+          "n_c": 746.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 4,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.8858773181169757,
+          "n_c": 1352.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 5,
+          "title": "Infinite Jest",
+          "author": "David Foster Wallace",
+          "score": 0.8801969365426695,
+          "n_c": 1778.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "2666",
+          "author": "Roberto Bolano",
+          "score": 0.8776255707762557,
+          "n_c": 1045.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.877094972067039,
+          "n_c": 845.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.8747454175152749,
+          "n_c": 1914.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 9,
+          "title": "The Magic Mountain",
+          "author": "Thomas Mann",
+          "score": 0.8547486033519552,
+          "n_c": 1203.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8540949759119064,
+          "n_c": 1403.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 11,
+          "title": "Swann's Way (In Search of Lost Time, #1)",
+          "author": "Marcel Proust",
+          "score": 0.845761631612492,
+          "n_c": 1519.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 12,
+          "title": "East of Eden",
+          "author": "John Steinbeck",
+          "score": 0.8425531914893617,
+          "n_c": 1125.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 13,
+          "title": "The Master and Margarita",
+          "author": "Mikhail Bulgakov",
+          "score": 0.8382608695652174,
+          "n_c": 2250.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 14,
+          "title": "Pale Fire",
+          "author": "Vladimir Nabokov",
+          "score": 0.8325123152709359,
+          "n_c": 965.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 15,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "score": 0.8256963162623541,
+          "n_c": 2176.0,
+          "n_a": 0.0
+        }
+      ],
+      "top50_work_ids": [
+        "3393917",
+        "3393910",
+        "809248",
+        "866393",
+        "3271542",
+        "3294830",
+        "1559207",
+        "4912783",
+        "647489",
+        "1487216",
+        "4830806",
+        "2574991",
+        "876183",
+        "1222661",
+        "2965832",
+        "750536",
+        "2886568",
+        "17046445",
+        "983806",
+        "2368224",
+        "1065465",
+        "1268631",
+        "6552198",
+        "1551463",
+        "2377563",
+        "50717723",
+        "2089235",
+        "3295655",
+        "2507928",
+        "2435598",
+        "2373750",
+        "1595511",
+        "2204679",
+        "1885548",
+        "2503920",
+        "3356006",
+        "19376",
+        "1168289",
+        "6057263",
+        "2095349",
+        "1794732",
+        "15956900",
+        "3138328",
+        "3208463",
+        "2409320",
+        "1116802",
+        "3293141",
+        "481854",
+        "847007",
+        "1323448"
+      ]
+    },
+    "old_focus_approx": {
+      "n_pairs": 616728,
+      "probe": {
+        "Q_clean": 53.0,
+        "pos50": 21,
+        "anti50": 0,
+        "anti1000": 20,
+        "filler50": 0,
+        "sticky50": 9,
+        "top50_mean_n_c": 1046.62,
+        "top50_mean_n_a": 0.0,
+        "top50_frac_missing_anti": 1.0
+      },
+      "heldout": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.20930232558139536,
+        "hits@50": 9,
+        "recall@100": 0.3023255813953488,
+        "hits@100": 13,
+        "recall@200": 0.6046511627906976,
+        "hits@200": 26,
+        "recall@500": 0.7674418604651163,
+        "hits@500": 33,
+        "median_rank": 134.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8555133079847909,
+          "n_c": 1791.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 2,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8514990193331465,
+          "n_c": 3519.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 3,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire",
+          "score": 0.8456692913385827,
+          "n_c": 585.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.8391990291262137,
+          "n_c": 3246.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 5,
+          "title": "Rebecca",
+          "author": "Daphne du Maurier",
+          "score": 0.8377976190476191,
+          "n_c": 1294.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "Les Misérables",
+          "author": "Victor Hugo",
+          "score": 0.8274932614555257,
+          "n_c": 2176.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "The Things They Carried",
+          "author": "Tim O'Brien",
+          "score": 0.8255675029868578,
+          "n_c": 787.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "Leaves of Grass",
+          "author": "Walt Whitman",
+          "score": 0.8226002430133658,
+          "n_c": 773.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 9,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8096479791395046,
+          "n_c": 717.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "score": 0.8041710851891127,
+          "n_c": 2779.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 11,
+          "title": "War and Peace",
+          "author": "Leo Tolstoy",
+          "score": 0.801912568306011,
+          "n_c": 1414.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 12,
+          "title": "Journey to the End of the Night",
+          "author": "Louis-Ferdinand Celine",
+          "score": 0.7975206611570248,
+          "n_c": 434.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 13,
+          "title": "Revolutionary Road",
+          "author": "Richard Yates",
+          "score": 0.7896253602305475,
+          "n_c": 644.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 14,
+          "title": "A Tree Grows in Brooklyn",
+          "author": "Betty  Smith",
+          "score": 0.7864823348694316,
+          "n_c": 1252.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 15,
+          "title": "The Count of Monte Cristo",
+          "author": "Alexandre Dumas",
+          "score": 0.7846450989859971,
+          "n_c": 2021.0,
+          "n_a": 0.0
+        }
+      ],
+      "top50_work_ids": [
+        "3393910",
+        "3393917",
+        "2089235",
+        "1885548",
+        "46663",
+        "3208463",
+        "1235619",
+        "28117",
+        "1559207",
+        "2507928",
+        "4912783",
+        "1551463",
+        "1235136",
+        "833257",
+        "391568",
+        "1118349",
+        "389834",
+        "2886568",
+        "2912834",
+        "814207",
+        "866393",
+        "922581",
+        "1487216",
+        "3464264",
+        "1858012",
+        "2529422",
+        "48287641",
+        "142449",
+        "1782584",
+        "19926928",
+        "3294830",
+        "4830806",
+        "2574991",
+        "180461",
+        "809292",
+        "6552198",
+        "3281465",
+        "859375",
+        "738965",
+        "876183",
+        "1268631",
+        "16467838",
+        "2931549",
+        "3295655",
+        "4232388",
+        "25491300",
+        "256076",
+        "50717723",
+        "283706",
+        "21519538"
+      ]
+    },
+    "top50_jaccard": 0.4084507042253521,
+    "preliminary_old_focus_top50_jaccard": 0.2987012987012987
+  },
+  "diffs": {
+    "false_positive": {
+      "n": 3552,
+      "mean_n_rated": 150.92171486955982,
+      "five_rate": 0.319425352795043,
+      "depth_ge4": 0.1365880613208876,
+      "mean_logn_5": 8.337892761662108,
+      "rare_loved_share": 0.2077034984905651,
+      "mega_loved_share": 0.14857748174350643,
+      "mean_abs_residual": 0.7646422036811313
+    },
+    "false_negative": {
+      "n": 1909,
+      "mean_n_rated": 189.51479130772785,
+      "five_rate": 0.3204118600827146,
+      "depth_ge4": 0.14372573582666567,
+      "mean_logn_5": 7.79860900382391,
+      "rare_loved_share": 0.25676771795519704,
+      "mega_loved_share": 0.0699105613595026,
+      "mean_abs_residual": 0.7412615036180511
+    },
+    "false_positive_deep_status": {
+      "n": 3552,
+      "in_deep_mint": 1424,
+      "share_in_deep_mint": 0.4009009009009009,
+      "mean_deep_share_if_minted": 0.5174479711308771,
+      "mean_com_share_if_minted": 0.02607616616259833,
+      "mean_n_deep_if_minted": 12.075140449438202
+    },
+    "missed_teacher_mint": {
+      "mean_stored_weight": 0.5960229517492754,
+      "mean_deep_share": 0.7058962892042028,
+      "mean_com_share": 0.017066558823243014,
+      "mean_n_deep": 14.700890518596124,
+      "n_hyper_raters_ge1000": 45
+    },
+    "false_positive_common_fives": [
+      {
+        "rank": 1,
+        "work_id": "1885548",
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "n_users": 1444,
+        "w_hits": 1444.0,
+        "exposure": 0.40653153153153154
+      },
+      {
+        "rank": 2,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 944,
+        "w_hits": 944.0,
+        "exposure": 0.26576576576576577
+      },
+      {
+        "rank": 3,
+        "work_id": "1896522",
+        "title": "Macbeth",
+        "author": "William Shakespeare",
+        "n_users": 843,
+        "w_hits": 843.0,
+        "exposure": 0.23733108108108109
+      },
+      {
+        "rank": 4,
+        "work_id": "2977639",
+        "title": "Jane Eyre",
+        "author": "Charlotte Bronte",
+        "n_users": 703,
+        "w_hits": 703.0,
+        "exposure": 0.19791666666666666
+      },
+      {
+        "rank": 5,
+        "work_id": "2507928",
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "n_users": 699,
+        "w_hits": 699.0,
+        "exposure": 0.19679054054054054
+      },
+      {
+        "rank": 6,
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 648,
+        "w_hits": 648.0,
+        "exposure": 0.18243243243243243
+      },
+      {
+        "rank": 7,
+        "work_id": "3208463",
+        "title": "Les Misérables",
+        "author": "Victor Hugo",
+        "n_users": 641,
+        "w_hits": 641.0,
+        "exposure": 0.18046171171171171
+      },
+      {
+        "rank": 8,
+        "work_id": "3324344",
+        "title": "The Stranger",
+        "author": "Albert Camus",
+        "n_users": 588,
+        "w_hits": 588.0,
+        "exposure": 0.16554054054054054
+      },
+      {
+        "rank": 9,
+        "work_id": "391568",
+        "title": "The Count of Monte Cristo",
+        "author": "Alexandre Dumas",
+        "n_users": 574,
+        "w_hits": 574.0,
+        "exposure": 0.16159909909909909
+      },
+      {
+        "rank": 10,
+        "work_id": "3356006",
+        "title": "The Odyssey",
+        "author": "Homer",
+        "n_users": 570,
+        "w_hits": 570.0,
+        "exposure": 0.16047297297297297
+      },
+      {
+        "rank": 11,
+        "work_id": "2373750",
+        "title": "The Metamorphosis",
+        "author": "Franz Kafka",
+        "n_users": 570,
+        "w_hits": 570.0,
+        "exposure": 0.16047297297297297
+      },
+      {
+        "rank": 12,
+        "work_id": "1565818",
+        "title": "Wuthering Heights",
+        "author": "Emily Bronte",
+        "n_users": 562,
+        "w_hits": 562.0,
+        "exposure": 0.15822072072072071
+      },
+      {
+        "rank": 13,
+        "work_id": "1835605",
+        "title": "The Adventures of Huckleberry Finn",
+        "author": "Mark Twain",
+        "n_users": 561,
+        "w_hits": 561.0,
+        "exposure": 0.1579391891891892
+      },
+      {
+        "rank": 14,
+        "work_id": "3295655",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "n_users": 540,
+        "w_hits": 540.0,
+        "exposure": 0.15202702702702703
+      },
+      {
+        "rank": 15,
+        "work_id": "1858012",
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "n_users": 539,
+        "w_hits": 539.0,
+        "exposure": 0.15174549549549549
+      }
+    ],
+    "false_negative_common_fives": [
+      {
+        "rank": 1,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 766,
+        "w_hits": 766.0,
+        "exposure": 0.4012572027239392
+      },
+      {
+        "rank": 2,
+        "work_id": "3295655",
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "n_users": 625,
+        "w_hits": 625.0,
+        "exposure": 0.3273965426925092
+      },
+      {
+        "rank": 3,
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 623,
+        "w_hits": 623.0,
+        "exposure": 0.32634887375589317
+      },
+      {
+        "rank": 4,
+        "work_id": "1268631",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "n_users": 596,
+        "w_hits": 596.0,
+        "exposure": 0.3122053431115767
+      },
+      {
+        "rank": 5,
+        "work_id": "3324344",
+        "title": "The Stranger",
+        "author": "Albert Camus",
+        "n_users": 499,
+        "w_hits": 499.0,
+        "exposure": 0.2613933996856993
+      },
+      {
+        "rank": 6,
+        "work_id": "876183",
+        "title": "The Master and Margarita",
+        "author": "Mikhail Bulgakov",
+        "n_users": 416,
+        "w_hits": 416.0,
+        "exposure": 0.2179151388161341
+      },
+      {
+        "rank": 7,
+        "work_id": "2373750",
+        "title": "The Metamorphosis",
+        "author": "Franz Kafka",
+        "n_users": 402,
+        "w_hits": 402.0,
+        "exposure": 0.2105814562598219
+      },
+      {
+        "rank": 8,
+        "work_id": "2965832",
+        "title": "The Trial",
+        "author": "Franz Kafka",
+        "n_users": 382,
+        "w_hits": 382.0,
+        "exposure": 0.2001047668936616
+      },
+      {
+        "rank": 9,
+        "work_id": "1683562",
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut Jr.",
+        "n_users": 378,
+        "w_hits": 378.0,
+        "exposure": 0.19800942902042953
+      },
+      {
+        "rank": 10,
+        "work_id": "2507928",
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "n_users": 361,
+        "w_hits": 361.0,
+        "exposure": 0.1891042430591933
+      },
+      {
+        "rank": 11,
+        "work_id": "3271542",
+        "title": "Infinite Jest",
+        "author": "David Foster Wallace",
+        "n_users": 330,
+        "w_hits": 330.0,
+        "exposure": 0.17286537454164483
+      },
+      {
+        "rank": 12,
+        "work_id": "6552198",
+        "title": "The Idiot",
+        "author": "Fyodor Dostoyevsky",
+        "n_users": 322,
+        "w_hits": 322.0,
+        "exposure": 0.1686746987951807
+      },
+      {
+        "rank": 13,
+        "work_id": "2409320",
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville",
+        "n_users": 322,
+        "w_hits": 322.0,
+        "exposure": 0.1686746987951807
+      },
+      {
+        "rank": 14,
+        "work_id": "1065465",
+        "title": "Blood Meridian, or the Evening Redness in the West",
+        "author": "Cormac McCarthy",
+        "n_users": 315,
+        "w_hits": 315.0,
+        "exposure": 0.16500785751702463
+      },
+      {
+        "rank": 15,
+        "work_id": "4912783",
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "n_users": 314,
+        "w_hits": 314.0,
+        "exposure": 0.1644840230487166
+      }
+    ]
+  }
+}

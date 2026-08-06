@@ -1,0 +1,10 @@
+{
+  "source_replicates": 5000,
+  "users": 20000,
+  "hard_jury_users": 4929,
+  "soft_mass": 4929.0,
+  "soft_nonzero_users": 6826,
+  "kish_effective_users": 5199.257444406618,
+  "elapsed_seconds": 151.19937562942505,
+  "output": "/home/ifrankling/unsw/novels/curators_explorer/data/soft_jury_weights.parquet"
+}

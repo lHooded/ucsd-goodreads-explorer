@@ -1,0 +1,5727 @@
+{
+  "meta": {
+    "note": "Probe metrics are noisy; piles are fallible. Prefer stability + trajectory structure.",
+    "watchlist": [
+      {
+        "query": "Dhalgren",
+        "work_id": "873021",
+        "title": "Dhalgren",
+        "author": "Samuel R. Delany",
+        "n": 868
+      },
+      {
+        "query": "Moby-Dick",
+        "work_id": "2409320",
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville",
+        "n": 31475
+      },
+      {
+        "query": "Ulysses",
+        "work_id": "2368224",
+        "title": "Ulysses",
+        "author": "James Joyce",
+        "n": 8443
+      },
+      {
+        "query": "Lolita",
+        "work_id": "1268631",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "n": 47579
+      },
+      {
+        "query": "The Brothers Karamazov",
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "n": 15001
+      },
+      {
+        "query": "1984",
+        "work_id": "153313",
+        "title": "1984",
+        "author": "George Orwell",
+        "n": 152321
+      },
+      {
+        "query": "The Catcher in the Rye",
+        "work_id": "3036731",
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "n": 146781
+      },
+      {
+        "query": "The Hate U Give",
+        "work_id": "49638190",
+        "title": "The Hate U Give",
+        "author": "Angie Thomas",
+        "n": 11481
+      },
+      {
+        "query": "Words of Radiance",
+        "work_id": "16482835",
+        "title": "Words of Radiance (The Stormlight Archive, #2)",
+        "author": "Brandon Sanderson",
+        "n": 10709
+      },
+      {
+        "query": "A Court of Mist and Fury",
+        "work_id": "25126749",
+        "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+        "author": "Sarah J. Maas",
+        "n": 23734
+      },
+      {
+        "query": "Infinite Jest",
+        "work_id": "3271542",
+        "title": "Infinite Jest",
+        "author": "David Foster Wallace",
+        "n": 4598
+      },
+      {
+        "query": "Gravity's Rainbow",
+        "work_id": "866393",
+        "title": "Gravity's Rainbow",
+        "author": "Thomas Pynchon",
+        "n": 2385
+      },
+      {
+        "query": "Stoner",
+        "work_id": "1559207",
+        "title": "Stoner",
+        "author": "John  Williams",
+        "n": 6637
+      },
+      {
+        "query": "The Book of Disquiet",
+        "work_id": "983806",
+        "title": "The Book of Disquiet",
+        "author": "Fernando Pessoa",
+        "n": 1706
+      }
+    ]
+  },
+  "baseline": {
+    "Q": 71.98,
+    "pos50": 22,
+    "anti50": 0,
+    "filler50": 1,
+    "classic50": 22,
+    "normie50": 6,
+    "test50": 7,
+    "test200": 13,
+    "top15": [
+      {
+        "rank": 1,
+        "title": "Ulysses",
+        "author": "James Joyce"
+      },
+      {
+        "rank": 2,
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville"
+      },
+      {
+        "rank": 3,
+        "title": "Paradise Lost",
+        "author": "John Milton"
+      },
+      {
+        "rank": 4,
+        "title": "Hamlet",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 5,
+        "title": "Mrs. Dalloway",
+        "author": "Virginia Woolf"
+      },
+      {
+        "rank": 6,
+        "title": "Lolita",
+        "author": "Vladimir Nabokov"
+      },
+      {
+        "rank": 7,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky"
+      },
+      {
+        "rank": 8,
+        "title": "A Streetcar Named Desire",
+        "author": "Tennessee Williams"
+      },
+      {
+        "rank": 9,
+        "title": "Macbeth",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 10,
+        "title": "The Trial",
+        "author": "Franz Kafka"
+      },
+      {
+        "rank": 11,
+        "title": "The Poisonwood Bible",
+        "author": "Barbara Kingsolver"
+      },
+      {
+        "rank": 12,
+        "title": "Invisible Man",
+        "author": "Ralph Ellison"
+      },
+      {
+        "rank": 13,
+        "title": "King Lear",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 14,
+        "title": "Life After Life",
+        "author": "Kate Atkinson"
+      },
+      {
+        "rank": 15,
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad"
+      }
+    ],
+    "watch": [
+      {
+        "query": "Dhalgren",
+        "title": "Dhalgren",
+        "author": "Samuel R. Delany",
+        "work_id": "873021",
+        "rank": 1524
+      },
+      {
+        "query": "Moby-Dick",
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville",
+        "work_id": "2409320",
+        "rank": 2
+      },
+      {
+        "query": "Ulysses",
+        "title": "Ulysses",
+        "author": "James Joyce",
+        "work_id": "2368224",
+        "rank": 1
+      },
+      {
+        "query": "Lolita",
+        "title": "Lolita",
+        "author": "Vladimir Nabokov",
+        "work_id": "1268631",
+        "rank": 6
+      },
+      {
+        "query": "The Brothers Karamazov",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "work_id": "3393910",
+        "rank": 34
+      },
+      {
+        "query": "1984",
+        "title": "1984",
+        "author": "George Orwell",
+        "work_id": "153313",
+        "rank": null
+      },
+      {
+        "query": "The Catcher in the Rye",
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "work_id": "3036731",
+        "rank": null
+      },
+      {
+        "query": "The Hate U Give",
+        "title": "The Hate U Give",
+        "author": "Angie Thomas",
+        "work_id": "49638190",
+        "rank": 126
+      },
+      {
+        "query": "Words of Radiance",
+        "title": "Words of Radiance (The Stormlight Archive, #2)",
+        "author": "Brandon Sanderson",
+        "work_id": "16482835",
+        "rank": null
+      },
+      {
+        "query": "A Court of Mist and Fury",
+        "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+        "author": "Sarah J. Maas",
+        "work_id": "25126749",
+        "rank": null
+      },
+      {
+        "query": "Infinite Jest",
+        "title": "Infinite Jest",
+        "author": "David Foster Wallace",
+        "work_id": "3271542",
+        "rank": 409
+      },
+      {
+        "query": "Gravity's Rainbow",
+        "title": "Gravity's Rainbow",
+        "author": "Thomas Pynchon",
+        "work_id": "866393",
+        "rank": 632
+      },
+      {
+        "query": "Stoner",
+        "title": "Stoner",
+        "author": "John  Williams",
+        "work_id": "1559207",
+        "rank": 267
+      },
+      {
+        "query": "The Book of Disquiet",
+        "title": "The Book of Disquiet",
+        "author": "Fernando Pessoa",
+        "work_id": "983806",
+        "rank": 145
+      }
+    ]
+  },
+  "ablations": {
+    "author_div_5": {
+      "feature": "author_div_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": 0.5,
+        "anti": -0.6,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 70.04,
+        "pos50": 24,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 24,
+        "normie50": 6,
+        "test50": 9,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 3,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 4,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 7,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 8,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 9,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 10,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 11,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 12,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 13,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 14,
+            "title": "Bud, Not Buddy",
+            "author": "Christopher Paul Curtis"
+          },
+          {
+            "rank": 15,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1503
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 2
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 7
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 38
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 139
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 470
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 681
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 331
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 168
+          }
+        ]
+      },
+      "delta_Q": -1.9399999999999977,
+      "delta_pos50": 2,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.9,
+      "jaccard_top200": 0.845,
+      "mean_abs_delta_rank_top200": 31.693467336683415,
+      "kendall_top200": 0.7908735597177808,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1503,
+          "delta": -21
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 2,
+          "delta": 1
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 7,
+          "delta": 1
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 38,
+          "delta": 4
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 139,
+          "delta": 13
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 470,
+          "delta": 61
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 681,
+          "delta": 49
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 331,
+          "delta": 64
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 168,
+          "delta": 23
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 4,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 7,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 8,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        }
+      ]
+    },
+    "author_hhi_5": {
+      "feature": "author_hhi_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": -0.8,
+        "anti": 1.0,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 73.92,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 23,
+        "normie50": 6,
+        "test50": 9,
+        "test200": 11,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 2,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 3,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 4,
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes Saavedra"
+          },
+          {
+            "rank": 5,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 6,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 7,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 8,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 9,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 10,
+            "title": "Out of the Dust",
+            "author": "Karen Hesse"
+          },
+          {
+            "rank": 11,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston"
+          },
+          {
+            "rank": 12,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 13,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 14,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 15,
+            "title": "As I Lay Dying",
+            "author": "William Faulkner"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1162
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 2
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 12
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 7
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 94
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": null
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 357
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 544
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 208
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 114
+          }
+        ]
+      },
+      "delta_Q": 1.9399999999999977,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.7,
+      "jaccard_top200": 0.7,
+      "mean_abs_delta_rank_top200": 106.79141104294479,
+      "kendall_top200": 0.5905476028175415,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1162,
+          "delta": -362
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 2,
+          "delta": 0
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 12,
+          "delta": 11
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 7,
+          "delta": 1
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 94,
+          "delta": 60
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 357,
+          "delta": -52
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 544,
+          "delta": -88
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 208,
+          "delta": -59
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 114,
+          "delta": -31
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 4,
+          "title": "Don Quixote",
+          "author": "Miguel de Cervantes Saavedra"
+        },
+        {
+          "rank": 5,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        },
+        {
+          "rank": 6,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 7,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 8,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        }
+      ]
+    },
+    "binge_max_5": {
+      "feature": "binge_max_5",
+      "used_in": [
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": null,
+        "anti": 0.8,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 50.94,
+        "pos50": 20,
+        "anti50": 0,
+        "filler50": 2,
+        "classic50": 20,
+        "normie50": 8,
+        "test50": 6,
+        "test200": 12,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 2,
+            "title": "All Quiet on the Western Front",
+            "author": "Erich Maria Remarque"
+          },
+          {
+            "rank": 3,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 4,
+            "title": "The Arabian Nights",
+            "author": "Anonymous"
+          },
+          {
+            "rank": 5,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 6,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 7,
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes Saavedra"
+          },
+          {
+            "rank": 8,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 9,
+            "title": "The Grapes of Wrath",
+            "author": "John Steinbeck"
+          },
+          {
+            "rank": 10,
+            "title": "Roll of Thunder, Hear My Cry (Logans, #4)",
+            "author": "Mildred D. Taylor"
+          },
+          {
+            "rank": 11,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 12,
+            "title": "Othello",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 13,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 14,
+            "title": "Alice's Adventures in Wonderland & Through the Looking-Glass",
+            "author": "Lewis Carroll"
+          },
+          {
+            "rank": 15,
+            "title": "The Absolutely True Diary of a Part-Time Indian",
+            "author": "Sherman Alexie"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1542
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 5
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 468
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 3
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 288
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 209
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 535
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 765
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 364
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 224
+          }
+        ]
+      },
+      "delta_Q": -21.040000000000006,
+      "delta_pos50": -2,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.68,
+      "jaccard_top200": 0.52,
+      "mean_abs_delta_rank_top200": 157.14054054054054,
+      "kendall_top200": 0.4591069330199765,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1542,
+          "delta": 18
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 5,
+          "delta": 3
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 468,
+          "delta": 467
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 3,
+          "delta": -3
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 288,
+          "delta": 254
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 209,
+          "delta": 83
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 535,
+          "delta": 126
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 765,
+          "delta": 133
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 364,
+          "delta": 97
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 224,
+          "delta": 79
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 2,
+          "title": "All Quiet on the Western Front",
+          "author": "Erich Maria Remarque"
+        },
+        {
+          "rank": 3,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 4,
+          "title": "The Arabian Nights",
+          "author": "Anonymous"
+        },
+        {
+          "rank": 5,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 6,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 7,
+          "title": "Don Quixote",
+          "author": "Miguel de Cervantes Saavedra"
+        },
+        {
+          "rank": 8,
+          "title": "King Lear",
+          "author": "William Shakespeare"
+        }
+      ]
+    },
+    "binge_mean_5": {
+      "feature": "binge_mean_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": -0.7,
+        "anti": 1.2,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 70.36,
+        "pos50": 25,
+        "anti50": 0,
+        "filler50": 2,
+        "classic50": 25,
+        "normie50": 7,
+        "test50": 7,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 3,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 4,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 5,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 6,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 7,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 8,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 9,
+            "title": "Out of the Dust",
+            "author": "Karen Hesse"
+          },
+          {
+            "rank": 10,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 11,
+            "title": "Life After Life",
+            "author": "Kate Atkinson"
+          },
+          {
+            "rank": 12,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 13,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 14,
+            "title": "Beloved",
+            "author": "Toni Morrison"
+          },
+          {
+            "rank": 15,
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1478
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 13
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 4
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 15
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 622
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 473
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 687
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 332
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 185
+          }
+        ]
+      },
+      "delta_Q": -1.6200000000000045,
+      "delta_pos50": 3,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.84,
+      "jaccard_top200": 0.76,
+      "mean_abs_delta_rank_top200": 65.34517766497461,
+      "kendall_top200": 0.6671501087744742,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1478,
+          "delta": -46
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 13,
+          "delta": 12
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 4,
+          "delta": -2
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 15,
+          "delta": -19
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 622,
+          "delta": 496
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 473,
+          "delta": 64
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 687,
+          "delta": 55
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 332,
+          "delta": 65
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 185,
+          "delta": 40
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 4,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 5,
+          "title": "King Lear",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 6,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 7,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 8,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        }
+      ]
+    },
+    "depth_ge4": {
+      "feature": "depth_ge4",
+      "used_in": [
+        "classic",
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": 0.9,
+        "anti": null,
+        "normie": -0.5
+      },
+      "metrics": {
+        "Q": 71.25,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 23,
+        "normie50": 6,
+        "test50": 8,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 2,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 3,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 4,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 5,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 6,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 9,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 10,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 11,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 12,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 13,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 14,
+            "title": "The Arabian Nights",
+            "author": "Anonymous"
+          },
+          {
+            "rank": 15,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1377
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 4
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 2
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 5
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 42
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 144
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 381
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 716
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 262
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 134
+          }
+        ]
+      },
+      "delta_Q": -0.730000000000004,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.94,
+      "jaccard_top200": 0.865,
+      "mean_abs_delta_rank_top200": 28.420212765957448,
+      "kendall_top200": 0.7873478211400614,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1377,
+          "delta": -147
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 4,
+          "delta": 2
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 2,
+          "delta": 1
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 5,
+          "delta": -1
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 42,
+          "delta": 8
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 144,
+          "delta": 18
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 381,
+          "delta": -28
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 716,
+          "delta": 84
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 262,
+          "delta": -5
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 134,
+          "delta": -11
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 2,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 4,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 5,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 6,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        }
+      ]
+    },
+    "mean_logn_5": {
+      "feature": "mean_logn_5",
+      "used_in": [
+        "classic",
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": -1.0,
+        "anti": null,
+        "normie": 1.3
+      },
+      "metrics": {
+        "Q": 73.82,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 23,
+        "normie50": 6,
+        "test50": 8,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 2,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 3,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 4,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 5,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 6,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 9,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 10,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 11,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 12,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 13,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 14,
+            "title": "The Arabian Nights",
+            "author": "Anonymous"
+          },
+          {
+            "rank": 15,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1549
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 3
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 4
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 5
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 41
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 146
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 360
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 701
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 245
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 132
+          }
+        ]
+      },
+      "delta_Q": 1.8399999999999892,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.94,
+      "jaccard_top200": 0.855,
+      "mean_abs_delta_rank_top200": 36.16489361702128,
+      "kendall_top200": 0.7775628626692457,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1549,
+          "delta": 25
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 3,
+          "delta": 1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 4,
+          "delta": 3
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 5,
+          "delta": -1
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 41,
+          "delta": 7
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 146,
+          "delta": 20
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 360,
+          "delta": -49
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 701,
+          "delta": 69
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 245,
+          "delta": -22
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 132,
+          "delta": -13
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 2,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 3,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 4,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 5,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 6,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        }
+      ]
+    },
+    "mean_pub_year_5": {
+      "feature": "mean_pub_year_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": -1.4,
+        "anti": 1.0,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 33.4,
+        "pos50": 14,
+        "anti50": 1,
+        "filler50": 2,
+        "classic50": 14,
+        "normie50": 6,
+        "test50": 5,
+        "test200": 11,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Solaris",
+            "author": "Stanislaw Lem"
+          },
+          {
+            "rank": 2,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 3,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 4,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 5,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston"
+          },
+          {
+            "rank": 6,
+            "title": "Middlesex",
+            "author": "Jeffrey Eugenides"
+          },
+          {
+            "rank": 7,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 8,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 9,
+            "title": "The Absolutely True Diary of a Part-Time Indian",
+            "author": "Sherman Alexie"
+          },
+          {
+            "rank": 10,
+            "title": "Life After Life",
+            "author": "Kate Atkinson"
+          },
+          {
+            "rank": 11,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 12,
+            "title": "The Tale of Despereaux",
+            "author": "Kate DiCamillo"
+          },
+          {
+            "rank": 13,
+            "title": "The Things They Carried",
+            "author": "Tim O'Brien"
+          },
+          {
+            "rank": 14,
+            "title": "Bud, Not Buddy",
+            "author": "Christopher Paul Curtis"
+          },
+          {
+            "rank": 15,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1673
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 2
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 3
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 11
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 61
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 121
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 418
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 587
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 220
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 145
+          }
+        ]
+      },
+      "delta_Q": -38.580000000000005,
+      "delta_pos50": -8,
+      "delta_anti50": 1,
+      "jaccard_top50": 0.7,
+      "jaccard_top200": 0.69,
+      "mean_abs_delta_rank_top200": 91.12941176470588,
+      "kendall_top200": 0.556143404107205,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1673,
+          "delta": 149
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 2,
+          "delta": 0
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 3,
+          "delta": 2
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 11,
+          "delta": 5
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 61,
+          "delta": 27
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 121,
+          "delta": -5
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 418,
+          "delta": 9
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 587,
+          "delta": -45
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 220,
+          "delta": -47
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 145,
+          "delta": 0
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Solaris",
+          "author": "Stanislaw Lem"
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 3,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 4,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver"
+        },
+        {
+          "rank": 5,
+          "title": "Their Eyes Were Watching God",
+          "author": "Zora Neale Hurston"
+        },
+        {
+          "rank": 6,
+          "title": "Middlesex",
+          "author": "Jeffrey Eugenides"
+        },
+        {
+          "rank": 7,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 8,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        }
+      ]
+    },
+    "mega_catalog_share_5": {
+      "feature": "mega_catalog_share_5",
+      "used_in": [
+        "classic",
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": -1.3,
+        "anti": null,
+        "normie": 1.5
+      },
+      "metrics": {
+        "Q": 64.84,
+        "pos50": 22,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 22,
+        "normie50": 6,
+        "test50": 7,
+        "test200": 14,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 2,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 3,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 4,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 9,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 10,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 11,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 12,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 13,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 14,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 15,
+            "title": "The Odyssey",
+            "author": "Homer"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1246
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 3
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 4
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 39
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 129
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 432
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 785
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 284
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 142
+          }
+        ]
+      },
+      "delta_Q": -7.140000000000001,
+      "delta_pos50": 0,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.96,
+      "jaccard_top200": 0.915,
+      "mean_abs_delta_rank_top200": 17.742424242424242,
+      "kendall_top200": 0.8233092344767472,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1246,
+          "delta": -278
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 3,
+          "delta": 1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 4,
+          "delta": 3
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 39,
+          "delta": 5
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 129,
+          "delta": 3
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 432,
+          "delta": 23
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 785,
+          "delta": 153
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 284,
+          "delta": 17
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 142,
+          "delta": -3
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 2,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 3,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 4,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        }
+      ]
+    },
+    "mid_catalog_share_5": {
+      "feature": "mid_catalog_share_5",
+      "used_in": [
+        "classic"
+      ],
+      "baseline_coef": {
+        "classic": 0.5,
+        "anti": null,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 72.23,
+        "pos50": 22,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 22,
+        "normie50": 6,
+        "test50": 7,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 3,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 4,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 9,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 10,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 11,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 12,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 13,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 14,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 15,
+            "title": "Their Eyes Were Watching God",
+            "author": "Zora Neale Hurston"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1404
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 2
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 33
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 131
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 472
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 644
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 280
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 151
+          }
+        ]
+      },
+      "delta_Q": 0.25,
+      "delta_pos50": 0,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.98,
+      "jaccard_top200": 0.945,
+      "mean_abs_delta_rank_top200": 11.205,
+      "kendall_top200": 0.8893467336683417,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1404,
+          "delta": -120
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 2,
+          "delta": 1
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 33,
+          "delta": -1
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 131,
+          "delta": 5
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 472,
+          "delta": 63
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 644,
+          "delta": 12
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 280,
+          "delta": 13
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 151,
+          "delta": 6
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 3,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "The Trial",
+          "author": "Franz Kafka"
+        }
+      ]
+    },
+    "midpop_span_per_logn5": {
+      "feature": "midpop_span_per_logn5",
+      "used_in": [
+        "classic",
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": 1.2,
+        "anti": null,
+        "normie": -0.7
+      },
+      "metrics": {
+        "Q": 74.64,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 0,
+        "classic50": 23,
+        "normie50": 4,
+        "test50": 8,
+        "test200": 15,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 2,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 3,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 4,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 5,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 6,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 7,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 8,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 9,
+            "title": "The Arabian Nights",
+            "author": "Anonymous"
+          },
+          {
+            "rank": 10,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 11,
+            "title": "Don Quixote",
+            "author": "Miguel de Cervantes Saavedra"
+          },
+          {
+            "rank": 12,
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 13,
+            "title": "Forrest Gump (Forrest Gump, #1)",
+            "author": "Winston Groom"
+          },
+          {
+            "rank": 14,
+            "title": "Waiting for Godot",
+            "author": "Samuel Beckett"
+          },
+          {
+            "rank": 15,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 642
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 3
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 2
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 7
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 12
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 97
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 113
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 243
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 154
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 66
+          }
+        ]
+      },
+      "delta_Q": 2.6599999999999966,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.82,
+      "jaccard_top200": 0.45,
+      "mean_abs_delta_rank_top200": 217.91304347826087,
+      "kendall_top200": 0.4477498093058734,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 642,
+          "delta": -882
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 3,
+          "delta": 1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 2,
+          "delta": 1
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 7,
+          "delta": 1
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 12,
+          "delta": -22
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 97,
+          "delta": -29
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 113,
+          "delta": -296
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 243,
+          "delta": -389
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 154,
+          "delta": -113
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 66,
+          "delta": -79
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 2,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 3,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 4,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 5,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 6,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 7,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 8,
+          "title": "The Trial",
+          "author": "Franz Kafka"
+        }
+      ]
+    },
+    "n_megastar_authors_5": {
+      "feature": "n_megastar_authors_5",
+      "used_in": [
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": null,
+        "anti": null,
+        "normie": 0.6
+      },
+      "metrics": {
+        "Q": 60.93,
+        "pos50": 22,
+        "anti50": 0,
+        "filler50": 2,
+        "classic50": 22,
+        "normie50": 7,
+        "test50": 7,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 2,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 3,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 4,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 8,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 9,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 10,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 11,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 12,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 13,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 14,
+            "title": "The Grapes of Wrath",
+            "author": "John Steinbeck"
+          },
+          {
+            "rank": 15,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1542
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 2
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 1
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 38
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 150
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 510
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 878
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 309
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 178
+          }
+        ]
+      },
+      "delta_Q": -11.050000000000004,
+      "delta_pos50": 0,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.94,
+      "jaccard_top200": 0.86,
+      "mean_abs_delta_rank_top200": 20.94,
+      "kendall_top200": 0.838391959798995,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1542,
+          "delta": 18
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 2,
+          "delta": 0
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 1,
+          "delta": 0
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 38,
+          "delta": 4
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 150,
+          "delta": 24
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 510,
+          "delta": 101
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 878,
+          "delta": 246
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 309,
+          "delta": 42
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 178,
+          "delta": 33
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 3,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 4,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        },
+        {
+          "rank": 8,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        }
+      ]
+    },
+    "p5_blockbuster": {
+      "feature": "p5_blockbuster",
+      "used_in": [
+        "normie"
+      ],
+      "baseline_coef": {
+        "classic": null,
+        "anti": null,
+        "normie": 0.8
+      },
+      "metrics": {
+        "Q": 66.3,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 23,
+        "normie50": 6,
+        "test50": 8,
+        "test200": 14,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 3,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 4,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 9,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 10,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 11,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 12,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 13,
+            "title": "Bud, Not Buddy",
+            "author": "Christopher Paul Curtis"
+          },
+          {
+            "rank": 14,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 15,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 908
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 3
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 8
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 44
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 176
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 588
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 799
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 317
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 199
+          }
+        ]
+      },
+      "delta_Q": -5.680000000000007,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.96,
+      "jaccard_top200": 0.8,
+      "mean_abs_delta_rank_top200": 25.13,
+      "kendall_top200": 0.8482412060301507,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 908,
+          "delta": -616
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 3,
+          "delta": 2
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 8,
+          "delta": 2
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 44,
+          "delta": 10
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 176,
+          "delta": 50
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 588,
+          "delta": 179
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 799,
+          "delta": 167
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 317,
+          "delta": 50
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 199,
+          "delta": 54
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 3,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Macbeth",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        }
+      ]
+    },
+    "series_share_5": {
+      "feature": "series_share_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": -1.5,
+        "anti": 1.6,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 60.49,
+        "pos50": 20,
+        "anti50": 0,
+        "filler50": 2,
+        "classic50": 20,
+        "normie50": 6,
+        "test50": 6,
+        "test200": 11,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 3,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 4,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 5,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 8,
+            "title": "Solaris",
+            "author": "Stanislaw Lem"
+          },
+          {
+            "rank": 9,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 10,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 11,
+            "title": "Life After Life",
+            "author": "Kate Atkinson"
+          },
+          {
+            "rank": 12,
+            "title": "Dubliners",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 13,
+            "title": "A Christmas Carol, The Chimes and The Cricket on the Hearth",
+            "author": "Charles Dickens"
+          },
+          {
+            "rank": 14,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 15,
+            "title": "The Things They Carried",
+            "author": "Tim O'Brien"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": null
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 5
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 64
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 426
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 465
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 830
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 266
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 138
+          }
+        ]
+      },
+      "delta_Q": -11.490000000000002,
+      "delta_pos50": -2,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.66,
+      "jaccard_top200": 0.74,
+      "mean_abs_delta_rank_top200": 94.06349206349206,
+      "kendall_top200": 0.55758189800743,
+      "watch_delta": [
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 5,
+          "delta": 4
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 64,
+          "delta": 30
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 426,
+          "delta": 300
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 465,
+          "delta": 56
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 830,
+          "delta": 198
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 266,
+          "delta": -1
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 138,
+          "delta": -7
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 3,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 4,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 5,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        },
+        {
+          "rank": 8,
+          "title": "Solaris",
+          "author": "Stanislaw Lem"
+        }
+      ]
+    },
+    "singleton_author_share_5": {
+      "feature": "singleton_author_share_5",
+      "used_in": [
+        "classic",
+        "anti"
+      ],
+      "baseline_coef": {
+        "classic": 0.6,
+        "anti": -0.8,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 66.13,
+        "pos50": 23,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 23,
+        "normie50": 6,
+        "test50": 8,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 2,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 3,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 4,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 8,
+            "title": "Out of the Dust",
+            "author": "Karen Hesse"
+          },
+          {
+            "rank": 9,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 10,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 11,
+            "title": "Life After Life",
+            "author": "Kate Atkinson"
+          },
+          {
+            "rank": 12,
+            "title": "Medea",
+            "author": "Euripides"
+          },
+          {
+            "rank": 13,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 14,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 15,
+            "title": "Beloved",
+            "author": "Toni Morrison"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1361
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 1
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 4
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 23
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 783
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 492
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 732
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 352
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 182
+          }
+        ]
+      },
+      "delta_Q": -5.8500000000000085,
+      "delta_pos50": 1,
+      "delta_anti50": 0,
+      "jaccard_top50": 0.8,
+      "jaccard_top200": 0.795,
+      "mean_abs_delta_rank_top200": 50.025252525252526,
+      "kendall_top200": 0.7119417525508897,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1361,
+          "delta": -163
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 1,
+          "delta": -1
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 4,
+          "delta": 3
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 23,
+          "delta": -11
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 783,
+          "delta": 657
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 492,
+          "delta": 83
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 732,
+          "delta": 100
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 352,
+          "delta": 85
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 182,
+          "delta": 37
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 2,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 3,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 4,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        },
+        {
+          "rank": 8,
+          "title": "Out of the Dust",
+          "author": "Karen Hesse"
+        }
+      ]
+    },
+    "std_logn_5": {
+      "feature": "std_logn_5",
+      "used_in": [
+        "classic"
+      ],
+      "baseline_coef": {
+        "classic": 0.4,
+        "anti": null,
+        "normie": null
+      },
+      "metrics": {
+        "Q": 71.45,
+        "pos50": 22,
+        "anti50": 0,
+        "filler50": 1,
+        "classic50": 22,
+        "normie50": 6,
+        "test50": 7,
+        "test200": 13,
+        "top15": [
+          {
+            "rank": 1,
+            "title": "Ulysses",
+            "author": "James Joyce"
+          },
+          {
+            "rank": 2,
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville"
+          },
+          {
+            "rank": 3,
+            "title": "Paradise Lost",
+            "author": "John Milton"
+          },
+          {
+            "rank": 4,
+            "title": "Hamlet",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 5,
+            "title": "Mrs. Dalloway",
+            "author": "Virginia Woolf"
+          },
+          {
+            "rank": 6,
+            "title": "Lolita",
+            "author": "Vladimir Nabokov"
+          },
+          {
+            "rank": 7,
+            "title": "Crime and Punishment",
+            "author": "Fyodor Dostoyevsky"
+          },
+          {
+            "rank": 8,
+            "title": "A Streetcar Named Desire",
+            "author": "Tennessee Williams"
+          },
+          {
+            "rank": 9,
+            "title": "Macbeth",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 10,
+            "title": "The Trial",
+            "author": "Franz Kafka"
+          },
+          {
+            "rank": 11,
+            "title": "The Poisonwood Bible",
+            "author": "Barbara Kingsolver"
+          },
+          {
+            "rank": 12,
+            "title": "Invisible Man",
+            "author": "Ralph Ellison"
+          },
+          {
+            "rank": 13,
+            "title": "King Lear",
+            "author": "William Shakespeare"
+          },
+          {
+            "rank": 14,
+            "title": "Heart of Darkness",
+            "author": "Joseph Conrad"
+          },
+          {
+            "rank": 15,
+            "title": "Life After Life",
+            "author": "Kate Atkinson"
+          }
+        ],
+        "watch": [
+          {
+            "query": "Dhalgren",
+            "title": "Dhalgren",
+            "author": "Samuel R. Delany",
+            "work_id": "873021",
+            "rank": 1537
+          },
+          {
+            "query": "Moby-Dick",
+            "title": "Moby-Dick or, The Whale",
+            "author": "Herman Melville",
+            "work_id": "2409320",
+            "rank": 2
+          },
+          {
+            "query": "Ulysses",
+            "title": "Ulysses",
+            "author": "James Joyce",
+            "work_id": "2368224",
+            "rank": 1
+          },
+          {
+            "query": "Lolita",
+            "title": "Lolita",
+            "author": "Vladimir Nabokov",
+            "work_id": "1268631",
+            "rank": 6
+          },
+          {
+            "query": "The Brothers Karamazov",
+            "title": "The Brothers Karamazov",
+            "author": "Fyodor Dostoyevsky",
+            "work_id": "3393910",
+            "rank": 35
+          },
+          {
+            "query": "1984",
+            "title": "1984",
+            "author": "George Orwell",
+            "work_id": "153313",
+            "rank": null
+          },
+          {
+            "query": "The Catcher in the Rye",
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "work_id": "3036731",
+            "rank": null
+          },
+          {
+            "query": "The Hate U Give",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "work_id": "49638190",
+            "rank": 132
+          },
+          {
+            "query": "Words of Radiance",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "work_id": "16482835",
+            "rank": null
+          },
+          {
+            "query": "A Court of Mist and Fury",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "work_id": "25126749",
+            "rank": null
+          },
+          {
+            "query": "Infinite Jest",
+            "title": "Infinite Jest",
+            "author": "David Foster Wallace",
+            "work_id": "3271542",
+            "rank": 432
+          },
+          {
+            "query": "Gravity's Rainbow",
+            "title": "Gravity's Rainbow",
+            "author": "Thomas Pynchon",
+            "work_id": "866393",
+            "rank": 626
+          },
+          {
+            "query": "Stoner",
+            "title": "Stoner",
+            "author": "John  Williams",
+            "work_id": "1559207",
+            "rank": 261
+          },
+          {
+            "query": "The Book of Disquiet",
+            "title": "The Book of Disquiet",
+            "author": "Fernando Pessoa",
+            "work_id": "983806",
+            "rank": 148
+          }
+        ]
+      },
+      "delta_Q": -0.5300000000000011,
+      "delta_pos50": 0,
+      "delta_anti50": 0,
+      "jaccard_top50": 1.0,
+      "jaccard_top200": 0.95,
+      "mean_abs_delta_rank_top200": 7.445,
+      "kendall_top200": 0.9061306532663317,
+      "watch_delta": [
+        {
+          "query": "Dhalgren",
+          "base_rank": 1524,
+          "abl_rank": 1537,
+          "delta": 13
+        },
+        {
+          "query": "Moby-Dick",
+          "base_rank": 2,
+          "abl_rank": 2,
+          "delta": 0
+        },
+        {
+          "query": "Ulysses",
+          "base_rank": 1,
+          "abl_rank": 1,
+          "delta": 0
+        },
+        {
+          "query": "Lolita",
+          "base_rank": 6,
+          "abl_rank": 6,
+          "delta": 0
+        },
+        {
+          "query": "The Brothers Karamazov",
+          "base_rank": 34,
+          "abl_rank": 35,
+          "delta": 1
+        },
+        {
+          "query": "The Hate U Give",
+          "base_rank": 126,
+          "abl_rank": 132,
+          "delta": 6
+        },
+        {
+          "query": "Infinite Jest",
+          "base_rank": 409,
+          "abl_rank": 432,
+          "delta": 23
+        },
+        {
+          "query": "Gravity's Rainbow",
+          "base_rank": 632,
+          "abl_rank": 626,
+          "delta": -6
+        },
+        {
+          "query": "Stoner",
+          "base_rank": 267,
+          "abl_rank": 261,
+          "delta": -6
+        },
+        {
+          "query": "The Book of Disquiet",
+          "base_rank": 145,
+          "abl_rank": 148,
+          "delta": 3
+        }
+      ],
+      "top8": [
+        {
+          "rank": 1,
+          "title": "Ulysses",
+          "author": "James Joyce"
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville"
+        },
+        {
+          "rank": 3,
+          "title": "Paradise Lost",
+          "author": "John Milton"
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare"
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf"
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov"
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky"
+        },
+        {
+          "rank": 8,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams"
+        }
+      ]
+    }
+  },
+  "trajectories": {
+    "lambda_anti": [
+      {
+        "lam_anti": 0.0,
+        "Q": 58.02,
+        "pos50": 21,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1759,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 41,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 151,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 536,
+          "Gravity's Rainbow": 844,
+          "Stoner": 430,
+          "The Book of Disquiet": 189
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "Mrs. Dalloway",
+          "Paradise Lost"
+        ]
+      },
+      {
+        "lam_anti": 0.3,
+        "Q": 58.05,
+        "pos50": 21,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1547,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 37,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 146,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 454,
+          "Gravity's Rainbow": 819,
+          "Stoner": 345,
+          "The Book of Disquiet": 164
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "Paradise Lost",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "lam_anti": 0.55,
+        "Q": 59.03,
+        "pos50": 21,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1683,
+          "Moby-Dick": 1,
+          "Ulysses": 2,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 140,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 460,
+          "Gravity's Rainbow": 729,
+          "Stoner": 305,
+          "The Book of Disquiet": 161
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Ulysses",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "lam_anti": 0.85,
+        "Q": 71.98,
+        "pos50": 22,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1524,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 126,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 409,
+          "Gravity's Rainbow": 632,
+          "Stoner": 267,
+          "The Book of Disquiet": 145
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "lam_anti": 1.15,
+        "Q": 75.22,
+        "pos50": 24,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1172,
+          "Moby-Dick": 3,
+          "Ulysses": 2,
+          "Lolita": 6,
+          "The Brothers Karamazov": 33,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 124,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 423,
+          "Gravity's Rainbow": 628,
+          "Stoner": 250,
+          "The Book of Disquiet": 132
+        },
+        "top5": [
+          "Paradise Lost",
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "lam_anti": 1.5,
+        "Q": 76.97,
+        "pos50": 25,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1169,
+          "Moby-Dick": 2,
+          "Ulysses": 3,
+          "Lolita": 7,
+          "The Brothers Karamazov": 33,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 130,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 418,
+          "Gravity's Rainbow": 559,
+          "Stoner": 224,
+          "The Book of Disquiet": 124
+        },
+        "top5": [
+          "Paradise Lost",
+          "Moby-Dick or, The Whale",
+          "Ulysses",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "lam_anti": 2.0,
+        "Q": 75.57,
+        "pos50": 24,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1169,
+          "Moby-Dick": 2,
+          "Ulysses": 3,
+          "Lolita": 7,
+          "The Brothers Karamazov": 33,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 152,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 274,
+          "Gravity's Rainbow": 498,
+          "Stoner": 202,
+          "The Book of Disquiet": 110
+        },
+        "top5": [
+          "Paradise Lost",
+          "Moby-Dick or, The Whale",
+          "Ulysses",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      }
+    ],
+    "top_frac": [
+      {
+        "top_frac": 0.12,
+        "Q": 71.81,
+        "pos50": 24,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": null,
+          "Moby-Dick": 2,
+          "Ulysses": 7,
+          "Lolita": 13,
+          "The Brothers Karamazov": 60,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": null,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 548,
+          "Gravity's Rainbow": 932,
+          "Stoner": 430,
+          "The Book of Disquiet": 257
+        },
+        "top5": [
+          "Os Maias",
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "Mrs. Dalloway",
+          "To the Lighthouse"
+        ]
+      },
+      {
+        "top_frac": 0.08,
+        "Q": 80.55,
+        "pos50": 25,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1845,
+          "Moby-Dick": 2,
+          "Ulysses": 6,
+          "Lolita": 10,
+          "The Brothers Karamazov": 24,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": null,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 517,
+          "Gravity's Rainbow": 740,
+          "Stoner": 327,
+          "The Book of Disquiet": 184
+        },
+        "top5": [
+          "Faust: First Part",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Out of the Dust"
+        ]
+      },
+      {
+        "top_frac": 0.06,
+        "Q": 71.98,
+        "pos50": 22,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1524,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 126,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 409,
+          "Gravity's Rainbow": 632,
+          "Stoner": 267,
+          "The Book of Disquiet": 145
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "top_frac": 0.04,
+        "Q": 50.69,
+        "pos50": 20,
+        "anti50": 1,
+        "watch": {
+          "Dhalgren": 883,
+          "Moby-Dick": 1,
+          "Ulysses": 336,
+          "Lolita": 4,
+          "The Brothers Karamazov": 184,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 102,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 427,
+          "Gravity's Rainbow": 623,
+          "Stoner": 234,
+          "The Book of Disquiet": 119
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "A Streetcar Named Desire",
+          "Lolita",
+          "Macbeth"
+        ]
+      },
+      {
+        "top_frac": 0.025,
+        "Q": 55.58,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 797,
+          "Moby-Dick": 1,
+          "Ulysses": 217,
+          "Lolita": 3,
+          "The Brothers Karamazov": 107,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 65,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 288,
+          "Gravity's Rainbow": 475,
+          "Stoner": 131,
+          "The Book of Disquiet": 85
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Hamlet",
+          "Lolita",
+          "Heart of Darkness",
+          "The Poisonwood Bible"
+        ]
+      },
+      {
+        "top_frac": 0.015,
+        "Q": 17.39,
+        "pos50": 19,
+        "anti50": 4,
+        "watch": {
+          "Dhalgren": 678,
+          "Moby-Dick": 2,
+          "Ulysses": 176,
+          "Lolita": 5,
+          "The Brothers Karamazov": 93,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 46,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 360,
+          "Gravity's Rainbow": 451,
+          "Stoner": 103,
+          "The Book of Disquiet": 61
+        },
+        "top5": [
+          "Hamlet",
+          "Moby-Dick or, The Whale",
+          "Macbeth",
+          "The Odyssey",
+          "Lolita"
+        ]
+      }
+    ],
+    "series_gate": [
+      {
+        "series_gate": 0.55,
+        "n_gated": 144200,
+        "Q": 71.95,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1937,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 139,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 467,
+          "Gravity's Rainbow": 708,
+          "Stoner": 278,
+          "The Book of Disquiet": 153
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "series_gate": 0.45,
+        "n_gated": 123197,
+        "Q": 73.49,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1789,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 134,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 432,
+          "Gravity's Rainbow": 662,
+          "Stoner": 251,
+          "The Book of Disquiet": 149
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "series_gate": 0.4,
+        "n_gated": 112327,
+        "Q": 71.98,
+        "pos50": 22,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 1524,
+          "Moby-Dick": 2,
+          "Ulysses": 1,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 126,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 409,
+          "Gravity's Rainbow": 632,
+          "Stoner": 267,
+          "The Book of Disquiet": 145
+        },
+        "top5": [
+          "Ulysses",
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "series_gate": 0.32,
+        "n_gated": 92312,
+        "Q": 72.81,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 987,
+          "Moby-Dick": 1,
+          "Ulysses": 3,
+          "Lolita": 6,
+          "The Brothers Karamazov": 34,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 123,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 387,
+          "Gravity's Rainbow": 589,
+          "Stoner": 241,
+          "The Book of Disquiet": 142
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Ulysses",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "series_gate": 0.25,
+        "n_gated": 73809,
+        "Q": 72.31,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 805,
+          "Moby-Dick": 1,
+          "Ulysses": 3,
+          "Lolita": 6,
+          "The Brothers Karamazov": 35,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 113,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 348,
+          "Gravity's Rainbow": 581,
+          "Stoner": 228,
+          "The Book of Disquiet": 131
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Ulysses",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      },
+      {
+        "series_gate": 0.18,
+        "n_gated": 52296,
+        "Q": 71.37,
+        "pos50": 23,
+        "anti50": 0,
+        "watch": {
+          "Dhalgren": 632,
+          "Moby-Dick": 1,
+          "Ulysses": 3,
+          "Lolita": 6,
+          "The Brothers Karamazov": 29,
+          "1984": null,
+          "The Catcher in the Rye": null,
+          "The Hate U Give": 119,
+          "Words of Radiance": null,
+          "A Court of Mist and Fury": null,
+          "Infinite Jest": 277,
+          "Gravity's Rainbow": 380,
+          "Stoner": 180,
+          "The Book of Disquiet": 125
+        },
+        "top5": [
+          "Moby-Dick or, The Whale",
+          "Paradise Lost",
+          "Ulysses",
+          "Hamlet",
+          "Mrs. Dalloway"
+        ]
+      }
+    ]
+  },
+  "suggestions": [
+    {
+      "name": "Multi-proxy Pareto, not single Q",
+      "detail": "Treat literary_poll / anti / normie as noisy voters. Prefer parameter regions that jointly: (a) keep anti50 near 0, (b) don't collapse to only mega-syllabus fillers, (c) stay stable under feature ablation, (d) surface multilingual consecrated works without romance heads."
+    },
+    {
+      "name": "Internal consistency / stability as accuracy proxy",
+      "detail": "Bootstrap users, re-fit or re-rank, measure Jaccard@50 and Kendall on top200. A 'more accurate' metric should be stabler under resampling than a brittle one that overfits pile quirks."
+    },
+    {
+      "name": "Trajectory archetypes (your Dhalgren idea)",
+      "detail": "Sweep a knob (λ_anti, series gate, top_frac). Cluster books by rank path: anti-sensitive risers, syllabus-stable, romance-crashers, mid-peak experimental. Use archetype purity (do risers cohere?) as a structural signal without trusting any single title list."
+    },
+    {
+      "name": "Held-out community recovery",
+      "detail": "From PMI/reflections, freeze non-English literary communities (Arabic, Turkish, …) as unlabeled targets. Metrics that recover them without language labels are discovering real consecration structure."
+    },
+    {
+      "name": "Iterative co-training",
+      "detail": "1) Rank with current metric. 2) Take head ∩ high-stability books as a soft positive expansion (and romance/series head as soft negative). 3) Re-estimate only user-feature weights / gates. 4) Require the next head to improve stability + anti rejection, else reject the step. Stops runaway confirmation if expansion is tiny and audited."
+    },
+    {
+      "name": "Human-in-the-loop on trajectories, not on piles",
+      "detail": "Instead of enlarging lit-2014-2024, label a few trajectory archetypes ('this rising path feels right / wrong'). That supervises the geometry of the metric with less canon politics."
+    }
+  ],
+  "trajectory_archetypes_lambda_anti": {
+    "rising": [
+      {
+        "query": "Dhalgren",
+        "ranks": [
+          1759,
+          1547,
+          1683,
+          1524,
+          1172,
+          1169,
+          1169
+        ],
+        "early": 1759,
+        "late": 1169,
+        "delta": -590
+      },
+      {
+        "query": "The Brothers Karamazov",
+        "ranks": [
+          41,
+          37,
+          34,
+          34,
+          33,
+          33,
+          33
+        ],
+        "early": 41,
+        "late": 33,
+        "delta": -8
+      },
+      {
+        "query": "Infinite Jest",
+        "ranks": [
+          536,
+          454,
+          460,
+          409,
+          423,
+          418,
+          274
+        ],
+        "early": 536,
+        "late": 274,
+        "delta": -262
+      },
+      {
+        "query": "Gravity's Rainbow",
+        "ranks": [
+          844,
+          819,
+          729,
+          632,
+          628,
+          559,
+          498
+        ],
+        "early": 844,
+        "late": 498,
+        "delta": -346
+      },
+      {
+        "query": "Stoner",
+        "ranks": [
+          430,
+          345,
+          305,
+          267,
+          250,
+          224,
+          202
+        ],
+        "early": 430,
+        "late": 202,
+        "delta": -228
+      },
+      {
+        "query": "The Book of Disquiet",
+        "ranks": [
+          189,
+          164,
+          161,
+          145,
+          132,
+          124,
+          110
+        ],
+        "early": 189,
+        "late": 110,
+        "delta": -79
+      }
+    ],
+    "falling": [],
+    "u_shaped": [
+      {
+        "query": "The Hate U Give",
+        "ranks": [
+          151,
+          146,
+          140,
+          126,
+          124,
+          130,
+          152
+        ],
+        "early": 151,
+        "late": 152,
+        "delta": 1
+      }
+    ],
+    "flat_or_noisy": [
+      {
+        "query": "Moby-Dick",
+        "ranks": [
+          2,
+          2,
+          1,
+          2,
+          3,
+          2,
+          2
+        ],
+        "early": 2,
+        "late": 2,
+        "delta": 0
+      },
+      {
+        "query": "Ulysses",
+        "ranks": [
+          1,
+          1,
+          2,
+          1,
+          2,
+          3,
+          3
+        ],
+        "early": 1,
+        "late": 3,
+        "delta": 2
+      },
+      {
+        "query": "Lolita",
+        "ranks": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          7,
+          7
+        ],
+        "early": 6,
+        "late": 7,
+        "delta": 1
+      }
+    ],
+    "missing": [
+      {
+        "query": "1984",
+        "ranks": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "query": "The Catcher in the Rye",
+        "ranks": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "query": "Words of Radiance",
+        "ranks": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "query": "A Court of Mist and Fury",
+        "ranks": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ]
+  }
+}

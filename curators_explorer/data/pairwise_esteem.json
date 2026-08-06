@@ -1,0 +1,656 @@
+{
+  "meta": {
+    "max_highs": 12,
+    "max_lows": 12,
+    "low_max_rating": 3,
+    "min_appear": 40,
+    "shrink_k": 50.0,
+    "pairs": {
+      "n_pairs_focus": 621468,
+      "n_pairs_anti": 1315071,
+      "n_users_focus": 4667,
+      "n_users_anti": 12509
+    },
+    "cohorts": {
+      "n_focus": 4763,
+      "n_anti": 13675,
+      "thr_c": 18.85256658143558,
+      "thr_a": 14.346555993333652
+    },
+    "weights": "/home/ifrankling/unsw/novels/curators_explorer/data/weights_careful_cotrain.json"
+  },
+  "methods": {
+    "legacy_p5": {
+      "probe": {
+        "Q_clean": 66.5,
+        "pos50": 24,
+        "anti50": 0,
+        "anti1000": 3,
+        "filler50": 2,
+        "sticky50": 25,
+        "top50_mean_n_c": 1038.56,
+        "top50_mean_n_a": 147.4,
+        "top50_frac_missing_anti": 0.0
+      },
+      "fill": {
+        "classic50": 24,
+        "classic200": 45,
+        "test50": 7,
+        "test200": 14,
+        "normie50": 7,
+        "normie200": 21,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 35,
+        "recall@50": 0.27906976744186046,
+        "hits@50": 12,
+        "recall@100": 0.37209302325581395,
+        "hits@100": 16,
+        "recall@200": 0.3953488372093023,
+        "hits@200": 17,
+        "recall@500": 0.5348837209302325,
+        "hits@500": 23,
+        "median_rank": 224.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.37523035606797245,
+          "n_c": 1878.0,
+          "n_a": 460.0
+        },
+        {
+          "rank": 2,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "score": 0.3606498008174246,
+          "n_c": 758.0,
+          "n_a": 51.0
+        },
+        {
+          "rank": 3,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams",
+          "score": 0.34846308995562736,
+          "n_c": 925.0,
+          "n_a": 67.0
+        },
+        {
+          "rank": 4,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville",
+          "score": 0.34563094732700334,
+          "n_c": 1495.0,
+          "n_a": 323.0
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf",
+          "score": 0.343146956952004,
+          "n_c": 1222.0,
+          "n_a": 43.0
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "score": 0.3237494926948052,
+          "n_c": 2048.0,
+          "n_a": 154.0
+        },
+        {
+          "rank": 7,
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "score": 0.32263870635963654,
+          "n_c": 814.0,
+          "n_a": 43.0
+        },
+        {
+          "rank": 8,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.32115651245438176,
+          "n_c": 1916.0,
+          "n_a": 131.0
+        },
+        {
+          "rank": 9,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver",
+          "score": 0.3167694596266025,
+          "n_c": 1078.0,
+          "n_a": 111.0
+        },
+        {
+          "rank": 10,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "score": 0.2869801470327094,
+          "n_c": 1522.0,
+          "n_a": 407.0
+        },
+        {
+          "rank": 11,
+          "title": "The Arabian Nights",
+          "author": "Anonymous",
+          "score": 0.2817460317460318,
+          "n_c": 348.0,
+          "n_a": 63.0
+        },
+        {
+          "rank": 12,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "score": 0.27690915332521926,
+          "n_c": 971.0,
+          "n_a": 33.0
+        },
+        {
+          "rank": 13,
+          "title": "Peter Pan (A Little Golden Book)",
+          "author": "Eugene Bradley Coco",
+          "score": 0.2735849056603774,
+          "n_c": 106.0,
+          "n_a": 38.0
+        },
+        {
+          "rank": 14,
+          "title": "The Grapes of Wrath",
+          "author": "John Steinbeck",
+          "score": 0.2648267036594939,
+          "n_c": 1668.0,
+          "n_a": 223.0
+        },
+        {
+          "rank": 15,
+          "title": "Heart of Darkness",
+          "author": "Joseph Conrad",
+          "score": 0.2598373747640482,
+          "n_c": 1562.0,
+          "n_a": 97.0
+        }
+      ]
+    },
+    "residual_no_author": {
+      "probe": {
+        "Q_clean": 61.5,
+        "pos50": 28,
+        "anti50": 0,
+        "anti1000": 21,
+        "filler50": 6,
+        "sticky50": 22,
+        "top50_mean_n_c": 1381.54,
+        "top50_mean_n_a": 272.12,
+        "top50_frac_missing_anti": 0.0
+      },
+      "fill": {
+        "classic50": 29,
+        "classic200": 50,
+        "test50": 9,
+        "test200": 14,
+        "normie50": 18,
+        "normie200": 30,
+        "anti50": 0,
+        "anti200": 2
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 35,
+        "recall@50": 0.32558139534883723,
+        "hits@50": 14,
+        "recall@100": 0.3953488372093023,
+        "hits@100": 17,
+        "recall@200": 0.3953488372093023,
+        "hits@200": 17,
+        "recall@500": 0.6046511627906976,
+        "hits@500": 26,
+        "median_rank": 203.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.500382984991789,
+          "n_c": 1878.0,
+          "n_a": 460.0
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville",
+          "score": 0.46965221134316804,
+          "n_c": 1495.0,
+          "n_a": 323.0
+        },
+        {
+          "rank": 3,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "score": 0.4253719621521057,
+          "n_c": 2048.0,
+          "n_a": 154.0
+        },
+        {
+          "rank": 4,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "score": 0.4101838428450343,
+          "n_c": 1522.0,
+          "n_a": 407.0
+        },
+        {
+          "rank": 5,
+          "title": "The Odyssey",
+          "author": "Homer",
+          "score": 0.38526921939488695,
+          "n_c": 1654.0,
+          "n_a": 625.0
+        },
+        {
+          "rank": 6,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.3848357090105127,
+          "n_c": 1916.0,
+          "n_a": 131.0
+        },
+        {
+          "rank": 7,
+          "title": "Les Mis\u00e9rables",
+          "author": "Victor Hugo",
+          "score": 0.38217857269153466,
+          "n_c": 1297.0,
+          "n_a": 348.0
+        },
+        {
+          "rank": 8,
+          "title": "The Grapes of Wrath",
+          "author": "John Steinbeck",
+          "score": 0.37605985486110083,
+          "n_c": 1668.0,
+          "n_a": 223.0
+        },
+        {
+          "rank": 9,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver",
+          "score": 0.36683869222831567,
+          "n_c": 1078.0,
+          "n_a": 111.0
+        },
+        {
+          "rank": 10,
+          "title": "The Adventures of Huckleberry Finn",
+          "author": "Mark Twain",
+          "score": 0.3657452057561226,
+          "n_c": 2142.0,
+          "n_a": 861.0
+        },
+        {
+          "rank": 11,
+          "title": "Charlotte's Web",
+          "author": "E.B. White",
+          "score": 0.3617273118694089,
+          "n_c": 1380.0,
+          "n_a": 716.0
+        },
+        {
+          "rank": 12,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "score": 0.35822008890605506,
+          "n_c": 1827.0,
+          "n_a": 189.0
+        },
+        {
+          "rank": 13,
+          "title": "King Lear",
+          "author": "William Shakespeare",
+          "score": 0.3483152952067873,
+          "n_c": 900.0,
+          "n_a": 129.0
+        },
+        {
+          "rank": 14,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "score": 0.34540025421456644,
+          "n_c": 758.0,
+          "n_a": 51.0
+        },
+        {
+          "rank": 15,
+          "title": "One Hundred Years of Solitude",
+          "author": "Gabriel Garcia Marquez",
+          "score": 0.34189689085199665,
+          "n_c": 1829.0,
+          "n_a": 169.0
+        }
+      ]
+    },
+    "pairwise": {
+      "probe": {
+        "Q_clean": 43.5,
+        "pos50": 15,
+        "anti50": 0,
+        "anti1000": 3,
+        "filler50": 0,
+        "sticky50": 4,
+        "top50_mean_n_c": 595.04,
+        "top50_mean_n_a": 45.7,
+        "top50_frac_missing_anti": 0.74
+      },
+      "fill": {
+        "classic50": 14,
+        "classic200": 52,
+        "test50": 4,
+        "test200": 17,
+        "normie50": 2,
+        "normie200": 4,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 37,
+        "recall@50": 0.13953488372093023,
+        "hits@50": 6,
+        "recall@100": 0.27906976744186046,
+        "hits@100": 12,
+        "recall@200": 0.5348837209302325,
+        "hits@200": 23,
+        "recall@500": 0.7441860465116279,
+        "hits@500": 32,
+        "median_rank": 150.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "The Brothers Karamazov",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.8596685082872927,
+          "n_c": 1760.0,
+          "n_a": 36.0
+        },
+        {
+          "rank": 2,
+          "title": "Les Fleurs du Mal",
+          "author": "Charles Baudelaire",
+          "score": 0.839607201309329,
+          "n_c": 561.0,
+          "n_a": 24.0
+        },
+        {
+          "rank": 3,
+          "title": "Four Quartets",
+          "author": "T.S. Eliot",
+          "score": 0.8245614035087719,
+          "n_c": 235.0,
+          "n_a": 12.0
+        },
+        {
+          "rank": 4,
+          "title": "Leaves of Grass",
+          "author": "Walt Whitman",
+          "score": 0.8228699551569506,
+          "n_c": 842.0,
+          "n_a": 12.0
+        },
+        {
+          "rank": 5,
+          "title": "Stoner",
+          "author": "John  Williams",
+          "score": 0.8225165562913908,
+          "n_c": 705.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 6,
+          "title": "Journey to the End of the Night",
+          "author": "Louis-Ferdinand Celine",
+          "score": 0.8070866141732282,
+          "n_c": 458.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 7,
+          "title": "Gravity's Rainbow",
+          "author": "Thomas Pynchon",
+          "score": 0.7909604519774011,
+          "n_c": 304.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 8,
+          "title": "The Idiot",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.7678244972577697,
+          "n_c": 1044.0,
+          "n_a": 25.0
+        },
+        {
+          "rank": 9,
+          "title": "The Waste Land",
+          "author": "T.S. Eliot",
+          "score": 0.7661097852028639,
+          "n_c": 369.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 10,
+          "title": "Notes from Underground",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.7592137592137592,
+          "n_c": 357.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 11,
+          "title": "Demons",
+          "author": "Fyodor Dostoyevsky",
+          "score": 0.7592137592137592,
+          "n_c": 357.0,
+          "n_a": 12.0
+        },
+        {
+          "rank": 12,
+          "title": "The Tin Drum",
+          "author": "Gunter Grass",
+          "score": 0.7579365079365079,
+          "n_c": 454.0,
+          "n_a": 0.0
+        },
+        {
+          "rank": 13,
+          "title": "Giovanni's Room",
+          "author": "James     Baldwin",
+          "score": 0.7577464788732394,
+          "n_c": 305.0,
+          "n_a": 6.0
+        },
+        {
+          "rank": 14,
+          "title": "Invisible Cities",
+          "author": "Italo Calvino",
+          "score": 0.7545271629778673,
+          "n_c": 447.0,
+          "n_a": 30.0
+        },
+        {
+          "rank": 15,
+          "title": "I, Claudius (Claudius, #1)",
+          "author": "Robert Graves",
+          "score": 0.7539149888143177,
+          "n_c": 397.0,
+          "n_a": 35.0
+        }
+      ]
+    },
+    "pairwise_bilateral": {
+      "probe": {
+        "Q_clean": -59.5,
+        "pos50": 29,
+        "anti50": 0,
+        "anti1000": 285,
+        "filler50": 2,
+        "sticky50": 20,
+        "top50_mean_n_c": 1597.66,
+        "top50_mean_n_a": 309.56,
+        "top50_frac_missing_anti": 0.0
+      },
+      "fill": {
+        "classic50": 30,
+        "classic200": 57,
+        "test50": 11,
+        "test200": 15,
+        "normie50": 8,
+        "normie200": 27,
+        "anti50": 0,
+        "anti200": 0
+      },
+      "heldout_author_disjoint": {
+        "n_heldout": 43,
+        "n_ranked": 20,
+        "recall@50": 0.3488372093023256,
+        "hits@50": 15,
+        "recall@100": 0.4186046511627907,
+        "hits@100": 18,
+        "recall@200": 0.4418604651162791,
+        "hits@200": 19,
+        "recall@500": 0.46511627906976744,
+        "hits@500": 20,
+        "median_rank": 26.0
+      },
+      "top15": [
+        {
+          "rank": 1,
+          "title": "Middlemarch",
+          "author": "George Eliot",
+          "score": 0.7380307136404698,
+          "n_c": 1057.0,
+          "n_a": 48.0
+        },
+        {
+          "rank": 2,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "score": 0.7340486808020429,
+          "n_c": 3146.0,
+          "n_a": 767.0
+        },
+        {
+          "rank": 3,
+          "title": "Les Mis\u00e9rables",
+          "author": "Victor Hugo",
+          "score": 0.7206310923525273,
+          "n_c": 2182.0,
+          "n_a": 592.0
+        },
+        {
+          "rank": 4,
+          "title": "Invisible Man",
+          "author": "Ralph Ellison",
+          "score": 0.7173717371737174,
+          "n_c": 1061.0,
+          "n_a": 58.0
+        },
+        {
+          "rank": 5,
+          "title": "The Things They Carried",
+          "author": "Tim O'Brien",
+          "score": 0.7113272950911327,
+          "n_c": 763.0,
+          "n_a": 60.0
+        },
+        {
+          "rank": 6,
+          "title": "The Metamorphosis",
+          "author": "Franz Kafka",
+          "score": 0.7051282051282052,
+          "n_c": 2602.0,
+          "n_a": 252.0
+        },
+        {
+          "rank": 7,
+          "title": "Inferno (The Divine Comedy #1)",
+          "author": "Dante Alighieri",
+          "score": 0.6960167714884696,
+          "n_c": 904.0,
+          "n_a": 83.0
+        },
+        {
+          "rank": 8,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "score": 0.6838858905165767,
+          "n_c": 1247.0,
+          "n_a": 84.0
+        },
+        {
+          "rank": 9,
+          "title": "A Raisin in the Sun",
+          "author": "Lorraine Hansberry",
+          "score": 0.6836734693877552,
+          "n_c": 146.0,
+          "n_a": 40.0
+        },
+        {
+          "rank": 10,
+          "title": "East of Eden",
+          "author": "John Steinbeck",
+          "score": 0.6833048584611293,
+          "n_c": 1289.0,
+          "n_a": 96.0
+        },
+        {
+          "rank": 11,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "score": 0.6729153341861209,
+          "n_c": 3342.0,
+          "n_a": 245.0
+        },
+        {
+          "rank": 12,
+          "title": "Madame Bovary",
+          "author": "Gustave Flaubert",
+          "score": 0.6546687532603026,
+          "n_c": 1867.0,
+          "n_a": 120.0
+        },
+        {
+          "rank": 13,
+          "title": "To the Lighthouse",
+          "author": "Virginia Woolf",
+          "score": 0.6529605263157895,
+          "n_c": 1166.0,
+          "n_a": 76.0
+        },
+        {
+          "rank": 14,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf",
+          "score": 0.6496430532674355,
+          "n_c": 1771.0,
+          "n_a": 115.0
+        },
+        {
+          "rank": 15,
+          "title": "The Importance of Being Earnest",
+          "author": "Oscar Wilde",
+          "score": 0.6412996389891698,
+          "n_c": 1335.0,
+          "n_a": 100.0
+        }
+      ]
+    }
+  }
+}

@@ -8,6 +8,26 @@ let LAST = [];
 let TIMER = null;
 let SEARCH_TIMER = null;
 
+const DISTRIBUTED_CANON_METRIC = "distributed_canon";
+const DISTRIBUTED_ESTEEM_METRIC = "distributed_esteem";
+const FIXED_METRICS = new Set([DISTRIBUTED_CANON_METRIC, DISTRIBUTED_ESTEEM_METRIC]);
+const FIXED_IGNORED_CONTROL_IDS = [
+  "scale-mode",
+  "bayesian-m",
+  "deweight",
+  "purity",
+  "min-votes",
+  "fiction-only",
+  "exclude-comics",
+  "exclude-picture",
+  "exclude-derivatives",
+  "exclude-collections",
+  "collapse-duplicates",
+  "format-weight",
+  "pack-reset",
+  "pack-toggle",
+];
+
 const $ = (id) => document.getElementById(id);
 
 function escapeHtml(s) {
@@ -33,6 +53,30 @@ function pct(x) {
   return x == null || !Number.isFinite(x) ? "—" : `${(100 * x).toFixed(1)}%`;
 }
 
+function isFixedMetric() {
+  return FIXED_METRICS.has($("metric")?.value);
+}
+
+function syncMetricMode() {
+  const fixed = isFixedMetric();
+  $("fixed-metric-note").hidden = !fixed;
+  FIXED_IGNORED_CONTROL_IDS.forEach((id) => {
+    const el = $(id);
+    if (el) el.disabled = fixed;
+  });
+  document.querySelectorAll("#presets button").forEach((el) => {
+    el.disabled = fixed;
+  });
+  $("pack-editor").classList.toggle("fixed-disabled", fixed);
+  $("n-header").textContent = fixed ? "Catalog ratings" : "n";
+  $("mean-header").textContent = fixed ? "Evidence mass" : "Mean";
+  $("top-header").textContent = fixed ? "Coverage" : "Top%";
+  $("score-header").textContent = fixed
+    ? ($("metric").value === DISTRIBUTED_ESTEEM_METRIC ? "Esteem ± u" : "Consensus ± u")
+    : "Score";
+  $("tier-header").textContent = fixed ? "Community / evidence" : "Stability";
+}
+
 function syncLabels() {
   $("deweight-val").textContent = String(Math.trunc(num("deweight", 15)));
   $("purity-val").textContent = String(Math.trunc(num("purity", 55)));
@@ -40,6 +84,7 @@ function syncLabels() {
   $("metric-blurb").textContent = m?.blurb || "";
   const s = SCALE_MODES.find((x) => x.id === $("scale-mode").value);
   $("scale-blurb").textContent = s?.blurb || "";
+  syncMetricMode();
 }
 
 function collectParams() {
@@ -190,8 +235,13 @@ function renderStats(payload) {
   const c = payload.cohort || {};
   const p = payload.params || {};
   const ms = payload.elapsed_ms != null ? `${payload.elapsed_ms} ms` : "—";
+  const fixed = Boolean(p.fixed_model);
+  const modelStat = fixed
+    ? `<div class="stat"><div class="v">${p.audited_top ?? "—"}</div><div class="l">Ranked books</div></div>`
+    : "";
   $("stats").innerHTML = `
     <div class="stat"><div class="v">${payload.n_results ?? 0}</div><div class="l">Shown</div></div>
+    ${modelStat}
     <div class="stat"><div class="v">${c.n_curators ?? "—"}</div><div class="l">Curators</div></div>
     <div class="stat"><div class="v">${escapeHtml(c.cohort_kind || "—")}</div><div class="l">Cohort</div></div>
     <div class="stat"><div class="v">${escapeHtml(String(p.scale_mode || ""))}</div><div class="l">Scale</div></div>
@@ -199,24 +249,63 @@ function renderStats(payload) {
   `;
 }
 
+const TIER_LABELS = {
+  stable_core: "Core",
+  supported_boundary: "Supported",
+  underexposed_or_contested: "Underexposed / contested",
+  broad: "Broad",
+  mixed: "Mixed",
+  contested: "Contested",
+  unclear: "Community unclear",
+  supported: "Supported evidence",
+  exploratory: "Exploratory evidence",
+  sparse: "Sparse evidence",
+};
+
+function tierBadge(tier) {
+  if (!tier) return "—";
+  const label = TIER_LABELS[tier] || tier;
+  return `<span class="tier tier-${escapeHtml(tier)}">${escapeHtml(label)}</span>`;
+}
+
+function researchBadges(row) {
+  const community = tierBadge(row.community_status || row.tier);
+  const evidence = row.evidence_status && row.evidence_status !== "supported"
+    ? tierBadge(row.evidence_status)
+    : "";
+  return [community, evidence].filter(Boolean).join(" ");
+}
+
 function renderResults(rows) {
   LAST = rows || [];
   const tb = $("results");
   if (!LAST.length) {
-    tb.innerHTML = `<tr><td colspan="7">No results.</td></tr>`;
+    tb.innerHTML = `<tr><td colspan="8">No results.</td></tr>`;
     return;
   }
   tb.innerHTML = LAST.map(
-    (r) => `
+    (r) => {
+      const fixed = Boolean(r.fixed_metric);
+      const readers = r.readers == null ? r.n : r.readers;
+      const middleA = fixed
+        ? (r.pair_mass == null ? "—" : Number(r.pair_mass).toFixed(1))
+        : (r.mean == null ? "—" : r.mean.toFixed(3));
+      const middleB = fixed ? pct(r.coverage) : pct(r.p5);
+      const score = fixed
+        ? `${Number(r.score).toFixed(1)} <span class="uncertainty">± ${Number(r.uncertainty).toFixed(1)}</span>`
+        : (r.score == null ? "—" : r.score.toFixed(4));
+      return `
     <tr data-id="${escapeHtml(r.work_id)}">
       <td class="mono">${r.rank}</td>
       <td class="title-cell">${escapeHtml(r.title)}</td>
       <td>${escapeHtml(r.author)}</td>
-      <td class="mono">${r.n}</td>
-      <td class="mono">${r.mean == null ? "—" : r.mean.toFixed(3)}</td>
-      <td class="mono">${pct(r.p5)}</td>
-      <td class="mono">${r.score == null ? "—" : r.score.toFixed(4)}</td>
-    </tr>`
+      <td class="mono">${readers ?? "—"}</td>
+      <td class="mono">${middleA}</td>
+      <td class="mono">${middleB}</td>
+      <td class="mono score-cell">${score}</td>
+      <td class="status-cell">${researchBadges(r)}</td>
+    </tr>`;
+    }
   ).join("");
   tb.querySelectorAll("tr[data-id]").forEach((tr) => {
     tr.addEventListener("click", () => openBook(tr.dataset.id));
@@ -240,7 +329,8 @@ async function rank() {
   renderStats(data);
   renderResults(data.results || []);
   const c = data.cohort || {};
-  $("data-meta").textContent = `${data.n_results} books · ${c.n_curators} curators (${c.cohort_kind}/${c.source}) · ${data.elapsed_ms} ms`;
+  const source = [c.cohort_kind, c.source].filter(Boolean).join(" / ");
+  $("data-meta").textContent = `${data.n_results} books · ${c.n_curators ?? "—"} curators${source ? ` (${source})` : ""} · ${data.elapsed_ms} ms`;
 }
 
 function scheduleRank() {
@@ -279,6 +369,32 @@ async function openBook(workId) {
   const g = h.global;
   const c = h.curators;
   let html = "";
+  const d = data.metric_detail;
+  if (d) {
+    const rankRange = [d.plausible_rank_min, d.plausible_rank_max].every((x) => x != null)
+      ? `${d.plausible_rank_min}–${d.plausible_rank_max}`
+      : "—";
+    const jointRange = [d.joint_rank_q10, d.joint_rank_q90].every((x) => x != null)
+      ? `${Math.round(d.joint_rank_q10)}–${Math.round(d.joint_rank_q90)}`
+      : "—";
+    const metricName = d.score_kind === "esteem" ? "Community-esteem" : "Distributed-consensus";
+    html += `<div class="canon-card">
+      <div class="canon-score"><span>${Number(d.score).toFixed(1)}</span><small>± ${Number(d.uncertainty).toFixed(1)}</small></div>
+      <div><strong>${metricName} rank #${d.rank}</strong><br>${researchBadges(d)}</div>
+      <dl class="evidence-grid">
+        <div><dt>Consensus</dt><dd>#${d.consensus_rank} · ${Number(d.consensus_score).toFixed(1)}</dd></div>
+        <div><dt>Esteem</dt><dd>#${d.esteem_rank} · ${Number(d.esteem).toFixed(1)}</dd></div>
+        <div><dt>Catalog ratings</dt><dd>${d.catalog_n ?? "—"}</dd></div>
+        <div><dt>Jury evidence</dt><dd>${d.pair_mass == null ? "—" : Number(d.pair_mass).toFixed(1)}</dd></div>
+        <div><dt>Coverage</dt><dd>${pct(d.coverage)}</dd></div>
+        <div><dt>Disagreement cost</dt><dd>−${Number(d.heterogeneity_penalty).toFixed(1)}</dd></div>
+        <div><dt>Evidence cost</dt><dd>−${Number(d.evidence_penalty).toFixed(1)}</dd></div>
+        ${rankRange === "—" ? "" : `<div><dt>Stress-test rank</dt><dd>${rankRange}</dd></div>`}
+        ${jointRange === "—" ? "" : `<div><dt>Bootstrap rank</dt><dd>${jointRange}</dd></div>`}
+      </dl>
+      <p class="hint">Community status measures disagreement; evidence status measures how much support there is for making that judgement.</p>
+    </div>`;
+  }
   if (g) {
     html += `<div class="hist-block"><h3>${escapeHtml(g.label)}</h3>
       <p class="hint">n=${g.n} · mean=${g.mean == null ? "—" : g.mean.toFixed(2)} · P(5★)=${pct(g.p5)}</p>
@@ -294,7 +410,9 @@ async function openBook(workId) {
   }
   $("drawer-hists").innerHTML = html;
   $("drawer-note").textContent =
-    "Curator hist uses the same deweight/purity/pack cohort as the current ranking.";
+    d
+      ? "±u combines analytic sampling uncertainty with sensitivity to the nine community partitions. The histogram below is global context; both fixed ranks use the balanced research jury."
+      : "Curator hist uses the same deweight/purity/pack cohort as the current ranking.";
   $("drawer").hidden = false;
 }
 
@@ -344,6 +462,8 @@ async function init() {
   applySliderPreset("default_literary");
 
   $("metric").addEventListener("change", () => {
+    if (isFixedMetric()) $("limit").value = 5000;
+    else if (num("limit", 200) > 2000) $("limit").value = 200;
     syncLabels();
     scheduleRank();
   });

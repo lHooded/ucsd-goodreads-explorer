@@ -1,0 +1,1049 @@
+{
+  "meta": {
+    "step": 0.35,
+    "sticky_n": 25,
+    "soft_neg_n": 40,
+    "n_boot_veto": 12
+  },
+  "sticky_titles": [
+    {
+      "work_id": "2368224",
+      "title": "Ulysses",
+      "author": "James Joyce"
+    },
+    {
+      "work_id": "2409320",
+      "title": "Moby-Dick or, The Whale",
+      "author": "Herman Melville"
+    },
+    {
+      "work_id": "1031493",
+      "title": "Paradise Lost",
+      "author": "John Milton"
+    },
+    {
+      "work_id": "1885548",
+      "title": "Hamlet",
+      "author": "William Shakespeare"
+    },
+    {
+      "work_id": "841320",
+      "title": "Mrs. Dalloway",
+      "author": "Virginia Woolf"
+    },
+    {
+      "work_id": "1268631",
+      "title": "Lolita",
+      "author": "Vladimir Nabokov"
+    },
+    {
+      "work_id": "3393917",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoyevsky"
+    },
+    {
+      "work_id": "142449",
+      "title": "A Streetcar Named Desire",
+      "author": "Tennessee Williams"
+    },
+    {
+      "work_id": "1896522",
+      "title": "Macbeth",
+      "author": "William Shakespeare"
+    },
+    {
+      "work_id": "810663",
+      "title": "The Poisonwood Bible",
+      "author": "Barbara Kingsolver"
+    },
+    {
+      "work_id": "2342136",
+      "title": "King Lear",
+      "author": "William Shakespeare"
+    },
+    {
+      "work_id": "21443207",
+      "title": "Life After Life",
+      "author": "Kate Atkinson"
+    },
+    {
+      "work_id": "2877220",
+      "title": "Heart of Darkness",
+      "author": "Joseph Conrad"
+    },
+    {
+      "work_id": "1643555",
+      "title": "Their Eyes Were Watching God",
+      "author": "Zora Neale Hurston"
+    },
+    {
+      "work_id": "3356006",
+      "title": "The Odyssey",
+      "author": "Homer"
+    },
+    {
+      "work_id": "121842",
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes Saavedra"
+    },
+    {
+      "work_id": "859375",
+      "title": "The Arabian Nights",
+      "author": "Anonymous"
+    },
+    {
+      "work_id": "2931549",
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck"
+    },
+    {
+      "work_id": "736076",
+      "title": "Beloved",
+      "author": "Toni Morrison"
+    },
+    {
+      "work_id": "1235619",
+      "title": "The Things They Carried",
+      "author": "Tim O'Brien"
+    },
+    {
+      "work_id": "4912783",
+      "title": "War and Peace",
+      "author": "Leo Tolstoy"
+    },
+    {
+      "work_id": "2373750",
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka"
+    },
+    {
+      "work_id": "2766347",
+      "title": "Madame Bovary",
+      "author": "Gustave Flaubert"
+    },
+    {
+      "work_id": "1057468",
+      "title": "Vanity Fair",
+      "author": "William Makepeace Thackeray"
+    },
+    {
+      "work_id": "3295655",
+      "title": "One Hundred Years of Solitude",
+      "author": "Gabriel Garcia Marquez"
+    }
+  ],
+  "soft_neg_titles": [
+    {
+      "work_id": "281014",
+      "title": "Sunrise (Sunrise, #1)",
+      "author": "Karen Kingsbury"
+    },
+    {
+      "work_id": "6134515",
+      "title": "J.D. Robb In Death: The First Cases (In Death #1 & 2)",
+      "author": "J.D. Robb"
+    },
+    {
+      "work_id": "28236010",
+      "title": "The Proposition 5: The Ferro Family (The Proposition, #5)",
+      "author": "H.M. Ward"
+    },
+    {
+      "work_id": "2647",
+      "title": "The Kindly Ones (The Sandman #9)",
+      "author": "Neil Gaiman"
+    },
+    {
+      "work_id": "2611332",
+      "title": "Fame (Firstborn, #1)",
+      "author": "Karen Kingsbury"
+    },
+    {
+      "work_id": "13884",
+      "title": "Found (Firstborn, #3)",
+      "author": "Karen Kingsbury"
+    },
+    {
+      "work_id": "15691950",
+      "title": "J. R. Ward Collection: Black Dagger #1,3,5,6 & Fallen Angels #1",
+      "author": "J.R. Ward"
+    },
+    {
+      "work_id": "7386615",
+      "title": "The Last Hope (Warriors: Omen of the Stars, #6)",
+      "author": "Erin Hunter"
+    },
+    {
+      "work_id": "44688733",
+      "title": "Fatal Frenzy (Fatal, #9)",
+      "author": "Marie Force"
+    },
+    {
+      "work_id": "16520318",
+      "title": "Black Dagger Brotherhood, #1-9",
+      "author": "J.R. Ward"
+    },
+    {
+      "work_id": "6800220",
+      "title": "Black Dagger Brotherhood: Boxed Set #1-6",
+      "author": "J.R. Ward"
+    },
+    {
+      "work_id": "13883",
+      "title": "Family (Firstborn, #4)",
+      "author": "Karen Kingsbury"
+    }
+  ],
+  "soft_user_counts": {
+    "n_pos": 12099,
+    "n_neg": 248
+  },
+  "feature_effects_pos_minus_neg": {
+    "five_rate": {
+      "pos_mean": 0.44346416853807,
+      "neg_mean": 0.593520449146324,
+      "d": -0.7114016330074534
+    },
+    "mean_rating": {
+      "pos_mean": 4.128858663464755,
+      "neg_mean": 4.418608956681603,
+      "d": -0.7429262207258924
+    },
+    "n_rated": {
+      "pos_mean": 389.45483097776673,
+      "neg_mean": 469.84274193548384,
+      "d": -0.18159716088101935
+    },
+    "n5": {
+      "pos_mean": 151.09984296222828,
+      "neg_mean": 251.54435483870967,
+      "d": -0.41261551410692787
+    },
+    "mean_logn_5": {
+      "pos_mean": 8.480009862069105,
+      "neg_mean": 7.120005036600474,
+      "d": 1.424504195197337
+    },
+    "std_logn_5": {
+      "pos_mean": 2.022328744380043,
+      "neg_mean": 1.8345026751060627,
+      "d": 0.5830600303313553
+    },
+    "depth_ge4": {
+      "pos_mean": 0.13214222140713333,
+      "neg_mean": 0.15436499492726524,
+      "d": -1.2257197251609608
+    },
+    "p5_blockbuster": {
+      "pos_mean": 0.4844765156346387,
+      "neg_mean": 0.5704551656158126,
+      "d": -0.42244781967897266
+    },
+    "series_share_5": {
+      "pos_mean": 0.19869988626158347,
+      "neg_mean": 0.6707988920561134,
+      "d": -2.9008569461171083
+    },
+    "mean_pub_year_5": {
+      "pos_mean": 1968.704041775481,
+      "neg_mean": 2003.0985784914974,
+      "d": -2.0297256658893574
+    },
+    "n_authors_5": {
+      "pos_mean": 97.61153814364823,
+      "neg_mean": 81.86693548387096,
+      "d": 0.10275718976032844
+    },
+    "binge_mean_5": {
+      "pos_mean": 1.5246311314771706,
+      "neg_mean": 3.529847721381325,
+      "d": -3.5886236387280532
+    },
+    "binge_max_5": {
+      "pos_mean": 9.753202744028432,
+      "neg_mean": 33.07258064516129,
+      "d": -2.1083224020511615
+    },
+    "author_hhi_5": {
+      "pos_mean": 0.028066149333035535,
+      "neg_mean": 0.13302011060055605,
+      "d": -3.2227585666393113
+    },
+    "singleton_author_share_5": {
+      "pos_mean": 0.7756034654145073,
+      "neg_mean": 0.6068679804672145,
+      "d": 1.8106190386653018
+    },
+    "author_div_5": {
+      "pos_mean": 0.7080176388928173,
+      "neg_mean": 0.35080943081141636,
+      "d": 2.408970254485096
+    },
+    "n_midpop_authors_5": {
+      "pos_mean": 54.79907430366146,
+      "neg_mean": 28.383064516129032,
+      "d": 0.5969981092620855
+    },
+    "midpop_author_frac_5": {
+      "pos_mean": 0.6035160057575675,
+      "neg_mean": 0.4068474412878736,
+      "d": 1.5864511400117243
+    },
+    "midpop_span_per_logn5": {
+      "pos_mean": 10.84004204012842,
+      "neg_mean": 5.012575508612526,
+      "d": 0.9110351722144652
+    },
+    "n_megastar_authors_5": {
+      "pos_mean": 15.75047524588809,
+      "neg_mean": 7.665322580645161,
+      "d": 0.8807339275335963
+    },
+    "mid_catalog_share_5": {
+      "pos_mean": 0.4463670162061709,
+      "neg_mean": 0.47658496533865236,
+      "d": -0.27421345463410124
+    },
+    "mega_catalog_share_5": {
+      "pos_mean": 0.1536915040341833,
+      "neg_mean": 0.07987477097731645,
+      "d": 0.7293348014894327
+    }
+  },
+  "weight_audit": {
+    "updates": [
+      {
+        "block": "classic",
+        "feature": "mean_pub_year_5",
+        "old": -1.4,
+        "target_from_d": -2.0,
+        "d": -2.0297256658893574,
+        "new": -1.6099999999999999
+      },
+      {
+        "block": "classic",
+        "feature": "series_share_5",
+        "old": -1.5,
+        "target_from_d": -2.0,
+        "d": -2.9008569461171083,
+        "new": -1.675
+      },
+      {
+        "block": "classic",
+        "feature": "mega_catalog_share_5",
+        "old": -1.3,
+        "target_from_d": 0.8752017617873192,
+        "d": 0.7293348014894327,
+        "new": -0.5386793833744383
+      },
+      {
+        "block": "classic",
+        "feature": "mean_logn_5",
+        "old": -1.0,
+        "target_from_d": 1.7094050342368043,
+        "d": 1.424504195197337,
+        "new": -0.051708238017118546
+      },
+      {
+        "block": "classic",
+        "feature": "depth_ge4",
+        "old": 0.9,
+        "target_from_d": -1.470863670193153,
+        "d": -1.2257197251609608,
+        "new": 0.0701977154323965
+      },
+      {
+        "block": "classic",
+        "feature": "midpop_span_per_logn5",
+        "old": 1.2,
+        "target_from_d": 1.0932422066573582,
+        "d": 0.9110351722144652,
+        "new": 1.1626347723300754
+      },
+      {
+        "block": "classic",
+        "feature": "author_hhi_5",
+        "old": -0.8,
+        "target_from_d": -2.0,
+        "d": -3.2227585666393113,
+        "new": -1.22
+      },
+      {
+        "block": "classic",
+        "feature": "mid_catalog_share_5",
+        "old": 0.5,
+        "target_from_d": -0.3290561455609215,
+        "d": -0.27421345463410124,
+        "new": 0.20983034905367748
+      },
+      {
+        "block": "classic",
+        "feature": "std_logn_5",
+        "old": 0.4,
+        "target_from_d": 0.6996720363976264,
+        "d": 0.5830600303313553,
+        "new": 0.5048852127391692
+      },
+      {
+        "block": "classic",
+        "feature": "singleton_author_share_5",
+        "old": 0.6,
+        "target_from_d": 2.0,
+        "d": 1.8106190386653018,
+        "new": 1.0899999999999999
+      },
+      {
+        "block": "classic",
+        "feature": "binge_mean_5",
+        "old": -0.7,
+        "target_from_d": -2.0,
+        "d": -3.5886236387280532,
+        "new": -1.1549999999999998
+      },
+      {
+        "block": "classic",
+        "feature": "author_div_5",
+        "old": 0.5,
+        "target_from_d": 2.0,
+        "d": 2.408970254485096,
+        "new": 1.025
+      },
+      {
+        "block": "anti",
+        "feature": "series_share_5",
+        "old": 1.6,
+        "target_from_d": 2.0,
+        "d": -2.9008569461171083,
+        "new": 1.74
+      },
+      {
+        "block": "anti",
+        "feature": "binge_mean_5",
+        "old": 1.2,
+        "target_from_d": 2.0,
+        "d": -3.5886236387280532,
+        "new": 1.48
+      },
+      {
+        "block": "anti",
+        "feature": "binge_max_5",
+        "old": 0.8,
+        "target_from_d": 2.0,
+        "d": -2.1083224020511615,
+        "new": 1.22
+      },
+      {
+        "block": "anti",
+        "feature": "author_hhi_5",
+        "old": 1.0,
+        "target_from_d": 2.0,
+        "d": -3.2227585666393113,
+        "new": 1.35
+      },
+      {
+        "block": "anti",
+        "feature": "mean_pub_year_5",
+        "old": 1.0,
+        "target_from_d": 2.0,
+        "d": -2.0297256658893574,
+        "new": 1.35
+      },
+      {
+        "block": "anti",
+        "feature": "singleton_author_share_5",
+        "old": -0.8,
+        "target_from_d": -2.0,
+        "d": 1.8106190386653018,
+        "new": -1.22
+      },
+      {
+        "block": "anti",
+        "feature": "author_div_5",
+        "old": -0.6,
+        "target_from_d": -2.0,
+        "d": 2.408970254485096,
+        "new": -1.0899999999999999
+      },
+      {
+        "block": "normie",
+        "feature": "mega_catalog_share_5",
+        "old": 1.5,
+        "target_from_d": -0.5834678411915463,
+        "d": 0.7293348014894327,
+        "new": 1.0624717533497754
+      },
+      {
+        "block": "normie",
+        "feature": "mean_logn_5",
+        "old": 1.3,
+        "target_from_d": -1.1396033561578696,
+        "d": 1.424504195197337,
+        "new": 0.7876832952068475
+      },
+      {
+        "block": "normie",
+        "feature": "p5_blockbuster",
+        "old": 0.8,
+        "target_from_d": 0.33795825574317817,
+        "d": -0.42244781967897266,
+        "new": 0.7029712337060675
+      },
+      {
+        "block": "normie",
+        "feature": "n_megastar_authors_5",
+        "old": 0.6,
+        "target_from_d": -0.704587142026877,
+        "d": 0.8807339275335963,
+        "new": 0.3260367001743558
+      },
+      {
+        "block": "normie",
+        "feature": "midpop_span_per_logn5",
+        "old": -0.7,
+        "target_from_d": -0.7288281377715722,
+        "d": 0.9110351722144652,
+        "new": -0.7060539089320301
+      },
+      {
+        "block": "normie",
+        "feature": "depth_ge4",
+        "old": -0.5,
+        "target_from_d": 0.9805757801287687,
+        "d": -1.2257197251609608,
+        "new": -0.1890790861729586
+      }
+    ]
+  },
+  "gates": {
+    "current": {
+      "series": 0.4,
+      "mega": 0.28,
+      "binge": 2.8,
+      "span": 3.0
+    },
+    "soft_pos_pct": {
+      "series": 0.35205922877036366,
+      "mega": 0.24954998332903122,
+      "binge": 1.8213218516565548,
+      "span": 6.024679926802887
+    },
+    "applied": {
+      "series_gate": 0.3832207300696273,
+      "mega_gate": 0.26934249416516093,
+      "binge_gate": 2.457462648079794,
+      "span_gate": 4.058637974381011
+    }
+  },
+  "baseline": {
+    "eval": {
+      "Q": 71.65,
+      "geo_n": 85.29478166215488,
+      "pos50": 22,
+      "anti50": 0,
+      "anti1000": 2,
+      "anti_med": 865,
+      "filler50": 1,
+      "pos_share50": 0.44,
+      "anti_share1000": 0.002,
+      "top20": [
+        {
+          "rank": 1,
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "n": 37.0
+        },
+        {
+          "rank": 2,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville",
+          "n": 301.0
+        },
+        {
+          "rank": 3,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "n": 43.0
+        },
+        {
+          "rank": 4,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "n": 430.0
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf",
+          "n": 40.0
+        },
+        {
+          "rank": 6,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "n": 139.0
+        },
+        {
+          "rank": 7,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "n": 123.0
+        },
+        {
+          "rank": 8,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams",
+          "n": 63.0
+        },
+        {
+          "rank": 9,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "n": 378.0
+        },
+        {
+          "rank": 10,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "n": 31.0
+        },
+        {
+          "rank": 11,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver",
+          "n": 105.0
+        },
+        {
+          "rank": 12,
+          "title": "Invisible Man",
+          "author": "Ralph Ellison",
+          "n": 30.0
+        },
+        {
+          "rank": 13,
+          "title": "King Lear",
+          "author": "William Shakespeare",
+          "n": 117.0
+        },
+        {
+          "rank": 14,
+          "title": "Life After Life",
+          "author": "Kate Atkinson",
+          "n": 30.0
+        },
+        {
+          "rank": 15,
+          "title": "Heart of Darkness",
+          "author": "Joseph Conrad",
+          "n": 89.0
+        },
+        {
+          "rank": 16,
+          "title": "Their Eyes Were Watching God",
+          "author": "Zora Neale Hurston",
+          "n": 44.0
+        },
+        {
+          "rank": 17,
+          "title": "Bud, Not Buddy",
+          "author": "Christopher Paul Curtis",
+          "n": 37.0
+        },
+        {
+          "rank": 18,
+          "title": "The Odyssey",
+          "author": "Homer",
+          "n": 595.0
+        },
+        {
+          "rank": 19,
+          "title": "Don Quixote",
+          "author": "Miguel de Cervantes Saavedra",
+          "n": 75.0
+        },
+        {
+          "rank": 20,
+          "title": "Death of a Salesman",
+          "author": "Arthur Miller",
+          "n": 71.0
+        }
+      ]
+    },
+    "fill": {
+      "classic50": 22,
+      "classic200": 40,
+      "test50": 7,
+      "test200": 13,
+      "normie50": 6,
+      "normie200": 19,
+      "anti50": 0,
+      "anti200": 1
+    },
+    "stability": {
+      "j50_mean": 0.5453337841264786,
+      "j50_sd": 0.039732733730080926,
+      "j200_mean": 0.5703262260879222,
+      "j200_sd": 0.0337677758930773,
+      "Q_mean": 65.97833333333334,
+      "Q_sd": 3.7487036143017227,
+      "anti50_mean": 0.08333333333333333,
+      "anti50_sd": 0.28867513459481287,
+      "sticky_fraction_in_top50_mean": 0.9433333333333334,
+      "sticky_fraction_in_top50_sd": 0.03984819679582486,
+      "n_sticky_still_ge_70pct": 24,
+      "n_sticky": 25
+    },
+    "top15": [
+      {
+        "rank": 1,
+        "title": "Ulysses",
+        "author": "James Joyce"
+      },
+      {
+        "rank": 2,
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville"
+      },
+      {
+        "rank": 3,
+        "title": "Paradise Lost",
+        "author": "John Milton"
+      },
+      {
+        "rank": 4,
+        "title": "Hamlet",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 5,
+        "title": "Mrs. Dalloway",
+        "author": "Virginia Woolf"
+      },
+      {
+        "rank": 6,
+        "title": "Lolita",
+        "author": "Vladimir Nabokov"
+      },
+      {
+        "rank": 7,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky"
+      },
+      {
+        "rank": 8,
+        "title": "A Streetcar Named Desire",
+        "author": "Tennessee Williams"
+      },
+      {
+        "rank": 9,
+        "title": "Macbeth",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 10,
+        "title": "The Trial",
+        "author": "Franz Kafka"
+      },
+      {
+        "rank": 11,
+        "title": "The Poisonwood Bible",
+        "author": "Barbara Kingsolver"
+      },
+      {
+        "rank": 12,
+        "title": "Invisible Man",
+        "author": "Ralph Ellison"
+      },
+      {
+        "rank": 13,
+        "title": "King Lear",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 14,
+        "title": "Life After Life",
+        "author": "Kate Atkinson"
+      },
+      {
+        "rank": 15,
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad"
+      }
+    ]
+  },
+  "cotrained": {
+    "eval": {
+      "Q": 71.45,
+      "geo_n": 100.05583660597067,
+      "pos50": 24,
+      "anti50": 0,
+      "anti1000": 3,
+      "anti_med": 495,
+      "filler50": 2,
+      "pos_share50": 0.48,
+      "anti_share1000": 0.003,
+      "top20": [
+        {
+          "rank": 1,
+          "title": "Hamlet",
+          "author": "William Shakespeare",
+          "n": 461.0
+        },
+        {
+          "rank": 2,
+          "title": "Paradise Lost",
+          "author": "John Milton",
+          "n": 52.0
+        },
+        {
+          "rank": 3,
+          "title": "A Streetcar Named Desire",
+          "author": "Tennessee Williams",
+          "n": 67.0
+        },
+        {
+          "rank": 4,
+          "title": "Moby-Dick or, The Whale",
+          "author": "Herman Melville",
+          "n": 323.0
+        },
+        {
+          "rank": 5,
+          "title": "Mrs. Dalloway",
+          "author": "Virginia Woolf",
+          "n": 43.0
+        },
+        {
+          "rank": 6,
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "n": 43.0
+        },
+        {
+          "rank": 7,
+          "title": "Lolita",
+          "author": "Vladimir Nabokov",
+          "n": 154.0
+        },
+        {
+          "rank": 8,
+          "title": "Crime and Punishment",
+          "author": "Fyodor Dostoyevsky",
+          "n": 132.0
+        },
+        {
+          "rank": 9,
+          "title": "The Poisonwood Bible",
+          "author": "Barbara Kingsolver",
+          "n": 111.0
+        },
+        {
+          "rank": 10,
+          "title": "Macbeth",
+          "author": "William Shakespeare",
+          "n": 409.0
+        },
+        {
+          "rank": 11,
+          "title": "The Arabian Nights",
+          "author": "Anonymous",
+          "n": 63.0
+        },
+        {
+          "rank": 12,
+          "title": "The Trial",
+          "author": "Franz Kafka",
+          "n": 33.0
+        },
+        {
+          "rank": 13,
+          "title": "Peter Pan (A Little Golden Book)",
+          "author": "Eugene Bradley Coco",
+          "n": 38.0
+        },
+        {
+          "rank": 14,
+          "title": "The Grapes of Wrath",
+          "author": "John Steinbeck",
+          "n": 223.0
+        },
+        {
+          "rank": 15,
+          "title": "Heart of Darkness",
+          "author": "Joseph Conrad",
+          "n": 98.0
+        },
+        {
+          "rank": 16,
+          "title": "Bud, Not Buddy",
+          "author": "Christopher Paul Curtis",
+          "n": 39.0
+        },
+        {
+          "rank": 17,
+          "title": "Les Misérables",
+          "author": "Victor Hugo",
+          "n": 348.0
+        },
+        {
+          "rank": 18,
+          "title": "One Hundred Years of Solitude",
+          "author": "Gabriel Garcia Marquez",
+          "n": 170.0
+        },
+        {
+          "rank": 19,
+          "title": "Anna Karenina",
+          "author": "Leo Tolstoy",
+          "n": 189.0
+        },
+        {
+          "rank": 20,
+          "title": "Death of a Salesman",
+          "author": "Arthur Miller",
+          "n": 81.0
+        }
+      ]
+    },
+    "fill": {
+      "classic50": 24,
+      "classic200": 46,
+      "test50": 7,
+      "test200": 14,
+      "normie50": 7,
+      "normie200": 22,
+      "anti50": 0,
+      "anti200": 0
+    },
+    "stability": {
+      "j50_mean": 0.5655886838930834,
+      "j50_sd": 0.04240390408791052,
+      "j200_mean": 0.5712528892015796,
+      "j200_sd": 0.031372647117672986,
+      "Q_mean": 68.74833333333333,
+      "Q_sd": 6.39752058980428,
+      "anti50_mean": 0.0,
+      "anti50_sd": 0.0,
+      "sticky_fraction_in_top50_mean": 0.9533333333333333,
+      "sticky_fraction_in_top50_sd": 0.041194292043554966,
+      "n_sticky_still_ge_70pct": 24,
+      "n_sticky": 25
+    },
+    "overlap_top50_with_baseline": 0.6949152542372882,
+    "classic_terms": {
+      "mean_pub_year_5": -1.6099999999999999,
+      "series_share_5": -1.675,
+      "mega_catalog_share_5": -0.5386793833744383,
+      "mean_logn_5": -0.051708238017118546,
+      "depth_ge4": 0.0701977154323965,
+      "midpop_span_per_logn5": 1.1626347723300754,
+      "author_hhi_5": -1.22,
+      "mid_catalog_share_5": 0.20983034905367748,
+      "std_logn_5": 0.5048852127391692,
+      "singleton_author_share_5": 1.0899999999999999,
+      "binge_mean_5": -1.1549999999999998,
+      "author_div_5": 1.025
+    },
+    "anti_terms": {
+      "series_share_5": 1.74,
+      "binge_mean_5": 1.48,
+      "binge_max_5": 1.22,
+      "author_hhi_5": 1.35,
+      "mean_pub_year_5": 1.35,
+      "singleton_author_share_5": -1.22,
+      "author_div_5": -1.0899999999999999
+    },
+    "normie_terms": {
+      "mega_catalog_share_5": 1.0624717533497754,
+      "mean_logn_5": 0.7876832952068475,
+      "p5_blockbuster": 0.7029712337060675,
+      "n_megastar_authors_5": 0.3260367001743558,
+      "midpop_span_per_logn5": -0.7060539089320301,
+      "depth_ge4": -0.1890790861729586
+    },
+    "top15": [
+      {
+        "rank": 1,
+        "title": "Hamlet",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 2,
+        "title": "Paradise Lost",
+        "author": "John Milton"
+      },
+      {
+        "rank": 3,
+        "title": "A Streetcar Named Desire",
+        "author": "Tennessee Williams"
+      },
+      {
+        "rank": 4,
+        "title": "Moby-Dick or, The Whale",
+        "author": "Herman Melville"
+      },
+      {
+        "rank": 5,
+        "title": "Mrs. Dalloway",
+        "author": "Virginia Woolf"
+      },
+      {
+        "rank": 6,
+        "title": "Ulysses",
+        "author": "James Joyce"
+      },
+      {
+        "rank": 7,
+        "title": "Lolita",
+        "author": "Vladimir Nabokov"
+      },
+      {
+        "rank": 8,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky"
+      },
+      {
+        "rank": 9,
+        "title": "The Poisonwood Bible",
+        "author": "Barbara Kingsolver"
+      },
+      {
+        "rank": 10,
+        "title": "Macbeth",
+        "author": "William Shakespeare"
+      },
+      {
+        "rank": 11,
+        "title": "The Arabian Nights",
+        "author": "Anonymous"
+      },
+      {
+        "rank": 12,
+        "title": "The Trial",
+        "author": "Franz Kafka"
+      },
+      {
+        "rank": 13,
+        "title": "Peter Pan (A Little Golden Book)",
+        "author": "Eugene Bradley Coco"
+      },
+      {
+        "rank": 14,
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck"
+      },
+      {
+        "rank": 15,
+        "title": "Heart of Darkness",
+        "author": "Joseph Conrad"
+      }
+    ]
+  },
+  "veto": {
+    "accepted": true,
+    "reasons": [
+      "passed: anti controlled + stability not worsened materially"
+    ]
+  },
+  "adopted_weights": true,
+  "adopted_weights_path": "/home/ifrankling/unsw/novels/curators_explorer/data/cotrained_weights.json"
+}

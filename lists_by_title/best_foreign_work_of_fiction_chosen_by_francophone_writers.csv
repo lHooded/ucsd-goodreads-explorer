@@ -1,0 +1,121 @@
+rank,book,authors,year,country,language
+1,Ulysses,James Joyce,1922,Irish,English
+8,Don Quixote,Miguel de Cervantes,1605,Spanish,Spanish
+62,Under the Volcano,Malcolm Lowry,1947,British,English
+1457,The Real Life of Sebastian Knight,Vladimir Nabokov,1941,Russian,English
+9,The Sound and the Fury,William Faulkner,1929,American,English
+38,Great Expectations,Charles Dickens,1860,British,English
+379,American Pastoral,Philip Roth,1997,American,English
+93,Demons,Fyodor Dostoevsky,1872,Russian,Russian
+1708,Twenty Four Hours In The Life Of A Woman,Stefan Zweig,1927,Austrian,German
+3118,Weights And Measures,Joseph Roth,1937,Austrian,German
+29,The Magic Mountain,Thomas Mann,1924,German,German
+199,A Good Man Is Hard to Find,Flannery O'Connor,1953,American,English
+7040,A Million Little Pieces,James Frey,2003,American,English
+829,A Moveable Feast,Ernest Hemingway,1964,American,English
+1150,A Writer's Diary,Virginia Woolf,1953,British,English
+349,Ada or Ardor,Vladimir Nabokov,1969,American,English
+727,All the Pretty Horses,Cormac McCarthy,1992,American,English
+993,Ambiguous Adventure,Cheikh Hamidou Kane,1961,Senegalese,French
+3748,Bacacay,Witold Gombrowicz,1957,Polish,Polish
+1407,Letters to a Young Poet,Rainer Maria Rilke,1929,Austrian,German
+1909,A Burnt Child,Stig Dagerman,1948,Swedish,Swedish
+88,Buddenbrooks,Thomas Mann,1901,German,German
+799,Burmese Days,George Orwell,1934,British,English
+5,The Catcher in the Rye,J. D. Salinger,1951,American,English
+1385,Concrete,Thomas Bernhard,1982,Austrian,German
+134,Confessions of Zeno,Italo Svevo,1923,Italian,Italian
+5172,Cutting It Short,Bohumil Hrabal,1976,Czech,Czech
+335,The Glass Bead Game,Hermann Hesse,1943,German,German
+46,David Copperfield,Charles Dickens,1849,British,English
+3333,Death Of A Red Heroine,Qiu Xiaolong,2000,Chinese,English
+83,The Man Without Qualities,Robert Musil,1930,Austrian,German
+949,The Reader,Bernhard Schlink,1995,German,German
+259,Disgrace,J. M. Coetzee,1999,South African,English
+130,Doctor Faustus,Thomas Mann,1947,German,German
+5490,Doruntine,Ismail Kadare,1980,Albanian,Albanian
+4666,Metropole,Ferenc Karinthy,1970,Hungarian,Hungarian
+2177,Exemplary Stories,Miguel de Cervantes,1613,Spanish,Spanish
+94,Faust,Johann Wolfgang von Goethe,1808,German,German
+370,Ferdydurke,Witold Gombrowicz,1937,Polish,Polish
+47,Fictions,Jorge Luis Borges,1944,Argentinian,Spanish
+964,Flaubert's Parrot,Julian Barnes,1984,British,English
+793,Flowers for Algernon,Daniel Keyes,1959,American,English
+3175,Forever Flowing,Vasily Grossman,1970,Russian,Russian
+245,Gravity's Rainbow,Thomas Pynchon,1973,American,English
+1048,Greguerias,Ramón Gómez de la Serna,1910,Spanish,Spanish
+1080,Hadrian the Seventh,Frederick Rolfe,1904,British,English
+31,Heart of Darkness,Joseph Conrad,1899,British,English
+433,I'm Not Stiller,Max Frisch,1954,Swiss,German
+3563,I And My Chimney,Herman Melville,1856,American,English
+3260,Into The Heart Of Borneo,Redmond O'Hanlon,1984,British,English
+5491,Jar City,Arnaldur Indriðason,2000,Icelandic,Icelandic
+5221,Jernigan,David Gates,1991,American,English
+5173,Revenge,Yōko Ogawa,1998,Japanese,Japanese
+774,Kaputt,Curzio Malaparte,1944,Italian,Italian
+2354,Less Than Zero,Bret Easton Ellis,1985,American,English
+1931,Leviathan,Arno Schmidt,1949,German,German
+213,Life and Fate,Vasily Grossman,1980,Russian,Russian
+3563,Life Of Quintus Fixlein,Jean-Paul Richter,1796,German,German
+182,Light in August,William Faulkner,1932,American,English
+11,Lolita,Vladimir Nabokov,1955,American,English
+150,Lord Jim,Joseph Conrad,1900,British,English
+171,Love in the Time of Cholera,Gabriel García Márquez,1985,Colombian,Spanish
+2372,Lust,Elfriede Jelinek,1989,Austrian,German
+626,Manhattan Transfer,John Dos Passos,1925,American,English
+1399,Mars,Fritz Zorn,1977,Swiss,German
+78,The Metamorphosis,Franz Kafka,1915,Czech,German
+24,Middlemarch,George Eliot,1871,British,English
+58,Midnight's Children,Salman Rushdie,1981,Indian,English
+5121,Mouth Full Of Earth,Branimir Scepanovic,1975,Montenegrin,Serbo-croatian
+32,Mrs. Dalloway,Virginia Woolf,1925,British,English
+5684,Mysterious Skin,Scott Heim,1995,American,English
+2703,My Friend Flicka,Mary O'Hara,1941,American,English
+4382,Night Visitor,B. Traven,1966,German,Unknown
+177,Oblomov,Ivan Goncharov,1859,Russian,Russian
+41,On the Road,Jack Kerouac,1957,American,English
+135,One Day in the Life of Ivan Denisovich,Aleksandr Solzhenitsyn,1962,Russian,Russian
+4,One Hundred Years of Solitude,Gabriel García Márquez,1967,Colombian,Spanish
+2190,Operation Shylock,Philip Roth,1993,American,English
+1570,Pan,Knut Hamsun,1894,Norwegian,Norwegian
+3036,Patrimony,Philip Roth,1991,American,English
+144,Pedro Páramo,Juan Rulfo,1955,Mexican,Spanish
+244,Portnoy's Complaint,Philip Roth,1969,American,English
+66,The Portrait of a Lady,Henry James,1881,American,English
+7700,Purple America,Rick Moody,1997,American,English
+761,Rabbit at Rest,John Updike,1990,American,English
+3563,Really The Blues,"Bernard Wolfe , Milton Mezz Mezzrow",1946,American,English
+517,Red Cavalry,Isaac Babel,1926,Russian,Russian
+1688,Requiem for a Dream,Hubert Selby,1978,American,English
+69,Robinson Crusoe,Daniel Defoe,1719,British,English
+534,Satyricon,Petronius,65,Roman,Latin
+2543,Scenes From The Life Of A Faun,Arno Schmidt,1953,German,German
+5383,Signs Of Fire,Jorge de Sena,1979,Portuguese,Portuguese
+1503,Snow,Orhan Pamuk,2002,Turkish,Turkish
+162,Steppenwolf,Hermann Hesse,1927,German,German
+5958,Sundog,Jim Harrison,1984,American,English
+2497,The Anatomy Lesson,Philip Roth,1983,American,English
+917,The Bacchae,Euripides,-405,Greek,Ancient greek
+120,The Big Sleep,Raymond Chandler,1939,American,English
+328,Bonfire of the Vanities,Tom Wolfe,1987,American,English
+2318,The Box Man,Kobo Abé,1973,Japanese,Japanese
+4848,The Breast,Philip Roth,1972,American,English
+1076,The Christmas Oratorio,Göran Tunström,1983,Swedish,Swedish
+28,The Divine Comedy,Dante Alighieri,1308,Italian,Italian
+2029,The Egghead Republic,Arno Schmidt,1957,German,German
+1178,The Egyptian,Mika Waltari,1945,Finnish,Finnish
+4521,The Fifth Woman,Henning Mankell,1996,Swedish,Swedish
+353,The Garden of the Finzi-Continis,Giorgio Bassani,1962,Italian,Italian
+348,The God of Small Things,Arundhati Roy,1997,Indian,English
+3,The Great Gatsby,F. Scott Fitzgerald,1925,American,English
+3563,The Happy Island,Dawn Powell,1938,American,English
+410,The Human Stain,Philip Roth,2000,American,English
+37,The Iliad,Homer,-750,Greek,Ancient greek
+61,The Leopard,Giuseppe Tomasi di Lampedusa,1958,Italian,Italian
+756,The Swindler,Francisco de Quevedo,1626,Spanish,Spanish
+253,Naked Lunch,William S. Burroughs,1959,American,English
+26,The Odyssey,Homer,-740,Greek,Ancient greek
+1426,The Tunnel,Ernesto Sábato,1948,Argentinian,Spanish
+91,The Picture of Dorian Gray,Oscar Wilde,1890,Irish,English
+837,The Pillow Book,Sei Shōnagon,1002,Japanese,Japanese
+409,Ramayana,Valmiki,-200,Indian,Sanskrit
