@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Publication-year-aware literary jury from ratings plus edition years.
+"""Publication-year-aware literary jury from ratings plus cleaned work years.
 
 Discovery uses (user_id, work_id, rating) plus publication_year.  A work's
-primary year is the minimum credible edition year in the complete UCSD books
-catalogue, not the selected/display edition.  Titles, authors, and literary
-evaluation lists are loaded only after all jury and book scores are frozen.
+primary year combines BrightData ``first_published`` with the earliest credible
+UCSD edition. Titles, authors, genres, and literary evaluation lists are loaded
+only after all jury and book scores are frozen.
 """
 
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import time
 from pathlib import Path
@@ -26,11 +27,13 @@ from ucsd_explorer.db import PARQUET
 
 DATA = Path(__file__).resolve().parents[1] / "data"
 MATRIX_CACHE = DATA / "seedless_spectral_pilot_matrix_b500.npz"
+BRIGHT_WORKS = PARQUET / "brightdata_work_metadata.parquet"
+YEAR_FEATURE_CACHE = DATA / "seedless_year_feature_matrix_brightdata.npz"
 OUT_JSON = DATA / "year_aware_canon_pilot.json"
 OUT_REPORT = DATA / "YEAR_AWARE_CANON_PILOT_REPORT.md"
 
-YEAR_MIN = 1500
-YEAR_MAX = 2017
+YEAR_MIN = 1
+YEAR_MAX = 2026
 OLDNESS_ZERO = 2000.0
 OLDNESS_ONE = 1850.0
 USER_PRIOR = 10.0
@@ -38,23 +41,45 @@ MIN_TRAIN_FIVES = 8
 BOOK_SHRINK_READERS = 25.0
 
 VARIANTS = (
-    {"name": "min_linear_q10", "year": "min_year", "oldness": "linear", "quantile": 0.10},
-    {"name": "q10_linear_q10", "year": "q10_year", "oldness": "linear", "quantile": 0.10},
-    {"name": "min_linear1800_q10", "year": "min_year", "oldness": "linear1800", "quantile": 0.10},
-    {"name": "min_linear1900_q10", "year": "min_year", "oldness": "linear1900", "quantile": 0.10},
-    {"name": "min_pre1950_q10", "year": "min_year", "oldness": "pre1950", "quantile": 0.10},
-    {"name": "min_linear_q05", "year": "min_year", "oldness": "linear", "quantile": 0.05},
-    {"name": "min_linear_q20", "year": "min_year", "oldness": "linear", "quantile": 0.20},
+    {"name": "best_linear_q10", "year": "best_year", "oldness": "linear", "quantile": 0.10},
     {
-        "name": "min_linear_mass_q10",
-        "year": "min_year",
+        "name": "best_linear_mass_q10",
+        "year": "best_year",
         "oldness": "linear",
         "quantile": 0.10,
         "user_score": "mass",
     },
     {
-        "name": "min_linear_q10_all",
-        "year": "min_year",
+        "name": "best_preference_q10",
+        "year": "best_year",
+        "oldness": "linear",
+        "quantile": 0.10,
+        "user_score": "preference",
+    },
+    {
+        "name": "best_preference_q20",
+        "year": "best_year",
+        "oldness": "linear",
+        "quantile": 0.20,
+        "user_score": "preference",
+    },
+    {
+        "name": "best_preference_delta_q10",
+        "year": "best_year",
+        "oldness": "linear",
+        "quantile": 0.10,
+        "user_score": "preference_delta",
+    },
+    {"name": "ucsd_linear_q10", "year": "ucsd_year", "oldness": "linear", "quantile": 0.10},
+    {"name": "bright_linear_q10", "year": "bright_year", "oldness": "linear", "quantile": 0.10},
+    {"name": "best_linear1800_q10", "year": "best_year", "oldness": "linear1800", "quantile": 0.10},
+    {"name": "best_linear1900_q10", "year": "best_year", "oldness": "linear1900", "quantile": 0.10},
+    {"name": "best_pre1950_q10", "year": "best_year", "oldness": "pre1950", "quantile": 0.10},
+    {"name": "best_linear_q05", "year": "best_year", "oldness": "linear", "quantile": 0.05},
+    {"name": "best_linear_q20", "year": "best_year", "oldness": "linear", "quantile": 0.20},
+    {
+        "name": "best_linear_q10_all",
+        "year": "best_year",
         "oldness": "linear",
         "quantile": 0.10,
         "comparator": "all",
@@ -83,29 +108,58 @@ def extraction_connection() -> duckdb.DuckDBPyConnection:
 def extract_year_features(
     payload: dict[str, np.ndarray],
 ) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
-    books_pq = PARQUET / "books.parquet"
+    if not BRIGHT_WORKS.exists():
+        raise SystemExit(
+            f"Missing {BRIGHT_WORKS}; run curators_explorer.scripts.build_brightdata_metadata"
+        )
+    fingerprint = hashlib.sha256()
+    fingerprint.update(np.asarray(payload["user_ids"]).tobytes())
+    fingerprint.update(np.asarray(payload["work_ids"]).tobytes())
+    cache_key = fingerprint.hexdigest()
+    signature_con = duckdb.connect()
+    signature = signature_con.execute(
+        f"""
+        SELECT count(*),
+               sum(hash(work_id, best_first_published_year,
+                        brightdata_mode_year, ucsd_min_edition_year))::HUGEINT,
+               bit_xor(hash(work_id, best_first_published_year,
+                            brightdata_mode_year, ucsd_min_edition_year))
+        FROM read_parquet('{BRIGHT_WORKS}')
+        """
+    ).fetchone()
+    signature_con.close()
+    source_digest = ":".join(str(value) for value in signature)
+    if YEAR_FEATURE_CACHE.exists():
+        with np.load(YEAR_FEATURE_CACHE, allow_pickle=False) as saved:
+            if (
+                str(saved["fingerprint"].item()) == cache_key
+                and "source_signature" in saved.files
+                and str(saved["source_signature"].item()) == source_digest
+            ):
+                print(f"Reusing {YEAR_FEATURE_CACHE.name}", flush=True)
+                cached_features = {
+                    key: saved[key]
+                    for key in saved.files
+                    if key not in {
+                        "fingerprint", "source_mtime_ns", "source_sha256",
+                        "source_signature", "audit_json"
+                    }
+                }
+                return cached_features, json.loads(str(saved["audit_json"].item()))
     con = extraction_connection()
-    print("Materializing clean all-edition work years", flush=True)
+    print("Loading cleaned BrightData + UCSD work years", flush=True)
     con.execute(
         f"""
-        CREATE TEMP TABLE edition_years AS
-        SELECT work_id::VARCHAR AS work_id,
-               try_cast(publication_year AS INTEGER)::INTEGER AS pub_year
-        FROM read_parquet('{books_pq}')
-        WHERE work_id IS NOT NULL
-          AND try_cast(publication_year AS INTEGER) BETWEEN {YEAR_MIN} AND {YEAR_MAX}
-        """
-    )
-    con.execute(
-        """
         CREATE TEMP TABLE clean_years AS
         SELECT work_id,
-               min(pub_year)::INTEGER AS min_year,
-               round(quantile_cont(pub_year, 0.10))::INTEGER AS q10_year,
-               count(*)::INTEGER AS dated_editions,
-               count(DISTINCT pub_year)::INTEGER AS distinct_years
-        FROM edition_years
-        GROUP BY work_id
+               best_first_published_year::INTEGER AS best_year,
+               brightdata_mode_year::INTEGER AS bright_year,
+               ucsd_min_edition_year::INTEGER AS ucsd_year,
+               ucsd_q10_edition_year::INTEGER AS ucsd_q10_year,
+               coalesce(brightdata_dated_editions, 0)::INTEGER AS bright_dated_editions,
+               coalesce(ucsd_editions, 0)::INTEGER AS ucsd_editions,
+               year_source
+        FROM read_parquet('{BRIGHT_WORKS}')
         """
     )
     print("Materializing eligible readers and cross-fit year features", flush=True)
@@ -124,177 +178,275 @@ def extract_year_features(
         f"""
         SELECT e.user_id,
                (try_cast(e.work_id AS UBIGINT) % 2)::TINYINT AS fold,
-               count(*)::INTEGER AS n5_year,
+               count(*) FILTER (WHERE e.rating=5 AND y.best_year IS NOT NULL)::INTEGER
+                   AS best_n5_year,
+               count(*) FILTER (WHERE e.rating=5 AND y.bright_year IS NOT NULL)::INTEGER
+                   AS bright_n5_year,
+               count(*) FILTER (WHERE e.rating=5 AND y.ucsd_year IS NOT NULL)::INTEGER
+                   AS ucsd_n5_year,
                sum(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
-               )))::DOUBLE AS min_linear_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               ))) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear_sum,
                sum(pow(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
-               )), 2))::DOUBLE AS min_linear_sq_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )), 2)) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear_sq_sum,
                sum(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - 1800.0})
-               )))::DOUBLE AS min_linear1800_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - 1800.0})
+               ))) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear1800_sum,
                sum(pow(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - 1800.0})
-               )), 2))::DOUBLE AS min_linear1800_sq_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - 1800.0})
+               )), 2)) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear1800_sq_sum,
                sum(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - 1900.0})
-               )))::DOUBLE AS min_linear1900_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - 1900.0})
+               ))) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear1900_sum,
                sum(pow(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.min_year) / ({OLDNESS_ZERO - 1900.0})
-               )), 2))::DOUBLE AS min_linear1900_sq_sum,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - 1900.0})
+               )), 2)) FILTER (WHERE e.rating=5)::DOUBLE AS best_linear1900_sq_sum,
                sum(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.q10_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
-               )))::DOUBLE AS q10_linear_sum,
+                   ({OLDNESS_ZERO} - y.bright_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               ))) FILTER (WHERE e.rating=5)::DOUBLE AS bright_linear_sum,
                sum(pow(greatest(0.0, least(1.0,
-                   ({OLDNESS_ZERO} - y.q10_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
-               )), 2))::DOUBLE AS q10_linear_sq_sum,
-               count(*) FILTER (WHERE y.min_year <= 1950)::DOUBLE AS pre1950_sum
+                   ({OLDNESS_ZERO} - y.bright_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )), 2)) FILTER (WHERE e.rating=5)::DOUBLE AS bright_linear_sq_sum,
+               sum(greatest(0.0, least(1.0,
+                   ({OLDNESS_ZERO} - y.ucsd_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               ))) FILTER (WHERE e.rating=5)::DOUBLE AS ucsd_linear_sum,
+               sum(pow(greatest(0.0, least(1.0,
+                   ({OLDNESS_ZERO} - y.ucsd_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )), 2)) FILTER (WHERE e.rating=5)::DOUBLE AS ucsd_linear_sq_sum,
+               count(*) FILTER (WHERE e.rating=5 AND y.best_year <= 1950)::DOUBLE
+                   AS pre1950_sum,
+               count(*) FILTER (WHERE y.best_year IS NOT NULL)::INTEGER AS rated_n,
+               sum(greatest(0.0, least(1.0,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )))::DOUBLE AS pref_x_sum,
+               sum(pow(greatest(0.0, least(1.0,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )), 2))::DOUBLE AS pref_x2_sum,
+               sum((e.rating - 3.0) / 2.0) FILTER (
+                   WHERE y.best_year IS NOT NULL
+               )::DOUBLE AS pref_y_sum,
+               sum(pow((e.rating - 3.0) / 2.0, 2)) FILTER (
+                   WHERE y.best_year IS NOT NULL
+               )::DOUBLE AS pref_y2_sum,
+               sum(greatest(0.0, least(1.0,
+                   ({OLDNESS_ZERO} - y.best_year) / ({OLDNESS_ZERO - OLDNESS_ONE})
+               )) * ((e.rating - 3.0) / 2.0)) FILTER (
+                   WHERE y.best_year IS NOT NULL
+               )::DOUBLE AS pref_xy_sum
         FROM ex.all_rating_events e
         JOIN eligible_users u USING (user_id)
         JOIN clean_years y USING (work_id)
-        WHERE e.rating = 5
+        WHERE e.rating BETWEEN 1 AND 5
         GROUP BY e.user_id, fold
         ORDER BY e.user_id, fold
         """
     ).fetchnumpy()
+    con.execute("CREATE TEMP TABLE candidate_works(work_id VARCHAR PRIMARY KEY)")
+    con.executemany(
+        "INSERT INTO candidate_works VALUES (?)",
+        [(str(work_id),) for work_id in payload["work_ids"]],
+    )
     work_year_rows = con.execute(
-        "SELECT work_id,min_year,q10_year,dated_editions,distinct_years FROM clean_years"
-    ).fetchnumpy()
+        "SELECT c.work_id,y.best_year,y.bright_year,y.ucsd_year,y.ucsd_q10_year,"
+        "y.bright_dated_editions,y.ucsd_editions,y.year_source "
+        "FROM candidate_works c LEFT JOIN clean_years y USING(work_id) ORDER BY c.work_id"
+    ).fetchall()
     audit = con.execute(
-        f"""
-        SELECT count(*) AS edition_rows,
-               count(DISTINCT work_id) AS works_with_year,
-               count(*) FILTER (WHERE pub_year < 1800) AS edition_rows_pre1800,
-               min(pub_year) AS minimum,
-               max(pub_year) AS maximum
-        FROM edition_years
         """
-    ).fetchone()
-    raw_audit = con.execute(
-        f"""
-        SELECT count(*) AS rows,
-               count(DISTINCT work_id) AS works,
-               count(*) FILTER (
-                   WHERE try_cast(publication_year AS INTEGER) BETWEEN {YEAR_MIN} AND {YEAR_MAX}
-               ) AS valid_year_rows,
-               count(*) FILTER (WHERE try_cast(publication_year AS INTEGER) < {YEAR_MIN}) AS too_early,
-               count(*) FILTER (WHERE try_cast(publication_year AS INTEGER) > {YEAR_MAX}) AS too_late
-        FROM read_parquet('{books_pq}')
+        SELECT count(*) AS works,
+               count(best_year) AS best_year_works,
+               count(bright_year) AS bright_year_works,
+               count(ucsd_year) AS ucsd_year_works,
+               count(*) FILTER (WHERE best_year < 1800) AS best_pre1800,
+               min(best_year) AS minimum,
+               max(best_year) AS maximum,
+               count(*) FILTER (WHERE year_source='brightdata_earlier') AS bright_improvements,
+               count(*) FILTER (WHERE year_source='ucsd_earlier') AS ucsd_earlier
+        FROM clean_years
         """
     ).fetchone()
     con.close()
 
     n_users = len(payload["user_ids"])
     user_data = {
-        "n": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear_sum": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear_sq_sum": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear1800_sum": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear1800_sq_sum": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear1900_sum": np.zeros((2, n_users), dtype=np.float32),
-        "min_linear1900_sq_sum": np.zeros((2, n_users), dtype=np.float32),
-        "q10_linear_sum": np.zeros((2, n_users), dtype=np.float32),
-        "q10_linear_sq_sum": np.zeros((2, n_users), dtype=np.float32),
-        "pre1950_sum": np.zeros((2, n_users), dtype=np.float32),
+        key: np.zeros((2, n_users), dtype=np.float32)
+        for key in (
+            "best_n", "bright_n", "ucsd_n",
+            "best_linear_sum", "best_linear_sq_sum",
+            "best_linear1800_sum", "best_linear1800_sq_sum",
+            "best_linear1900_sum", "best_linear1900_sq_sum",
+            "bright_linear_sum", "bright_linear_sq_sum",
+            "ucsd_linear_sum", "ucsd_linear_sq_sum",
+            "rated_n", "pref_x_sum", "pref_x2_sum", "pref_y_sum",
+            "pref_y2_sum", "pref_xy_sum",
+        )
     }
+    user_data.update({
+        "pre1950_sum": np.zeros((2, n_users), dtype=np.float32),
+    })
     source_users = spectral.clean_array(features["user_id"], np.int64)
     indices = np.searchsorted(payload["user_ids"], source_users)
     matched = (indices < n_users) & (payload["user_ids"][np.minimum(indices, n_users - 1)] == source_users)
     folds = spectral.clean_array(features["fold"], np.int8)
     indices, folds = indices[matched], folds[matched]
     mapping = {
-        "n": "n5_year",
-        "min_linear_sum": "min_linear_sum",
-        "min_linear_sq_sum": "min_linear_sq_sum",
-        "min_linear1800_sum": "min_linear1800_sum",
-        "min_linear1800_sq_sum": "min_linear1800_sq_sum",
-        "min_linear1900_sum": "min_linear1900_sum",
-        "min_linear1900_sq_sum": "min_linear1900_sq_sum",
-        "q10_linear_sum": "q10_linear_sum",
-        "q10_linear_sq_sum": "q10_linear_sq_sum",
+        "best_n": "best_n5_year",
+        "bright_n": "bright_n5_year",
+        "ucsd_n": "ucsd_n5_year",
+        "best_linear_sum": "best_linear_sum",
+        "best_linear_sq_sum": "best_linear_sq_sum",
+        "best_linear1800_sum": "best_linear1800_sum",
+        "best_linear1800_sq_sum": "best_linear1800_sq_sum",
+        "best_linear1900_sum": "best_linear1900_sum",
+        "best_linear1900_sq_sum": "best_linear1900_sq_sum",
+        "bright_linear_sum": "bright_linear_sum",
+        "bright_linear_sq_sum": "bright_linear_sq_sum",
+        "ucsd_linear_sum": "ucsd_linear_sum",
+        "ucsd_linear_sq_sum": "ucsd_linear_sq_sum",
         "pre1950_sum": "pre1950_sum",
+        "rated_n": "rated_n",
+        "pref_x_sum": "pref_x_sum",
+        "pref_x2_sum": "pref_x2_sum",
+        "pref_y_sum": "pref_y_sum",
+        "pref_y2_sum": "pref_y2_sum",
+        "pref_xy_sum": "pref_xy_sum",
     }
     for target, source in mapping.items():
         user_data[target][folds, indices] = spectral.clean_array(features[source], np.float32)[matched]
 
-    work_ids = np.asarray(work_year_rows["work_id"], dtype=str)
     work_year_map = {
         str(work_id): {
-            "min_year": int(min_year),
-            "q10_year": int(q10_year),
-            "dated_editions": int(dated),
-            "distinct_years": int(distinct),
+            "best_year": int(best) if best is not None else -1,
+            "bright_year": int(bright) if bright is not None else -1,
+            "ucsd_year": int(ucsd) if ucsd is not None else -1,
+            "ucsd_q10_year": int(q10) if q10 is not None else -1,
+            "bright_dated_editions": int(bright_n or 0),
+            "ucsd_editions": int(ucsd_n or 0),
+            "year_source": source,
         }
-        for work_id, min_year, q10_year, dated, distinct in zip(
-            work_ids,
-            work_year_rows["min_year"],
-            work_year_rows["q10_year"],
-            work_year_rows["dated_editions"],
-            work_year_rows["distinct_years"],
-        )
+        for work_id, best, bright, ucsd, q10, bright_n, ucsd_n, source in work_year_rows
     }
-    candidate_years = {
-        key: np.asarray(
+    candidate_years = {}
+    for key in ("best_year", "bright_year", "ucsd_year", "ucsd_q10_year"):
+        candidate_years[key] = np.asarray(
             [work_year_map.get(str(work_id), {}).get(key, -1) for work_id in payload["work_ids"]],
             dtype=np.int16,
         )
-        for key in ("min_year", "q10_year")
-    }
-    candidate_years["dated_editions"] = np.asarray(
-        [work_year_map.get(str(work_id), {}).get("dated_editions", 0) for work_id in payload["work_ids"]],
-        dtype=np.int16,
-    )
-    return {**user_data, **candidate_years}, {
-        "edition_rows": int(audit[0]),
-        "raw_catalogue_rows": int(raw_audit[0]),
-        "raw_catalogue_works": int(raw_audit[1]),
-        "raw_valid_year_rows": int(raw_audit[2]),
-        "raw_year_rows_before_1500": int(raw_audit[3]),
-        "raw_year_rows_after_2017": int(raw_audit[4]),
-        "works_with_year": int(audit[1]),
-        "edition_rows_pre1800": int(audit[2]),
-        "year_band": [int(audit[3]), int(audit[4])],
+    for key in ("bright_dated_editions", "ucsd_editions"):
+        candidate_years[key] = np.asarray(
+            [work_year_map.get(str(work_id), {}).get(key, 0) for work_id in payload["work_ids"]],
+            dtype=np.int16,
+        )
+    combined_features = {**user_data, **candidate_years}
+    year_audit = {
+        "works": int(audit[0]),
+        "best_year_works": int(audit[1]),
+        "bright_year_works": int(audit[2]),
+        "ucsd_year_works": int(audit[3]),
+        "best_year_works_pre1800": int(audit[4]),
+        "year_band": [int(audit[5]), int(audit[6])],
+        "brightdata_earlier_works": int(audit[7]),
+        "ucsd_earlier_works": int(audit[8]),
         "candidate_works": len(payload["work_ids"]),
-        "candidate_works_with_min_year": int(np.sum(candidate_years["min_year"] > 0)),
-        "candidate_works_with_multiple_dated_editions": int(
-            np.sum(candidate_years["dated_editions"] >= 2)
-        ),
-        "source": str(books_pq),
-        "definition": "minimum and edition-row q10 over all valid edition publication_year values",
+        "candidate_works_with_best_year": int(np.sum(candidate_years["best_year"] > 0)),
+        "candidate_works_with_bright_year": int(np.sum(candidate_years["bright_year"] > 0)),
+        "source": str(BRIGHT_WORKS),
+        "definition": "earlier of modal BrightData first_published and minimum UCSD edition year",
     }
+    np.savez_compressed(
+        YEAR_FEATURE_CACHE,
+        fingerprint=np.asarray(cache_key),
+        source_signature=np.asarray(source_digest),
+        audit_json=np.asarray(json.dumps(year_audit)),
+        **combined_features,
+    )
+    print(f"Cached {YEAR_FEATURE_CACHE.name}", flush=True)
+    return combined_features, year_audit
 
 
 def jury_score(
     features: dict[str, np.ndarray], fold: int, variant: dict[str, Any]
 ) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
-    n = features["n"][fold].astype(np.float64)
-    if variant["oldness"].startswith("linear"):
-        prefix = "min" if variant["year"] == "min_year" else "q10"
-        endpoint = variant["oldness"].removeprefix("linear")
-        feature = f"{prefix}_linear{endpoint}"
-        total = features[f"{feature}_sum"][fold].astype(np.float64)
-        total_sq = features[f"{feature}_sq_sum"][fold].astype(np.float64)
+    score_mode = variant.get("user_score", "share")
+    if score_mode in {"preference", "preference_delta"}:
+        n = features["rated_n"][fold].astype(np.float64)
+        x = features["pref_x_sum"][fold].astype(np.float64)
+        x2 = features["pref_x2_sum"][fold].astype(np.float64)
+        y = features["pref_y_sum"][fold].astype(np.float64)
+        y2 = features["pref_y2_sum"][fold].astype(np.float64)
+        xy = features["pref_xy_sum"][fold].astype(np.float64)
+        sxx = np.maximum(x2 - x * x / np.maximum(n, 1.0), 0.0)
+        syy = np.maximum(y2 - y * y / np.maximum(n, 1.0), 0.0)
+        sxy = xy - x * y / np.maximum(n, 1.0)
+        correlation = np.divide(
+            sxy,
+            np.sqrt(sxx * syy),
+            out=np.zeros_like(sxy),
+            where=(sxx > 0) & (syy > 0),
+        )
+        correlation = np.clip(correlation, -0.999, 0.999)
+        # Require exposure on both sides of the age contrast. Oldness is in
+        # [0,1], so these are directly interpretable old/new-equivalent counts.
+        valid = (n >= 20) & (x >= 3.0) & ((n - x) >= 10.0) & (sxx >= 0.5) & (syy > 0)
+        if score_mode == "preference":
+            fisher = np.arctanh(correlation)
+            posterior_z = fisher * n / (n + USER_PRIOR)
+            uncertainty_z = 1.0 / np.sqrt(np.maximum(n + USER_PRIOR - 3.0, 1.0))
+            posterior = np.tanh(posterior_z)
+            uncertainty = np.maximum(
+                posterior - np.tanh(posterior_z - uncertainty_z), 0.0
+            )
+            conservative = np.tanh(posterior_z - uncertainty_z)
+            global_mean = float(np.mean(correlation[valid]))
+            global_second = float(np.mean(correlation[valid] ** 2))
+        else:
+            global_rating = float(y[valid].sum() / max(n[valid].sum(), 1.0))
+            global_rating_second = float(y2[valid].sum() / max(n[valid].sum(), 1.0))
+            global_rating_variance = max(global_rating_second - global_rating**2, 1e-6)
+            old_posterior = (xy + USER_PRIOR * global_rating) / (x + USER_PRIOR)
+            new_mass = n - x
+            new_posterior = (
+                (y - xy) + USER_PRIOR * global_rating
+            ) / (new_mass + USER_PRIOR)
+            posterior = old_posterior - new_posterior
+            uncertainty = np.sqrt(
+                global_rating_variance
+                * (1.0 / (x + USER_PRIOR) + 1.0 / (new_mass + USER_PRIOR))
+            )
+            conservative = posterior - uncertainty
+            global_mean = global_rating
+            global_second = global_rating_second
+        total = x
+        evidence_label = "year-known ratings"
     else:
-        total = features["pre1950_sum"][fold].astype(np.float64)
-        total_sq = total.copy()
-    valid = n >= MIN_TRAIN_FIVES
-    global_mean = float(total[valid].sum() / max(n[valid].sum(), 1.0))
-    global_second = float(total_sq[valid].sum() / max(n[valid].sum(), 1.0))
-    posterior = (total + USER_PRIOR * global_mean) / (n + USER_PRIOR)
-    variance = np.maximum(
-        (total_sq + USER_PRIOR * global_second) / (n + USER_PRIOR) - posterior**2,
-        0.0,
-    )
-    uncertainty = np.sqrt(variance / np.maximum(n + USER_PRIOR, 1.0))
-    conservative_share = posterior - uncertainty
-    # This sensitivity path rewards both concentration and volume.  Dividing by
-    # sqrt(n) prevents raw Goodreads activity from completely determining the
-    # jury while still distinguishing 40 old-equivalent loves from four.
-    if variant.get("user_score", "share") == "mass":
-        conservative = conservative_share * np.sqrt(n)
-    else:
-        conservative = conservative_share
+        prefix = variant["year"].removesuffix("_year")
+        n = features[f"{prefix}_n"][fold].astype(np.float64)
+        if variant["oldness"].startswith("linear"):
+            endpoint = variant["oldness"].removeprefix("linear")
+            feature = f"{prefix}_linear{endpoint}"
+            total = features[f"{feature}_sum"][fold].astype(np.float64)
+            total_sq = features[f"{feature}_sq_sum"][fold].astype(np.float64)
+        else:
+            total = features["pre1950_sum"][fold].astype(np.float64)
+            total_sq = total.copy()
+        valid = n >= MIN_TRAIN_FIVES
+        global_mean = float(total[valid].sum() / max(n[valid].sum(), 1.0))
+        global_second = float(total_sq[valid].sum() / max(n[valid].sum(), 1.0))
+        posterior = (total + USER_PRIOR * global_mean) / (n + USER_PRIOR)
+        variance = np.maximum(
+            (total_sq + USER_PRIOR * global_second) / (n + USER_PRIOR) - posterior**2,
+            0.0,
+        )
+        uncertainty = np.sqrt(variance / np.maximum(n + USER_PRIOR, 1.0))
+        conservative_share = posterior - uncertainty
+        # This path rewards both concentration and volume. Dividing by sqrt(n)
+        # prevents raw Goodreads activity from completely determining the jury.
+        if score_mode == "mass":
+            conservative = conservative_share * np.sqrt(n)
+        else:
+            conservative = conservative_share
+        evidence_label = "year-known five-star ratings"
     q = float(variant["quantile"])
     high_cut = float(np.quantile(conservative[valid], 1.0 - q))
     low_cut = float(np.quantile(conservative[valid], q))
@@ -316,6 +468,8 @@ def jury_score(
         "new_jury_median_year_known_fives": float(np.median(n[new_jury])),
         "old_jury_median_old_equivalents": float(np.median(total[old_jury])),
         "new_jury_median_old_equivalents": float(np.median(total[new_jury])),
+        "evidence_label": evidence_label,
+        "user_score_mode": score_mode,
     }
 
 
@@ -444,8 +598,9 @@ def posthoc_ranking(
                 "new_jury_mean": float(values["new_mean"][index]),
                 "uncertainty": float(values["uncertainty"][index]),
                 "sampled_readers_each_cohort": int(values["readers"][index]),
-                "min_year": int(features["min_year"][index]) if features["min_year"][index] > 0 else None,
-                "q10_year": int(features["q10_year"][index]) if features["q10_year"][index] > 0 else None,
+                "best_year": int(features["best_year"][index]) if features["best_year"][index] > 0 else None,
+                "bright_year": int(features["bright_year"][index]) if features["bright_year"][index] > 0 else None,
+                "ucsd_year": int(features["ucsd_year"][index]) if features["ucsd_year"][index] > 0 else None,
             }
         )
     metrics = {}
@@ -463,7 +618,7 @@ def main() -> None:
     binary_matrix.data = np.ones_like(binary_matrix.data)
     features, year_audit = extract_year_features(payload)
     print(
-        f"Year coverage: {year_audit['candidate_works_with_min_year']:,}/"
+        f"Year coverage: {year_audit['candidate_works_with_best_year']:,}/"
         f"{year_audit['candidate_works']:,} candidate works",
         flush=True,
     )
@@ -491,28 +646,62 @@ def main() -> None:
 
     print("Loading titles and evaluation sets after scores are frozen", flush=True)
     meta, eval_sets = spectral.load_posthoc_context(payload["work_ids"])
-    example_titles = {
-        "moby-dick or, the whale",
-        "ulysses",
-        "the brothers karamazov",
-        "the great gatsby",
-        "one hundred years of solitude",
+    example_books = {
+        ("moby-dick or, the whale", "herman melville"),
+        ("ulysses", "james joyce"),
+        ("the brothers karamazov", "fyodor dostoyevsky"),
+        ("the great gatsby", "f. scott fitzgerald"),
+        ("one hundred years of solitude", "gabriel garcia marquez"),
     }
     year_examples = []
     for index, work_id_value in enumerate(payload["work_ids"]):
         work_id = str(work_id_value)
         book = meta.get(work_id, {})
-        if book.get("title", "").casefold() in example_titles:
+        if (book.get("title", "").casefold(), book.get("author", "").casefold()) in example_books:
             year_examples.append(
                 {
                     "work_id": work_id,
                     "title": book["title"],
-                    "min_year": int(features["min_year"][index]),
-                    "q10_year": int(features["q10_year"][index]),
-                    "dated_editions": int(features["dated_editions"][index]),
+                    "best_year": int(features["best_year"][index]),
+                    "bright_year": int(features["bright_year"][index]),
+                    "ucsd_year": int(features["ucsd_year"][index]),
                 }
             )
     year_audit["posthoc_examples"] = sorted(year_examples, key=lambda x: x["title"])
+    existing_jury_path = DATA / "soft_jury_weights.parquet"
+    jury_overlap = []
+    if existing_jury_path.exists():
+        overlap_con = duckdb.connect()
+        existing_hard = {
+            int(row[0])
+            for row in overlap_con.execute(
+                f"SELECT user_id FROM read_parquet('{existing_jury_path}') WHERE hard_jury"
+            ).fetchall()
+        }
+        overlap_con.close()
+        variant_map = {row["name"]: row for row in VARIANTS}
+        for name in (
+            "best_linear_q10", "best_linear_mass_q10", "best_preference_q10",
+            "best_preference_delta_q10",
+        ):
+            masks = [jury_score(features, fold, variant_map[name])[0] for fold in (0, 1)]
+            for membership, selected in (
+                ("either_book_fold", masks[0] | masks[1]),
+                ("both_book_folds", masks[0] & masks[1]),
+            ):
+                users = set(map(int, payload["user_ids"][selected]))
+                intersection = len(users & existing_hard)
+                jury_overlap.append(
+                    {
+                        "variant": name,
+                        "membership": membership,
+                        "users": len(users),
+                        "existing_hard_users": len(existing_hard),
+                        "intersection": intersection,
+                        "jaccard": intersection / max(1, len(users | existing_hard)),
+                        "existing_hard_coverage": intersection / max(1, len(existing_hard)),
+                    }
+                )
     variants = []
     for row in discovery:
         variants.append(
@@ -532,7 +721,7 @@ def main() -> None:
     output = {
         "method": {
             "purpose": "publication-year-aware, otherwise ratings-only literary jury",
-            "allowed_discovery_columns": ["user_id", "work_id", "rating", "publication_year"],
+            "allowed_discovery_columns": ["user_id", "work_id", "rating", "first_published"],
             "semantic_data_loaded_after_scores_frozen": True,
             "year_min": YEAR_MIN,
             "year_max": YEAR_MAX,
@@ -546,6 +735,7 @@ def main() -> None:
         "matrix": {**matrix_meta, "shape": list(matrix.shape)},
         "year_audit": year_audit,
         "sensitivity": sensitivity,
+        "posthoc_existing_jury_overlap": jury_overlap,
         "variants": variants,
     }
     OUT_JSON.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -556,9 +746,9 @@ def main() -> None:
         "## Design",
         "",
         "This experiment adds one explicit bias to the ratings tuples: readers who give five "
-        "stars to older works are treated as more literary. A work's primary year is the "
-        "minimum valid `publication_year` across every edition in the UCSD books catalogue, "
-        "not its display edition. Oldness is zero at 2000 and rises linearly to one at 1850. "
+        "stars to older works are treated as more literary. A work's primary year is the earlier "
+        "of the modal BrightData `first_published` year and the minimum UCSD edition year. "
+        "Oldness is zero at 2000 and rises linearly to one at 1850. "
         "A conservative reader score deducts uncertainty, and the primary top/bottom 10% "
         "cohorts are equal-sized. The ranking then compares balanced five-star versus one-to-"
         "three-star evidence in the old-reading jury with the same evidence in the low-old-"
@@ -566,22 +756,22 @@ def main() -> None:
         "",
         "Book scoring is cross-fit by work-ID parity: the target book is always scored by a "
         "jury learned entirely from other books. A book's year does not directly enter its "
-        "book score. Titles, authors, and literary/anti lists were loaded only after all scores, "
+        "book score. Titles, authors, genres, and literary/anti lists were loaded only after all scores, "
         "stability tests, and sensitivity paths were frozen.",
         "",
-        f"Year coverage: **{year_audit['candidate_works_with_min_year']:,}/"
-        f"{year_audit['candidate_works']:,}** candidate works; all-edition source rows: "
-        f"**{year_audit['raw_catalogue_rows']:,}**, of which "
-        f"**{year_audit['edition_rows']:,}** have a valid 1500–2017 year; runtime: "
+        f"Year coverage: **{year_audit['candidate_works_with_best_year']:,}/"
+        f"{year_audit['candidate_works']:,}** candidate works, including "
+        f"**{year_audit['candidate_works_with_bright_year']:,}** with an exact-joined "
+        f"BrightData year; runtime: "
         f"**{output['method']['runtime_seconds']:.1f}s**.",
         "",
-        "The catalogue field is edition publication year, not a guaranteed original-work year. "
-        "The minimum is therefore a dataset-native proxy; the edition-row 10th percentile is "
-        "reported as an outlier-resistant sensitivity path.",
+        f"Across the full joined catalogue, BrightData supplies an earlier date for "
+        f"**{year_audit['brightdata_earlier_works']:,}** works. UCSD supplies the earlier "
+        f"logically possible date for **{year_audit['ucsd_earlier_works']:,}** works.",
         "",
-        "Selected catalogue minima (not external true-original dates): "
+        "Selected cleaned dates (best / BrightData / UCSD edition minimum): "
         + "; ".join(
-            f"*{x['title']}* {x['min_year']} ({x['dated_editions']} dated editions)"
+            f"*{x['title']}* {x['best_year']} / {x['bright_year']} / {x['ucsd_year']}"
             for x in year_audit["posthoc_examples"]
         )
         + ".",
@@ -609,8 +799,17 @@ def main() -> None:
         )
     sensitivity_by_name = {row["variant"]: row for row in sensitivity}
     primary_metrics = variants[0]["contrast_ranking"]["metrics"]
-    mass_variant = next(x for x in variants if x["variant"]["name"] == "min_linear_mass_q10")
-    all_variant = next(x for x in variants if x["variant"]["name"] == "min_linear_q10_all")
+    mass_variant = next(x for x in variants if x["variant"]["name"] == "best_linear_mass_q10")
+    preference_variant = next(x for x in variants if x["variant"]["name"] == "best_preference_q10")
+    delta_variant = next(
+        x for x in variants if x["variant"]["name"] == "best_preference_delta_q10"
+    )
+    preference_metrics = preference_variant["contrast_ranking"]["metrics"]
+    preference_by_title = {
+        row["title"].casefold(): row
+        for row in preference_variant["contrast_ranking"]["books"]
+    }
+    all_variant = next(x for x in variants if x["variant"]["name"] == "best_linear_q10_all")
     lines += [
         "",
         "## Findings",
@@ -620,18 +819,39 @@ def main() -> None:
         "top 50, with no anti-list books. This is a large change from the ratings-only methods, "
         "but it visibly favors school classics, children's classics, and classic fantasy.",
         f"- The smooth definition is not date-tuned: moving the full-oldness endpoint from 1850 "
-        f"to 1800 or 1900 retains {sensitivity_by_name['min_linear1800_q10']['jaccard200']:.1%} "
-        f"and {sensitivity_by_name['min_linear1900_q10']['jaccard200']:.1%} of the top-200 union "
+        f"to 1800 or 1900 retains {sensitivity_by_name['best_linear1800_q10']['jaccard200']:.1%} "
+        f"and {sensitivity_by_name['best_linear1900_q10']['jaccard200']:.1%} of the top-200 union "
         "respectively.",
-        f"- Replacing the minimum edition year with the edition-row 10th percentile retains "
-        f"{sensitivity_by_name['q10_linear_q10']['jaccard200']:.1%} of the top-200 union, so isolated "
-        "bad dates are not driving the result.",
+        f"- The enriched year ranking versus the UCSD-only reconstruction has top-200 Jaccard "
+        f"**{sensitivity_by_name['ucsd_linear_q10']['jaccard200']:.3f}**; this measures how much "
+        "the repaired dates actually change the result.",
         f"- Rewarding volume as well as share selects jurors with more old-book evidence and keeps "
-        f"{sensitivity_by_name['min_linear_mass_q10']['jaccard50']:.1%} of the top-50 union. Its "
+        f"{sensitivity_by_name['best_linear_mass_q10']['jaccard50']:.1%} of the top-50 union. Its "
         f"fold-jury Jaccard is {mass_variant['crossfold_old_jury_jaccard']:.3f}, versus "
         f"{variants[0]['crossfold_old_jury_jaccard']:.3f} for the primary share score.",
+        f"- The within-reader preference jury—users who rate older books higher than their own "
+        f"newer books—has fold-jury Jaccard **{preference_variant['crossfold_old_jury_jaccard']:.3f}** "
+        f"and primary top-200 Jaccard **{sensitivity_by_name['best_preference_q10']['jaccard200']:.3f}**, "
+        f"but disjoint-reader score rho "
+        f"**{np.mean([x['score_spearman'] for x in preference_variant['stability']['halves']]):.3f}**. "
+        f"It has {preference_metrics['broad_lit50']} broad-literary works in the top 50 and "
+        f"**zero anti-list works through rank 500**.",
+        f"- The preference path directly recovers several earlier omissions: *Moby-Dick* "
+        f"#{preference_by_title['moby-dick or, the whale']['rank']}, *Middlemarch* "
+        f"#{preference_by_title['middlemarch']['rank']}, *Don Quixote* "
+        f"#{preference_by_title['don quixote']['rank']}, *Ulysses* "
+        f"#{preference_by_title['ulysses']['rank']}, and *The Great Gatsby* "
+        f"#{preference_by_title['the great gatsby']['rank']}.",
+        f"- The more literal old-minus-new mean-rating definition is stronger again: fold-jury "
+        f"Jaccard **{delta_variant['crossfold_old_jury_jaccard']:.3f}**, half-reader J@200 "
+        f"**{np.mean([x['jaccard200'] for x in delta_variant['stability']['halves']]):.3f}**, "
+        f"{delta_variant['contrast_ranking']['metrics']['exact_lit50']} exact and "
+        f"{delta_variant['contrast_ranking']['metrics']['broad_lit50']} broad literary works in "
+        f"the top 50, and zero anti-list works through rank 200. This is the cleanest current "
+        f"default for the requested old-over-new estimand; the correlation path remains a "
+        f"useful robustness check.",
         f"- Comparing the old-reading jury with all eligible readers retains only "
-        f"{sensitivity_by_name['min_linear_q10_all']['jaccard50']:.1%} of the primary top-50 union "
+        f"{sensitivity_by_name['best_linear_q10_all']['jaccard50']:.1%} of the primary top-50 union "
         f"and has half-sample J@200 "
         f"{np.mean([x['jaccard200'] for x in all_variant['stability']['halves']]):.3f}. The matched "
         "low-old-reading contrast is therefore essential.",
@@ -639,6 +859,23 @@ def main() -> None:
         "genre books farther down, but it is much less stable and is a substantively different "
         "bias rather than a harmless tuning change.",
     ]
+    if jury_overlap:
+        lines += [
+            "",
+            "## Post-hoc overlap with the existing reconstructed jury",
+            "",
+            "This comparison is diagnostic only; the existing seed-conditioned jury was not "
+            "used to select any year juror or score any book.",
+            "",
+            "| year jury | membership | users | overlap | Jaccard | existing jury covered |",
+            "|---|---|---:|---:|---:|---:|",
+        ]
+        for row in jury_overlap:
+            lines.append(
+                f"| {row['variant']} | {row['membership']} | {row['users']:,} | "
+                f"{row['intersection']:,} | {row['jaccard']:.3f} | "
+                f"{row['existing_hard_coverage']:.1%} |"
+            )
     lines += ["", "## Rankings", ""]
     for variant in variants:
         ranking = variant["contrast_ranking"]
@@ -653,7 +890,7 @@ def main() -> None:
             "",
         ]
         for book in ranking["books"][:50]:
-            year = "?" if book["min_year"] is None else str(book["min_year"])
+            year = "?" if book["best_year"] is None else str(book["best_year"])
             lines.append(
                 f"{book['rank']}. *{book['title']}* — {book['author']} [{year}] "
                 f"({book['score']:.3f} ± {book['uncertainty']:.3f}; "

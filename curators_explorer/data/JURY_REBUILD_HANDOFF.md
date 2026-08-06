@@ -7,6 +7,61 @@
 
 ---
 
+## Latest update: BrightData years + old-over-new preference jury (2026-08-06)
+
+The downloaded 7.72 GiB `data/Goodreads-Books.csv` is now cleaned once and joined by exact
+Goodreads edition ID. See `build_brightdata_metadata.py` and
+`BRIGHTDATA_METADATA_AUDIT_REPORT.md`.
+
+- `brightdata_books.parquet` is a 392 MiB deduplicated useful-column projection of 6,354,752
+  edition IDs; the review/summary bulk is not carried forward.
+- `brightdata_work_metadata.parquet` is an 83 MiB all-UCSD-work join and is also materialized as
+  `brightdata_work_metadata` in `explorer.duckdb`. It retains representative URL, parsed authors,
+  parsed genres, BrightData/UCSD date diagnostics, chosen date, and provenance.
+- 1,255,255/1,521,963 UCSD works match exactly. Combined work-year coverage rises from 1,181,918
+  to 1,423,253. The chosen year is the earlier of modal BrightData `first_published` and minimum
+  valid UCSD edition year; BrightData improves 186,102 works. Candidate coverage is 26,403/26,418.
+- Known repairs include *Moby-Dick* 1851 (was catalog-min 1923), *Ulysses* 1922 (1934),
+  *Brothers Karamazov* 1880 (1912), and *One Hundred Years of Solitude* 1967 (1969).
+
+`research_year_aware_canon.py` / `YEAR_AWARE_CANON_PILOT_REPORT.md` rerun the cross-fitted
+year-jury experiment. The 21 MiB ignored cache `seedless_year_feature_matrix_brightdata.npz`
+reduces subsequent full experiment runtime from ~53s of aggregation to ~9s total.
+
+- The enriched old-love primary remains stable and classics-like (half-reader score rho .947,
+  J@200 .699), but still visibly favors school, children's, and classic-fantasy consensus.
+- The requested **within-reader old-over-new preference jury** is the strongest new estimand.
+  It selects users by a conservative correlation between work oldness and their own ratings,
+  requiring evidence on both old and new sides. It is unlike the old-love jury (top-200 Jaccard
+  .201) but its book ranking is highly reproducible (half-reader rho .952; J@200 .699).
+- Its top 500 has zero anti-list books; its head contains Shakespeare/Homer/Dickens/Greek tragedy,
+  with *Moby-Dick* #22 and *Middlemarch* #29 (see the report for full omission trajectories).
+  Fold-jury membership itself is only J=.308: interchangeable readers produce a more stable
+  aggregate ranking than user identity.
+- A direct old-weighted mean rating minus new-weighted mean rating is the cleaner current default:
+  jury J=.394, half-reader J@200=.743, 11 exact/31 broad literary works in the top 50, anti=0
+  through rank 200. The correlation definition stays as a complementary robustness path.
+- Post-hoc only, the preference-jury union covers 29% of the existing hard reconstructed jury;
+  its both-fold core covers 16%. This is not merely the old seeded jury recovered by year.
+
+`research_year_jury_attractor.py` / `YEAR_JURY_ATTRACTOR_REPORT.md` start the existing nonlinear
+seedless contraction map from share, mass, and preference year juries across beta 1.5/2.5/3.5.
+Every path contracts (final step correlation >.9998), but this is a **negative validity result**:
+
+- share and mass starts converge to essentially one basin; preference retains a nearby distinct
+  basin (cross-direction correlation .911-.920);
+- only .506-.630 correlation with the initial direction remains, and projected top-200 Jaccard is
+  .084-.120;
+- final projected heads mix classics with YA/paranormal and fantasy-series axes; raw approval
+  collapses to the known Calvin-and-Hobbes/Sanderson/comics/popular-nonfiction love center.
+
+**Decision direction:** keep old-over-new preference as an explicit anchored signal. Do not call
+the unconstrained attractor a literary stability maximizer merely because it converges. If this
+path continues, test an anchor-regularized update and require both contraction and retained
+literary direction; do not let dense Goodreads agreement silently erase the disclosed year bias.
+
+---
+
 ## Latest update: external-canon omission and popularity-ceiling audit (2026-08-06)
 
 The fixed distributed ranking is now available on the Curators Explorer frontend as

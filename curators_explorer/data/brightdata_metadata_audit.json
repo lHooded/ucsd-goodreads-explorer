@@ -1,0 +1,104 @@
+{
+  "source": "/home/ifrankling/unsw/novels/data/Goodreads-Books.csv",
+  "source_bytes": 8294652808,
+  "clean_books_path": "/home/ifrankling/unsw/novels/data/ucsd_goodreads/parquet/brightdata_books.parquet",
+  "clean_books_bytes": 411085027,
+  "work_metadata_path": "/home/ifrankling/unsw/novels/data/ucsd_goodreads/parquet/brightdata_work_metadata.parquet",
+  "work_metadata_bytes": 86926530,
+  "runtime_seconds": 3.5521066188812256,
+  "clean_books": {
+    "books": 6354752,
+    "urls": 6354752,
+    "authors": 6354699,
+    "genres": 1729540,
+    "raw_dates": 6123671,
+    "parsed_years": 6121957,
+    "min_year": 1,
+    "max_year": 2026
+  },
+  "joined_works": {
+    "works": 1521963,
+    "matched_works": 1255255,
+    "matched_editions": 1256941,
+    "bright_year_works": 1234270,
+    "ucsd_year_works": 1181918,
+    "best_year_works": 1423253,
+    "author_works": 1255248,
+    "genre_works": 836461,
+    "bright_earlier": 186119,
+    "bright_later": 8160,
+    "conflicting_year_works": 72,
+    "median_abs_gap": 0,
+    "ancient_era_uncertain": 877
+  },
+  "examples": [
+    {
+      "title": "Moby-Dick or, The Whale",
+      "author": "Herman Melville",
+      "bright_mode_year": 1851,
+      "bright_min_year": 1851,
+      "ucsd_min_edition_year": 1923,
+      "best_year": 1851,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    },
+    {
+      "title": "The Brothers Karamazov",
+      "author": "Fyodor Dostoevsky",
+      "bright_mode_year": 1880,
+      "bright_min_year": 1880,
+      "ucsd_min_edition_year": 1912,
+      "best_year": 1880,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "bright_mode_year": 1925,
+      "bright_min_year": 1925,
+      "ucsd_min_edition_year": 1925,
+      "best_year": 1925,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    },
+    {
+      "title": "The Odyssey",
+      "author": "Homer",
+      "bright_mode_year": 701,
+      "bright_min_year": 701,
+      "ucsd_min_edition_year": 1935,
+      "best_year": 701,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    },
+    {
+      "title": "The Odyssey",
+      "author": "Homer",
+      "bright_mode_year": 2010,
+      "bright_min_year": 2010,
+      "ucsd_min_edition_year": 2010,
+      "best_year": 2010,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    },
+    {
+      "title": "Ulysses",
+      "author": "James Joyce",
+      "bright_mode_year": 1922,
+      "bright_min_year": 1922,
+      "ucsd_min_edition_year": 1934,
+      "best_year": 1922,
+      "matched_editions": 1,
+      "bright_distinct_years": 1
+    }
+  ],
+  "author_comparison": {
+    "comparable": 478278,
+    "normalized_equal": 441914,
+    "bright_fills_blank": 3,
+    "different": 36364
+  },
+  "join_policy": "exact Goodreads edition book_id only; no fuzzy title matching",
+  "year_policy": "earlier of modal valid BrightData first_published and minimum UCSD edition year"
+}
