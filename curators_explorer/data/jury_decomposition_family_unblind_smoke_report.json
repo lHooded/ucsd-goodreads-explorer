@@ -47,9 +47,29 @@
    "detail": "T_max=15 T_min=5 (expect 15, 5)"
   },
   {
+   "check": "conjunction_iut_exact",
+   "ok": true,
+   "detail": "max(0.01, 0.20) = 0.20; max(0.01, 0.03) = 0.03"
+  },
+  {
+   "check": "conjunction_iut_broad",
+   "ok": true,
+   "detail": "max(0.02, 0.30) = 0.30; max(0.05, 0.02) = 0.05"
+  },
+  {
+   "check": "semantic_flag_set_before_loader",
+   "ok": true,
+   "detail": "SEMANTIC_CONTEXT_LOADED = True assigned before spectral.load_posthoc_context in phase_unblind"
+  },
+  {
    "check": "joint_permutation_shared_assignment",
    "ok": true,
    "detail": "E0/E1/T_max/T_min null vectors equal brute force over the SAME permutation stream (both families share one assignment per permutation)"
+  },
+  {
+   "check": "frozen_top50_posthoc_alignment",
+   "ok": true,
+   "detail": "identical synthetic ranking passes; swapped first two work IDs rejected"
   },
   {
    "check": "permutation_p_formulas",
@@ -94,10 +114,10 @@
   {
    "check": "smoke_check_names_unique",
    "ok": true,
-   "detail": "19 checks, 0 duplicate(s)"
+   "detail": "23 checks, 0 duplicate(s)"
   }
  ],
  "passed": true,
- "git_head": "17dff2412e8d371da968e60191bc6d9819e6e79c",
- "runtime_seconds": 1.1577680110931396
+ "git_head": "28bac188159cfc5373a5a2132ff1c8fca8a78e6b",
+ "runtime_seconds": 1.2133827209472656
 }
