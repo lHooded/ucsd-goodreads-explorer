@@ -14,7 +14,7 @@
   ],
   "juries_per_size": 120,
   "parent_size": 80000,
-  "parent_endpoints": "drift_exploit_main.npz rows 360..479 (canonical (size, jury) order)",
+  "parent_endpoints": "drift_exploit_main.npz rows 480..599 (canonical (size, jury) order)",
   "membership": "rng.choice replay of the exact main-sweep stream (replay_jury_users, research_jury_split_experiment)"
  },
  "arms": {

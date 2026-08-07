@@ -3142,6 +3142,7 @@
       "spectral_child": "spectral-000-0-20k:0:0",
       "nearest_mode_index": 0,
       "nearest_mode_id": "recurrent_mode_0.30_p000_0",
+      "nearest_centroid_key": "recur_cent_0.30_p000_0",
       "cos": 0.6865663528442383,
       "cos_rank_among_random": 7,
       "mutual_best": true
@@ -3150,6 +3151,7 @@
       "spectral_child": "spectral-000-0-20k:0:1",
       "nearest_mode_index": 0,
       "nearest_mode_id": "recurrent_mode_0.30_p000_0",
+      "nearest_centroid_key": "recur_cent_0.30_p000_0",
       "cos": 0.281339168548584,
       "cos_rank_among_random": 8,
       "mutual_best": false
@@ -3158,6 +3160,7 @@
       "spectral_child": "spectral-000-0-20k:1:0",
       "nearest_mode_index": 0,
       "nearest_mode_id": "recurrent_mode_0.30_p000_0",
+      "nearest_centroid_key": "recur_cent_0.30_p000_0",
       "cos": 0.5796947479248047,
       "cos_rank_among_random": 8,
       "mutual_best": false
@@ -3166,6 +3169,7 @@
       "spectral_child": "spectral-000-0-20k:1:1",
       "nearest_mode_index": 0,
       "nearest_mode_id": "recurrent_mode_0.30_p000_0",
+      "nearest_centroid_key": "recur_cent_0.30_p000_0",
       "cos": 0.4187413156032562,
       "cos_rank_among_random": 8,
       "mutual_best": false
@@ -3897,6 +3901,7 @@
       "spectral_child": "spectral-000-0-20k:0:0",
       "nearest_mode_index": 1,
       "nearest_mode_id": "recurrent_mode_0.50_p000_1",
+      "nearest_centroid_key": "recur_cent_0.50_p000_1",
       "cos": 0.6984078884124756,
       "cos_rank_among_random": 4,
       "mutual_best": true
@@ -3905,6 +3910,7 @@
       "spectral_child": "spectral-000-0-20k:0:1",
       "nearest_mode_index": 1,
       "nearest_mode_id": "recurrent_mode_0.50_p000_1",
+      "nearest_centroid_key": "recur_cent_0.50_p000_1",
       "cos": 0.27686724066734314,
       "cos_rank_among_random": 8,
       "mutual_best": false
@@ -3913,6 +3919,7 @@
       "spectral_child": "spectral-000-0-20k:1:0",
       "nearest_mode_index": 1,
       "nearest_mode_id": "recurrent_mode_0.50_p000_1",
+      "nearest_centroid_key": "recur_cent_0.50_p000_1",
       "cos": 0.5478229522705078,
       "cos_rank_among_random": 6,
       "mutual_best": false
@@ -3921,6 +3928,7 @@
       "spectral_child": "spectral-000-0-20k:1:1",
       "nearest_mode_index": 1,
       "nearest_mode_id": "recurrent_mode_0.50_p000_1",
+      "nearest_centroid_key": "recur_cent_0.50_p000_1",
       "cos": 0.364823579788208,
       "cos_rank_among_random": 8,
       "mutual_best": false
@@ -8729,8 +8737,8 @@
  "method": {
   "phase": "geometry",
   "seed": 20260819,
-  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
+  "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
+  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,
@@ -8764,7 +8772,7 @@
   {
    "check": "npz_key_uniqueness",
    "ok": true,
-   "detail": "207 keys"
+   "detail": "195 keys"
   },
   {
    "check": "reclustering_r20k_pref_0.30",
@@ -8914,11 +8922,18 @@
    "check": "mode_identity_consistency",
    "ok": true,
    "detail": "3 taus"
+  },
+  {
+   "check": "geometry_npz_no_rep_arrays",
+   "ok": true,
+   "detail": "no rep_* arrays in geometry NPZ"
   }
  ],
  "seal": {
-  "geometry_npz_sha256": "040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea",
+  "geometry_npz_sha256": "a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b",
   "census_npz_sha256": "28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592",
+  "census_json_sha256": "785c97e36a57cff1dcdafc903125e4d4e35ec82d47b5aae791121dc4a520fec0",
+  "partial": true,
   "n_sources": 18,
   "sources": [
    "random-000-0-40k:0",
@@ -8953,7 +8968,7 @@
    "min_book_n": 25
   },
   "seed": 20260819,
-  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
+  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
   "semantic_context_loaded": false,
   "unblinded": false
  }

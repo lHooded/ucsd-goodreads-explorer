@@ -6,15 +6,20 @@
    "sha256": "28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592",
    "bytes": 37418302
   },
+  "census_json": {
+   "file": "jury_decomposition_smoke.json",
+   "sha256": "785c97e36a57cff1dcdafc903125e4d4e35ec82d47b5aae791121dc4a520fec0",
+   "bytes": 18353
+  },
   "geometry_npz": {
    "file": "jury_decomposition_geometry_smoke.npz",
-   "sha256": "040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea",
-   "bytes": 24828942
+   "sha256": "a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b",
+   "bytes": 17851091
   },
   "geometry_json": {
    "file": "jury_decomposition_geometry_smoke.json",
-   "sha256": "39b6b0d87e78c06f28d6591d30964431d2e854807b1d6431083f8054391c9caa",
-   "bytes": 190127
+   "sha256": "10d56769e127ccd4e5393944c37f502fefb7e8ce5f1cdd1851ece20d488790cf",
+   "bytes": 190787
   }
  },
  "n_sources": 18,
@@ -38,8 +43,8 @@
   "spectral-000-0-20k:1:0",
   "spectral-000-0-20k:1:1"
  ],
- "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
- "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
+ "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+ "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
  "semantic_context_loaded": false,
  "unblinded": false
 }

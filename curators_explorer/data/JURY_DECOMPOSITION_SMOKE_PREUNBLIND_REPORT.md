@@ -6,11 +6,11 @@
 
 ## Provenance and seal
 
-- Command: `/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke`
+- Command: `/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke`
 - Global seed: **20260819**; parent campaign: tag `main`, seed **20260811**, sizes [20000, 30000, 45000, 60000, 80000, 110000], 120 juries per size
-- Sealed geometry git commit: `24760acf62dbac4223f8864db8f065a412f75ff6`
+- Sealed geometry git commit: `bfd8ee315e2cec0134143cfa8b5420fb72d646c8`
 - Census artifact: `28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592` (SHA256, sealed)
-- Geometry artifact: `040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea` (SHA256, sealed)
+- Geometry artifact: `a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b` (SHA256, sealed)
 - External seal manifest verified: census_npz True, geometry_npz True, geometry_json True.
 - Sources: **18** child reversal endpoints (6 groups: r20k=8, r40k=4, s20k=4, s40k=2, pooled20k=12, pooled40k=6).
 
@@ -90,15 +90,15 @@ Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block perm
 
 | statistic | observed | null mean | null sd | empirical p_upper |
 |---|---:|---:|---:|---:|
-| recurrence_0.30 mean concentration | 1.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.30 mean n recurrent modes | 1.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.30 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.50 mean concentration | 0.5000 | n/a | n/a | 1.0000 |
-| recurrence_0.50 mean n recurrent modes | 2.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.50 frac parents >= 2 recurrent modes | 1.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.70 mean concentration | 0.1250 | n/a | n/a | 1.0000 |
-| recurrence_0.70 mean n recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
-| recurrence_0.70 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.30 mean concentration | 1.0000 | 1.0000 | 0.0000 | 1.0000 |
+| recurrence_0.30 mean n recurrent modes | 1.0000 | 1.0000 | 0.0000 | 1.0000 |
+| recurrence_0.30 frac parents >= 2 recurrent modes | 0.0000 | 0.0000 | 0.0000 | 1.0000 |
+| recurrence_0.50 mean concentration | 0.5000 | 0.5000 | 0.0000 | 1.0000 |
+| recurrence_0.50 mean n recurrent modes | 2.0000 | 2.0000 | 0.0000 | 1.0000 |
+| recurrence_0.50 frac parents >= 2 recurrent modes | 1.0000 | 1.0000 | 0.0000 | 1.0000 |
+| recurrence_0.70 mean concentration | 0.1250 | 0.1250 | 0.0000 | 1.0000 |
+| recurrence_0.70 mean n recurrent modes | 0.0000 | 0.0000 | 0.0000 | 1.0000 |
+| recurrence_0.70 frac parents >= 2 recurrent modes | 0.0000 | 0.0000 | 0.0000 | 1.0000 |
 | mixture_rel_0.30 | 0.0000 | 0.0000 | 0.0000 | 1.0000 |
 | mixture_rel_0.50 | 0.0418 | 0.0499 | 0.0144 | 0.6850 |
 | mixture_rel_0.70 | n/a | n/a | n/a | n/a |
@@ -143,3 +143,4 @@ Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block perm
 - reclustering_pooled40k_dir_0.50: ok
 - reclustering_pooled40k_dir_0.70: ok
 - mode_identity_consistency: ok
+- geometry_npz_no_rep_arrays: ok

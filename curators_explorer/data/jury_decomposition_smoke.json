@@ -613,7 +613,44 @@
    "top25_mass_concentration": 0.008390935972486595
   }
  ],
- "partial": false,
+ "partial": true,
+ "scope_is_full": false,
+ "spectral_diagnostics_by_parent": {
+  "0": {
+   "edge_coverage": {
+    "n_parent_users": 2400,
+    "n_with_edges": 2400,
+    "n_empty_rows": 0,
+    "empty_row_fraction": 0.0,
+    "nnz_min_nonempty": 10,
+    "nnz_median_nonempty": 169.0,
+    "nnz_max_nonempty": 1546
+   },
+   "power_iterations": {
+    "root": {
+     "iterations_used": 28,
+     "final_successive_cos": 0.9999999999993898,
+     "converged_within_cap": true,
+     "tolerance": 0.999999999999,
+     "iteration_cap": 50
+    },
+    "40k:0": {
+     "iterations_used": 19,
+     "final_successive_cos": 0.9999999999995439,
+     "converged_within_cap": true,
+     "tolerance": 0.999999999999,
+     "iteration_cap": 50
+    },
+    "40k:1": {
+     "iterations_used": 49,
+     "final_successive_cos": 0.9999999999991884,
+     "converged_within_cap": true,
+     "tolerance": 0.999999999999,
+     "iteration_cap": 50
+    }
+   }
+  }
+ },
  "expected_sources": [
   "random-000-0-40k:0",
   "random-000-0-40k:1",
@@ -667,12 +704,12 @@
  "method": {
   "phase": "consolidate",
   "seed": 20260819,
-  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
+  "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
+  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,
   "n_books": 26418,
-  "spec_hash": "ef6f006470b6ae8c005f4021468b2845e35e735aaf0598da42eb157a7435e77b"
+  "spec_hash": "a207cacf7395d5490d1c95f5aeef3145a9fd13a290c169db2993ca9e470ef413"
  }
 }

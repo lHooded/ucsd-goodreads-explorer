@@ -186,6 +186,11 @@
    "ok": true
   },
   {
+   "check": "cross_arm_original_index_not_filtered",
+   "ok": true,
+   "detail": "nearest_mode_index=1 id=recurrent_mode_0.50_p000_1 key=recur_cent_0.50_p000_1 distinct=1"
+  },
+  {
    "check": "fast_clustering_matches_census",
    "ok": true
   },
@@ -202,7 +207,7 @@
   {
    "check": "effective_dim_gram_matches_svd",
    "ok": true,
-   "detail": "svd=27.122641 gram=27.122641"
+   "detail": "svd=27.166312 gram=27.166312"
   },
   {
    "check": "prereport_nulls_match_geometry",
@@ -220,6 +225,26 @@
    "detail": "phase_unblind is implemented but never invoked during label-blind smoke"
   },
   {
+   "check": "spectral_diagnostics_survive_consolidation",
+   "ok": true,
+   "detail": "parents=['0'] coverage=2400"
+  },
+  {
+   "check": "census_json_sealed_in_geometry_and_manifest",
+   "ok": true,
+   "detail": "census json sha256 in geometry seal + manifest artifacts; geometry marked partial (smoke scope)"
+  },
+  {
+   "check": "restricted_scope_rejected_without_allow_partial",
+   "ok": true,
+   "detail": "consolidate refused restricted scope"
+  },
+  {
+   "check": "r20k_similarity_computed_once",
+   "ok": true,
+   "detail": "site counter=1 (expect 1), 8 r20k rows, stored sim matches direct product: True"
+  },
+  {
    "check": "semantic_firewall_artifacts",
    "ok": true,
    "detail": ""
@@ -227,9 +252,14 @@
   {
    "check": "semantic_flag_false",
    "ok": true
+  },
+  {
+   "check": "smoke_check_names_unique",
+   "ok": true,
+   "detail": "60 checks, 0 duplicate(s)"
   }
  ],
  "passed": true,
- "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
- "runtime_seconds": 106.95030927658081
+ "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+ "runtime_seconds": 123.88392639160156
 }
