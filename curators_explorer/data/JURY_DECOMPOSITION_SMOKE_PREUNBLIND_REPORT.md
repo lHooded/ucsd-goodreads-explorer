@@ -8,9 +8,9 @@
 
 - Command: `/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke`
 - Global seed: **20260819**; parent campaign: tag `main`, seed **20260811**, sizes [20000, 30000, 45000, 60000, 80000, 110000], 120 juries per size
-- Sealed geometry git commit: `39ddecee5304899274267efe4458fb84418a6a6d`
-- Census artifact: `1e3cb7788085c8d801dc94e808df8ba0d548bccc97a5ba07b2fa35990113f48d` (SHA256, sealed)
-- Geometry artifact: `fc7e2a23aaaaadfa1f7c9d84f7a43444eca1885a316c9ca6f3d0fe9fc583abc6` (SHA256, sealed)
+- Sealed geometry git commit: `82f5239c9dc737e3dc8849dcd9a3da05de4fca5c`
+- Census artifact: `28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592` (SHA256, sealed)
+- Geometry artifact: `040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea` (SHA256, sealed)
 - External seal manifest verified: census_npz True, geometry_npz True, geometry_json True.
 - Sources: **18** child reversal endpoints (6 groups: r20k=8, r40k=4, s20k=4, s40k=2, pooled20k=12, pooled40k=6).
 
@@ -28,10 +28,10 @@ Representations: pref = book_n>=25 -> mean-center across eligible -> L2; dir = L
 |---|---:|---:|---:|---:|
 | r20k | 8 | 0.4661 | 0.4716 | 0.5497 |
 | r40k | 4 | 0.4938 | 0.4686 | 0.6036 |
-| s20k | 4 | 0.4047 | 0.3743 | 0.5009 |
-| s40k | 2 | 0.3900 | 0.3900 | 0.3900 |
-| pooled20k | 12 | 0.4624 | 0.4546 | 0.5754 |
-| pooled40k | 6 | 0.5176 | 0.4844 | 0.6993 |
+| s20k | 4 | 0.2566 | 0.2322 | 0.3609 |
+| s40k | 2 | 0.2203 | 0.2203 | 0.2203 |
+| pooled20k | 12 | 0.3950 | 0.4064 | 0.5457 |
+| pooled40k | 6 | 0.4147 | 0.4527 | 0.5389 |
 
 ### Global cluster census (preference space)
 
@@ -43,17 +43,17 @@ Representations: pref = book_n>=25 -> mean-center across eligible -> L2; dir = L
 | r40k | 0.30 | 1 | 1 | 4 |
 | r40k | 0.50 | 3 | 1 | 2 |
 | r40k | 0.70 | 3 | 1 | 2 |
-| s20k | 0.30 | 1 | 1 | 4 |
-| s20k | 0.50 | 3 | 1 | 2 |
+| s20k | 0.30 | 3 | 1 | 2 |
+| s20k | 0.50 | 4 | 0 | 1 |
 | s20k | 0.70 | 4 | 0 | 1 |
-| s40k | 0.30 | 1 | 1 | 2 |
+| s40k | 0.30 | 2 | 0 | 1 |
 | s40k | 0.50 | 2 | 0 | 1 |
 | s40k | 0.70 | 2 | 0 | 1 |
-| pooled20k | 0.30 | 1 | 1 | 12 |
-| pooled20k | 0.50 | 3 | 3 | 5 |
+| pooled20k | 0.30 | 3 | 1 | 10 |
+| pooled20k | 0.50 | 6 | 2 | 5 |
 | pooled20k | 0.70 | 12 | 0 | 1 |
-| pooled40k | 0.30 | 1 | 1 | 6 |
-| pooled40k | 0.50 | 2 | 2 | 4 |
+| pooled40k | 0.30 | 2 | 1 | 5 |
+| pooled40k | 0.50 | 3 | 1 | 4 |
 | pooled40k | 0.70 | 5 | 1 | 2 |
 
 ### Within-parent recurrence (random arm, 20k descendants)
@@ -71,28 +71,37 @@ Recurrent modes require descendants from at least two DISTINCT random partition 
 | tau | parents with matches | distinct-mode mappings |
 |---|---:|---:|
 | 0.30 | 1 | 1 |
-| 0.50 | 2 | 3 |
-| 0.70 | 2 | 3 |
+| 0.50 | 2 | 2 |
+| 0.70 | 2 | 2 |
 
 ### Parent-as-mixture geometry (convex hull of recurrent modes)
 
-For each parent, p = the frozen normalized preference-space endpoint; the hull fit minimizes `||p - sum(alpha_i c_i)||^2` with `alpha >= 0`, `sum(alpha) = 1`. Improvement is best-single-error minus hull error. No success threshold is defined or reported here; the distribution is descriptive.
+For each parent and tau, p = the frozen normalized preference-space endpoint; the hull fit minimizes `||p - sum(alpha_i c_i)||^2` with `alpha >= 0`, `sum(alpha) = 1` against the recurrent-mode centroids at THAT tau only (no union across taus). Improvement is best-single-error minus hull error. No success threshold is defined or reported here; the distribution is descriptive.
 
-| statistic | value |
-|---|---|
-| parents with >= 1 recurrent mode | 1 |
-| relative improvement: mean | 0.0385 |
-| relative improvement: min / median / max | 0.0385 / 0.0385 / 0.0385 |
-| absolute improvement: mean | 0.0492 |
+| tau | parents with >= 1 recurrent mode | mean rel. improvement | median rel. improvement | mean abs. improvement |
+|---|---:|---:|---:|---:|
+| 0.30 | 1 | 0.0000 | 0.0000 | 0.0000 |
+| 0.50 | 1 | 0.0418 | 0.0418 | 0.0535 |
+| 0.70 | 0 | n/a | n/a | n/a |
 
 ### Label-free permutation nulls
 
-| statistic | observed | null mean | null sd | observed percentile |
-|---|---:|---:|---:|---:|
-| concentration_0.30 | 1.0000 | 1.0000 | 0.0000 | 1.0000 |
-| concentration_0.50 | 0.5000 | 0.5000 | 0.0000 | 1.0000 |
-| concentration_0.70 | 0.1250 | 0.1250 | 0.0000 | 1.0000 |
-| mixture_relative_improvement | 0.0385 | 0.0329 | 0.0091 | 0.4925 |
+Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block permutations (synthetic parents sample one block from each replicate, generally from different real parents). Mixture nulls: parent endpoints permuted across parents per tau.
+
+| statistic | observed | null mean | null sd | null min / max | observed percentile |
+|---|---:|---:|---:|---:|---:|
+| recurrence_0.30 mean concentration | 1.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.30 mean n recurrent modes | 1.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.30 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.50 mean concentration | 0.5000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.50 mean n recurrent modes | 2.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.50 frac parents >= 2 recurrent modes | 1.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.70 mean concentration | 0.1250 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.70 mean n recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
+| recurrence_0.70 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
+| mixture_rel_0.30 | 0.0000 | 0.0000 | 0.0000 | 0.0000 / 0.0000 | 1.0000 |
+| mixture_rel_0.50 | 0.0418 | 0.0499 | 0.0144 | 0.0237 / 0.1039 | 0.6834 |
+| mixture_rel_0.70 | n/a | n/a | n/a | n/a / n/a | n/a |
 
 ### Invariant checks
 
@@ -133,3 +142,4 @@ For each parent, p = the frozen normalized preference-space endpoint; the hull f
 - reclustering_pooled40k_dir_0.30: ok
 - reclustering_pooled40k_dir_0.50: ok
 - reclustering_pooled40k_dir_0.70: ok
+- mode_identity_consistency: ok

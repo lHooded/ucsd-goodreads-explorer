@@ -419,28 +419,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    131877,
-    75834,
-    43775,
-    25162,
-    13496
+    137587,
+    78906,
+    45492,
+    26335,
+    14794
    ],
    "retained_ref_by_stage": [
-    0.026156606152653694,
-    0.06331147998571396,
-    0.10828715562820435,
-    0.19123628735542297,
-    0.1921100616455078,
-    0.3112458288669586
+    0.11897352337837219,
+    0.09995164722204208,
+    0.14087805151939392,
+    0.2453981339931488,
+    0.28346461057662964,
+    0.33384862542152405
    ],
-   "deepest_removed_fraction": 0.9421445443282706,
-   "final_step_correlation": 0.9995973706245422,
-   "effective_user_share_deepest": 0.6893471479415894,
-   "displacement_norm_eligible": 50.471666010722956,
-   "endpoint_stage0_cos": 0.27522403638170195,
-   "pref_norm_eligible": 25.8799026782436,
-   "pref_concentration": 11410.674656456591,
-   "top25_mass_concentration": 0.007385515511796844
+   "deepest_removed_fraction": 0.9365802007107613,
+   "final_step_correlation": 0.9994433522224426,
+   "effective_user_share_deepest": 0.698827862739563,
+   "displacement_norm_eligible": 51.66948908206382,
+   "endpoint_stage0_cos": 0.2907566395540151,
+   "pref_norm_eligible": 27.04124821524374,
+   "pref_concentration": 11766.224541134812,
+   "top25_mass_concentration": 0.007081407159174096
   },
   {
    "source_id": "spectral-000-0-40k:1",
@@ -453,28 +453,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    133183,
-    76997,
-    44180,
-    26040,
-    14171
+    132595,
+    75806,
+    42301,
+    24397,
+    13053
    ],
    "retained_ref_by_stage": [
-    0.030876362696290016,
-    0.05595102533698082,
-    0.07269711792469025,
-    0.22193297743797302,
-    0.2713512182235718,
-    0.35927438735961914
+    0.15277767181396484,
+    0.10261975228786469,
+    0.11309825628995895,
+    0.22918567061424255,
+    0.24320369958877563,
+    0.36125844717025757
    ],
-   "deepest_removed_fraction": 0.9392509141727862,
-   "final_step_correlation": 0.9991977214813232,
-   "effective_user_share_deepest": 0.6965150237083435,
-   "displacement_norm_eligible": 51.5151792930716,
-   "endpoint_stage0_cos": 0.2327752271938817,
-   "pref_norm_eligible": 25.934735385146155,
-   "pref_concentration": 11328.889024265578,
-   "top25_mass_concentration": 0.0070128065860243565
+   "deepest_removed_fraction": 0.9440436230821663,
+   "final_step_correlation": 0.999396800994873,
+   "effective_user_share_deepest": 0.6836678385734558,
+   "displacement_norm_eligible": 51.02932800784226,
+   "endpoint_stage0_cos": 0.24180436492422874,
+   "pref_norm_eligible": 25.017112807721308,
+   "pref_concentration": 12320.786143363932,
+   "top25_mass_concentration": 0.006890253775007725
   },
   {
    "source_id": "spectral-000-0-20k:0:0",
@@ -487,28 +487,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    131179,
-    74900,
-    42158,
-    23188,
-    12904
+    131937,
+    78542,
+    45257,
+    26729,
+    14379
    ],
    "retained_ref_by_stage": [
-    0.024886444211006165,
-    0.06722962111234665,
-    0.10140331834554672,
-    0.15101365745067596,
-    0.2443709671497345,
-    0.2661662697792053
+    0.07104209065437317,
+    0.0437643863260746,
+    0.1372840404510498,
+    0.17431825399398804,
+    0.2217068374156952,
+    0.28770995140075684
    ],
-   "deepest_removed_fraction": 0.9446823651461176,
-   "final_step_correlation": 0.9995535612106323,
-   "effective_user_share_deepest": 0.6936147212982178,
-   "displacement_norm_eligible": 51.56852944700422,
-   "endpoint_stage0_cos": 0.2333215056772222,
-   "pref_norm_eligible": 25.840023731584495,
-   "pref_concentration": 11340.208202133637,
-   "top25_mass_concentration": 0.007501680175675992
+   "deepest_removed_fraction": 0.938359247398948,
+   "final_step_correlation": 0.9994624257087708,
+   "effective_user_share_deepest": 0.6936655640602112,
+   "displacement_norm_eligible": 50.296077784606034,
+   "endpoint_stage0_cos": 0.25846274989655127,
+   "pref_norm_eligible": 26.894609427335823,
+   "pref_concentration": 11578.962934216395,
+   "top25_mass_concentration": 0.007055421511194846
   },
   {
    "source_id": "spectral-000-0-20k:0:1",
@@ -521,28 +521,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    133301,
-    77147,
-    43829,
-    25049,
-    13526
+    136894,
+    78364,
+    45656,
+    25482,
+    14373
    ],
    "retained_ref_by_stage": [
-    0.025354135781526566,
-    0.04268248379230499,
-    0.0716971829533577,
-    0.1854977309703827,
-    0.19981813430786133,
-    0.26662012934684753
+    0.173339381814003,
+    0.09493719041347504,
+    0.14936941862106323,
+    0.14510342478752136,
+    0.2698856592178345,
+    0.2907492220401764
    ],
-   "deepest_removed_fraction": 0.9420159385435823,
-   "final_step_correlation": 0.9994343519210815,
-   "effective_user_share_deepest": 0.6907095313072205,
-   "displacement_norm_eligible": 52.08201933294298,
-   "endpoint_stage0_cos": 0.210490869538531,
-   "pref_norm_eligible": 25.883800184709823,
-   "pref_concentration": 12032.9155056348,
-   "top25_mass_concentration": 0.006748899030631283
+   "deepest_removed_fraction": 0.9383849685558856,
+   "final_step_correlation": 0.9995744228363037,
+   "effective_user_share_deepest": 0.7084594368934631,
+   "displacement_norm_eligible": 52.74322231191501,
+   "endpoint_stage0_cos": 0.24869008385719907,
+   "pref_norm_eligible": 26.357409718366497,
+   "pref_concentration": 11178.962625751396,
+   "top25_mass_concentration": 0.007529020553669664
   },
   {
    "source_id": "spectral-000-0-20k:1:0",
@@ -555,28 +555,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    132294,
-    76281,
-    43544,
-    24682,
-    13412
+    132286,
+    75848,
+    45362,
+    25681,
+    14419
    ],
    "retained_ref_by_stage": [
-    0.021424973383545876,
-    0.06203000247478485,
-    0.09019719064235687,
-    0.17322376370429993,
-    0.21797578036785126,
-    0.27700674533843994
+    0.17961737513542175,
+    0.05841418355703354,
+    0.13821345567703247,
+    0.16446855664253235,
+    0.27164992690086365,
+    0.29143577814102173
    ],
-   "deepest_removed_fraction": 0.9425046405253975,
-   "final_step_correlation": 0.9993937015533447,
-   "effective_user_share_deepest": 0.6965104937553406,
-   "displacement_norm_eligible": 51.317440957278116,
-   "endpoint_stage0_cos": 0.24152443983761648,
-   "pref_norm_eligible": 25.91483192416475,
-   "pref_concentration": 11576.742710137954,
-   "top25_mass_concentration": 0.007260755839645659
+   "deepest_removed_fraction": 0.9381877730193637,
+   "final_step_correlation": 0.9997498989105225,
+   "effective_user_share_deepest": 0.720816969871521,
+   "displacement_norm_eligible": 51.25632932251457,
+   "endpoint_stage0_cos": 0.23195080999965634,
+   "pref_norm_eligible": 25.69350877472511,
+   "pref_concentration": 10404.862327574845,
+   "top25_mass_concentration": 0.008014220420360698
   },
   {
    "source_id": "spectral-000-0-20k:1:1",
@@ -589,28 +589,28 @@
    "n_stages": 6,
    "users_by_stage": [
     233271,
-    133881,
-    77917,
-    44413,
-    25927,
-    14143
+    136112,
+    75663,
+    43329,
+    24714,
+    13378
    ],
    "retained_ref_by_stage": [
-    0.027126358821988106,
-    0.03394646197557449,
-    0.05743619054555893,
-    0.1561819314956665,
-    0.24827195703983307,
-    0.28792107105255127
+    0.12725214660167694,
+    0.05175238847732544,
+    0.12489376962184906,
+    0.16871675848960876,
+    0.2029189169406891,
+    0.28395524621009827
    ],
-   "deepest_removed_fraction": 0.9393709462384952,
-   "final_step_correlation": 0.9994561672210693,
-   "effective_user_share_deepest": 0.7076641321182251,
-   "displacement_norm_eligible": 52.275552134664224,
-   "endpoint_stage0_cos": 0.19635015614548884,
-   "pref_norm_eligible": 25.69397607685888,
-   "pref_concentration": 11289.161864628266,
-   "top25_mass_concentration": 0.006943821703694633
+   "deepest_removed_fraction": 0.9426503937480442,
+   "final_step_correlation": 0.9996895790100098,
+   "effective_user_share_deepest": 0.6852269768714905,
+   "displacement_norm_eligible": 52.23813949262507,
+   "endpoint_stage0_cos": 0.2196652824362224,
+   "pref_norm_eligible": 22.352474417927045,
+   "pref_concentration": 11150.431595081154,
+   "top25_mass_concentration": 0.008390935972486595
   }
  ],
  "partial": false,
@@ -662,13 +662,13 @@
    "spectral-000-0-20k:1:1"
   ]
  },
- "artifact_sha256": "1e3cb7788085c8d801dc94e808df8ba0d548bccc97a5ba07b2fa35990113f48d",
- "artifact_bytes": 37419894,
+ "artifact_sha256": "28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592",
+ "artifact_bytes": 37418302,
  "method": {
   "phase": "consolidate",
   "seed": 20260819,
   "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "39ddecee5304899274267efe4458fb84418a6a6d",
+  "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,

@@ -87,6 +87,28 @@
    "ok": true
   },
   {
+   "check": "edge_ui_matches_parent_row",
+   "ok": true
+  },
+  {
+   "check": "edge_raw_id_roundtrip",
+   "ok": true,
+   "detail": "sampled 5 ids: [8, 8, 8, 8, 8]"
+  },
+  {
+   "check": "spectral_edges_deterministic",
+   "ok": true
+  },
+  {
+   "check": "spectral_edge_coverage_valid",
+   "ok": true,
+   "detail": "parents=2400 with_edges=2400 empty_rows=0 empty_row_fraction=0.0000 nnz_nonempty_min=10 median=169.0 max=1546"
+  },
+  {
+   "check": "spectral_members_are_payload_indices",
+   "ok": true
+  },
+  {
    "check": "leading_direction_shape",
    "ok": true
   },
@@ -163,6 +185,11 @@
    "ok": true
   },
   {
+   "check": "recurrence_null_nondegenerate_multiple_parents",
+   "ok": true,
+   "detail": "sd=0.1590 mean=0.7833"
+  },
+  {
    "check": "semantic_firewall_artifacts",
    "ok": true,
    "detail": ""
@@ -173,6 +200,6 @@
   }
  ],
  "passed": true,
- "git_head": "39ddecee5304899274267efe4458fb84418a6a6d",
- "runtime_seconds": 134.29194569587708
+ "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
+ "runtime_seconds": 101.82178568840027
 }

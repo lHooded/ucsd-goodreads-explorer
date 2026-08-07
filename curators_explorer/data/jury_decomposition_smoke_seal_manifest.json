@@ -3,18 +3,18 @@
  "artifacts": {
   "census_npz": {
    "file": "jury_decomposition_smoke.npz",
-   "sha256": "1e3cb7788085c8d801dc94e808df8ba0d548bccc97a5ba07b2fa35990113f48d",
-   "bytes": 37419894
+   "sha256": "28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592",
+   "bytes": 37418302
   },
   "geometry_npz": {
    "file": "jury_decomposition_geometry_smoke.npz",
-   "sha256": "fc7e2a23aaaaadfa1f7c9d84f7a43444eca1885a316c9ca6f3d0fe9fc583abc6",
-   "bytes": 23400264
+   "sha256": "040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea",
+   "bytes": 24828942
   },
   "geometry_json": {
    "file": "jury_decomposition_geometry_smoke.json",
-   "sha256": "3d6db59a90dc573ef2fd576fe624da0c3537eed3fe9879844b9afef384b3686d",
-   "bytes": 133515
+   "sha256": "7abb2cb97dc1c3fb905b7e32fc24652499904a85f29724af9c9d35e118234cd6",
+   "bytes": 190046
   }
  },
  "n_sources": 18,
@@ -38,7 +38,7 @@
   "spectral-000-0-20k:1:0",
   "spectral-000-0-20k:1:1"
  ],
- "git_head": "39ddecee5304899274267efe4458fb84418a6a6d",
+ "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
  "semantic_context_loaded": false,
  "unblinded": false

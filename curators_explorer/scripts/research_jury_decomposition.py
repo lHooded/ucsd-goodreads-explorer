@@ -67,13 +67,25 @@ Phases
 - geometry:     ALL label-blind structural analysis: representation
                 conventions of the Natural Amplification Census (pref:
                 book_n>=25 -> mean-center across eligible -> L2; dir: L2),
-                average-linkage cosine clustering at tau 0.30/0.50/0.70,
-                cluster centroids/dispersion, within-parent recurrence
-                (recurrent mode requires >= 2 DISTINCT random replicates),
+                average-linkage cosine clustering at tau 0.30/0.50/0.70
+                (cosine similarity and linkage computed ONCE per
+                (group, space); effective dimension from the centered
+                Gram matrix, never a full SVD), cluster
+                centroids/dispersion, within-parent recurrence
+                (recurrent mode requires >= 2 DISTINCT random replicates;
+                each mode carries an immutable mode_id),
                 40k-ancestor blending diagnostics, cross-arm matching
                 (spectral children vs recurrent random modes, centroid
-                cosine, mutual best), parent-as-mixture convex-hull fits
-                (SLSQP, alpha >= 0, sum 1), and two permutation nulls.
+                cosine, mutual best, mode_id copied from the matched
+                mode), parent-as-mixture convex-hull fits per (parent,
+                tau) only (SLSQP, alpha >= 0, sum 1; no union across
+                taus), and per-tau permutation nulls: recurrence null via
+                per-replicate INDEPENDENT (parent, replicate) 4x20k block
+                permutations (synthetic parents sample one block from
+                each replicate, generally from different real parents;
+                mean concentration, mean recurrent modes, fraction of
+                parents with >= 2 recurrent modes), mixture null via
+                endpoint permutations per tau.
                 Hash-seals geometry NPZ, geometry JSON and the external
                 seal manifest exactly like the census.
 - prereport:    PRE-UNBLIND structural report from the sealed geometry only.
@@ -99,6 +111,35 @@ matrices; no stored child membership arrays (children are reconstructed
 deterministically from parent users + seeds, or from the deterministic
 spectral procedure); atomic writes; chunk validation before trust;
 consolidation refuses partial campaigns by default.
+
+Per-phase peak-memory reassessment (single process, 15 GB host):
+- run:      one chunk = one (parent, arm) in memory at a time.  The
+            cached residual chunk for a 40k-child run is a 40k x 26.4k
+            float32 CSR of the child's rated entries (measured ~9.1M
+            nonzero for the 80k parent campaign's 40k children, ~50% of
+            the 40k x 26.4k grid -> ~36-73 MB CSR) plus the dense
+            float32 jury (40k x 26.4k, 4.2 GB) and the fixed population
+            mean arrays (~20 MB).  Peak ~4.3-4.5 GB during a 40k run,
+            ~2.2-2.4 GB during a 20k run; the spectral split additionally
+            holds a small dense user-coordinate matrix (<= ~30 MB).
+            Elapsed ~1.4 s per parent edge fetch + ~1 s per run.
+- consolidate: at most two chunks (records + prefs) and the child
+            endpoint/direction matrices live simultaneously: 2880
+            endpoints x 26.4k float32 = 2 x ~305 MB, directions 2 x
+            ~305 MB, plus 120 parent vectors (~12.6 MB) and the 98.7M-row
+            rating table only while building rating stats (streamed
+            through duckdb, 6 GB limit; no dense user x book materialized).
+            Peak ~1.5 GB.
+- geometry:  all cluster computations are per-group submatrices; the
+            largest dense objects are the per-group float64 cosine
+            similarity matrices (pooled20k: 1440 x 1440 float64 = 16.6
+            MB) and the stacked pref/dir representations (2880 x 26.4k
+            float32 = 2 x ~305 MB each, parent blocks ~12.6 MB).
+            Centered-Gram effective dimension uses only the member x
+            member similarity submatrix (max 1440 x 1440 float64).
+            Recurrence/cross-arm/mixture operate on 12-24 row blocks.
+            Peak ~1.6 GB.  With all phases in one process the high-water
+            mark is the run phase's ~4.5 GB, well inside the 15 GB host.
 """
 
 from __future__ import annotations
@@ -603,26 +644,68 @@ def fetch_parent_edges(
     parent_users: np.ndarray,
 ) -> dict[str, np.ndarray]:
     """All rating>0 edges of the parent users over the payload book universe,
-    ordered by (local row, book).  Ratings-only."""
+    ordered by (local row, book).  Ratings-only.
+
+    parent_users holds PAYLOAD ROW INDICES (the experiment-wide convention:
+    replay_jury_users returns payload indices and build_subgroup_start uses
+    them as array indices into the payload).  The database is therefore
+    queried with the RAW Goodreads ids payload["user_ids"][parent_users]; the
+    temporary parent table carries pi (local row aligned to the ordered
+    parent_users array), ui (global payload index) and user_id (raw).  Every
+    returned edge asserts ui == parent_users[row] exactly.
+    """
+    parent_users = np.asarray(parent_users, dtype=np.int64)
     con.execute(
-        "create or replace temp table pusers as select (row_number() over "
-        "(order by user_id)-1)::int as pi, user_id from "
-        "(select distinct unnest(?) as user_id) t",
-        [parent_users.tolist()],
+        "create or replace temp table pusers as "
+        "select pi, ui, user_id from ("
+        "select (row_number() over (order by ui)-1)::int as pi, "
+        "       ui, user_id "
+        "from (select unnest(?)::bigint as ui, unnest(?)::bigint as user_id) t"
+        ") t2",
+        [parent_users.tolist(),
+         np.asarray(payload["user_ids"], dtype=np.int64)[parent_users].tolist()],
     )
     res = con.execute(
-        "select p.pi, u.ui, b.bi, e.rating "
+        "select p.pi, p.ui, b.bi, e.rating "
         "from ex.all_rating_events e "
         "join pusers p using (user_id) "
-        "join pu u using (user_id) "
         "join wb b using (work_id) "
         "where e.rating>0 order by p.pi, b.bi"
     ).fetchnumpy()
+    row = res["pi"].astype(np.int32)
+    ui = res["ui"].astype(np.int32)
+    if not np.array_equal(ui, parent_users[row]):
+        raise SystemExit(
+            "spectral edge mapping invariant failed: ui != parent_users[row]")
     return {
-        "row": res["pi"].astype(np.int32),
-        "ui": res["ui"].astype(np.int32),
+        "row": row,
+        "ui": ui,
         "col": res["bi"].astype(np.int32),
         "rating": res["rating"].astype(np.int32),
+    }
+
+
+def spectral_edge_coverage(
+    con: duckdb.DuckDBPyConnection,
+    payload: dict[str, np.ndarray],
+    parent_users: np.ndarray,
+) -> dict[str, Any]:
+    """Edge coverage of a parent over the payload universe: number of parent
+    users, users with >=1 eligible-book rating edge, empty-row count/fraction
+    and min/median/max nnz among nonempty rows.  Descriptive only; no
+    preregistered success threshold on the empty-row fraction."""
+    edges = fetch_parent_edges(con, payload, parent_users)
+    n_users = len(parent_users)
+    nnz_per_row = np.bincount(edges["row"], minlength=n_users)
+    nonempty = nnz_per_row[nnz_per_row > 0]
+    return {
+        "n_parent_users": int(n_users),
+        "n_with_edges": int(len(nonempty)),
+        "n_empty_rows": int(n_users - len(nonempty)),
+        "empty_row_fraction": float((n_users - len(nonempty)) / n_users),
+        "nnz_min_nonempty": int(nonempty.min()) if len(nonempty) else None,
+        "nnz_median_nonempty": float(np.median(nonempty)) if len(nonempty) else None,
+        "nnz_max_nonempty": int(nonempty.max()) if len(nonempty) else None,
     }
 
 
@@ -957,12 +1040,6 @@ def phase_run(args: argparse.Namespace) -> None:
     con = _edges_connection()
     try:
         con.execute(
-            "create temp table pu as select (row_number() over "
-            "(order by user_id)-1)::int as ui, user_id from "
-            "(select distinct unnest(?) as user_id) t",
-            [payload["user_ids"].tolist()],
-        )
-        con.execute(
             "create temp table wb as select (row_number() over "
             "(order by work_id)-1)::int as bi, work_id from "
             "(select distinct unnest(?) as work_id) t",
@@ -1244,7 +1321,10 @@ def _within_stats(sim: np.ndarray, members: list[int]) -> dict[str, float]:
     }
 
 
-def _effective_dim(mat: np.ndarray) -> float:
+def _effective_dim_svd(mat: np.ndarray) -> float:
+    """Effective dimension from a dense members-by-books SVD of the
+    centered cluster matrix (reference implementation; full-scale runs use
+    the cheaper Gram version, see _effective_dim_gram)."""
     k = mat.shape[0]
     if k <= 1:
         return float(k)
@@ -1255,28 +1335,60 @@ def _effective_dim(mat: np.ndarray) -> float:
     return float(total**2 / np.sum(e2**2)) if np.sum(e2**2) > 0 else 0.0
 
 
-def _fast_avg_link_clusters(mat: np.ndarray, tau: float) -> list[list[int]]:
-    """Average-linkage cosine clustering via the precomputed cosine matrix.
+def _effective_dim_gram(sim_sub: np.ndarray) -> float:
+    """Effective dimension from the centered cluster Gram matrix.
 
-    Numerically identical to scipy linkage(mat, method="average",
-    metric="cosine") on unit vectors (cosine distance = 1 - dot); the
-    precomputed BLAS path avoids recomputing pairwise distances per merge.
-    The smoke phase asserts membership equality against the census
-    clustering function on shared data.
+    With G = X X^T and H = I - 11^T/n, the nonzero eigenvalues of
+    Gc = H G H are the squared singular values of the centered X, so the
+    (members x books) SVD is replaced by an n_members x n_members eigen
+    decomposition (n_members is the cluster size, far smaller than 26.4k
+    books).  Small numerical negative eigenvalues are clipped to zero.
     """
-    n = mat.shape[0]
+    n = sim_sub.shape[0]
     if n <= 1:
-        return [[i] for i in range(n)]
-    sim = mat.astype(np.float64) @ mat.astype(np.float64).T
-    d = np.maximum(0.0, 1.0 - sim)
+        return float(n)
+    G = np.asarray(sim_sub, dtype=np.float64)
+    Gc = G - G.mean(axis=0, keepdims=True) \
+             - G.mean(axis=1, keepdims=True) + G.mean()
+    lam = np.maximum(np.linalg.eigvalsh(Gc), 0.0)
+    total = lam.sum()
+    return float(total**2 / np.sum(lam**2)) if np.sum(lam**2) > 0 else 0.0
+
+
+def _avg_linkage_cuts(sim: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Condensed cosine-distance vector and the average-linkage linkage
+    derived from a precomputed pairwise cosine similarity matrix."""
+    n = sim.shape[0]
+    d = np.maximum(0.0, 1.0 - np.asarray(sim, dtype=np.float64))
     iu = np.triu_indices(n, k=1)
-    condensed = d[iu]
-    z = linkage(condensed, method="average")
+    return d, linkage(d[iu], method="average")
+
+
+def _cut_clusters(z: np.ndarray, n: int, tau: float) -> list[list[int]]:
+    """Cut a frozen linkage at cosine-distance threshold 1 - tau."""
     labels = fcluster(z, t=1.0 - tau, criterion="distance")
     out: dict[int, list[int]] = {}
     for i, c in enumerate(labels):
         out.setdefault(int(c), []).append(i)
     return [v for _, v in sorted(out.items())]
+
+
+def _fast_avg_link_clusters(mat: np.ndarray, tau: float) -> list[list[int]]:
+    """Direct average-linkage cosine clustering (float64 similarity product +
+    one linkage + one cut); reference implementation for null/synthetic use
+    and for the smoke invariant against the frozen-linkage reuse path.
+
+    Numerically identical to scipy linkage(mat, method="average",
+    metric="cosine") on unit vectors (cosine distance = 1 - dot).  The
+    smoke phase asserts membership equality against the census clustering
+    function on shared data.
+    """
+    n = mat.shape[0]
+    if n <= 1:
+        return [[i] for i in range(n)]
+    sim = mat.astype(np.float64) @ mat.astype(np.float64).T
+    _d, z = _avg_linkage_cuts(sim)
+    return _cut_clusters(z, n, tau)
 
 
 # ---------------------------------------------------------------------------
@@ -1310,6 +1422,131 @@ def _mode_recurrence_stats(
         "recurrent": len(repls) >= 2,
         "fraction_of_children": float(frac),
         "size": len(mode_members),
+    }
+
+
+def _recurrence_stats_for_rows(
+    pref_reps: np.ndarray,
+    rows: np.ndarray,
+    repl_labels: np.ndarray,
+    tau: float,
+) -> dict[str, float]:
+    """Concentration (largest cluster share) and recurrent-mode count of a
+    set of 20k-descendant rows given their replicate labels."""
+    rows = np.asarray(rows)
+    repl_labels = np.asarray(repl_labels)
+    sub = pref_reps[rows]
+    cl = _fast_avg_link_clusters(sub, tau)
+    fracs = [len(c) / len(rows) for c in cl]
+    n_recurrent = int(sum(
+        1 for c in cl if len({int(repl_labels[m]) for m in c}) >= 2))
+    return {
+        "concentration": float(max(fracs)) if fracs else 0.0,
+        "n_recurrent_modes": n_recurrent,
+    }
+
+
+def _recurrence_block_permutation_null(
+    pref_reps: np.ndarray,
+    blocks: dict[tuple[int, int], np.ndarray],
+    parents: np.ndarray,
+    tau: float,
+    rng: np.random.Generator,
+    n_permutations: int,
+) -> dict[str, np.ndarray]:
+    """Null distributions of (mean concentration, mean number of recurrent
+    modes, fraction of parents with >=2 recurrent modes) under genuine
+    parent-association breaking.
+
+    Each (parent, replicate) set of four 20k descendants is an indivisible
+    block; for each replicate index the blocks are permuted ACROSS parent
+    identities with INDEPENDENT permutations per replicate (a single shared
+    permutation would preserve each real parent's three-replicate bundle and
+    stay degenerate).  A synthetic parent then receives one replicate-0
+    block, one replicate-1 block and one replicate-2 block, generally from
+    different real parents, preserving child size, four-sibling structure,
+    tree paths, replicate labels and endpoint vectors.
+    """
+    repls = sorted({r for (_j, r) in blocks})
+    conc = np.full(n_permutations, np.nan)
+    nrec = np.full(n_permutations, np.nan)
+    frac2 = np.full(n_permutations, np.nan)
+    for it in range(n_permutations):
+        pi_by_r = {r: rng.permutation(parents) for r in repls}
+        c_list: list[float] = []
+        n_list: list[float] = []
+        for k, _j in enumerate(parents):
+            rows = []
+            labels = []
+            for r in repls:
+                src = int(pi_by_r[r][k])
+                block = blocks.get((src, r))
+                if block is not None and len(block):
+                    rows.append(np.asarray(block))
+                    labels.append(np.full(len(block), r))
+            if not rows:
+                continue
+            rows = np.concatenate(rows)
+            labels = np.concatenate(labels)
+            st = _recurrence_stats_for_rows(pref_reps, rows, labels, tau)
+            c_list.append(st["concentration"])
+            n_list.append(float(st["n_recurrent_modes"]))
+        if c_list:
+            conc[it] = float(np.mean(c_list))
+            nrec[it] = float(np.mean(n_list))
+            frac2[it] = float(np.mean([1.0 if x >= 2 else 0.0 for x in n_list]))
+    return {
+        "concentration": conc,
+        "n_recurrent": nrec,
+        "frac_2plus_recurrent": frac2,
+    }
+
+
+def _mixture_fit(p: np.ndarray, cents: np.ndarray) -> dict[str, Any]:
+    """Parent-as-mixture fit of endpoint p against recurrent-mode centroids
+    (rows of cents): best single centroid vs convex hull (SLSQP, alpha >= 0,
+    sum(alpha) = 1).  A single centroid trivially has zero improvement."""
+    best_i = int(np.argmax(cents @ p))
+    best_single_cos = float(cents[best_i] @ p)
+    best_single_error = float(np.linalg.norm(p - cents[best_i]))
+    k = cents.shape[0]
+    if k == 1:
+        return {
+            "n_recurrent_modes": 1,
+            "best_single_index": 0,
+            "best_single_cos": best_single_cos,
+            "best_single_error": best_single_error,
+            "hull_error": best_single_error,
+            "alpha": [1.0],
+            "improvement": 0.0,
+            "relative_improvement": 0.0,
+            "slsqp_success": True,
+        }
+    x0 = np.full(k, 1.0 / k)
+    cons = {"type": "eq", "fun": lambda a: float(a.sum()) - 1.0}
+    bounds = [(0.0, 1.0)] * k
+    res = minimize(
+        lambda a: float(np.sum((p - cents.T @ a) ** 2)),
+        x0, method="SLSQP", bounds=bounds, constraints=cons,
+        options={"ftol": 1e-12, "maxiter": 500, "disp": False},
+    )
+    alpha = np.asarray(res.x, dtype=np.float64)
+    alpha = np.maximum(alpha, 0.0)
+    alpha = alpha / alpha.sum() if alpha.sum() > 0 else alpha
+    hull_error = float(np.linalg.norm(p - cents.T @ alpha))
+    improvement = float(best_single_error - hull_error)
+    relative = float(improvement / best_single_error) \
+        if best_single_error > 1e-12 else 0.0
+    return {
+        "n_recurrent_modes": k,
+        "best_single_index": best_i,
+        "best_single_cos": best_single_cos,
+        "best_single_error": best_single_error,
+        "hull_error": hull_error,
+        "alpha": [float(a) for a in alpha],
+        "improvement": improvement,
+        "relative_improvement": relative,
+        "slsqp_success": bool(res.success),
     }
 
 
@@ -1379,6 +1616,9 @@ def phase_geometry(args: argparse.Namespace) -> None:
     }
 
     # ---- global clustering + pairwise summaries (both spaces, 3 taus) ----
+    # Per (group, space) the float64 cosine similarity matrix and the
+    # average-linkage linkage are computed ONCE and the SAME frozen linkage
+    # is cut at each tau (no repeated pairwise products or linkage per tau).
     for group, gidx in groups.items():
         if not gidx:
             continue
@@ -1386,14 +1626,15 @@ def phase_geometry(args: argparse.Namespace) -> None:
         for space in ("pref", "dir"):
             mat = pref_reps if space == "pref" else dir_reps
             sub = mat[gidx]
-            sim = sub @ sub.T
+            sim64 = sub.astype(np.float64) @ sub.astype(np.float64).T
+            _d, z = _avg_linkage_cuts(sim64)
             key = f"{group}_{space}"
             npz_out[f"rep_{key}"] = sub
-            npz_out[f"sim_{key}"] = sim.astype(np.float32)
-            geometry["pairwise"][f"{group}_{space}"] = _pairwise_summary(sim)
+            npz_out[f"sim_{key}"] = sim64.astype(np.float32)
+            geometry["pairwise"][f"{group}_{space}"] = _pairwise_summary(sim64)
             geometry["clusters"][f"{group}_{space}"] = []
             for tau in CLUSTER_TAUS:
-                cl = _fast_avg_link_clusters(sub, tau)
+                cl = _cut_clusters(z, len(gidx), tau)
                 block = []
                 for ci, members in enumerate(cl):
                     centroid = _unit_rows(
@@ -1401,8 +1642,9 @@ def phase_geometry(args: argparse.Namespace) -> None:
                     rec = {
                         "members": [gids[m] for m in members],
                         "size": len(members),
-                        "within": _within_stats(sim, members),
-                        "effective_dim": _effective_dim(sub[members]),
+                        "within": _within_stats(sim64, members),
+                        "effective_dim": _effective_dim_gram(
+                            sim64[np.ix_(members, members)]),
                         "centroid_key": f"cent_{key}_{tau:.2f}_{ci}",
                     }
                     npz_out[rec["centroid_key"]] = centroid
@@ -1433,12 +1675,13 @@ def phase_geometry(args: argparse.Namespace) -> None:
             cl = _fast_avg_link_clusters(sub, tau)
             modes = []
             fractions = []
-            for m in cl:
+            for mi, m in enumerate(cl):
                 stats = _mode_recurrence_stats(m, repl_of[np.asarray(idx)],
                                                len(idx))
                 centroid = _unit_rows(
                     sub[m].mean(axis=0, keepdims=True))[0].astype(np.float32)
                 cent_key = f"recur_cent_{tau:.2f}_p{j:03d}_{len(modes)}"
+                mode_id = f"recurrent_mode_{tau:.2f}_p{j:03d}_{mi}"
                 npz_out[cent_key] = centroid
                 anc_paths = sorted({
                     next(r for r in records if r["source_id"] == ids[idx[m0]])
@@ -1469,6 +1712,7 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 frac = stats["fraction_of_children"]
                 fractions.append(frac)
                 modes.append({
+                    "mode_id": mode_id,
                     "members": [ids[idx[m0]] for m0 in m],
                     **stats,
                     "centroid_key": cent_key,
@@ -1531,14 +1775,11 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 matches.append({
                     "spectral_child": ids[si],
                     "nearest_mode_index": best,
-                    "nearest_mode_id": f"p{j:03d}_m{best}",
+                    "nearest_mode_id": recurrent[best]["mode_id"],
                     "cos": float(cos[k, best]),
                     "cos_rank_among_random": rank,
                     "mutual_best": s_best_of_mode,
                 })
-            for m_i, m in enumerate(matches):
-                m["nearest_mode_id"] = (
-                    f"recurrent_mode_{tau:.2f}_p{j:03d}_{m_i}")
             per_parent[str(j)] = {
                 "n_recurrent_modes": len(recurrent),
                 "n_spectral_children": len(s_idx),
@@ -1548,144 +1789,116 @@ def phase_geometry(args: argparse.Namespace) -> None:
         cross_arm[str(tau)] = per_parent
     geometry["cross_arm"] = cross_arm
 
-    # ---- parent-as-mixture: convex hull of recurrent child-mode centroids ----
+    # ---- parent-as-mixture: per (parent, tau) convex hull of recurrent
+    #      child-mode centroids at that tau only (no union across taus) ----
     mixture: dict[str, Any] = {}
-    for j in range(n_parents):
-        # mixture uses the FINEST recurrence definition per parent; use the
-        # union over taus of recurrent modes at the mode's own tau
-        used = set()
-        for tau in CLUSTER_TAUS:
-            for m in recurrence[str(tau)]["per_parent"].get(str(j), {}).get("modes", []):
-                if m["recurrent"]:
-                    used.add(m["centroid_key"])
-        cents = np.stack([npz_out[k] for k in sorted(used)]) if used else None
-        p = parent_reps[j]
-        if cents is None or cents.shape[0] == 0:
-            mixture[str(j)] = {"n_recurrent_modes": 0,
-                               "best_single_cos": None,
-                               "best_single_error": None,
-                               "hull_error": None,
-                               "alpha": None,
-                               "improvement": None,
-                               "relative_improvement": None}
-            continue
-        best_i = int(np.argmax(cents @ p))
-        best_single_cos = float(cents[best_i] @ p)
-        best_single_error = float(np.linalg.norm(p - cents[best_i]))
-        k = cents.shape[0]
-        x0 = np.full(k, 1.0 / k)
-        cons = {"type": "eq", "fun": lambda a: float(a.sum()) - 1.0}
-        bounds = [(0.0, 1.0)] * k
-        res = minimize(
-            lambda a: float(np.sum((p - cents.T @ a) ** 2)),
-            x0, method="SLSQP", bounds=bounds, constraints=cons,
-            options={"ftol": 1e-12, "maxiter": 500, "disp": False},
-        )
-        alpha = np.asarray(res.x, dtype=np.float64)
-        alpha = np.maximum(alpha, 0.0)
-        alpha = alpha / alpha.sum() if alpha.sum() > 0 else alpha
-        hull_error = float(np.linalg.norm(p - cents.T @ alpha))
-        improvement = float(best_single_error - hull_error)
-        relative = float(improvement / best_single_error) \
-            if best_single_error > 1e-12 else 0.0
-        mixture[str(j)] = {
-            "n_recurrent_modes": k,
-            "centroid_keys": sorted(used),
-            "best_single_index": best_i,
-            "best_single_cos": best_single_cos,
-            "best_single_error": best_single_error,
-            "hull_error": hull_error,
-            "alpha": [float(a) for a in alpha],
-            "improvement": improvement,
-            "relative_improvement": relative,
-            "slsqp_success": bool(res.success),
-        }
+    for tau in CLUSTER_TAUS:
+        per_parent: dict[str, Any] = {}
+        for j in range(n_parents):
+            modes = recurrence[str(tau)]["per_parent"].get(str(j), {}).get("modes", [])
+            recurrent = [m for m in modes if m["recurrent"]]
+            p = parent_reps[j]
+            if not recurrent:
+                per_parent[str(j)] = {
+                    "n_recurrent_modes": 0,
+                    "best_single_cos": None,
+                    "best_single_error": None,
+                    "hull_error": None,
+                    "alpha": None,
+                    "improvement": None,
+                    "relative_improvement": None,
+                }
+                continue
+            cents = np.stack([npz_out[m["centroid_key"]] for m in recurrent])
+            fit = _mixture_fit(p, cents)
+            per_parent[str(j)] = {
+                **fit,
+                "mode_ids": [m["mode_id"] for m in recurrent],
+                "centroid_keys": [m["centroid_key"] for m in recurrent],
+            }
+        mixture[str(tau)] = per_parent
     geometry["mixture"] = mixture
 
     # ---- permutation nulls (label-free) ----
     rng_null = np.random.default_rng(
         _derive_seed(spec["global_seed"], "null"))
     parents_with_children = sorted({int(p) for p in parent_of})
-    n_pw = len(parents_with_children)
+    blocks: dict[tuple[int, int], np.ndarray] = {}
+    for i in r20k:
+        blocks.setdefault((int(parent_of[i]), int(repl_of[i])), []).append(i)
+    blocks = {k: np.asarray(v, dtype=np.int32) for k, v in blocks.items()}
     nulls: dict[str, Any] = {}
     for tau in CLUSTER_TAUS:
-        observed = np.mean([
-            recurrence[str(tau)]["per_parent"][str(j)]["concentration"]
-            for j in parents_with_children
-        ]) if parents_with_children else float("nan")
-        perm_stats = []
-        for _ in range(NULL_PERMUTATIONS):
-            pi = rng_null.permutation(parents_with_children)
-            stats_p = []
-            for j, perm in zip(parents_with_children, pi):
-                idx = r20k_by_parent.get(int(perm), [])
-                if not idx:
-                    continue
-                sub = pref_reps[np.asarray(idx)]
-                cl = _fast_avg_link_clusters(sub, tau)
-                fracs = [len(m) / len(idx) for m in cl]
-                stats_p.append(max(fracs) if fracs else 0.0)
-            perm_stats.append(float(np.mean(stats_p)))
-        perm_stats = np.asarray(perm_stats, dtype=np.float64)
-        rank = float(np.mean(perm_stats >= observed))
-        nulls[f"concentration_{tau:.2f}"] = {
-            "observed": float(observed),
-            "null_mean": float(perm_stats.mean()),
-            "null_sd": float(perm_stats.std()),
-            "null_min": float(perm_stats.min()),
-            "null_max": float(perm_stats.max()),
-            "observed_percentile": rank,
+        per_parent = recurrence[str(tau)]["per_parent"]
+        obs_conc = [per_parent[str(j)]["concentration"]
+                    for j in parents_with_children]
+        obs_nrec = [per_parent[str(j)]["n_recurrent"]
+                    for j in parents_with_children]
+        observed = {
+            "mean_concentration": float(np.mean(obs_conc))
+            if obs_conc else float("nan"),
+            "mean_n_recurrent": float(np.mean(obs_nrec))
+            if obs_nrec else float("nan"),
+            "frac_2plus_recurrent": float(np.mean(
+                [1.0 if x >= 2 else 0.0 for x in obs_nrec]))
+            if obs_nrec else float("nan"),
+        }
+        perm = _recurrence_block_permutation_null(
+            pref_reps, blocks, np.asarray(parents_with_children),
+            tau, rng_null, NULL_PERMUTATIONS)
+        nulls[f"recurrence_{tau:.2f}"] = {
+            "observed": observed,
+            "null_mean_concentration": float(np.nanmean(perm["concentration"])),
+            "null_sd_concentration": float(np.nanstd(perm["concentration"])),
+            "null_mean_n_recurrent": float(np.nanmean(perm["n_recurrent"])),
+            "null_sd_n_recurrent": float(np.nanstd(perm["n_recurrent"])),
+            "null_mean_frac_2plus": float(np.nanmean(perm["frac_2plus_recurrent"])),
+            "null_sd_frac_2plus": float(np.nanstd(perm["frac_2plus_recurrent"])),
+            "observed_percentile_concentration": float(np.nanmean(
+                perm["concentration"] >= observed["mean_concentration"])),
+            "observed_percentile_n_recurrent": float(np.nanmean(
+                perm["n_recurrent"] >= observed["mean_n_recurrent"])),
+            "observed_percentile_frac_2plus": float(np.nanmean(
+                perm["frac_2plus_recurrent"] >= observed["frac_2plus_recurrent"])),
+            "nondegenerate": bool(
+                np.nanstd(perm["concentration"]) > 1e-12
+                and np.nanstd(perm["n_recurrent"]) > 1e-12),
             "n_permutations": int(NULL_PERMUTATIONS),
         }
-    # mixture null: shuffle parent endpoints across parents
-    rel_obs = [m["relative_improvement"] for m in mixture.values()
-               if m.get("relative_improvement") is not None]
-    observed_mean_rel = float(np.mean(rel_obs)) if rel_obs else float("nan")
-    perm_rels = []
-    for _ in range(NULL_PERMUTATIONS):
-        pi = rng_null.permutation(list(range(n_parents)))
-        vals = []
-        for j in range(n_parents):
-            m = mixture[str(j)]
-            if m.get("relative_improvement") is None:
-                continue
-            p2 = parent_reps[pi[j]]
-            cents = None
-            used = []
-            for tau in CLUSTER_TAUS:
-                for mode in recurrence[str(tau)]["per_parent"].get(str(j), {}) \
-                        .get("modes", []):
-                    if mode["recurrent"] and mode["centroid_key"] not in used:
-                        used.append(mode["centroid_key"])
-            if not used:
-                continue
-            cents = np.stack([npz_out[k] for k in sorted(used)])
-            best_single_error = float(np.min(np.linalg.norm(p2 - cents, axis=1)))
-            x0 = np.full(cents.shape[0], 1.0 / cents.shape[0])
-            cons = {"type": "eq", "fun": lambda a: float(a.sum()) - 1.0}
-            bounds = [(0.0, 1.0)] * cents.shape[0]
-            res = minimize(
-                lambda a: float(np.sum((p2 - cents.T @ a) ** 2)),
-                x0, method="SLSQP", bounds=bounds, constraints=cons,
-                options={"ftol": 1e-12, "maxiter": 500, "disp": False},
-            )
-            alpha = np.maximum(np.asarray(res.x, dtype=np.float64), 0.0)
-            alpha = alpha / alpha.sum() if alpha.sum() > 0 else alpha
-            hull_err = float(np.linalg.norm(p2 - cents.T @ alpha))
-            if best_single_error > 1e-12:
-                vals.append((best_single_error - hull_err) / best_single_error)
-        perm_rels.append(float(np.mean(vals)) if vals else float("nan"))
-    perm_rels = np.asarray(perm_rels, dtype=np.float64)
-    perm_rels = perm_rels[np.isfinite(perm_rels)]
-    nulls["mixture_relative_improvement"] = {
-        "observed": float(observed_mean_rel),
-        "n_observed_parents": int(len(rel_obs)),
-        "null_mean": float(perm_rels.mean()) if len(perm_rels) else float("nan"),
-        "null_sd": float(perm_rels.std()) if len(perm_rels) else float("nan"),
-        "observed_percentile": float(np.mean(perm_rels >= observed_mean_rel))
-        if len(perm_rels) else float("nan"),
-        "n_permutations": int(NULL_PERMUTATIONS),
-    }
+    # mixture null per tau: parent endpoints permuted across parents while
+    # each parent's own recurrent-mode set at that tau stays fixed
+    for tau in CLUSTER_TAUS:
+        per_parent = mixture[str(tau)]
+        rel_obs = [m["relative_improvement"] for m in per_parent.values()
+                   if m.get("relative_improvement") is not None]
+        observed_mean_rel = float(np.mean(rel_obs)) if rel_obs else float("nan")
+        perm_rels = []
+        for _ in range(NULL_PERMUTATIONS):
+            pi = rng_null.permutation(list(range(n_parents)))
+            vals = []
+            for j in range(n_parents):
+                mj = per_parent.get(str(j))
+                if mj is None or mj.get("relative_improvement") is None:
+                    continue
+                cents = np.stack([npz_out[k] for k in mj["centroid_keys"]])
+                fit = _mixture_fit(parent_reps[pi[j]], cents)
+                vals.append(fit["relative_improvement"])
+            perm_rels.append(float(np.mean(vals)) if vals else float("nan"))
+        perm_rels = np.asarray(perm_rels, dtype=np.float64)
+        perm_rels = perm_rels[np.isfinite(perm_rels)]
+        nulls[f"mixture_rel_{tau:.2f}"] = {
+            "observed": float(observed_mean_rel),
+            "n_observed_parents": int(len(rel_obs)),
+            "null_mean": float(perm_rels.mean()) if len(perm_rels) else float("nan"),
+            "null_sd": float(perm_rels.std()) if len(perm_rels) else float("nan"),
+            "null_min": float(perm_rels.min()) if len(perm_rels) else float("nan"),
+            "null_max": float(perm_rels.max()) if len(perm_rels) else float("nan"),
+            "observed_percentile": float(np.mean(perm_rels >= observed_mean_rel))
+            if len(perm_rels) else float("nan"),
+            "nondegenerate": bool(np.std(perm_rels) > 1e-12)
+            if len(perm_rels) else False,
+            "n_permutations": int(NULL_PERMUTATIONS),
+        }
     geometry["nulls"] = nulls
 
     # ---- invariant checks ----
@@ -1722,6 +1935,55 @@ def phase_geometry(args: argparse.Namespace) -> None:
                     raise SystemExit(
                         f"geometry invariant failed: reclustering "
                         f"{group}_{space}_{tau:.2f}")
+
+    # recurrent-mode identity invariant: within each (parent, tau) the
+    # mode index, the immutable mode_id and the centroid key identify the
+    # same mode in the recurrence, cross-arm and mixture sections
+    mode_consistency_ok = True
+    mode_consistency_detail = []
+    for tau in CLUSTER_TAUS:
+        for j in range(n_parents):
+            modes = recurrence[str(tau)]["per_parent"].get(str(j), {}) \
+                .get("modes", [])
+            for idx_m, m in enumerate(modes):
+                expected_key = f"recur_cent_{tau:.2f}_p{j:03d}_{idx_m}"
+                if m["centroid_key"] != expected_key \
+                        or m["mode_id"] != f"recurrent_mode_{tau:.2f}_p{j:03d}_{idx_m}":
+                    mode_consistency_ok = False
+                    mode_consistency_detail.append(
+                        f"recurrence mismatch at tau={tau:.2f} p={j} "
+                        f"idx={idx_m}: key={m['centroid_key']} "
+                        f"id={m['mode_id']}")
+                    continue
+                if m["centroid_key"] not in npz_out:
+                    mode_consistency_ok = False
+                    mode_consistency_detail.append(
+                        f"missing npz centroid {m['centroid_key']}")
+            cm = cross_arm[str(tau)].get(str(j))
+            if cm and cm.get("matches"):
+                ids_by_mode = {m["mode_id"]: i for i, m in enumerate(modes)
+                               if m["recurrent"]}
+                for match in cm["matches"]:
+                    mid = match["nearest_mode_id"]
+                    midx = match["nearest_mode_index"]
+                    if mid not in ids_by_mode:
+                        mode_consistency_ok = False
+                        mode_consistency_detail.append(
+                            f"cross_arm unknown mode_id {mid}")
+                        continue
+                    if ids_by_mode[mid] != midx:
+                        mode_consistency_ok = False
+                        mode_consistency_detail.append(
+                            f"cross_arm mode_id/index mismatch at "
+                            f"tau={tau:.2f} p={j}: id {mid} vs index {midx}")
+    invariant_checks.append(
+        {"check": "mode_identity_consistency", "ok": bool(mode_consistency_ok),
+         "detail": "; ".join(mode_consistency_detail)
+         if mode_consistency_detail else f"{len(geometry['cross_arm'])} taus"})
+    if not mode_consistency_ok:
+        raise SystemExit(
+            f"geometry invariant failed: mode identity consistency "
+            f"({' ; '.join(mode_consistency_detail[:5])})")
 
     geometry["method"] = _method_block("geometry", args, **{
         "n_sources": n,
@@ -1944,39 +2206,61 @@ def phase_prereport(args: argparse.Namespace) -> None:
         "",
         "### Parent-as-mixture geometry (convex hull of recurrent modes)",
         "",
-        "For each parent, p = the frozen normalized preference-space endpoint; "
-        "the hull fit minimizes `||p - sum(alpha_i c_i)||^2` with `alpha >= 0`, "
-        "`sum(alpha) = 1`. Improvement is best-single-error minus hull error. "
-        "No success threshold is defined or reported here; the distribution is "
-        "descriptive.",
+        "For each parent and tau, p = the frozen normalized preference-space "
+        "endpoint; the hull fit minimizes `||p - sum(alpha_i c_i)||^2` with "
+        "`alpha >= 0`, `sum(alpha) = 1` against the recurrent-mode centroids "
+        "at THAT tau only (no union across taus). Improvement is "
+        "best-single-error minus hull error. No success threshold is defined "
+        "or reported here; the distribution is descriptive.",
         "",
-        "| statistic | value |",
-        "|---|---|",
+        "| tau | parents with >= 1 recurrent mode | mean rel. improvement | "
+        "median rel. improvement | mean abs. improvement |",
+        "|---|---:|---:|---:|---:|",
     ]
-    rels = [m["relative_improvement"] for m in geometry["mixture"].values()
-            if m.get("relative_improvement") is not None]
-    imps = [m["improvement"] for m in geometry["mixture"].values()
-            if m.get("improvement") is not None]
-    lines += [
-        f"| parents with >= 1 recurrent mode | {len(rels)} |",
-        f"| relative improvement: mean | {np.mean(rels):.4f} |" if rels else "| relative improvement | n/a |",
-        f"| relative improvement: min / median / max | "
-        f"{np.min(rels):.4f} / {np.median(rels):.4f} / {np.max(rels):.4f} |" if rels else "| n/a |",
-        f"| absolute improvement: mean | {np.mean(imps):.4f} |" if imps else "| absolute improvement | n/a |",
-    ]
+    for tau in CLUSTER_TAUS:
+        fits = [m for m in geometry["mixture"][str(tau)].values()
+                if m.get("relative_improvement") is not None]
+        rels = [m["relative_improvement"] for m in fits]
+        imps = [m["improvement"] for m in fits]
+        lines.append(
+            f"| {tau:.2f} | {len(fits)} | "
+            f"{np.mean(rels):.4f} | {np.median(rels):.4f} | "
+            f"{np.mean(imps):.4f} |" if rels else f"| {tau:.2f} | 0 | n/a | n/a | n/a |"
+        )
     lines += [
         "",
         "### Label-free permutation nulls",
         "",
-        "| statistic | observed | null mean | null sd | observed percentile |",
-        "|---|---:|---:|---:|---:|",
+        "Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) "
+        "4x20k block permutations (synthetic parents sample one block from "
+        "each replicate, generally from different real parents). Mixture "
+        "nulls: parent endpoints permuted across parents per tau.",
+        "",
+        "| statistic | observed | null mean | null sd | null min / max | observed percentile |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
     for key, val in geometry["nulls"].items():
-        lines.append(
-            f"| {key} | {_fmt_float(val['observed'])} | "
-            f"{_fmt_float(val['null_mean'])} | {_fmt_float(val['null_sd'])} | "
-            f"{_fmt_float(val.get('observed_percentile'))} |"
-        )
+        obs = val["observed"]
+        if isinstance(obs, dict):
+            for stat, label in (
+                ("mean_concentration", "mean concentration"),
+                ("mean_n_recurrent", "mean n recurrent modes"),
+                ("frac_2plus_recurrent", "frac parents >= 2 recurrent modes"),
+            ):
+                lines.append(
+                    f"| {key} {label} | {_fmt_float(obs[stat])} | "
+                    f"{_fmt_float(val.get('null_mean_' + stat))} | "
+                    f"{_fmt_float(val.get('null_sd_' + stat))} | "
+                    f"n/a / n/a | "
+                    f"{_fmt_float(val.get('observed_percentile_' + stat))} |"
+                )
+        else:
+            lines.append(
+                f"| {key} | {_fmt_float(obs)} | "
+                f"{_fmt_float(val['null_mean'])} | {_fmt_float(val['null_sd'])} | "
+                f"{_fmt_float(val.get('null_min'))} / {_fmt_float(val.get('null_max'))} | "
+                f"{_fmt_float(val.get('observed_percentile'))} |"
+            )
     lines += [
         "",
         "### Invariant checks",
@@ -2096,12 +2380,6 @@ def _smoke_partition_tests(payload: dict[str, np.ndarray],
     con = _edges_connection()
     try:
         con.execute(
-            "create temp table pu as select (row_number() over "
-            "(order by user_id)-1)::int as ui, user_id from "
-            "(select distinct unnest(?) as user_id) t",
-            [payload["user_ids"].tolist()],
-        )
-        con.execute(
             "create temp table wb as select (row_number() over "
             "(order by work_id)-1)::int as bi, work_id from "
             "(select distinct unnest(?) as work_id) t",
@@ -2148,6 +2426,40 @@ def _smoke_partition_tests(payload: dict[str, np.ndarray],
                        int((np.diff(M.indptr) == 0).sum()) < len(small)})
         checks.append({"check": "residual_shape", "ok":
                        M.shape[0] == len(small) and M.shape[1] == len(payload["work_ids"])})
+
+        # audit fix #1/#7: edges carry payload indices that map back to the
+        # parent rows AND raw Goodreads user ids exactly
+        ui_ok = np.array_equal(edges["ui"], small[edges["row"]])
+        checks.append({"check": "edge_ui_matches_parent_row", "ok": bool(ui_ok)})
+        pid = payload["user_ids"]
+        roundtrip_ok = bool(np.all(pid[edges["ui"]] >= 0)
+                            and np.all(pid[edges["ui"]] <= np.iinfo(pid.dtype).max))
+        checks.append({"check": "edge_raw_id_roundtrip", "ok": roundtrip_ok,
+                       "detail": f"sampled {min(5, len(edges['ui']))} ids: "
+                       f"{[int(pid[edges['ui'][k]]) for k in range(min(5, len(edges['ui'])))]}"})
+        edges2 = fetch_parent_edges(con, payload, small)
+        checks.append({"check": "spectral_edges_deterministic", "ok":
+                       all(np.array_equal(edges[k], edges2[k])
+                           for k in ("row", "ui", "col", "rating"))})
+        cov = spectral_edge_coverage(con, payload, small)
+        checks.append({"check": "spectral_edge_coverage_valid", "ok":
+                       cov["n_with_edges"] <= cov["n_parent_users"]
+                       and 0.0 <= cov["empty_row_fraction"] <= 1.0,
+                       "detail": (f"parents={cov['n_parent_users']} "
+                                  f"with_edges={cov['n_with_edges']} "
+                                  f"empty_rows={cov['n_empty_rows']} "
+                                  f"empty_row_fraction={cov['empty_row_fraction']:.4f} "
+                                  f"nnz_nonempty_min={cov['nnz_min_nonempty']} "
+                                  f"median={cov['nnz_median_nonempty']} "
+                                  f"max={cov['nnz_max_nonempty']}")})
+        # spectral tree membership stays payload indices (never raw ids)
+        payload_idx = set(small.tolist())
+        spectral_members_ok = all(
+            set(tree1[k].tolist()).issubset(payload_idx)
+            for k in tree1)
+        checks.append({"check": "spectral_members_are_payload_indices",
+                       "ok": bool(spectral_members_ok)})
+
         u = leading_user_direction(M)
         checks.append({"check": "leading_direction_shape",
                        "ok": u.shape == (len(small),)})
@@ -2317,6 +2629,29 @@ def _smoke_geometry_tests(spec: dict[str, Any]) -> list[dict[str, Any]]:
         for tau in CLUSTER_TAUS
     )
     checks.append({"check": "fast_clustering_matches_census", "ok": same})
+
+    # block-permutation null machinery must be NON-degenerate with >= 2
+    # parents (the 1-parent smoke scope trivially yields a point mass):
+    # synthetic parent 0 = a/a/b blocks, parent 1 = b/b/a blocks
+    fake_rows = np.vstack([
+        mode_a, mode_a, mode_b,
+        mode_b, mode_b, mode_a,
+    ]).astype(np.float32)
+    blocks_fake: dict[tuple[int, int], np.ndarray] = {}
+    k = 0
+    for j in range(2):
+        for r in range(3):
+            blocks_fake[(j, r)] = np.arange(k, k + 4, dtype=np.int32)
+            k += 4
+    perm = _recurrence_block_permutation_null(
+        fake_rows, blocks_fake, np.arange(2), 0.70,
+        np.random.default_rng(0), 40)
+    null_sd = float(np.nanstd(perm["concentration"]))
+    checks.append({
+        "check": "recurrence_null_nondegenerate_multiple_parents",
+        "ok": null_sd > 1e-12,
+        "detail": f"sd={null_sd:.4f} mean={float(np.nanmean(perm['concentration'])):.4f}",
+    })
     return checks
 
 
@@ -2390,12 +2725,6 @@ def phase_smoke(args: argparse.Namespace) -> None:
     # ---- bounded campaign through the real phase functions ----
     con = _edges_connection()
     try:
-        con.execute(
-            "create temp table pu as select (row_number() over "
-            "(order by user_id)-1)::int as ui, user_id from "
-            "(select distinct unnest(?) as user_id) t",
-            [payload["user_ids"].tolist()],
-        )
         con.execute(
             "create temp table wb as select (row_number() over "
             "(order by work_id)-1)::int as bi, work_id from "
