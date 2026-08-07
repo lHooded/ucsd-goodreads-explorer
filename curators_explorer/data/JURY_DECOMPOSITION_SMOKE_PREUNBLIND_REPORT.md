@@ -8,10 +8,10 @@
 
 - Command: `/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke`
 - Global seed: **20260819**; parent campaign: tag `main`, seed **20260811**, sizes [20000, 30000, 45000, 60000, 80000, 110000], 120 juries per size
-- Sealed geometry git commit: `bfd8ee315e2cec0134143cfa8b5420fb72d646c8`
+- Sealed geometry git commit: `7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94`
 - Census artifact: `28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592` (SHA256, sealed)
-- Geometry artifact: `a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b` (SHA256, sealed)
-- External seal manifest verified: census_npz True, geometry_npz True, geometry_json True.
+- Geometry artifact: `76b54e64cc50035e98d45ebf31577aa031f920bf8691048b0c14e74424cc3940` (SHA256, sealed)
+- External seal manifest verified: census_npz True, census_json True, geometry_npz True, geometry_json True.
 - Sources: **18** child reversal endpoints (6 groups: r20k=8, r40k=4, s20k=4, s40k=2, pooled20k=12, pooled40k=6).
 
 ## PRE-UNBLIND STRUCTURAL RESULTS
@@ -144,3 +144,5 @@ Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block perm
 - reclustering_pooled40k_dir_0.70: ok
 - mode_identity_consistency: ok
 - geometry_npz_no_rep_arrays: ok
+- geometry_npz_no_global_centroids: ok
+- geometry_npz_recur_centroids_valid: ok

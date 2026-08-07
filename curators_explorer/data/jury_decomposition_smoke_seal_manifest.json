@@ -8,18 +8,18 @@
   },
   "census_json": {
    "file": "jury_decomposition_smoke.json",
-   "sha256": "785c97e36a57cff1dcdafc903125e4d4e35ec82d47b5aae791121dc4a520fec0",
+   "sha256": "4fc50b974605d6cdb72e13430b106ca734843942ad5ddb5c1170944368865f87",
    "bytes": 18353
   },
   "geometry_npz": {
    "file": "jury_decomposition_geometry_smoke.npz",
-   "sha256": "a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b",
-   "bytes": 17851091
+   "sha256": "76b54e64cc50035e98d45ebf31577aa031f920bf8691048b0c14e74424cc3940",
+   "bytes": 1166284
   },
   "geometry_json": {
    "file": "jury_decomposition_geometry_smoke.json",
-   "sha256": "10d56769e127ccd4e5393944c37f502fefb7e8ce5f1cdd1851ece20d488790cf",
-   "bytes": 190787
+   "sha256": "28d04ead568ae91a8d2f18ae3d2778c5bddc172ea5c2beb5dc21b7f21d8dd512",
+   "bytes": 189519
   }
  },
  "n_sources": 18,
@@ -43,7 +43,7 @@
   "spectral-000-0-20k:1:0",
   "spectral-000-0-20k:1:1"
  ],
- "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+ "git_head": "7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94",
  "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
  "semantic_context_loaded": false,
  "unblinded": false

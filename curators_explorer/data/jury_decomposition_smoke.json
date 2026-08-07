@@ -705,7 +705,7 @@
   "phase": "consolidate",
   "seed": 20260819,
   "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+  "git_head": "7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,

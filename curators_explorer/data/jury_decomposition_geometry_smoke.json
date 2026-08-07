@@ -128,7 +128,7 @@
        "pair_count": 28
       },
       "effective_dim": 6.344054745733714,
-      "centroid_key": "cent_r20k_pref_0.30_0"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -151,7 +151,7 @@
        "pair_count": 3
       },
       "effective_dim": 1.9734934902345835,
-      "centroid_key": "cent_r20k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -168,7 +168,7 @@
        "pair_count": 6
       },
       "effective_dim": 2.971325408704316,
-      "centroid_key": "cent_r20k_pref_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -182,7 +182,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.50_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -203,7 +203,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -217,7 +217,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -231,7 +231,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -245,7 +245,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -259,7 +259,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -273,7 +273,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -287,7 +287,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -301,7 +301,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_pref_0.70_7"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -325,7 +325,7 @@
        "pair_count": 1
       },
       "effective_dim": 0.9999999999999996,
-      "centroid_key": "cent_r20k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -339,7 +339,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -353,7 +353,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -367,7 +367,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -381,7 +381,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -395,7 +395,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -409,7 +409,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.30_6"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -430,7 +430,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -444,7 +444,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -458,7 +458,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -472,7 +472,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -486,7 +486,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -500,7 +500,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -514,7 +514,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -528,7 +528,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.50_7"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -549,7 +549,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -563,7 +563,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -577,7 +577,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -591,7 +591,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -605,7 +605,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -619,7 +619,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -633,7 +633,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -647,7 +647,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r20k_dir_0.70_7"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -673,7 +673,7 @@
        "pair_count": 6
       },
       "effective_dim": 2.712009912888086,
-      "centroid_key": "cent_r40k_pref_0.30_0"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -695,7 +695,7 @@
        "pair_count": 1
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -709,7 +709,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -723,7 +723,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.50_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -745,7 +745,7 @@
        "pair_count": 1
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -759,7 +759,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -773,7 +773,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_pref_0.70_2"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -797,7 +797,7 @@
        "pair_count": 1
       },
       "effective_dim": 0.9999999999999991,
-      "centroid_key": "cent_r40k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -811,7 +811,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -825,7 +825,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.30_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -846,7 +846,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -860,7 +860,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -874,7 +874,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -888,7 +888,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.50_3"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -909,7 +909,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -923,7 +923,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -937,7 +937,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -951,7 +951,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_r40k_dir_0.70_3"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -975,7 +975,7 @@
        "pair_count": 1
       },
       "effective_dim": 1.0000000000000002,
-      "centroid_key": "cent_s20k_pref_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -989,7 +989,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1003,7 +1003,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.30_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1024,7 +1024,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1038,7 +1038,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1052,7 +1052,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1066,7 +1066,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.50_3"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1087,7 +1087,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1101,7 +1101,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1115,7 +1115,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1129,7 +1129,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_pref_0.70_3"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -1152,7 +1152,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1166,7 +1166,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1180,7 +1180,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.30_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1194,7 +1194,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.30_3"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1215,7 +1215,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1229,7 +1229,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1243,7 +1243,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1257,7 +1257,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.50_3"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1278,7 +1278,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1292,7 +1292,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1306,7 +1306,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1320,7 +1320,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s20k_dir_0.70_3"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -1343,7 +1343,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1357,7 +1357,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.30_1"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1378,7 +1378,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1392,7 +1392,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.50_1"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1413,7 +1413,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1427,7 +1427,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_pref_0.70_1"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -1450,7 +1450,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1464,7 +1464,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.30_1"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1485,7 +1485,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1499,7 +1499,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.50_1"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1520,7 +1520,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1534,7 +1534,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_s40k_dir_0.70_1"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -1566,7 +1566,7 @@
        "pair_count": 45
       },
       "effective_dim": 8.047027052455366,
-      "centroid_key": "cent_pooled20k_pref_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1580,7 +1580,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1594,7 +1594,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.30_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1615,7 +1615,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1629,7 +1629,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1645,7 +1645,7 @@
        "pair_count": 3
       },
       "effective_dim": 1.9734934902345829,
-      "centroid_key": "cent_pooled20k_pref_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1663,7 +1663,7 @@
        "pair_count": 10
       },
       "effective_dim": 3.949133570585318,
-      "centroid_key": "cent_pooled20k_pref_0.50_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1677,7 +1677,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.50_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1691,7 +1691,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.50_5"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -1712,7 +1712,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1726,7 +1726,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1740,7 +1740,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1754,7 +1754,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1768,7 +1768,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1782,7 +1782,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1796,7 +1796,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1810,7 +1810,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_7"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1824,7 +1824,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_8"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1838,7 +1838,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_9"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1852,7 +1852,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_10"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1866,7 +1866,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_pref_0.70_11"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -1890,7 +1890,7 @@
        "pair_count": 1
       },
       "effective_dim": 1.0000000000000004,
-      "centroid_key": "cent_pooled20k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1904,7 +1904,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1918,7 +1918,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1932,7 +1932,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1946,7 +1946,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1960,7 +1960,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1974,7 +1974,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -1988,7 +1988,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_7"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2002,7 +2002,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_8"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2016,7 +2016,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_9"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2030,7 +2030,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.30_10"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2051,7 +2051,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2065,7 +2065,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2079,7 +2079,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2093,7 +2093,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2107,7 +2107,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2121,7 +2121,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2135,7 +2135,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2149,7 +2149,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_7"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2163,7 +2163,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_8"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2177,7 +2177,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_9"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2191,7 +2191,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_10"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2205,7 +2205,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.50_11"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2226,7 +2226,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2240,7 +2240,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2254,7 +2254,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2268,7 +2268,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2282,7 +2282,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2296,7 +2296,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_5"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2310,7 +2310,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_6"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2324,7 +2324,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_7"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2338,7 +2338,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_8"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2352,7 +2352,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_9"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2366,7 +2366,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_10"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2380,7 +2380,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled20k_dir_0.70_11"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -2407,7 +2407,7 @@
        "pair_count": 10
       },
       "effective_dim": 3.676723926930385,
-      "centroid_key": "cent_pooled40k_pref_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2421,7 +2421,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.30_1"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2445,7 +2445,7 @@
        "pair_count": 6
       },
       "effective_dim": 2.7754946012382247,
-      "centroid_key": "cent_pooled40k_pref_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2459,7 +2459,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2473,7 +2473,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.50_2"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2495,7 +2495,7 @@
        "pair_count": 1
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2509,7 +2509,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2523,7 +2523,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2537,7 +2537,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2551,7 +2551,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_pref_0.70_4"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -2575,7 +2575,7 @@
        "pair_count": 1
       },
       "effective_dim": 0.9999999999999991,
-      "centroid_key": "cent_pooled40k_dir_0.30_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2589,7 +2589,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.30_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2603,7 +2603,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.30_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2617,7 +2617,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.30_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2631,7 +2631,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.30_4"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2652,7 +2652,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2666,7 +2666,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2680,7 +2680,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2694,7 +2694,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2708,7 +2708,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2722,7 +2722,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.50_5"
+      "centroid_reconstructible": true
      }
     ]
    },
@@ -2743,7 +2743,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_0"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2757,7 +2757,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_1"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2771,7 +2771,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_2"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2785,7 +2785,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_3"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2799,7 +2799,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_4"
+      "centroid_reconstructible": true
      },
      {
       "members": [
@@ -2813,7 +2813,7 @@
        "pair_count": 0
       },
       "effective_dim": 1.0,
-      "centroid_key": "cent_pooled40k_dir_0.70_5"
+      "centroid_reconstructible": true
      }
     ]
    }
@@ -8738,7 +8738,7 @@
   "phase": "geometry",
   "seed": 20260819,
   "command": "/tmp/smoke_clean/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+  "git_head": "7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,
@@ -8772,7 +8772,7 @@
   {
    "check": "npz_key_uniqueness",
    "ok": true,
-   "detail": "195 keys"
+   "detail": "24 keys"
   },
   {
    "check": "reclustering_r20k_pref_0.30",
@@ -8927,12 +8927,22 @@
    "check": "geometry_npz_no_rep_arrays",
    "ok": true,
    "detail": "no rep_* arrays in geometry NPZ"
+  },
+  {
+   "check": "geometry_npz_no_global_centroids",
+   "ok": true,
+   "detail": "no global cent_* arrays in geometry NPZ"
+  },
+  {
+   "check": "geometry_npz_recur_centroids_valid",
+   "ok": true,
+   "detail": "12 recur_cent_* centroids valid"
   }
  ],
  "seal": {
-  "geometry_npz_sha256": "a3f0f79e59af1e851dd86d7b28e44ac73d9eadeed1187bac281e9dfd39837b3b",
+  "geometry_npz_sha256": "76b54e64cc50035e98d45ebf31577aa031f920bf8691048b0c14e74424cc3940",
   "census_npz_sha256": "28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592",
-  "census_json_sha256": "785c97e36a57cff1dcdafc903125e4d4e35ec82d47b5aae791121dc4a520fec0",
+  "census_json_sha256": "4fc50b974605d6cdb72e13430b106ca734843942ad5ddb5c1170944368865f87",
   "partial": true,
   "n_sources": 18,
   "sources": [
@@ -8968,7 +8978,7 @@
    "min_book_n": 25
   },
   "seed": 20260819,
-  "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
+  "git_head": "7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94",
   "semantic_context_loaded": false,
   "unblinded": false
  }

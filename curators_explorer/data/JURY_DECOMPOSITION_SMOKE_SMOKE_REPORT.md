@@ -240,6 +240,16 @@
    "detail": "consolidate refused restricted scope"
   },
   {
+   "check": "pre_semantic_unblind_guard",
+   "ok": true,
+   "detail": "tampered census JSON rejected: True; partial seal rejected: True; partial census rejected: True; SEMANTIC_CONTEXT_LOADED=False"
+  },
+  {
+   "check": "geometry_npz_storage_scope",
+   "ok": true,
+   "detail": "rep_*=0, global cent_*=0, recur_cent_*=12 required all present, npz_bytes=1166284"
+  },
+  {
    "check": "r20k_similarity_computed_once",
    "ok": true,
    "detail": "site counter=1 (expect 1), 8 r20k rows, stored sim matches direct product: True"
@@ -256,10 +266,10 @@
   {
    "check": "smoke_check_names_unique",
    "ok": true,
-   "detail": "60 checks, 0 duplicate(s)"
+   "detail": "62 checks, 0 duplicate(s)"
   }
  ],
  "passed": true,
- "git_head": "bfd8ee315e2cec0134143cfa8b5420fb72d646c8",
- "runtime_seconds": 123.88392639160156
+ "git_head": "7453dba1d18c0ae7fef5fdd9fa8e5fc30b020c94",
+ "runtime_seconds": 121.11901307106018
 }
