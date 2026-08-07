@@ -151,6 +151,21 @@ Per-phase peak-memory reassessment (single process, 15 GB host):
             inside the 15 GB host.  These are conservative estimates, not
             instrumented measurements (except the measured 9.1M nnz and
             per-phase wall times above).
+
+Geometry NPZ storage (full campaign, float32, 26,418 books): the sealed
+census already holds every source preference/direction vector, so NO
+rep_* matrices and NO global cluster centroids (cent_*) are stored; the
+removed rep_* payload would have been the full group row counts
+r20k=1440, r40k=720, s20k=480, s40k=240, pooled20k=1920, pooled40k=960
+(sum 5760 appearances per space) x 2 spaces = 11520 x 26,418 x 4 B
+~= 1.13 GiB uncompressed.  The retained full square similarity matrices
+are 2 x (1440^2 + 720^2 + 480^2 + 240^2 + 1920^2 + 960^2) =
+14,976,000 float32 values ~= 57.1 MiB, plus the separately computed
+recur_cent_* within-parent mode centroids (which cross-arm matching,
+mixture fitting and semantic unblind consume) and the small JSON sidecar.
+Global cluster centroids are NOT small (each is a full 26,418-dim
+float32 vector) and were potentially the dominant geometry storage
+before removal.
 """
 
 from __future__ import annotations
@@ -163,6 +178,7 @@ import re
 import shlex
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 from typing import Any
@@ -1843,17 +1859,21 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 cl = _cut_clusters(z, len(gidx), tau)
                 block = []
                 for ci, members in enumerate(cl):
-                    centroid = _unit_rows(
-                        sub[members].mean(axis=0, keepdims=True))[0].astype(np.float32)
                     rec = {
                         "members": [gids[m] for m in members],
                         "size": len(members),
                         "within": _within_stats(sim64, members),
                         "effective_dim": _effective_dim_gram(
                             sim64[np.ix_(members, members)]),
-                        "centroid_key": f"cent_{key}_{tau:.2f}_{ci}",
+                        # no centroid is stored for GLOBAL clusters: a global
+                        # cluster centroid is deterministically reconstructible
+                        # from the sealed census prefs/directions + the frozen
+                        # member source IDs, and it is not consumed by
+                        # recurrence, cross-arm matching, mixture fitting,
+                        # prereport or unblind (only recur_cent_* centroids
+                        # are stored and consumed)
+                        "centroid_reconstructible": True,
                     }
-                    npz_out[rec["centroid_key"]] = centroid
                     block.append(rec)
                 geometry["clusters"][f"{group}_{space}"].append(
                     {"tau": tau, "n_clusters": len(block),
@@ -2191,7 +2211,13 @@ def phase_geometry(args: argparse.Namespace) -> None:
             f"({' ; '.join(mode_consistency_detail[:5])})")
 
     # the sealed census already stores every source preference/direction
-    # vector; the geometry NPZ must never duplicate them as rep_* arrays
+    # vector; the geometry NPZ must never duplicate them as rep_* arrays,
+    # and must not store global cluster centroids (cent_*): global clusters
+    # are frozen by members/size/within/effective-dim and their centroid is
+    # deterministically reconstructible from the sealed census + frozen
+    # membership.  Only the recur_cent_* (within-parent recurrence mode)
+    # centroids are stored, because cross-arm matching, mixture fitting and
+    # semantic unblind consume them.
     rep_keys = [k for k in npz_out if k.startswith("rep_")]
     invariant_checks.append({
         "check": "geometry_npz_no_rep_arrays",
@@ -2201,6 +2227,40 @@ def phase_geometry(args: argparse.Namespace) -> None:
     })
     if rep_keys:
         raise SystemExit(f"geometry invariant failed: rep_* arrays {rep_keys}")
+
+    global_cent_keys = [k for k in npz_out
+                        if k.startswith("cent_") and not k.startswith("recur_cent_")]
+    invariant_checks.append({
+        "check": "geometry_npz_no_global_centroids",
+        "ok": not global_cent_keys,
+        "detail": "no global cent_* arrays in geometry NPZ"
+        if not global_cent_keys
+        else f"unexpected global cent_* arrays: {global_cent_keys[:5]}",
+    })
+    if global_cent_keys:
+        raise SystemExit(
+            f"geometry invariant failed: global cent_* arrays "
+            f"{global_cent_keys[:5]}")
+
+    missing_recur_cents = []
+    for tau in CLUSTER_TAUS:
+        for j_str, pp in geometry["recurrence"].get(
+                str(tau), {}).get("per_parent", {}).items():
+            for m in pp.get("modes", []):
+                if m["centroid_key"] not in npz_out:
+                    missing_recur_cents.append(m["centroid_key"])
+    invariant_checks.append({
+        "check": "geometry_npz_recur_centroids_valid",
+        "ok": not missing_recur_cents,
+        "detail": f"{len(npz_out) - len([k for k in npz_out if k.startswith('sim_')])} "
+                  f"recur_cent_* centroids valid"
+        if not missing_recur_cents
+        else f"missing recur_cent_*: {missing_recur_cents[:5]}",
+    })
+    if missing_recur_cents:
+        raise SystemExit(
+            f"geometry invariant failed: missing recur_cent_* "
+            f"{missing_recur_cents[:5]}")
 
     geometry["method"] = _method_block("geometry", args, **{
         "n_sources": n,
@@ -2227,7 +2287,11 @@ def phase_geometry(args: argparse.Namespace) -> None:
         "geometry_npz_sha256": geo_sha,
         "census_npz_sha256": census_sha,
         "census_json_sha256": census_json_sha,
-        "partial": bool(not _scope_is_full(spec)),
+        # partial comes from the FROZEN consolidated artifact itself: even a
+        # full requested scope with missing sources that was deliberately
+        # processed with --allow-partial must be marked partial and can never
+        # masquerade as a complete frozen geometry
+        "partial": bool(data.get("partial", True)),
         "n_sources": n,
         "sources": ids,
         "clustering": spec["analysis"]["clustering"],
@@ -2331,6 +2395,7 @@ def phase_prereport(args: argparse.Namespace) -> None:
         f"- Geometry artifact: `{geometry['seal']['geometry_npz_sha256']}` (SHA256, sealed)",
         f"- External seal manifest verified: "
         f"census_npz {manifest_checks['census_npz']}, "
+        f"census_json {manifest_checks['census_json']}, "
         f"geometry_npz {manifest_checks['geometry_npz']}, "
         f"geometry_json {manifest_checks['geometry_json']}.",
         f"- Sources: **{geometry['n_sources']}** child reversal endpoints "
@@ -2497,6 +2562,39 @@ def phase_prereport(args: argparse.Namespace) -> None:
 # Phase: unblind (DO NOT RUN in this task)
 # ---------------------------------------------------------------------------
 
+def _guard_pre_semantic(
+        seal: dict[str, Any], npz_path: Path, json_path: Path,
+        geo_npz_path: Path) -> dict[str, Any]:
+    """ALL pre-semantic integrity checks for unblind, run before ANY
+    semantic context is loaded:
+
+    - seal must exist and claim label-blind/unblinded False state;
+    - census NPZ, census JSON and geometry NPZ must match the FROZEN
+      geometry seal hashes (census JSON is compared directly against
+      seal["census_json_sha256"]);
+    - the geometry seal and the consolidated census must both be
+      non-partial.
+
+    Raises SystemExit on any violation; on success returns the
+    consolidated JSON data.  Never touches SEMANTIC_CONTEXT_LOADED."""
+    if not seal or seal.get("semantic_context_loaded") is not False \
+            or seal.get("unblinded") is not False:
+        raise SystemExit("seal missing or claims semantic/unblinded; refusing")
+    if _sha256(npz_path) != seal["census_npz_sha256"]:
+        raise SystemExit("census NPZ hash mismatch vs seal; refusing to unblind")
+    if _sha256(geo_npz_path) != seal["geometry_npz_sha256"]:
+        raise SystemExit("geometry NPZ hash mismatch vs seal; refusing to unblind")
+    if _sha256(json_path) != seal.get("census_json_sha256"):
+        raise SystemExit(
+            "census JSON hash mismatch vs geometry seal; refusing to unblind")
+    if seal.get("partial") is not False:
+        raise SystemExit("geometry seal marks partial; refusing to unblind")
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    if data.get("partial") is not False:
+        raise SystemExit("consolidated census is partial; refusing to unblind")
+    return data
+
+
 def phase_unblind(args: argparse.Namespace) -> None:
     """Post-hoc semantic evaluation, only after every structural artifact is
     sealed.  Sequencing (mirrors the Natural Amplification Census):
@@ -2534,20 +2632,17 @@ def phase_unblind(args: argparse.Namespace) -> None:
     if geometry["method"].get("semantic_context_loaded") is not False \
             or geometry["method"].get("unblinded") is not False:
         raise SystemExit("geometry claims semantic/unblinded state; refusing")
-    seal = geometry.get("seal")
-    if not seal or seal.get("semantic_context_loaded") is not False \
-            or seal.get("unblinded") is not False:
-        raise SystemExit("seal missing or claims semantic/unblinded; refusing")
     npz_path, json_path = census_paths(args.tag)
     if not npz_path.exists() or not json_path.exists():
         raise SystemExit("consolidated artifact missing; run consolidate first")
-    if _sha256(npz_path) != seal["census_npz_sha256"]:
-        raise SystemExit("census NPZ hash mismatch vs seal; refusing to unblind")
-    if _sha256(geo_npz) != seal["geometry_npz_sha256"]:
-        raise SystemExit("geometry NPZ hash mismatch vs seal; refusing to unblind")
-    data = json.loads(json_path.read_text(encoding="utf-8"))
+    # guard: census NPZ/JSON + geometry NPZ hashes vs the frozen seal, and
+    # non-partial requirements (seal + consolidated census), all BEFORE any
+    # semantic context could be loaded
+    data = _guard_pre_semantic(
+        geometry.get("seal"), npz_path, json_path, geo_npz)
     records = data["records"]
     ids = [r["source_id"] for r in records]
+    seal = geometry["seal"]
     if seal["n_sources"] != len(records) or seal["sources"] != ids:
         raise SystemExit("sealed source list mismatch; refusing to unblind")
 
@@ -3339,6 +3434,78 @@ def phase_smoke(args: argparse.Namespace) -> None:
         checks.append({"check": "restricted_scope_rejected_without_allow_partial",
                        "ok": True,
                        "detail": "consolidate refused restricted scope"})
+
+    # the pre-semantic unblind guard: tampered census JSON must fail the
+    # geometry-seal comparison, and any partial seal/census must be refused;
+    # nothing here may load semantic context (phase_unblind is never called)
+    guard_detail: list[str] = []
+
+    def _guard_raises(seal: dict[str, Any], npz: Path, js: Path,
+                      gnz: Path) -> bool:
+        try:
+            _guard_pre_semantic(seal, npz, js, gnz)
+            return False
+        except SystemExit:
+            return True
+
+    census_npz_path, _census_json_path = census_paths(tag)
+    _gjson, _gnpz = geometry_paths(tag)
+    # isolate the census-JSON-vs-seal check: a seal copy that is otherwise
+    # valid (non-partial) so the ONLY failing condition is the JSON hash
+    seal_valid = {**geometry_seal, "partial": False}
+    tamper = Path(tempfile.gettempdir()) / "jury_tampered_census_smoke.json"
+    tamper.write_text(cons_json.read_text(encoding="utf-8") + "\n",
+                      encoding="utf-8")
+    tamper_sha = _sha256(tamper)
+    tamper_detected = _guard_raises(seal_valid, census_npz_path,
+                                    tamper, _gnpz)
+    tamper.unlink(missing_ok=True)
+    tamper_ok = (tamper_detected
+                 and tamper_sha != geometry_seal.get("census_json_sha256"))
+    guard_detail.append(f"tampered census JSON rejected: {tamper_ok}")
+    partial_seal_ok = _guard_raises(
+        {**geometry_seal, "partial": True}, census_npz_path,
+        cons_json, _gnpz)
+    guard_detail.append(f"partial seal rejected: {partial_seal_ok}")
+    partial_data_ok = _guard_raises(
+        seal_valid, census_npz_path, cons_json, _gnpz)
+    guard_detail.append(f"partial census rejected: {partial_data_ok}")
+    no_semantic = SEMANTIC_CONTEXT_LOADED is False
+    checks.append({
+        "check": "pre_semantic_unblind_guard",
+        "ok": bool(tamper_ok and partial_seal_ok and partial_data_ok
+                   and no_semantic),
+        "detail": "; ".join(guard_detail)
+                  + f"; SEMANTIC_CONTEXT_LOADED={SEMANTIC_CONTEXT_LOADED}",
+    })
+
+    # geometry NPZ storage scope: no rep_* arrays, no global cent_* arrays,
+    # every required recur_cent_* centroid present and non-empty
+    _gjson2, _gnpz2 = geometry_paths(tag)
+    gblob = np.load(_gnpz2, allow_pickle=False)
+    gblob_keys = list(gblob.files)
+    geo2 = json.loads(_gjson2.read_text(encoding="utf-8"))
+    no_rep = not any(k.startswith("rep_") for k in gblob_keys)
+    no_global_cent = not any(
+        k.startswith("cent_") and not k.startswith("recur_cent_")
+        for k in gblob_keys)
+    required_recur = []
+    for _tau in CLUSTER_TAUS:
+        for _j_str, _pp in geo2["recurrence"].get(
+                str(_tau), {}).get("per_parent", {}).items():
+            for _m in _pp.get("modes", []):
+                required_recur.append(_m["centroid_key"])
+    recur_cent_valid = (
+        all(k in gblob_keys for k in required_recur)
+        and all(gblob[k].size > 0 for k in required_recur))
+    checks.append({
+        "check": "geometry_npz_storage_scope",
+        "ok": bool(no_rep and no_global_cent and recur_cent_valid),
+        "detail": f"rep_*={sum(1 for k in gblob_keys if k.startswith('rep_'))}, "
+                  f"global cent_*={sum(1 for k in gblob_keys if k.startswith('cent_') and not k.startswith('recur_cent_'))}, "
+                  f"recur_cent_*={len(required_recur)} required all present, "
+                  f"npz_bytes={Path(_gnpz2).stat().st_size}",
+    })
 
     # the r20k preference similarity must be computed exactly once per
     # geometry run (global clustering pass); the recurrence/null analyses
