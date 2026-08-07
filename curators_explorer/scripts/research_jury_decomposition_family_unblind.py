@@ -97,6 +97,7 @@ N_TOP_EVAL = 200                # head length (same as census _eval_pref)
 EVAL_HEAD_50 = 50
 EVAL_HEAD_100 = 100
 AUTHOR_DEDUP_K = 50
+ALPHA = 0.05                    # frozen before semantic load
 
 SEMANTIC_CONTEXT_LOADED = False
 
@@ -105,9 +106,18 @@ SEMANTIC_CONTEXT_LOADED = False
 HYPOTHESES = {
     "E0": "exact literary count @50, family 0",
     "E1": "exact literary count @50, family 1",
-    "T_max": "max(E0, E1): at least one frozen family is literary-enriched",
-    "T_min": "min(E0, E1): BOTH frozen families are literary-enriched "
-             "(multiple naturally discovered canons)",
+    "T_max": "max(E0, E1): at least one frozen family is literary-enriched "
+             "(family-wise)",
+    "T_min": "min(E0, E1): preregistered symmetric JOINT/SUPPORTING "
+             "statistic",
+    "p_both_exact_iut": "intersection-union conjunction max(p_E0, p_E1): "
+                        "PRIMARY formal test that BOTH frozen families "
+                        "individually reject their own exact-literary nulls "
+                        "(multiple naturally discovered canons)",
+    "p_both_broad_iut": "intersection-union conjunction max(p_B0, p_B1): "
+                        "secondary broad-literary conjunction",
+    "alpha": f"conjunction rejection threshold {ALPHA} frozen before "
+             "semantic load",
     "B_max": "max(broad0, broad1): at least one family broad-enriched "
              "(secondary)",
     "B_min": "min(broad0, broad1): both families broad-enriched (secondary)",
@@ -440,6 +450,37 @@ def _tail_p_lower(nulls: np.ndarray, observed: int,
     return float((1 + int(np.sum(nulls <= observed))) / (n_perms + 1))
 
 
+def _iut_conjunction(p0: float, p1: float) -> float:
+    """Intersection-union conjunction p: max of the two family-specific
+    p-values.  A conjunction rejection at ALPHA requires BOTH families to
+    reject their own nulls."""
+    return float(max(p0, p1))
+
+
+def _frozen_top50_work_ids(
+    centroid_eligible: np.ndarray, eligible_idx: np.ndarray,
+    work_ids: np.ndarray,
+) -> list[str]:
+    """Ordered 50 full work IDs of the frozen structural top-50 of an
+    eligible-coordinate centroid, derived WITHOUT any semantic metadata."""
+    order = np.argsort(-np.asarray(centroid_eligible, dtype=np.float64),
+                       kind="stable")[:50]
+    return [str(work_ids[int(eligible_idx[int(i)])]) for i in order]
+
+
+def _posthoc_head_top50_work_ids(head: list[dict[str, Any]]) -> list[str]:
+    return [r["work_id"] for r in head[:50]]
+
+
+def _frozen_top50_alignment_ok(
+    head: list[dict[str, Any]], frozen_ids: list[str],
+) -> bool:
+    """HARD invariant: the ordered first-50 works evaluated by
+    posthoc_head must equal the pre-semantic frozen structural top-50
+    exactly."""
+    return _posthoc_head_top50_work_ids(head) == list(frozen_ids)
+
+
 # ---------------------------------------------------------------------------
 # Joint popularity-stratified permutation null (both families, SAME
 # permuted semantic assignment; indexing only).
@@ -650,11 +691,16 @@ def _render_report(results: dict[str, Any]) -> str:
               "|---|---:|---:|---:|---:|"]
     for key, label in (("E0", "exact@50 family 0"), ("E1", "exact@50 family 1"),
                        ("T_max", "max(E0,E1)"),
-                       ("T_min", "min(E0,E1) (both literary)")):
+                       ("T_min", "min(E0,E1) (joint/supporting)")):
         lines.append(
             f"| {label} | {joint['observed'][key]} | "
             f"{joint['null_mean'][key]:.2f} | {joint['null_sd'][key]:.2f} | "
             f"{joint['p_values']['p_' + key]:.4f} |")
+    ct = results.get("conjunction_tests", {})
+    lines.append(
+        f"| BOTH exact (IUT max(p_E0,p_E1)) | n/a | n/a | n/a | "
+        f"{ct.get('exact', {}).get('p', float('nan')):.4f} "
+        f"(alpha {ct.get('exact', {}).get('alpha', float('nan'))}) |")
     lines += ["", "## 5. Broad / anti results (secondary/supporting)", "",
               "| statistic | observed | null mean | null sd | p_upper |",
               "|---|---:|---:|---:|---:|"]
@@ -664,6 +710,10 @@ def _render_report(results: dict[str, Any]) -> str:
             f"| {label} | {joint['observed'][key]} | "
             f"{joint['null_mean'][key]:.2f} | {joint['null_sd'][key]:.2f} | "
             f"{joint['p_values']['p_' + key]:.4f} |")
+    lines.append(
+        f"| BOTH broad (IUT max(p_B0,p_B1)) | n/a | n/a | n/a | "
+        f"{ct.get('broad', {}).get('p', float('nan')):.4f} "
+        f"(alpha {ct.get('broad', {}).get('alpha', float('nan'))}) |")
     for fkey, pkey in (("A0", "A0"), ("A1", "A1")):
         lines.append(
             f"| anti@50 {fkey} (depletion direction) | "
@@ -707,21 +757,25 @@ def _render_report(results: dict[str, Any]) -> str:
         "",
         "## 8. Interpretation (frozen tests only)",
         "",
-        f"- T_max p = **{joint['p_values']['p_T_max']:.4f}**; "
-        f"T_min p = **{joint['p_values']['p_T_min']:.4f}**; "
-        f"B_max p = **{joint['p_values']['p_B_max']:.4f}**; "
-        f"B_min p = **{joint['p_values']['p_B_min']:.4f}**.",
-        "- Category A: T_max significant, T_min not -> ONE family "
-        "literary-enriched; NOT evidence for multiple canons.",
-        "- Category B: T_min significant -> BOTH frozen families "
-        "literary-enriched; consistent with multiple naturally discovered "
-        "literary canons (check overlap/distinctness before claiming "
-        "genuinely distinct canons).",
-        "- Category C: neither significant -> structural decomposition is "
-        "real but does not recover literary canons under this test.",
-        "- Category D: broad significant but exact not -> broader "
-        "high-cultural/serious-reading structure, not strict canon "
-        "recovery.",
+        f"- T_min p = **{joint['p_values']['p_T_min']:.4f}** (preregistered "
+        f"joint/supporting statistic); "
+        f"p_both_exact_iut = **{ct.get('exact', {}).get('p', float('nan')):.4f}** "
+        f"(primary intersection-union conjunction, alpha "
+        f"{ct.get('exact', {}).get('alpha', float('nan'))}).  Both are "
+        f"reported; neither silently replaces the other.",
+        "- Category A: p_T_max < .05 but p_both_exact_iut >= .05 -> at "
+        "least ONE frozen family is exact-literary enriched; NOT evidence "
+        "that both are literary canons.",
+        "- Category B: p_both_exact_iut < .05 -> BOTH frozen families "
+        "individually reject their own exact-literary nulls; confirmatory "
+        "statistical condition for multiple naturally discovered literary "
+        "canons (examine overlap/distinctness before claiming genuinely "
+        "distinct canons).",
+        "- Category C: neither -> structural decomposition is real but no "
+        "exact literary recovery under this test.",
+        "- Category D: only broad conjunction/significance -> broader "
+        "high-cultural/serious-reading structure, not strict literary "
+        "canon recovery.",
         "",
         "## 9. Frozen top-work heads (rendered AFTER all metrics)",
         "",
@@ -758,16 +812,25 @@ def phase_unblind(args: argparse.Namespace) -> None:
     n_books = int(len(payload["work_ids"]))
     reader_mass = np.where(eligible, payload["book_n"], 0.0).astype(np.float64)
 
-    # frozen top-50 eligible positions per family (structural ranking only)
+    # frozen top-50 per family (structural ranking only, no semantics):
+    # ordered 50 eligible positions for the permutation test AND the exact
+    # ordered 50 full work IDs for the posthoc_head alignment invariant
     top_pos = np.empty((2, 50), dtype=np.int64)
+    frozen_top50_ids: list[list[str]] = []
     for i, f in enumerate(fam["families"]):
         order = np.argsort(-f["centroid"], kind="stable")[:50]
         top_pos[i] = eligible_idx[order]
+        frozen_top50_ids.append(
+            _frozen_top50_work_ids(f["centroid"], eligible_idx,
+                                   payload["work_ids"]))
 
     # ---- THE single semantic load; explicit sequencing boundary ----
+    # The flag is set to True IMMEDIATELY BEFORE the semantic loader, after
+    # every seal check, family/centroid load, eligibility calculation and
+    # frozen ranking calculation (all performed while the flag is False).
     print("Loading post-hoc semantic context (family unblind)", flush=True)
-    meta, eval_sets = spectral.load_posthoc_context(payload["work_ids"])
     SEMANTIC_CONTEXT_LOADED = True
+    meta, eval_sets = spectral.load_posthoc_context(payload["work_ids"])
 
     n_eligible = int(eligible.sum())
     universe = set(payload["work_ids"][eligible].tolist())
@@ -779,6 +842,13 @@ def phase_unblind(args: argparse.Namespace) -> None:
         full = _embed_full(f["centroid"], eligible_idx, n_books)
         head, metrics = _family_semantic_eval(
             full, reader_mass, payload["work_ids"], meta, eval_sets)
+        # HARD invariant: the semantic evaluator's ordered first-50 works
+        # must be EXACTLY the pre-semantic frozen structural top-50; abort
+        # before writing any semantic result artifact otherwise
+        if not _frozen_top50_alignment_ok(head, frozen_top50_ids[i]):
+            raise SystemExit(
+                f"frozen top-50 != posthoc_head top-50 for family "
+                f"{f['family_id']}; refusing to write semantic artifacts")
         dedup_rows = _dedup_head(head, AUTHOR_DEDUP_K)
         families.append({
             "family_id": f["family_id"],
@@ -792,6 +862,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
                 "counts": _counts_in(dedup_rows, eval_sets, AUTHOR_DEDUP_K),
                 "diagnostics": _author_diagnostics(head, EVAL_HEAD_50),
             },
+            "frozen_top50_equals_posthoc_head_top50": True,
             "head": head,
         })
 
@@ -814,6 +885,26 @@ def phase_unblind(args: argparse.Namespace) -> None:
     centroid_cosine = float(fam["families"][0]["centroid"]
                             @ fam["families"][1]["centroid"])
 
+    # intersection-union conjunction tests (frozen definition; computed
+    # from the already-computed family-specific p-values, no extra
+    # permutations)
+    p_both_exact_iut = _iut_conjunction(joint["p_values"]["p_E0"],
+                                        joint["p_values"]["p_E1"])
+    p_both_broad_iut = _iut_conjunction(joint["p_values"]["p_B0"],
+                                        joint["p_values"]["p_B1"])
+    conjunction_tests = {
+        "exact": {
+            "method": "intersection-union: max(p_E0, p_E1)",
+            "p": p_both_exact_iut,
+            "alpha": float(ALPHA),
+        },
+        "broad": {
+            "method": "intersection-union: max(p_B0, p_B1)",
+            "p": p_both_broad_iut,
+            "alpha": float(ALPHA),
+        },
+    }
+
     source_prov = _source_provenance()
     results = {
         "semantic_unblind_seed": int(SEMANTIC_UNBLIND_SEED),
@@ -828,6 +919,8 @@ def phase_unblind(args: argparse.Namespace) -> None:
         "hypotheses": HYPOTHESES,
         "families": families,
         "joint_tests": joint,
+        "conjunction_tests": conjunction_tests,
+        "frozen_top50_equals_posthoc_head_top50": True,
         "overlaps": overlaps,
         "set_overlaps": set_overlaps,
         "centroid_cosine": float(centroid_cosine),
@@ -856,6 +949,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
           f"(p={joint['p_values']['p_T_max']:.4f}), "
           f"T_min={joint['observed']['T_min']} "
           f"(p={joint['p_values']['p_T_min']:.4f}), "
+          f"p_both_exact_iut={p_both_exact_iut:.4f}, "
           f"E0={joint['observed']['E0']} E1={joint['observed']['E1']}",
           flush=True)
 
@@ -938,6 +1032,26 @@ def _no_centroid_recomputation_code() -> bool:
               "from curators_explorer.scripts.research_jury_decomposition "
               "import")
     return all(b not in src for b in banned)
+
+
+def _semantic_flag_set_before_loader() -> bool:
+    """Structural check: the explicit flag assignment
+    'SEMANTIC_CONTEXT_LOADED = True' must appear BEFORE the single real
+    semantic loader call in phase_unblind."""
+    try:
+        src = inspect.getsource(phase_unblind).splitlines()
+    except (OSError, TypeError):
+        return False
+    flag_line = None
+    loader_line = None
+    for i, ln in enumerate(src):
+        s = ln.strip()
+        if s == "SEMANTIC_CONTEXT_LOADED = True":
+            flag_line = i
+        if "load_posthoc_context" in s:
+            loader_line = i
+    return (flag_line is not None and loader_line is not None
+            and flag_line < loader_line)
 
 
 def phase_smoke(args: argparse.Namespace) -> None:
@@ -1054,6 +1168,24 @@ def phase_smoke(args: argparse.Namespace) -> None:
                    "ok": bool(t_max == 15 and t_min == 5),
                    "detail": f"T_max={t_max} T_min={t_min} (expect 15, 5)"})
 
+    # ---- 9b. intersection-union conjunction tests ----
+    iut_exact_ok = (_iut_conjunction(0.01, 0.20) == 0.20
+                    and _iut_conjunction(0.01, 0.03) == 0.03)
+    checks.append({"check": "conjunction_iut_exact",
+                   "ok": bool(iut_exact_ok),
+                   "detail": "max(0.01, 0.20) = 0.20; max(0.01, 0.03) = 0.03"})
+    iut_broad_ok = (_iut_conjunction(0.02, 0.30) == 0.30
+                    and _iut_conjunction(0.05, 0.02) == 0.05)
+    checks.append({"check": "conjunction_iut_broad",
+                   "ok": bool(iut_broad_ok),
+                   "detail": "max(0.02, 0.30) = 0.30; max(0.05, 0.02) = 0.05"})
+
+    # ---- 9c. semantic flag boundary before the loader ----
+    checks.append({"check": "semantic_flag_set_before_loader",
+                   "ok": bool(_semantic_flag_set_before_loader()),
+                   "detail": "SEMANTIC_CONTEXT_LOADED = True assigned before "
+                             "spectral.load_posthoc_context in phase_unblind"})
+
     eligible_idx = np.flatnonzero(fx["book_n"] >= 25)
     top_pos = np.stack([np.argsort(-s0[eligible_idx], kind="stable")[:50],
                         np.argsort(-s1[eligible_idx], kind="stable")[:50]])
@@ -1101,6 +1233,20 @@ def phase_smoke(args: argparse.Namespace) -> None:
         "detail": "E0/E1/T_max/T_min null vectors equal brute force over the "
                   "SAME permutation stream (both families share one "
                   "assignment per permutation)",
+    })
+
+    # ---- 9d. frozen top-50 == posthoc_head top-50 alignment ----
+    frozen0 = _frozen_top50_work_ids(s0[eligible_idx], eligible_idx,
+                                     fx["work_ids"])
+    align_pass = _frozen_top50_alignment_ok(head0, frozen0)
+    altered = list(frozen0)
+    altered[0], altered[1] = altered[1], altered[0]
+    align_fail = not _frozen_top50_alignment_ok(head0, altered)
+    checks.append({
+        "check": "frozen_top50_posthoc_alignment",
+        "ok": bool(align_pass and align_fail),
+        "detail": "identical synthetic ranking passes; swapped first two "
+                  "work IDs rejected",
     })
     checks.append({
         "check": "permutation_p_formulas",
@@ -1205,6 +1351,17 @@ def phase_smoke(args: argparse.Namespace) -> None:
              "head": head1},
         ],
         "joint_tests": joint,
+        "conjunction_tests": {
+            "exact": {"method": "intersection-union: max(p_E0, p_E1)",
+                      "p": _iut_conjunction(joint["p_values"]["p_E0"],
+                                            joint["p_values"]["p_E1"]),
+                      "alpha": float(ALPHA)},
+            "broad": {"method": "intersection-union: max(p_B0, p_B1)",
+                      "p": _iut_conjunction(joint["p_values"]["p_B0"],
+                                            joint["p_values"]["p_B1"]),
+                      "alpha": float(ALPHA)},
+        },
+        "frozen_top50_equals_posthoc_head_top50": True,
         "overlaps": [ov50, ov100],
         "set_overlaps": [_set_overlap(head0, head1, fx["eval_sets"], n)
                          for n in ("exact_lit", "broad_lit", "anti")],
