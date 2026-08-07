@@ -113,15 +113,20 @@ spectral procedure); atomic writes; chunk validation before trust;
 consolidation refuses partial campaigns by default.
 
 Per-phase peak-memory reassessment (single process, 15 GB host):
-- run:      one chunk = one (parent, arm) in memory at a time.  The
-            cached residual chunk for a 40k-child run is a 40k x 26.4k
-            float32 CSR of the child's rated entries (measured ~9.1M
-            nonzero for the 80k parent campaign's 40k children, ~50% of
-            the 40k x 26.4k grid -> ~36-73 MB CSR) plus the dense
-            float32 jury (40k x 26.4k, 4.2 GB) and the fixed population
-            mean arrays (~20 MB).  Peak ~4.3-4.5 GB during a 40k run,
-            ~2.2-2.4 GB during a 20k run; the spectral split additionally
-            holds a small dense user-coordinate matrix (<= ~30 MB).
+- run:      one chunk = one (parent, arm) in memory at a time.  For a
+            40k-child run the resident objects are the sparse residual
+            CSR of the child's rated entries over the 40k x 26.4k grid
+            (measured ~9.1M nonzero for the 80k parent campaign's 40k
+            children, ~0.9% of the 1.06B-cell grid -> ~36-73 MB CSR) and
+            the fixed full-population sparse operator / payload caches
+            shared by run_jury.  run_jury does NOT materialize a dense
+            40k x 26.4k jury: per stage it rebuilds a sparse sub-matrix
+            and operator on the retained subset (pruning.subset_payload +
+            spectral.build_matrix) plus the population mean arrays
+            (~20 MB).  Peak ~0.5-1.0 GB during a 40k run (40k children
+            stay far below the 233k-user population cache), less for 20k
+            runs; the spectral split additionally holds the sparse edge
+            matrix and a small dense user-coordinate vector per split.
             Elapsed ~1.4 s per parent edge fetch + ~1 s per run.
 - consolidate: at most two chunks (records + prefs) and the child
             endpoint/direction matrices live simultaneously: 2880
@@ -132,14 +137,20 @@ Per-phase peak-memory reassessment (single process, 15 GB host):
             Peak ~1.5 GB.
 - geometry:  all cluster computations are per-group submatrices; the
             largest dense objects are the per-group float64 cosine
-            similarity matrices (pooled20k: 1440 x 1440 float64 = 16.6
-            MB) and the stacked pref/dir representations (2880 x 26.4k
-            float32 = 2 x ~305 MB each, parent blocks ~12.6 MB).
-            Centered-Gram effective dimension uses only the member x
-            member similarity submatrix (max 1440 x 1440 float64).
-            Recurrence/cross-arm/mixture operate on 12-24 row blocks.
-            Peak ~1.6 GB.  With all phases in one process the high-water
-            mark is the run phase's ~4.5 GB, well inside the 15 GB host.
+            similarity matrices (pooled20k = 1440 random + 480 spectral =
+            1920 x 1920 float64 = 29.5 MiB) and the stacked pref/dir
+            representations (2880 x 26.4k float32 = 2 x ~305 MB each,
+            parent blocks ~12.6 MB).  Centered-Gram effective dimension
+            is O(n^2) (trace / Frobenius of the member x member similarity
+            submatrix, max 1920 x 1920 float64) with no eigendecomposition.
+            Recurrence/cross-arm/mixture operate on 12-24 row blocks; the
+            recurrence null slices 12x12 submatrices from the ONE
+            precomputed r20k similarity matrix (no book-space products in
+            the permutation loop).  Peak ~1.6 GB.  With all phases in one
+            process the high-water mark is the run phase's ~1 GB, well
+            inside the 15 GB host.  These are conservative estimates, not
+            instrumented measurements (except the measured 9.1M nnz and
+            per-phase wall times above).
 """
 
 from __future__ import annotations
@@ -592,6 +603,14 @@ def load_rating_stats(tag: str | None, payload: dict[str, np.ndarray]) -> dict[s
         payload["user_ids"].astype(np.int64).tobytes()
     ):
         raise SystemExit("rating stats user alignment mismatch")
+    if str(stats["payload_book_hash"][()]) != _bytes_sha256(
+        np.asarray(payload["work_ids"]).tobytes()
+    ):
+        raise SystemExit("rating stats book alignment mismatch")
+    if int(stats["user_mean"].shape[0]) != len(payload["user_ids"]):
+        raise SystemExit("rating stats user_mean length mismatch")
+    if int(stats["book_mean"].shape[0]) != len(payload["work_ids"]):
+        raise SystemExit("rating stats book_mean length mismatch")
     return stats
 
 
@@ -666,7 +685,7 @@ def fetch_parent_edges(
          np.asarray(payload["user_ids"], dtype=np.int64)[parent_users].tolist()],
     )
     res = con.execute(
-        "select p.pi, p.ui, b.bi, e.rating "
+        "select p.pi, p.ui, p.user_id, b.bi, e.rating "
         "from ex.all_rating_events e "
         "join pusers p using (user_id) "
         "join wb b using (work_id) "
@@ -677,9 +696,14 @@ def fetch_parent_edges(
     if not np.array_equal(ui, parent_users[row]):
         raise SystemExit(
             "spectral edge mapping invariant failed: ui != parent_users[row]")
+    if not np.array_equal(res["user_id"], np.asarray(payload["user_ids"])[ui]):
+        raise SystemExit(
+            "spectral edge mapping invariant failed: raw user_id != "
+            "payload user_ids[ui]")
     return {
         "row": row,
         "ui": ui,
+        "user_id": res["user_id"].astype(np.int64),
         "col": res["bi"].astype(np.int32),
         "rating": res["rating"].astype(np.int32),
     }
@@ -689,12 +713,15 @@ def spectral_edge_coverage(
     con: duckdb.DuckDBPyConnection,
     payload: dict[str, np.ndarray],
     parent_users: np.ndarray,
+    edges: dict[str, np.ndarray] | None = None,
 ) -> dict[str, Any]:
     """Edge coverage of a parent over the payload universe: number of parent
     users, users with >=1 eligible-book rating edge, empty-row count/fraction
     and min/median/max nnz among nonempty rows.  Descriptive only; no
-    preregistered success threshold on the empty-row fraction."""
-    edges = fetch_parent_edges(con, payload, parent_users)
+    preregistered success threshold on the empty-row fraction.  Pass the
+    edges returned by fetch_parent_edges to avoid a second database fetch."""
+    if edges is None:
+        edges = fetch_parent_edges(con, payload, parent_users)
     n_users = len(parent_users)
     nnz_per_row = np.bincount(edges["row"], minlength=n_users)
     nonempty = nnz_per_row[nnz_per_row > 0]
@@ -732,13 +759,20 @@ def residual_csr(
     return M
 
 
-def leading_user_direction(M: csr_matrix, iters: int = POWER_ITERS,
-                           tol: float = POWER_TOL) -> np.ndarray:
-    """Leading left singular direction by deterministic power iteration."""
+def leading_user_direction_diag(
+    M: csr_matrix, iters: int = POWER_ITERS, tol: float = POWER_TOL,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    """Leading left singular direction by deterministic power iteration,
+    with convergence diagnostics (iterations used, final successive-vector
+    cosine, whether the tolerance was reached before the iteration cap).
+    Diagnostics are recorded only; the algorithm is never changed by them."""
     u = np.ones(M.shape[0], dtype=np.float64)
     u /= np.linalg.norm(u)
     previous = None
-    for _ in range(iters):
+    iters_used = 0
+    final_cos = float("nan")
+    converged = False
+    for it in range(iters):
         v = M.T @ u
         nv = np.linalg.norm(v)
         if nv < 1e-12:
@@ -748,12 +782,30 @@ def leading_user_direction(M: csr_matrix, iters: int = POWER_ITERS,
         if nu < 1e-12:
             break
         u2 /= nu
-        if previous is not None and float(u2 @ previous) > tol:
-            u = u2
-            break
+        if previous is not None:
+            final_cos = float(u2 @ previous)
+            if final_cos > tol:
+                u = u2
+                iters_used = it + 1
+                converged = True
+                break
         previous = u2
         u = u2
-    return u
+        iters_used = it + 1
+    diag = {
+        "iterations_used": int(iters_used),
+        "final_successive_cos": float(final_cos),
+        "converged_within_cap": bool(converged),
+        "tolerance": float(tol),
+        "iteration_cap": int(iters),
+    }
+    return u, diag
+
+
+def leading_user_direction(M: csr_matrix, iters: int = POWER_ITERS,
+                           tol: float = POWER_TOL) -> np.ndarray:
+    """Leading left singular direction by deterministic power iteration."""
+    return leading_user_direction_diag(M, iters, tol)[0]
 
 
 def median_split(members: np.ndarray, coord: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -770,26 +822,43 @@ def spectral_tree(
     parent_users: np.ndarray,
     parent_j: int,
     spec: dict[str, Any],
-) -> dict[str, np.ndarray]:
-    """Recursive balanced spectral bisection of the parent users."""
+) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
+    """Recursive balanced spectral bisection of the parent users.
+
+    Returns (nodes, diagnostics) where diagnostics carries the edge-coverage
+    summary derived from the SAME edge matrix that was fetched for the split
+    (no second fetch) plus power-iteration diagnostics for the root split
+    and both 40k child splits.  Descriptive integrity metadata only; never
+    alters the split.
+    """
     n = len(parent_users)
     half = n // 2
     quarter = half // 2
     edges = fetch_parent_edges(con, payload, parent_users)
     M = residual_csr(edges, stats, n, len(payload["work_ids"]))
+    coverage = spectral_edge_coverage(con, payload, parent_users, edges=edges)
     del edges
-    coord = leading_user_direction(M, spec["arms"]["spectral"][
-        "representation"]["power_iters"])
+    coord, root_diag = leading_user_direction_diag(
+        M, spec["arms"]["spectral"]["representation"]["power_iters"])
     g0, g1 = median_split(parent_users, coord)
     nodes: dict[str, np.ndarray] = {"40k:0": g0, "40k:1": g1}
+    child_diags: dict[str, dict[str, Any]] = {}
     for ci, (g, Mg) in enumerate(((g0, M[np.searchsorted(parent_users, g0)]),
                                   (g1, M[np.searchsorted(parent_users, g1)]))):
-        sub_coord = leading_user_direction(
+        sub_coord, sub_diag = leading_user_direction_diag(
             Mg, spec["arms"]["spectral"]["representation"]["power_iters"])
+        child_diags[f"40k:{ci}"] = sub_diag
         x0, x1 = median_split(g, sub_coord)
         nodes[f"20k:{ci}:0"] = x0
         nodes[f"20k:{ci}:1"] = x1
-    return nodes
+    diagnostics = {
+        "edge_coverage": coverage,
+        "power_iterations": {
+            "root": root_diag,
+            **child_diags,
+        },
+    }
+    return nodes, diagnostics
 
 
 # ---------------------------------------------------------------------------
@@ -855,9 +924,12 @@ def write_chunk(
     parent_j: int,
     parent_users: np.ndarray,
     nodes: dict[str, list[dict[str, Any]]],
+    diagnostics: dict[str, Any] | None = None,
 ) -> Path:
     """nodes: list of per-node dicts with 'path', 'repl', 'run' and
-    'members' (members never stored, only hashed)."""
+    'members' (members never stored, only hashed).  diagnostics: optional
+    descriptive integrity metadata (e.g. spectral edge coverage and
+    power-iteration convergence) recorded verbatim in the chunk."""
     order = spec["arms"][arm]["node_order"]
     node_sizes = spec["arms"][arm]["node_sizes"]
     n = len(nodes)
@@ -911,25 +983,26 @@ def write_chunk(
     parent_arr = np.full(n, parent_j, dtype=np.int32)
     cpath = chunk_path(tag, arm, parent_j)
     cpath.parent.mkdir(parents=True, exist_ok=True)
-    _write_npz_atomic(
-        cpath,
-        {
-            "prefs": prefs,
-            "directions": directions,
-            "node_arm": np.asarray([arm] * n, dtype="U8"),
-            "node_parent": parent_arr,
-            "node_repl": repl_arr,
-            "node_path": path_str,
-            "node_size": size_arr,
-            "expected_sizes": np.asarray(expected_sizes, dtype=np.int32),
-            "spec_hash": np.asarray(_param_hash(spec)),
-            "user_hash": np.asarray(_users_hash(parent_users)),
-            "record_json": np.asarray(
-                [json.dumps(rec, separators=(",", ":")) for rec in records],
-                dtype="U",
-            ),
-        },
-    )
+    arrays = {
+        "prefs": prefs,
+        "directions": directions,
+        "node_arm": np.asarray([arm] * n, dtype="U8"),
+        "node_parent": parent_arr,
+        "node_repl": repl_arr,
+        "node_path": path_str,
+        "node_size": size_arr,
+        "expected_sizes": np.asarray(expected_sizes, dtype=np.int32),
+        "spec_hash": np.asarray(_param_hash(spec)),
+        "user_hash": np.asarray(_users_hash(parent_users)),
+        "record_json": np.asarray(
+            [json.dumps(rec, separators=(",", ":")) for rec in records],
+            dtype="U",
+        ),
+    }
+    if diagnostics is not None:
+        arrays["diagnostics_json"] = np.asarray(
+            [json.dumps(diagnostics, separators=(",", ":"))], dtype="U")
+    _write_npz_atomic(cpath, arrays)
     return cpath
 
 
@@ -1083,8 +1156,8 @@ def phase_run(args: argparse.Namespace) -> None:
                                 "members": members, "run": run,
                             })
                 else:
-                    tree = spectral_tree(con, payload, stats, parent_users,
-                                         parent_j, spec)
+                    tree, spectral_diag = spectral_tree(
+                        con, payload, stats, parent_users, parent_j, spec)
                     for path in spec["arms"]["spectral"]["node_order"]:
                         members = tree[path]
                         rng = np.random.default_rng(
@@ -1097,8 +1170,12 @@ def phase_run(args: argparse.Namespace) -> None:
                         })
                 for nd in nodes:
                     nd["features"] = _label_free_child_features(nd["run"], eligible)
-                write_chunk(args.tag, spec, arm, parent_j, parent_users, nodes)
+                write_chunk(
+                    args.tag, spec, arm, parent_j, parent_users, nodes,
+                    diagnostics=spectral_diag if arm == "spectral" else None)
                 del nodes
+                if arm == "spectral":
+                    del spectral_diag
                 done += (scope["random_replicates"] if arm == "random"
                          else 1) * 6
                 print(
@@ -1338,11 +1415,19 @@ def _effective_dim_svd(mat: np.ndarray) -> float:
 def _effective_dim_gram(sim_sub: np.ndarray) -> float:
     """Effective dimension from the centered cluster Gram matrix.
 
-    With G = X X^T and H = I - 11^T/n, the nonzero eigenvalues of
-    Gc = H G H are the squared singular values of the centered X, so the
-    (members x books) SVD is replaced by an n_members x n_members eigen
-    decomposition (n_members is the cluster size, far smaller than 26.4k
-    books).  Small numerical negative eigenvalues are clipped to zero.
+    With G = X X^T and H = I - 11^T/n, the centered Gram matrix is
+    Gc = H G H, whose nonzero eigenvalues are the squared singular values
+    of the centered X.  The participation ratio needs only sums of
+    eigenvalues:
+
+      sum(lambda) = trace(Gc)
+      sum(lambda^2) = ||Gc||_F^2      (PSD symmetric)
+
+    so effective_dim = trace(Gc)^2 / ||Gc||_F^2 is computed in O(n_members^2)
+    without any eigendecomposition.  Tiny numerical asymmetry/negativity is
+    absorbed by the explicit symmetric centering; the statistic is
+    mathematically identical to the dense-SVD reference
+    (_effective_dim_svd), which stays for smoke comparison only.
     """
     n = sim_sub.shape[0]
     if n <= 1:
@@ -1350,9 +1435,11 @@ def _effective_dim_gram(sim_sub: np.ndarray) -> float:
     G = np.asarray(sim_sub, dtype=np.float64)
     Gc = G - G.mean(axis=0, keepdims=True) \
              - G.mean(axis=1, keepdims=True) + G.mean()
-    lam = np.maximum(np.linalg.eigvalsh(Gc), 0.0)
-    total = lam.sum()
-    return float(total**2 / np.sum(lam**2)) if np.sum(lam**2) > 0 else 0.0
+    trace = float(np.trace(Gc))
+    frob2 = float(np.sum(Gc * Gc))
+    if frob2 <= 0.0 or trace <= 0.0:
+        return 0.0
+    return float(trace * trace / frob2)
 
 
 def _avg_linkage_cuts(sim: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -1426,18 +1513,21 @@ def _mode_recurrence_stats(
 
 
 def _recurrence_stats_for_rows(
-    pref_reps: np.ndarray,
-    rows: np.ndarray,
+    sim_local: np.ndarray,
+    rows_local: np.ndarray,
     repl_labels: np.ndarray,
     tau: float,
 ) -> dict[str, float]:
     """Concentration (largest cluster share) and recurrent-mode count of a
-    set of 20k-descendant rows given their replicate labels."""
-    rows = np.asarray(rows)
+    set of 20k-descendant rows given their replicate labels, computed from
+    a precomputed group-level float64 cosine similarity matrix (rows_local
+    are local indices into that matrix); no book-space dot products."""
+    rows_local = np.asarray(rows_local)
     repl_labels = np.asarray(repl_labels)
-    sub = pref_reps[rows]
-    cl = _fast_avg_link_clusters(sub, tau)
-    fracs = [len(c) / len(rows) for c in cl]
+    sub = sim_local[np.ix_(rows_local, rows_local)]
+    _d, z = _avg_linkage_cuts(sub)
+    cl = _cut_clusters(z, len(rows_local), tau)
+    fracs = [len(c) / len(rows_local) for c in cl]
     n_recurrent = int(sum(
         1 for c in cl if len({int(repl_labels[m]) for m in c}) >= 2))
     return {
@@ -1447,7 +1537,7 @@ def _recurrence_stats_for_rows(
 
 
 def _recurrence_block_permutation_null(
-    pref_reps: np.ndarray,
+    sim_local: np.ndarray,
     blocks: dict[tuple[int, int], np.ndarray],
     parents: np.ndarray,
     tau: float,
@@ -1466,6 +1556,10 @@ def _recurrence_block_permutation_null(
     block, one replicate-1 block and one replicate-2 block, generally from
     different real parents, preserving child size, four-sibling structure,
     tree paths, replicate labels and endpoint vectors.
+
+    All clustering uses 12x12 similarity submatrices sliced from the
+    precomputed group-level similarity matrix sim_local; the book-space
+    12x26,418 cosine products are computed exactly once for the whole group.
     """
     repls = sorted({r for (_j, r) in blocks})
     conc = np.full(n_permutations, np.nan)
@@ -1488,7 +1582,7 @@ def _recurrence_block_permutation_null(
                 continue
             rows = np.concatenate(rows)
             labels = np.concatenate(labels)
-            st = _recurrence_stats_for_rows(pref_reps, rows, labels, tau)
+            st = _recurrence_stats_for_rows(sim_local, rows, labels, tau)
             c_list.append(st["concentration"])
             n_list.append(float(st["n_recurrent_modes"]))
         if c_list:
@@ -1656,7 +1750,12 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 )
 
     # ---- within-parent recurrence (random arm, 20k descendants, pref) ----
+    # The group-level float64 cosine similarity matrix is computed ONCE and
+    # every within-parent or null clustering extracts a 12x12 submatrix
+    # (no book-space dot products inside any loop).
     r20k = groups["r20k"]
+    r20k_mat64 = pref_reps[r20k].astype(np.float64)
+    r20k_sim = r20k_mat64 @ r20k_mat64.T
     r20k_by_parent: dict[int, list[int]] = {}
     for i in r20k:
         r20k_by_parent.setdefault(int(parent_of[i]), []).append(i)
@@ -1671,15 +1770,19 @@ def phase_geometry(args: argparse.Namespace) -> None:
             idx = r20k_by_parent.get(j, [])
             if not idx:
                 continue
-            sub = pref_reps[np.asarray(idx)]
-            cl = _fast_avg_link_clusters(sub, tau)
+            local_rows = np.searchsorted(r20k, idx)
+            _d, z = _avg_linkage_cuts(
+                r20k_sim[np.ix_(local_rows, local_rows)])
+            cl_local = _cut_clusters(z, len(idx), tau)
+            cl = [[idx[li] for li in c] for c in cl_local]
             modes = []
             fractions = []
             for mi, m in enumerate(cl):
                 stats = _mode_recurrence_stats(m, repl_of[np.asarray(idx)],
                                                len(idx))
                 centroid = _unit_rows(
-                    sub[m].mean(axis=0, keepdims=True))[0].astype(np.float32)
+                    pref_reps[np.asarray(m)].mean(axis=0, keepdims=True)
+                )[0].astype(np.float32)
                 cent_key = f"recur_cent_{tau:.2f}_p{j:03d}_{len(modes)}"
                 mode_id = f"recurrent_mode_{tau:.2f}_p{j:03d}_{mi}"
                 npz_out[cent_key] = centroid
@@ -1825,7 +1928,8 @@ def phase_geometry(args: argparse.Namespace) -> None:
     parents_with_children = sorted({int(p) for p in parent_of})
     blocks: dict[tuple[int, int], np.ndarray] = {}
     for i in r20k:
-        blocks.setdefault((int(parent_of[i]), int(repl_of[i])), []).append(i)
+        blocks.setdefault((int(parent_of[i]), int(repl_of[i])), []).append(
+            int(np.searchsorted(r20k, i)))
     blocks = {k: np.asarray(v, dtype=np.int32) for k, v in blocks.items()}
     nulls: dict[str, Any] = {}
     for tau in CLUSTER_TAUS:
@@ -1844,8 +1948,18 @@ def phase_geometry(args: argparse.Namespace) -> None:
             if obs_nrec else float("nan"),
         }
         perm = _recurrence_block_permutation_null(
-            pref_reps, blocks, np.asarray(parents_with_children),
+            r20k_sim, blocks, np.asarray(parents_with_children),
             tau, rng_null, NULL_PERMUTATIONS)
+        n_perms = int(NULL_PERMUTATIONS)
+        p_conc = float((1 + np.nansum(
+            perm["concentration"] >= observed["mean_concentration"]))
+            / (n_perms + 1))
+        p_nrec = float((1 + np.nansum(
+            perm["n_recurrent"] >= observed["mean_n_recurrent"]))
+            / (n_perms + 1))
+        p_frac = float((1 + np.nansum(
+            perm["frac_2plus_recurrent"] >= observed["frac_2plus_recurrent"]))
+            / (n_perms + 1))
         nulls[f"recurrence_{tau:.2f}"] = {
             "observed": observed,
             "null_mean_concentration": float(np.nanmean(perm["concentration"])),
@@ -1854,16 +1968,13 @@ def phase_geometry(args: argparse.Namespace) -> None:
             "null_sd_n_recurrent": float(np.nanstd(perm["n_recurrent"])),
             "null_mean_frac_2plus": float(np.nanmean(perm["frac_2plus_recurrent"])),
             "null_sd_frac_2plus": float(np.nanstd(perm["frac_2plus_recurrent"])),
-            "observed_percentile_concentration": float(np.nanmean(
-                perm["concentration"] >= observed["mean_concentration"])),
-            "observed_percentile_n_recurrent": float(np.nanmean(
-                perm["n_recurrent"] >= observed["mean_n_recurrent"])),
-            "observed_percentile_frac_2plus": float(np.nanmean(
-                perm["frac_2plus_recurrent"] >= observed["frac_2plus_recurrent"])),
+            "empirical_p_upper_mean_concentration": p_conc,
+            "empirical_p_upper_mean_n_recurrent": p_nrec,
+            "empirical_p_upper_frac_2plus_recurrent": p_frac,
             "nondegenerate": bool(
                 np.nanstd(perm["concentration"]) > 1e-12
                 and np.nanstd(perm["n_recurrent"]) > 1e-12),
-            "n_permutations": int(NULL_PERMUTATIONS),
+            "n_permutations": n_perms,
         }
     # mixture null per tau: parent endpoints permuted across parents while
     # each parent's own recurrent-mode set at that tau stays fixed
@@ -1886,6 +1997,9 @@ def phase_geometry(args: argparse.Namespace) -> None:
             perm_rels.append(float(np.mean(vals)) if vals else float("nan"))
         perm_rels = np.asarray(perm_rels, dtype=np.float64)
         perm_rels = perm_rels[np.isfinite(perm_rels)]
+        n_perms = int(NULL_PERMUTATIONS)
+        p_rel = float((1 + np.sum(perm_rels >= observed_mean_rel))
+                      / (n_perms + 1)) if len(perm_rels) else float("nan")
         nulls[f"mixture_rel_{tau:.2f}"] = {
             "observed": float(observed_mean_rel),
             "n_observed_parents": int(len(rel_obs)),
@@ -1893,11 +2007,10 @@ def phase_geometry(args: argparse.Namespace) -> None:
             "null_sd": float(perm_rels.std()) if len(perm_rels) else float("nan"),
             "null_min": float(perm_rels.min()) if len(perm_rels) else float("nan"),
             "null_max": float(perm_rels.max()) if len(perm_rels) else float("nan"),
-            "observed_percentile": float(np.mean(perm_rels >= observed_mean_rel))
-            if len(perm_rels) else float("nan"),
+            "empirical_p_upper": p_rel,
             "nondegenerate": bool(np.std(perm_rels) > 1e-12)
             if len(perm_rels) else False,
-            "n_permutations": int(NULL_PERMUTATIONS),
+            "n_permutations": n_perms,
         }
     geometry["nulls"] = nulls
 
@@ -2192,9 +2305,9 @@ def phase_prereport(args: argparse.Namespace) -> None:
         "| tau | parents with matches | distinct-mode mappings |",
         "|---|---:|---:|",
     ]
-    n_distinct = 0
-    n_with = 0
     for tau in CLUSTER_TAUS:
+        n_with = 0
+        n_distinct = 0
         for p in geometry["cross_arm"][str(tau)].values():
             if p.get("matches"):
                 n_with += 1
@@ -2234,32 +2347,33 @@ def phase_prereport(args: argparse.Namespace) -> None:
         "Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) "
         "4x20k block permutations (synthetic parents sample one block from "
         "each replicate, generally from different real parents). Mixture "
-        "nulls: parent endpoints permuted across parents per tau.",
+        "nulls: parent endpoints permuted across parents per tau. "
+        "`empirical p_upper` is the conventional upper-tail null fraction "
+        "(1 + count(null >= observed)) / (n_permutations + 1).",
         "",
-        "| statistic | observed | null mean | null sd | null min / max | observed percentile |",
-        "|---|---:|---:|---:|---:|---:|",
+        "| statistic | observed | null mean | null sd | empirical p_upper |",
+        "|---|---:|---:|---:|---:|",
     ]
+    _NULL_STAT_FIELDS = (
+        ("mean_concentration", "mean concentration"),
+        ("mean_n_recurrent", "mean n recurrent modes"),
+        ("frac_2plus_recurrent", "frac parents >= 2 recurrent modes"),
+    )
     for key, val in geometry["nulls"].items():
         obs = val["observed"]
         if isinstance(obs, dict):
-            for stat, label in (
-                ("mean_concentration", "mean concentration"),
-                ("mean_n_recurrent", "mean n recurrent modes"),
-                ("frac_2plus_recurrent", "frac parents >= 2 recurrent modes"),
-            ):
+            for stat, label in _NULL_STAT_FIELDS:
                 lines.append(
                     f"| {key} {label} | {_fmt_float(obs[stat])} | "
                     f"{_fmt_float(val.get('null_mean_' + stat))} | "
                     f"{_fmt_float(val.get('null_sd_' + stat))} | "
-                    f"n/a / n/a | "
-                    f"{_fmt_float(val.get('observed_percentile_' + stat))} |"
+                    f"{_fmt_float(val.get('empirical_p_upper_' + stat))} |"
                 )
         else:
             lines.append(
                 f"| {key} | {_fmt_float(obs)} | "
                 f"{_fmt_float(val['null_mean'])} | {_fmt_float(val['null_sd'])} | "
-                f"{_fmt_float(val.get('null_min'))} / {_fmt_float(val.get('null_max'))} | "
-                f"{_fmt_float(val.get('observed_percentile'))} |"
+                f"{_fmt_float(val.get('empirical_p_upper'))} |"
             )
     lines += [
         "",
@@ -2279,28 +2393,86 @@ def phase_prereport(args: argparse.Namespace) -> None:
 
 def phase_unblind(args: argparse.Namespace) -> None:
     """Post-hoc semantic evaluation, only after every structural artifact is
-    sealed.  Never run during the label-blind campaign task."""
+    sealed.  Sequencing (mirrors the Natural Amplification Census):
+
+    1. verify census/geometry/seal-manifest hashes and the frozen source
+       list, BEFORE any semantic load;
+    2. load the FROZEN geometry JSON/NPZ (recurrence modes, centroids) and
+       the frozen consolidated census;
+    3. only THEN load the post-hoc semantic context;
+    4. never alter geometry and never select modes using semantic
+       information.
+
+    Evaluates (all label-free structural objects, embedded back into full
+    work-index space via eligible_idx):
+
+    - every frozen child preference endpoint (blob["prefs"]);
+    - every frozen 80k parent preference endpoint (blob["parent_prefs"]);
+    - every recurrent random mode for every tau, using its EXACT frozen
+      normalized preference centroid loaded from the geometry NPZ via
+      centroid_key (never recomputed post-unblind), with structural
+      identity: tau, parent, mode_id, centroid_key, size and distinct
+      replicate count.
+
+    Descriptive only; no new semantic significance threshold is defined.
+    """
     global SEMANTIC_CONTEXT_LOADED
+    assert not SEMANTIC_CONTEXT_LOADED
+
+    # ---- 1. integrity + hash verification BEFORE any semantic load ----
     _verify_manifest(args)
+    geo_json, geo_npz = geometry_paths(args.tag)
+    if not geo_json.exists() or not geo_npz.exists():
+        raise SystemExit("geometry not frozen yet; refusing to unblind")
+    geometry = json.loads(geo_json.read_text(encoding="utf-8"))
+    if geometry["method"].get("semantic_context_loaded") is not False \
+            or geometry["method"].get("unblinded") is not False:
+        raise SystemExit("geometry claims semantic/unblinded state; refusing")
+    seal = geometry.get("seal")
+    if not seal or seal.get("semantic_context_loaded") is not False \
+            or seal.get("unblinded") is not False:
+        raise SystemExit("seal missing or claims semantic/unblinded; refusing")
+    npz_path, json_path = census_paths(args.tag)
+    if not npz_path.exists() or not json_path.exists():
+        raise SystemExit("consolidated artifact missing; run consolidate first")
+    if _sha256(npz_path) != seal["census_npz_sha256"]:
+        raise SystemExit("census NPZ hash mismatch vs seal; refusing to unblind")
+    if _sha256(geo_npz) != seal["geometry_npz_sha256"]:
+        raise SystemExit("geometry NPZ hash mismatch vs seal; refusing to unblind")
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    records = data["records"]
+    ids = [r["source_id"] for r in records]
+    if seal["n_sources"] != len(records) or seal["sources"] != ids:
+        raise SystemExit("sealed source list mismatch; refusing to unblind")
+
+    # ---- 2. load frozen artifacts (still label-blind) ----
+    blob = np.load(npz_path, allow_pickle=False)
+    gblob = np.load(geo_npz, allow_pickle=False)
+    payload, _, _ = year.load_matrix()
+    eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
+    eligible_idx = np.flatnonzero(eligible)
+    n_books = int(len(payload["work_ids"]))
+
+    def embed_full(centroid: np.ndarray) -> np.ndarray:
+        full = np.zeros(n_books, dtype=np.float64)
+        full[eligible_idx] = np.asarray(centroid, dtype=np.float64)
+        return full
+
+    # ---- 3. the ONLY semantic load ----
+    print("Loading post-hoc semantic context (unblind)", flush=True)
     from curators_explorer.scripts import (
         research_natural_amplification_census as census,
         research_seedless_spectral_pilot as spectral_mod,
     )
-    SEMANTIC_CONTEXT_LOADED = True
-    geo_json, geo_npz = geometry_paths(args.tag)
-    npz_path, json_path = census_paths(args.tag)
-    geometry = json.loads(geo_json.read_text(encoding="utf-8"))
-    blob = np.load(npz_path, allow_pickle=False)
-    payload, _, _ = year.load_matrix()
-    eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
     meta, eval_sets = spectral_mod.load_posthoc_context(payload["work_ids"])
-    eligible_idx = np.flatnonzero(eligible)
+    SEMANTIC_CONTEXT_LOADED = True
 
     def evaluate(score: np.ndarray) -> dict[str, int]:
         pref = {
             "score": np.asarray(score, dtype=np.float64),
             "mean": np.asarray(score, dtype=np.float64),
-            "reader_mass": np.where(eligible, payload["book_n"], 0.0).astype(np.float64),
+            "reader_mass": np.where(
+                eligible, payload["book_n"], 0.0).astype(np.float64),
         }
         _rows, metrics = census._eval_pref(
             pref["score"], pref["reader_mass"], payload["work_ids"],
@@ -2308,24 +2480,61 @@ def phase_unblind(args: argparse.Namespace) -> None:
         )
         return metrics
 
-    rows = []
-    for i, rec in enumerate(json.loads(json_path.read_text(encoding="utf-8"))
-                             ["records"]):
+    rows: list[dict[str, Any]] = []
+
+    # ---- 4. evaluate frozen child endpoints ----
+    for i, rec in enumerate(records):
         rows.append({
+            "kind": "child",
             "source_id": rec["source_id"],
+            "arm": rec["arm"],
+            "parent": int(rec["parent_j"]),
+            "replicate": int(rec["replicate"]),
+            "path": rec["path"],
+            "size": int(rec["size"]),
             "metrics": evaluate(blob["prefs"][i]),
         })
-    for key, centroid in geometry.get("recurrent_mode_centroid_keys", []):
+
+    # ---- evaluate frozen parent endpoints ----
+    n_parents = int(blob["parent_prefs"].shape[0])
+    for j in range(n_parents):
         rows.append({
-            "source_id": f"recurrent_mode:{key}",
-            "metrics": evaluate(
-                np.zeros(len(payload["work_ids"]), dtype=np.float64) if False
-                else blob["prefs"][0]),  # placeholder; real unblind later
+            "kind": "parent",
+            "source_id": f"parent:{j}",
+            "parent": j,
+            "replicate": None,
+            "path": None,
+            "size": int(blob["parent_prefs"].shape[1]),
+            "metrics": evaluate(blob["parent_prefs"][j]),
         })
+
+    # ---- evaluate frozen recurrent random modes (per tau) ----
+    for tau in CLUSTER_TAUS:
+        per_parent = geometry["recurrence"][str(tau)].get("per_parent", {})
+        for j_str, pp in per_parent.items():
+            for m in pp.get("modes", []):
+                if not m["recurrent"]:
+                    continue
+                centroid = np.asarray(gblob[m["centroid_key"]], dtype=np.float64)
+                rows.append({
+                    "kind": "recurrent_mode",
+                    "source_id": m["mode_id"],
+                    "tau": float(tau),
+                    "parent": int(j_str),
+                    "mode_id": m["mode_id"],
+                    "centroid_key": m["centroid_key"],
+                    "size": int(m["size"]),
+                    "distinct_replicates": int(m["n_distinct_replicates"]),
+                    "replicates": list(m["replicates"]),
+                    "metrics": evaluate(embed_full(centroid)),
+                })
+
     out = posthoc_path(args.tag)
-    out.write_text(json.dumps({"records": rows, "unblinded": True}, indent=1),
-                   encoding="utf-8")
-    print(f"unblind written: {out}", flush=True)
+    out.write_text(json.dumps(
+        {"records": rows, "unblinded": True,
+         "semantic_context_loaded": True},
+        indent=1), encoding="utf-8")
+    print(f"unblind written: {out} ({len(rows)} records)", flush=True)
 
 
 # ---------------------------------------------------------------------------
@@ -2386,8 +2595,20 @@ def _smoke_partition_tests(payload: dict[str, np.ndarray],
             [payload["work_ids"].tolist()],
         )
         stats = load_rating_stats("smoke", payload)
-        tree1 = spectral_tree(con, payload, stats, small, 0, spec)
-        tree2 = spectral_tree(con, payload, stats, small, 0, spec)
+        with np.load(rating_stats_path("smoke"), allow_pickle=False) as saved:
+            hashes_ok = (
+                str(saved["payload_user_hash"][()])
+                == _bytes_sha256(payload["user_ids"].astype(np.int64).tobytes())
+                and str(saved["payload_book_hash"][()])
+                == _bytes_sha256(np.asarray(payload["work_ids"]).tobytes())
+                and saved["user_mean"].shape[0] == len(payload["user_ids"])
+                and saved["book_mean"].shape[0] == len(payload["work_ids"])
+            )
+        checks.append({"check": "rating_stats_alignment_hashes",
+                       "ok": bool(hashes_ok),
+                       "detail": "user+book payload hashes and mean lengths verified"})
+        tree1, _diag1 = spectral_tree(con, payload, stats, small, 0, spec)
+        tree2, _diag2 = spectral_tree(con, payload, stats, small, 0, spec)
         checks.append({"check": "spectral_tree_deterministic", "ok":
                        all(np.array_equal(tree1[k], tree2[k]) for k in tree1)})
         checks.append({"check": "spectral_tree_sizes", "ok":
@@ -2427,20 +2648,19 @@ def _smoke_partition_tests(payload: dict[str, np.ndarray],
         checks.append({"check": "residual_shape", "ok":
                        M.shape[0] == len(small) and M.shape[1] == len(payload["work_ids"])})
 
-        # audit fix #1/#7: edges carry payload indices that map back to the
-        # parent rows AND raw Goodreads user ids exactly
+        # audit fix #1/#6/#7: edges carry payload indices that map back to
+        # the parent rows AND raw Goodreads user ids exactly
         ui_ok = np.array_equal(edges["ui"], small[edges["row"]])
         checks.append({"check": "edge_ui_matches_parent_row", "ok": bool(ui_ok)})
         pid = payload["user_ids"]
-        roundtrip_ok = bool(np.all(pid[edges["ui"]] >= 0)
-                            and np.all(pid[edges["ui"]] <= np.iinfo(pid.dtype).max))
-        checks.append({"check": "edge_raw_id_roundtrip", "ok": roundtrip_ok,
-                       "detail": f"sampled {min(5, len(edges['ui']))} ids: "
-                       f"{[int(pid[edges['ui'][k]]) for k in range(min(5, len(edges['ui'])))]}"})
+        roundtrip_ok = np.array_equal(edges["user_id"], pid[edges["ui"]])
+        checks.append({"check": "edge_raw_id_roundtrip", "ok": bool(roundtrip_ok),
+                       "detail": f"sampled {min(5, len(edges['user_id']))} raw ids: "
+                       f"{[int(edges['user_id'][k]) for k in range(min(5, len(edges['user_id'])))]}"})
         edges2 = fetch_parent_edges(con, payload, small)
         checks.append({"check": "spectral_edges_deterministic", "ok":
                        all(np.array_equal(edges[k], edges2[k])
-                           for k in ("row", "ui", "col", "rating"))})
+                           for k in ("row", "ui", "user_id", "col", "rating"))})
         cov = spectral_edge_coverage(con, payload, small)
         checks.append({"check": "spectral_edge_coverage_valid", "ok":
                        cov["n_with_edges"] <= cov["n_parent_users"]
@@ -2637,6 +2857,7 @@ def _smoke_geometry_tests(spec: dict[str, Any]) -> list[dict[str, Any]]:
         mode_a, mode_a, mode_b,
         mode_b, mode_b, mode_a,
     ]).astype(np.float32)
+    fake_sim = fake_rows.astype(np.float64) @ fake_rows.astype(np.float64).T
     blocks_fake: dict[tuple[int, int], np.ndarray] = {}
     k = 0
     for j in range(2):
@@ -2644,13 +2865,168 @@ def _smoke_geometry_tests(spec: dict[str, Any]) -> list[dict[str, Any]]:
             blocks_fake[(j, r)] = np.arange(k, k + 4, dtype=np.int32)
             k += 4
     perm = _recurrence_block_permutation_null(
-        fake_rows, blocks_fake, np.arange(2), 0.70,
+        fake_sim, blocks_fake, np.arange(2), 0.70,
         np.random.default_rng(0), 40)
     null_sd = float(np.nanstd(perm["concentration"]))
     checks.append({
         "check": "recurrence_null_nondegenerate_multiple_parents",
         "ok": null_sd > 1e-12,
         "detail": f"sd={null_sd:.4f} mean={float(np.nanmean(perm['concentration'])):.4f}",
+    })
+
+    # sliced-similarity recurrence clustering == direct-vector clustering
+    # (the recurrence/null optimization must not change any cluster)
+    sim2 = mat2.astype(np.float64) @ mat2.astype(np.float64).T
+    slice_ok = True
+    slice_detail = []
+    for tau in CLUSTER_TAUS:
+        direct = sorted([sorted(c) for c in _fast_avg_link_clusters(mat2, tau)])
+        _d, z = _avg_linkage_cuts(sim2)
+        sliced = sorted([sorted(c) for c in _cut_clusters(z, len(mat2), tau)])
+        if direct != sliced:
+            slice_ok = False
+            slice_detail.append(
+                f"tau={tau:.2f}: direct={direct} sliced={sliced}")
+    checks.append({
+        "check": "recurrence_slice_equals_direct",
+        "ok": slice_ok,
+        "detail": "; ".join(slice_detail) if slice_detail
+        else "sliced 12x12 similarity clustering matches direct vectors "
+             f"at all {len(CLUSTER_TAUS)} taus",
+    })
+
+    # effective dimension: centered-Gram trace/Frobenius (O(n^2)) must agree
+    # with the dense-SVD reference within tight tolerance
+    eff_mat = np.vstack([
+        noisy(a) for _ in range(30)
+    ]).astype(np.float32)
+    eff_sim = eff_mat.astype(np.float64) @ eff_mat.astype(np.float64).T
+    eff_svd = _effective_dim_svd(eff_mat)
+    eff_gram = _effective_dim_gram(eff_sim)
+    checks.append({
+        "check": "effective_dim_gram_matches_svd",
+        "ok": abs(eff_gram - eff_svd) < 1e-6,
+        "detail": f"svd={eff_svd:.6f} gram={eff_gram:.6f}",
+    })
+    return checks
+
+
+def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
+    """The prereport must surface the SAME numbers as the frozen geometry:
+    null values (including the empirical upper-tail p-values) populated and
+    agreeing with the geometry JSON, and per-tau cross-arm counts that are
+    NOT cumulative across tau."""
+    checks: list[dict[str, Any]] = []
+    geo_json, _ = geometry_paths(tag)
+    geometry = json.loads(geo_json.read_text(encoding="utf-8"))
+    text = prereport_path(tag).read_text(encoding="utf-8")
+    lines = text.splitlines()
+
+    def section(start: str, end: str) -> list[str]:
+        out: list[str] = []
+        active = False
+        for ln in lines:
+            if ln.strip() == start:
+                active = True
+                continue
+            if active and ln.strip() == end:
+                break
+            if active:
+                out.append(ln)
+        return out
+
+    def cells(ln: str) -> list[str]:
+        return [c.strip() for c in ln.strip().strip("|").split("|")]
+
+    def close(a: str, b: Any) -> bool:
+        if b is None or (isinstance(b, float) and np.isnan(b)):
+            return a in ("n/a", "nan")
+        try:
+            return abs(float(a) - float(b)) < 1e-4
+        except ValueError:
+            return False
+
+    stat_by_label = {
+        "mean concentration": "mean_concentration",
+        "mean n recurrent modes": "mean_n_recurrent",
+        "frac parents >= 2 recurrent modes": "frac_2plus_recurrent",
+    }
+
+    mismatches: list[str] = []
+    null_lines = [ln for ln in section(
+        "### Label-free permutation nulls", "### Invariant checks")
+        if ln.startswith("|")]
+    for ln in null_lines:
+        c = cells(ln)
+        if len(c) != 5 or c[0] in ("statistic",):
+            continue
+        key_label = c[0]
+        geo_key = None
+        stat_name = None
+        for k in geometry["nulls"]:
+            if key_label == k:
+                geo_key, stat_name = k, None
+                break
+            if key_label.startswith(k + " "):
+                geo_key, stat_name = k, key_label[len(k) + 1:]
+                break
+        if geo_key is None:
+            mismatches.append(f"unrecognized null row {key_label}")
+            continue
+        val = geometry["nulls"][geo_key]
+        if stat_name is None:
+            fields = (("observed", val["observed"]),
+                      ("null_mean", val["null_mean"]),
+                      ("null_sd", val["null_sd"]),
+                      ("empirical_p_upper", val["empirical_p_upper"]))
+            if val["observed"] is None:
+                mismatches.append(f"{key_label}: observed n/a")
+        else:
+            fields = (
+                ("observed", val["observed"][stat_name]),
+                ("null_mean_" + stat_name, val.get("null_mean_" + stat_name)),
+                ("null_sd_" + stat_name, val.get("null_sd_" + stat_name)),
+                ("empirical_p_upper_" + stat_name,
+                 val.get("empirical_p_upper_" + stat_name)),
+            )
+            if val["observed"][stat_name] is None or np.isnan(
+                    val["observed"][stat_name]):
+                mismatches.append(f"{key_label}: observed n/a")
+        for cell, truth in zip(c[1:5], [f[1] for f in fields]):
+            if not close(cell, truth):
+                mismatches.append(
+                    f"{key_label}: report '{cell}' != geometry {truth}")
+    checks.append({
+        "check": "prereport_nulls_match_geometry",
+        "ok": not mismatches,
+        "detail": "; ".join(mismatches[:8]) if mismatches
+        else f"{len(null_lines)} null rows populated and matching geometry JSON",
+    })
+
+    mismatches = []
+    ca_lines = [ln for ln in section(
+        "### Cross-arm matching (spectral 20k children vs recurrent random modes)",
+        "### Parent-as-mixture geometry (convex hull of recurrent modes)")
+        if ln.startswith("|")]
+    for ln in ca_lines:
+        c = cells(ln)
+        if len(c) != 3 or c[0] == "tau":
+            continue
+        tau = float(c[0])
+        n_with = int(c[1])
+        n_distinct = int(c[2])
+        per_parent = geometry["cross_arm"][str(tau)]
+        exp_with = sum(1 for p in per_parent.values() if p.get("matches"))
+        exp_distinct = sum(p["distinct_modes"] for p in per_parent.values())
+        if n_with != exp_with or n_distinct != exp_distinct:
+            mismatches.append(
+                f"tau={tau:.2f}: report ({n_with},{n_distinct}) != "
+                f"geometry ({exp_with},{exp_distinct})")
+    checks.append({
+        "check": "prereport_cross_arm_per_tau",
+        "ok": not mismatches,
+        "detail": "; ".join(mismatches[:8]) if mismatches
+        else "cross-arm rows are per-tau (not cumulative) and match geometry",
     })
     return checks
 
@@ -2746,7 +3122,8 @@ def phase_smoke(args: argparse.Namespace) -> None:
                         nodes.append({"path": path, "repl": repl,
                                       "members": members, "run": run})
             else:
-                tree = spectral_tree(con, payload, stats, smoke_parent, 0, spec)
+                tree, spectral_diag = spectral_tree(
+                    con, payload, stats, smoke_parent, 0, spec)
                 for path in spec["arms"]["spectral"]["node_order"]:
                     members = tree[path]
                     rng = np.random.default_rng(
@@ -2757,7 +3134,9 @@ def phase_smoke(args: argparse.Namespace) -> None:
             eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
             for nd in nodes:
                 nd["features"] = _label_free_child_features(nd["run"], eligible)
-            write_chunk(tag, spec, arm, 0, smoke_parent, nodes)
+            write_chunk(
+                tag, spec, arm, 0, smoke_parent, nodes,
+                diagnostics=spectral_diag if arm == "spectral" else None)
             print(f"smoke chunk {arm} written", flush=True)
     finally:
         con.close()
@@ -2765,6 +3144,11 @@ def phase_smoke(args: argparse.Namespace) -> None:
     phase_consolidate(args)
     phase_geometry(args)
     phase_prereport(args)
+    checks += _smoke_prereport_tests(tag)
+    checks.append({"check": "unblind_not_run",
+                   "ok": not posthoc_path(tag).exists(),
+                   "detail": "phase_unblind is implemented but never invoked "
+                             "during label-blind smoke"})
 
     # firewall scan of all pre-unblind artifacts
     artifacts = [
