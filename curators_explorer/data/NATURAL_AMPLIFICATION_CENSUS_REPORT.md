@@ -1,4 +1,4 @@
-# Natural amplification census: a completely label-blind search for a literary basin
+# Natural amplification census: an internally label-blind search for a literary basin
 
 **Question.** If we amplify random reversal endpoints without ever consulting literary labels, does a distinct literary basin emerge naturally among the amplified outputs?
 
@@ -9,8 +9,11 @@
 ## Provenance
 
 - Command: `/home/ifrankling/unsw/novels/curators_explorer/scripts/research_natural_amplification_census.py --phase unblind`
-- Random seed: **20260817**
-- Git commit: `84ebea5fad0a5be596ab875d4f752e3048fb97d7`
+- Amplification/geometry seed: **20260817**; permutation-test seed: **20260818**.
+- Sealed geometry generating commit: `84ebea5fad0a5be596ab875d4f752e3048fb97d7`
+- Family-freeze / preregistration generating commit: `1ad5b33556e4d0b6387019146de6f070966054bd`
+- Unblind (post-hoc analysis) code commit: `0cd2d9c6a5805f3e70029e501224f79969ccde9d`
+- Result artifacts committed at: `aee39417cb8bc947b6af34b480c57ece3ca99f64`
 - Unblind runtime: **656s**
 - Census artifact: `natural_amplification_census.npz` — SHA256 (sealed) `679f25f765798743e2a3826391cf6a2ba6b6024316b3dbe501c64d7582689ad2` (418.4 MiB)
 - Geometry artifact: `natural_amplification_census_geometry.npz` — SHA256 (sealed) `634c85854f000a26416742d7168770998ae4216af260e5d1cee75fc7a3819057` (234.3 MiB)
@@ -326,6 +329,8 @@ All numbers below were computed and frozen before any semantic context was loade
 
 Semantic context was loaded only after every structure above was frozen and sealed.
 All preference heads use the single global eligibility universe (book_n >= 25); stage-specific reader mass is retained as a structural diagnostic only.
+
+**Evidence hierarchy.** Primary inferential evidence: the frozen 13-member preference-space family, the frozen normalized preference-space centroid top-50 rankings, and the family-wise permutation statistics above. Descriptive / post-hoc diagnostics: the known literary-pole cosine, the heads (titles/authors), direction-space literary counts, endpoint distributions, and the tau = 0.70 size-6 basin in the note below. Descriptive diagnostics never alter success criteria.
 
 ### Individual amplified endpoints (deepest stage)
 
@@ -721,30 +726,10 @@ Exact/broad/anti/filler @50/200: 3/11 | 6/23 | 3/18 | 0/4; within 0.854; member-
 15. *Stoner* — John  Williams
 
 
-### Exploratory feature -> membership diagnostics (no fitted classifier)
+### Exploratory feature -> membership diagnostics (removed; degenerate)
 
-| feature | outcome | point-biserial r | n |
-|---|---|---:|---:|
-| displacement_norm_eligible | in_non_singleton_cluster | n/a | 240 |
-| displacement_norm_eligible | in_literary_cluster | n/a | 240 |
-| endpoint_stage0_cos | in_non_singleton_cluster | n/a | 240 |
-| endpoint_stage0_cos | in_literary_cluster | n/a | 240 |
-| pref_concentration | in_non_singleton_cluster | n/a | 240 |
-| pref_concentration | in_literary_cluster | n/a | 240 |
-| top25_mass_concentration | in_non_singleton_cluster | n/a | 240 |
-| top25_mass_concentration | in_literary_cluster | n/a | 240 |
-| pref_norm_eligible | in_non_singleton_cluster | n/a | 240 |
-| pref_norm_eligible | in_literary_cluster | n/a | 240 |
-| stage0_pref_norm_eligible | in_non_singleton_cluster | n/a | 240 |
-| stage0_pref_norm_eligible | in_literary_cluster | n/a | 240 |
-| reversal_stage_count | in_non_singleton_cluster | n/a | 240 |
-| reversal_stage_count | in_literary_cluster | n/a | 240 |
-| deepest_remaining_users | in_non_singleton_cluster | n/a | 240 |
-| deepest_remaining_users | in_literary_cluster | n/a | 240 |
-| deepest_removed_fraction | in_non_singleton_cluster | n/a | 240 |
-| deepest_removed_fraction | in_literary_cluster | n/a | 240 |
-| effective_user_share_deepest | in_non_singleton_cluster | n/a | 240 |
-| effective_user_share_deepest | in_literary_cluster | n/a | 240 |
+The preregistered exploratory outcome was uninformative and the table is removed from this report. `_feature_outcomes` defines two binary outcomes over the pooled/deepest preference population at tau = 0.30, where a single non-singleton cluster contains every source: `in_non_singleton_cluster` is constant True and `in_literary_cluster` (exact_lit50 >= 3 on the tau = 0.30 centroid) is constant False. Both constant outcomes make every point-biserial correlation undefined (20 rows, all `n/a`, n = 240). The raw per-feature rows remain unchanged in the posthoc JSON under `feature_diagnostics`; no post-hoc outcome was redefined.
+
 
 ## Verdict (per preregistered threshold)
 
@@ -784,4 +769,26 @@ Per family member (frozen top-50 counts):
 | pooled_deepest_0.70_pref | 27 | 12 | 1 | 1 | 30 | 1 | no |
 | pooled_deepest_0.70_pref | 29 | 108 | 0 | 0 | 24 | 1 | no |
 
-The permutation test is a family-wise calibration of the frozen structure against the popularity-stratified joint label structure; it uses the frozen raw-preference top-50 indices, so its counts differ from the reader-mass-weighted post-hoc head metrics in the primary table by construction. chance@50 above is descriptive only.
+The permutation test uses the same frozen normalized preference-space centroid top-50 rankings as the primary cluster evaluation. Before interpretation, the unblind phase asserted exact equality of exact/broad/anti/filler @50 counts between the permutation-test ranking and `_eval_pref` for all 13 family members (all 13 passed). chance@50 above is descriptive only.
+
+
+## Preregistered conclusion
+
+- **T_exact = 3**, family-wise **p_exact = 0.0975**.
+- **T_broad = 6**, family-wise **p_broad = 0.0604**.
+- No family member satisfied the strong event (exact_frozen50 >= 3 and anti_frozen50 <= 1): n_strong = 0, **T_strong = 0**, p_strong = 1.0000.
+- Therefore the preregistered experiment did **not** establish a natural literary basin. Neither p-value is described as significant; the family-wise evidence is suggestive but insufficient.
+
+> **On p_strong = 1.0:** T_strong is binary and nonnegative and its observed value is 0, so every null permutation satisfies T_perm >= T_obs and p_strong = (1 + 10000) / (10000 + 1) = 1.0 mechanically. This is not affirmative statistical evidence against the existence of a literary basin; the meaningful preregistered fact is that no cluster satisfied the strong event.
+
+## DESCRIPTIVE / POST-HOC note: the tau = 0.70 size-6 basin
+
+**This section is descriptive only and is NOT a success criterion.** It was written after unblinding, does not alter any preregistered threshold or ranking, and cannot change the conclusion above.
+
+The most literary-looking family member is the pooled/deepest preference-space cluster at tau = 0.70, index 17: size 6; all six members are 80k source juries (`80000:0, 49, 81, 84, 87, 114`); exact@50 = 3, broad@50 = 6, anti@50 = 3, filler@50 = 0; member-direction cos_pole = 0.712; the label-blind even/odd analogue has A = 3 and B = 3 members, A-B centroid cosine = 0.935, and precision = coverage = Jaccard = 1.0. It fails the strong event on anti@50 = 3 > 1.
+
+Descriptive chance @50 over the eligible universe: exact 0.10, broad 0.80, anti 6.17, filler 0.05. Under those descriptive expectations, anti@50 = 3 sits below its chance expectation (~6.17), the opposite of the anti-literary signal required by the strong event.
+
+> **Same six juries, not two discoveries.** The "deepest 80k tau = 0.70, size 6" row in the primary evidence table contains the exact same six 80k source juries as this pooled tau = 0.70 cluster. The two rows are one basin observed under two preference-space clustering populations, not two independent discoveries, and are not counted as separate evidence.
+
+> **Semantic dependence caveat.** The head contains multiple books and collections by the same authors and series, including several Maus, Borges, and Calvin & Hobbes entries. The popularity-stratified permutation null preserves the joint exact/broad/anti/filler labels and popularity strata exactly, but it does NOT preserve author/series-level dependence among books. The broad-literary enrichment of this head should therefore not be overinterpreted as six independent literary observations, and no new p-value is computed for this note.

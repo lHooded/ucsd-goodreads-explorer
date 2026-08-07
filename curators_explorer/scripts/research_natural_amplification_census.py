@@ -242,6 +242,20 @@ def report_path(tag: str | None) -> Path:
     return DATA / f"NATURAL_AMPLIFICATION_CENSUS{suffix.upper()}_REPORT.md"
 
 
+# Commit that contains the sealed result artifacts (posthoc JSON, permutation
+# JSON, and this report). Recorded for provenance so regenerating the report
+# prose never obscures which commit the results were originally committed at.
+RESULT_ARTIFACT_COMMIT = "aee39417cb8bc947b6af34b480c57ece3ca99f64"
+
+
+def _family_freeze_git_head(tag: str | None) -> str:
+    try:
+        doc = json.loads(eligible_family_path(tag).read_text(encoding="utf-8"))
+        return str(doc["method"]["git_head"])
+    except (OSError, KeyError, TypeError, json.JSONDecodeError):
+        return "unknown"
+
+
 def chunk_dir(tag: str | None) -> Path:
     return DATA / "natural_amplification_chunks" / (tag or "main")
 
@@ -2291,7 +2305,7 @@ def _write_report(
     uni = result["eligibility_universe"]
 
     lines: list[str] = [
-        "# Natural amplification census: a completely label-blind search for a literary basin",
+        "# Natural amplification census: an internally label-blind search for a literary basin",
         "",
         "**Question.** If we amplify random reversal endpoints without ever consulting literary "
         "labels, does a distinct literary basin emerge naturally among the amplified outputs?",
@@ -2311,8 +2325,12 @@ def _write_report(
         "## Provenance",
         "",
         f"- Command: `{result['method']['command']}`",
-        f"- Random seed: **{args.seed}**",
-        f"- Git commit: `{seal['git_head']}`",
+        f"- Amplification/geometry seed: **{args.seed}**; permutation-test seed: "
+        f"**{result['permutation_test']['seed']}**.",
+        f"- Sealed geometry generating commit: `{seal['git_head']}`",
+        f"- Family-freeze / preregistration generating commit: `{_family_freeze_git_head(args.tag)}`",
+        f"- Unblind (post-hoc analysis) code commit: `{result['method']['git_head']}`",
+        f"- Result artifacts committed at: `{RESULT_ARTIFACT_COMMIT}`",
         f"- Unblind runtime: **{result['method']['runtime_seconds']:.0f}s**",
         f"- Census artifact: `{census_npz.name}` — SHA256 (sealed) "
         f"`{seal['census_npz_sha256']}` ({census_npz.stat().st_size/2**20:.1f} MiB)",
@@ -2430,6 +2448,14 @@ def _write_report(
         f"(book_n >= {ELIG_MIN_BOOK_N}); stage-specific reader mass is retained as a "
         "structural diagnostic only.",
         "",
+        "**Evidence hierarchy.** Primary inferential evidence: the frozen 13-member "
+        "preference-space family, the frozen normalized preference-space centroid "
+        "top-50 rankings, and the family-wise permutation statistics above. "
+        "Descriptive / post-hoc diagnostics: the known literary-pole cosine, the "
+        "heads (titles/authors), direction-space literary counts, endpoint "
+        "distributions, and the tau = 0.70 size-6 basin in the note below. "
+        "Descriptive diagnostics never alter success criteria.",
+        "",
     ]
 
     # endpoints
@@ -2539,12 +2565,24 @@ def _write_report(
             lines += _fmt_head(e["head"], 15)
             lines.append("")
 
-    # feature diagnostics
-    lines += ["", "### Exploratory feature -> membership diagnostics (no fitted classifier)", ""]
-    lines += ["| feature | outcome | point-biserial r | n |", "|---|---|---:|---:|"]
-    for f in result["feature_diagnostics"]:
-        r = f"{f['point_biserial_r']:.3f}" if f["point_biserial_r"] is not None else "n/a"
-        lines.append(f"| {f['feature']} | {f['outcome']} | {r} | {f['n']} |")
+    # feature diagnostics (removed from the report: degenerate under the
+    # preregistered outcome definition; raw rows preserved in the posthoc JSON)
+    lines += [
+        "",
+        "### Exploratory feature -> membership diagnostics (removed; degenerate)",
+        "",
+        "The preregistered exploratory outcome was uninformative and the table is "
+        "removed from this report. `_feature_outcomes` defines two binary outcomes "
+        "over the pooled/deepest preference population at tau = 0.30, where a "
+        "single non-singleton cluster contains every source: "
+        "`in_non_singleton_cluster` is constant True and `in_literary_cluster` "
+        "(exact_lit50 >= 3 on the tau = 0.30 centroid) is constant False. Both "
+        "constant outcomes make every point-biserial correlation undefined (20 "
+        "rows, all `n/a`, n = 240). The raw per-feature rows remain unchanged in "
+        "the posthoc JSON under `feature_diagnostics`; no post-hoc outcome was "
+        "redefined.",
+        "",
+    ]
 
     # per-threshold verdict (no tau mixing, no automatic success declaration)
     lines += ["", "## Verdict (per preregistered threshold)", ""]
@@ -2637,11 +2675,79 @@ def _write_report(
             )
         lines += [
             "",
-            "The permutation test is a family-wise calibration of the frozen "
-            "structure against the popularity-stratified joint label structure; it "
-            "uses the frozen raw-preference top-50 indices, so its counts differ "
-            "from the reader-mass-weighted post-hoc head metrics in the primary "
-            "table by construction. chance@50 above is descriptive only.",
+            "The permutation test uses the same frozen normalized preference-space "
+            "centroid top-50 rankings as the primary cluster evaluation. Before "
+            "interpretation, the unblind phase asserted exact equality of "
+            "exact/broad/anti/filler @50 counts between the permutation-test "
+            "ranking and `_eval_pref` for all 13 family members (all 13 passed). "
+            "chance@50 above is descriptive only.",
+            "",
+        ]
+
+        # ---- preregistered conclusion (explicit, criteria unchanged) ----
+        strong_def = (
+            f"exact_frozen50 >= {PERMUTATION_STRONG_EXACT} and "
+            f"anti_frozen50 <= {PERMUTATION_STRONG_ANTI}"
+        )
+        lines += [
+            "",
+            "## Preregistered conclusion",
+            "",
+            f"- **T_exact = {obs['T_exact']}**, family-wise **p_exact = {p['p_exact']:.4f}**.",
+            f"- **T_broad = {obs['T_broad']}**, family-wise **p_broad = {p['p_broad']:.4f}**.",
+            f"- No family member satisfied the strong event "
+            f"({strong_def}): n_strong = {obs['n_strong']}, "
+            f"**T_strong = {obs['T_strong']}**, p_strong = {p['p_strong']:.4f}.",
+            f"- Therefore the preregistered experiment did **not** establish a "
+            "natural literary basin. Neither p-value is described as significant; "
+            "the family-wise evidence is suggestive but insufficient.",
+            "",
+            "> **On p_strong = 1.0:** T_strong is binary and nonnegative and its "
+            "observed value is 0, so every null permutation satisfies "
+            f"T_perm >= T_obs and p_strong = (1 + {perm['n_perms']}) / "
+            f"({perm['n_perms']} + 1) = 1.0 mechanically. This is not affirmative "
+            "statistical evidence against the existence of a literary basin; the "
+            "meaningful preregistered fact is that no cluster satisfied the "
+            "strong event.",
+            "",
+            "## DESCRIPTIVE / POST-HOC note: the tau = 0.70 size-6 basin",
+            "",
+            "**This section is descriptive only and is NOT a success criterion.** "
+            "It was written after unblinding, does not alter any preregistered "
+            "threshold or ranking, and cannot change the conclusion above.",
+            "",
+            "The most literary-looking family member is the pooled/deepest "
+            "preference-space cluster at tau = 0.70, index 17: size 6; all six "
+            "members are 80k source juries (`80000:0, 49, 81, 84, 87, 114`); "
+            "exact@50 = 3, broad@50 = 6, anti@50 = 3, filler@50 = 0; "
+            "member-direction cos_pole = 0.712; the label-blind even/odd "
+            "analogue has A = 3 and B = 3 members, A-B centroid cosine = 0.935, "
+            "and precision = coverage = Jaccard = 1.0. It fails the strong "
+            "event on anti@50 = 3 > 1.",
+            "",
+            "Descriptive chance @50 over the eligible universe: exact "
+            f"{chance['exact_lit']:.2f}, broad {chance['broad_lit']:.2f}, "
+            f"anti {chance['anti']:.2f}, filler {chance['filler']:.2f}. Under "
+            "those descriptive expectations, anti@50 = 3 sits below its chance "
+            "expectation (~6.17), the opposite of the anti-literary signal "
+            "required by the strong event.",
+            "",
+            "> **Same six juries, not two discoveries.** The \"deepest 80k "
+            "tau = 0.70, size 6\" row in the primary evidence table contains the "
+            "exact same six 80k source juries as this pooled tau = 0.70 cluster. "
+            "The two rows are one basin observed under two preference-space "
+            "clustering populations, not two independent discoveries, and are "
+            "not counted as separate evidence.",
+            "",
+            "> **Semantic dependence caveat.** The head contains multiple books "
+            "and collections by the same authors and series, including several "
+            "Maus, Borges, and Calvin & Hobbes entries. The popularity-stratified "
+            "permutation null preserves the joint exact/broad/anti/filler labels "
+            "and popularity strata exactly, but it does NOT preserve "
+            "author/series-level dependence among books. The broad-literary "
+            "enrichment of this head should therefore not be overinterpreted as "
+            "six independent literary observations, and no new p-value is "
+            "computed for this note.",
             "",
         ]
     out = report_path(args.tag)
