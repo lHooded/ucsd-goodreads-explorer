@@ -54,3 +54,7 @@ curators_explorer/data/drift_exploit_main.npz
 curators_explorer/data/canon_breeding_overnight_directions.npz
 curators_explorer/data/canon_breeding_overnight_b_directions.npz
 curators_explorer/data/multi_origin_behavior_features.npz
+
+# Label-blind amplification census: large regenerable NPZ + resume chunks
+curators_explorer/data/natural_amplification_*.npz
+curators_explorer/data/natural_amplification_chunks/
