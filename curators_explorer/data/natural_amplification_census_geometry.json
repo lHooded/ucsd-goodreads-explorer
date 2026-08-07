@@ -51734,8 +51734,8 @@
   "unblinded": false,
   "written_before_unblinding": true,
   "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_natural_amplification_census.py --phase geometry",
-  "git_head": "eca712b8395d2e34143e3f3a778cf07532e4dc9f",
-  "runtime_seconds": 675.2776019573212
+  "git_head": "84ebea5fad0a5be596ab875d4f752e3048fb97d7",
+  "runtime_seconds": 691.6975584030151
  },
  "invariant_checks": [
   {
@@ -57267,7 +57267,7 @@
    "min_book_n": 25
   },
   "seed": 20260817,
-  "git_head": "eca712b8395d2e34143e3f3a778cf07532e4dc9f",
+  "git_head": "84ebea5fad0a5be596ab875d4f752e3048fb97d7",
   "semantic_context_loaded": false,
   "unblinded": false
  }

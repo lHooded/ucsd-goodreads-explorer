@@ -73,6 +73,26 @@ Phases
                 geometry alone (no semantic context); includes the full-cluster
                 <-> even/odd analogue matching with precision, coverage and
                 Jaccard, and reports the external seal manifest verification.
+                Also FREEZES the preregistered permutation-test family: every
+                pooled/deepest preference-space cluster that is structurally
+                eligible (size >= 5, label-blind even/odd analogue with
+                coverage >= 0.5, A-B cos >= 0.7, mutual best, A and B halves
+                each >= 2) is written, with memberships and frozen top-50
+                book indices, to the eligible-family freeze file. Literary
+                metrics can never add or remove a family member.
+- unblind:      additionally runs the PREREGISTERED family-wise permutation
+                test over that frozen family: T_exact / T_broad = max over
+                the family of the exact/broad literary count inside each
+                cluster's FROZEN top-50 eligible indices, T_strong = 1 iff any
+                family member has exact_frozen50 >= 3 and anti_frozen50 <= 1.
+                Null: 10,000 permutations with seed PERMUTATION_SEED, the
+                eligible universe stratified into 10 approximately equal bins
+                by log1p(book_n), and within each bin the complete joint
+                (exact_lit, broad_lit, anti, filler) tuple is permuted
+                (per-stratum joint label counts preserved exactly). Frozen
+                top-50 indices never change; only labels permute. p-values =
+                (1 + #{T_perm >= T_obs}) / (n_perms + 1). Null distributions
+                and count tables are saved in compact JSON/NPZ form.
 """
 
 from __future__ import annotations
@@ -90,7 +110,7 @@ from typing import Any
 
 import numpy as np
 from scipy.cluster.hierarchy import fcluster, linkage
-from scipy.stats import pointbiserialr
+from scipy.stats import pointbiserialr, rankdata
 
 from curators_explorer.scripts import research_canon_breeding as breeding
 from curators_explorer.scripts import (
@@ -118,6 +138,14 @@ SEED_BOOKS = 25               # top eligible books used by seed_from_pref
 STAGE_ANALYZED = 4            # preregistered mid-path stage index (0-based)
 CLUSTER_TAUS = (0.30, 0.50, 0.70)  # cosine cuts for average-linkage dendrograms
 MAX_STAGES = breeding.MAX_STAGES + 1  # run_path stages 0..8 (worst case)
+
+# Preregistered family-wise permutation test (definition committed before
+# unblinding; executed only inside phase_unblind after the semantic load).
+PERMUTATION_SEED = 20260818
+PERMUTATION_N_PERMS = 10000
+PERMUTATION_N_BINS = 10          # strata: approximately equal bins by log1p(book_n)
+PERMUTATION_STRONG_EXACT = 3     # exact_frozen50 >= 3 and anti_frozen50 <= 1
+PERMUTATION_STRONG_ANTI = 1
 
 CHECKPOINT_EVERY = 10
 SMOKE_JURIES = 4
@@ -176,6 +204,21 @@ def seal_manifest_path(tag: str | None) -> Path:
 def prereport_path(tag: str | None) -> Path:
     suffix = _tag_suffix(tag)
     return DATA / f"NATURAL_AMPLIFICATION_CENSUS{suffix.upper()}_PREUNBLIND_REPORT.md"
+
+
+def eligible_family_path(tag: str | None) -> Path:
+    suffix = _tag_suffix(tag)
+    return DATA / f"natural_amplification_eligible_family{suffix}.json"
+
+
+def permutation_test_path(tag: str | None) -> Path:
+    suffix = _tag_suffix(tag)
+    return DATA / f"natural_amplification_permutation_test{suffix}.json"
+
+
+def permutation_null_path(tag: str | None) -> Path:
+    suffix = _tag_suffix(tag)
+    return DATA / f"natural_amplification_permutation_null{suffix}.npz"
 
 
 def report_path(tag: str | None) -> Path:
@@ -1531,6 +1574,218 @@ def _find_analogue(
     return best
 
 
+def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
+    """The PREREGISTERED family for the family-wise permutation test: every
+    pooled/deepest preference-space cluster (all preregistered taus) that is
+    STRUCTURALLY eligible in the sealed label-blind geometry alone:
+
+    - full cluster size >= 5;
+    - a label-blind even/odd analogue exists (_find_analogue already requires
+      coverage >= 0.5), with A-B centroid cosine >= 0.7 and mutual best;
+    - the analogue's A and B halves each have >= 2 members.
+
+    Literary metrics can never add or remove a family member. The family is
+    frozen to disk in the prereport phase and asserted unchanged before the
+    unblind phase loads any semantic context.
+    """
+    family: list[dict[str, Any]] = []
+    for tau in CLUSTER_TAUS:
+        key = f"pooled_deepest_{tau:.2f}_pref"
+        for ci, c in enumerate(frozen["clusters"]["deepest"]["pooled"][key]):
+            if c["size"] < 5:
+                continue
+            a = _find_analogue(frozen, "deepest", "pooled", tau, c["members"])
+            if a is None:
+                continue
+            if a["cos"] < 0.7 or not a["mutual_best"]:
+                continue
+            if a["a_size"] < 2 or a["b_size"] < 2:
+                continue
+            family.append(
+                {
+                    "key": key,
+                    "cluster_index": ci,
+                    "members": c["members"],
+                    "size": c["size"],
+                    "analogue": {
+                        "precision": a["precision"],
+                        "coverage": a["coverage"],
+                        "jaccard": a["jaccard"],
+                        "a_size": a["a_size"],
+                        "b_size": a["b_size"],
+                        "cos": a["cos"],
+                        "mutual_best": a["mutual_best"],
+                    },
+                    "top_eligible_book_indices": c["top_eligible_book_indices"],
+                }
+            )
+    family.sort(key=lambda f: (f["key"], f["cluster_index"]))
+    return family
+
+
+def _family_signature(family: list[dict[str, Any]]) -> list[tuple[Any, ...]]:
+    """Comparable snapshot of the frozen family; any structural change in the
+    memberships, analogue metrics, or frozen top-50 indices breaks equality."""
+    return [
+        (
+            c["key"],
+            c["cluster_index"],
+            c["members"],
+            c["size"],
+            c["analogue"],
+            c["top_eligible_book_indices"],
+        )
+        for c in family
+    ]
+
+
+def _permutation_test(
+    family: list[dict[str, Any]],
+    label_vecs: dict[str, np.ndarray],
+    book_n: np.ndarray,
+    eligible_idx: np.ndarray,
+    n_books: int,
+) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
+    """Preregistered family-wise permutation test (definition frozen before
+    unblinding; see PERMUTATION_* constants and the module docstring).
+
+    Population: the frozen structurally eligible family (pooled/deepest/pref
+    clusters across all preregistered taus). Every statistic is a count of
+    literary labels inside a cluster's FROZEN top-50 eligible book indices
+    (frozen in the geometry artifact; never permuted, never re-ranked).
+
+    - T_exact   = max over the family of exact_lit count in frozen top-50;
+    - T_broad   = max over the family of broad_lit count in frozen top-50;
+    - T_strong  = 1 iff any family member has exact_frozen50 >= 3 and
+                  anti_frozen50 <= 1 (n_strong = number of such members).
+
+    Null: PERMUTATION_N_PERMS permutations with seed PERMUTATION_SEED. The
+    eligible universe (book_n >= 25) is stratified into PERMUTATION_N_BINS
+    approximately equal bins by log1p(book_n) ordinal rank; within each bin
+    the complete joint tuple (exact_lit, broad_lit, anti, filler) is permuted
+    by one shared permutation of the bin's positions, so per-stratum joint
+    label counts, set overlaps, and the popularity-label relationship are
+    preserved exactly. p-values: (1 + #{T_perm >= T_obs}) / (n_perms + 1).
+    """
+    n_eligible = int(eligible_idx.sum()) if eligible_idx.dtype == bool else len(eligible_idx)
+    eligible_idx = np.flatnonzero(eligible_idx) if eligible_idx.dtype == bool else np.asarray(eligible_idx, dtype=np.int64)
+    rng = np.random.default_rng(PERMUTATION_SEED)
+    full_to_elig = np.full(n_books, -1, dtype=np.int64)
+    full_to_elig[eligible_idx] = np.arange(n_eligible)
+    top_pos = np.stack(
+        [full_to_elig[c["top_eligible_book_indices"]] for c in family]
+    )  # (F, 50) eligible-space positions; all valid by construction
+    n_family = top_pos.shape[0]
+    lab = np.stack([label_vecs[n] for n in ("exact_lit", "broad_lit", "anti", "filler")])
+    lab = lab[:, eligible_idx].astype(bool)  # (4, n_eligible)
+
+    # ---- observed statistics on the FROZEN top-50 sets ----
+    obs = lab[:, top_pos].sum(axis=2)  # (4, F)
+    exact_obs = int(obs[0].max())
+    broad_obs = int(obs[1].max())
+    strong_mask_obs = (obs[0] >= PERMUTATION_STRONG_EXACT) & (
+        obs[2] <= PERMUTATION_STRONG_ANTI
+    )
+    n_strong_obs = int(strong_mask_obs.sum())
+    strong_obs = int(n_strong_obs > 0)
+
+    # ---- stratification of the eligible universe by log1p(book_n) ----
+    l1 = np.log1p(book_n[eligible_idx]).astype(np.float64)
+    ranks = rankdata(l1, method="ordinal")  # 1..n_eligible, ties in index order
+    bin_ids = np.minimum(
+        ((ranks - 1) * PERMUTATION_N_BINS) // n_eligible,
+        PERMUTATION_N_BINS - 1,
+    ).astype(np.int64)
+    bin_sizes = np.bincount(bin_ids, minlength=PERMUTATION_N_BINS)
+    edges = np.quantile(l1, np.linspace(0.0, 1.0, PERMUTATION_N_BINS + 1))
+
+    # Only positions inside any frozen top-50 can affect the statistics, so
+    # restrict the permutation to those positions. Assigning a uniform
+    # |R ∩ bin| subset of the bin's joint label tuples to the relevant
+    # positions is exactly equivalent to a full within-bin permutation of all
+    # positions followed by restriction to R.
+    rel_pos = np.unique(top_pos)
+    rel_index = np.searchsorted(rel_pos, top_pos)  # (F, 50) indices into rel_pos
+    bin_positions = [np.flatnonzero(bin_ids == b) for b in range(PERMUTATION_N_BINS)]
+    bin_rel_masks = [np.isin(rel_pos, bp) for bp in bin_positions]
+
+    t_exact = np.empty(PERMUTATION_N_PERMS, dtype=np.int64)
+    t_broad = np.empty(PERMUTATION_N_PERMS, dtype=np.int64)
+    t_strong = np.empty(PERMUTATION_N_PERMS, dtype=np.int64)
+    n_strong = np.empty(PERMUTATION_N_PERMS, dtype=np.int64)
+    for p in range(PERMUTATION_N_PERMS):
+        lrel = np.empty((4, rel_pos.size), dtype=bool)
+        for b in range(PERMUTATION_N_BINS):
+            mask = bin_rel_masks[b]
+            size_b = int(mask.sum())
+            if size_b == 0:
+                continue
+            pick = rng.choice(bin_positions[b], size=size_b, replace=False)
+            lrel[:, mask] = lab[:, pick]
+        counts = lrel[:, rel_index].sum(axis=2)  # (4, F)
+        t_exact[p] = counts[0].max()
+        t_broad[p] = counts[1].max()
+        sm = (counts[0] >= PERMUTATION_STRONG_EXACT) & (
+            counts[2] <= PERMUTATION_STRONG_ANTI
+        )
+        n_strong[p] = int(sm.sum())
+        t_strong[p] = int(sm.any())
+
+    def pval(obs_value: int, t_perm: np.ndarray) -> float:
+        return float(
+            (1 + int(np.sum(t_perm >= obs_value)))
+            / (PERMUTATION_N_PERMS + 1)
+        )
+
+    stats: dict[str, Any] = {
+        "seed": PERMUTATION_SEED,
+        "n_perms": PERMUTATION_N_PERMS,
+        "n_bins": PERMUTATION_N_BINS,
+        "strata": "approximately equal bins of the eligible universe "
+        "(book_n >= 25) by ordinal rank of log1p(book_n)",
+        "stratum_sizes": bin_sizes.tolist(),
+        "stratum_edges_log1p": edges.tolist(),
+        "n_family": n_family,
+        "strong_definition": {
+            "exact_frozen50_min": PERMUTATION_STRONG_EXACT,
+            "anti_frozen50_max": PERMUTATION_STRONG_ANTI,
+        },
+        "observed": {
+            "T_exact": exact_obs,
+            "T_broad": broad_obs,
+            "T_strong": strong_obs,
+            "n_strong": n_strong_obs,
+        },
+        "per_member_frozen50": [
+            {
+                "key": c["key"],
+                "cluster_index": c["cluster_index"],
+                "size": c["size"],
+                "exact_frozen50": int(obs[0][i]),
+                "broad_frozen50": int(obs[1][i]),
+                "anti_frozen50": int(obs[2][i]),
+                "filler_frozen50": int(obs[3][i]),
+                "strong_candidate": bool(strong_mask_obs[i]),
+            }
+            for i, c in enumerate(family)
+        ],
+        "p_values": {
+            "p_exact": pval(exact_obs, t_exact),
+            "p_broad": pval(broad_obs, t_broad),
+            "p_strong": pval(strong_obs, t_strong),
+        },
+    }
+    nulls = {
+        "t_exact": t_exact,
+        "t_broad": t_broad,
+        "t_strong": t_strong,
+        "n_strong": n_strong,
+        "stratum_sizes": bin_sizes,
+        "stratum_edges_log1p": edges,
+    }
+    return stats, nulls
+
+
 def phase_unblind(args: argparse.Namespace) -> None:
     global SEMANTIC_CONTEXT_LOADED
     assert not SEMANTIC_CONTEXT_LOADED
@@ -1572,6 +1827,26 @@ def phase_unblind(args: argparse.Namespace) -> None:
         raise SystemExit("sealed source list does not match census; refusing to unblind")
     manifest_checks = _verify_manifest(args, npz_path, geo_json, geo_npz)
 
+    # ---- PREREGISTERED FAMILY FREEZE (must exist and match, before ANY
+    #      semantic load): the permutation-test family was frozen label-blind
+    #      in the prereport phase; recompute it from the sealed geometry and
+    #      refuse to proceed if a single member, membership, analogue metric,
+    #      or frozen top-50 index differs. ----
+    fam_path = eligible_family_path(args.tag)
+    if not fam_path.exists():
+        raise SystemExit(
+            f"eligible-family freeze {fam_path} missing; run prereport first; refusing"
+        )
+    fam_doc = json.loads(fam_path.read_text(encoding="utf-8"))
+    frozen_family = fam_doc.get("family", [])
+    recomputed = _eligible_family(frozen)
+    if _family_signature(recomputed) != _family_signature(frozen_family):
+        raise SystemExit(
+            "eligible family recomputed from the sealed geometry differs from the "
+            "prereport freeze; refusing to unblind"
+        )
+    family = frozen_family
+
     payload, _, _ = year.load_matrix()
     n_books = int(len(payload["work_ids"]))
     eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
@@ -1596,6 +1871,47 @@ def phase_unblind(args: argparse.Namespace) -> None:
         name: len(eval_sets[name] & universe) / n_eligible * 50
         for name in ("exact_lit", "broad_lit", "anti", "filler")
     }
+
+    # ---- PREREGISTERED family-wise permutation test ----
+    # Statistics count literary labels inside each family member's FROZEN
+    # top-50 eligible book indices (top_eligible_book_indices in the sealed
+    # geometry; never re-ranked, never permuted). Only the labels permute.
+    print("Running family-wise permutation test", flush=True)
+    label_vecs = {
+        name: np.isin(payload["work_ids"], sorted(eval_sets[name]))
+        for name in ("exact_lit", "broad_lit", "anti", "filler")
+    }
+    perm_stats, perm_nulls = _permutation_test(
+        family, label_vecs, payload["book_n"], eligible_idx, n_books
+    )
+    perm_npz = permutation_null_path(args.tag)
+    _write_npz_atomic(perm_npz, perm_nulls)
+    perm_json = {
+        **perm_stats,
+        "eligible_family": family,
+        "method": {
+            "phase": "unblind",
+            "purpose": "preregistered family-wise permutation test over the "
+            "frozen eligible family (frozen top-50 indices only; labels "
+            "permuted within log1p(book_n) strata)",
+            "command": shlex.join(sys.argv),
+            "git_head": _git_head(),
+            "runtime_seconds": time.time() - t0,
+            "null_npz": perm_npz.name,
+        },
+    }
+    _write_text_atomic(
+        permutation_test_path(args.tag), json.dumps(perm_json, indent=1)
+    )
+    print(
+        f"permutation test done: T_exact={perm_stats['observed']['T_exact']} "
+        f"(p={perm_stats['p_values']['p_exact']:.4f}), "
+        f"T_broad={perm_stats['observed']['T_broad']} "
+        f"(p={perm_stats['p_values']['p_broad']:.4f}), "
+        f"T_strong={perm_stats['observed']['T_strong']} "
+        f"(p={perm_stats['p_values']['p_strong']:.4f}), "
+        f"n_family={perm_stats['n_family']}", flush=True,
+    )
 
     membership = _membership_map(frozen)
 
@@ -1830,6 +2146,8 @@ def phase_unblind(args: argparse.Namespace) -> None:
             "preference heads and chance",
         },
         "chance_at_50": chance,
+        "eligible_family": family,
+        "permutation_test": perm_stats,
         "endpoints": endpoints,
         "cluster_evals": cluster_evals,
         "matched": matched,
@@ -2160,13 +2478,15 @@ def _write_report(
             and e["analogue"]["coverage"] >= 0.5
             and e["analogue"]["cos"] >= 0.7
             and e["analogue"]["mutual_best"]
+            and e["analogue"]["a_size"] >= 2
+            and e["analogue"]["b_size"] >= 2
         ]
         lines.append(
             f"- **tau = {tau:.2f}:** {len(clist)} clusters, {len(non_sing)} non-singleton; "
             f"{n_lit} non-singleton preference clusters reach exact_lit50 >= 3 post-hoc; "
             f"{len(strong)} meet the strong checklist (size >= 5, exact_lit50 >= 3, "
-            f"anti50 <= 1, even/odd analogue with coverage >= 0.5, A-B cos >= 0.7 "
-            f"and mutual best)."
+            f"anti50 <= 1, even/odd analogue with coverage >= 0.5, A-B cos >= 0.7, "
+            f"mutual best, and A and B halves each >= 2)."
         )
     lines += [
         "",
@@ -2177,6 +2497,60 @@ def _write_report(
         "geometrically corresponding independently formed cluster in the even and odd "
         "halves. A negative or mixed result is reported as found.",
     ]
+
+    # ---- preregistered family-wise permutation test ----
+    perm = result.get("permutation_test")
+    if perm:
+        obs = perm["observed"]
+        p = perm["p_values"]
+        lines += [
+            "",
+            "## Preregistered family-wise permutation test",
+            "",
+            "Population: the structurally eligible family frozen in the prereport phase "
+            f"(**{perm['n_family']}** pooled/deepest preference-space clusters across all "
+            "preregistered taus; size >= 5, label-blind even/odd analogue with coverage "
+            ">= 0.5, A-B cos >= 0.7, mutual best, A and B halves each >= 2). Every "
+            "statistic counts literary labels inside each member's FROZEN top-50 "
+            "eligible book indices (never re-ranked, never permuted).",
+            "",
+            f"- Null: {perm['n_perms']:,} permutations, seed **{perm['seed']}**; the "
+            f"eligible universe (book_n >= {ELIG_MIN_BOOK_N}) is stratified into "
+            f"{perm['n_bins']} approximately equal bins by log1p(book_n) ordinal rank, "
+            "and within each bin the complete joint (exact_lit, broad_lit, anti, "
+            "filler) tuple is permuted by one shared permutation of the bin's "
+            "positions (per-stratum joint label counts preserved exactly).",
+            f"- Strata sizes: {perm['stratum_sizes']}.",
+            f"- **T_exact = {obs['T_exact']}** (p = {p['p_exact']:.4f}) — max over the "
+            "family of exact-lit books in the frozen top-50.",
+            f"- **T_broad = {obs['T_broad']}** (p = {p['p_broad']:.4f}) — max over the "
+            "family of broad-lit books in the frozen top-50.",
+            f"- **T_strong = {obs['T_strong']}** (p = {p['p_strong']:.4f}), "
+            f"n_strong = {obs['n_strong']} — any family member with exact_frozen50 >= "
+            f"{PERMUTATION_STRONG_EXACT} and anti_frozen50 <= "
+            f"{PERMUTATION_STRONG_ANTI}.",
+            f"- p-values: (1 + #{'T_perm'} >= {'T_obs'}) / ({perm['n_perms']} + 1).",
+            "",
+            "Per family member (frozen top-50 counts):",
+            "",
+            "| tau | cluster | size | exact | broad | anti | filler | strong candidate |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|",
+        ]
+        for m in perm["per_member_frozen50"]:
+            lines.append(
+                f"| {m['key']} | {m['cluster_index']} | {m['size']} | "
+                f"{m['exact_frozen50']} | {m['broad_frozen50']} | {m['anti_frozen50']} | "
+                f"{m['filler_frozen50']} | {'yes' if m['strong_candidate'] else 'no'} |"
+            )
+        lines += [
+            "",
+            "The permutation test is a family-wise calibration of the frozen "
+            "structure against the popularity-stratified joint label structure; it "
+            "uses the frozen raw-preference top-50 indices, so its counts differ "
+            "from the reader-mass-weighted post-hoc head metrics in the primary "
+            "table by construction. chance@50 above is descriptive only.",
+            "",
+        ]
     out = report_path(args.tag)
     _write_text_atomic(out, "\n".join(lines))
     print(f"Wrote {out}")
@@ -2191,6 +2565,7 @@ def _preunblind_markdown(
     frozen: dict[str, Any],
     data: dict[str, Any],
     manifest_checks: dict[str, bool],
+    family: list[dict[str, Any]] | None = None,
 ) -> list[str]:
     method = frozen["method"]
     seal = frozen["seal"]
@@ -2339,6 +2714,38 @@ def _preunblind_markdown(
                         f"{c['within_pref']['mean']:.3f} | {ana} | {prec} | {cov} | {jac} | "
                         f"{a_sz} | {b_sz} | {ab} | {mutual} |"
                     )
+    if family is not None:
+        lines += [
+            "",
+            "### Preregistered permutation-test family (FROZEN label-blind)",
+            "",
+            "Family-wise permutation-test population: every pooled/deepest "
+            "preference-space cluster (all preregistered taus) that is "
+            "STRUCTURALLY eligible in the sealed label-blind geometry alone — "
+            f"size >= 5, an even/odd analogue with coverage >= 0.5, A-B cos >= "
+            "0.7, mutual best, and A and B halves each >= 2. These exact "
+            "memberships, analogue metrics, and frozen top-50 book indices "
+            "were written to the eligible-family freeze file BEFORE any "
+            "semantic context was loaded. Literary metrics can never add or "
+            "remove a family member; the unblind phase will refuse to run if "
+            "the recomputed family differs from this freeze. The family-wise "
+            "permutation test counts literary labels only inside each "
+            "member's FROZEN top-50 indices.",
+            "",
+            f"- **{len(family)} eligible clusters frozen.**",
+            "",
+            "| tau | cluster | size | members | A size | B size | A-B cos | coverage | mutual |",
+            "|---|---:|---:|---|---:|---:|---:|---:|---:|",
+        ]
+        for c in family:
+            a = c["analogue"]
+            lines.append(
+                f"| {c['key']} | {c['cluster_index']} | {c['size']} | "
+                f"{' '.join(c['members'])} | {a['a_size']} | {a['b_size']} | "
+                f"{a['cos']:.3f} | {a['coverage']:.3f} | "
+                f"{'yes' if a['mutual_best'] else 'no'} |"
+            )
+        lines.append("")
     if frozen.get("invariant_checks"):
         n_ok = sum(1 for c in frozen["invariant_checks"] if c["ok"])
         lines += [
@@ -2376,11 +2783,44 @@ def phase_prereport(args: argparse.Namespace) -> None:
     if frozen["method"]["semantic_context_loaded"] is not False:
         raise SystemExit("geometry JSON claims semantic context loaded; refusing")
     manifest_checks = _verify_manifest(args, npz_path, geo_json, geo_npz)
-    lines = _preunblind_markdown(args, frozen, data, manifest_checks)
+
+    # PREREGISTERED FAMILY FREEZE: every structurally eligible
+    # pooled/deepest/preference-space cluster, with memberships and frozen
+    # top-50 book indices, written label-blind BEFORE any semantic load.
+    family = _eligible_family(frozen)
+    fam_doc = {
+        "method": {
+            "phase": "prereport",
+            "purpose": "label-blind freeze of the structurally eligible "
+            "permutation-test family (pure function of the sealed geometry)",
+            "command": shlex.join(sys.argv),
+            "git_head": _git_head(),
+            "runtime_seconds": time.time() - t0,
+        },
+        "definition": {
+            "population": "pooled/deepest/preference-space clusters, "
+            "all preregistered taus",
+            "full_cluster_size_min": 5,
+            "analogue_rule": "best even/odd half match with coverage >= 0.5 "
+            "(highest A-B centroid cosine)",
+            "analogue_coverage_min": 0.5,
+            "analogue_cos_min": 0.7,
+            "analogue_mutual_best": True,
+            "half_min_size": 2,
+            "semantic_metrics_cannot_alter_family": True,
+        },
+        "n_family": len(family),
+        "family": family,
+    }
+    _write_text_atomic(
+        eligible_family_path(args.tag), json.dumps(fam_doc, indent=1)
+    )
+    lines = _preunblind_markdown(args, frozen, data, manifest_checks, family)
     out = prereport_path(args.tag)
     _write_text_atomic(out, "\n".join(lines))
     print(
-        f"prereport done ({len(records)} sources, seal manifest verified): "
+        f"prereport done ({len(records)} sources, seal manifest verified, "
+        f"eligible family frozen: {len(family)} clusters): "
         f"{out}, {time.time() - t0:.0f}s", flush=True,
     )
 

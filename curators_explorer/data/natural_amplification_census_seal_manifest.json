@@ -13,7 +13,7 @@
   },
   "geometry_json": {
    "file": "natural_amplification_census_geometry.json",
-   "sha256": "894cb72645a47ae2a6affe65067a65126ab28e31e4e7ad92542751f881b27604",
+   "sha256": "e4b5523b3a059fc6e9400cf5a57bed7f814743ad7b0fe3aadf18df1a5fedf614",
    "bytes": 1100330
   }
  },
@@ -260,7 +260,7 @@
   "80000:118",
   "80000:119"
  ],
- "git_head": "eca712b8395d2e34143e3f3a778cf07532e4dc9f",
+ "git_head": "84ebea5fad0a5be596ab875d4f752e3048fb97d7",
  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_natural_amplification_census.py --phase geometry",
  "semantic_context_loaded": false,
  "unblinded": false
