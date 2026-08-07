@@ -1,0 +1,113 @@
+{
+ "addendum_seed": 20260820,
+ "checks": [
+  {
+   "check": "source_campaign_seal_valid",
+   "ok": true,
+   "detail": "all four manifest hashes + geometry seal hashes verify; 2880 sources; partial false; semantic false"
+  },
+  {
+   "check": "recurrent_mode_selection_exact_244",
+   "ok": true,
+   "detail": "244 recurrent modes selected; non-recurrent excluded: True"
+  },
+  {
+   "check": "non_recurrent_modes_excluded",
+   "ok": true,
+   "detail": "244 recurrent modes selected; non-recurrent excluded: True"
+  },
+  {
+   "check": "frozen_centroid_keys_used",
+   "ok": true,
+   "detail": "recur_cent_0.70_p<ppp>_<mi> keys exactly matching frozen geometry records"
+  },
+  {
+   "check": "family_partition_covers_all_modes",
+   "ok": true,
+   "detail": "synthetic: all 6 modes assigned exactly once per tau; cross-parent families at 0.50: 2"
+  },
+  {
+   "check": "cross_parent_centroid_reconstruction",
+   "ok": true,
+   "detail": "synthetic: stored family centroids reconstruct from frozen members"
+  },
+  {
+   "check": "mode_cosine_symmetry_diagonal",
+   "ok": true,
+   "detail": "synthetic 6x6 sim symmetric, unit diagonal"
+  },
+  {
+   "check": "average_linkage_cuts_deterministic",
+   "ok": true,
+   "detail": "identical linkage and cuts on repeated runs"
+  },
+  {
+   "check": "spectral_best_table_matches_direct",
+   "ok": true,
+   "detail": "12x3 score/argmode table equals direct per-set max"
+  },
+  {
+   "check": "parent_shuffle_null_preserves_intact_sets",
+   "ok": true,
+   "detail": "null mean best-cosine equals brute-force indexing of the precomputed score table; intact mode sets preserved"
+  },
+  {
+   "check": "permutation_loop_no_book_space_products",
+   "ok": true,
+   "detail": "all three permutation nulls: source contains no '@', matmul, einsum, minimize, SLSQP or mixture-fit calls"
+  },
+  {
+   "check": "parent_best_matrix_matches_direct",
+   "ok": true,
+   "detail": "3x3 BEST equals direct per-set max cosines"
+  },
+  {
+   "check": "hull_fit_synthetic_cases",
+   "ok": true,
+   "detail": "one-mode: hull==best-single (err 0.1178); two-mode: hull 0.3024 < best single 0.7777"
+  },
+  {
+   "check": "hull_table_matches_direct_sampled",
+   "ok": true,
+   "detail": "all 9 synthetic (i,j) hull/best-single entries equal direct fits"
+  },
+  {
+   "check": "hull_permutation_null_indexes_table",
+   "ok": true,
+   "detail": "null equals brute-force indexing of the precomputed 120x120-style table (no refitting)"
+  },
+  {
+   "check": "tail_p_formulas",
+   "ok": true,
+   "detail": "upper (1+count>=obs)/6 = 0.6667; lower = 0.5000"
+  },
+  {
+   "check": "hull_fit_benchmark_1000",
+   "ok": true,
+   "detail": "1000 fits in 1.6s; 1.63 ms/fit; projected 0.4 min for 14400 fits"
+  },
+  {
+   "check": "no_semantic_imports_or_context",
+   "ok": true,
+   "detail": "module flag SEMANTIC_CONTEXT_LOADED remains False; no semantic loader is ever called"
+  },
+  {
+   "check": "no_unblind_posthoc_artifact",
+   "ok": true,
+   "detail": "no posthoc/unblind artifact exists"
+  },
+  {
+   "check": "semantic_leakage_firewall",
+   "ok": true,
+   "detail": "no forbidden semantic tokens in artifacts"
+  },
+  {
+   "check": "smoke_check_names_unique",
+   "ok": true,
+   "detail": "21 checks, 0 duplicate(s)"
+  }
+ ],
+ "passed": true,
+ "git_head": "9852f4f7da7a8ef8f569f26910851ae361249f52",
+ "runtime_seconds": 3.6621482372283936
+}
