@@ -1,0 +1,103 @@
+{
+ "semantic_unblind_seed": 20260821,
+ "checks": [
+  {
+   "check": "source_and_addendum_seals_verify",
+   "ok": true,
+   "detail": "source campaign + addendum seals verify; 244 modes; two tau=0.70 families; frozen keys present"
+  },
+  {
+   "check": "exact_244_modes",
+   "ok": true,
+   "detail": "source_mode_count=244"
+  },
+  {
+   "check": "exactly_two_tau070_families",
+   "ok": true,
+   "detail": "n_families=2"
+  },
+  {
+   "check": "frozen_family_centroid_keys",
+   "ok": true,
+   "detail": "family_cent_0.70_f0; family_cent_0.70_f1"
+  },
+  {
+   "check": "family_centroids_finite_unit",
+   "ok": true,
+   "detail": "both frozen family centroids finite, unit L2 norm"
+  },
+  {
+   "check": "no_semantic_during_guard",
+   "ok": true,
+   "detail": "SEMANTIC_CONTEXT_LOADED stays False through all seal/guard tests"
+  },
+  {
+   "check": "tampered_hash_rejected_pre_semantic",
+   "ok": true,
+   "detail": "tampered source/addendum hashes all rejected by the pre-semantic validators"
+  },
+  {
+   "check": "synthetic_ranking_counts",
+   "ok": true,
+   "detail": "f0 exact/broad/anti @50 = 15/25/0; f1 = 5/15/8"
+  },
+  {
+   "check": "T_max_min_computed",
+   "ok": true,
+   "detail": "T_max=15 T_min=5 (expect 15, 5)"
+  },
+  {
+   "check": "joint_permutation_shared_assignment",
+   "ok": true,
+   "detail": "E0/E1/T_max/T_min null vectors equal brute force over the SAME permutation stream (both families share one assignment per permutation)"
+  },
+  {
+   "check": "permutation_p_formulas",
+   "ok": true,
+   "detail": "p_E0 and p_T_min match (1 + count(null >= obs)) / (N+1)"
+  },
+  {
+   "check": "stratum_counts_preserved",
+   "ok": true,
+   "detail": "within-bin joint-tuple counts never exceeded by the popularity-stratified permutation (full within-stratum permutation always exists; per-stratum counts exact)"
+  },
+  {
+   "check": "author_dedup_deterministic",
+   "ok": true,
+   "detail": "50 unique-author works, deterministic across repeated traversal"
+  },
+  {
+   "check": "topk_overlap_jaccard",
+   "ok": true,
+   "detail": "top-50 overlap 40 (Jaccard 0.6667); top-100 overlap 100"
+  },
+  {
+   "check": "metrics_frozen_before_head_rendering",
+   "ok": true,
+   "detail": "report section order: provenance -> hypotheses -> metrics -> joint tests -> broad/anti -> author dedup -> overlap -> heads"
+  },
+  {
+   "check": "no_semantic_family_selection",
+   "ok": true,
+   "detail": "no argmax/best-family/ranking selection; both families evaluated symmetrically in frozen order"
+  },
+  {
+   "check": "no_structural_centroid_recomputation",
+   "ok": true,
+   "detail": "family centroids loaded from the sealed addendum NPZ keys only; no structural analysis imports"
+  },
+  {
+   "check": "no_real_unblind_artifact",
+   "ok": true,
+   "detail": "real unblind json/npz/report absent"
+  },
+  {
+   "check": "smoke_check_names_unique",
+   "ok": true,
+   "detail": "19 checks, 0 duplicate(s)"
+  }
+ ],
+ "passed": true,
+ "git_head": "17dff2412e8d371da968e60191bc6d9819e6e79c",
+ "runtime_seconds": 1.1577680110931396
+}
