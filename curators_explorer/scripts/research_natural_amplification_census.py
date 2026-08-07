@@ -25,8 +25,10 @@ a post-hoc diagnostic that cannot alter clustering or select outputs.
 The geometry phase seals the label-blind claim mechanically: the geometry NPZ
 is written first, then a geometry JSON carrying SHA256 of both the census NPZ
 and the geometry NPZ, the exact ordered source list, clustering parameters,
-stage definitions, and git commit. ``phase_unblind`` recomputes both hashes
-and aborts before loading any semantic context if either differs.
+stage definitions, and git commit, followed by an external seal manifest that
+hashes the census NPZ, the geometry NPZ and the geometry JSON. ``phase_unblind``
+recomputes every hash and aborts before loading any semantic context if any
+differs.
 
 Phases
 ------
@@ -67,6 +69,10 @@ Phases
 - smoke:        small validation run (default 4 sources per size) that verifies
                 the census pipeline numerically reproduces the existing
                 seed_from_pref / run_path behavior.
+- prereport:    label-blind pre-unblind summary written from the sealed
+                geometry alone (no semantic context); includes the full-cluster
+                <-> even/odd analogue matching with precision, coverage and
+                Jaccard, and reports the external seal manifest verification.
 """
 
 from __future__ import annotations
@@ -161,6 +167,15 @@ def geometry_paths(tag: str | None) -> tuple[Path, Path]:
 
 def posthoc_path(tag: str | None) -> Path:
     return DATA / f"natural_amplification_census_posthoc{_tag_suffix(tag)}.json"
+
+
+def seal_manifest_path(tag: str | None) -> Path:
+    return DATA / f"natural_amplification_census{_tag_suffix(tag)}_seal_manifest.json"
+
+
+def prereport_path(tag: str | None) -> Path:
+    suffix = _tag_suffix(tag)
+    return DATA / f"NATURAL_AMPLIFICATION_CENSUS{suffix.upper()}_PREUNBLIND_REPORT.md"
 
 
 def report_path(tag: str | None) -> Path:
@@ -303,6 +318,69 @@ def _load_census(
         json_partial=data.get("partial"),
     )
     return records, blob, data
+
+
+def _seal_manifest(
+    tag: str | None,
+    npz_path: Path,
+    census_sha: str,
+    geo_npz: Path,
+    geo_sha: str,
+    geo_json: Path,
+    ids: list[str],
+) -> dict[str, Any]:
+    """External seal manifest hashing the census NPZ, geometry NPZ and
+    geometry JSON. Written after the geometry artifacts, so it is an
+    independent anchor a reviewer can re-derive from the files alone."""
+    return {
+        "seal_manifest_version": 1,
+        "artifacts": {
+            "census_npz": {
+                "file": npz_path.name,
+                "sha256": census_sha,
+                "bytes": npz_path.stat().st_size,
+            },
+            "geometry_npz": {
+                "file": geo_npz.name,
+                "sha256": geo_sha,
+                "bytes": geo_npz.stat().st_size,
+            },
+            "geometry_json": {
+                "file": geo_json.name,
+                "sha256": _sha256(geo_json),
+                "bytes": geo_json.stat().st_size,
+            },
+        },
+        "n_sources": len(ids),
+        "sources": ids,
+        "git_head": _git_head(),
+        "command": shlex.join(sys.argv),
+        "semantic_context_loaded": False,
+        "unblinded": False,
+    }
+
+
+def _verify_manifest(
+    args: argparse.Namespace, npz_path: Path, geo_json: Path, geo_npz: Path
+) -> dict[str, bool]:
+    """Recompute the three artifact hashes against the external seal manifest;
+    abort if the manifest is missing, claims semantic context, or mismatches."""
+    path = seal_manifest_path(args.tag)
+    if not path.exists():
+        raise SystemExit(f"seal manifest {path} missing; refusing")
+    man = json.loads(path.read_text(encoding="utf-8"))
+    if man.get("semantic_context_loaded") is not False:
+        raise SystemExit("seal manifest claims semantic context loaded; refusing")
+    if man.get("unblinded") is not False:
+        raise SystemExit("seal manifest claims already unblinded; refusing")
+    checks = {
+        "census_npz": _sha256(npz_path) == man["artifacts"]["census_npz"]["sha256"],
+        "geometry_npz": _sha256(geo_npz) == man["artifacts"]["geometry_npz"]["sha256"],
+        "geometry_json": _sha256(geo_json) == man["artifacts"]["geometry_json"]["sha256"],
+    }
+    if not all(checks.values()):
+        raise SystemExit(f"seal manifest hash mismatch: {checks}; refusing")
+    return checks
 
 
 # ---------------------------------------------------------------------------
@@ -1293,10 +1371,16 @@ def phase_geometry(args: argparse.Namespace) -> None:
         "unblinded": False,
     }
     _write_text_atomic(geo_json, json.dumps(geometry, indent=1))
+    _write_text_atomic(
+        seal_manifest_path(args.tag),
+        json.dumps(_seal_manifest(args.tag, npz_path, census_sha, geo_npz,
+                                  geo_sha, geo_json, ids), indent=1),
+    )
     print(
         f"geometry frozen: {geo_json} ({geo_json.stat().st_size/2**20:.1f} MiB), "
         f"{geo_npz} ({geo_npz.stat().st_size/2**20:.1f} MiB), "
-        f"seal sha256 {geo_sha[:16]}..., {time.time() - t0:.0f}s", flush=True,
+        f"seal sha256 {geo_sha[:16]}..., manifest "
+        f"{seal_manifest_path(args.tag).name}, {time.time() - t0:.0f}s", flush=True,
     )
 
 
@@ -1406,21 +1490,39 @@ def _find_analogue(
     members: list[str],
 ) -> dict[str, Any] | None:
     """Link a full preference-space cluster to its best even/odd half match
-    (derived from the frozen label-blind geometry only)."""
+    (derived from the frozen label-blind geometry only).
+
+    For a full cluster C and a half match M = A_M | B_M:
+    - precision = |(A_M U B_M) n C| / |A_M U B_M|   (how much of the match is in C)
+    - coverage  = |(A_M U B_M) n C| / |C|           (how much of C the match covers)
+    - jaccard   = |(A_M U B_M) n C| / |(A_M U B_M) U C|
+    Candidates must cover at least half of C (coverage >= 0.5); among them the
+    match with the highest A-B centroid cosine wins. The strong checklist in
+    the report additionally requires coverage >= 0.5."""
     h = frozen["halves"].get(f"match_pref_{group}_{stage_label}_{tau:.2f}")
     if not h:
         return None
-    mset = set(members)
+    cset = set(members)
+    n_c = len(cset)
+    if n_c == 0:
+        return None
     best = None
     for bm in h["best_matches"]:
-        union = set(bm["a_cluster"]) | set(bm["b_cluster"])
-        if not union:
+        mset = set(bm["a_cluster"]) | set(bm["b_cluster"])
+        if not mset:
             continue
-        frac = len(union & mset) / len(union)
-        if frac >= 0.5 and (best is None or bm["cos"] > best["cos"]):
+        inter = len(mset & cset)
+        coverage = inter / n_c
+        if coverage < 0.5:
+            continue
+        precision = inter / len(mset)
+        jaccard = inter / len(mset | cset)
+        if best is None or bm["cos"] > best["cos"]:
             best = {
                 "exists": True,
-                "overlap_fraction": frac,
+                "precision": precision,
+                "coverage": coverage,
+                "jaccard": jaccard,
                 "a_size": bm["a_size"],
                 "b_size": bm["b_size"],
                 "cos": bm["cos"],
@@ -1468,6 +1570,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
         )
     if seal["n_sources"] != len(records) or seal["sources"] != ids:
         raise SystemExit("sealed source list does not match census; refusing to unblind")
+    manifest_checks = _verify_manifest(args, npz_path, geo_json, geo_npz)
 
     payload, _, _ = year.load_matrix()
     n_books = int(len(payload["work_ids"]))
@@ -1708,6 +1811,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
         "integrity": {
             "census_sha256_verified": True,
             "geometry_sha256_verified": True,
+            "seal_manifest": manifest_checks,
             "source_alignment": _check_aligned(
                 records,
                 blob["source_size"],
@@ -1957,7 +2061,10 @@ def _write_report(
         md = f"{e['member_direction_cos_pole']:.3f}" if e.get("member_direction_cos_pole") is not None else "n/a"
         a = e.get("analogue")
         if a:
-            ana = f"yes ({a['overlap_fraction']:.2f} overlap)"
+            ana = (
+                f"yes (prec {a['precision']:.2f} / cov {a['coverage']:.2f} / "
+                f"jac {a['jaccard']:.2f})"
+            )
             a_sz = str(a["a_size"])
             b_sz = str(a["b_size"])
             ab_cos = f"{a['cos']:.3f}"
@@ -2050,6 +2157,7 @@ def _write_report(
             and e["metrics"]["exact_lit50"] >= 3
             and e["metrics"]["anti50"] <= 1
             and e.get("analogue") is not None
+            and e["analogue"]["coverage"] >= 0.5
             and e["analogue"]["cos"] >= 0.7
             and e["analogue"]["mutual_best"]
         ]
@@ -2057,7 +2165,8 @@ def _write_report(
             f"- **tau = {tau:.2f}:** {len(clist)} clusters, {len(non_sing)} non-singleton; "
             f"{n_lit} non-singleton preference clusters reach exact_lit50 >= 3 post-hoc; "
             f"{len(strong)} meet the strong checklist (size >= 5, exact_lit50 >= 3, "
-            f"anti50 <= 1, even/odd analogue with A-B cos >= 0.7 and mutual best)."
+            f"anti50 <= 1, even/odd analogue with coverage >= 0.5, A-B cos >= 0.7 "
+            f"and mutual best)."
         )
     lines += [
         "",
@@ -2071,6 +2180,209 @@ def _write_report(
     out = report_path(args.tag)
     _write_text_atomic(out, "\n".join(lines))
     print(f"Wrote {out}")
+
+
+# ---------------------------------------------------------------------------
+# Pre-unblind report: label-blind structural summary from the sealed geometry
+# ---------------------------------------------------------------------------
+
+def _preunblind_markdown(
+    args: argparse.Namespace,
+    frozen: dict[str, Any],
+    data: dict[str, Any],
+    manifest_checks: dict[str, bool],
+) -> list[str]:
+    method = frozen["method"]
+    seal = frozen["seal"]
+    lines: list[str] = [
+        "# Natural amplification census: PRE-UNBLIND structural summary",
+        "",
+        "**Generated by the `prereport` phase from the sealed geometry alone. "
+        "No semantic context (titles, evaluations, poles) was loaded to produce "
+        "this document.**",
+        "",
+        "**Question.** If we amplify random reversal endpoints without ever consulting "
+        "literary labels, does a distinct literary basin emerge naturally among the "
+        "amplified outputs?",
+        "",
+        "> **Scope honesty.** " + _HONESTY_STATEMENT,
+        "",
+        "## Provenance and seal",
+        "",
+        f"- Command: `{method['command']}`",
+        f"- Random seed: **{args.seed}**",
+        f"- Git commit: `{seal['git_head']}`",
+        f"- Census artifact: `{seal['census_npz_sha256']}` (SHA256, sealed)",
+        f"- Geometry artifact: `{seal['geometry_npz_sha256']}` (SHA256, sealed)",
+        f"- External seal manifest verified: census_npz {manifest_checks['census_npz']}, "
+        f"geometry_npz {manifest_checks['geometry_npz']}, "
+        f"geometry_json {manifest_checks['geometry_json']}.",
+        f"- Sources: {seal['n_sources']} ({method['juries_per_size']} juries per size, "
+        f"sizes {list(SIZES)}), source id `size:jury`.",
+        "",
+        "## PRE-UNBLIND STRUCTURAL RESULTS",
+        "",
+        "All numbers below were computed and frozen before any semantic context was "
+        "loaded. Amplification uses `seed_from_pref` (top 25 eligible books, "
+        f"`0.4 + 19.6 * frac5`, mean-normalized) and `run_path` gain-hard forward "
+        f"amplification (beta {breeding.BETA}, max stages {breeding.MAX_STAGES}). "
+        "Preference representation: `book_n >= 25` -> mean-center across eligible -> L2; "
+        "direction representation: L2-normalized stage direction. Clustering: "
+        "average-linkage hierarchical on cosine distance, dendrogram cut at height "
+        "`1 - tau` for tau in {0.30, 0.50, 0.70}; singletons kept. "
+        f"Stage definitions: deepest = final run_path stage; "
+        f"s4 = fixed stage index {STAGE_ANALYZED}.",
+        "",
+        "### Pairwise endpoint similarity (off-diagonal)",
+        "",
+        "| group | stage | space | n | mean | median | q90 |",
+        "|---|---|---|---:|---:|---:|---:|",
+    ]
+    for stage_label in ("deepest", "s4"):
+        for group in ("20k", "80k", "pooled"):
+            for space in ("pref", "dir"):
+                ps = frozen["pairwise"][f"{stage_label}_{group}"][space]
+                lines.append(
+                    f"| {group} | {stage_label} | {space} | "
+                    f"{frozen['pairwise'][f'{stage_label}_{group}']['n']} | "
+                    f"{ps['mean']:.4f} | {ps['median']:.4f} | {ps['q90']:.4f} |"
+                )
+    lines += ["", "### Cluster census (label-blind)", ""]
+    for stage_label in ("deepest", "s4"):
+        for group in ("20k", "80k", "pooled"):
+            for tau in CLUSTER_TAUS:
+                for space in ("pref", "dir"):
+                    key = f"{group}_{stage_label}_{tau:.2f}_{space}"
+                    clist = frozen["clusters"][stage_label][group][key]
+                    non_sing = [c for c in clist if c["size"] >= 2]
+                    top = sorted(non_sing, key=lambda c: -c["size"])[:5]
+                    line = (
+                        f"- {group} {stage_label} tau={tau:.2f} {space}: "
+                        f"{len(clist)} clusters ({len(non_sing)} with >= 2 members); "
+                        f"largest: "
+                    )
+                    if top:
+                        line += ", ".join(
+                            f"{c['size']} ({c['members'][0]}...)" for c in top
+                        )
+                    else:
+                        line += "none"
+                    lines.append(line)
+    lines += ["", "### Non-singleton clusters: within-cluster agreement and dispersion", ""]
+    lines += [
+        "| stage | group | tau | space | size | members | within mean/med/min | eff. dim |",
+        "|---|---|---:|---:|---:|---|---:|---:|",
+    ]
+    for stage_label in ("deepest", "s4"):
+        for group in ("20k", "80k", "pooled"):
+            for tau in CLUSTER_TAUS:
+                for space in ("pref", "dir"):
+                    key = f"{group}_{stage_label}_{tau:.2f}_{space}"
+                    for c in frozen["clusters"][stage_label][group][key]:
+                        if c["size"] < 2:
+                            continue
+                        w = c["within_pref" if space == "pref" else "within_dir"]
+                        ed = c["effective_dim_pref" if space == "pref" else "effective_dim_dir"]
+                        lines.append(
+                            f"| {stage_label} | {group} | {tau:.2f} | {space} | {c['size']} | "
+                            f"{' '.join(c['members'])} | "
+                            f"{w['mean']:.3f}/{w['median']:.3f}/{w['min']:.3f} | {ed:.1f} |"
+                        )
+    lines += ["", "### Independent-half reproducibility", ""]
+    lines += [
+        "| key | nA | nB | matches | cos>=0.5 | cos>=0.7 | best cos |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for key, h in frozen["halves"].items():
+        best_cos = max((b["cos"] for b in h["best_matches"]), default=float("nan"))
+        ge5 = sum(1 for b in h["best_matches"] if b["cos"] >= 0.5)
+        ge7 = sum(1 for b in h["best_matches"] if b["cos"] >= 0.7)
+        lines.append(
+            f"| {key} | {h['nA']} | {h['nB']} | {len(h['best_matches'])} | "
+            f"{ge5} | {ge7} | {best_cos:.3f} |"
+        )
+    lines += [
+        "",
+        "### Full-cluster <-> even/odd analogue matching (preference space)",
+        "",
+        "For every non-singleton preference-space cluster: the best even/odd half match "
+        "with coverage >= 0.5. precision = how much of the half match lies in the full "
+        "cluster; coverage = how much of the full cluster the half match covers; "
+        "jaccard = intersection / union. Label-blind geometry only.",
+        "",
+        "| stage | group | tau | size | within pref | analogue | precision | coverage | jaccard | "
+        "A size | B size | A-B cos | mutual best |",
+        "|---|---|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for stage_label in ("deepest", "s4"):
+        for group in ("20k", "80k", "pooled"):
+            for tau in CLUSTER_TAUS:
+                key = f"{group}_{stage_label}_{tau:.2f}_pref"
+                for c in frozen["clusters"][stage_label][group][key]:
+                    if c["size"] < 2:
+                        continue
+                    a = _find_analogue(frozen, stage_label, group, tau, c["members"])
+                    if a:
+                        ana = "yes"
+                        prec = f"{a['precision']:.2f}"
+                        cov = f"{a['coverage']:.2f}"
+                        jac = f"{a['jaccard']:.2f}"
+                        a_sz = str(a["a_size"])
+                        b_sz = str(a["b_size"])
+                        ab = f"{a['cos']:.3f}"
+                        mutual = "yes" if a["mutual_best"] else "no"
+                    else:
+                        ana = prec = cov = jac = "no"
+                        a_sz = b_sz = ab = mutual = "n/a"
+                    lines.append(
+                        f"| {stage_label} | {group} | {tau:.2f} | {c['size']} | "
+                        f"{c['within_pref']['mean']:.3f} | {ana} | {prec} | {cov} | {jac} | "
+                        f"{a_sz} | {b_sz} | {ab} | {mutual} |"
+                    )
+    if frozen.get("invariant_checks"):
+        n_ok = sum(1 for c in frozen["invariant_checks"] if c["ok"])
+        lines += [
+            "",
+            "### Label-blind invariant checks (run inside geometry, before sealing)",
+            "",
+            f"- {len(frozen['invariant_checks'])} checks run, {n_ok} passed, "
+            f"{len(frozen['invariant_checks']) - n_ok} failed. Geometry aborts on any failure.",
+        ]
+    lines += [
+        "",
+        "### Census integrity",
+        "",
+        f"- partial: {data.get('partial')}",
+        f"- integrity: {json.dumps(data.get('integrity', {}))}",
+        "",
+        "**The `unblind` phase will re-verify the census and geometry hashes, the "
+        "external seal manifest, and the full source alignment before loading any "
+        "semantic context.**",
+    ]
+    return lines
+
+
+def phase_prereport(args: argparse.Namespace) -> None:
+    assert not SEMANTIC_CONTEXT_LOADED
+    t0 = time.time()
+    npz_path, json_path = census_paths(args.tag)
+    records, _, data = _load_census(
+        args, npz_path, json_path, require_complete=not args.allow_partial
+    )
+    geo_json, geo_npz = geometry_paths(args.tag)
+    if not geo_json.exists() or not geo_npz.exists():
+        raise SystemExit("geometry not frozen yet; run geometry first")
+    frozen = json.loads(geo_json.read_text(encoding="utf-8"))
+    if frozen["method"]["semantic_context_loaded"] is not False:
+        raise SystemExit("geometry JSON claims semantic context loaded; refusing")
+    manifest_checks = _verify_manifest(args, npz_path, geo_json, geo_npz)
+    lines = _preunblind_markdown(args, frozen, data, manifest_checks)
+    out = prereport_path(args.tag)
+    _write_text_atomic(out, "\n".join(lines))
+    print(
+        f"prereport done ({len(records)} sources, seal manifest verified): "
+        f"{out}, {time.time() - t0:.0f}s", flush=True,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -2161,7 +2473,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--phase",
-        choices=["amplify", "consolidate", "geometry", "unblind", "smoke"],
+        choices=["amplify", "consolidate", "geometry", "unblind", "smoke", "prereport"],
         required=True,
     )
     parser.add_argument("--tag", default=None, help="artifact tag (default: none)")
@@ -2184,6 +2496,8 @@ def main() -> None:
         phase_geometry(args)
     elif args.phase == "unblind":
         phase_unblind(args)
+    elif args.phase == "prereport":
+        phase_prereport(args)
     else:
         phase_smoke(args)
 
