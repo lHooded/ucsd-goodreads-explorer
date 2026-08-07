@@ -52,6 +52,11 @@
    "detail": "null mean best-cosine equals brute-force indexing of the precomputed score table; intact mode sets preserved"
   },
   {
+   "check": "spectral_coverage_null_uses_shuffled_set_sizes",
+   "ok": true,
+   "detail": "unequal set sizes [1,2,3]; whole coverage_stats vector equals brute force over the same permutation stream; mean 1.000000 (correct normalization => 1.0)"
+  },
+  {
    "check": "permutation_loop_no_book_space_products",
    "ok": true,
    "detail": "all three permutation nulls: source contains no '@', matmul, einsum, minimize, SLSQP or mixture-fit calls"
@@ -84,7 +89,7 @@
   {
    "check": "hull_fit_benchmark_1000",
    "ok": true,
-   "detail": "1000 fits in 1.6s; 1.63 ms/fit; projected 0.4 min for 14400 fits"
+   "detail": "1000 fits in 1.6s; 1.59 ms/fit; projected 0.4 min for 14400 fits"
   },
   {
    "check": "no_semantic_imports_or_context",
@@ -104,10 +109,10 @@
   {
    "check": "smoke_check_names_unique",
    "ok": true,
-   "detail": "21 checks, 0 duplicate(s)"
+   "detail": "22 checks, 0 duplicate(s)"
   }
  ],
  "passed": true,
- "git_head": "9852f4f7da7a8ef8f569f26910851ae361249f52",
- "runtime_seconds": 3.6621482372283936
+ "git_head": "efb93c597fc36f51524c70da2df0c6e6fc6ba182",
+ "runtime_seconds": 3.9478814601898193
 }
