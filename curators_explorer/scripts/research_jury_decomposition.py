@@ -195,7 +195,7 @@ from curators_explorer.scripts.research_jury_split_experiment import (
 DATA = Path(__file__).resolve().parents[1] / "data"
 DRIFT_NPZ = DATA / "drift_exploit_main.npz"
 DRIFT_JSON = DATA / "drift_exploit_main.json"
-DRIFT_80K_ROW0 = MAIN_SIZES.index(80000) * MAIN_JURIES  # 360
+DRIFT_80K_ROW0 = MAIN_SIZES.index(80000) * MAIN_JURIES  # 480
 
 # Preregistered experiment parameters (never tuned from results).
 GLOBAL_SEED = 20260819
@@ -214,6 +214,39 @@ SMOKE_40K = 1200
 SMOKE_20K = 600
 
 NODE_ORDER = ["40k:0", "40k:1", "20k:0:0", "20k:0:1", "20k:1:0", "20k:1:1"]
+
+# Explicit geometry-key mapping for recurrence-null rows (the geometry JSON
+# stores e.g. "null_mean_concentration" for stat "mean_concentration"; the
+# report and the smoke checker MUST use these exact keys, never
+# "null_mean_" + stat concatenation).
+RECURRENCE_NULL_FIELDS = {
+    "mean_concentration": (
+        "null_mean_concentration",
+        "null_sd_concentration",
+        "empirical_p_upper_mean_concentration",
+    ),
+    "mean_n_recurrent": (
+        "null_mean_n_recurrent",
+        "null_sd_n_recurrent",
+        "empirical_p_upper_mean_n_recurrent",
+    ),
+    "frac_2plus_recurrent": (
+        "null_mean_frac_2plus",
+        "null_sd_frac_2plus",
+        "empirical_p_upper_frac_2plus_recurrent",
+    ),
+}
+RECURRENCE_NULL_STAT_LABELS = {
+    "mean concentration": "mean_concentration",
+    "mean n recurrent modes": "mean_n_recurrent",
+    "frac parents >= 2 recurrent modes": "frac_2plus_recurrent",
+}
+
+# Site counter for the single r20k preference-similarity computation (the
+# global clustering pass).  The recurrence and null analyses reuse that
+# matrix and must never increment it; the smoke check asserts one
+# increment per geometry run.
+R20K_SIM_COMPUTATIONS = [0]
 
 # True only inside the unblind phase, after all geometry files are sealed.
 SEMANTIC_CONTEXT_LOADED = False
@@ -412,7 +445,7 @@ def full_spec(args: argparse.Namespace) -> dict[str, Any]:
             "sizes": list(MAIN_SIZES),
             "juries_per_size": int(MAIN_JURIES),
             "parent_size": int(PARENT_SIZE),
-            "parent_endpoints": "drift_exploit_main.npz rows 360..479 "
+            "parent_endpoints": "drift_exploit_main.npz rows 480..599 "
                                 "(canonical (size, jury) order)",
             "membership": "rng.choice replay of the exact main-sweep stream "
                           "(replay_jury_users, research_jury_split_experiment)",
@@ -472,7 +505,7 @@ def load_80k_parents() -> tuple[list[dict[str, Any]], list[int]]:
 
     Verifies the canonical (size, jury) order inherited from the main sweep
     (sizes ascending, jury ascending) and the 80k slice is exactly rows
-    360..479 with jury ids 0..119.
+    480..599 with jury ids 0..119.
     """
     if not DRIFT_JSON.exists():
         raise SystemExit(f"missing {DRIFT_JSON}")
@@ -1096,6 +1129,17 @@ def _apply_run_scope(spec: dict[str, Any], scope: dict[str, Any]) -> None:
     }
 
 
+def _scope_is_full(spec: dict[str, Any]) -> bool:
+    """The intended full campaign is EXACTLY: parents 0..119, 3 random
+    replicates, both arms.  Anything else is a restricted scope."""
+    scope = spec.get("run_scope")
+    if scope is None:
+        return False
+    return (list(scope.get("parents", [])) == list(range(MAIN_JURIES))
+            and int(scope.get("random_replicates", 0)) == int(RANDOM_REPLICATES)
+            and sorted(scope.get("arms", [])) == ["random", "spectral"])
+
+
 def phase_run(args: argparse.Namespace) -> None:
     assert not SEMANTIC_CONTEXT_LOADED
     t0 = time.time()
@@ -1190,6 +1234,47 @@ def phase_run(args: argparse.Namespace) -> None:
     )
 
 
+def _cross_arm_parent_entry(
+        modes: list[dict[str, Any]], npz_out: dict[str, np.ndarray],
+        pref_reps: np.ndarray, ids: list[str],
+        s_idx: list[int], r20k_idx: list[int]) -> dict[str, Any]:
+    """Match this parent's spectral 20k children against its recurrent
+    random modes.  Recurrent candidates carry their ORIGINAL index in
+    `modes`; immutable mode_id / centroid_key / nearest_mode_index all use
+    that original index, never the filtered position."""
+    recurrent = [(i, m) for i, m in enumerate(modes) if m["recurrent"]]
+    if not recurrent or not s_idx:
+        return {"n_recurrent_modes": len(recurrent),
+                "n_spectral_children": len(s_idx),
+                "matches": [], "distinct_modes": 0}
+    cents = np.stack([npz_out[m["centroid_key"]] for _, m in recurrent])
+    s_vecs = pref_reps[np.asarray(s_idx)]
+    cos = s_vecs @ cents.T
+    matches: list[dict[str, Any]] = []
+    for k, si in enumerate(s_idx):
+        best = int(np.argmax(cos[k]))
+        orig_idx, mode = recurrent[best]
+        # rank of this cosine among the parent's random 20k children
+        r_cos = pref_reps[np.asarray(r20k_idx)] @ cents[best]
+        rank = int(np.sum(r_cos > cos[k, best]))
+        s_best_of_mode = int(np.argmax(cos[:, best])) == k
+        matches.append({
+            "spectral_child": ids[si],
+            "nearest_mode_index": orig_idx,
+            "nearest_mode_id": mode["mode_id"],
+            "nearest_centroid_key": mode["centroid_key"],
+            "cos": float(cos[k, best]),
+            "cos_rank_among_random": rank,
+            "mutual_best": s_best_of_mode,
+        })
+    return {
+        "n_recurrent_modes": len(recurrent),
+        "n_spectral_children": len(s_idx),
+        "matches": matches,
+        "distinct_modes": len({m["nearest_mode_id"] for m in matches}),
+    }
+
+
 # ---------------------------------------------------------------------------
 # Phase: consolidate
 # ---------------------------------------------------------------------------
@@ -1221,6 +1306,13 @@ def phase_consolidate(args: argparse.Namespace) -> None:
         raise SystemExit(f"missing {spath}; run prepare first")
     spec = json.loads(spath.read_text(encoding="utf-8"))
     expected = _expected_sources(spec)
+    full = _scope_is_full(spec)
+    if not full and not args.allow_partial:
+        raise SystemExit(
+            "consolidate refuses restricted scope: the intended full campaign "
+            "is parents 0..119, 3 random replicates, both arms; rerun with "
+            "--allow-partial to bypass (bounded smoke/testing only)"
+        )
     payload, _, _ = year.load_matrix()
     membership = replay_80k_membership(payload)
     if spec.get("smoke"):
@@ -1229,18 +1321,22 @@ def phase_consolidate(args: argparse.Namespace) -> None:
 
     have: list[tuple[str, int, int, str, int, dict[str, Any]]] = []
     missing: list[str] = []
+    spectral_diagnostics_by_parent: dict[str, Any] = {}
     for arm, parent_j, repl, path, size in expected:
         cpath = chunk_path(args.tag, arm, parent_j)
         if not cpath.exists():
             missing.append(f"{arm}:{parent_j}")
             continue
         try:
-            records, _ = read_chunk(args.tag, arm, parent_j, spec,
-                                    membership[parent_j])
+            records_chunk, arrays_chunk = read_chunk(
+                args.tag, arm, parent_j, spec, membership[parent_j])
         except Exception as exc:
             missing.append(f"{arm}:{parent_j} (invalid: {exc})")
             continue
-        rec = next(r for r in records["records"]
+        if arm == "spectral" and "diagnostics_json" in arrays_chunk:
+            spectral_diagnostics_by_parent[str(parent_j)] = json.loads(
+                str(arrays_chunk["diagnostics_json"][0]))
+        rec = next(r for r in records_chunk["records"]
                    if r["replicate"] == repl and r["path"] == path)
         have.append((arm, parent_j, repl, path, size, rec))
     n_missing = len(missing)
@@ -1322,7 +1418,9 @@ def phase_consolidate(args: argparse.Namespace) -> None:
         json.dumps(
             {
                 "records": records,
-                "partial": n < len(expected),
+                "partial": (not full) or n < len(expected),
+                "scope_is_full": bool(full),
+                "spectral_diagnostics_by_parent": spectral_diagnostics_by_parent,
                 "expected_sources": [node_source_id(x[0], x[1], x[2], x[3])
                                      for x in expected],
                 "integrity": integrity,
@@ -1652,6 +1750,12 @@ def phase_geometry(args: argparse.Namespace) -> None:
     if not spath.exists():
         raise SystemExit(f"missing {spath}; run prepare first")
     spec = json.loads(spath.read_text(encoding="utf-8"))
+    if not _scope_is_full(spec) and not args.allow_partial:
+        raise SystemExit(
+            "geometry refuses restricted scope: the intended full campaign "
+            "is parents 0..119, 3 random replicates, both arms; rerun with "
+            "--allow-partial to bypass (bounded smoke/testing only)"
+        )
     blob, data, npz_path, json_path = _load_consolidated(
         args, require_complete=not args.allow_partial)
     records = data["records"]
@@ -1714,6 +1818,11 @@ def phase_geometry(args: argparse.Namespace) -> None:
     # Per (group, space) the float64 cosine similarity matrix and the
     # average-linkage linkage are computed ONCE and the SAME frozen linkage
     # is cut at each tau (no repeated pairwise products or linkage per tau).
+    # The sealed census already stores every source preference/direction
+    # vector, so no `rep_*` arrays are stored here; similarity matrices are
+    # kept.  The r20k preference similarity is reused by the recurrence and
+    # null analysis below (never recomputed).
+    r20k_sim: np.ndarray | None = None
     for group, gidx in groups.items():
         if not gidx:
             continue
@@ -1722,9 +1831,11 @@ def phase_geometry(args: argparse.Namespace) -> None:
             mat = pref_reps if space == "pref" else dir_reps
             sub = mat[gidx]
             sim64 = sub.astype(np.float64) @ sub.astype(np.float64).T
+            if group == "r20k" and space == "pref":
+                r20k_sim = sim64
+                R20K_SIM_COMPUTATIONS[0] += 1
             _d, z = _avg_linkage_cuts(sim64)
             key = f"{group}_{space}"
-            npz_out[f"rep_{key}"] = sub
             npz_out[f"sim_{key}"] = sim64.astype(np.float32)
             geometry["pairwise"][f"{group}_{space}"] = _pairwise_summary(sim64)
             geometry["clusters"][f"{group}_{space}"] = []
@@ -1751,12 +1862,12 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 )
 
     # ---- within-parent recurrence (random arm, 20k descendants, pref) ----
-    # The group-level float64 cosine similarity matrix is computed ONCE and
-    # every within-parent or null clustering extracts a 12x12 submatrix
-    # (no book-space dot products inside any loop).
+    # The group-level float64 cosine similarity matrix was computed ONCE by
+    # the global clustering pass above and every within-parent or null
+    # clustering extracts a 12x12 submatrix (no second r20k_mat @
+    # r20k_mat.T, no book-space dot products inside any loop).
     r20k = groups["r20k"]
-    r20k_mat64 = pref_reps[r20k].astype(np.float64)
-    r20k_sim = r20k_mat64 @ r20k_mat64.T
+    assert r20k_sim is not None, "r20k preference similarity must exist"
     r20k_by_parent: dict[int, list[int]] = {}
     for i in r20k:
         r20k_by_parent.setdefault(int(parent_of[i]), []).append(i)
@@ -1860,38 +1971,9 @@ def phase_geometry(args: argparse.Namespace) -> None:
         per_parent: dict[str, Any] = {}
         for j in range(n_parents):
             modes = recurrence[str(tau)]["per_parent"].get(str(j), {}).get("modes", [])
-            recurrent = [m for m in modes if m["recurrent"]]
-            s_idx = s20k_by_parent.get(j, [])
-            if not recurrent or not s_idx:
-                per_parent[str(j)] = {"n_recurrent_modes": len(recurrent),
-                                      "n_spectral_children": len(s_idx),
-                                      "matches": [], "distinct_modes": 0}
-                continue
-            cents = np.stack([npz_out[m["centroid_key"]] for m in recurrent])
-            s_vecs = pref_reps[np.asarray(s_idx)]
-            cos = s_vecs @ cents.T
-            matches = []
-            for k, si in enumerate(s_idx):
-                best = int(np.argmax(cos[k]))
-                # rank of this cosine among the parent's random 20k children
-                r20k_idx = r20k_by_parent.get(j, [])
-                r_cos = pref_reps[np.asarray(r20k_idx)] @ cents[best]
-                rank = int(np.sum(r_cos > cos[k, best]))
-                s_best_of_mode = int(np.argmax(cos[:, best])) == k
-                matches.append({
-                    "spectral_child": ids[si],
-                    "nearest_mode_index": best,
-                    "nearest_mode_id": recurrent[best]["mode_id"],
-                    "cos": float(cos[k, best]),
-                    "cos_rank_among_random": rank,
-                    "mutual_best": s_best_of_mode,
-                })
-            per_parent[str(j)] = {
-                "n_recurrent_modes": len(recurrent),
-                "n_spectral_children": len(s_idx),
-                "matches": matches,
-                "distinct_modes": len({m["nearest_mode_index"] for m in matches}),
-            }
+            per_parent[str(j)] = _cross_arm_parent_entry(
+                modes, npz_out, pref_reps, ids,
+                s20k_by_parent.get(j, []), r20k_by_parent.get(j, []))
         cross_arm[str(tau)] = per_parent
     geometry["cross_arm"] = cross_arm
 
@@ -2082,6 +2164,7 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 for match in cm["matches"]:
                     mid = match["nearest_mode_id"]
                     midx = match["nearest_mode_index"]
+                    mkey = match["nearest_centroid_key"]
                     if mid not in ids_by_mode:
                         mode_consistency_ok = False
                         mode_consistency_detail.append(
@@ -2092,6 +2175,12 @@ def phase_geometry(args: argparse.Namespace) -> None:
                         mode_consistency_detail.append(
                             f"cross_arm mode_id/index mismatch at "
                             f"tau={tau:.2f} p={j}: id {mid} vs index {midx}")
+                    expected_key = f"recur_cent_{tau:.2f}_p{j:03d}_{midx}"
+                    if mkey != expected_key:
+                        mode_consistency_ok = False
+                        mode_consistency_detail.append(
+                            f"cross_arm centroid key mismatch at "
+                            f"tau={tau:.2f} p={j}: {mkey} != {expected_key}")
     invariant_checks.append(
         {"check": "mode_identity_consistency", "ok": bool(mode_consistency_ok),
          "detail": "; ".join(mode_consistency_detail)
@@ -2100,6 +2189,18 @@ def phase_geometry(args: argparse.Namespace) -> None:
         raise SystemExit(
             f"geometry invariant failed: mode identity consistency "
             f"({' ; '.join(mode_consistency_detail[:5])})")
+
+    # the sealed census already stores every source preference/direction
+    # vector; the geometry NPZ must never duplicate them as rep_* arrays
+    rep_keys = [k for k in npz_out if k.startswith("rep_")]
+    invariant_checks.append({
+        "check": "geometry_npz_no_rep_arrays",
+        "ok": not rep_keys,
+        "detail": "no rep_* arrays in geometry NPZ"
+        if not rep_keys else f"unexpected rep_* arrays: {rep_keys[:5]}",
+    })
+    if rep_keys:
+        raise SystemExit(f"geometry invariant failed: rep_* arrays {rep_keys}")
 
     geometry["method"] = _method_block("geometry", args, **{
         "n_sources": n,
@@ -2121,9 +2222,12 @@ def phase_geometry(args: argparse.Namespace) -> None:
     _write_npz_atomic(geo_npz, npz_out)
     geo_sha = _sha256(geo_npz)
     census_sha = _sha256(npz_path)
+    census_json_sha = _sha256(json_path)
     geometry["seal"] = {
         "geometry_npz_sha256": geo_sha,
         "census_npz_sha256": census_sha,
+        "census_json_sha256": census_json_sha,
+        "partial": bool(not _scope_is_full(spec)),
         "n_sources": n,
         "sources": ids,
         "clustering": spec["analysis"]["clustering"],
@@ -2139,6 +2243,8 @@ def phase_geometry(args: argparse.Namespace) -> None:
         "artifacts": {
             "census_npz": {"file": npz_path.name, "sha256": census_sha,
                            "bytes": npz_path.stat().st_size},
+            "census_json": {"file": json_path.name, "sha256": census_json_sha,
+                            "bytes": json_path.stat().st_size},
             "geometry_npz": {"file": geo_npz.name, "sha256": geo_sha,
                              "bytes": geo_npz.stat().st_size},
             "geometry_json": {"file": geo_json.name,
@@ -2176,6 +2282,7 @@ def _verify_manifest(args: argparse.Namespace) -> dict[str, bool]:
         raise SystemExit("seal manifest claims semantic context loaded; refusing")
     checks = {
         "census_npz": _sha256(npz_path) == man["artifacts"]["census_npz"]["sha256"],
+        "census_json": _sha256(json_path) == man["artifacts"]["census_json"]["sha256"],
         "geometry_npz": _sha256(geo_npz) == man["artifacts"]["geometry_npz"]["sha256"],
         "geometry_json": _sha256(geo_json) == man["artifacts"]["geometry_json"]["sha256"],
     }
@@ -2357,20 +2464,16 @@ def phase_prereport(args: argparse.Namespace) -> None:
         "| statistic | observed | null mean | null sd | empirical p_upper |",
         "|---|---:|---:|---:|---:|",
     ]
-    _NULL_STAT_FIELDS = (
-        ("mean_concentration", "mean concentration"),
-        ("mean_n_recurrent", "mean n recurrent modes"),
-        ("frac_2plus_recurrent", "frac parents >= 2 recurrent modes"),
-    )
     for key, val in geometry["nulls"].items():
         obs = val["observed"]
         if isinstance(obs, dict):
-            for stat, label in _NULL_STAT_FIELDS:
+            for label, stat in RECURRENCE_NULL_STAT_LABELS.items():
+                keys = RECURRENCE_NULL_FIELDS[stat]
                 lines.append(
                     f"| {key} {label} | {_fmt_float(obs[stat])} | "
-                    f"{_fmt_float(val.get('null_mean_' + stat))} | "
-                    f"{_fmt_float(val.get('null_sd_' + stat))} | "
-                    f"{_fmt_float(val.get('empirical_p_upper_' + stat))} |"
+                    f"{_fmt_float(val.get(keys[0]))} | "
+                    f"{_fmt_float(val.get(keys[1]))} | "
+                    f"{_fmt_float(val.get(keys[2]))} |"
                 )
         else:
             lines.append(
@@ -2507,7 +2610,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
             "parent": j,
             "replicate": None,
             "path": None,
-            "size": int(blob["parent_prefs"].shape[1]),
+            "size": int(PARENT_SIZE),
             "metrics": evaluate(blob["parent_prefs"][j]),
         })
 
@@ -2844,6 +2947,43 @@ def _smoke_geometry_tests(spec: dict[str, Any]) -> list[dict[str, Any]]:
                    and int(np.argmax(cos[:, 0])) == 0
                    and int(np.argmax(cos[:, 1])) == 1})
 
+    # cross-arm mode indexing: with original mode 0 non-recurrent and
+    # original mode 1 recurrent, a spectral child matching the recurrent
+    # mode must record ORIGINAL index 1 (and id/centroid key of mode 1),
+    # NOT the filtered position 0
+    fake_modes = [
+        {"recurrent": False,
+         "mode_id": "recurrent_mode_0.50_p000_0",
+         "centroid_key": "recur_cent_0.50_p000_0"},
+        {"recurrent": True,
+         "mode_id": "recurrent_mode_0.50_p000_1",
+         "centroid_key": "recur_cent_0.50_p000_1"},
+        {"recurrent": False,
+         "mode_id": "recurrent_mode_0.50_p000_2",
+         "centroid_key": "recur_cent_0.50_p000_2"},
+    ]
+    fake_npz = {
+        "recur_cent_0.50_p000_0": mode_a[0],
+        "recur_cent_0.50_p000_1": mode_b[0],
+        "recur_cent_0.50_p000_2": mode_a[1],
+    }
+    child_vec = np.vstack([mode_b[0], noisy(a)]).astype(np.float32)
+    entry = _cross_arm_parent_entry(
+        fake_modes, fake_npz, child_vec, ["s0", "s1"],
+        [0, 1], [0, 1])
+    m0 = entry["matches"][0]
+    index_ok = (m0["nearest_mode_index"] == 1
+                and m0["nearest_mode_id"] == "recurrent_mode_0.50_p000_1"
+                and m0["nearest_centroid_key"] == "recur_cent_0.50_p000_1"
+                and entry["distinct_modes"] == 1)
+    checks.append({
+        "check": "cross_arm_original_index_not_filtered",
+        "ok": index_ok,
+        "detail": f"nearest_mode_index={m0['nearest_mode_index']} "
+                  f"id={m0['nearest_mode_id']} key={m0['nearest_centroid_key']} "
+                  f"distinct={entry['distinct_modes']}",
+    })
+
     # fast clustering == census clustering on shared data
     from curators_explorer.scripts import research_natural_amplification_census as census
     same = all(
@@ -2942,6 +3082,8 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
         return [c.strip() for c in ln.strip().strip("|").split("|")]
 
     def close(a: str, b: Any) -> bool:
+        """Geometry finite => report cell MUST be numeric and within
+        tolerance; geometry null/None => report cell must be n/a (or nan)."""
         if b is None or (isinstance(b, float) and np.isnan(b)):
             return a in ("n/a", "nan")
         try:
@@ -2949,11 +3091,7 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
         except ValueError:
             return False
 
-    stat_by_label = {
-        "mean concentration": "mean_concentration",
-        "mean n recurrent modes": "mean_n_recurrent",
-        "frac parents >= 2 recurrent modes": "frac_2plus_recurrent",
-    }
+    stat_by_label = dict(RECURRENCE_NULL_STAT_LABELS)
 
     mismatches: list[str] = []
     null_lines = [ln for ln in section(
@@ -2986,12 +3124,13 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
             if val["observed"] is None:
                 mismatches.append(f"{key_label}: observed n/a")
         else:
+            null_mean_key, null_sd_key, p_upper_key = (
+                RECURRENCE_NULL_FIELDS[stat_name])
             fields = (
                 ("observed", val["observed"][stat_name]),
-                ("null_mean_" + stat_name, val.get("null_mean_" + stat_name)),
-                ("null_sd_" + stat_name, val.get("null_sd_" + stat_name)),
-                ("empirical_p_upper_" + stat_name,
-                 val.get("empirical_p_upper_" + stat_name)),
+                (null_mean_key, val.get(null_mean_key)),
+                (null_sd_key, val.get(null_sd_key)),
+                (p_upper_key, val.get(p_upper_key)),
             )
             if val["observed"][stat_name] is None or np.isnan(
                     val["observed"][stat_name]):
@@ -3154,6 +3293,86 @@ def phase_smoke(args: argparse.Namespace) -> None:
                    "detail": "phase_unblind is implemented but never invoked "
                              "during label-blind smoke"})
 
+    # spectral diagnostics must survive chunk deletion: consolidated JSON
+    # carries per-parent edge-coverage and power-iteration diagnostics
+    _census_npz, cons_json = census_paths(tag)
+    consolidated = json.loads(cons_json.read_text(encoding="utf-8"))
+    diag_by_parent = consolidated.get("spectral_diagnostics_by_parent", {})
+    diag0 = diag_by_parent.get("0", {})
+    diag_ok = (isinstance(diag0, dict)
+               and set(diag0) >= {"edge_coverage", "power_iterations"}
+               and set(diag0["power_iterations"]) >= {"root", "40k:0", "40k:1"})
+    checks.append({
+        "check": "spectral_diagnostics_survive_consolidation",
+        "ok": bool(diag_ok),
+        "detail": f"parents={sorted(diag_by_parent)} "
+                  f"coverage={diag0.get('edge_coverage', {}).get('n_parent_users')}",
+    })
+
+    # census JSON must be sealed in geometry and in the external manifest
+    geo_json_loaded, _ = geometry_paths(tag)
+    geometry_seal = json.loads(geo_json_loaded.read_text(
+        encoding="utf-8"))["seal"]
+    man = json.loads(seal_manifest_path(tag).read_text(encoding="utf-8"))
+    census_json_sealed = (
+        geometry_seal.get("census_json_sha256") == _sha256(cons_json)
+        and "census_json" in man.get("artifacts", {})
+        and man["artifacts"]["census_json"]["sha256"] == _sha256(cons_json)
+        and "partial" in geometry_seal
+        and geometry_seal["partial"] is True
+    )
+    checks.append({
+        "check": "census_json_sealed_in_geometry_and_manifest",
+        "ok": bool(census_json_sealed),
+        "detail": "census json sha256 in geometry seal + manifest "
+                  "artifacts; geometry marked partial (smoke scope)",
+    })
+
+    # restricted scope must be refused by consolidate WITHOUT --allow-partial
+    try:
+        phase_consolidate(argparse.Namespace(tag=tag, seed=GLOBAL_SEED,
+                                             allow_partial=False))
+        checks.append({"check": "restricted_scope_rejected_without_allow_partial",
+                       "ok": False,
+                       "detail": "consolidate accepted a restricted scope"})
+    except SystemExit:
+        checks.append({"check": "restricted_scope_rejected_without_allow_partial",
+                       "ok": True,
+                       "detail": "consolidate refused restricted scope"})
+
+    # the r20k preference similarity must be computed exactly once per
+    # geometry run (global clustering pass); the recurrence/null analyses
+    # reuse that SAME matrix (site counter stays at 1; stored sim_r20k_pref
+    # equals the direct r20k product)
+    r20k_n = len([1 for r in consolidated["records"]
+                  if r["arm"] == "random" and r["size"] == SMOKE_20K])
+    R20K_SIM_COMPUTATIONS[0] = 0
+    phase_geometry(argparse.Namespace(tag=tag, seed=GLOBAL_SEED,
+                                      allow_partial=True))
+    sim_count = R20K_SIM_COMPUTATIONS[0]
+    r20k_rows = [i for i, r in enumerate(consolidated["records"])
+                 if r["arm"] == "random" and r["size"] == SMOKE_20K]
+    r20k_members = [consolidated["records"][i]["source_id"] for i in r20k_rows]
+    geo2 = json.loads(geometry_paths(tag)[0].read_text(encoding="utf-8"))
+    gblob = np.load(geometry_paths(tag)[1], allow_pickle=False)
+    pref_blob = np.load(census_paths(tag)[0], allow_pickle=False)
+    eligible2 = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
+    r20k_pref_reps = np.stack([
+        _pref_rep(pref_blob["prefs"][i], eligible2)
+        for i in r20k_rows]).astype(np.float32)
+    direct_sim = (r20k_pref_reps.astype(np.float64)
+                  @ r20k_pref_reps.astype(np.float64).T)
+    stored_sim = np.asarray(gblob["sim_r20k_pref"], dtype=np.float64)
+    reuse_ok = stored_sim.shape == direct_sim.shape \
+        and np.allclose(stored_sim, direct_sim, rtol=1e-5, atol=1e-6)
+    checks.append({
+        "check": "r20k_similarity_computed_once",
+        "ok": sim_count == 1 and bool(reuse_ok),
+        "detail": f"site counter={sim_count} (expect 1), "
+                  f"{r20k_n} r20k rows, stored sim matches direct product: "
+                  f"{reuse_ok}",
+    })
+
     # firewall scan of all pre-unblind artifacts
     artifacts = [
         spec_path(tag), rating_stats_path(tag), census_paths(tag)[0],
@@ -3161,6 +3380,19 @@ def phase_smoke(args: argparse.Namespace) -> None:
         seal_manifest_path(tag), prereport_path(tag),
     ]
     checks += _smoke_firewall_scan(artifacts)
+
+    # every smoke check must have a unique name (duplicate names hide
+    # failures and corrupt the provenance record)
+    checks.append({"check": "smoke_check_names_unique", "ok": True,
+                   "detail": "pending"})
+    check_names = [c["check"] for c in checks]
+    dup_names = sorted({n for n in check_names
+                        if check_names.count(n) > 1})
+    checks[-1]["ok"] = not dup_names
+    checks[-1]["detail"] = (
+        f"{len(check_names)} checks, "
+        f"{len(check_names) - len(set(check_names))} duplicate(s)"
+        + (f": {dup_names}" if dup_names else ""))
 
     report = {
         "seed": args.seed,
