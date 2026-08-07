@@ -1,0 +1,45 @@
+{
+ "seal_manifest_version": 1,
+ "artifacts": {
+  "census_npz": {
+   "file": "jury_decomposition_smoke.npz",
+   "sha256": "1e3cb7788085c8d801dc94e808df8ba0d548bccc97a5ba07b2fa35990113f48d",
+   "bytes": 37419894
+  },
+  "geometry_npz": {
+   "file": "jury_decomposition_geometry_smoke.npz",
+   "sha256": "fc7e2a23aaaaadfa1f7c9d84f7a43444eca1885a316c9ca6f3d0fe9fc583abc6",
+   "bytes": 23400264
+  },
+  "geometry_json": {
+   "file": "jury_decomposition_geometry_smoke.json",
+   "sha256": "3d6db59a90dc573ef2fd576fe624da0c3537eed3fe9879844b9afef384b3686d",
+   "bytes": 133515
+  }
+ },
+ "n_sources": 18,
+ "sources": [
+  "random-000-0-40k:0",
+  "random-000-0-40k:1",
+  "random-000-0-20k:0:0",
+  "random-000-0-20k:0:1",
+  "random-000-0-20k:1:0",
+  "random-000-0-20k:1:1",
+  "random-000-1-40k:0",
+  "random-000-1-40k:1",
+  "random-000-1-20k:0:0",
+  "random-000-1-20k:0:1",
+  "random-000-1-20k:1:0",
+  "random-000-1-20k:1:1",
+  "spectral-000-0-40k:0",
+  "spectral-000-0-40k:1",
+  "spectral-000-0-20k:0:0",
+  "spectral-000-0-20k:0:1",
+  "spectral-000-0-20k:1:0",
+  "spectral-000-0-20k:1:1"
+ ],
+ "git_head": "39ddecee5304899274267efe4458fb84418a6a6d",
+ "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
+ "semantic_context_loaded": false,
+ "unblinded": false
+}
