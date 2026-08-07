@@ -2679,7 +2679,8 @@ def _preunblind_markdown(
         "",
         f"- Command: `{method['command']}`",
         f"- Random seed: **{args.seed}**",
-        f"- Git commit: `{seal['git_head']}`",
+        f"- Sealed geometry git commit: `{seal['git_head']}`",
+        f"- Prereport / family freeze generated at git commit: `{_git_head()}`",
         f"- Census artifact: `{seal['census_npz_sha256']}` (SHA256, sealed)",
         f"- Geometry artifact: `{seal['geometry_npz_sha256']}` (SHA256, sealed)",
         f"- External seal manifest verified: census_npz {manifest_checks['census_npz']}, "
