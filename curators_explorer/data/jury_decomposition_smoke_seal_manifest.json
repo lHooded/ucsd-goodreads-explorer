@@ -13,8 +13,8 @@
   },
   "geometry_json": {
    "file": "jury_decomposition_geometry_smoke.json",
-   "sha256": "7abb2cb97dc1c3fb905b7e32fc24652499904a85f29724af9c9d35e118234cd6",
-   "bytes": 190046
+   "sha256": "39b6b0d87e78c06f28d6591d30964431d2e854807b1d6431083f8054391c9caa",
+   "bytes": 190127
   }
  },
  "n_sources": 18,
@@ -38,7 +38,7 @@
   "spectral-000-0-20k:1:0",
   "spectral-000-0-20k:1:1"
  ],
- "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
+ "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
  "semantic_context_loaded": false,
  "unblinded": false

@@ -127,7 +127,7 @@
        "min": 0.3279265996954716,
        "pair_count": 28
       },
-      "effective_dim": 6.344054745733717,
+      "effective_dim": 6.344054745733714,
       "centroid_key": "cent_r20k_pref_0.30_0"
      }
     ]
@@ -150,7 +150,7 @@
        "min": 0.5174326779136311,
        "pair_count": 3
       },
-      "effective_dim": 1.9734934902345833,
+      "effective_dim": 1.9734934902345835,
       "centroid_key": "cent_r20k_pref_0.50_0"
      },
      {
@@ -167,7 +167,7 @@
        "min": 0.47639219944804817,
        "pair_count": 6
       },
-      "effective_dim": 2.9713254087043146,
+      "effective_dim": 2.971325408704316,
       "centroid_key": "cent_r20k_pref_0.50_1"
      },
      {
@@ -324,7 +324,7 @@
        "min": 0.34851704491464963,
        "pair_count": 1
       },
-      "effective_dim": 1.0,
+      "effective_dim": 0.9999999999999996,
       "centroid_key": "cent_r20k_dir_0.30_0"
      },
      {
@@ -672,7 +672,7 @@
        "min": 0.3966012611792623,
        "pair_count": 6
       },
-      "effective_dim": 2.7120099128880875,
+      "effective_dim": 2.712009912888086,
       "centroid_key": "cent_r40k_pref_0.30_0"
      }
     ]
@@ -796,7 +796,7 @@
        "min": 0.37212398339614083,
        "pair_count": 1
       },
-      "effective_dim": 1.0,
+      "effective_dim": 0.9999999999999991,
       "centroid_key": "cent_r40k_dir_0.30_0"
      },
      {
@@ -974,7 +974,7 @@
        "min": 0.4596770585896423,
        "pair_count": 1
       },
-      "effective_dim": 1.0,
+      "effective_dim": 1.0000000000000002,
       "centroid_key": "cent_s20k_pref_0.30_0"
      },
      {
@@ -1565,7 +1565,7 @@
        "min": 0.3279265996954716,
        "pair_count": 45
       },
-      "effective_dim": 8.047027052455372,
+      "effective_dim": 8.047027052455366,
       "centroid_key": "cent_pooled20k_pref_0.30_0"
      },
      {
@@ -1644,7 +1644,7 @@
        "min": 0.5174326779136311,
        "pair_count": 3
       },
-      "effective_dim": 1.9734934902345833,
+      "effective_dim": 1.9734934902345829,
       "centroid_key": "cent_pooled20k_pref_0.50_2"
      },
      {
@@ -1662,7 +1662,7 @@
        "min": 0.47639219944804817,
        "pair_count": 10
       },
-      "effective_dim": 3.9491335705853183,
+      "effective_dim": 3.949133570585318,
       "centroid_key": "cent_pooled20k_pref_0.50_3"
      },
      {
@@ -1889,7 +1889,7 @@
        "min": 0.34851704491464963,
        "pair_count": 1
       },
-      "effective_dim": 1.0000000000000007,
+      "effective_dim": 1.0000000000000004,
       "centroid_key": "cent_pooled20k_dir_0.30_0"
      },
      {
@@ -2406,7 +2406,7 @@
        "min": 0.3966012611792623,
        "pair_count": 10
       },
-      "effective_dim": 3.676723926930384,
+      "effective_dim": 3.676723926930385,
       "centroid_key": "cent_pooled40k_pref_0.30_0"
      },
      {
@@ -2444,7 +2444,7 @@
        "min": 0.48438662607773686,
        "pair_count": 6
       },
-      "effective_dim": 2.775494601238226,
+      "effective_dim": 2.7754946012382247,
       "centroid_key": "cent_pooled40k_pref_0.50_0"
      },
      {
@@ -2574,7 +2574,7 @@
        "min": 0.37212398339614083,
        "pair_count": 1
       },
-      "effective_dim": 1.0,
+      "effective_dim": 0.9999999999999991,
       "centroid_key": "cent_pooled40k_dir_0.30_0"
      },
      {
@@ -8650,9 +8650,9 @@
    "null_sd_n_recurrent": 0.0,
    "null_mean_frac_2plus": 0.0,
    "null_sd_frac_2plus": 0.0,
-   "observed_percentile_concentration": 1.0,
-   "observed_percentile_n_recurrent": 1.0,
-   "observed_percentile_frac_2plus": 1.0,
+   "empirical_p_upper_mean_concentration": 1.0,
+   "empirical_p_upper_mean_n_recurrent": 1.0,
+   "empirical_p_upper_frac_2plus_recurrent": 1.0,
    "nondegenerate": false,
    "n_permutations": 199
   },
@@ -8668,9 +8668,9 @@
    "null_sd_n_recurrent": 0.0,
    "null_mean_frac_2plus": 1.0,
    "null_sd_frac_2plus": 0.0,
-   "observed_percentile_concentration": 1.0,
-   "observed_percentile_n_recurrent": 1.0,
-   "observed_percentile_frac_2plus": 1.0,
+   "empirical_p_upper_mean_concentration": 1.0,
+   "empirical_p_upper_mean_n_recurrent": 1.0,
+   "empirical_p_upper_frac_2plus_recurrent": 1.0,
    "nondegenerate": false,
    "n_permutations": 199
   },
@@ -8686,9 +8686,9 @@
    "null_sd_n_recurrent": 0.0,
    "null_mean_frac_2plus": 0.0,
    "null_sd_frac_2plus": 0.0,
-   "observed_percentile_concentration": 1.0,
-   "observed_percentile_n_recurrent": 1.0,
-   "observed_percentile_frac_2plus": 1.0,
+   "empirical_p_upper_mean_concentration": 1.0,
+   "empirical_p_upper_mean_n_recurrent": 1.0,
+   "empirical_p_upper_frac_2plus_recurrent": 1.0,
    "nondegenerate": false,
    "n_permutations": 199
   },
@@ -8699,7 +8699,7 @@
    "null_sd": 0.0,
    "null_min": 0.0,
    "null_max": 0.0,
-   "observed_percentile": 1.0,
+   "empirical_p_upper": 1.0,
    "nondegenerate": false,
    "n_permutations": 199
   },
@@ -8710,7 +8710,7 @@
    "null_sd": 0.014399314085846143,
    "null_min": 0.023652818646071716,
    "null_max": 0.10390434909708893,
-   "observed_percentile": 0.6834170854271356,
+   "empirical_p_upper": 0.685,
    "nondegenerate": true,
    "n_permutations": 199
   },
@@ -8721,7 +8721,7 @@
    "null_sd": NaN,
    "null_min": NaN,
    "null_max": NaN,
-   "observed_percentile": NaN,
+   "empirical_p_upper": NaN,
    "nondegenerate": false,
    "n_permutations": 199
   }
@@ -8730,7 +8730,7 @@
   "phase": "geometry",
   "seed": 20260819,
   "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
+  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,
@@ -8953,7 +8953,7 @@
    "min_book_n": 25
   },
   "seed": 20260819,
-  "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
+  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
   "semantic_context_loaded": false,
   "unblinded": false
  }

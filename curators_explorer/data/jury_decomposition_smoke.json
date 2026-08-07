@@ -668,7 +668,7 @@
   "phase": "consolidate",
   "seed": 20260819,
   "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke",
-  "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
+  "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
   "semantic_context_loaded": false,
   "runtime_seconds": 0.0,
   "n_sources": 18,

@@ -8,7 +8,7 @@
 
 - Command: `/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition.py --phase smoke`
 - Global seed: **20260819**; parent campaign: tag `main`, seed **20260811**, sizes [20000, 30000, 45000, 60000, 80000, 110000], 120 juries per size
-- Sealed geometry git commit: `82f5239c9dc737e3dc8849dcd9a3da05de4fca5c`
+- Sealed geometry git commit: `24760acf62dbac4223f8864db8f065a412f75ff6`
 - Census artifact: `28a061509b4906993e7218b711f8ae6f744c2bced7f5ccdd9f1ba67804dd2592` (SHA256, sealed)
 - Geometry artifact: `040e5b14f5064d71308c381f786c88384f3179c8430e8b6d99b153df4b30f2ea` (SHA256, sealed)
 - External seal manifest verified: census_npz True, geometry_npz True, geometry_json True.
@@ -71,8 +71,8 @@ Recurrent modes require descendants from at least two DISTINCT random partition 
 | tau | parents with matches | distinct-mode mappings |
 |---|---:|---:|
 | 0.30 | 1 | 1 |
-| 0.50 | 2 | 2 |
-| 0.70 | 2 | 2 |
+| 0.50 | 1 | 1 |
+| 0.70 | 0 | 0 |
 
 ### Parent-as-mixture geometry (convex hull of recurrent modes)
 
@@ -86,22 +86,22 @@ For each parent and tau, p = the frozen normalized preference-space endpoint; th
 
 ### Label-free permutation nulls
 
-Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block permutations (synthetic parents sample one block from each replicate, generally from different real parents). Mixture nulls: parent endpoints permuted across parents per tau.
+Recurrence nulls: per-replicate INDEPENDENT (parent, replicate) 4x20k block permutations (synthetic parents sample one block from each replicate, generally from different real parents). Mixture nulls: parent endpoints permuted across parents per tau. `empirical p_upper` is the conventional upper-tail null fraction (1 + count(null >= observed)) / (n_permutations + 1).
 
-| statistic | observed | null mean | null sd | null min / max | observed percentile |
-|---|---:|---:|---:|---:|---:|
-| recurrence_0.30 mean concentration | 1.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.30 mean n recurrent modes | 1.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.30 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.50 mean concentration | 0.5000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.50 mean n recurrent modes | 2.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.50 frac parents >= 2 recurrent modes | 1.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.70 mean concentration | 0.1250 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.70 mean n recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
-| recurrence_0.70 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | n/a / n/a | n/a |
-| mixture_rel_0.30 | 0.0000 | 0.0000 | 0.0000 | 0.0000 / 0.0000 | 1.0000 |
-| mixture_rel_0.50 | 0.0418 | 0.0499 | 0.0144 | 0.0237 / 0.1039 | 0.6834 |
-| mixture_rel_0.70 | n/a | n/a | n/a | n/a / n/a | n/a |
+| statistic | observed | null mean | null sd | empirical p_upper |
+|---|---:|---:|---:|---:|
+| recurrence_0.30 mean concentration | 1.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.30 mean n recurrent modes | 1.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.30 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.50 mean concentration | 0.5000 | n/a | n/a | 1.0000 |
+| recurrence_0.50 mean n recurrent modes | 2.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.50 frac parents >= 2 recurrent modes | 1.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.70 mean concentration | 0.1250 | n/a | n/a | 1.0000 |
+| recurrence_0.70 mean n recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
+| recurrence_0.70 frac parents >= 2 recurrent modes | 0.0000 | n/a | n/a | 1.0000 |
+| mixture_rel_0.30 | 0.0000 | 0.0000 | 0.0000 | 1.0000 |
+| mixture_rel_0.50 | 0.0418 | 0.0499 | 0.0144 | 0.6850 |
+| mixture_rel_0.70 | n/a | n/a | n/a | n/a |
 
 ### Invariant checks
 

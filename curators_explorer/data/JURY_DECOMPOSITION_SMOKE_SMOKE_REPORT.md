@@ -47,6 +47,11 @@
    "ok": true
   },
   {
+   "check": "rating_stats_alignment_hashes",
+   "ok": true,
+   "detail": "user+book payload hashes and mean lengths verified"
+  },
+  {
    "check": "spectral_tree_deterministic",
    "ok": true
   },
@@ -93,7 +98,7 @@
   {
    "check": "edge_raw_id_roundtrip",
    "ok": true,
-   "detail": "sampled 5 ids: [8, 8, 8, 8, 8]"
+   "detail": "sampled 5 raw ids: [8, 8, 8, 8, 8]"
   },
   {
    "check": "spectral_edges_deterministic",
@@ -190,6 +195,31 @@
    "detail": "sd=0.1590 mean=0.7833"
   },
   {
+   "check": "recurrence_slice_equals_direct",
+   "ok": true,
+   "detail": "sliced 12x12 similarity clustering matches direct vectors at all 3 taus"
+  },
+  {
+   "check": "effective_dim_gram_matches_svd",
+   "ok": true,
+   "detail": "svd=27.122641 gram=27.122641"
+  },
+  {
+   "check": "prereport_nulls_match_geometry",
+   "ok": true,
+   "detail": "14 null rows populated and matching geometry JSON"
+  },
+  {
+   "check": "prereport_cross_arm_per_tau",
+   "ok": true,
+   "detail": "cross-arm rows are per-tau (not cumulative) and match geometry"
+  },
+  {
+   "check": "unblind_not_run",
+   "ok": true,
+   "detail": "phase_unblind is implemented but never invoked during label-blind smoke"
+  },
+  {
    "check": "semantic_firewall_artifacts",
    "ok": true,
    "detail": ""
@@ -200,6 +230,6 @@
   }
  ],
  "passed": true,
- "git_head": "82f5239c9dc737e3dc8849dcd9a3da05de4fca5c",
- "runtime_seconds": 101.82178568840027
+ "git_head": "24760acf62dbac4223f8864db8f065a412f75ff6",
+ "runtime_seconds": 106.95030927658081
 }
