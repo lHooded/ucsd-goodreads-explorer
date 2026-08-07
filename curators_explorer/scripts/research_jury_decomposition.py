@@ -1400,12 +1400,13 @@ def _within_stats(sim: np.ndarray, members: list[int]) -> dict[str, float]:
 
 def _effective_dim_svd(mat: np.ndarray) -> float:
     """Effective dimension from a dense members-by-books SVD of the
-    centered cluster matrix (reference implementation; full-scale runs use
-    the cheaper Gram version, see _effective_dim_gram)."""
+    centered cluster matrix (reference implementation, float64; full-scale
+    runs use the cheaper Gram version, see _effective_dim_gram)."""
     k = mat.shape[0]
     if k <= 1:
         return float(k)
-    centered = mat - mat.mean(axis=0, keepdims=True)
+    centered = np.asarray(mat, dtype=np.float64) \
+        - np.asarray(mat, dtype=np.float64).mean(axis=0, keepdims=True)
     singular = np.linalg.svd(centered, compute_uv=False)
     e2 = singular**2
     total = e2.sum()
@@ -1774,12 +1775,14 @@ def phase_geometry(args: argparse.Namespace) -> None:
             _d, z = _avg_linkage_cuts(
                 r20k_sim[np.ix_(local_rows, local_rows)])
             cl_local = _cut_clusters(z, len(idx), tau)
+            repl_local = repl_of[np.asarray(idx)]
             cl = [[idx[li] for li in c] for c in cl_local]
             modes = []
             fractions = []
-            for mi, m in enumerate(cl):
-                stats = _mode_recurrence_stats(m, repl_of[np.asarray(idx)],
-                                               len(idx))
+            for mi, c in enumerate(cl_local):
+                m = [idx[li] for li in c]
+                stats = _mode_recurrence_stats(
+                    [int(li) for li in c], repl_local, len(idx))
                 centroid = _unit_rows(
                     pref_reps[np.asarray(m)].mean(axis=0, keepdims=True)
                 )[0].astype(np.float32)
@@ -1787,17 +1790,17 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 mode_id = f"recurrent_mode_{tau:.2f}_p{j:03d}_{mi}"
                 npz_out[cent_key] = centroid
                 anc_paths = sorted({
-                    next(r for r in records if r["source_id"] == ids[idx[m0]])
+                    next(r for r in records if r["source_id"] == ids[m0])
                     ["path"].split(":")[0] + ":" + (
                         next(r for r in records
-                             if r["source_id"] == ids[idx[m0]])["path"]
+                             if r["source_id"] == ids[m0])["path"]
                         .split(":")[1])
                     for m0 in m
                 })
                 anc_ids = set()
                 for m0 in m:
                     rec0 = next(r for r in records
-                                if r["source_id"] == ids[idx[m0]])
+                                if r["source_id"] == ids[m0])
                     anc_path = rec0["path"]
                     anc_id = node_source_id("random", j,
                                             rec0["replicate"],
@@ -1816,7 +1819,7 @@ def phase_geometry(args: argparse.Namespace) -> None:
                 fractions.append(frac)
                 modes.append({
                     "mode_id": mode_id,
-                    "members": [ids[idx[m0]] for m0 in m],
+                    "members": [ids[m0] for m0 in m],
                     **stats,
                     "centroid_key": cent_key,
                     "ancestor_40k": sorted(anc_ids),
@@ -2958,7 +2961,7 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
         if ln.startswith("|")]
     for ln in null_lines:
         c = cells(ln)
-        if len(c) != 5 or c[0] in ("statistic",):
+        if len(c) != 5 or c[0] in ("statistic",) or c[0].startswith("---"):
             continue
         key_label = c[0]
         geo_key = None
@@ -2968,7 +2971,8 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
                 geo_key, stat_name = k, None
                 break
             if key_label.startswith(k + " "):
-                geo_key, stat_name = k, key_label[len(k) + 1:]
+                geo_key = k
+                stat_name = stat_by_label.get(key_label[len(k) + 1:])
                 break
         if geo_key is None:
             mismatches.append(f"unrecognized null row {key_label}")
@@ -3010,7 +3014,7 @@ def _smoke_prereport_tests(tag: str) -> list[dict[str, Any]]:
         if ln.startswith("|")]
     for ln in ca_lines:
         c = cells(ln)
-        if len(c) != 3 or c[0] == "tau":
+        if len(c) != 3 or c[0] in ("tau",) or c[0].startswith("---"):
             continue
         tau = float(c[0])
         n_with = int(c[1])
