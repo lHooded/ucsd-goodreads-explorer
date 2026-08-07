@@ -10,7 +10,8 @@
 
 - Command: `/home/ifrankling/unsw/novels/curators_explorer/scripts/research_natural_amplification_census.py --phase geometry`
 - Random seed: **20260817**
-- Git commit: `84ebea5fad0a5be596ab875d4f752e3048fb97d7`
+- Sealed geometry git commit: `84ebea5fad0a5be596ab875d4f752e3048fb97d7`
+- Prereport / family freeze generated at git commit: `1ad5b33556e4d0b6387019146de6f070966054bd`
 - Census artifact: `679f25f765798743e2a3826391cf6a2ba6b6024316b3dbe501c64d7582689ad2` (SHA256, sealed)
 - Geometry artifact: `634c85854f000a26416742d7168770998ae4216af260e5d1cee75fc7a3819057` (SHA256, sealed)
 - External seal manifest verified: census_npz True, geometry_npz True, geometry_json True.
@@ -391,7 +392,9 @@ For every non-singleton preference-space cluster: the best even/odd half match w
 
 ### Preregistered permutation-test family (FROZEN label-blind)
 
-Family-wise permutation-test population: every pooled/deepest preference-space cluster (all preregistered taus) that is STRUCTURALLY eligible in the sealed label-blind geometry alone — size >= 5, an even/odd analogue with coverage >= 0.5, A-B cos >= 0.7, mutual best, and A and B halves each >= 2. These exact memberships, analogue metrics, and frozen top-50 book indices were written to the eligible-family freeze file BEFORE any semantic context was loaded. Literary metrics can never add or remove a family member; the unblind phase will refuse to run if the recomputed family differs from this freeze. The family-wise permutation test counts literary labels only inside each member's FROZEN top-50 indices.
+Family-wise permutation-test population: every pooled/deepest preference-space cluster (all preregistered taus) that is STRUCTURALLY eligible in the sealed label-blind geometry alone — size >= 5, an even/odd analogue with coverage >= 0.5, A-B cos >= 0.7, mutual best, and A and B halves each >= 2. These exact memberships, analogue metrics, centroid keys, and frozen top-50 book indices were written to the eligible-family freeze file BEFORE any semantic context was loaded. Literary metrics can never add or remove a family member; the unblind phase will refuse to run if the recomputed family differs from this freeze.
+
+The permutation-test top 50 of every member is ranked from that cluster's FROZEN normalized preference-space centroid (`pref_centroid_key` in the sealed geometry NPZ — the exact object evaluated by the unblind primary table) using the `posthoc_head` convention: `np.argsort(-score, kind='stable')[:50]` over the global `book_n >= 25` eligible universe. The legacy raw-preference-centroid top-50 field in the geometry JSON is a structural diagnostic only and is NOT used for the family-wise literary inference. The permutation test counts literary labels only inside each member's frozen top-50 indices.
 
 - **13 eligible clusters frozen.**
 
