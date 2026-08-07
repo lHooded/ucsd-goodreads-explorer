@@ -58,3 +58,4 @@ curators_explorer/data/multi_origin_behavior_features.npz
 # Label-blind amplification census: large regenerable NPZ + resume chunks
 curators_explorer/data/natural_amplification_*.npz
 curators_explorer/data/natural_amplification_chunks/
+curators_explorer/data/natural_amplification_smoke_verify.json

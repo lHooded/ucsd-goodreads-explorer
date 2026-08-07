@@ -22,37 +22,59 @@ never open the titles/evaluation tables. Semantic context loads in the
 "unblind" phase only, and the known literary pole cosine is computed there as
 a post-hoc diagnostic that cannot alter clustering or select outputs.
 
+The geometry phase seals the label-blind claim mechanically: the geometry NPZ
+is written first, then a geometry JSON carrying SHA256 of both the census NPZ
+and the geometry NPZ, the exact ordered source list, clustering parameters,
+stage definitions, and git commit. ``phase_unblind`` recomputes both hashes
+and aborts before loading any semantic context if either differs.
+
 Phases
 ------
-- amplify:      seed_from_pref + run_path gain-hard amplification of every
+- amplify:      seed_from_prep + run_path gain-hard amplification of every
                 selected reversal endpoint (default: all 120 20k and all 120
-                80k endpoints from drift_exploit_main). Per-source compressed
-                chunk checkpoints so a long run resumes without repeating
-                successful jobs.
-- consolidate:  merge chunks into natural_amplification_census_<tag>.npz and
-                finalize the metadata JSON (still fully label-free).
+                80k endpoints from drift_exploit_main). Every per-source
+                chunk is self-describing (it embeds its own JSON record), so
+                a crash between chunk write and JSON checkpoint cannot lose a
+                completed source, and resume recovers records from chunks.
+- consolidate:  merge chunks into natural_amplification_census_<tag>.npz in
+                canonical (size, jury) row order; the metadata record list is
+                derived from the chunks themselves, never from JSON position.
+                Runs hard source-alignment assertions (unique source ids,
+                unique (size, jury), one record per row and vice versa, row
+                source id matches record, no duplicate rows).
 - geometry:     freeze the label-blind structural analysis: preference-space
                 and direction-space representations, pairwise cosine matrices,
                 average-linkage hierarchical clusterings at preregistered
                 cosine cuts 0.30 / 0.50 / 0.70, cluster centroids and
-                dispersion, plus the independent even/odd-jury half splits
-                and their centroid-cosine matching. Writes
-                natural_amplification_census_geometry.json/.npz.
-- unblind:      ONLY after geometry is frozen: load semantic context, evaluate
-                endpoints, preference centroids, direction centroids (pole_rows
-                convention), and matched A/B clusters; report pole cosine as a
-                diagnostic; exploratory feature->membership diagnostics.
+                dispersion, plus the independent even/odd-jury half splits,
+                their frozen centroid vectors, and their centroid-cosine
+                matching with mutual-best flags. Refuses to run on an
+                incomplete census (or any expected/observed source mismatch)
+                unless ``--allow-partial`` is given. Runs label-blind
+                invariant checks (centroid-key uniqueness, centroid
+                reconstruction from member ids, half-centroid reproduction of
+                the stored matching matrix) and aborts on any failure. Writes
+                the geometry NPZ first, then the sealing JSON.
+- unblind:      ONLY after geometry is frozen AND sealed: recompute and verify
+                both artifact hashes and the full census integrity, then load
+                semantic context and evaluate endpoints, preference centroids,
+                direction centroids (pole_rows convention), and matched A/B
+                clusters. All semantic evaluation uses ONE preregistered
+                eligibility universe (book_n >= 25). Preference objects are
+                evaluated through their exact frozen centroid vectors;
+                direction-space objects through pole_rows, never a silently
+                substituted preference mean.
 - smoke:        small validation run (default 4 sources per size) that verifies
-                the census pipeline bit-reproduces the existing
+                the census pipeline numerically reproduces the existing
                 seed_from_pref / run_path behavior.
-
-Production ranking/UI code is not touched.
 """
+
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import os
 import shlex
 import subprocess
 import sys
@@ -94,7 +116,13 @@ MAX_STAGES = breeding.MAX_STAGES + 1  # run_path stages 0..8 (worst case)
 CHECKPOINT_EVERY = 10
 SMOKE_JURIES = 4
 
-# True only inside the unblind phase, after all geometry files are frozen.
+# Tolerance for invariant reconstruction of frozen float32 centroids from
+# float64 member data; the pre-fix key-collision bug produced differences of
+# order 1.0, so 1e-4 separates "rounding" from "wrong object" by orders.
+CENTROID_INVARIANT_TOL = 1e-4
+MATRIX_INVARIANT_TOL = 1e-4
+
+# True only inside the unblind phase, after all geometry files are sealed.
 SEMANTIC_CONTEXT_LOADED = False
 
 FEATURE_NAMES = (
@@ -171,10 +199,110 @@ def _git_head() -> str:
         return "unknown"
 
 
+def _write_text_atomic(path: Path, text: str) -> None:
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def _write_npz_atomic(path: Path, arrays: dict[str, np.ndarray]) -> None:
+    # np.savez_compressed appends ".npz" unless the name already ends with it.
+    tmp = path.with_name(path.stem + ".tmp.npz")
+    np.savez_compressed(tmp, **arrays)
+    os.replace(tmp, path)
+
+
 def _effective_user_share(weights: np.ndarray) -> float:
     return float(
         (weights.sum() ** 2) / np.sum(weights**2) / len(weights)
     )
+
+
+# ---------------------------------------------------------------------------
+# Source alignment integrity (items 2 and 3 of the review)
+# ---------------------------------------------------------------------------
+
+def _check_aligned(
+    records: list[dict[str, Any]],
+    sizes: np.ndarray,
+    jury: np.ndarray,
+    expected_sources: list[tuple[int, int]],
+    require_complete: bool,
+    json_partial: bool | None = None,
+) -> dict[str, Any]:
+    """Hard assertions linking metadata records to NPZ rows.
+
+    - unique source ids;
+    - unique (size, jury) pairs;
+    - every NPZ row has exactly one metadata record;
+    - every metadata record has exactly one NPZ row;
+    - metadata source id matches the row's source_size/source_jury;
+    - no duplicate rows.
+    When require_complete: the census must contain exactly the requested
+    sources, in canonical order, and must not be flagged partial.
+    """
+    n = len(records)
+    n_rows = int(len(sizes))
+    ids = [r["source_id"] for r in records]
+    row_ids = [f"{int(s)}:{int(j)}" for s, j in zip(sizes, jury)]
+
+    problems: list[str] = []
+    if n_rows != n:
+        problems.append(f"npz rows ({n_rows}) != metadata records ({n})")
+    if len(set(ids)) != n:
+        problems.append("duplicate source_ids in metadata")
+    if len(set(row_ids)) != n_rows:
+        problems.append("duplicate (size, jury) rows in npz")
+    if n > 0:
+        if any(a != b for a, b in zip(ids, row_ids)):
+            problems.append("metadata source_id does not match npz row (size, jury)")
+        if set(ids) != set(row_ids):
+            problems.append("metadata and npz disagree on the source set")
+    if require_complete:
+        expected_ids = [f"{s}:{j}" for s, j in expected_sources]
+        if json_partial:
+            problems.append("census metadata says partial")
+        if ids != expected_ids:
+            problems.append(
+                "observed sources/order differ from canonical expected order"
+            )
+    if problems:
+        raise SystemExit("census integrity failure: " + "; ".join(problems))
+    return {
+        "n_sources": n,
+        "npz_rows": n_rows,
+        "unique_source_ids": True,
+        "unique_size_jury_rows": True,
+        "row_record_alignment": True,
+        "source_id_matches_row": True,
+        "no_duplicate_rows": True,
+        "require_complete": require_complete,
+    }
+
+
+def _load_census(
+    args: argparse.Namespace,
+    npz_path: Path,
+    json_path: Path,
+    require_complete: bool,
+) -> tuple[list[dict[str, Any]], Any, dict[str, Any]]:
+    """Load the census NPZ + JSON with all hard alignment assertions."""
+    if not npz_path.exists():
+        raise SystemExit(f"missing census npz {npz_path}; run consolidate first")
+    if not json_path.exists():
+        raise SystemExit(f"missing census json {json_path}; run consolidate first")
+    blob = np.load(npz_path, allow_pickle=False)
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    records = data.get("records", [])
+    _check_aligned(
+        records,
+        blob["source_size"],
+        blob["source_jury"],
+        load_drift_sources(args.juries_per_size),
+        require_complete=require_complete,
+        json_partial=data.get("partial"),
+    )
+    return records, blob, data
 
 
 # ---------------------------------------------------------------------------
@@ -284,6 +412,59 @@ def _run_one_source(
     }
 
 
+def _source_record(size: int, jury: int, out: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "source_id": f"{size}:{jury}",
+        "size": size,
+        "jury": jury,
+        "complete": True,
+        "n_stages": out["n_stages"],
+        "stop_reason": out["stop_reason"],
+        "stage_diagnostics": out["stage_diagnostics"],
+        "seed_books": out["seed_books"].tolist(),
+        "features": out["features"],
+    }
+
+
+def _chunk_record(cpath: Path) -> dict[str, Any]:
+    """Recover the self-describing metadata record embedded in a chunk."""
+    with np.load(cpath, allow_pickle=False) as c:
+        rec = json.loads(str(c["record_json"][0]))
+        if (
+            int(c["source_size"]) != rec["size"]
+            or int(c["source_jury"]) != rec["jury"]
+        ):
+            raise ValueError("chunk (size, jury) mismatches its embedded record")
+        return rec
+
+
+def _write_chunk_atomic(
+    cpath: Path,
+    out: dict[str, Any],
+    pref: np.ndarray,
+    stage0_pref: np.ndarray,
+    rec: dict[str, Any],
+) -> None:
+    _write_npz_atomic(
+        cpath,
+        {
+            "start": out["start"],
+            "seed_books": out["seed_books"],
+            "stage_dirs": out["stage_dirs"],
+            "stage_prefs": out["stage_prefs"],
+            "stage_mass": out["stage_mass"],
+            "users_by_stage": out["users_by_stage"],
+            "source_size": np.int32(rec["size"]),
+            "source_jury": np.int32(rec["jury"]),
+            "source_pref": pref.astype(np.float32),
+            "stage0_pref": stage0_pref.astype(np.float32),
+            "record_json": np.array(
+                [json.dumps(rec, separators=(",", ":"))], dtype="U"
+            ),
+        },
+    )
+
+
 def phase_amplify(args: argparse.Namespace) -> None:
     assert not SEMANTIC_CONTEXT_LOADED
 
@@ -301,76 +482,73 @@ def phase_amplify(args: argparse.Namespace) -> None:
     chunk_dir(args.tag).mkdir(parents=True, exist_ok=True)
     npz_path, json_path = census_paths(args.tag)
 
-    records: list[dict[str, Any]] = []
-    if json_path.exists():
-        existing = json.loads(json_path.read_text(encoding="utf-8"))
-        records = [r for r in existing.get("records", []) if r.get("complete")]
-
+    # Source-safe resume: completed work is whatever has a readable chunk; the
+    # JSON checkpoint is only a progress mirror. Records are rebuilt from
+    # chunks, so a crash between chunk write and JSON write loses nothing, and
+    # a source that failed earlier is simply retried in place.
     rng = np.random.default_rng(args.seed)
-    done = len(records)
+    records: list[dict[str, Any]] = []
+    recovered = 0
     for size, jury in sources:
         cpath = chunk_path(args.tag, size, jury)
+        rec = None
         if cpath.exists():
-            continue
-        pref = drift_prefs[drift_idx[(size, jury)]].astype(np.float64)
-        stage0_pref = drift_stage0[drift_idx[(size, jury)]].astype(np.float64)
-        try:
-            out = _run_one_source(payload, matrix, pref, stage0_pref, rng)
-        except Exception as exc:  # keep the campaign alive past one bad source
-            print(f"source {size}:{jury} FAILED: {exc}", flush=True)
-            continue
-        np.savez_compressed(
-            cpath,
-            start=out["start"],
-            seed_books=out["seed_books"],
-            stage_dirs=out["stage_dirs"],
-            stage_prefs=out["stage_prefs"],
-            stage_mass=out["stage_mass"],
-            users_by_stage=out["users_by_stage"],
-            source_pref=pref.astype(np.float32),
-            stage0_pref=stage0_pref.astype(np.float32),
-        )
-        records.append(
-            {
-                "source_id": f"{size}:{jury}",
-                "size": size,
-                "jury": jury,
-                "complete": True,
-                "n_stages": out["n_stages"],
-                "stop_reason": out["stop_reason"],
-                "stage_diagnostics": out["stage_diagnostics"],
-                "seed_books": out["seed_books"].tolist(),
-                "features": out["features"],
-            }
-        )
-        done += 1
+            try:
+                rec = _chunk_record(cpath)
+            except Exception as exc:
+                print(f"chunk {cpath.name} unreadable ({exc}); re-running", flush=True)
+                cpath.unlink(missing_ok=True)
+        if rec is None:
+            pref = drift_prefs[drift_idx[(size, jury)]].astype(np.float64)
+            stage0_pref = drift_stage0[drift_idx[(size, jury)]].astype(np.float64)
+            try:
+                out = _run_one_source(payload, matrix, pref, stage0_pref, rng)
+            except Exception as exc:  # keep the campaign alive past one bad source
+                print(f"source {size}:{jury} FAILED: {exc}", flush=True)
+                continue
+            rec = _source_record(size, jury, out)
+            _write_chunk_atomic(cpath, out, pref, stage0_pref, rec)
+        else:
+            recovered += 1
+        records.append(rec)
+        done = len(records)
         if done % CHECKPOINT_EVERY == 0:
-            _checkpoint_json(json_path, records, sources, t0)
+            _checkpoint_json(json_path, records, sources, t0, args.seed)
             print(
                 f"amplify {size}:{jury}: {done}/{len(sources)} sources, "
                 f"elapsed {time.time() - t0:.0f}s", flush=True,
             )
 
-    _checkpoint_json(json_path, records, sources, t0)
+    _checkpoint_json(json_path, records, sources, t0, args.seed)
     print(
-        f"amplify done: {len(records)} sources, {time.time() - t0:.0f}s, "
-        f"chunks in {chunk_dir(args.tag)}", flush=True,
+        f"amplify done: {len(records)} sources ({recovered} recovered from "
+        f"chunks), {time.time() - t0:.0f}s, chunks in {chunk_dir(args.tag)}",
+        flush=True,
     )
 
 
 def _checkpoint_json(
-    json_path: Path, records: list[dict[str, Any]], sources: list[tuple[int, int]], t0: float
+    json_path: Path,
+    records: list[dict[str, Any]],
+    sources: list[tuple[int, int]],
+    t0: float,
+    seed: int,
 ) -> None:
-    json_path.write_text(
+    _write_text_atomic(
+        json_path,
         json.dumps(
             {
                 "records": records,
+                "record_by_source_id": {
+                    r["source_id"]: i for i, r in enumerate(records)
+                },
                 "partial": len(records) < len(sources),
+                "expected_sources": [f"{s}:{j}" for s, j in sources],
                 "method": {
                     "phase": "amplify",
                     "sizes": list(SIZES),
                     "juries_per_size": len(sources) // len(SIZES),
-                    "seed": SEED,
+                    "seed": seed,
                     "seed_books": SEED_BOOKS,
                     "elig_min_book_n": ELIG_MIN_BOOK_N,
                     "beta": breeding.BETA,
@@ -387,12 +565,11 @@ def _checkpoint_json(
             },
             indent=1,
         ),
-        encoding="utf-8",
     )
 
 
 # ---------------------------------------------------------------------------
-# Consolidate chunks into the census NPZ
+# Consolidate chunks into the census NPZ (source-safe, row-ordered)
 # ---------------------------------------------------------------------------
 
 def phase_consolidate(args: argparse.Namespace) -> None:
@@ -400,19 +577,20 @@ def phase_consolidate(args: argparse.Namespace) -> None:
 
     t0 = time.time()
     npz_path, json_path = census_paths(args.tag)
-    data = json.loads(json_path.read_text(encoding="utf-8"))
-    records = data["records"]
     sources = load_drift_sources(args.juries_per_size)
-    have = [cpath for size, jury in sources if (cpath := chunk_path(args.tag, size, jury)).exists()]
+    have = [
+        (size, jury) for size, jury in sources
+        if chunk_path(args.tag, size, jury).exists()
+    ]
     n = len(have)
     if n == 0:
-        raise SystemExit("no completed sources to consolidate")
+        raise SystemExit("no completed chunks to consolidate")
 
-    with np.load(have[0], allow_pickle=False) as first:
+    with np.load(chunk_path(args.tag, *have[0]), allow_pickle=False) as first:
         n_books = int(first["stage_dirs"].shape[1])
     max_stages = 0
-    for cpath in have:
-        with np.load(cpath, allow_pickle=False) as c:
+    for size, jury in have:
+        with np.load(chunk_path(args.tag, size, jury), allow_pickle=False) as c:
             max_stages = max(max_stages, int(c["stage_dirs"].shape[0]))
 
     def blank(maxs: int) -> np.ndarray:
@@ -429,11 +607,11 @@ def phase_consolidate(args: argparse.Namespace) -> None:
     source_pref = np.zeros((n, n_books), dtype=np.float32)
     stage0_pref = np.zeros((n, n_books), dtype=np.float32)
 
-    row = 0
-    for size, jury in sources:
+    # Rows are in canonical (size, jury) order; metadata records are derived
+    # from the self-describing chunks, never from JSON list position.
+    records: list[dict[str, Any]] = []
+    for row, (size, jury) in enumerate(have):
         cpath = chunk_path(args.tag, size, jury)
-        if not cpath.exists():
-            continue
         with np.load(cpath, allow_pickle=False) as c:
             k = int(c["stage_dirs"].shape[0])
             stage_dirs[row, :k] = c["stage_dirs"]
@@ -444,31 +622,69 @@ def phase_consolidate(args: argparse.Namespace) -> None:
             seed_books[row] = c["seed_books"]
             source_pref[row] = c["source_pref"]
             stage0_pref[row] = c["stage0_pref"]
+            rec = json.loads(str(c["record_json"][0]))
+            if rec["size"] != size or rec["jury"] != jury:
+                raise SystemExit(
+                    f"chunk {cpath.name} embedded record mismatches its filename"
+                )
+            records.append(rec)
         source_size[row] = size
         source_jury[row] = jury
-        row += 1
 
-    np.savez_compressed(
+    _write_npz_atomic(
         npz_path,
-        source_size=source_size,
-        source_jury=source_jury,
-        stage_dirs=stage_dirs,
-        stage_prefs=stage_prefs,
-        stage_mass=stage_mass,
-        stage_valid=stage_valid,
-        users_by_stage=users_by_stage,
-        seed_books=seed_books,
-        source_pref=source_pref,
-        stage0_pref=stage0_pref,
+        {
+            "source_size": source_size,
+            "source_jury": source_jury,
+            "stage_dirs": stage_dirs,
+            "stage_prefs": stage_prefs,
+            "stage_mass": stage_mass,
+            "stage_valid": stage_valid,
+            "users_by_stage": users_by_stage,
+            "seed_books": seed_books,
+            "source_pref": source_pref,
+            "stage0_pref": stage0_pref,
+        },
     )
     sha = _sha256(npz_path)
-    json_path.write_text(
+    integrity = _check_aligned(
+        records,
+        source_size,
+        source_jury,
+        sources,
+        require_complete=False,
+        json_partial=None,
+    )
+    _write_text_atomic(
+        json_path,
         json.dumps(
             {
-                **data,
-                "partial": len(records) < len(sources),
+                "records": records,
+                "record_by_source_id": {
+                    r["source_id"]: i for i, r in enumerate(records)
+                },
+                "partial": n < len(sources),
+                "expected_sources": [f"{s}:{j}" for s, j in sources],
+                "integrity": integrity,
                 "artifact_sha256": sha,
                 "artifact_bytes": npz_path.stat().st_size,
+                "method": {
+                    "phase": "amplify",
+                    "sizes": list(SIZES),
+                    "juries_per_size": len(sources) // len(SIZES),
+                    "seed": args.seed,
+                    "seed_books": SEED_BOOKS,
+                    "elig_min_book_n": ELIG_MIN_BOOK_N,
+                    "beta": breeding.BETA,
+                    "max_stages": breeding.MAX_STAGES,
+                    "retained_target": breeding.RETAINED_TARGET,
+                    "mode": "hard",
+                    "criterion": "gain",
+                    "semantic_context_loaded": False,
+                    "command": shlex.join(sys.argv),
+                    "git_head": _git_head(),
+                    "runtime_seconds": time.time() - t0,
+                },
                 "consolidated": {
                     "n_sources": n,
                     "n_books": n_books,
@@ -493,12 +709,11 @@ def phase_consolidate(args: argparse.Namespace) -> None:
             },
             indent=1,
         ),
-        encoding="utf-8",
     )
     if not args.keep_chunks:
-        for cpath in have:
-            cpath.unlink(missing_ok=True)
-        print(f"removed {len(have)} chunk files (kept {npz_path})", flush=True)
+        for size, jury in have:
+            chunk_path(args.tag, size, jury).unlink(missing_ok=True)
+        print(f"removed {n} chunk files (kept {npz_path})", flush=True)
     print(
         f"consolidate done: {n} sources x {max_stages} stages x {n_books} books, "
         f"sha256 {sha[:16]}..., {time.time() - t0:.0f}s", flush=True,
@@ -578,10 +793,12 @@ def _cluster_record(
     dir_sim: np.ndarray,
     eligible: np.ndarray,
     npz_out: dict[str, np.ndarray],
-    key: str,
+    storage_key: str,
     cluster_index: int,
 ) -> dict[str, Any]:
-    """Freeze one label-blind cluster (singletons included)."""
+    """Freeze one label-blind cluster (singletons included). The storage key
+    includes the clustering space so preference-defined and direction-defined
+    clusterings of the same (group, stage, tau) never collide."""
     pref_centroid = pref_mat[members].mean(axis=0)
     pref_centroid = _unit_rows(pref_centroid[None, :])[0].astype(np.float32)
     dir_centroid = _unit_rows(dir_mat[members].mean(axis=0)[None, :])[0].astype(np.float32)
@@ -605,9 +822,9 @@ def _cluster_record(
         "top_eligible_book_indices": top_indices,
     }
     if len(members) >= 2:
-        kp = f"cent_pref_{key}_{cluster_index}"
-        kd = f"cent_dir_{key}_{cluster_index}"
-        kr = f"rawpref_{key}_{cluster_index}"
+        kp = f"cent_pref_{storage_key}_{cluster_index}"
+        kd = f"cent_dir_{storage_key}_{cluster_index}"
+        kr = f"rawpref_{storage_key}_{cluster_index}"
         npz_out[kp] = pref_centroid
         npz_out[kd] = dir_centroid
         npz_out[kr] = raw_pref_centroid
@@ -634,15 +851,161 @@ def _pairwise_summary(sim: np.ndarray) -> dict[str, float]:
     }
 
 
+def _gpos(
+    avail: dict[str, list[int]], group_masks: dict[str, list[int]],
+    stage_label: str, group: str,
+) -> list[int]:
+    idxs = avail[stage_label]
+    gmask = group_masks[group]
+    return [idxs.index(i) for i in gmask if i in set(idxs)]
+
+
+def _invariant_geometry(
+    geometry: dict[str, Any],
+    npz_out: dict[str, np.ndarray],
+    pref_mats: dict[str, np.ndarray],
+    dir_mats: dict[str, np.ndarray],
+    ids: list[str],
+    avail: dict[str, list[int]],
+    group_masks: dict[str, list[int]],
+) -> list[dict[str, Any]]:
+    """Label-blind invariant checks on the frozen geometry.
+
+    - every centroid key is unique (would catch the pre-fix collision bug);
+    - every stored non-singleton preference AND direction centroid is
+      reconstructed from its frozen member ids and matches the stored vector;
+    - re-clustering reproduces the frozen memberships exactly;
+    - the stored half-match matrices are reproduced by the frozen half
+      centroids, and each best-match cosine equals its matrix cell.
+    Any failure aborts geometry before anything is written to disk.
+    """
+    checks: list[dict[str, Any]] = []
+
+    dup_keys = len(npz_out) != len(set(npz_out))
+    checks.append(
+        {"check": "centroid_key_uniqueness", "ok": not dup_keys,
+         "detail": f"{len(npz_out)} keys, {len(set(npz_out))} unique"}
+    )
+    if dup_keys:
+        raise SystemExit("geometry invariant failed: duplicate npz keys")
+
+    for stage_label in ("deepest", "s4"):
+        stage_ids = [ids[i] for i in avail[stage_label]]
+        id_pos = {sid: p for p, sid in enumerate(stage_ids)}
+        for group in ("20k", "80k", "pooled"):
+            gpos = _gpos(avail, group_masks, stage_label, group)
+            gids = [stage_ids[p] for p in gpos]
+            sub_pos = {gids[p]: p for p in range(len(gpos))}
+            for tau in CLUSTER_TAUS:
+                for space in ("pref", "dir"):
+                    storage_key = f"{group}_{stage_label}_{tau:.2f}_{space}"
+                    clist = geometry["clusters"][stage_label][group][storage_key]
+                    mat = pref_mats[stage_label] if space == "pref" else dir_mats[stage_label]
+                    sub = mat[gpos]
+                    reclustered = avg_link_clusters(sub, tau)
+                    for ci, c in enumerate(clist):
+                        member_rows = [gpos[sub_pos[m]] for m in c["members"]]
+                        ok_membership = any(
+                            sorted(c["members"]) == sorted(
+                                [gids[x] for x in cl]
+                            )
+                            for cl in reclustered
+                        )
+                        checks.append(
+                            {
+                                "check": "membership_reclustering",
+                                "ok": ok_membership,
+                                "detail": f"{storage_key} cluster {ci}",
+                            }
+                        )
+                        if not ok_membership:
+                            raise SystemExit(
+                                f"geometry invariant failed: membership mismatch "
+                                f"in {storage_key} cluster {ci}"
+                            )
+                        if len(c["members"]) < 2:
+                            continue
+                        sub_rows = [sub_pos[m] for m in c["members"]]
+                        recomputed_pref = _unit_rows(
+                            pref_mats[stage_label][member_rows].mean(axis=0)[None, :]
+                        )[0].astype(np.float32)
+                        recomputed_dir = _unit_rows(
+                            dir_mats[stage_label][member_rows].mean(axis=0)[None, :]
+                        )[0].astype(np.float32)
+                        d_p = float(np.max(np.abs(
+                            recomputed_pref - npz_out[c["pref_centroid_key"]]
+                        )))
+                        d_d = float(np.max(np.abs(
+                            recomputed_dir - npz_out[c["dir_centroid_key"]]
+                        )))
+                        checks.append(
+                            {
+                                "check": "centroid_reconstruction_pref",
+                                "ok": d_p <= CENTROID_INVARIANT_TOL,
+                                "max_abs_diff": d_p,
+                                "detail": f"{storage_key} cluster {ci}",
+                            }
+                        )
+                        checks.append(
+                            {
+                                "check": "centroid_reconstruction_dir",
+                                "ok": d_d <= CENTROID_INVARIANT_TOL,
+                                "max_abs_diff": d_d,
+                                "detail": f"{storage_key} cluster {ci}",
+                            }
+                        )
+                        if d_p > CENTROID_INVARIANT_TOL or d_d > CENTROID_INVARIANT_TOL:
+                            raise SystemExit(
+                                f"geometry invariant failed: centroid mismatch "
+                                f"in {storage_key} cluster {ci} "
+                                f"(pref {d_p:.2e}, dir {d_d:.2e})"
+                            )
+
+    for key, h in geometry["halves"].items():
+        if h.get("empty_side"):
+            continue
+        parts = key.split("_")
+        space, group, stage_label = parts[1], parts[2], parts[3]
+        tau = float(parts[4])
+        a = np.stack([
+            npz_out[f"halfA_cent_{space}_{group}_{stage_label}_{tau:.2f}_{i}"]
+            for i in range(h["nA_clusters"])
+        ])
+        b = np.stack([
+            npz_out[f"halfB_cent_{space}_{group}_{stage_label}_{tau:.2f}_{j}"]
+            for j in range(h["nB_clusters"])
+        ])
+        m_re = a @ b.T
+        m_stored = npz_out[key]
+        diff = float(np.max(np.abs(m_re - m_stored)))
+        ok = bool(np.allclose(m_re, m_stored, atol=MATRIX_INVARIANT_TOL))
+        checks.append(
+            {"check": "half_matrix_reproduction", "ok": ok,
+             "max_abs_diff": diff, "detail": key}
+        )
+        if not ok:
+            raise SystemExit(
+                f"geometry invariant failed: half matrix {key} not reproduced "
+                f"by frozen centroids (max diff {diff:.2e})"
+            )
+        for i, bm in enumerate(h["best_matches"]):
+            ok_cell = bool(
+                abs(float(m_stored[i, h["b_argmax"][i]]) - float(bm["cos"])) <= 1e-6
+            )
+            checks.append(
+                {"check": "best_match_cos_cell", "ok": ok_cell, "detail": f"{key} A{i}"}
+            )
+    return checks
+
+
 def phase_geometry(args: argparse.Namespace) -> None:
     assert not SEMANTIC_CONTEXT_LOADED
 
     t0 = time.time()
     npz_path, json_path = census_paths(args.tag)
-    if not npz_path.exists():
-        raise SystemExit(f"missing census npz {npz_path}; run consolidate first")
-    blob = np.load(npz_path, allow_pickle=False)
-    records = json.loads(json_path.read_text(encoding="utf-8"))["records"]
+    records, blob, data = _load_census(
+        args, npz_path, json_path, require_complete=not args.allow_partial
+    )
     ids = [r["source_id"] for r in records]
     n = len(records)
     payload, _, _ = year.load_matrix()
@@ -707,7 +1070,7 @@ def phase_geometry(args: argparse.Namespace) -> None:
         stage_ids = [ids[i] for i in idxs]
         geometry["clusters"][stage_label] = {}
         for group, gmask in group_masks.items():
-            gpos = [idxs.index(i) for i in gmask if i in set(idxs)]
+            gpos = _gpos(avail, group_masks, stage_label, group)
             gids = [stage_ids[p] for p in gpos]
             sub_pref = pref_mats[stage_label][gpos]
             sub_dir = dir_mats[stage_label][gpos]
@@ -726,6 +1089,7 @@ def phase_geometry(args: argparse.Namespace) -> None:
                     ("pref", sub_pref, sub_pref_sim),
                     ("dir", sub_dir, sub_dir_sim),
                 ):
+                    storage_key = f"{key}_{space}"
                     cl = avg_link_clusters(mat, tau)
                     recs = []
                     for ci, members in enumerate(cl):
@@ -733,13 +1097,15 @@ def phase_geometry(args: argparse.Namespace) -> None:
                             _cluster_record(
                                 members, gids, sub_pref, sub_dir, sub_raw,
                                 sub_pref_sim, sub_dir_sim, eligible,
-                                npz_out, key, ci,
+                                npz_out, storage_key, ci,
                             )
                         )
-                    group_blocks[f"{key}_{space}"] = recs
+                    group_blocks[storage_key] = recs
             geometry["clusters"][stage_label][group] = group_blocks
 
     # Independent-half reproducibility: even jury index -> A, odd -> B.
+    # Frozen centroid vectors of every half cluster are stored and referenced
+    # by the matching records (item 5 of the review).
     for stage_label in ("deepest", "s4"):
         idxs = avail[stage_label]
         for group, gmask in group_masks.items():
@@ -762,6 +1128,8 @@ def phase_geometry(args: argparse.Namespace) -> None:
                         geometry["halves"][key] = {
                             "nA": len(a_pos),
                             "nB": len(b_pos),
+                            "nA_clusters": len(ca),
+                            "nB_clusters": len(cb),
                             "best_matches": [],
                             "best_matches_B_side": [],
                             "matrix_npz_key": None,
@@ -772,23 +1140,62 @@ def phase_geometry(args: argparse.Namespace) -> None:
                     cb_ids = [[ids[gpos_rec[odds[m]]] for m in cl] for cl in cb]
                     cents_a = _unit_rows(np.stack([mat[a_pos][cl].mean(axis=0) for cl in ca]))
                     cents_b = _unit_rows(np.stack([mat[b_pos][cl].mean(axis=0) for cl in cb]))
+                    for i in range(len(ca)):
+                        npz_out[f"halfA_cent_{space}_{group}_{stage_label}_{tau:.2f}_{i}"] = (
+                            cents_a[i].astype(np.float32)
+                        )
+                    for j in range(len(cb)):
+                        npz_out[f"halfB_cent_{space}_{group}_{stage_label}_{tau:.2f}_{j}"] = (
+                            cents_b[j].astype(np.float32)
+                        )
+                    if space == "pref":
+                        # Direction centroids of the SAME member groups, for
+                        # the member-direction pole cosine diagnostic only.
+                        dmat = dir_mats[stage_label]
+                        dir_a = _unit_rows(np.stack([dmat[a_pos][cl].mean(axis=0) for cl in ca]))
+                        dir_b = _unit_rows(np.stack([dmat[b_pos][cl].mean(axis=0) for cl in cb]))
+                        for i in range(len(ca)):
+                            npz_out[f"halfA_dircent_pref_{group}_{stage_label}_{tau:.2f}_{i}"] = (
+                                dir_a[i].astype(np.float32)
+                            )
+                        for j in range(len(cb)):
+                            npz_out[f"halfB_dircent_pref_{group}_{stage_label}_{tau:.2f}_{j}"] = (
+                                dir_b[j].astype(np.float32)
+                            )
                     m = cents_a @ cents_b.T
                     npz_out[key] = m.astype(np.float32)
                     best = []
                     for i in range(len(ca)):
-                        b = int(np.argmax(m[i]))
+                        j = int(np.argmax(m[i]))
+                        mutual = int(np.argmax(m[:, j])) == i
                         best.append(
                             {
                                 "a_cluster": ca_ids[i],
-                                "b_cluster": cb_ids[b],
-                                "cos": float(m[i, b]),
+                                "b_cluster": cb_ids[j],
+                                "cos": float(m[i, j]),
                                 "a_size": len(ca[i]),
-                                "b_size": len(cb[b]),
+                                "b_size": len(cb[j]),
+                                "a_centroid_key": (
+                                    f"halfA_cent_{space}_{group}_{stage_label}_{tau:.2f}_{i}"
+                                ),
+                                "b_centroid_key": (
+                                    f"halfB_cent_{space}_{group}_{stage_label}_{tau:.2f}_{j}"
+                                ),
+                                "a_dir_centroid_key": (
+                                    f"halfA_dircent_pref_{group}_{stage_label}_{tau:.2f}_{i}"
+                                    if space == "pref" else None
+                                ),
+                                "b_dir_centroid_key": (
+                                    f"halfB_dircent_pref_{group}_{stage_label}_{tau:.2f}_{j}"
+                                    if space == "pref" else None
+                                ),
+                                "mutual_best": mutual,
                             }
                         )
                     best_b = []
                     for j in range(len(cb)):
                         a = int(np.argmax(m[:, j]))
+                        mutual = int(np.argmax(m[a])) == j
                         best_b.append(
                             {
                                 "a_cluster": ca_ids[a],
@@ -796,15 +1203,37 @@ def phase_geometry(args: argparse.Namespace) -> None:
                                 "cos": float(m[a, j]),
                                 "a_size": len(ca[a]),
                                 "b_size": len(cb[j]),
+                                "a_centroid_key": (
+                                    f"halfA_cent_{space}_{group}_{stage_label}_{tau:.2f}_{a}"
+                                ),
+                                "b_centroid_key": (
+                                    f"halfB_cent_{space}_{group}_{stage_label}_{tau:.2f}_{j}"
+                                ),
+                                "a_dir_centroid_key": (
+                                    f"halfA_dircent_pref_{group}_{stage_label}_{tau:.2f}_{a}"
+                                    if space == "pref" else None
+                                ),
+                                "b_dir_centroid_key": (
+                                    f"halfB_dircent_pref_{group}_{stage_label}_{tau:.2f}_{j}"
+                                    if space == "pref" else None
+                                ),
+                                "mutual_best": mutual,
                             }
                         )
                     geometry["halves"][key] = {
                         "nA": len(a_pos),
                         "nB": len(b_pos),
+                        "nA_clusters": len(ca),
+                        "nB_clusters": len(cb),
                         "best_matches": best,
                         "best_matches_B_side": best_b,
                         "matrix_npz_key": key,
+                        "b_argmax": [int(np.argmax(m[i])) for i in range(len(ca))],
                     }
+
+    invariant_checks = _invariant_geometry(
+        geometry, npz_out, pref_mats, dir_mats, ids, avail, group_masks
+    )
 
     geometry["method"] = {
         "phase": "geometry",
@@ -812,7 +1241,9 @@ def phase_geometry(args: argparse.Namespace) -> None:
             "label-blind structural census of amplified endpoints; "
             "no semantic context loaded anywhere in this phase"
         ),
+        "seed": args.seed,
         "sizes": list(SIZES),
+        "juries_per_size": args.juries_per_size,
         "elig_min_book_n": ELIG_MIN_BOOK_N,
         "representation_pref": "book_n>=25 -> mean-center across eligible -> L2",
         "representation_dir": "L2 normalize stage direction",
@@ -827,6 +1258,8 @@ def phase_geometry(args: argparse.Namespace) -> None:
             "A": "source jury index even",
             "B": "source jury index odd",
             "matching": "cluster centroid cosine in the same space",
+            "centroids_frozen": True,
+            "mutual_best": "A's best is B and B's best is A",
         },
         "semantic_context_loaded": False,
         "unblinded": False,
@@ -835,19 +1268,40 @@ def phase_geometry(args: argparse.Namespace) -> None:
         "git_head": _git_head(),
         "runtime_seconds": time.time() - t0,
     }
+    geometry["invariant_checks"] = invariant_checks
 
+    # Cryptographic seal: geometry NPZ is written FIRST, then the JSON
+    # carrying both artifact hashes (item 4 of the review).
     geo_json, geo_npz = geometry_paths(args.tag)
-    geo_json.write_text(json.dumps(geometry, indent=1), encoding="utf-8")
-    np.savez_compressed(geo_npz, **npz_out)
+    _write_npz_atomic(geo_npz, npz_out)
+    geo_sha = _sha256(geo_npz)
+    census_sha = _sha256(npz_path)
+    geometry["seal"] = {
+        "geometry_npz_sha256": geo_sha,
+        "census_npz_sha256": census_sha,
+        "n_sources": n,
+        "sources": ids,
+        "clustering": geometry["method"]["clustering"],
+        "stages": {
+            "deepest": "final run_path stage (per-source n_stages - 1)",
+            "s4": f"fixed stage index {STAGE_ANALYZED} (0-based) when n_stages > {STAGE_ANALYZED}",
+        },
+        "eligibility": {"min_book_n": ELIG_MIN_BOOK_N},
+        "seed": args.seed,
+        "git_head": _git_head(),
+        "semantic_context_loaded": False,
+        "unblinded": False,
+    }
+    _write_text_atomic(geo_json, json.dumps(geometry, indent=1))
     print(
         f"geometry frozen: {geo_json} ({geo_json.stat().st_size/2**20:.1f} MiB), "
         f"{geo_npz} ({geo_npz.stat().st_size/2**20:.1f} MiB), "
-        f"{time.time() - t0:.0f}s", flush=True,
+        f"seal sha256 {geo_sha[:16]}..., {time.time() - t0:.0f}s", flush=True,
     )
 
 
 # ---------------------------------------------------------------------------
-# Phase 4: post-hoc semantic unblinding (only after geometry is frozen)
+# Phase 4: post-hoc semantic unblinding (only after geometry is sealed)
 # ---------------------------------------------------------------------------
 
 _METRIC_KEYS = (
@@ -882,22 +1336,24 @@ def _top30(head: list[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
-def _mean_raw_pref(
-    records: list[dict[str, Any]],
-    ids: list[str],
-    blob: Any,
-    members: list[str],
-    stage_label: str,
-) -> np.ndarray | None:
-    rows = []
-    for m in members:
-        i = ids.index(m)
-        r = records[i]
-        si = r["n_stages"] - 1 if stage_label == "deepest" else STAGE_ANALYZED
-        if si < 0 or si >= r["n_stages"]:
-            return None
-        rows.append(blob["stage_prefs"][i, si].astype(np.float64))
-    return np.mean(np.stack(rows), axis=0) if rows else None
+def _embed_full(
+    centroid: np.ndarray, eligible_idx: np.ndarray, n_books: int
+) -> np.ndarray:
+    """Re-embed an eligible-indexed vector into the full work-index space,
+    keeping ineligible books excluded (score 0)."""
+    full = np.zeros(n_books, dtype=np.float64)
+    full[eligible_idx] = np.asarray(centroid, dtype=np.float64)
+    return full
+
+
+def _cos_unit(a: np.ndarray, b: np.ndarray) -> float:
+    a = np.asarray(a, dtype=np.float64).ravel()
+    b = np.asarray(b, dtype=np.float64).ravel()
+    if a.shape != b.shape or a.size == 0:
+        return float("nan")
+    return float(
+        np.sum(a * b) / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-20)
+    )
 
 
 def _membership_map(frozen: dict[str, Any]) -> dict[str, dict[str, int]]:
@@ -942,6 +1398,37 @@ def _feature_outcomes(
     }
 
 
+def _find_analogue(
+    frozen: dict[str, Any],
+    stage_label: str,
+    group: str,
+    tau: float,
+    members: list[str],
+) -> dict[str, Any] | None:
+    """Link a full preference-space cluster to its best even/odd half match
+    (derived from the frozen label-blind geometry only)."""
+    h = frozen["halves"].get(f"match_pref_{group}_{stage_label}_{tau:.2f}")
+    if not h:
+        return None
+    mset = set(members)
+    best = None
+    for bm in h["best_matches"]:
+        union = set(bm["a_cluster"]) | set(bm["b_cluster"])
+        if not union:
+            continue
+        frac = len(union & mset) / len(union)
+        if frac >= 0.5 and (best is None or bm["cos"] > best["cos"]):
+            best = {
+                "exists": True,
+                "overlap_fraction": frac,
+                "a_size": bm["a_size"],
+                "b_size": bm["b_size"],
+                "cos": bm["cos"],
+                "mutual_best": bm["mutual_best"],
+            }
+    return best
+
+
 def phase_unblind(args: argparse.Namespace) -> None:
     global SEMANTIC_CONTEXT_LOADED
     assert not SEMANTIC_CONTEXT_LOADED
@@ -951,13 +1438,45 @@ def phase_unblind(args: argparse.Namespace) -> None:
     frozen = json.loads(geo_json.read_text(encoding="utf-8"))
     assert frozen["method"]["unblinded"] is False
     assert frozen["method"]["semantic_context_loaded"] is False
+    seal = frozen.get("seal")
+    if not seal:
+        raise SystemExit("geometry JSON has no seal; refusing to unblind")
+    if seal.get("semantic_context_loaded") is not False:
+        raise SystemExit("seal claims semantic context already loaded; refusing")
+    if seal.get("unblinded") is not False:
+        raise SystemExit("seal claims already unblinded; refusing")
 
     t0 = time.time()
     npz_path, json_path = census_paths(args.tag)
-    blob = np.load(npz_path, allow_pickle=False)
-    records = json.loads(json_path.read_text(encoding="utf-8"))["records"]
+
+    # ---- Integrity + hash verification, BEFORE any semantic load ----
+    records, blob, data = _load_census(
+        args, npz_path, json_path, require_complete=not args.allow_partial
+    )
     ids = [r["source_id"] for r in records]
+    now_census = _sha256(npz_path)
+    if now_census != seal["census_npz_sha256"]:
+        raise SystemExit(
+            f"census artifact hash mismatch (sealed {seal['census_npz_sha256'][:16]}..., "
+            f"now {now_census[:16]}...); refusing to unblind"
+        )
+    now_geo = _sha256(geo_npz)
+    if now_geo != seal["geometry_npz_sha256"]:
+        raise SystemExit(
+            f"geometry artifact hash mismatch (sealed {seal['geometry_npz_sha256'][:16]}..., "
+            f"now {now_geo[:16]}...); refusing to unblind"
+        )
+    if seal["n_sources"] != len(records) or seal["sources"] != ids:
+        raise SystemExit("sealed source list does not match census; refusing to unblind")
+
     payload, _, _ = year.load_matrix()
+    n_books = int(len(payload["work_ids"]))
+    eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
+    eligible_idx = np.flatnonzero(eligible)
+    n_eligible = int(eligible.sum())
+    # ONE preregistered eligibility universe for all semantic preference
+    # evaluation: ratings-derived reader mass, zeroed outside book_n >= 25.
+    elig_mass = np.where(eligible, payload["book_n"], 0.0).astype(np.float64)
 
     # ---- THE ONLY semantic load in the whole experiment ----
     print("Loading post-hoc semantic context (unblind)", flush=True)
@@ -969,10 +1488,9 @@ def phase_unblind(args: argparse.Namespace) -> None:
         pole = np.load(POLE_NPZ, allow_pickle=True)[POLE_KEY].astype(np.float64)
         pole = pole / (np.linalg.norm(pole) + 1e-20)
 
-    n_books = len(payload["work_ids"])
-    universe = set(payload["work_ids"].tolist())
+    universe = set(payload["work_ids"][eligible].tolist())
     chance = {
-        name: len(eval_sets[name] & universe) / n_books * 50
+        name: len(eval_sets[name] & universe) / n_eligible * 50
         for name in ("exact_lit", "broad_lit", "anti", "filler")
     }
 
@@ -995,16 +1513,27 @@ def phase_unblind(args: argparse.Namespace) -> None:
             if stage_label == "s4" and r["n_stages"] <= STAGE_ANALYZED:
                 continue
             score = blob["stage_prefs"][i, si]
-            mass = blob["stage_mass"][i, si]
-            head, metrics = _eval_pref(score, mass, payload["work_ids"], meta, eval_sets)
+            stage_mass = blob["stage_mass"][i, si]
+            head, metrics = _eval_pref(
+                score, elig_mass, payload["work_ids"], meta, eval_sets
+            )
             d = blob["stage_dirs"][i, si].astype(np.float64)
+            eligible_frac = float(
+                np.asarray(stage_mass, dtype=np.float64)[eligible].sum()
+                / np.asarray(stage_mass, dtype=np.float64).sum()
+            ) if np.asarray(stage_mass, dtype=np.float64).sum() > 0 else 0.0
             rec[stage_label] = {
                 "metrics": _metrics_row(metrics),
                 "head": _top30(head),
+                "evaluation": "preference head, global eligibility book_n>=25",
                 "cos_pole": (
                     float(np.sum(d * pole) / (np.linalg.norm(d) * np.linalg.norm(pole)))
                     if pole is not None else None
                 ),
+                "reader_mass_diag": {
+                    "stage_mass_eligible_fraction": eligible_frac,
+                    "eligible_books": int(n_eligible),
+                },
                 "cluster_memberships": membership.get(
                     f"{r['source_id']}|{stage_label}", {}
                 ),
@@ -1041,9 +1570,21 @@ def phase_unblind(args: argparse.Namespace) -> None:
                         }
                         if space == "pref":
                             centroid = gblob[c["pref_centroid_key"]]
+                            full = _embed_full(centroid, eligible_idx, n_books)
                             head, metrics = _eval_pref(
-                                centroid, payload["book_n"],
-                                payload["work_ids"], meta, eval_sets,
+                                full, elig_mass, payload["work_ids"], meta, eval_sets,
+                            )
+                            entry["evaluation"] = (
+                                "frozen preference centroid, re-embedded to full "
+                                "work index, global eligibility book_n>=25"
+                            )
+                            entry["member_direction_cos_pole"] = (
+                                _cos_unit(gblob[c["dir_centroid_key"]], pole)
+                                if pole is not None else None
+                            )
+                            entry["cos_pole"] = None  # not a direction-space object
+                            entry["analogue"] = _find_analogue(
+                                frozen, stage_label, group, tau, c["members"]
                             )
                         else:
                             centroid = gblob[c["dir_centroid_key"]]
@@ -1051,18 +1592,24 @@ def phase_unblind(args: argparse.Namespace) -> None:
                                 centroid, payload["work_ids"], meta, eval_sets,
                                 positive=True, limit=200,
                             )
+                            entry["evaluation"] = (
+                                "pole_rows on frozen direction centroid "
+                                "(direction-space diagnostic)"
+                            )
+                            entry["cos_pole"] = (
+                                _cos_unit(centroid, pole) if pole is not None else None
+                            )
                         entry["metrics"] = _metrics_row(metrics)
                         entry["head"] = _top30(head)
-                        if pole is not None:
-                            entry["cos_pole"] = float(
-                                np.sum(centroid.astype(np.float64) * pole)
-                            )
                         cluster_evals.append(entry)
     print(f"cluster evaluation done ({len(cluster_evals)})", flush=True)
 
-    # 4) independently matched A/B clusters (both halves' centroids evaluated)
+    # 4) independently matched A/B clusters: evaluate the EXACT frozen
+    #    half-cluster centroids (never a freshly constructed mean).
     matched: list[dict[str, Any]] = []
     for key, h in frozen["halves"].items():
+        if h.get("empty_side"):
+            continue
         parts = key.split("_")
         space = parts[1]
         group = parts[2]
@@ -1082,16 +1629,53 @@ def phase_unblind(args: argparse.Namespace) -> None:
                 "b_members": bm["b_cluster"],
                 "a_size": bm["a_size"],
                 "b_size": bm["b_size"],
+                "mutual_best": bm["mutual_best"],
             }
-            a_pref = _mean_raw_pref(records, ids, blob, bm["a_cluster"], stage_label)
-            b_pref = _mean_raw_pref(records, ids, blob, bm["b_cluster"], stage_label)
-            if a_pref is not None and b_pref is not None:
-                ha, ma = _eval_pref(a_pref, payload["book_n"], payload["work_ids"], meta, eval_sets)
-                hb, mb = _eval_pref(b_pref, payload["book_n"], payload["work_ids"], meta, eval_sets)
+            if space == "pref":
+                a_centroid = gblob[bm["a_centroid_key"]]
+                b_centroid = gblob[bm["b_centroid_key"]]
+                ha, ma = _eval_pref(
+                    _embed_full(a_centroid, eligible_idx, n_books),
+                    elig_mass, payload["work_ids"], meta, eval_sets,
+                )
+                hb, mb = _eval_pref(
+                    _embed_full(b_centroid, eligible_idx, n_books),
+                    elig_mass, payload["work_ids"], meta, eval_sets,
+                )
+                entry["evaluation"] = (
+                    "frozen half-cluster preference centroids, global eligibility"
+                )
                 entry["a_metrics"] = _metrics_row(ma)
                 entry["b_metrics"] = _metrics_row(mb)
                 entry["a_head"] = _top30(ha)
                 entry["b_head"] = _top30(hb)
+                entry["a_member_direction_cos_pole"] = (
+                    _cos_unit(gblob[bm["a_dir_centroid_key"]], pole)
+                    if pole is not None and bm["a_dir_centroid_key"] else None
+                )
+                entry["b_member_direction_cos_pole"] = (
+                    _cos_unit(gblob[bm["b_dir_centroid_key"]], pole)
+                    if pole is not None and bm["b_dir_centroid_key"] else None
+                )
+            else:
+                ha, ma = spectral.pole_rows(
+                    gblob[bm["a_centroid_key"]], payload["work_ids"], meta,
+                    eval_sets, positive=True, limit=200,
+                )
+                hb, mb = spectral.pole_rows(
+                    gblob[bm["b_centroid_key"]], payload["work_ids"], meta,
+                    eval_sets, positive=True, limit=200,
+                )
+                entry["evaluation"] = (
+                    "pole_rows on frozen direction centroids; direction-space "
+                    "matching is a structural diagnostic, no preference-head claim"
+                )
+                entry["a_metrics"] = _metrics_row(ma)
+                entry["b_metrics"] = _metrics_row(mb)
+                entry["a_head"] = _top30(ha)
+                entry["b_head"] = _top30(hb)
+                entry["a_cos_pole"] = _cos_unit(gblob[bm["a_centroid_key"]], pole) if pole is not None else None
+                entry["b_cos_pole"] = _cos_unit(gblob[bm["b_centroid_key"]], pole) if pole is not None else None
             matched.append(entry)
     print(f"matched-pair evaluation done ({len(matched)})", flush=True)
 
@@ -1112,6 +1696,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
         "method": {
             "phase": "unblind",
             "purpose": "post-hoc literary evaluation of frozen label-blind objects only",
+            "seed": args.seed,
             "semantic_context_loaded_now": True,
             "clustering_never_altered": True,
             "pole_key": POLE_KEY,
@@ -1120,6 +1705,26 @@ def phase_unblind(args: argparse.Namespace) -> None:
             "git_head": _git_head(),
             "runtime_seconds": time.time() - t0,
         },
+        "integrity": {
+            "census_sha256_verified": True,
+            "geometry_sha256_verified": True,
+            "source_alignment": _check_aligned(
+                records,
+                blob["source_size"],
+                blob["source_jury"],
+                load_drift_sources(args.juries_per_size),
+                require_complete=not args.allow_partial,
+                json_partial=data.get("partial"),
+            ),
+            "sealed_sources_match": True,
+        },
+        "eligibility_universe": {
+            "min_book_n": ELIG_MIN_BOOK_N,
+            "n_books": n_books,
+            "n_eligible": n_eligible,
+            "semantic_evaluation": "single global book_n>=25 universe for all "
+            "preference heads and chance",
+        },
         "chance_at_50": chance,
         "endpoints": endpoints,
         "cluster_evals": cluster_evals,
@@ -1127,7 +1732,7 @@ def phase_unblind(args: argparse.Namespace) -> None:
         "feature_diagnostics": feature_rows,
     }
     out = posthoc_path(args.tag)
-    out.write_text(json.dumps(result, indent=1), encoding="utf-8")
+    _write_text_atomic(out, json.dumps(result, indent=1))
     _write_report(args, frozen, result, npz_path, geo_npz)
     print(f"unblind done: {out}", flush=True)
 
@@ -1152,6 +1757,16 @@ def _metric_str(m: dict[str, int]) -> str:
     )
 
 
+_HONESTY_STATEMENT = (
+    "This census is label-blind internally, but it is a retrospective analysis "
+    "of 20k/80k jury sizes and an amplification operator chosen during earlier "
+    "label-visible exploratory research. It removes endpoint-selection leakage "
+    "but is not, by itself, a sealed confirmatory discovery. Any structural "
+    "signature found here should subsequently be tested unchanged on a fresh "
+    "random-jury campaign that has never been semantically evaluated."
+)
+
+
 def _write_report(
     args: argparse.Namespace,
     frozen: dict[str, Any],
@@ -1161,12 +1776,8 @@ def _write_report(
 ) -> None:
     method = frozen["method"]
     chance = result["chance_at_50"]
-    n_books = None
-    try:
-        with np.load(census_npz, allow_pickle=False) as b:
-            n_books = int(b["stage_prefs"].shape[2])
-    except Exception:
-        pass
+    seal = frozen["seal"]
+    uni = result["eligibility_universe"]
 
     lines: list[str] = [
         "# Natural amplification census: a completely label-blind search for a literary basin",
@@ -1178,22 +1789,28 @@ def _write_report(
         "publication-year, known-pole, or external evaluation information was loaded or used "
         "until every amplification run, vector, similarity matrix, cluster assignment, and "
         "cluster centroid had been frozen and written to disk (`amplify`, `consolidate`, and "
-        "`geometry` phases). Semantic context loaded only in the `unblind` phase, and the known "
-        "literary pole cosine is a post-hoc diagnostic that never altered clustering or selection.",
+        "`geometry` phases). The geometry artifact was cryptographically sealed (SHA256 of both "
+        "artifacts recorded before any semantic load) and `unblind` re-verified both hashes "
+        "before loading semantic context. Semantic context loaded only in the `unblind` phase, "
+        "and the known literary pole cosine is a post-hoc diagnostic that never altered "
+        "clustering or selection.",
+        "",
+        "> **Scope honesty.** " + _HONESTY_STATEMENT,
         "",
         "## Provenance",
         "",
         f"- Command: `{result['method']['command']}`",
-        f"- Random seed: **{SEED}**",
-        f"- Git commit: `{_git_head()}`",
+        f"- Random seed: **{args.seed}**",
+        f"- Git commit: `{seal['git_head']}`",
         f"- Unblind runtime: **{result['method']['runtime_seconds']:.0f}s**",
-        f"- Census artifact: `{census_npz.name}` — SHA256 `{_sha256(census_npz)}` "
-        f"({census_npz.stat().st_size/2**20:.1f} MiB)",
-        f"- Geometry artifact: `{geometry_npz.name}` — SHA256 `{_sha256(geometry_npz)}` "
-        f"({geometry_npz.stat().st_size/2**20:.1f} MiB)",
-        f"- Books in universe: {n_books if n_books else 'n/a'}",
-        f"- Chance @50 (in-universe): exact {chance['exact_lit']:.2f}, broad {chance['broad_lit']:.2f}, "
-        f"anti {chance['anti']:.2f}, filler {chance['filler']:.2f}.",
+        f"- Census artifact: `{census_npz.name}` — SHA256 (sealed) "
+        f"`{seal['census_npz_sha256']}` ({census_npz.stat().st_size/2**20:.1f} MiB)",
+        f"- Geometry artifact: `{geometry_npz.name}` — SHA256 (sealed) "
+        f"`{seal['geometry_npz_sha256']}` ({geometry_npz.stat().st_size/2**20:.1f} MiB)",
+        f"- Books in universe: {uni['n_books']}; eligible (book_n >= 25): {uni['n_eligible']}",
+        f"- Chance @50 over the eligible universe: exact {chance['exact_lit']:.2f}, "
+        f"broad {chance['broad_lit']:.2f}, anti {chance['anti']:.2f}, "
+        f"filler {chance['filler']:.2f}.",
         "",
         "## PRE-UNBLIND STRUCTURAL RESULTS",
         "",
@@ -1201,7 +1818,8 @@ def _write_report(
         "",
         "### Sources",
         "",
-        f"- Sizes: **{list(SIZES)}**, {JURIES_PER_SIZE} juries each (jury ids 0..119), source id `size:jury`.",
+        f"- Sizes: **{list(SIZES)}**, {method['juries_per_size']} juries each "
+        f"(jury ids 0..{method['juries_per_size']-1}), source id `size:jury`.",
         "- Amplification: `seed_from_pref` on the saved endpoint preference vector (top 25 eligible "
         "books, `0.4 + 19.6 * frac5`, mean-normalized), then `run_path` gain-hard forward amplification "
         f"(beta {breeding.BETA}, hard threshold `pruning.HARD_THRESHOLD`, max stages {breeding.MAX_STAGES}).",
@@ -1209,6 +1827,11 @@ def _write_report(
         "- Representation (direction space): L2-normalized stage direction.",
         "- Clustering: average-linkage hierarchical clustering on cosine distance, dendrogram cut at "
         "height `1 - tau` for tau in {0.30, 0.50, 0.70}; singletons kept.",
+        f"- Stage definitions: deepest = final run_path stage (per-source n_stages - 1); "
+        f"s4 = fixed stage index {STAGE_ANALYZED}.",
+        f"- Half splits: A = even jury index, B = odd jury index; centroid-cosine matching in the "
+        "same space; every half-cluster centroid vector was frozen to disk; `mutual_best` marks "
+        "A<->B mutual best matches.",
         "",
         "### Pairwise endpoint similarity (off-diagonal)",
         "",
@@ -1279,10 +1902,22 @@ def _write_report(
             f"| {key} | {h['nA']} | {h['nB']} | {len(h['best_matches'])} | "
             f"{ge5} | {ge7} | {best_cos:.3f} |"
         )
+    if frozen.get("invariant_checks"):
+        n_ok = sum(1 for c in frozen["invariant_checks"] if c["ok"])
+        lines += [
+            "",
+            "### Label-blind invariant checks (run inside geometry, before sealing)",
+            "",
+            f"- {len(frozen['invariant_checks'])} checks run, {n_ok} passed, "
+            f"{len(frozen['invariant_checks']) - n_ok} failed. Geometry aborts on any failure.",
+        ]
     lines += ["", "## POST-HOC LITERARY EVALUATION", ""]
     lines += [
         "",
-        "Semantic context was loaded only after every structure above was frozen.",
+        "Semantic context was loaded only after every structure above was frozen and sealed.",
+        f"All preference heads use the single global eligibility universe "
+        f"(book_n >= {ELIG_MIN_BOOK_N}); stage-specific reader mass is retained as a "
+        "structural diagnostic only.",
         "",
     ]
 
@@ -1306,21 +1941,36 @@ def _write_report(
         "",
     ]
 
-    # cluster centroids
-    lines += ["### Label-blind preference centroids (non-singleton clusters)", ""]
+    # primary evidence: every non-singleton preference-space cluster
     lines += [
-        "| stage | group | tau | size | composition | exact @50/200 | broad @50/200 | anti @50/200 | filler @50/200 | within | cos_pole |",
-        "|---|---|---:|---:|---|---:|---:|---:|---:|---:|---:|",
+        "### Primary evidence: every non-singleton preference-space cluster",
+        "",
+        "| stage | group | tau | size | composition | within pref | exact @50/200 | "
+        "broad @50/200 | anti @50/200 | filler @50/200 | member-dir cos_pole | "
+        "even/odd analogue | A size | B size | A-B cos | mutual best |",
+        "|---|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for e in result["cluster_evals"]:
-        if e["space"] != "pref":
+        if e["space"] != "pref" or e["size"] < 2:
             continue
         comp = "/".join(f"{s}:{e['composition'][s]}" for s in ("20000", "80000"))
-        cp = f"{e['cos_pole']:.3f}" if e.get("cos_pole") is not None else "n/a"
+        md = f"{e['member_direction_cos_pole']:.3f}" if e.get("member_direction_cos_pole") is not None else "n/a"
+        a = e.get("analogue")
+        if a:
+            ana = f"yes ({a['overlap_fraction']:.2f} overlap)"
+            a_sz = str(a["a_size"])
+            b_sz = str(a["b_size"])
+            ab_cos = f"{a['cos']:.3f}"
+            mutual = "yes" if a["mutual_best"] else "no"
+        else:
+            ana = "no"
+            a_sz = b_sz = ab_cos = mutual = "n/a"
         lines.append(
             f"| {e['stage']} | {e['group']} | {e['tau']:.2f} | {e['size']} | {comp} | "
-            f"{_metric_str(e['metrics'])} | {e['within']['mean']:.3f} | {cp} |"
+            f"{e['within']['mean']:.3f} | {_metric_str(e['metrics'])} | {md} | "
+            f"{ana} | {a_sz} | {b_sz} | {ab_cos} | {mutual} |"
         )
+
     lines += ["", "### Direction centroids (pole_rows convention)", ""]
     lines += [
         "| stage | group | tau | size | exact @50/200 | broad @50/200 | anti @50/200 | filler @50/200 | cos_pole |",
@@ -1338,16 +1988,18 @@ def _write_report(
     # matched pairs
     lines += ["", "### Independently matched A/B clusters", ""]
     lines += [
-        "| key | cos | a_size | b_size | A exact/broad/anti @50 | B exact/broad/anti @50 |",
-        "|---|---:|---:|---:|---|---|",
+        "| key | eval | cos | a_size | b_size | mutual | A exact/broad/anti @50 | B exact/broad/anti @50 |",
+        "|---|---|---:|---:|---:|---|---:|---|",
     ]
     for m in result["matched"]:
         if "a_metrics" not in m:
             continue
         a = m["a_metrics"]
         b = m["b_metrics"]
+        ev = "pref" if m["space"] == "pref" else "dir (structural only)"
         lines.append(
-            f"| {m['key']} | {m['cos']:.3f} | {m['a_size']} | {m['b_size']} | "
+            f"| {m['key']} | {ev} | {m['cos']:.3f} | {m['a_size']} | {m['b_size']} | "
+            f"{'yes' if m['mutual_best'] else 'no'} | "
             f"{a['exact_lit50']}/{a['broad_lit50']}/{a['anti50']} | "
             f"{b['exact_lit50']}/{b['broad_lit50']}/{b['anti50']} |"
         )
@@ -1362,11 +2014,12 @@ def _write_report(
         lines += ["", "### Heads of label-blind clusters with exact_lit50 >= 3", ""]
         for e in notable[:10]:
             comp = "/".join(f"{s}:{e['composition'][s]}" for s in ("20000", "80000"))
+            md = f"{e['member_direction_cos_pole']:.3f}" if e.get("member_direction_cos_pole") is not None else "n/a"
             lines += [
                 f"#### {e['stage']} {e['group']} tau={e['tau']:.2f} ({e['size']} members; {comp})",
                 "",
                 f"Exact/broad/anti/filler @50/200: {_metric_str(e['metrics'])}; "
-                f"within {e['within']['mean']:.3f}; cos_pole {e.get('cos_pole')}.",
+                f"within {e['within']['mean']:.3f}; member-direction cos_pole {md}.",
                 "",
             ]
             lines += _fmt_head(e["head"], 15)
@@ -1378,28 +2031,50 @@ def _write_report(
     for f in result["feature_diagnostics"]:
         r = f"{f['point_biserial_r']:.3f}" if f["point_biserial_r"] is not None else "n/a"
         lines.append(f"| {f['feature']} | {f['outcome']} | {r} | {f['n']} |")
-    lines += ["", "## Verdict", ""]
-    n_lit = sum(
-        1 for e in result["cluster_evals"]
-        if e["space"] == "pref" and e["stage"] == "deepest" and e["group"] == "pooled"
-        and e["metrics"]["exact_lit50"] >= 3
-    )
-    lines.append(
-        f"The pooled deepest preference-space clustering at tau=0.30 produced "
-        f"{len(frozen['clusters']['deepest']['pooled']['pooled_deepest_0.30_pref'])} clusters, of which "
-        f"{sum(1 for c in frozen['clusters']['deepest']['pooled']['pooled_deepest_0.30_pref'] if c['size'] >= 2)} "
-        f"have >= 2 members; {n_lit} non-singleton clusters reach exact_lit50 >= 3 post-hoc. "
-        "Whether this constitutes a recurrent label-blind literary basin is assessed in the "
-        "tables above (within-cluster agreement, half-half reproducibility, anti contamination). "
-        "This report does not force a conclusion; a negative or mixed result is reported as found."
-    )
+
+    # per-threshold verdict (no tau mixing, no automatic success declaration)
+    lines += ["", "## Verdict (per preregistered threshold)", ""]
+    for tau in CLUSTER_TAUS:
+        key = f"pooled_deepest_{tau:.2f}_pref"
+        clist = frozen["clusters"]["deepest"]["pooled"][key]
+        non_sing = [c for c in clist if c["size"] >= 2]
+        evals = [
+            e for e in result["cluster_evals"]
+            if e["stage"] == "deepest" and e["group"] == "pooled"
+            and e["tau"] == tau and e["space"] == "pref" and e["size"] >= 2
+        ]
+        n_lit = sum(1 for e in evals if e["metrics"]["exact_lit50"] >= 3)
+        strong = [
+            e for e in evals
+            if e["size"] >= 5
+            and e["metrics"]["exact_lit50"] >= 3
+            and e["metrics"]["anti50"] <= 1
+            and e.get("analogue") is not None
+            and e["analogue"]["cos"] >= 0.7
+            and e["analogue"]["mutual_best"]
+        ]
+        lines.append(
+            f"- **tau = {tau:.2f}:** {len(clist)} clusters, {len(non_sing)} non-singleton; "
+            f"{n_lit} non-singleton preference clusters reach exact_lit50 >= 3 post-hoc; "
+            f"{len(strong)} meet the strong checklist (size >= 5, exact_lit50 >= 3, "
+            f"anti50 <= 1, even/odd analogue with A-B cos >= 0.7 and mutual best)."
+        )
+    lines += [
+        "",
+        "**No threshold is selected after unblinding, and this report does not "
+        "automatically declare success from any single criterion.** The intended strong "
+        "result remains: a cluster generated without semantic labels, with at least 5 "
+        "source juries, clear literary enrichment and low anti contamination, plus a "
+        "geometrically corresponding independently formed cluster in the even and odd "
+        "halves. A negative or mixed result is reported as found.",
+    ]
     out = report_path(args.tag)
-    out.write_text("\n".join(lines), encoding="utf-8")
+    _write_text_atomic(out, "\n".join(lines))
     print(f"Wrote {out}")
 
 
 # ---------------------------------------------------------------------------
-# Smoke test: 4 sources per size + reproducibility verification
+# Smoke test: small sources per size + reproducibility verification
 # ---------------------------------------------------------------------------
 
 def phase_smoke(args: argparse.Namespace) -> None:
@@ -1415,7 +2090,12 @@ def phase_smoke(args: argparse.Namespace) -> None:
 
 
 def _verify_smoke(args: argparse.Namespace) -> None:
-    """Bit-compare the census pipeline against the existing mechanisms."""
+    """Numerically compare the census pipeline against the existing mechanisms.
+
+    The comparison is tolerance-based (stage directions/preferences within
+    1e-5), so it is reported as "numerically reproduced", not "bit-exact";
+    the start vector and seed-book order must match exactly (max diff == 0).
+    """
     npz_path, json_path = census_paths(args.tag)
     blob = np.load(npz_path, allow_pickle=False)
     records = json.loads(json_path.read_text(encoding="utf-8"))["records"]
@@ -1460,12 +2140,20 @@ def _verify_smoke(args: argparse.Namespace) -> None:
         or c["stage_prefs_max_abs_diff"] > 1e-5
     ]
     checks["reproduced"] = len(bad) == 0
+    checks["comparison"] = (
+        "tolerance-based: start vector and seed books exact (diff == 0), "
+        "stage directions and stage preferences within 1e-5"
+    )
+    checks["start_bit_exact"] = all(
+        c["start_max_abs_diff"] == 0.0 for c in checks["checks"]
+    )
     (DATA / "natural_amplification_smoke_verify.json").write_text(
         json.dumps(checks, indent=1), encoding="utf-8"
     )
     print(
-        f"smoke verification: reproduced={checks['reproduced']} "
-        f"({len(checks['checks'])} sources)", flush=True,
+        f"smoke verification: numerically reproduced={checks['reproduced']} "
+        f"({len(checks['checks'])} sources; start bit-exact "
+        f"{checks['start_bit_exact']})", flush=True,
     )
 
 
@@ -1481,6 +2169,12 @@ def main() -> None:
     parser.add_argument("--juries-per-size", type=int, default=JURIES_PER_SIZE)
     parser.add_argument("--smoke-juries", type=int, default=SMOKE_JURIES)
     parser.add_argument("--keep-chunks", action="store_true")
+    parser.add_argument(
+        "--allow-partial",
+        action="store_true",
+        help="let geometry/unblind proceed on an incomplete census "
+        "(intentional partial analysis only; not used for this experiment)",
+    )
     args = parser.parse_args()
     if args.phase == "amplify":
         phase_amplify(args)
