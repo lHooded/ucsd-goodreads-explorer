@@ -1,0 +1,40 @@
+{
+ "seal_manifest_version": 1,
+ "artifacts": {
+  "addendum_json": {
+   "file": "jury_decomposition_mode_families.json",
+   "sha256": "6a2894978f6ded6e9a4c857dcf89dc34bf254695c0ed428405a5a676003daf87",
+   "bytes": 64225
+  },
+  "addendum_npz": {
+   "file": "jury_decomposition_mode_families.npz",
+   "sha256": "eb09e80480a655537cd9631897f67f8d3ff8d2b8e9b6b676385540d1fc4cdaca",
+   "bytes": 1348337
+  },
+  "source_census_npz": {
+   "file": "jury_decomposition.npz",
+   "sha256": "b333150fef91a96e729e23b3a5cf7cd2d0c577b9c03230125b00b899538c8e38",
+   "bytes": 587344268
+  },
+  "source_census_json": {
+   "file": "jury_decomposition.json",
+   "sha256": "8f54a02224f021df2b69c09a992a4985861cda1735f6a8f694a7a475bab0b05b",
+   "bytes": 2773556
+  },
+  "source_geometry_npz": {
+   "file": "jury_decomposition_geometry.npz",
+   "sha256": "24a90fa35cdaf6ded6b016da267c327fd7549911560cb261ce7c335d0e12078f",
+   "bytes": 168004003
+  },
+  "source_geometry_json": {
+   "file": "jury_decomposition_geometry.json",
+   "sha256": "c47e1ecb75be2d2307c568e2b0a868c3faa3119aec2d4d5afdbed37b5d206634",
+   "bytes": 4634177
+  }
+ },
+ "addendum_seed": 20260820,
+ "git_head": "9367bd34019f8e5fab988562609d7f020fea5c35",
+ "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_jury_decomposition_mode_families.py --phase analyze",
+ "semantic_context_loaded": false,
+ "unblinded": false
+}
