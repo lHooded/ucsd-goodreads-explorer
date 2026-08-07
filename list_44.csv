@@ -1,0 +1,104 @@
+rank,book,authors,year,country,language
+10,Anna Karenina,Leo Tolstoy,1877,Russian,Russian
+19,Madame Bovary,Gustave Flaubert,1857,French,French
+12,War and Peace,Leo Tolstoy,1869,Russian,Russian
+3,The Great Gatsby,F. Scott Fitzgerald,1925,American,English
+11,Lolita,Vladimir Nabokov,1955,American,English
+24,Middlemarch,George Eliot,1871,British,English
+22,Adventures of Huckleberry Finn,Mark Twain,1884,American,English
+128,The Stories of Anton Chekhov,Anton Chekhov,1900,Russian,Russian
+2,In Search of Lost Time,Marcel Proust,1913,French,French
+75,Hamlet,William Shakespeare,1600,British,English
+6,Moby-Dick,Herman Melville,1851,American,English
+8,Don Quixote,Miguel de Cervantes,1605,Spanish,Spanish
+1,Ulysses,James Joyce,1922,Irish,English
+38,Great Expectations,Charles Dickens,1860,British,English
+4,One Hundred Years of Solitude,Gabriel García Márquez,1967,Colombian,Spanish
+13,Crime and Punishment,Fyodor Dostoevsky,1866,Russian,Russian
+146,King Lear,William Shakespeare,1608,British,English
+26,The Odyssey,Homer,-740,Greek,Ancient greek
+25,To the Lighthouse,Virginia Woolf,1927,British,English
+345,Dubliners,James Joyce,1914,Irish,English
+337,The Complete Stories of Flannery O'Connor,Flannery O'Connor,1971,American,English
+15,Pride and Prejudice,Jane Austen,1813,British,English
+18,The Brothers Karamazov,Fyodor Dostoevsky,1880,Russian,Russian
+9,The Sound and the Fury,William Faulkner,1929,American,English
+42,"Absalom, Absalom!",William Faulkner,1936,American,English
+76,Emma,Jane Austen,1815,British,English
+28,The Divine Comedy,Dante Alighieri,1308,Italian,Italian
+30,Jane Eyre,Charlotte Brontë,1847,British,English
+54,The Life And Opinions Of Tristram Shandy,Laurence Sterne,1759,British,English
+32,Mrs. Dalloway,Virginia Woolf,1925,British,English
+14,Wuthering Heights,Emily Brontë,1847,British,English
+33,Invisible Man,Ralph Ellison,1952,American,English
+21,The Bible,Unknown,-1400,Jewish,"Hebrew, aramaic, greek"
+70,Pale Fire,Vladimir Nabokov,1962,American,English
+16,To Kill a Mockingbird,Harper Lee,1960,American,English
+131,Bleak House,Charles Dickens,1852,British,English
+27,The Grapes of Wrath,John Steinbeck,1939,American,English
+20,The Trial,Franz Kafka,1925,Czech,German
+108,The Canterbury Tales,Geoffrey Chaucer,1400,British,Middle english
+31,Heart of Darkness,Joseph Conrad,1899,British,English
+66,The Portrait of a Lady,Henry James,1881,American,English
+166,Macbeth,William Shakespeare,1606,British,English
+179,Persuasion,Jane Austen,1817,British,English
+89,The Good Soldier,Ford Madox Ford,1915,British,English
+45,Beloved,Toni Morrison,1987,American,English
+180,Blood Meridian,Cormac McCarthy,1985,American,English
+278,Oresteia,Aeschylus,-458,Greek,Ancient greek
+81,A Portrait of the Artist as a Young Man,James Joyce,1916,Irish,English
+23,The Stranger,Albert Camus,1942,French,French
+5,The Catcher in the Rye,J. D. Salinger,1951,American,English
+148,All the King's Men,Robert Penn Warren,1946,American,English
+170,"Rabbit, Run",John Updike,1960,American,English
+641,Rabbit Redux,John Updike,1971,American,English
+659,Rabbit Is Rich,John Updike,1981,American,English
+761,Rabbit at Rest,John Updike,1990,American,English
+155,The Prime of Miss Jean Brodie,Muriel Spark,1961,"British, Scottish",English
+57,The Sun Also Rises,Ernest Hemingway,1926,American,English
+68,The Scarlet Letter,Nathaniel Hawthorne,1850,American,English
+36,Alice's Adventures in Wonderland,Lewis Carroll,1865,British,English
+37,The Iliad,Homer,-750,Greek,Ancient greek
+48,One Thousand and One Nights,Unknown,800,Multiple,Arabic
+43,The Red and the Black,Stendhal,1830,French,French
+1547,The Collected Stories of Isaac Babel,Isaac Babel,1934,Russian,Russian
+163,Tender Is the Night,F. Scott Fitzgerald,1934,American,English
+35,Catch-22,Joseph Heller,1961,American,English
+77,Slaughterhouse-Five,Kurt Vonnegut,1969,American,English
+86,As I Lay Dying,William Faulkner,1930,American,English
+115,Paradise Lost,John Milton,1667,British,English
+650,The Stories of John Cheever,John Cheever,1978,American,English
+73,The Aeneid,Virgil,-19,Roman,Latin
+97,Dead Souls,Nikolai Gogol,1842,Russian,Russian
+103,For Whom the Bell Tolls,Ernest Hemingway,1940,American,English
+85,Leaves of Grass,Walt Whitman,1855,American,English
+322,Franz Kafka,Franz Kafka,1971,Czech,Unknown
+29,The Magic Mountain,Thomas Mann,1924,German,German
+301,"Winesburg, Ohio",Sherwood Anderson,1919,American,English
+1356,The Collected Stories of Eudora Welty,Eudora Welty,1980,American,English
+371,Our Mutual Friend,Charles Dickens,1864,British,English
+1313,The Hamlet,William Faulkner,1940,American,English
+34,The Master and Margarita,Mikhail Bulgakov,1967,Russian,Russian
+1060,The Transit of Venus,Shirley Hazzard,1980,Australian,English
+522,"So Long, See You Tomorrow",William Maxwell,1980,American,English
+1248,Selected Stories of Alice Munro,Alice Munro,1996,Canadian,English
+137,The Charterhouse of Parma,Stendhal,1839,French,French
+123,Decameron,Giovanni Boccaccio,1353,Italian,Italian
+453,The Man Who Loved Children,Christina Stead,1940,Australian,English
+93,Demons,Fyodor Dostoevsky,1872,Russian,Russian
+281,Independent People,Halldor Laxness,1934,Icelandic,Icelandic
+151,My Antonia,Willa Cather,1918,American,English
+367,Parade's End,Ford Madox Ford,1924,British,English
+628,Stories of Ernest Hemingway,Ernest Hemingway,1987,American,English
+3853,Collected Stories,Raymond Chandler,1964,American,English
+109,Tess of the d'Urbervilles,Thomas Hardy,1891,British,English
+105,Vanity Fair,William Makepeace Thackeray,1847,British,English
+515,Cousin Bette,Honoré de Balzac,1846,French,French
+1436,Don Juan,Lord Byron,1819,British,English
+327,Notes from the Underground,Fyodor Dostoevsky,1864,Russian,Russian
+271,The Stand,Stephen King,1978,American,English
+220,The Tempest,William Shakespeare,1623,British,English
+64,Their Eyes Were Watching God,Zora Neale Hurston,1937,American,English
+79,A Passage to India,E. M. Forster,1924,British,English
+74,Candide,Voltaire,1759,French,French
+320,Clarissa,Samuel Richardson,1748,British,English

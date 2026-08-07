@@ -1,0 +1,12 @@
+{
+  "tag": "overnight",
+  "completed_sizes": [
+    2000,
+    5000,
+    10000,
+    20000
+  ],
+  "in_progress_size": null,
+  "in_progress_juries": null,
+  "timestamp": 1786032978.307901
+}

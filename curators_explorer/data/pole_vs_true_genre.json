@@ -1,0 +1,719 @@
+{
+ "parents_corr": 0.07908987998962402,
+ "genre_parent_exact50": 0,
+ "children": [
+  {
+   "name": "polexgenre::jm::r0",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r1",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r2",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r3",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r4",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r5",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r6",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r7",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r8",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r9",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r10",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r11",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r12",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r13",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r14",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r15",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r16",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r17",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r18",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r19",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r20",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r21",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r22",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r23",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r24",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r25",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r26",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r27",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r28",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::jm::r29",
+   "mode": "jury_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.33727413415908813,
+    "genre": 0.3190041184425354
+   },
+   "exact": 3,
+   "broad": 5,
+   "anti": 36,
+   "surv": 15640,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Crooked Kingdom (Six of Crows, #2)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "name": "polexgenre::dm",
+   "mode": "direction_mix",
+   "class": "new",
+   "cos": {
+    "pole": 0.0528399795293808,
+    "genre": 0.4461413025856018
+   },
+   "exact": 5,
+   "broad": 7,
+   "anti": 22,
+   "surv": 13042,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "A Game of Thrones (A Song of Ice and Fire, #1)",
+    "The Return of the King (The Lord of the Rings, #3)",
+    "A Storm of Swords (A Song of Ice and Fire, #3)",
+    "The Book Thief"
+   ]
+  }
+ ]
+}

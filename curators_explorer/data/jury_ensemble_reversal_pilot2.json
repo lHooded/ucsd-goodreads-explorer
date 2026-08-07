@@ -1,0 +1,3165 @@
+{
+  "method": {
+    "purpose": "reverse the convergence of many random juries and test whether their ensemble averages toward a literary center",
+    "beta": 2.5,
+    "iterations": 20,
+    "max_stages": 8,
+    "retained_target": 1.01,
+    "cluster_threshold": 0.5,
+    "seed": 20260807,
+    "sizes": [
+      1500,
+      3000
+    ],
+    "juries_per_size": 4,
+    "evaluation_space": "preference",
+    "chance_at_50": {
+      "exact_lit": 0.10220304337951397,
+      "broad_lit": 0.8024831554243319,
+      "anti": 6.166250283897343
+    },
+    "semantic_data_loaded_after_geometry": true,
+    "runtime_seconds": 30.80810809135437
+  },
+  "matrix": {
+    "users_with_both_sides": 233066,
+    "sampled_edges": 7340284,
+    "row_l1_median": 1.0,
+    "shape": [
+      233271,
+      26418
+    ]
+  },
+  "sizes": [
+    {
+      "size": 1500,
+      "juries": 4,
+      "agreement_stats": {
+        "mean": 0.02799714356660843,
+        "median": 0.030220288783311844,
+        "min": 0.014179508201777935,
+        "max": 0.037368495017290115
+      },
+      "aggregates": {
+        "center_stage0": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 8,
+            "anti200": 8,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "25599",
+              "title": "The Complete Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.9080699682235718,
+              "reader_mass": 2712.0
+            },
+            {
+              "rank": 2,
+              "work_id": "41927811",
+              "title": "March: Book Two (March, #2)",
+              "author": "John             Lewis",
+              "score": 0.8994177579879761,
+              "reader_mass": 2048.0
+            },
+            {
+              "rank": 3,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.8987189531326294,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 4,
+              "work_id": "49638190",
+              "title": "The Hate U Give",
+              "author": "Angie Thomas",
+              "score": 0.8881941437721252,
+              "reader_mass": 11481.0
+            },
+            {
+              "rank": 5,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.8830568194389343,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 6,
+              "work_id": "28323940",
+              "title": "Just Mercy: A Story of Justice and Redemption",
+              "author": "Bryan Stevenson",
+              "score": 0.8696077466011047,
+              "reader_mass": 3323.0
+            },
+            {
+              "rank": 7,
+              "work_id": "1010526",
+              "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.8666526079177856,
+              "reader_mass": 1986.0
+            },
+            {
+              "rank": 8,
+              "work_id": "49704739",
+              "title": "March: Book Three (March, #3)",
+              "author": "John             Lewis",
+              "score": 0.8608354330062866,
+              "reader_mass": 1601.0
+            },
+            {
+              "rank": 9,
+              "work_id": "2110010",
+              "title": "Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8520190119743347,
+              "reader_mass": 7367.0
+            },
+            {
+              "rank": 10,
+              "work_id": "2244438",
+              "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.8517118692398071,
+              "reader_mass": 6258.0
+            },
+            {
+              "rank": 11,
+              "work_id": "50150838",
+              "title": "Born a Crime: Stories From a South African Childhood",
+              "author": "Trevor Noah",
+              "score": 0.8482188582420349,
+              "reader_mass": 7797.0
+            },
+            {
+              "rank": 12,
+              "work_id": "25602",
+              "title": "The Indispensable Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8460085391998291,
+              "reader_mass": 1821.0
+            },
+            {
+              "rank": 13,
+              "work_id": "946589",
+              "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.837766706943512,
+              "reader_mass": 1672.0
+            },
+            {
+              "rank": 14,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.8333441019058228,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 15,
+              "work_id": "43618137",
+              "title": "Humans of New York: Stories",
+              "author": "Brandon Stanton",
+              "score": 0.8317643404006958,
+              "reader_mass": 1875.0
+            },
+            {
+              "rank": 16,
+              "work_id": "46177490",
+              "title": "Hamilton: The Revolution",
+              "author": "Lin-Manuel Miranda",
+              "score": 0.8294318914413452,
+              "reader_mass": 4007.0
+            },
+            {
+              "rank": 17,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.8266022205352783,
+              "reader_mass": 12297.0
+            },
+            {
+              "rank": 18,
+              "work_id": "6358552",
+              "title": "Nothing to Envy: Ordinary Lives in North Korea",
+              "author": "Barbara Demick",
+              "score": 0.8230209946632385,
+              "reader_mass": 4208.0
+            },
+            {
+              "rank": 19,
+              "work_id": "1658562",
+              "title": "The Complete Maus (Maus, #1-2)",
+              "author": "Art Spiegelman",
+              "score": 0.8200332522392273,
+              "reader_mass": 10979.0
+            },
+            {
+              "rank": 20,
+              "work_id": "25601",
+              "title": "It's a Magical World: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.8184112310409546,
+              "reader_mass": 1902.0
+            }
+          ]
+        },
+        "plain_mean": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 24,
+            "anti200": 24,
+            "filler50": 2,
+            "filler200": 2
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.7165852785110474,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.7111886739730835,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 3,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.7068584561347961,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 4,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.7035102844238281,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 5,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.6615864038467407,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 6,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.6566869020462036,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 7,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.6440544128417969,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.6440145373344421,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 9,
+              "work_id": "2502882",
+              "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+              "author": "Patrick Rothfuss",
+              "score": 0.6322975754737854,
+              "reader_mass": 27968.0
+            },
+            {
+              "rank": 10,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.629780650138855,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 11,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.6250499486923218,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 12,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6242401003837585,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 13,
+              "work_id": "266624",
+              "title": "The Godfather",
+              "author": "Mario Puzo",
+              "score": 0.6201772689819336,
+              "reader_mass": 20595.0
+            },
+            {
+              "rank": 14,
+              "work_id": "21825181",
+              "title": "The Martian",
+              "author": "Andy Weir",
+              "score": 0.618127703666687,
+              "reader_mass": 54052.0
+            },
+            {
+              "rank": 15,
+              "work_id": "1959820",
+              "title": "Fullmetal Alchemist, Vol. 1 (Fullmetal Alchemist, #1)",
+              "author": "Hiromu Arakawa",
+              "score": 0.6160687804222107,
+              "reader_mass": 5942.0
+            },
+            {
+              "rank": 16,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.6136289238929749,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 17,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.6127840876579285,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 18,
+              "work_id": "2793516",
+              "title": "The Hero of Ages (Mistborn, #3)",
+              "author": "Brandon Sanderson",
+              "score": 0.6059336066246033,
+              "reader_mass": 16999.0
+            },
+            {
+              "rank": 19,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.5971978902816772,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 20,
+              "work_id": "3272005",
+              "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+              "author": "George R.R. Martin",
+              "score": 0.5936058163642883,
+              "reader_mass": 64658.0
+            }
+          ]
+        },
+        "coordinate_median": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 19,
+            "anti200": 19,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.7160213589668274,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.7157495617866516,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 3,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.7032155990600586,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 4,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.697547435760498,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 5,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.6671823859214783,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 6,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.6630246639251709,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 7,
+              "work_id": "21825181",
+              "title": "The Martian",
+              "author": "Andy Weir",
+              "score": 0.6558915376663208,
+              "reader_mass": 54052.0
+            },
+            {
+              "rank": 8,
+              "work_id": "266624",
+              "title": "The Godfather",
+              "author": "Mario Puzo",
+              "score": 0.6498773694038391,
+              "reader_mass": 20595.0
+            },
+            {
+              "rank": 9,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.6359298825263977,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 10,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6351611614227295,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 11,
+              "work_id": "1959820",
+              "title": "Fullmetal Alchemist, Vol. 1 (Fullmetal Alchemist, #1)",
+              "author": "Hiromu Arakawa",
+              "score": 0.626805305480957,
+              "reader_mass": 5942.0
+            },
+            {
+              "rank": 12,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.624494194984436,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 13,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.6229576468467712,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 14,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.6191021800041199,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 15,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6190050840377808,
+              "reader_mass": 12297.0
+            },
+            {
+              "rank": 16,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6182109117507935,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 17,
+              "work_id": "66322",
+              "title": "The Final Empire (Mistborn, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.6128628849983215,
+              "reader_mass": 26974.0
+            },
+            {
+              "rank": 18,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.6004984378814697,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 19,
+              "work_id": "2502882",
+              "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+              "author": "Patrick Rothfuss",
+              "score": 0.5937343835830688,
+              "reader_mass": 27968.0
+            },
+            {
+              "rank": 20,
+              "work_id": "2793516",
+              "title": "The Hero of Ages (Mistborn, #3)",
+              "author": "Brandon Sanderson",
+              "score": 0.5928404331207275,
+              "reader_mass": 16999.0
+            }
+          ]
+        },
+        "agreement_consensus": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 26,
+            "anti200": 26,
+            "filler50": 2,
+            "filler200": 2
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.08181748539209366,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.08020921796560287,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 3,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.07757992297410965,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 4,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.07518681138753891,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 5,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.07434380799531937,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 6,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.07285860925912857,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 7,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.07179765403270721,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.07046307623386383,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 9,
+              "work_id": "1959820",
+              "title": "Fullmetal Alchemist, Vol. 1 (Fullmetal Alchemist, #1)",
+              "author": "Hiromu Arakawa",
+              "score": 0.06890717148780823,
+              "reader_mass": 5942.0
+            },
+            {
+              "rank": 10,
+              "work_id": "266624",
+              "title": "The Godfather",
+              "author": "Mario Puzo",
+              "score": 0.06807056814432144,
+              "reader_mass": 20595.0
+            },
+            {
+              "rank": 11,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.0680430680513382,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 12,
+              "work_id": "2502882",
+              "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+              "author": "Patrick Rothfuss",
+              "score": 0.06700803339481354,
+              "reader_mass": 27968.0
+            },
+            {
+              "rank": 13,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.06671769171953201,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 14,
+              "work_id": "21825181",
+              "title": "The Martian",
+              "author": "Andy Weir",
+              "score": 0.06669896841049194,
+              "reader_mass": 54052.0
+            },
+            {
+              "rank": 15,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.06611806154251099,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 16,
+              "work_id": "2793516",
+              "title": "The Hero of Ages (Mistborn, #3)",
+              "author": "Brandon Sanderson",
+              "score": 0.06501404941082001,
+              "reader_mass": 16999.0
+            },
+            {
+              "rank": 17,
+              "work_id": "4551489",
+              "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+              "author": "Rick Riordan",
+              "score": 0.06483900547027588,
+              "reader_mass": 44223.0
+            },
+            {
+              "rank": 18,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.06414757668972015,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 19,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.06398565322160721,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 20,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.06325401365756989,
+              "reader_mass": 12297.0
+            }
+          ]
+        },
+        "mean_displacement": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 1,
+            "broad_lit200": 1,
+            "anti50": 7,
+            "anti200": 7,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "1023644",
+              "title": "Oroonoko",
+              "author": "Aphra Behn",
+              "score": 0.7532076835632324,
+              "reader_mass": 1135.0
+            },
+            {
+              "rank": 2,
+              "work_id": "10932271",
+              "title": "Palo Alto",
+              "author": "James Franco",
+              "score": 0.7480918169021606,
+              "reader_mass": 1151.0
+            },
+            {
+              "rank": 3,
+              "work_id": "2214950",
+              "title": "Pamela; or, Virtue Rewarded",
+              "author": "Samuel Richardson",
+              "score": 0.7374054193496704,
+              "reader_mass": 1133.0
+            },
+            {
+              "rank": 4,
+              "work_id": "43082853",
+              "title": "Primates of Park Avenue",
+              "author": "Wednesday Martin",
+              "score": 0.7243580222129822,
+              "reader_mass": 1122.0
+            },
+            {
+              "rank": 5,
+              "work_id": "906539",
+              "title": "Blue Shoe",
+              "author": "Anne Lamott",
+              "score": 0.7197218537330627,
+              "reader_mass": 600.0
+            },
+            {
+              "rank": 6,
+              "work_id": "6865289",
+              "title": "The Three Weissmanns of Westport",
+              "author": "Cathleen Schine",
+              "score": 0.7194191217422485,
+              "reader_mass": 736.0
+            },
+            {
+              "rank": 7,
+              "work_id": "13790252",
+              "title": "Sweet Valley Confidential: Ten Years Later",
+              "author": "Francine Pascal",
+              "score": 0.7096415758132935,
+              "reader_mass": 1176.0
+            },
+            {
+              "rank": 8,
+              "work_id": "43085307",
+              "title": "Among the Ten Thousand Things",
+              "author": "Julia Pierpont",
+              "score": 0.7069941163063049,
+              "reader_mass": 1006.0
+            },
+            {
+              "rank": 9,
+              "work_id": "17997709",
+              "title": "The Red House",
+              "author": "Mark Haddon",
+              "score": 0.7049624919891357,
+              "reader_mass": 1268.0
+            },
+            {
+              "rank": 10,
+              "work_id": "43910210",
+              "title": "After Alice",
+              "author": "Gregory Maguire",
+              "score": 0.7043266296386719,
+              "reader_mass": 1224.0
+            },
+            {
+              "rank": 11,
+              "work_id": "21856400",
+              "title": "The Bling Ring: How a Gang of Fame-Obsessed Teens Ripped Off Hollywood and Shocked the World",
+              "author": "Nancy Jo Sales",
+              "score": 0.7018611431121826,
+              "reader_mass": 789.0
+            },
+            {
+              "rank": 12,
+              "work_id": "6220983",
+              "title": "Bellman & Black",
+              "author": "Diane Setterfield",
+              "score": 0.7005717754364014,
+              "reader_mass": 1761.0
+            },
+            {
+              "rank": 13,
+              "work_id": "43328056",
+              "title": "Shopaholic on Honeymoon (Shopaholic #3.5)",
+              "author": "Sophie Kinsella",
+              "score": 0.699264645576477,
+              "reader_mass": 814.0
+            },
+            {
+              "rank": 14,
+              "work_id": "46817110",
+              "title": "Rich and Pretty",
+              "author": "Rumaan Alam",
+              "score": 0.6966074705123901,
+              "reader_mass": 773.0
+            },
+            {
+              "rank": 15,
+              "work_id": "3774327",
+              "title": "This One is Mine",
+              "author": "Maria Semple",
+              "score": 0.6921830773353577,
+              "reader_mass": 699.0
+            },
+            {
+              "rank": 16,
+              "work_id": "10999224",
+              "title": "Star Island (Skink, #6)",
+              "author": "Carl Hiaasen",
+              "score": 0.6854960322380066,
+              "reader_mass": 1451.0
+            },
+            {
+              "rank": 17,
+              "work_id": "1130986",
+              "title": "Lost",
+              "author": "Gregory Maguire",
+              "score": 0.681631863117218,
+              "reader_mass": 1602.0
+            },
+            {
+              "rank": 18,
+              "work_id": "17846412",
+              "title": "Seating Arrangements",
+              "author": "Maggie Shipstead",
+              "score": 0.6801674365997314,
+              "reader_mass": 1616.0
+            },
+            {
+              "rank": 19,
+              "work_id": "1357280",
+              "title": "Citizen Girl",
+              "author": "Emma McLaughlin",
+              "score": 0.6766371726989746,
+              "reader_mass": 718.0
+            },
+            {
+              "rank": 20,
+              "work_id": "26470722",
+              "title": "The Fever",
+              "author": "Megan Abbott",
+              "score": 0.6617529392242432,
+              "reader_mass": 2545.0
+            }
+          ]
+        }
+      },
+      "clusters": [
+        {
+          "size": 1,
+          "members": [
+            0
+          ],
+          "metrics": {
+            "exact_lit50": 1,
+            "exact_lit200": 1,
+            "broad_lit50": 3,
+            "broad_lit200": 3,
+            "anti50": 4,
+            "anti200": 4,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "632609",
+              "title": "The Qur'an / القرآن الكريم",
+              "author": "Anonymous",
+              "score": 0.9229435324668884,
+              "reader_mass": 4778.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2968690",
+              "title": "رياض الصالحين",
+              "author": "yHy~ bn shrf lnwwy",
+              "score": 0.822634220123291,
+              "reader_mass": 786.0
+            },
+            {
+              "rank": 3,
+              "work_id": "13336065",
+              "title": "لا تصالح",
+              "author": "'ml dnql",
+              "score": 0.8191237449645996,
+              "reader_mass": 898.0
+            },
+            {
+              "rank": 4,
+              "work_id": "532703",
+              "title": "الرحيق المختوم",
+              "author": "Safiy al-Rahman al-Mubarakfuri",
+              "score": 0.818899929523468,
+              "reader_mass": 2335.0
+            },
+            {
+              "rank": 5,
+              "work_id": "6269229",
+              "title": "الإسلام بين الشرق والغرب",
+              "author": "Alija Izetbegovic",
+              "score": 0.81235671043396,
+              "reader_mass": 1500.0
+            },
+            {
+              "rank": 6,
+              "work_id": "6324198",
+              "title": "لافتات - المجموعة الكاملة",
+              "author": "'Hmd mTr",
+              "score": 0.7843568921089172,
+              "reader_mass": 719.0
+            },
+            {
+              "rank": 7,
+              "work_id": "7087982",
+              "title": "الحرافيش",
+              "author": "Naguib Mahfouz",
+              "score": 0.7771354913711548,
+              "reader_mass": 2008.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.7761216163635254,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 9,
+              "work_id": "48066472",
+              "title": "الجريمة والعقاب # 2",
+              "author": "Fyodor Dostoyevsky",
+              "score": 0.7743147611618042,
+              "reader_mass": 514.0
+            },
+            {
+              "rank": 10,
+              "work_id": "311976",
+              "title": "Mornings in Jenin",
+              "author": "Susan Abulhawa",
+              "score": 0.7691546678543091,
+              "reader_mass": 1698.0
+            },
+            {
+              "rank": 11,
+              "work_id": "6400102",
+              "title": "زمن الخيول البيضاء",
+              "author": "Ibrahim Nasrallah - ibrhym nSr llh",
+              "score": 0.7598996758460999,
+              "reader_mass": 1322.0
+            },
+            {
+              "rank": 12,
+              "work_id": "13086736",
+              "title": "الطنطورية",
+              "author": "Radwa Ashour",
+              "score": 0.757723867893219,
+              "reader_mass": 3142.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            1
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 28,
+            "anti200": 28,
+            "filler50": 1,
+            "filler200": 1
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.8430420756340027,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.8283279538154602,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 3,
+              "work_id": "349431",
+              "title": "Fruits Basket, Vol. 4",
+              "author": "Natsuki Takaya",
+              "score": 0.8156742453575134,
+              "reader_mass": 2093.0
+            },
+            {
+              "rank": 4,
+              "work_id": "237192",
+              "title": "Fruits Basket, Vol. 16",
+              "author": "Natsuki Takaya",
+              "score": 0.8059244155883789,
+              "reader_mass": 1455.0
+            },
+            {
+              "rank": 5,
+              "work_id": "4551489",
+              "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+              "author": "Rick Riordan",
+              "score": 0.8000800609588623,
+              "reader_mass": 44223.0
+            },
+            {
+              "rank": 6,
+              "work_id": "237199",
+              "title": "Fruits Basket, Vol. 5",
+              "author": "Natsuki Takaya",
+              "score": 0.7994202375411987,
+              "reader_mass": 1922.0
+            },
+            {
+              "rank": 7,
+              "work_id": "18447540",
+              "title": "Armed & Dangerous (Cut & Run, #5)",
+              "author": "Abigail Roux",
+              "score": 0.7940091490745544,
+              "reader_mass": 1137.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2267601",
+              "title": "Fruits Basket, Vol. 7",
+              "author": "Natsuki Takaya",
+              "score": 0.7931807041168213,
+              "reader_mass": 1965.0
+            },
+            {
+              "rank": 9,
+              "work_id": "2275353",
+              "title": "Fruits Basket, Vol. 9",
+              "author": "Natsuki Takaya",
+              "score": 0.7920949459075928,
+              "reader_mass": 1666.0
+            },
+            {
+              "rank": 10,
+              "work_id": "14465368",
+              "title": "Fish & Chips (Cut & Run, #3)",
+              "author": "Abigail Roux",
+              "score": 0.7915337085723877,
+              "reader_mass": 1367.0
+            },
+            {
+              "rank": 11,
+              "work_id": "1246841",
+              "title": "Fruits Basket, Vol. 19",
+              "author": "Natsuki Takaya",
+              "score": 0.784717857837677,
+              "reader_mass": 1364.0
+            },
+            {
+              "rank": 12,
+              "work_id": "1347600",
+              "title": "Fullmetal Alchemist, Vol. 3 (Fullmetal Alchemist, #3)",
+              "author": "Hiromu Arakawa",
+              "score": 0.7745644450187683,
+              "reader_mass": 1391.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            2
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 5,
+            "anti200": 5,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.8733548521995544,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 2,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.8565453886985779,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 3,
+              "work_id": "2110010",
+              "title": "Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8392060399055481,
+              "reader_mass": 7367.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2431088",
+              "title": "The Walking Dead, Vol. 03: Safety Behind Bars",
+              "author": "Robert Kirkman",
+              "score": 0.8262085318565369,
+              "reader_mass": 4220.0
+            },
+            {
+              "rank": 5,
+              "work_id": "2244438",
+              "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.820505678653717,
+              "reader_mass": 6258.0
+            },
+            {
+              "rank": 6,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.8194929361343384,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 7,
+              "work_id": "25599",
+              "title": "The Complete Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8033856749534607,
+              "reader_mass": 2712.0
+            },
+            {
+              "rank": 8,
+              "work_id": "23452",
+              "title": "Transmetropolitan, Vol. 7: Spider's Thrash (Transmetropolitan, #7)",
+              "author": "Warren Ellis",
+              "score": 0.8026537895202637,
+              "reader_mass": 1012.0
+            },
+            {
+              "rank": 9,
+              "work_id": "7492217",
+              "title": "The Complete Sherlock Holmes",
+              "author": "Arthur Conan Doyle",
+              "score": 0.7960218191146851,
+              "reader_mass": 12450.0
+            },
+            {
+              "rank": 10,
+              "work_id": "25854",
+              "title": "Season of Mists (The Sandman #4)",
+              "author": "Neil Gaiman",
+              "score": 0.7946150302886963,
+              "reader_mass": 6862.0
+            },
+            {
+              "rank": 11,
+              "work_id": "1789924",
+              "title": "The Absolute Sandman, Volume One",
+              "author": "Neil Gaiman",
+              "score": 0.7912579774856567,
+              "reader_mass": 1794.0
+            },
+            {
+              "rank": 12,
+              "work_id": "978451",
+              "title": "Transmetropolitan, Vol. 3: Year of the Bastard (Transmetropolitan, #3)",
+              "author": "Warren Ellis",
+              "score": 0.7906800508499146,
+              "reader_mass": 1408.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            3
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 28,
+            "anti200": 28,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.935979962348938,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 2,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.9033799767494202,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 3,
+              "work_id": "23811929",
+              "title": "Skin Game (The Dresden Files, #15)",
+              "author": "Jim Butcher",
+              "score": 0.9031479358673096,
+              "reader_mass": 6710.0
+            },
+            {
+              "rank": 4,
+              "work_id": "17189468",
+              "title": "Cold Days (The Dresden Files, #14)",
+              "author": "Jim Butcher",
+              "score": 0.8875787258148193,
+              "reader_mass": 8201.0
+            },
+            {
+              "rank": 5,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.8787580132484436,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 6,
+              "work_id": "3516480",
+              "title": "Turn Coat (The Dresden Files, #11)",
+              "author": "Jim Butcher",
+              "score": 0.853123128414154,
+              "reader_mass": 9264.0
+            },
+            {
+              "rank": 7,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.852708101272583,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 8,
+              "work_id": "10558806",
+              "title": "A Memory of Light (Wheel of Time, #14)",
+              "author": "Robert Jordan",
+              "score": 0.8458225131034851,
+              "reader_mass": 6705.0
+            },
+            {
+              "rank": 9,
+              "work_id": "1254936",
+              "title": "White Night (The Dresden Files, #9)",
+              "author": "Jim Butcher",
+              "score": 0.8443254232406616,
+              "reader_mass": 10169.0
+            },
+            {
+              "rank": 10,
+              "work_id": "2502882",
+              "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+              "author": "Patrick Rothfuss",
+              "score": 0.8314550518989563,
+              "reader_mass": 27968.0
+            },
+            {
+              "rank": 11,
+              "work_id": "2054834",
+              "title": "Small Favor (The Dresden Files, #10)",
+              "author": "Jim Butcher",
+              "score": 0.8280569911003113,
+              "reader_mass": 9701.0
+            },
+            {
+              "rank": 12,
+              "work_id": "19148922",
+              "title": "Blood Song (Raven's Shadow, #1)",
+              "author": "Anthony  Ryan",
+              "score": 0.8244001865386963,
+              "reader_mass": 5351.0
+            }
+          ]
+        }
+      ],
+      "per_jury_metrics": [
+        {
+          "exact_lit50": 1,
+          "exact_lit200": 1,
+          "broad_lit50": 3,
+          "broad_lit200": 3,
+          "anti50": 4,
+          "anti200": 4,
+          "filler50": 0,
+          "filler200": 0
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 28,
+          "anti200": 28,
+          "filler50": 1,
+          "filler200": 1
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 5,
+          "anti200": 5,
+          "filler50": 0,
+          "filler200": 0
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 28,
+          "anti200": 28,
+          "filler50": 0,
+          "filler200": 0
+        }
+      ],
+      "big_jury": {
+        "n": 6000,
+        "stop_reason": "evidence_floor",
+        "metrics": {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 16,
+          "anti200": 16,
+          "filler50": 0,
+          "filler200": 0
+        },
+        "head": [
+          {
+            "rank": 1,
+            "work_id": "2962492",
+            "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+            "author": "J.K. Rowling",
+            "score": 0.7670242190361023,
+            "reader_mass": 19956.0
+          },
+          {
+            "rank": 2,
+            "work_id": "2110010",
+            "title": "Calvin and Hobbes",
+            "author": "Bill Watterson",
+            "score": 0.7655521035194397,
+            "reader_mass": 7367.0
+          },
+          {
+            "rank": 3,
+            "work_id": "25126749",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "score": 0.7449318766593933,
+            "reader_mass": 23734.0
+          },
+          {
+            "rank": 4,
+            "work_id": "25272067",
+            "title": "Queen of Shadows (Throne of Glass, #4)",
+            "author": "Sarah J. Maas",
+            "score": 0.7431211471557617,
+            "reader_mass": 20041.0
+          },
+          {
+            "rank": 5,
+            "work_id": "2964424",
+            "title": "The Return of the King (The Lord of the Rings, #3)",
+            "author": "J.R.R. Tolkien",
+            "score": 0.7390843033790588,
+            "reader_mass": 49797.0
+          },
+          {
+            "rank": 6,
+            "work_id": "16482835",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "score": 0.7363971471786499,
+            "reader_mass": 10709.0
+          },
+          {
+            "rank": 7,
+            "work_id": "2963218",
+            "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+            "author": "J.K. Rowling",
+            "score": 0.7347087860107422,
+            "reader_mass": 178374.0
+          },
+          {
+            "rank": 8,
+            "work_id": "1164465",
+            "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+            "author": "George R.R. Martin",
+            "score": 0.7305313944816589,
+            "reader_mass": 53880.0
+          },
+          {
+            "rank": 9,
+            "work_id": "1658562",
+            "title": "The Complete Maus (Maus, #1-2)",
+            "author": "Art Spiegelman",
+            "score": 0.7303702235221863,
+            "reader_mass": 10979.0
+          },
+          {
+            "rank": 10,
+            "work_id": "3046572",
+            "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+            "author": "J.K. Rowling",
+            "score": 0.7095569968223572,
+            "reader_mass": 183770.0
+          },
+          {
+            "rank": 11,
+            "work_id": "2402163",
+            "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+            "author": "J.K. Rowling",
+            "score": 0.7073308229446411,
+            "reader_mass": 192417.0
+          },
+          {
+            "rank": 12,
+            "work_id": "41335427",
+            "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+            "author": "J.K. Rowling",
+            "score": 0.7067040801048279,
+            "reader_mass": 174713.0
+          },
+          {
+            "rank": 13,
+            "work_id": "8134945",
+            "title": "The Way of Kings (The Stormlight Archive, #1)",
+            "author": "Brandon Sanderson",
+            "score": 0.6966228485107422,
+            "reader_mass": 15510.0
+          },
+          {
+            "rank": 14,
+            "work_id": "3462456",
+            "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+            "author": "J.R.R. Tolkien",
+            "score": 0.6958182454109192,
+            "reader_mass": 42450.0
+          },
+          {
+            "rank": 15,
+            "work_id": "2244438",
+            "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+            "author": "Bill Watterson",
+            "score": 0.6930176019668579,
+            "reader_mass": 6258.0
+          },
+          {
+            "rank": 16,
+            "work_id": "27422060",
+            "title": "Saga, Vol. 3 (Saga, #3)",
+            "author": "Brian K. Vaughan",
+            "score": 0.6909205317497253,
+            "reader_mass": 10360.0
+          },
+          {
+            "rank": 17,
+            "work_id": "1947012",
+            "title": "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+            "author": "Art Spiegelman",
+            "score": 0.6859154105186462,
+            "reader_mass": 16586.0
+          },
+          {
+            "rank": 18,
+            "work_id": "12946965",
+            "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+            "author": "Laura Hillenbrand",
+            "score": 0.6778578162193298,
+            "reader_mass": 23479.0
+          },
+          {
+            "rank": 19,
+            "work_id": "41125521",
+            "title": "The Nightingale",
+            "author": "Kristin Hannah",
+            "score": 0.6723796129226685,
+            "reader_mass": 24326.0
+          },
+          {
+            "rank": 20,
+            "work_id": "42090179",
+            "title": "Crooked Kingdom (Six of Crows, #2)",
+            "author": "Leigh Bardugo",
+            "score": 0.6688590049743652,
+            "reader_mass": 11618.0
+          }
+        ]
+      },
+      "records_summary": {
+        "stop_reasons": {
+          "evidence_floor": 4
+        },
+        "median_runtime_seconds": 2.685712695121765,
+        "median_deepest_users": 14199.0
+      }
+    },
+    {
+      "size": 3000,
+      "juries": 4,
+      "agreement_stats": {
+        "mean": 0.06096369028091431,
+        "median": 0.06888223439455032,
+        "min": 0.02080392837524414,
+        "max": 0.08528637886047363
+      },
+      "aggregates": {
+        "center_stage0": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 12,
+            "anti200": 12,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.8956685066223145,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 2,
+              "work_id": "49638190",
+              "title": "The Hate U Give",
+              "author": "Angie Thomas",
+              "score": 0.8912461996078491,
+              "reader_mass": 11481.0
+            },
+            {
+              "rank": 3,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.8890732526779175,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 4,
+              "work_id": "41927811",
+              "title": "March: Book Two (March, #2)",
+              "author": "John             Lewis",
+              "score": 0.879903256893158,
+              "reader_mass": 2048.0
+            },
+            {
+              "rank": 5,
+              "work_id": "25599",
+              "title": "The Complete Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8768907785415649,
+              "reader_mass": 2712.0
+            },
+            {
+              "rank": 6,
+              "work_id": "28323940",
+              "title": "Just Mercy: A Story of Justice and Redemption",
+              "author": "Bryan Stevenson",
+              "score": 0.8498011827468872,
+              "reader_mass": 3323.0
+            },
+            {
+              "rank": 7,
+              "work_id": "46177490",
+              "title": "Hamilton: The Revolution",
+              "author": "Lin-Manuel Miranda",
+              "score": 0.8491228222846985,
+              "reader_mass": 4007.0
+            },
+            {
+              "rank": 8,
+              "work_id": "50150838",
+              "title": "Born a Crime: Stories From a South African Childhood",
+              "author": "Trevor Noah",
+              "score": 0.8391265869140625,
+              "reader_mass": 7797.0
+            },
+            {
+              "rank": 9,
+              "work_id": "43618137",
+              "title": "Humans of New York: Stories",
+              "author": "Brandon Stanton",
+              "score": 0.836317777633667,
+              "reader_mass": 1875.0
+            },
+            {
+              "rank": 10,
+              "work_id": "49704739",
+              "title": "March: Book Three (March, #3)",
+              "author": "John             Lewis",
+              "score": 0.8311216831207275,
+              "reader_mass": 1601.0
+            },
+            {
+              "rank": 11,
+              "work_id": "54361391",
+              "title": "Dear Ijeawele, or a Feminist Manifesto in Fifteen Suggestions",
+              "author": "Chimamanda Ngozi Adichie",
+              "score": 0.8221930861473083,
+              "reader_mass": 2872.0
+            },
+            {
+              "rank": 12,
+              "work_id": "21457570",
+              "title": "Harry Potter Collection (Harry Potter, #1-6)",
+              "author": "J.K. Rowling",
+              "score": 0.8168143033981323,
+              "reader_mass": 2228.0
+            },
+            {
+              "rank": 13,
+              "work_id": "25126749",
+              "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+              "author": "Sarah J. Maas",
+              "score": 0.8154825568199158,
+              "reader_mass": 23734.0
+            },
+            {
+              "rank": 14,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.8153479695320129,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 15,
+              "work_id": "1010526",
+              "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.8152079582214355,
+              "reader_mass": 1986.0
+            },
+            {
+              "rank": 16,
+              "work_id": "42090179",
+              "title": "Crooked Kingdom (Six of Crows, #2)",
+              "author": "Leigh Bardugo",
+              "score": 0.8115068674087524,
+              "reader_mass": 11618.0
+            },
+            {
+              "rank": 17,
+              "work_id": "6358552",
+              "title": "Nothing to Envy: Ordinary Lives in North Korea",
+              "author": "Barbara Demick",
+              "score": 0.808738112449646,
+              "reader_mass": 4208.0
+            },
+            {
+              "rank": 18,
+              "work_id": "40277782",
+              "title": "The War that Saved My Life (The War That Saved My Life #1)",
+              "author": "Kimberly Brubaker Bradley",
+              "score": 0.8047865033149719,
+              "reader_mass": 2668.0
+            },
+            {
+              "rank": 19,
+              "work_id": "2110010",
+              "title": "Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8038994073867798,
+              "reader_mass": 7367.0
+            },
+            {
+              "rank": 20,
+              "work_id": "2244438",
+              "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.8027502298355103,
+              "reader_mass": 6258.0
+            }
+          ]
+        },
+        "plain_mean": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 21,
+            "anti200": 21,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.7473256587982178,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 2,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.7412079572677612,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 3,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.7281079888343811,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.7061183452606201,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 5,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.7046775221824646,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 6,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.6871498227119446,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 7,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6626832485198975,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 8,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6624670028686523,
+              "reader_mass": 12297.0
+            },
+            {
+              "rank": 9,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.6570923924446106,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 10,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.6567282676696777,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 11,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.6511760950088501,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 12,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6426765322685242,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 13,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6287246942520142,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 14,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.6246966123580933,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 15,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.6232210397720337,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 16,
+              "work_id": "49638190",
+              "title": "The Hate U Give",
+              "author": "Angie Thomas",
+              "score": 0.6221591234207153,
+              "reader_mass": 11481.0
+            },
+            {
+              "rank": 17,
+              "work_id": "25126749",
+              "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+              "author": "Sarah J. Maas",
+              "score": 0.6197055578231812,
+              "reader_mass": 23734.0
+            },
+            {
+              "rank": 18,
+              "work_id": "3272005",
+              "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+              "author": "George R.R. Martin",
+              "score": 0.6131817102432251,
+              "reader_mass": 64658.0
+            },
+            {
+              "rank": 19,
+              "work_id": "41125521",
+              "title": "The Nightingale",
+              "author": "Kristin Hannah",
+              "score": 0.6110343933105469,
+              "reader_mass": 24326.0
+            },
+            {
+              "rank": 20,
+              "work_id": "19113524",
+              "title": "Saga, Vol. 1 (Saga, #1)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6077052354812622,
+              "reader_mass": 17304.0
+            }
+          ]
+        },
+        "coordinate_median": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 20,
+            "anti200": 20,
+            "filler50": 1,
+            "filler200": 1
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.7331267595291138,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.7322384715080261,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 3,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.7169519066810608,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.7088923454284668,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 5,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.6806102395057678,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 6,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.6765328049659729,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 7,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.665255069732666,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 8,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.6652368307113647,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 9,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.6610280275344849,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 10,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6565814018249512,
+              "reader_mass": 12297.0
+            },
+            {
+              "rank": 11,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.6560470461845398,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 12,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.6431525945663452,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 13,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.640616774559021,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 14,
+              "work_id": "19113524",
+              "title": "Saga, Vol. 1 (Saga, #1)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6256171464920044,
+              "reader_mass": 17304.0
+            },
+            {
+              "rank": 15,
+              "work_id": "25126749",
+              "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+              "author": "Sarah J. Maas",
+              "score": 0.622960090637207,
+              "reader_mass": 23734.0
+            },
+            {
+              "rank": 16,
+              "work_id": "49638190",
+              "title": "The Hate U Give",
+              "author": "Angie Thomas",
+              "score": 0.6215051412582397,
+              "reader_mass": 11481.0
+            },
+            {
+              "rank": 17,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.6212681531906128,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 18,
+              "work_id": "41125521",
+              "title": "The Nightingale",
+              "author": "Kristin Hannah",
+              "score": 0.613094687461853,
+              "reader_mass": 24326.0
+            },
+            {
+              "rank": 19,
+              "work_id": "66322",
+              "title": "The Final Empire (Mistborn, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.6061949133872986,
+              "reader_mass": 26974.0
+            },
+            {
+              "rank": 20,
+              "work_id": "89369",
+              "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+              "author": "J.R.R. Tolkien",
+              "score": 0.6000049114227295,
+              "reader_mass": 9029.0
+            }
+          ]
+        },
+        "agreement_consensus": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 25,
+            "anti200": 25,
+            "filler50": 1,
+            "filler200": 1
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.18128284811973572,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 2,
+              "work_id": "1164465",
+              "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+              "author": "George R.R. Martin",
+              "score": 0.17779885232448578,
+              "reader_mass": 53880.0
+            },
+            {
+              "rank": 3,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.17573736608028412,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.17186252772808075,
+              "reader_mass": 19956.0
+            },
+            {
+              "rank": 5,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.1659742146730423,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 6,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.1648552417755127,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 7,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.1645520180463791,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 8,
+              "work_id": "3046572",
+              "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+              "author": "J.K. Rowling",
+              "score": 0.16205057501792908,
+              "reader_mass": 183770.0
+            },
+            {
+              "rank": 9,
+              "work_id": "41125521",
+              "title": "The Nightingale",
+              "author": "Kristin Hannah",
+              "score": 0.1553104668855667,
+              "reader_mass": 24326.0
+            },
+            {
+              "rank": 10,
+              "work_id": "2964424",
+              "title": "The Return of the King (The Lord of the Rings, #3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.15375404059886932,
+              "reader_mass": 49797.0
+            },
+            {
+              "rank": 11,
+              "work_id": "1466917",
+              "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+              "author": "George R.R. Martin",
+              "score": 0.1535126119852066,
+              "reader_mass": 114688.0
+            },
+            {
+              "rank": 12,
+              "work_id": "2402163",
+              "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+              "author": "J.K. Rowling",
+              "score": 0.15329121053218842,
+              "reader_mass": 192417.0
+            },
+            {
+              "rank": 13,
+              "work_id": "49638190",
+              "title": "The Hate U Give",
+              "author": "Angie Thomas",
+              "score": 0.15292489528656006,
+              "reader_mass": 11481.0
+            },
+            {
+              "rank": 14,
+              "work_id": "23857485",
+              "title": "Saga, Vol. 2 (Saga, #2)",
+              "author": "Brian K. Vaughan",
+              "score": 0.15201029181480408,
+              "reader_mass": 12297.0
+            },
+            {
+              "rank": 15,
+              "work_id": "25126749",
+              "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+              "author": "Sarah J. Maas",
+              "score": 0.15120060741901398,
+              "reader_mass": 23734.0
+            },
+            {
+              "rank": 16,
+              "work_id": "3462456",
+              "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+              "author": "J.R.R. Tolkien",
+              "score": 0.1495775431394577,
+              "reader_mass": 42450.0
+            },
+            {
+              "rank": 17,
+              "work_id": "3272005",
+              "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+              "author": "George R.R. Martin",
+              "score": 0.14683447778224945,
+              "reader_mass": 64658.0
+            },
+            {
+              "rank": 18,
+              "work_id": "27422060",
+              "title": "Saga, Vol. 3 (Saga, #3)",
+              "author": "Brian K. Vaughan",
+              "score": 0.1466882973909378,
+              "reader_mass": 10360.0
+            },
+            {
+              "rank": 19,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.14501236379146576,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 20,
+              "work_id": "23811929",
+              "title": "Skin Game (The Dresden Files, #15)",
+              "author": "Jim Butcher",
+              "score": 0.1440277397632599,
+              "reader_mass": 6710.0
+            }
+          ]
+        },
+        "mean_displacement": {
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 7,
+            "anti200": 7,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "21956651",
+              "title": "The Girls of August",
+              "author": "Anne Rivers Siddons",
+              "score": 0.7398423552513123,
+              "reader_mass": 585.0
+            },
+            {
+              "rank": 2,
+              "work_id": "10932271",
+              "title": "Palo Alto",
+              "author": "James Franco",
+              "score": 0.7396810054779053,
+              "reader_mass": 1151.0
+            },
+            {
+              "rank": 3,
+              "work_id": "24064539",
+              "title": "Stella Bain",
+              "author": "Anita Shreve",
+              "score": 0.7149925231933594,
+              "reader_mass": 966.0
+            },
+            {
+              "rank": 4,
+              "work_id": "26428246",
+              "title": "Emma (The Austen Project, #3)",
+              "author": "Alexander McCall Smith",
+              "score": 0.7057291865348816,
+              "reader_mass": 1099.0
+            },
+            {
+              "rank": 5,
+              "work_id": "6865289",
+              "title": "The Three Weissmanns of Westport",
+              "author": "Cathleen Schine",
+              "score": 0.704375147819519,
+              "reader_mass": 736.0
+            },
+            {
+              "rank": 6,
+              "work_id": "21856201",
+              "title": "All the Summer Girls",
+              "author": "Meg Donohue",
+              "score": 0.701897144317627,
+              "reader_mass": 735.0
+            },
+            {
+              "rank": 7,
+              "work_id": "529917",
+              "title": "How to Be Single",
+              "author": "Liz Tuccillo",
+              "score": 0.6965420842170715,
+              "reader_mass": 860.0
+            },
+            {
+              "rank": 8,
+              "work_id": "142579",
+              "title": "A Desirable Residence",
+              "author": "Madeleine Wickham",
+              "score": 0.6947959661483765,
+              "reader_mass": 523.0
+            },
+            {
+              "rank": 9,
+              "work_id": "26652571",
+              "title": "Her",
+              "author": "Harriet Lane",
+              "score": 0.694260835647583,
+              "reader_mass": 946.0
+            },
+            {
+              "rank": 10,
+              "work_id": "906539",
+              "title": "Blue Shoe",
+              "author": "Anne Lamott",
+              "score": 0.685818612575531,
+              "reader_mass": 600.0
+            },
+            {
+              "rank": 11,
+              "work_id": "46817110",
+              "title": "Rich and Pretty",
+              "author": "Rumaan Alam",
+              "score": 0.6850800514221191,
+              "reader_mass": 773.0
+            },
+            {
+              "rank": 12,
+              "work_id": "52240222",
+              "title": "One Indian Girl",
+              "author": "Chetan Bhagat",
+              "score": 0.6796395182609558,
+              "reader_mass": 855.0
+            },
+            {
+              "rank": 13,
+              "work_id": "980920",
+              "title": "A Wedding in December",
+              "author": "Anita Shreve",
+              "score": 0.6769793629646301,
+              "reader_mass": 1498.0
+            },
+            {
+              "rank": 14,
+              "work_id": "6678900",
+              "title": "Nanny Returns (Nanny, #2)",
+              "author": "Emma McLaughlin",
+              "score": 0.6739558577537537,
+              "reader_mass": 866.0
+            },
+            {
+              "rank": 15,
+              "work_id": "1357280",
+              "title": "Citizen Girl",
+              "author": "Emma McLaughlin",
+              "score": 0.6735585331916809,
+              "reader_mass": 718.0
+            },
+            {
+              "rank": 16,
+              "work_id": "26470722",
+              "title": "The Fever",
+              "author": "Megan Abbott",
+              "score": 0.6634734272956848,
+              "reader_mass": 2545.0
+            },
+            {
+              "rank": 17,
+              "work_id": "13291342",
+              "title": "Trapped",
+              "author": "Michael Northrop",
+              "score": 0.6627482175827026,
+              "reader_mass": 984.0
+            },
+            {
+              "rank": 18,
+              "work_id": "24086983",
+              "title": "Soy Sauce for Beginners",
+              "author": "Kirstin Chen",
+              "score": 0.6622323989868164,
+              "reader_mass": 508.0
+            },
+            {
+              "rank": 19,
+              "work_id": "50935130",
+              "title": "A Separation",
+              "author": "Katie Kitamura",
+              "score": 0.6612027883529663,
+              "reader_mass": 642.0
+            },
+            {
+              "rank": 20,
+              "work_id": "2513089",
+              "title": "Season of the Machete",
+              "author": "James Patterson",
+              "score": 0.6605833172798157,
+              "reader_mass": 516.0
+            }
+          ]
+        }
+      },
+      "clusters": [
+        {
+          "size": 1,
+          "members": [
+            0
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 28,
+            "anti200": 28,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "16482835",
+              "title": "Words of Radiance (The Stormlight Archive, #2)",
+              "author": "Brandon Sanderson",
+              "score": 0.9465820789337158,
+              "reader_mass": 10709.0
+            },
+            {
+              "rank": 2,
+              "work_id": "8134945",
+              "title": "The Way of Kings (The Stormlight Archive, #1)",
+              "author": "Brandon Sanderson",
+              "score": 0.895206868648529,
+              "reader_mass": 15510.0
+            },
+            {
+              "rank": 3,
+              "work_id": "23811929",
+              "title": "Skin Game (The Dresden Files, #15)",
+              "author": "Jim Butcher",
+              "score": 0.8894547820091248,
+              "reader_mass": 6710.0
+            },
+            {
+              "rank": 4,
+              "work_id": "17189468",
+              "title": "Cold Days (The Dresden Files, #14)",
+              "author": "Jim Butcher",
+              "score": 0.8833074569702148,
+              "reader_mass": 8201.0
+            },
+            {
+              "rank": 5,
+              "work_id": "3516480",
+              "title": "Turn Coat (The Dresden Files, #11)",
+              "author": "Jim Butcher",
+              "score": 0.8759514093399048,
+              "reader_mass": 9264.0
+            },
+            {
+              "rank": 6,
+              "work_id": "6778696",
+              "title": "Changes (The Dresden Files, #12)",
+              "author": "Jim Butcher",
+              "score": 0.8756424784660339,
+              "reader_mass": 9238.0
+            },
+            {
+              "rank": 7,
+              "work_id": "10558806",
+              "title": "A Memory of Light (Wheel of Time, #14)",
+              "author": "Robert Jordan",
+              "score": 0.8618661165237427,
+              "reader_mass": 6705.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2502879",
+              "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+              "author": "Patrick Rothfuss",
+              "score": 0.8565505146980286,
+              "reader_mass": 42646.0
+            },
+            {
+              "rank": 9,
+              "work_id": "2054834",
+              "title": "Small Favor (The Dresden Files, #10)",
+              "author": "Jim Butcher",
+              "score": 0.8426833152770996,
+              "reader_mass": 9701.0
+            },
+            {
+              "rank": 10,
+              "work_id": "42704733",
+              "title": "Fool's Quest  (The Fitz and The Fool, #2)",
+              "author": "Robin Hobb",
+              "score": 0.8396158218383789,
+              "reader_mass": 2124.0
+            },
+            {
+              "rank": 11,
+              "work_id": "16022532",
+              "title": "Heir of Novron (The Riyria Revelations, #5-6)",
+              "author": "Michael J. Sullivan",
+              "score": 0.8386303186416626,
+              "reader_mass": 3066.0
+            },
+            {
+              "rank": 12,
+              "work_id": "3898723",
+              "title": "The Bonehunters (Malazan Book of the Fallen, #6)",
+              "author": "Steven Erikson",
+              "score": 0.8225659132003784,
+              "reader_mass": 2414.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            1
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 38,
+            "anti200": 38,
+            "filler50": 2,
+            "filler200": 2
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "1214837",
+              "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+              "author": "J.R. Ward",
+              "score": 0.8105357885360718,
+              "reader_mass": 19224.0
+            },
+            {
+              "rank": 2,
+              "work_id": "2963218",
+              "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+              "author": "J.K. Rowling",
+              "score": 0.8056355714797974,
+              "reader_mass": 178374.0
+            },
+            {
+              "rank": 3,
+              "work_id": "6670775",
+              "title": "Magic Bleeds (Kate Daniels, #4)",
+              "author": "Ilona Andrews",
+              "score": 0.7862845659255981,
+              "reader_mass": 8363.0
+            },
+            {
+              "rank": 4,
+              "work_id": "4393420",
+              "title": "Magic Strikes (Kate Daniels, #3)",
+              "author": "Ilona Andrews",
+              "score": 0.7600164413452148,
+              "reader_mass": 8631.0
+            },
+            {
+              "rank": 5,
+              "work_id": "41335427",
+              "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+              "author": "J.K. Rowling",
+              "score": 0.7465924620628357,
+              "reader_mass": 174713.0
+            },
+            {
+              "rank": 6,
+              "work_id": "6225943",
+              "title": "Dreamfever (Fever, #4)",
+              "author": "Karen Marie Moning",
+              "score": 0.7408352494239807,
+              "reader_mass": 12326.0
+            },
+            {
+              "rank": 7,
+              "work_id": "5220803",
+              "title": "Father Mine (Black Dagger Brotherhood, #6.5)",
+              "author": "J.R. Ward",
+              "score": 0.7255414724349976,
+              "reader_mass": 5115.0
+            },
+            {
+              "rank": 8,
+              "work_id": "41125521",
+              "title": "The Nightingale",
+              "author": "Kristin Hannah",
+              "score": 0.7213810682296753,
+              "reader_mass": 24326.0
+            },
+            {
+              "rank": 9,
+              "work_id": "7355830",
+              "title": "Demon from the Dark (Immortals After Dark #10)",
+              "author": "Kresley Cole",
+              "score": 0.7175464630126953,
+              "reader_mass": 5154.0
+            },
+            {
+              "rank": 10,
+              "work_id": "25272067",
+              "title": "Queen of Shadows (Throne of Glass, #4)",
+              "author": "Sarah J. Maas",
+              "score": 0.7134917974472046,
+              "reader_mass": 20041.0
+            },
+            {
+              "rank": 11,
+              "work_id": "21496528",
+              "title": "Heart of Obsidian  (Psy-Changeling, #12)",
+              "author": "Nalini Singh",
+              "score": 0.7119341492652893,
+              "reader_mass": 2625.0
+            },
+            {
+              "rank": 12,
+              "work_id": "2962492",
+              "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+              "author": "J.K. Rowling",
+              "score": 0.7110962271690369,
+              "reader_mass": 19956.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            2
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 0,
+            "broad_lit200": 0,
+            "anti50": 6,
+            "anti200": 6,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "2110010",
+              "title": "Calvin and Hobbes",
+              "author": "Bill Watterson",
+              "score": 0.8712655305862427,
+              "reader_mass": 7367.0
+            },
+            {
+              "rank": 2,
+              "work_id": "25854",
+              "title": "Season of Mists (The Sandman #4)",
+              "author": "Neil Gaiman",
+              "score": 0.8490499258041382,
+              "reader_mass": 6862.0
+            },
+            {
+              "rank": 3,
+              "work_id": "946589",
+              "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.8460714221000671,
+              "reader_mass": 1672.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2244438",
+              "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.8443346619606018,
+              "reader_mass": 6258.0
+            },
+            {
+              "rank": 5,
+              "work_id": "2647",
+              "title": "The Kindly Ones (The Sandman #9)",
+              "author": "Neil Gaiman",
+              "score": 0.8387314081192017,
+              "reader_mass": 4713.0
+            },
+            {
+              "rank": 6,
+              "work_id": "692719",
+              "title": "The Calvin and Hobbes Tenth Anniversary Book",
+              "author": "Bill Watterson",
+              "score": 0.8364045023918152,
+              "reader_mass": 3176.0
+            },
+            {
+              "rank": 7,
+              "work_id": "2369970",
+              "title": "Homicidal Psycho Jungle Cat: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.8302267789840698,
+              "reader_mass": 1656.0
+            },
+            {
+              "rank": 8,
+              "work_id": "2244439",
+              "title": "Attack of the Deranged Mutant Killer Monster Snow Goons",
+              "author": "Bill Watterson",
+              "score": 0.8290417790412903,
+              "reader_mass": 1335.0
+            },
+            {
+              "rank": 9,
+              "work_id": "25601",
+              "title": "It's a Magical World: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.8266883492469788,
+              "reader_mass": 1902.0
+            },
+            {
+              "rank": 10,
+              "work_id": "40666827",
+              "title": "Brief Lives (The Sandman #7)",
+              "author": "Neil Gaiman",
+              "score": 0.8157920837402344,
+              "reader_mass": 5161.0
+            },
+            {
+              "rank": 11,
+              "work_id": "170846",
+              "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+              "author": "Bill Watterson",
+              "score": 0.8150566816329956,
+              "reader_mass": 1439.0
+            },
+            {
+              "rank": 12,
+              "work_id": "1010526",
+              "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+              "author": "Bill Watterson",
+              "score": 0.814462423324585,
+              "reader_mass": 1986.0
+            }
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            3
+          ],
+          "metrics": {
+            "exact_lit50": 0,
+            "exact_lit200": 0,
+            "broad_lit50": 2,
+            "broad_lit200": 2,
+            "anti50": 7,
+            "anti200": 7,
+            "filler50": 0,
+            "filler200": 0
+          },
+          "head": [
+            {
+              "rank": 1,
+              "work_id": "632609",
+              "title": "The Qur'an / القرآن الكريم",
+              "author": "Anonymous",
+              "score": 0.9307968020439148,
+              "reader_mass": 4778.0
+            },
+            {
+              "rank": 2,
+              "work_id": "13336065",
+              "title": "لا تصالح",
+              "author": "'ml dnql",
+              "score": 0.834657609462738,
+              "reader_mass": 898.0
+            },
+            {
+              "rank": 3,
+              "work_id": "6269229",
+              "title": "الإسلام بين الشرق والغرب",
+              "author": "Alija Izetbegovic",
+              "score": 0.8285841941833496,
+              "reader_mass": 1500.0
+            },
+            {
+              "rank": 4,
+              "work_id": "2968690",
+              "title": "رياض الصالحين",
+              "author": "yHy~ bn shrf lnwwy",
+              "score": 0.8266740441322327,
+              "reader_mass": 786.0
+            },
+            {
+              "rank": 5,
+              "work_id": "48066472",
+              "title": "الجريمة والعقاب # 2",
+              "author": "Fyodor Dostoyevsky",
+              "score": 0.8079578280448914,
+              "reader_mass": 514.0
+            },
+            {
+              "rank": 6,
+              "work_id": "532703",
+              "title": "الرحيق المختوم",
+              "author": "Safiy al-Rahman al-Mubarakfuri",
+              "score": 0.80622398853302,
+              "reader_mass": 2335.0
+            },
+            {
+              "rank": 7,
+              "work_id": "6324198",
+              "title": "لافتات - المجموعة الكاملة",
+              "author": "'Hmd mTr",
+              "score": 0.7822028994560242,
+              "reader_mass": 719.0
+            },
+            {
+              "rank": 8,
+              "work_id": "7087982",
+              "title": "الحرافيش",
+              "author": "Naguib Mahfouz",
+              "score": 0.7816393375396729,
+              "reader_mass": 2008.0
+            },
+            {
+              "rank": 9,
+              "work_id": "129741",
+              "title": "Palace of Desire (The Cairo Trilogy #2)",
+              "author": "Naguib Mahfouz",
+              "score": 0.780888020992279,
+              "reader_mass": 914.0
+            },
+            {
+              "rank": 10,
+              "work_id": "18447540",
+              "title": "Armed & Dangerous (Cut & Run, #5)",
+              "author": "Abigail Roux",
+              "score": 0.7788220047950745,
+              "reader_mass": 1137.0
+            },
+            {
+              "rank": 11,
+              "work_id": "6400102",
+              "title": "زمن الخيول البيضاء",
+              "author": "Ibrahim Nasrallah - ibrhym nSr llh",
+              "score": 0.7782124876976013,
+              "reader_mass": 1322.0
+            },
+            {
+              "rank": 12,
+              "work_id": "3595993",
+              "title": "رحلتي الفكرية: في البذور والجذور والثمر",
+              "author": "`bd lwhb lmsyry",
+              "score": 0.7745165824890137,
+              "reader_mass": 651.0
+            }
+          ]
+        }
+      ],
+      "per_jury_metrics": [
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 28,
+          "anti200": 28,
+          "filler50": 0,
+          "filler200": 0
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 38,
+          "anti200": 38,
+          "filler50": 2,
+          "filler200": 2
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 6,
+          "anti200": 6,
+          "filler50": 0,
+          "filler200": 0
+        },
+        {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 2,
+          "broad_lit200": 2,
+          "anti50": 7,
+          "anti200": 7,
+          "filler50": 0,
+          "filler200": 0
+        }
+      ],
+      "big_jury": {
+        "n": 12000,
+        "stop_reason": "evidence_floor",
+        "metrics": {
+          "exact_lit50": 0,
+          "exact_lit200": 0,
+          "broad_lit50": 0,
+          "broad_lit200": 0,
+          "anti50": 29,
+          "anti200": 29,
+          "filler50": 2,
+          "filler200": 2
+        },
+        "head": [
+          {
+            "rank": 1,
+            "work_id": "3046572",
+            "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+            "author": "J.K. Rowling",
+            "score": 0.8453819751739502,
+            "reader_mass": 183770.0
+          },
+          {
+            "rank": 2,
+            "work_id": "2963218",
+            "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+            "author": "J.K. Rowling",
+            "score": 0.8326734304428101,
+            "reader_mass": 178374.0
+          },
+          {
+            "rank": 3,
+            "work_id": "49638190",
+            "title": "The Hate U Give",
+            "author": "Angie Thomas",
+            "score": 0.8190699219703674,
+            "reader_mass": 11481.0
+          },
+          {
+            "rank": 4,
+            "work_id": "41335427",
+            "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+            "author": "J.K. Rowling",
+            "score": 0.8187627196311951,
+            "reader_mass": 174713.0
+          },
+          {
+            "rank": 5,
+            "work_id": "2402163",
+            "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+            "author": "J.K. Rowling",
+            "score": 0.8128906488418579,
+            "reader_mass": 192417.0
+          },
+          {
+            "rank": 6,
+            "work_id": "2962492",
+            "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+            "author": "J.K. Rowling",
+            "score": 0.8061733841896057,
+            "reader_mass": 19956.0
+          },
+          {
+            "rank": 7,
+            "work_id": "16319487",
+            "title": "Wonder (Wonder #1)",
+            "author": "R.J. Palacio",
+            "score": 0.7809038162231445,
+            "reader_mass": 31796.0
+          },
+          {
+            "rank": 8,
+            "work_id": "16482835",
+            "title": "Words of Radiance (The Stormlight Archive, #2)",
+            "author": "Brandon Sanderson",
+            "score": 0.7754413485527039,
+            "reader_mass": 10709.0
+          },
+          {
+            "rank": 9,
+            "work_id": "6309710",
+            "title": "Clockwork Princess (The Infernal Devices, #3)",
+            "author": "Cassandra Clare",
+            "score": 0.7652572989463806,
+            "reader_mass": 32297.0
+          },
+          {
+            "rank": 10,
+            "work_id": "25126749",
+            "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+            "author": "Sarah J. Maas",
+            "score": 0.7600682377815247,
+            "reader_mass": 23734.0
+          },
+          {
+            "rank": 11,
+            "work_id": "12946965",
+            "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+            "author": "Laura Hillenbrand",
+            "score": 0.7597894072532654,
+            "reader_mass": 23479.0
+          },
+          {
+            "rank": 12,
+            "work_id": "2809203",
+            "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+            "author": "J.K. Rowling",
+            "score": 0.7548058032989502,
+            "reader_mass": 177929.0
+          },
+          {
+            "rank": 13,
+            "work_id": "41125521",
+            "title": "The Nightingale",
+            "author": "Kristin Hannah",
+            "score": 0.7520155310630798,
+            "reader_mass": 24326.0
+          },
+          {
+            "rank": 14,
+            "work_id": "18390772",
+            "title": "Cress (The Lunar Chronicles, #3)",
+            "author": "Marissa Meyer",
+            "score": 0.7465867400169373,
+            "reader_mass": 28557.0
+          },
+          {
+            "rank": 15,
+            "work_id": "1164465",
+            "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+            "author": "George R.R. Martin",
+            "score": 0.728678822517395,
+            "reader_mass": 53880.0
+          },
+          {
+            "rank": 16,
+            "work_id": "42090179",
+            "title": "Crooked Kingdom (Six of Crows, #2)",
+            "author": "Leigh Bardugo",
+            "score": 0.7236809730529785,
+            "reader_mass": 11618.0
+          },
+          {
+            "rank": 17,
+            "work_id": "4640799",
+            "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+            "author": "J.K. Rowling",
+            "score": 0.71660315990448,
+            "reader_mass": 305142.0
+          },
+          {
+            "rank": 18,
+            "work_id": "21581860",
+            "title": "Crown of Midnight (Throne of Glass, #2)",
+            "author": "Sarah J. Maas",
+            "score": 0.7099633812904358,
+            "reader_mass": 30591.0
+          },
+          {
+            "rank": 19,
+            "work_id": "23857485",
+            "title": "Saga, Vol. 2 (Saga, #2)",
+            "author": "Brian K. Vaughan",
+            "score": 0.7081477642059326,
+            "reader_mass": 12297.0
+          },
+          {
+            "rank": 20,
+            "work_id": "18390887",
+            "title": "Winter (The Lunar Chronicles, #4)",
+            "author": "Marissa Meyer",
+            "score": 0.7062678933143616,
+            "reader_mass": 20150.0
+          }
+        ]
+      },
+      "records_summary": {
+        "stop_reasons": {
+          "evidence_floor": 4
+        },
+        "median_runtime_seconds": 2.669543981552124,
+        "median_deepest_users": 14565.5
+      }
+    }
+  ]
+}

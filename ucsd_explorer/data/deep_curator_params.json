@@ -12,6 +12,6 @@
     "Legacy normie_strictness still accepted as depth=purity=that value.",
     "max_com_share / com_exp bake non-literary anti-signal pollution into deep weights:",
     "  weight *= (1 - com_share)^com_exp; drop users above max_com_share.",
-    "Query-time applies a tighter com_share cap (see ranking.deep_com_share_cap)."
+    "Query-time com_share cap only when purity>0 (or explicit com_share_cap); purity=0 ⇒ cap off."
   ]
 }

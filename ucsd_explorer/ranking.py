@@ -6,9 +6,13 @@ from __future__ import annotations
 import math
 from typing import Any
 
-from ucsd_explorer.catalog_flags import catalog_sql_bits, parse_catalog_params
+from ucsd_explorer.catalog_flags import (
+    catalog_sql_bits,
+    has_catalog_flags,
+    parse_catalog_params,
+)
 from ucsd_explorer.db import GLOBALS, execute
-from ucsd_explorer.genre_gates import gate_sql_bits, parse_genre_gates
+from ucsd_explorer.genre_gates import gate_sql_bits, has_genre_gates, parse_genre_gates
 from ucsd_explorer.genres import (
     SF_PRESET_INCLUDE,
     genre_sql_bits,
@@ -503,7 +507,9 @@ def _curator_score_method(method: str) -> str:
 
 
 CURATOR_ELITE_FLOOR = 100  # curator strictness=100 → keep ~this many users
-NORMIE_MAX_DEEP = 20  # normie strictness=100 → min non-normie poll ★≥4
+NORMIE_MAX_DEEP = 30  # depth=100 → min non-normie poll ★≥4
+# deweight_strength=100 → taste-weight exponent (power emphasis)
+CURATOR_DEWEIGHT_EXPO_MAX = 4.0
 
 
 def _clamp_strictness(strictness: float) -> float:
@@ -540,76 +546,103 @@ def curator_elite_keep_expr(strictness: float, n_pass_expr: str = "n_pass") -> s
 
 
 def curator_strictness_gates(strictness: float, *, pct: bool) -> dict[str, float | int]:
-    """Legacy volume floors for gate mode / readout.
+    """Volume floors before elite top-K (readout + SQL).
 
     Primary curator shrink is top-K elite keep (see curator_elite_keep_expr).
-    At strictness 0 these floors are minimal (effectively off).
+    At strictness 0 every floor is off (no lit/com ratio gate either).
     """
     t = _strictness_t(strictness)
+    if t <= 1e-12:
+        return {
+            "enabled": False,
+            "min_n_rated": 0,
+            "min_poll_works": 0,
+            "min_rare_poll": 0,
+            "min_lit_hits": 0,
+            "max_com_ratio": 99.0,
+            "min_weight_pctile": 0.0,
+        }
     if pct:
         return {
-            "min_n_rated": int(round(0 + t * 100)),  # 0..100 (0 = off)
-            "min_poll_works": int(round(0 + t * 8)),  # 0..8
-            "min_rare_poll": int(round(0 + t * 3)),  # 0..3
-            "min_lit_hits": int(round(0 + t * 8)),  # 0..8
+            "enabled": True,
+            "min_n_rated": int(round(t * 100)),  # 0..100
+            "min_poll_works": int(round(t * 8)),  # 0..8
+            "min_rare_poll": int(round(t * 3)),  # 0..3
+            "min_lit_hits": int(round(t * 8)),  # 0..8
             "max_com_ratio": 0.90 - t * 0.55,  # 0.90..0.35
             "min_weight_pctile": 0.0,  # elite keep handles ranking cut
         }
     return {
-        "min_n_rated": int(round(0 + t * 120)),
-        "min_poll_works": int(round(0 + t * 10)),
-        "min_rare_poll": int(round(0 + t * 4)),
-        "min_lit_hits": int(round(0 + t * 10)),
+        "enabled": True,
+        "min_n_rated": int(round(t * 120)),
+        "min_poll_works": int(round(t * 10)),
+        "min_rare_poll": int(round(t * 4)),
+        "min_lit_hits": int(round(t * 10)),
         "max_com_ratio": 0.75 - t * 0.50,
         "min_weight_pctile": 0.0,
     }
 
 
-def curator_deweight_alpha(strictness: float) -> float:
-    """Mild within-elite soft deweight. 0 at slider 0 (fully off)."""
-    t = _strictness_t(strictness)
-    return 3.0 * t  # was up to 14; elite keep is the real shrink now
+def curator_deweight_alpha(deweight_strength: float) -> float:
+    """Soft within-cohort deweight by weight_pctile. 0 at slider 0 (fully off)."""
+    t = _strictness_t(deweight_strength)
+    return 8.0 * t
+
+
+def curator_deweight_exponent(deweight_strength: float) -> float:
+    """Power emphasis on stored curator weights: weight = w^expo.
+
+    0 → expo 0 → all ones (ignore taste weights). 100 → expo CURATOR_DEWEIGHT_EXPO_MAX.
+    """
+    return CURATOR_DEWEIGHT_EXPO_MAX * _strictness_t(deweight_strength)
 
 
 def normie_depth_params(depth: float) -> dict[str, float | int | bool]:
-    """Map 0–100 → min non-normie poll depth (and a mild rare-poll floor).
+    """Map 0–100 → min non-normie poll depth (continuous from 0).
 
-    0 = off. 100 ≈ min_deep 20 (enough that popular books land near ≤50 votes
-    when purity is also high). Rare floor scales with depth so "only chart-top
-    deep books" is not enough at high settings.
+    0 = off. Small values → min_deep 1 (tiny attention). 100 → min_deep ≈ 30.
     """
     t = _strictness_t(depth)
     if t <= 1e-12:
         return {"enabled": False, "min_deep": 0, "min_deep_rare": 0}
-    min_deep = int(round(_log_lerp(2.0, float(NORMIE_MAX_DEEP), t)))
-    # Milder than the old combined slider — purity owns anti-school now.
-    min_deep_rare = max(0, int(round(min_deep * (0.20 + 0.20 * t))))
+    # Start at 1 (not 2) so early slider travel is gradual.
+    min_deep = max(1, int(round(_log_lerp(1.0, float(NORMIE_MAX_DEEP), t))))
+    min_deep_rare = max(0, int(round(min_deep * (0.15 + 0.25 * t))))
     return {"enabled": True, "min_deep": min_deep, "min_deep_rare": min_deep_rare}
 
 
 def normie_purity_params(purity: float) -> dict[str, float | int | bool]:
-    """Map 0–100 → deep_share floor (non-normie / (non-normie + normie) among ★≥4).
+    """Map 0–100 → deep_share floor, continuous from 0 (no jump to 0.35).
 
-    0 = off (no share gate). 100 ≈ share ≥ 0.80. This is the Kubrick-only /
-    school-canon filter, independent of how many deep books someone has.
+    0 = off. 100 ≈ share ≥ 0.80.
     """
     t = _strictness_t(purity)
     if t <= 1e-12:
         return {"enabled": False, "min_deep_share": 0.0}
-    # Soft start at 0.35 so low purity still admits dual-canon readers.
-    return {"enabled": True, "min_deep_share": 0.35 + t * 0.45}
+    return {"enabled": True, "min_deep_share": t * 0.80}
 
 
 def deep_com_share_cap(purity: float) -> float:
-    """Query-time max non-literary anti-signal share for deep curators.
-
-    Independent of school-canon purity, but tightens gently with it:
-    purity 0 → 0.15, purity 100 → 0.08. Materialization already uses a
-    wider floor (≈0.20) and (1−com_share)^com_exp in stored weights.
-    """
+    """Query-time max com_share when purity > 0: lerp 1.0 → 0.08 (continuous)."""
     t = _strictness_t(purity)
-    return 0.15 - t * 0.07
+    return 1.0 - t * (1.0 - 0.08)
 
+
+def resolve_deep_com_share_cap(
+    *,
+    normie_purity: float = 0.0,
+    normie_strictness: float | None = None,
+    com_share_cap: float | None = None,
+) -> float | None:
+    """Return query-time com_share ceiling, or None if the gate is off."""
+    if com_share_cap is not None:
+        return max(0.0, min(1.0, float(com_share_cap)))
+    pur = _clamp_strictness(normie_purity)
+    if pur > 0:
+        return deep_com_share_cap(pur)
+    if normie_strictness is not None and _clamp_strictness(float(normie_strictness)) > 0:
+        return deep_com_share_cap(float(normie_strictness))
+    return None
 
 def normie_gate_params(
     depth: float = 0.0,
@@ -666,13 +699,10 @@ def _normie_gate_sql(
     return "\n        " + "\n        ".join(clauses) + "\n    ", args
 
 
-def curator_deweight_exponent(strictness: float) -> float:
-    """Back-compat alias: report α as the UI 'exp' readout."""
-    return curator_deweight_alpha(strictness)
-
-
 def _curator_gate_sql(gates: dict[str, float | int], alias: str = "c") -> tuple[str, list[Any]]:
     """SQL fragment + args filtering a curator weight table alias."""
+    if not gates.get("enabled", True):
+        return "", []
     a = alias
     sql = f"""
         AND {a}.n_rated >= ?
@@ -696,6 +726,36 @@ def _curator_gate_sql(gates: dict[str, float | int], alias: str = "c") -> tuple[
     return sql, args
 
 
+def _deep_wide_cohort_sql() -> str:
+    """All percentile users, with deep/pct taste columns left-joined (0 defaults).
+
+    At depth=purity=deweight=strictness=0 this is the ranking universe
+    (ignore taste lists / mint pool). Raising those sliders gates/weights
+    using the joined taste features.
+    """
+    return """
+            curator_universe AS (
+                SELECT
+                    p.user_id,
+                    coalesce(d.curator_pct_weight, pc.curator_pct_weight, 1e-4)
+                        ::DOUBLE AS curator_pct_weight,
+                    coalesce(d.weight_pctile, pc.weight_pctile, 0.0)
+                        ::DOUBLE AS weight_pctile,
+                    coalesce(d.n_deep, 0)::BIGINT AS n_deep,
+                    coalesce(d.n_deep_rare, 0)::BIGINT AS n_deep_rare,
+                    coalesce(d.deep_share, 0.0)::DOUBLE AS deep_share,
+                    coalesce(d.lit_hits, pc.lit_hits, 0)::BIGINT AS lit_hits,
+                    coalesce(d.com_hits, pc.com_hits, 0)::BIGINT AS com_hits,
+                    coalesce(d.n_rated, p.n_rated, 0)::BIGINT AS n_rated,
+                    coalesce(d.n_poll_works, pc.n_poll_works, 0)::BIGINT AS n_poll_works,
+                    coalesce(d.n_rare_poll, pc.n_rare_poll, 0)::BIGINT AS n_rare_poll
+                FROM user_star_percentiles p
+                LEFT JOIN user_curator_deep_weight d USING (user_id)
+                LEFT JOIN user_curator_pct_weight pc USING (user_id)
+            )
+    """
+
+
 def _curator_user_weight_sql(
     *,
     pct: bool,
@@ -706,14 +766,15 @@ def _curator_user_weight_sql(
     normie_depth: float = 0.0,
     normie_purity: float = 0.0,
     normie_strictness: float | None = None,
+    com_share_cap: float | None = None,
+    deweight_strength: float = 0.0,
 ) -> tuple[str, str, list[Any], float]:
     """Return (weight_expr, pre_elite_gate_sql, gate_args, elite_t).
 
-    Cohort shrink is log-linear top-K by curator weight (elite_t from strictness).
-    pre_elite_gate_sql applies volume (+ optional normie depth/purity) floors.
-
-    mode=deweight: keep base curator weights among elites (mild α).
-    mode=gate: equal weight 1.0 among elites (pure top-K vote).
+    * strictness → elite top-K size only (who remains).
+    * deweight_strength → how strongly stored curator weights matter
+      (0 → flat 1.0; 100 → w^expo). Prefer weighted mode over equal votes.
+    * depth / purity → continuous taste gates from 0 (separate axes).
     """
     a = alias
     base_w = f"{a}.curator_pct_weight" if pct else f"{a}.curator_weight"
@@ -722,15 +783,14 @@ def _curator_user_weight_sql(
         mode = "deweight"
 
     elite_t = _strictness_t(strictness)
-    # Volume floors stay minimal at 0 so "off" really means off.
     gate_sql, gate_args = _curator_gate_sql(
         curator_strictness_gates(strictness, pct=pct), alias=a
     )
 
+    expo = curator_deweight_exponent(deweight_strength)
     if mode == "gate":
-        # Equal votes among elites, but deep cohort still soft-penalizes
-        # commercial anti-signal share so gate mode cannot re-inflate junk.
-        if deep:
+        # Equal votes among elites (secondary). Optional tiny com soft-penalize for deep.
+        if deep and _clamp_strictness(normie_purity) > 0:
             com = (
                 f"(coalesce({a}.com_hits,0)::DOUBLE"
                 f" / nullif(coalesce({a}.lit_hits,0)+coalesce({a}.com_hits,0),0))"
@@ -741,13 +801,20 @@ def _curator_user_weight_sql(
         else:
             weight_expr = "1.0"
     else:
-        alpha = curator_deweight_alpha(strictness)
-        if alpha <= 1e-12:
-            weight_expr = f"({base_w})"
+        # Weighted curator scores. expo=0 → all ones (no taste-weight attention).
+        if expo <= 1e-12:
+            weight_expr = "1.0"
         else:
             weight_expr = (
-                f"({base_w} * exp(-({alpha}) * (1.0 - coalesce({a}.weight_pctile, 0))))"
+                f"(power(greatest(({base_w}), 1e-9), {float(expo)}))"
             )
+            # Optional extra pctile tilt when deweight is high
+            alpha = curator_deweight_alpha(deweight_strength)
+            if alpha > 1e-12:
+                weight_expr = (
+                    f"({weight_expr} * exp(-({alpha}) * "
+                    f"(1.0 - coalesce({a}.weight_pctile, 0))))"
+                )
 
     if deep:
         n_sql, n_args = _normie_gate_sql(
@@ -758,27 +825,20 @@ def _curator_user_weight_sql(
         )
         gate_sql = gate_sql + n_sql
         gate_args = list(gate_args) + n_args
-        # Always apply a query-time commercial cap for deep methods.
-        # Use purity when set; otherwise the mid default (purity≈55 → ~0.11).
-        pur_for_com = (
-            float(normie_purity)
-            if _clamp_strictness(normie_purity) > 0
-            else (
-                float(normie_strictness)
-                if normie_strictness is not None
-                and _clamp_strictness(float(normie_strictness)) > 0
-                else 55.0
+        cap = resolve_deep_com_share_cap(
+            normie_purity=normie_purity,
+            normie_strictness=normie_strictness,
+            com_share_cap=com_share_cap,
+        )
+        if cap is not None:
+            com = (
+                f"(coalesce({a}.com_hits,0)::DOUBLE"
+                f" / nullif(coalesce({a}.lit_hits,0)+coalesce({a}.com_hits,0),0))"
             )
-        )
-        com_cap = deep_com_share_cap(pur_for_com)
-        com = (
-            f"(coalesce({a}.com_hits,0)::DOUBLE"
-            f" / nullif(coalesce({a}.lit_hits,0)+coalesce({a}.com_hits,0),0))"
-        )
-        gate_sql = (
-            gate_sql
-            + f"\n        AND coalesce({com}, 0) <= {float(com_cap)}\n    "
-        )
+            gate_sql = (
+                gate_sql
+                + f"\n        AND coalesce({com}, 0) <= {float(cap)}\n    "
+            )
 
     return weight_expr, gate_sql, gate_args, elite_t
 
@@ -819,6 +879,105 @@ def _event_sf_pred(sf_only: bool, alias: str = "e") -> str:
         return ""
     col = f"{alias}.is_sf" if alias else "is_sf"
     return f" AND {col}"
+
+
+def _safe_gate_literal(gate_id: str) -> str:
+    gid = str(gate_id or "").strip().lower()
+    if not gid or any(c not in "abcdefghijklmnopqrstuvwxyz0123456789_-" for c in gid):
+        raise ValueError(f"invalid genre gate id: {gate_id!r}")
+    return gid
+
+
+def _eligible_works_cte(
+    *,
+    genre_gates: list[str] | None = None,
+    catalog: dict[str, bool] | None = None,
+    sf_only: bool = False,
+) -> str | None:
+    """Pre-filter work_ids before event aggregation (huge win for all-user cohorts).
+
+    Genre gates + hard catalog excludes are applied here so we do not scan ~100M
+    ratings across the whole catalog and discard works only at the end.
+    Soft format_weight / search / year stay in the final SELECT.
+    """
+    gates = [ _safe_gate_literal(g) for g in (genre_gates or []) ]
+    where_parts: list[str] = []
+    joins: list[str] = []
+
+    if gates and has_genre_gates():
+        for i, gid in enumerate(gates):
+            alias = f"gg{i}"
+            joins.append(
+                f"JOIN work_genre_gates {alias}"
+                f" ON {alias}.work_id = w.work_id"
+                f" AND {alias}.gate = '{gid}' AND {alias}.passed"
+            )
+    elif gates == ["sf"] and not has_genre_gates():
+        where_parts.append("coalesce(w.is_sf, FALSE)")
+    elif not gates and sf_only and not has_genre_tables():
+        where_parts.append("coalesce(w.is_sf, FALSE)")
+
+    if catalog and has_catalog_flags():
+        joins.append("LEFT JOIN work_flags cf ON cf.work_id = w.work_id")
+        where_parts.append("NOT coalesce(cf.is_excluded, FALSE)")
+        if catalog.get("exclude_collections"):
+            where_parts.append("NOT coalesce(cf.is_collection, FALSE)")
+        if catalog.get("exclude_comics"):
+            where_parts.append("NOT coalesce(cf.is_comic, FALSE)")
+        if catalog.get("exclude_picture_books"):
+            where_parts.append("NOT coalesce(cf.is_picture_book, FALSE)")
+        if catalog.get("fiction_only"):
+            where_parts.append("NOT coalesce(cf.is_nonfiction, FALSE)")
+        if catalog.get("exclude_derivatives"):
+            where_parts.append("NOT coalesce(cf.is_derivative, FALSE)")
+        if catalog.get("collapse_duplicates"):
+            where_parts.append("NOT coalesce(cf.is_duplicate, FALSE)")
+
+    if not joins and not where_parts:
+        return None
+
+    join_sql = ("\n                " + "\n                ".join(joins)) if joins else ""
+    where_sql = ("\n                WHERE " + "\n                  AND ".join(where_parts)) if where_parts else ""
+    return f"""
+            eligible_works AS (
+                SELECT w.work_id
+                FROM works w
+                {join_sql}
+                {where_sql}
+            )
+    """
+
+
+def _deep_cohort_kind(
+    *,
+    strictness: float,
+    mode: str,
+    deweight: float,
+    normie_depth: float,
+    normie_purity: float,
+    normie_strictness: float | None,
+    com_share_cap: float | None,
+) -> str:
+    """Choose deep scoring universe.
+
+    * all_equal — no taste attention: every percentile user, weight 1.0
+    * mint_deep — taste / elite / deweight: mint deep table only (users outside
+      cannot pass depth/purity gates; deweight makes non-mint weights ≈ 0)
+    """
+    taste_on = (
+        _clamp_strictness(normie_depth) > 0
+        or _clamp_strictness(normie_purity) > 0
+        or (
+            normie_strictness is not None
+            and _clamp_strictness(float(normie_strictness)) > 0
+        )
+        or com_share_cap is not None
+    )
+    elite_on = _strictness_t(strictness) > 1e-12
+    deweight_on = (mode or "deweight") == "deweight" and _strictness_t(deweight) > 1e-12
+    if not taste_on and not elite_on and not deweight_on:
+        return "all_equal"
+    return "mint_deep"
 
 
 def _rank_filter_bits(
@@ -869,7 +1028,7 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     min_n = max(0, _int_param(params, "min_votes", "min_n", default=1))
     max_n = max(0, _int_param(params, "max_n", default=0))
     bayesian_m = max(0.0, _float_param(params, "bayesian_m", default=50.0))
-    limit = min(max(1, _int_param(params, "limit", default=200)), 1000)
+    limit = min(max(1, _int_param(params, "limit", default=200)), 5000)
     q = (params.get("q") or "").strip()
     genres = parse_genre_params(params)
     genre_gates = parse_genre_gates(params)
@@ -927,6 +1086,10 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     ).strip().lower()
     if curator_strictness_mode not in ("deweight", "gate"):
         curator_strictness_mode = "deweight"
+    # Prefer weighted curator scores; this slider sets how hard.
+    curator_deweight = _clamp_strictness(
+        _float_param(params, "curator_deweight", default=0.0)
+    )
     # Deep methods only. Prefer depth/purity; fall back to legacy normie_strictness.
     legacy_normie = _clamp_strictness(
         _float_param(params, "normie_strictness", default=0.0)
@@ -957,6 +1120,12 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
         0.0,
         min(1.0, _float_param(params, "coverage_weight", default=PCT_COVERAGE_DEFAULT)),
     )
+    # Explicit com_share_cap (0–1). Absent/blank → derive from purity (or off at 0).
+    raw_com_cap = params.get("com_share_cap")
+    if raw_com_cap in (None, ""):
+        explicit_com_cap: float | None = None
+    else:
+        explicit_com_cap = max(0.0, min(1.0, float(raw_com_cap)))
 
     p0, c0 = scope_globals(sf_only)
     m = float(bayesian_m)
@@ -983,9 +1152,11 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             year_max=year_max,
             curator_strictness=curator_strictness,
             curator_strictness_mode=curator_strictness_mode,
+            curator_deweight=curator_deweight,
             normie_depth=normie_depth,
             normie_purity=normie_purity,
             normie_strictness=legacy_for_gates,
+            com_share_cap=explicit_com_cap,
             geom_ratio=geom_ratio,
             pct_power=pct_power,
             coverage_weight=coverage_weight,
@@ -1051,23 +1222,25 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     if method in CURATOR_METHODS:
         out["curator_strictness"] = curator_strictness
         out["curator_strictness_mode"] = curator_strictness_mode
+        out["curator_deweight"] = curator_deweight
         out["curator_gates"] = curator_strictness_gates(
             curator_strictness,
             pct=method in CURATOR_PCT_FAMILY,
         )
         out["curator_elite_floor"] = CURATOR_ELITE_FLOOR
         if curator_strictness_mode == "deweight":
-            out["curator_deweight_exp"] = curator_deweight_exponent(curator_strictness)
+            out["curator_deweight_exp"] = curator_deweight_exponent(curator_deweight)
+            out["curator_deweight_alpha"] = curator_deweight_alpha(curator_deweight)
         if method in CURATOR_DEEP_PCT_METHODS:
             out["normie_depth"] = normie_depth
             out["normie_purity"] = normie_purity
             out["normie_gates"] = normie_gate_params(
                 normie_depth, normie_purity, strictness=legacy_for_gates
             )
-            out["deep_com_share_cap"] = deep_com_share_cap(
-                normie_purity
-                if normie_purity > 0
-                else (legacy_for_gates if legacy_for_gates else 55.0)
+            out["deep_com_share_cap"] = resolve_deep_com_share_cap(
+                normie_purity=normie_purity,
+                normie_strictness=legacy_for_gates,
+                com_share_cap=explicit_com_cap,
             )
             out["curator_cohort"] = "deep"
             if method == "curator_deep_pct_geom":
@@ -1190,9 +1363,11 @@ def _rank_dynamic(
     year_max=None,
     curator_strictness=0.0,
     curator_strictness_mode="deweight",
+    curator_deweight=0.0,
     normie_depth=0.0,
     normie_purity=0.0,
     normie_strictness=None,
+    com_share_cap=None,
     geom_ratio=PCT_GEOM_RATIO_DEFAULT,
     pct_power=PCT_GEOM_POWER_DEFAULT,
     coverage_weight=PCT_COVERAGE_DEFAULT,
@@ -1209,15 +1384,32 @@ def _rank_dynamic(
     use_geom = method == "curator_deep_pct_geom" or method.endswith("_pct_geom")
     coverage_weight = max(0.0, min(1.0, float(coverage_weight)))
     if use_deep:
-        curator_table = "user_curator_deep_weight"
+        cohort_kind = _deep_cohort_kind(
+            strictness=curator_strictness,
+            mode=curator_strictness_mode,
+            deweight=curator_deweight,
+            normie_depth=normie_depth,
+            normie_purity=normie_purity,
+            normie_strictness=normie_strictness,
+            com_share_cap=com_share_cap,
+        )
+        curator_table = (
+            "user_star_percentiles"
+            if cohort_kind == "all_equal"
+            else "user_curator_deep_weight"
+        )
     elif method in CURATOR_PURE_PCT_METHODS:
         curator_table = "user_curator_pct_pure_weight"
+        cohort_kind = "mint"
     elif method in CURATOR_PCT_METHODS | CURATOR_TILT_METHODS:
         curator_table = "user_curator_pct_weight"
+        cohort_kind = "mint"
     elif method in CURATOR_PURE_STAR_METHODS:
         curator_table = "user_curator_pure_weight"
+        cohort_kind = "mint"
     else:
         curator_table = "user_curator_weight"
+        cohort_kind = "mint"
     score_method = _curator_score_method(method)
     max_clause = "AND agg.n <= ?" if max_n > 0 else ""
     max_args: list[Any] = [max_n] if max_n > 0 else []
@@ -1228,6 +1420,16 @@ def _rank_dynamic(
     ctes: list[str] = []
     args: list[Any] = []
     n_eligible = None
+
+    # Push genre/catalog work filters into event scan (not only final SELECT).
+    early_works = _eligible_works_cte(
+        genre_gates=genre_gates,
+        catalog=catalog,
+        sf_only=sf_only,
+    )
+    works_join = "JOIN eligible_works ew USING (work_id)" if early_works else ""
+    if early_works:
+        ctes.append(early_works)
 
     if taste:
         taste_cte, taste_args = taste_eligible_cte(taste)
@@ -1248,34 +1450,50 @@ def _rank_dynamic(
             normie_depth=normie_depth if use_deep else 0.0,
             normie_purity=normie_purity if use_deep else 0.0,
             normie_strictness=normie_strictness if use_deep else None,
+            com_share_cap=com_share_cap if use_deep else None,
+            deweight_strength=curator_deweight,
         )
         keep_expr = curator_elite_keep_expr(curator_strictness, "n_pass")
-        # Rank passers by stored weight, then keep top-K (log-linear in strictness).
-        ctes.append(
-            f"""
+        if use_deep and cohort_kind == "all_equal":
+            # Fast path: equal weight over everyone who can score. No mint join,
+            # no elite window — weight_expr is already 1.0.
+            ctes.append(
+                """
+            curator_active AS (
+                SELECT
+                    user_id,
+                    1.0::DOUBLE AS curator_pct_weight,
+                    0.0::DOUBLE AS weight_pctile
+                FROM user_star_percentiles
+            )
+                """
+            )
+            weight_expr = "1.0"
+        else:
+            wcol = "curator_pct_weight" if use_curator_pct else "curator_weight"
+            ctes.append(
+                f"""
             curator_pool AS (
                 SELECT
                     c.*,
-                    row_number() OVER (
-                        ORDER BY c.{"curator_pct_weight" if use_curator_pct else "curator_weight"} DESC
-                    ) AS elite_rank,
+                    row_number() OVER (ORDER BY c.{wcol} DESC) AS elite_rank,
                     count(*) OVER () AS n_pass
                 FROM {curator_table} c
                 WHERE TRUE
                 {gate_sql}
             )
-            """
-        )
-        args.extend(gate_args)
-        ctes.append(
-            f"""
+                """
+            )
+            args.extend(gate_args)
+            ctes.append(
+                f"""
             curator_active AS (
                 SELECT *
                 FROM curator_pool
                 WHERE elite_rank <= {keep_expr}
             )
-            """
-        )
+                """
+            )
         # Rewire weight_expr to alias `c` on curator_active (same column names).
         # Curator cohort already encodes taste; taste sliders further intersect if on.
         taste_join = "JOIN eligible el USING (user_id)" if taste else ""
@@ -1358,6 +1576,7 @@ def _rank_dynamic(
                 FROM all_rating_events e
                 JOIN curator_active c USING (user_id)
                 JOIN user_star_percentiles p USING (user_id)
+                {works_join}
                 {taste_join}
                 WHERE TRUE{sf_pred}
             )
@@ -1374,6 +1593,7 @@ def _rank_dynamic(
                     0.0::DOUBLE AS pct_asymm
                 FROM all_rating_events e
                 JOIN curator_active c USING (user_id)
+                {works_join}
                 {taste_join}
                 WHERE TRUE{sf_pred}
             )
@@ -1391,6 +1611,7 @@ def _rank_dynamic(
                     0.0::DOUBLE AS pct_love
                 FROM all_rating_events e
                 JOIN eligible el USING (user_id)
+                {works_join}
                 WHERE TRUE{sf_pred}
             )
         """
@@ -1405,6 +1626,7 @@ def _rank_dynamic(
                     0.0::DOUBLE AS pct_love
                 FROM all_rating_events e
                 LEFT JOIN user_lit_weight w USING (user_id)
+                {works_join}
                 WHERE TRUE{sf_pred}
             )
         """
@@ -1418,6 +1640,7 @@ def _rank_dynamic(
                     0.0::DOUBLE AS pct,
                     0.0::DOUBLE AS pct_love
                 FROM all_rating_events e
+                {works_join}
                 WHERE TRUE{sf_pred}
             )
         """
@@ -2127,6 +2350,9 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
     ).strip().lower()
     if curator_strictness_mode not in ("deweight", "gate"):
         curator_strictness_mode = "deweight"
+    curator_deweight = _clamp_strictness(
+        _float_param(params, "curator_deweight", default=0.0)
+    )
 
     legacy_normie = _clamp_strictness(
         _float_param(params, "normie_strictness", default=0.0)
@@ -2145,16 +2371,35 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
         normie_purity = 0.0
         legacy_for_gates = legacy_normie if legacy_normie > 0 else None
 
+    raw_com_cap = params.get("com_share_cap")
+    if raw_com_cap in (None, ""):
+        explicit_com_cap: float | None = None
+    else:
+        explicit_com_cap = max(0.0, min(1.0, float(raw_com_cap)))
+
     if use_deep:
         curator_table = "user_curator_deep_weight"
+        cohort_kind = _deep_cohort_kind(
+            strictness=curator_strictness,
+            mode=curator_strictness_mode,
+            deweight=curator_deweight,
+            normie_depth=normie_depth,
+            normie_purity=normie_purity,
+            normie_strictness=legacy_for_gates,
+            com_share_cap=explicit_com_cap,
+        )
     elif method in CURATOR_PURE_PCT_METHODS:
         curator_table = "user_curator_pct_pure_weight"
+        cohort_kind = "mint"
     elif method in CURATOR_PCT_METHODS | CURATOR_TILT_METHODS:
         curator_table = "user_curator_pct_weight"
+        cohort_kind = "mint"
     elif method in CURATOR_PURE_STAR_METHODS:
         curator_table = "user_curator_pure_weight"
+        cohort_kind = "mint"
     else:
         curator_table = "user_curator_weight"
+        cohort_kind = "mint"
 
     ctes: list[str] = []
     args: list[Any] = []
@@ -2184,14 +2429,27 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
             normie_depth=normie_depth if use_deep else 0.0,
             normie_purity=normie_purity if use_deep else 0.0,
             normie_strictness=legacy_for_gates if use_deep else None,
+            com_share_cap=explicit_com_cap if use_deep else None,
+            deweight_strength=curator_deweight,
         )
-        wcol = "curator_pct_weight" if (
-            use_curator_pct or use_deep or method in CURATOR_PURE_PCT_METHODS
-        ) else "curator_weight"
         keep_expr = curator_elite_keep_expr(curator_strictness, "n_pass")
         taste_join = "JOIN eligible el USING (user_id)" if taste else ""
-        ctes.append(
-            f"""
+        if use_deep and cohort_kind == "all_equal":
+            ctes.append(
+                """
+            curator_active AS (
+                SELECT user_id, 1.0::DOUBLE AS curator_pct_weight, 0.0::DOUBLE AS weight_pctile
+                FROM user_star_percentiles
+            )
+                """
+            )
+            weight_expr = "1.0"
+        else:
+            wcol = "curator_pct_weight" if (
+                use_curator_pct or use_deep or method in CURATOR_PURE_PCT_METHODS
+            ) else "curator_weight"
+            ctes.append(
+                f"""
             curator_pool AS (
                 SELECT
                     c.*,
@@ -2202,17 +2460,17 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
                 WHERE TRUE
                 {gate_sql}
             )
-            """
-        )
-        args.extend(gate_args)
-        ctes.append(
-            f"""
+                """
+            )
+            args.extend(gate_args)
+            ctes.append(
+                f"""
             curator_active AS (
                 SELECT * FROM curator_pool
                 WHERE elite_rank <= {keep_expr}
             )
-            """
-        )
+                """
+            )
         user_from = "curator_active c"
         label_bits.append("ranking curators")
         if use_deep:
@@ -2220,7 +2478,9 @@ def work_relevant_hist(work_id: str, params: dict[str, Any]) -> dict[str, Any] |
                 f"depth {int(normie_depth) if has_split else int(legacy_normie)}"
                 f"/purity {int(normie_purity) if has_split else int(legacy_normie)}"
             )
+            label_bits.append(cohort_kind)
         label_bits.append(f"curator {int(curator_strictness)}")
+        label_bits.append(f"deweight {int(curator_deweight)}")
     elif taste:
         user_from = "eligible c"
         weight_expr = "coalesce(c.lit_weight, 1.0)"

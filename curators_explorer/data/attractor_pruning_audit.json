@@ -1,0 +1,699 @@
+{
+  "method": {
+    "purpose": "audit the attractor-pruning convergence claims",
+    "beta": 2.5,
+    "iterations": 20,
+    "pole_threshold": 0.25,
+    "random_start_seeds": [
+      777,
+      778,
+      779
+    ],
+    "unpaired_seed": 2026,
+    "unpaired_starts": 24,
+    "semantic_data_loaded_after_geometry": true,
+    "runtime_seconds": 42.51847553253174
+  },
+  "stage_diagnostics": [
+    {
+      "stage": 0,
+      "users": 233271,
+      "either_fold_jury_share": 0.10789596649390623,
+      "both_fold_jury_share": 0.04252564613689657,
+      "iteration1_step_correlation": 0.9499167799949646,
+      "iteration5_step_correlation": 0.9964897632598877,
+      "final_step_correlation": 0.9998721480369568,
+      "final_retained_vs_stage_start": 0.46308907866477966,
+      "effective_user_share": 0.6918796896934509,
+      "users_for_half_mass": 65043
+    },
+    {
+      "stage": 1,
+      "users": 131797,
+      "either_fold_jury_share": 0.19096792794980158,
+      "both_fold_jury_share": 0.07526726708498677,
+      "iteration1_step_correlation": 0.9863708019256592,
+      "iteration5_step_correlation": 0.9974867105484009,
+      "final_step_correlation": 0.999178946018219,
+      "final_retained_vs_stage_start": 0.6125678420066833,
+      "effective_user_share": 0.6977844834327698,
+      "users_for_half_mass": 36653
+    },
+    {
+      "stage": 2,
+      "users": 76329,
+      "either_fold_jury_share": 0.32974360989925194,
+      "both_fold_jury_share": 0.1299637097302467,
+      "iteration1_step_correlation": 0.992502748966217,
+      "iteration5_step_correlation": 0.9995118379592896,
+      "final_step_correlation": 0.998926043510437,
+      "final_retained_vs_stage_start": 0.8791425228118896,
+      "effective_user_share": 0.653468668460846,
+      "users_for_half_mass": 19029
+    },
+    {
+      "stage": 3,
+      "users": 47288,
+      "either_fold_jury_share": 0.5322491964134665,
+      "both_fold_jury_share": 0.20977837929284385,
+      "iteration1_step_correlation": 0.9918441772460938,
+      "iteration5_step_correlation": 0.9999459981918335,
+      "final_step_correlation": 0.9999998211860657,
+      "final_retained_vs_stage_start": 0.9670476317405701,
+      "effective_user_share": 0.6170315742492676,
+      "users_for_half_mass": 11797
+    },
+    {
+      "stage": 4,
+      "users": 26800,
+      "either_fold_jury_share": 0.5420149253731343,
+      "both_fold_jury_share": 0.3701492537313433,
+      "iteration1_step_correlation": 0.9958727359771729,
+      "iteration5_step_correlation": 0.9999250769615173,
+      "final_step_correlation": 0.9999994039535522,
+      "final_retained_vs_stage_start": 0.9766302108764648,
+      "effective_user_share": 0.6177559494972229,
+      "users_for_half_mass": 6591
+    },
+    {
+      "stage": 5,
+      "users": 15395,
+      "either_fold_jury_share": 0.7649236765183501,
+      "both_fold_jury_share": 0.6443650535888276,
+      "iteration1_step_correlation": 0.9905730485916138,
+      "iteration5_step_correlation": 0.9998867511749268,
+      "final_step_correlation": 0.9999997019767761,
+      "final_retained_vs_stage_start": 0.9566599130630493,
+      "effective_user_share": 0.6714125871658325,
+      "users_for_half_mass": 4404
+    }
+  ],
+  "pole_results": [
+    {
+      "stage": 0,
+      "label": "full",
+      "users": 233271,
+      "paired": [
+        {
+          "seed": 777,
+          "literary_pole": 13,
+          "mixed": 6,
+          "mirror_pole": 13,
+          "max_corr": 0.44062647223472595,
+          "min_corr": -0.4402807056903839
+        },
+        {
+          "seed": 778,
+          "literary_pole": 15,
+          "mixed": 2,
+          "mirror_pole": 15,
+          "max_corr": 0.4783256947994232,
+          "min_corr": -0.47752645611763
+        },
+        {
+          "seed": 779,
+          "literary_pole": 12,
+          "mixed": 8,
+          "mirror_pole": 12,
+          "max_corr": 0.46714532375335693,
+          "min_corr": -0.46666720509529114
+        }
+      ],
+      "unpaired": {
+        "seed": 2026,
+        "starts": 24,
+        "literary_pole": 14,
+        "mixed": 4,
+        "mirror_pole": 6,
+        "corr_sorted": [
+          -0.381,
+          -0.373,
+          -0.354,
+          -0.344,
+          -0.315,
+          -0.285,
+          -0.23,
+          -0.104,
+          -0.065,
+          0.074,
+          0.305,
+          0.308,
+          0.337,
+          0.354,
+          0.363,
+          0.369,
+          0.376,
+          0.382,
+          0.392,
+          0.397,
+          0.444,
+          0.446,
+          0.468,
+          0.489
+        ]
+      }
+    },
+    {
+      "stage": 3,
+      "label": "stage3",
+      "users": 47288,
+      "paired": [
+        {
+          "seed": 777,
+          "literary_pole": 16,
+          "mixed": 0,
+          "mirror_pole": 16,
+          "max_corr": 0.7151665091514587,
+          "min_corr": -0.715118408203125
+        },
+        {
+          "seed": 778,
+          "literary_pole": 16,
+          "mixed": 0,
+          "mirror_pole": 16,
+          "max_corr": 0.7121627926826477,
+          "min_corr": -0.7120017409324646
+        },
+        {
+          "seed": 779,
+          "literary_pole": 16,
+          "mixed": 0,
+          "mirror_pole": 16,
+          "max_corr": 0.7150983214378357,
+          "min_corr": -0.7147921919822693
+        }
+      ],
+      "unpaired": {
+        "seed": 2026,
+        "starts": 24,
+        "literary_pole": 9,
+        "mixed": 0,
+        "mirror_pole": 15,
+        "corr_sorted": [
+          -0.702,
+          -0.698,
+          -0.698,
+          -0.694,
+          -0.689,
+          -0.687,
+          -0.682,
+          -0.681,
+          -0.68,
+          -0.676,
+          -0.664,
+          -0.651,
+          -0.645,
+          -0.617,
+          -0.449,
+          0.578,
+          0.612,
+          0.657,
+          0.659,
+          0.68,
+          0.682,
+          0.686,
+          0.688,
+          0.69
+        ]
+      }
+    },
+    {
+      "stage": 5,
+      "label": "stage5",
+      "users": 15395,
+      "paired": [
+        {
+          "seed": 777,
+          "literary_pole": 16,
+          "mixed": 0,
+          "mirror_pole": 16,
+          "max_corr": 0.6256603598594666,
+          "min_corr": -0.6256917715072632
+        },
+        {
+          "seed": 778,
+          "literary_pole": 16,
+          "mixed": 1,
+          "mirror_pole": 15,
+          "max_corr": 0.6248148083686829,
+          "min_corr": -0.6249604821205139
+        },
+        {
+          "seed": 779,
+          "literary_pole": 16,
+          "mixed": 0,
+          "mirror_pole": 16,
+          "max_corr": 0.625952959060669,
+          "min_corr": -0.6259925365447998
+        }
+      ],
+      "unpaired": {
+        "seed": 2026,
+        "starts": 24,
+        "literary_pole": 18,
+        "mixed": 0,
+        "mirror_pole": 6,
+        "corr_sorted": [
+          -0.62,
+          -0.596,
+          -0.558,
+          -0.526,
+          -0.518,
+          -0.408,
+          0.353,
+          0.486,
+          0.569,
+          0.602,
+          0.606,
+          0.606,
+          0.607,
+          0.614,
+          0.617,
+          0.619,
+          0.62,
+          0.625,
+          0.625,
+          0.625,
+          0.625,
+          0.625,
+          0.626,
+          0.626
+        ]
+      }
+    }
+  ],
+  "stage5_literary_pole_consensus": {
+    "metrics": {
+      "exact_lit50": 5,
+      "exact_lit200": 5,
+      "broad_lit50": 12,
+      "broad_lit200": 12,
+      "anti50": 3,
+      "anti200": 3,
+      "filler50": 3,
+      "filler200": 3
+    },
+    "head": [
+      {
+        "rank": 1,
+        "work_id": "3393910",
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoyevsky",
+        "score": 0.8410737871882996,
+        "reader_mass": 342.4341735839844
+      },
+      {
+        "rank": 2,
+        "work_id": "3060926",
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "score": 0.8406956281918445,
+        "reader_mass": 2111.164794921875
+      },
+      {
+        "rank": 3,
+        "work_id": "30431",
+        "title": "The Complete Stories and Poems",
+        "author": "Edgar Allan Poe",
+        "score": 0.822331182396165,
+        "reader_mass": 166.49459838867188
+      },
+      {
+        "rank": 4,
+        "work_id": "2964424",
+        "title": "The Return of the King (The Lord of the Rings, #3)",
+        "author": "J.R.R. Tolkien",
+        "score": 0.820460458164351,
+        "reader_mass": 604.2839965820312
+      },
+      {
+        "rank": 5,
+        "work_id": "7492217",
+        "title": "The Complete Sherlock Holmes",
+        "author": "Arthur Conan Doyle",
+        "score": 0.8123157709873395,
+        "reader_mass": 187.0192413330078
+      },
+      {
+        "rank": 6,
+        "work_id": "3275794",
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "score": 0.8064002239217478,
+        "reader_mass": 1862.0091552734375
+      },
+      {
+        "rank": 7,
+        "work_id": "2962492",
+        "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+        "author": "J.K. Rowling",
+        "score": 0.7912799234500577,
+        "reader_mass": 202.1818389892578
+      },
+      {
+        "rank": 8,
+        "work_id": "2977639",
+        "title": "Jane Eyre",
+        "author": "Charlotte Bronte",
+        "score": 0.7887982709657453,
+        "reader_mass": 1371.7669677734375
+      },
+      {
+        "rank": 9,
+        "work_id": "3462456",
+        "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+        "author": "J.R.R. Tolkien",
+        "score": 0.788082873871315,
+        "reader_mass": 555.767333984375
+      },
+      {
+        "rank": 10,
+        "work_id": "89369",
+        "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "score": 0.7756809580080266,
+        "reader_mass": 113.45853424072266
+      },
+      {
+        "rank": 11,
+        "work_id": "1885548",
+        "title": "Hamlet",
+        "author": "William Shakespeare",
+        "score": 0.7736905126862833,
+        "reader_mass": 697.1650390625
+      },
+      {
+        "rank": 12,
+        "work_id": "640276",
+        "title": "The Monster at the End of this Book",
+        "author": "Jon Stone",
+        "score": 0.7716627481156236,
+        "reader_mass": 116.08548736572266
+      },
+      {
+        "rank": 13,
+        "work_id": "1855987",
+        "title": "The Complete Grimm's Fairy Tales",
+        "author": "Jacob Grimm",
+        "score": 0.7664187187290472,
+        "reader_mass": 181.91026306152344
+      },
+      {
+        "rank": 14,
+        "work_id": "2534720",
+        "title": "Persuasion",
+        "author": "Jane Austen",
+        "score": 0.7663310565874353,
+        "reader_mass": 699.4365234375
+      },
+      {
+        "rank": 15,
+        "work_id": "391568",
+        "title": "The Count of Monte Cristo",
+        "author": "Alexandre Dumas",
+        "score": 0.7648421930626651,
+        "reader_mass": 672.3330078125
+      },
+      {
+        "rank": 16,
+        "work_id": "3000541",
+        "title": "The Complete Works",
+        "author": "William Shakespeare",
+        "score": 0.7645526157511621,
+        "reader_mass": 80.28717041015625
+      },
+      {
+        "rank": 17,
+        "work_id": "3464264",
+        "title": "Anne of Green Gables (Anne of Green Gables, #1)",
+        "author": "L.M. Montgomery",
+        "score": 0.7643343000274526,
+        "reader_mass": 687.13134765625
+      },
+      {
+        "rank": 18,
+        "work_id": "1225592",
+        "title": "Winnie-the-Pooh (Winnie-the-Pooh, #1)",
+        "author": "A.A. Milne",
+        "score": 0.7615250918365214,
+        "reader_mass": 282.0691223144531
+      },
+      {
+        "rank": 19,
+        "work_id": "7365",
+        "title": "The Complete Anne of Green Gables Boxed Set (Anne of Green Gables, #1-8)",
+        "author": "L.M. Montgomery",
+        "score": 0.7544074059332392,
+        "reader_mass": 115.32818603515625
+      },
+      {
+        "rank": 20,
+        "work_id": "809248",
+        "title": "The Divine Comedy",
+        "author": "Dante Alighieri",
+        "score": 0.7529506629677698,
+        "reader_mass": 140.17559814453125
+      },
+      {
+        "rank": 21,
+        "work_id": "3393917",
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoyevsky",
+        "score": 0.7528846115610314,
+        "reader_mass": 692.1051025390625
+      },
+      {
+        "rank": 22,
+        "work_id": "3208463",
+        "title": "Les Misérables",
+        "author": "Victor Hugo",
+        "score": 0.7429485265243185,
+        "reader_mass": 530.6644897460938
+      },
+      {
+        "rank": 23,
+        "work_id": "1658562",
+        "title": "The Complete Maus (Maus, #1-2)",
+        "author": "Art Spiegelman",
+        "score": 0.7356388132273496,
+        "reader_mass": 164.36978149414062
+      },
+      {
+        "rank": 24,
+        "work_id": "267076",
+        "title": "How the Grinch Stole Christmas!",
+        "author": "Dr. Seuss",
+        "score": 0.7343838686361904,
+        "reader_mass": 228.5458984375
+      },
+      {
+        "rank": 25,
+        "work_id": "833257",
+        "title": "A Tree Grows in Brooklyn",
+        "author": "Betty  Smith",
+        "score": 0.7243559225629035,
+        "reader_mass": 370.68804931640625
+      },
+      {
+        "rank": 26,
+        "work_id": "2139868",
+        "title": "The Book of Mormon: Another Testament of Jesus Christ",
+        "author": "Anonymous",
+        "score": 0.7228765401330334,
+        "reader_mass": 101.67513275146484
+      },
+      {
+        "rank": 27,
+        "work_id": "1222101",
+        "title": "The Adventures of Sherlock Holmes",
+        "author": "Arthur Conan Doyle",
+        "score": 0.7208568910804702,
+        "reader_mass": 265.2203674316406
+      },
+      {
+        "rank": 28,
+        "work_id": "256076",
+        "title": "The Raven",
+        "author": "Edgar Allan Poe",
+        "score": 0.7198691381750429,
+        "reader_mass": 121.46949005126953
+      },
+      {
+        "rank": 29,
+        "work_id": "1896522",
+        "title": "Macbeth",
+        "author": "William Shakespeare",
+        "score": 0.7177492869383796,
+        "reader_mass": 504.8790588378906
+      },
+      {
+        "rank": 30,
+        "work_id": "2110010",
+        "title": "Calvin and Hobbes",
+        "author": "Bill Watterson",
+        "score": 0.717108074818619,
+        "reader_mass": 89.88294219970703
+      },
+      {
+        "rank": 31,
+        "work_id": "1313599",
+        "title": "A Little Princess",
+        "author": "Frances Hodgson Burnett",
+        "score": 0.7141615535336546,
+        "reader_mass": 252.51840209960938
+      },
+      {
+        "rank": 32,
+        "work_id": "2574991",
+        "title": "East of Eden",
+        "author": "John Steinbeck",
+        "score": 0.714158063264132,
+        "reader_mass": 405.70367431640625
+      },
+      {
+        "rank": 33,
+        "work_id": "2244438",
+        "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+        "author": "Bill Watterson",
+        "score": 0.7136630126229235,
+        "reader_mass": 93.75444030761719
+      },
+      {
+        "rank": 34,
+        "work_id": "44848425",
+        "title": "Between the World and Me",
+        "author": "Ta-Nehisi Coates",
+        "score": 0.7122942610477315,
+        "reader_mass": 145.56857299804688
+      },
+      {
+        "rank": 35,
+        "work_id": "1461747",
+        "title": "Middlemarch",
+        "author": "George Eliot",
+        "score": 0.7088433698360594,
+        "reader_mass": 226.19546508789062
+      },
+      {
+        "rank": 36,
+        "work_id": "153313",
+        "title": "1984",
+        "author": "George Orwell",
+        "score": 0.7081351755478168,
+        "reader_mass": 1258.802490234375
+      },
+      {
+        "rank": 37,
+        "work_id": "2402163",
+        "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+        "author": "J.K. Rowling",
+        "score": 0.7062817544395602,
+        "reader_mass": 1351.6708984375
+      },
+      {
+        "rank": 38,
+        "work_id": "3204327",
+        "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+        "author": "J.R.R. Tolkien",
+        "score": 0.7013865375946402,
+        "reader_mass": 1097.7559814453125
+      },
+      {
+        "rank": 39,
+        "work_id": "2852640",
+        "title": "The Little House Collection (Little House, #1-9)",
+        "author": "Laura Ingalls Wilder",
+        "score": 0.6995305197625109,
+        "reader_mass": 158.33140563964844
+      },
+      {
+        "rank": 40,
+        "work_id": "1602074",
+        "title": "The Velveteen Rabbit",
+        "author": "Margery Williams Bianco",
+        "score": 0.6993568894648808,
+        "reader_mass": 204.88833618164062
+      },
+      {
+        "rank": 41,
+        "work_id": "2963218",
+        "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+        "author": "J.K. Rowling",
+        "score": 0.6964948082552116,
+        "reader_mass": 1441.2750244140625
+      },
+      {
+        "rank": 42,
+        "work_id": "2963845",
+        "title": "The Two Towers (The Lord of the Rings, #2)",
+        "author": "J.R.R. Tolkien",
+        "score": 0.693576984009467,
+        "reader_mass": 567.4171752929688
+      },
+      {
+        "rank": 43,
+        "work_id": "277308",
+        "title": "Love You Forever",
+        "author": "Robert Munsch",
+        "score": 0.6928380070320134,
+        "reader_mass": 133.1886749267578
+      },
+      {
+        "rank": 44,
+        "work_id": "2662852",
+        "title": "All Quiet on the Western Front",
+        "author": "Erich Maria Remarque",
+        "score": 0.6905494856290276,
+        "reader_mass": 234.65574645996094
+      },
+      {
+        "rank": 45,
+        "work_id": "894834",
+        "title": "A Midsummer Night's Dream",
+        "author": "William Shakespeare",
+        "score": 0.6903821975163841,
+        "reader_mass": 378.9253845214844
+      },
+      {
+        "rank": 46,
+        "work_id": "6405906",
+        "title": "Holy Bible: King James Version",
+        "author": "Anonymous",
+        "score": 0.6894749543298558,
+        "reader_mass": 175.44058227539062
+      },
+      {
+        "rank": 47,
+        "work_id": "4912783",
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "score": 0.6882832896861606,
+        "reader_mass": 317.710693359375
+      },
+      {
+        "rank": 48,
+        "work_id": "86934",
+        "title": "Green Eggs and Ham",
+        "author": "Dr. Seuss",
+        "score": 0.6876589447189039,
+        "reader_mass": 348.0976257324219
+      },
+      {
+        "rank": 49,
+        "work_id": "2377563",
+        "title": "Inferno (The Divine Comedy #1)",
+        "author": "Dante Alighieri",
+        "score": 0.6875980367460469,
+        "reader_mass": 155.27174377441406
+      },
+      {
+        "rank": 50,
+        "work_id": "4711940",
+        "title": "David Copperfield",
+        "author": "Charles Dickens",
+        "score": 0.6873456050295998,
+        "reader_mass": 213.88702392578125
+      }
+    ]
+  }
+}

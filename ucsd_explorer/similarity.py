@@ -32,6 +32,7 @@ from ucsd_explorer.ranking import (
     CURATOR_TILT_METHODS,
     _clamp_strictness,
     _curator_user_weight_sql,
+    _deep_cohort_kind,
     _float_param,
     curator_elite_keep_expr,
 )
@@ -98,23 +99,84 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
     if use_deep:
         if not has_curator_deep_weights():
             raise ValueError("Deep curator tables missing.")
+        strictness = _clamp_strictness(
+            _float_param(params, "curator_strictness", default=0.0)
+        )
+        mode = (params.get("curator_strictness_mode") or "deweight").strip().lower()
+        if mode not in ("deweight", "gate"):
+            mode = "deweight"
+        curator_deweight = _clamp_strictness(
+            _float_param(params, "curator_deweight", default=0.0)
+        )
+        normie_depth = _clamp_strictness(_float_param(params, "normie_depth", default=0.0))
+        normie_purity = _clamp_strictness(_float_param(params, "normie_purity", default=0.0))
+        raw_com_cap = params.get("com_share_cap")
+        if raw_com_cap in (None, ""):
+            explicit_com_cap = None
+        else:
+            explicit_com_cap = max(0.0, min(1.0, float(raw_com_cap)))
+        kind = _deep_cohort_kind(
+            strictness=strictness,
+            mode=mode,
+            deweight=curator_deweight,
+            normie_depth=normie_depth,
+            normie_purity=normie_purity,
+            normie_strictness=None,
+            com_share_cap=explicit_com_cap,
+        )
+        if kind == "all_equal":
+            table = "user_star_percentiles"
+            universe_cte = ""
+            # Synthetic flat weights for elite ORDER BY (unused when strictness=0)
+            weight_expr = "1.0"
+            gate_sql, gate_args = "", []
+            keep_expr = curator_elite_keep_expr(strictness, "n_pass")
+            wcol = "curator_pct_weight"
+            # Build a tiny CTE that adds weight columns onto percentiles
+            universe_cte = """
+            curator_universe AS (
+                SELECT user_id,
+                       1.0::DOUBLE AS curator_pct_weight,
+                       0.0::DOUBLE AS weight_pctile
+                FROM user_star_percentiles
+            )
+            """.strip()
+            table = "curator_universe"
+            return {
+                "method": method,
+                "table": table,
+                "universe_cte": universe_cte,
+                "weight_expr": weight_expr,
+                "gate_sql": gate_sql,
+                "gate_args": gate_args,
+                "elite_t": 0.0,
+                "keep_expr": keep_expr,
+                "wcol": wcol,
+                "strictness": strictness,
+                "label": "all percentile users (equal)",
+            }
         table = "user_curator_deep_weight"
+        universe_cte = ""
     elif method in CURATOR_PURE_PCT_METHODS:
         if not has_curator_pct_pure_weights():
             raise ValueError("Pure pct curator tables missing.")
         table = "user_curator_pct_pure_weight"
+        universe_cte = ""
     elif method in CURATOR_PCT_METHODS | CURATOR_TILT_METHODS:
         if not has_curator_pct_weights():
             raise ValueError("Percentile curator tables missing.")
         table = "user_curator_pct_weight"
+        universe_cte = ""
     elif method in CURATOR_PURE_STAR_METHODS:
         if not has_curator_pure_weights():
             raise ValueError("Pure curator tables missing.")
         table = "user_curator_pure_weight"
+        universe_cte = ""
     else:
         if not has_curator_weights():
             raise ValueError("Curator weights missing.")
         table = "user_curator_weight"
+        universe_cte = ""
 
     strictness = _clamp_strictness(
         _float_param(params, "curator_strictness", default=0.0)
@@ -122,8 +184,16 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
     mode = (params.get("curator_strictness_mode") or "deweight").strip().lower()
     if mode not in ("deweight", "gate"):
         mode = "deweight"
+    curator_deweight = _clamp_strictness(
+        _float_param(params, "curator_deweight", default=0.0)
+    )
     normie_depth = _clamp_strictness(_float_param(params, "normie_depth", default=0.0))
     normie_purity = _clamp_strictness(_float_param(params, "normie_purity", default=0.0))
+    raw_com_cap = params.get("com_share_cap")
+    if raw_com_cap in (None, ""):
+        explicit_com_cap = None
+    else:
+        explicit_com_cap = max(0.0, min(1.0, float(raw_com_cap)))
 
     weight_expr, gate_sql, gate_args, elite_t = _curator_user_weight_sql(
         pct=use_pct or use_deep,
@@ -132,12 +202,15 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
         deep=use_deep,
         normie_depth=normie_depth,
         normie_purity=normie_purity,
+        com_share_cap=explicit_com_cap if use_deep else None,
+        deweight_strength=curator_deweight,
     )
     wcol = "curator_pct_weight" if (use_pct or use_deep) else "curator_weight"
     keep_expr = curator_elite_keep_expr(strictness, "n_pass")
     return {
         "method": method,
         "table": table,
+        "universe_cte": universe_cte,
         "weight_expr": weight_expr,
         "gate_sql": gate_sql,
         "gate_args": gate_args,
@@ -145,7 +218,11 @@ def _curator_cohort_for_sim(params: dict[str, Any]) -> dict[str, Any]:
         "keep_expr": keep_expr,
         "wcol": wcol,
         "strictness": strictness,
-        "label": table.replace("user_", "").replace("_", " "),
+        "label": (
+            "wide percentile + deep taste"
+            if use_deep
+            else table.replace("user_", "").replace("_", " ")
+        ),
     }
 
 
@@ -192,10 +269,12 @@ def similar_books(book_id: str, params: dict[str, Any]) -> dict[str, Any]:
     gate_args = list(cohort["gate_args"])
     wcol = cohort["wcol"]
     keep_expr = cohort["keep_expr"]
+    universe_cte = (cohort.get("universe_cte") or "").strip()
+    universe_prefix = f"{universe_cte},\n        " if universe_cte else ""
 
     # Active curator cohort with effective weights
     curator_cte = f"""
-        curator_pool AS (
+        {universe_prefix}curator_pool AS (
             SELECT c.*,
                 row_number() OVER (ORDER BY c.{wcol} DESC) AS elite_rank,
                 count(*) OVER () AS n_pass

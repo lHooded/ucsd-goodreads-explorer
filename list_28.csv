@@ -1,0 +1,103 @@
+rank,book,authors,year,country,language
+8,Don Quixote,Miguel de Cervantes,1605,Spanish,Spanish
+60,Things Fall Apart,Chinua Achebe,1958,Nigerian,English
+237,Fairy Tales and Stories,Hans Christian Andersen,1835,Danish,Danish
+15,Pride and Prejudice,Jane Austen,1813,British,English
+218,Father Goriot,Honoré de Balzac,1835,French,French
+123,Decameron,Giovanni Boccaccio,1353,Italian,Italian
+47,Fictions,Jorge Luis Borges,1944,Argentinian,Spanish
+14,Wuthering Heights,Emily Brontë,1847,British,English
+23,The Stranger,Albert Camus,1942,French,French
+1268,Poems,Paul Celan,1952,German,German
+108,The Canterbury Tales,Geoffrey Chaucer,1400,British,Middle english
+276,Nostromo,Joseph Conrad,1904,British,English
+28,The Divine Comedy,Dante Alighieri,1308,Italian,Italian
+38,Great Expectations,Charles Dickens,1860,British,English
+399,Jacques the Fatalist and His Master,Denis Diderot,1796,French,French
+188,Berlin Alexanderplatz,Alfred Döblin,1929,German,German
+13,Crime and Punishment,Fyodor Dostoevsky,1866,Russian,Russian
+59,The Idiot,Fyodor Dostoevsky,1869,Russian,Russian
+93,Demons,Fyodor Dostoevsky,1872,Russian,Russian
+18,The Brothers Karamazov,Fyodor Dostoevsky,1880,Russian,Russian
+24,Middlemarch,George Eliot,1871,British,English
+33,Invisible Man,Ralph Ellison,1952,American,English
+300,Medea,Euripides,-431,Greek,Ancient greek
+42,"Absalom, Absalom!",William Faulkner,1936,American,English
+9,The Sound and the Fury,William Faulkner,1929,American,English
+19,Madame Bovary,Gustave Flaubert,1857,French,French
+122,A Sentimental Education,Gustave Flaubert,1869,French,French
+583,Gypsy Ballads,Federico García Lorca,1928,Spanish,Spanish
+4,One Hundred Years of Solitude,Gabriel García Márquez,1967,Colombian,Spanish
+254,The Epic Of Gilgamesh,Unknown,-2100,Multiple,Akkadian
+94,Faust,Johann Wolfgang von Goethe,1808,German,German
+97,Dead Souls,Nikolai Gogol,1842,Russian,Russian
+84,The Tin Drum,Günter Grass,1959,German,German
+289,The Devil to Pay in the Backlands,Joao Guimaraes Rosa,1956,Brazilian,Portuguese
+214,Hunger,Knut Hamsun,1890,Norwegian,Norwegian
+52,The Old Man and the Sea,Ernest Hemingway,1952,American,English
+37,The Iliad,Homer,-750,Greek,Ancient greek
+26,The Odyssey,Homer,-740,Greek,Ancient greek
+412,A Doll's House,Henrik Ibsen,1879,Norwegian,Norwegian
+780,The Book of Job,Unknown,-600,Israeli,Hebrew
+1,Ulysses,James Joyce,1922,Irish,English
+322,Franz Kafka,Franz Kafka,1971,Czech,Unknown
+20,The Trial,Franz Kafka,1925,Czech,German
+82,The Castle,Franz Kafka,1926,Czech,German
+1832,The Recognition of Sakuntala,Kālidāsa,-400,Indian,Sanskrit
+1948,The Sound of the Mountain,Yasunari Kawabata,1954,Japanese,Japanese
+210,Zorba the Greek,Nikos Kazantzakis,1946,Greek,Greek
+132,Sons and Lovers,D. H. Lawrence,1913,British,English
+281,Independent People,Halldor Laxness,1934,Icelandic,Icelandic
+675,Complete Poems of Giacomo Leopardi,Giacomo Leopardi,1831,Italian,Italian
+63,The Golden Notebook,Doris May Lessing,1962,British,English
+283,Pippi Longstocking,Astrid Lindgren,1945,Swedish,Swedish
+312,Mahabharata,Vyasa,-400,Indian,Sanskrit
+1194,Children of Gebelawi,Naguib Mahfouz,1959,Egyptian,Arabic
+88,Buddenbrooks,Thomas Mann,1901,German,German
+29,The Magic Mountain,Thomas Mann,1924,German,German
+6,Moby-Dick,Herman Melville,1851,American,English
+80,Essays,Michel de Montaigne,1580,French,French
+318,History,Elsa Morante,1974,Italian,Italian
+45,Beloved,Toni Morrison,1987,American,English
+127,The Tale of Genji,Murasaki Shikibu,1001,Japanese,Classical japanese
+83,The Man Without Qualities,Robert Musil,1930,Austrian,German
+11,Lolita,Vladimir Nabokov,1955,American,English
+1516,Njal's Saga,Iceland,1280,Icelandic,Old norse
+7,Nineteen Eighty Four,George Orwell,1949,British,English
+194,Metamorphoses,Ovid,8,Roman,Latin
+211,The Book of Disquiet,Fernando Pessoa,1982,Portuguese,Portuguese
+110,The Complete Tales and Poems of Edgar Allan Poe,Edgar Allan Poe,1902,American,English
+2,In Search of Lost Time,Marcel Proust,1913,French,French
+129,Gargantua and Pantagruel,Francois Rabelais,1532,French,French
+144,Pedro Páramo,Juan Rulfo,1955,Mexican,Spanish
+1409,Masnavi,Jalal al-Din Muhammad Rumi,1258,Persian,Persian
+58,Midnight's Children,Salman Rushdie,1981,Indian,English
+2414,Bostan,Saadi,1257,Persian,Persian
+549,Season of Migration to the North,Al-Tayyib Salih,1966,Sudanese,Arabic
+970,Blindness,José Saramago,1995,Portuguese,Portuguese
+75,Hamlet,William Shakespeare,1600,British,English
+146,King Lear,William Shakespeare,1608,British,English
+1072,Othello,William Shakespeare,1603,British,English
+107,Oedipus the King,Sophocles,-429,Greek,Ancient greek
+43,The Red and the Black,Stendhal,1830,French,French
+134,Confessions of Zeno,Italo Svevo,1923,Italian,Italian
+65,Gulliver's Travels,Jonathan Swift,1726,British,English
+12,War and Peace,Leo Tolstoy,1869,Russian,Russian
+10,Anna Karenina,Leo Tolstoy,1877,Russian,Russian
+373,The Death of Ivan Ilyich,Leo Tolstoy,1886,Russian,Russian
+22,Adventures of Huckleberry Finn,Mark Twain,1884,American,English
+409,Ramayana,Valmiki,-200,Indian,Sanskrit
+73,The Aeneid,Virgil,-19,Roman,Latin
+85,Leaves of Grass,Walt Whitman,1855,American,English
+32,Mrs. Dalloway,Virginia Woolf,1925,British,English
+25,To the Lighthouse,Virginia Woolf,1927,British,English
+136,Memoirs of Hadrian,Marguerite Yourcenar,1951,French,French
+49,Journey to the End of The Night,Louis-Ferdinand Céline,1932,French,French
+139,Molloy,Samuel Beckett,1951,Irish,French
+264,Malone Dies,Samuel Beckett,1951,Irish,French
+315,The Unnamable,Samuel Beckett,1953,Irish,French
+128,The Stories of Anton Chekhov,Anton Chekhov,1900,Russian,Russian
+54,The Life And Opinions Of Tristram Shandy,Laurence Sterne,1759,British,English
+48,One Thousand and One Nights,Unknown,800,Multiple,Arabic
+847,Call to Arms,Lu Xun,1922,Chinese,Chinese
+171,Love in the Time of Cholera,Gabriel García Márquez,1985,Colombian,Spanish

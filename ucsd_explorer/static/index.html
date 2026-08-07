@@ -44,12 +44,23 @@
               </select>
             </label>
             <label class="field slider-field">
+              <span>Curator deweight <em id="curator-deweight-val">0</em>
+                <span class="hint" id="curator-deweight-readout"></span>
+              </span>
+              <input type="range" id="curator-deweight" min="0" max="100" step="1" value="0" />
+            </label>
+            <p class="hint" id="curator-deweight-hint">
+              How strongly stored curator scores matter. 0 = equal votes (ignore mint
+              weights). Higher → emphasize high curator weights (w^expo). Preferred over
+              equal-votes mode; that mode is a secondary flat alternative.
+            </p>
+            <label class="field slider-field">
               <span>Curator strictness <em id="curator-strictness-val">0</em></span>
               <input type="range" id="curator-strictness" min="0" max="100" step="1" value="0" />
             </label>
             <p class="hint" id="curator-strictness-hint">
-              0 = off (all qualifying curators). 100 ≈ top 100 by curator weight
-              (log-linear shrink). This is who votes — not a book-level penalty.
+              0 = off (all users who can score). 100 ≈ top 100 by curator weight
+              (log-linear shrink). This is who votes — separate from how hard weights pull.
             </p>
             <div id="normie-strictness-wrap" hidden>
               <label class="field slider-field">
@@ -60,7 +71,7 @@
               </label>
               <p class="hint">
                 How many non-normie lit-poll books a curator must have rated ★≥4
-                (plus a mild rare-poll floor). 0 = off.
+                (plus a mild rare-poll floor). Continuous from 0; separate from purity.
               </p>
               <label class="field slider-field">
                 <span>Normie purity <em id="normie-purity-val">0</em>
@@ -70,8 +81,8 @@
               </label>
               <p class="hint" id="normie-strictness-hint">
                 Share of ★≥4 hits on (deep-poll ∪ school-canon) that are non-normie.
-                Also tightens the commercial anti-signal cap (com_share).
-                0 = off. Never a book-level penalty.
+                Continuous from 0 (no jump). When &gt;0 also enables a query-time
+                commercial anti-signal cap (com_share). Never a book-level penalty.
               </p>
             </div>
             <div id="coverage-wrap" class="taste-controls" hidden>

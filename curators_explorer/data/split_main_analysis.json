@@ -1,0 +1,2514 @@
+{
+ "baseline_20k_frac_ge3": 0.2916667,
+ "by_method": {
+  "random": {
+   "literary": {
+    "n": 52,
+    "frac_exact_ge3": 0.36538461538461536,
+    "frac_exact_ge1": 0.5,
+    "mean_exact": 1.75,
+    "max_exact": 6,
+    "mean_cos_pole": 0.0423193057959855,
+    "enrichment_vs_baseline": 1.2527471095761544
+   },
+   "control": {
+    "n": 27,
+    "frac_exact_ge3": 0.48148148148148145,
+    "frac_exact_ge1": 0.5185185185185185,
+    "mean_exact": 1.8888888888888888,
+    "max_exact": 5,
+    "mean_cos_pole": 0.05610759690475185,
+    "enrichment_vs_baseline": 1.6507934621315408
+   }
+  },
+  "mode2": {
+   "literary": {
+    "n": 24,
+    "frac_exact_ge3": 0.041666666666666664,
+    "frac_exact_ge1": 0.4166666666666667,
+    "mean_exact": 0.625,
+    "max_exact": 3,
+    "mean_cos_pole": 0.18296615527449855,
+    "enrichment_vs_baseline": 0.1428571265306141
+   },
+   "control": {
+    "n": 12,
+    "frac_exact_ge3": 0.08333333333333333,
+    "frac_exact_ge1": 0.3333333333333333,
+    "mean_exact": 0.75,
+    "max_exact": 4,
+    "mean_cos_pole": 0.1805331057325936,
+    "enrichment_vs_baseline": 0.2857142530612282
+   }
+  },
+  "mode2q3": {
+   "literary": {
+    "n": 36,
+    "frac_exact_ge3": 0.0,
+    "frac_exact_ge1": 0.0,
+    "mean_exact": 0.0,
+    "max_exact": 0,
+    "mean_cos_pole": 0.0994324304788969,
+    "enrichment_vs_baseline": 0.0
+   },
+   "control": {
+    "n": 18,
+    "frac_exact_ge3": 0.0,
+    "frac_exact_ge1": 0.0,
+    "mean_exact": 0.0,
+    "max_exact": 0,
+    "mean_cos_pole": 0.10146678812244374,
+    "enrichment_vs_baseline": 0.0
+   }
+  },
+  "affinity": {
+   "literary": {
+    "n": 24,
+    "frac_exact_ge3": 0.0,
+    "frac_exact_ge1": 0.375,
+    "mean_exact": 0.375,
+    "max_exact": 1,
+    "mean_cos_pole": 0.04317405027378918,
+    "enrichment_vs_baseline": 0.0
+   },
+   "control": {
+    "n": 12,
+    "frac_exact_ge3": 0.0,
+    "frac_exact_ge1": 0.25,
+    "mean_exact": 0.4166666666666667,
+    "max_exact": 2,
+    "mean_cos_pole": 0.063885820370309,
+    "enrichment_vs_baseline": 0.0
+   }
+  }
+ },
+ "reveal_controls": [
+  {
+   "parent_idx": 718,
+   "parent_head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 6,
+   "cos_pole": 0.021,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "The Complete Sherlock Holmes",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Ficciones",
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "A Storm of Swords (A Song of Ice and Fire, #3)"
+   ]
+  },
+  {
+   "parent_idx": 718,
+   "parent_head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+   ],
+   "method": "random",
+   "exact": 5,
+   "anti": 5,
+   "cos_pole": 0.018,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Ficciones",
+    "The Complete Sherlock Holmes"
+   ]
+  },
+  {
+   "parent_idx": 527,
+   "parent_head": [
+    "Shadowfever (Fever, #5)",
+    "Magic Bleeds (Kate Daniels, #4)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Magic Strikes (Kate Daniels, #3)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 8,
+   "cos_pole": 0.001,
+   "head": [
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Sherlock Holmes",
+    "The Aleph and Other Stories",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+   ]
+  },
+  {
+   "parent_idx": 527,
+   "parent_head": [
+    "Shadowfever (Fever, #5)",
+    "Magic Bleeds (Kate Daniels, #4)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Magic Strikes (Kate Daniels, #3)"
+   ],
+   "method": "random",
+   "exact": 4,
+   "anti": 5,
+   "cos_pole": 0.018,
+   "head": [
+    "Saga, Vol. 2 (Saga, #2)",
+    "The Complete Sherlock Holmes",
+    "The Complete Maus (Maus, #1-2)",
+    "Ficciones",
+    "The Brothers Karamazov",
+    "A Storm of Swords (A Song of Ice and Fire, #3)"
+   ]
+  },
+  {
+   "parent_idx": 590,
+   "parent_head": [
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Armed & Dangerous (Cut & Run, #5)",
+    "Harry Potter Boxset (Harry Potter, #1-7)"
+   ],
+   "method": "random",
+   "exact": 5,
+   "anti": 8,
+   "cos_pole": 0.011,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Labyrinths:  Selected Stories and Other Writings",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes",
+    "Harry Potter Boxset (Harry Potter, #1-7)"
+   ]
+  },
+  {
+   "parent_idx": 706,
+   "parent_head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 5,
+   "cos_pole": -0.002,
+   "head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "The Complete Sherlock Holmes",
+    "The Return of the King (The Lord of the Rings, #3)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes"
+   ]
+  },
+  {
+   "parent_idx": 706,
+   "parent_head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 5,
+   "cos_pole": 0.018,
+   "head": [
+    "Ficciones",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "A Storm of Swords (A Song of Ice and Fire, #3)"
+   ]
+  },
+  {
+   "parent_idx": 706,
+   "parent_head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+   ],
+   "method": "random",
+   "exact": 5,
+   "anti": 6,
+   "cos_pole": 0.026,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Sherlock Holmes",
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "The Story of a New Name (The Neapolitan Novels #2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+   ]
+  },
+  {
+   "parent_idx": 571,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Wake (The Sandman #10)"
+   ],
+   "method": "random",
+   "exact": 4,
+   "anti": 7,
+   "cos_pole": -0.005,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "The Complete Persepolis",
+    "Ficciones",
+    "Labyrinths:  Selected Stories and Other Writings"
+   ]
+  },
+  {
+   "parent_idx": 571,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Wake (The Sandman #10)"
+   ],
+   "method": "random",
+   "exact": 2,
+   "anti": 6,
+   "cos_pole": -0.017,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "Season of Mists (The Sandman #4)",
+    "Calvin and Hobbes",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "parent_idx": 623,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes",
+    "Season of Mists (The Sandman #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 9,
+   "cos_pole": -0.001,
+   "head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+    "Between the World and Me",
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "Saga, Vol. 2 (Saga, #2)"
+   ]
+  },
+  {
+   "parent_idx": 623,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes",
+    "Season of Mists (The Sandman #4)"
+   ],
+   "method": "random",
+   "exact": 5,
+   "anti": 3,
+   "cos_pole": 0.017,
+   "head": [
+    "The Complete Persepolis",
+    "The Complete Sherlock Holmes",
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+    "The Brothers Karamazov"
+   ]
+  },
+  {
+   "parent_idx": 623,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes",
+    "Season of Mists (The Sandman #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 7,
+   "cos_pole": 0.024,
+   "head": [
+    "The Complete Maus (Maus, #1-2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "The Complete Sherlock Holmes",
+    "The Brothers Karamazov",
+    "Ficciones",
+    "Words of Radiance (The Stormlight Archive, #2)"
+   ]
+  },
+  {
+   "parent_idx": 623,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "Calvin and Hobbes",
+    "Season of Mists (The Sandman #4)"
+   ],
+   "method": "random",
+   "exact": 3,
+   "anti": 5,
+   "cos_pole": 0.022,
+   "head": [
+    "The Complete Sherlock Holmes",
+    "The Complete Maus (Maus, #1-2)",
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+    "Ficciones",
+    "Calvin and Hobbes"
+   ]
+  },
+  {
+   "parent_idx": 527,
+   "parent_head": [
+    "Shadowfever (Fever, #5)",
+    "Magic Bleeds (Kate Daniels, #4)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Magic Strikes (Kate Daniels, #3)"
+   ],
+   "method": "mode2",
+   "exact": 2,
+   "anti": 10,
+   "cos_pole": 0.34,
+   "head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Calvin and Hobbes",
+    "The Way of Kings (The Stormlight Archive, #1)",
+    "Between the World and Me",
+    "The Complete Calvin and Hobbes",
+    "The Complete Maus (Maus, #1-2)"
+   ]
+  },
+  {
+   "parent_idx": 590,
+   "parent_head": [
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Armed & Dangerous (Cut & Run, #5)",
+    "Harry Potter Boxset (Harry Potter, #1-7)"
+   ],
+   "method": "mode2",
+   "exact": 2,
+   "anti": 12,
+   "cos_pole": 0.364,
+   "head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Wake (The Sandman #10)",
+    "Calvin and Hobbes",
+    "Between the World and Me",
+    "The Way of Kings (The Stormlight Archive, #1)",
+    "The Complete Calvin and Hobbes"
+   ]
+  },
+  {
+   "parent_idx": 571,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Wake (The Sandman #10)"
+   ],
+   "method": "mode2",
+   "exact": 4,
+   "anti": 11,
+   "cos_pole": 0.307,
+   "head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "Calvin and Hobbes",
+    "The Kindly Ones (The Sandman #9)",
+    "The Complete Calvin and Hobbes",
+    "Ficciones"
+   ]
+  },
+  {
+   "parent_idx": 571,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Wake (The Sandman #10)"
+   ],
+   "method": "mode2",
+   "exact": 1,
+   "anti": 23,
+   "cos_pole": 0.109,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter Boxset (Harry Potter, #1-7)"
+   ]
+  },
+  {
+   "parent_idx": 527,
+   "parent_head": [
+    "Shadowfever (Fever, #5)",
+    "Magic Bleeds (Kate Daniels, #4)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Magic Strikes (Kate Daniels, #3)"
+   ],
+   "method": "affinity",
+   "exact": 2,
+   "anti": 20,
+   "cos_pole": -0.06,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter Boxset (Harry Potter, #1-7)",
+    "A Storm of Swords (A Song of Ice and Fire, #3)"
+   ]
+  },
+  {
+   "parent_idx": 590,
+   "parent_head": [
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Armed & Dangerous (Cut & Run, #5)",
+    "Harry Potter Boxset (Harry Potter, #1-7)"
+   ],
+   "method": "affinity",
+   "exact": 1,
+   "anti": 20,
+   "cos_pole": -0.01,
+   "head": [
+    "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "A Storm of Swords (A Song of Ice and Fire, #3)",
+    "The Return of the King (The Lord of the Rings, #3)"
+   ]
+  },
+  {
+   "parent_idx": 571,
+   "parent_head": [
+    "Words of Radiance (The Stormlight Archive, #2)",
+    "Saga, Vol. 2 (Saga, #2)",
+    "Saga, Vol. 3 (Saga, #3)",
+    "The Wake (The Sandman #10)"
+   ],
+   "method": "affinity",
+   "exact": 2,
+   "anti": 17,
+   "cos_pole": -0.08,
+   "head": [
+    "Totto-chan: The Little Girl at the Window",
+    "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+    "The Complete Maus (Maus, #1-2)",
+    "The Day of the Jackal",
+    "The Complete Sherlock Holmes",
+    "The Last Olympian (Percy Jackson and the Olympians, #5)"
+   ]
+  }
+ ],
+ "purity_by_parent_method": [
+  {
+   "parent_idx": 480,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    4,
+    0,
+    5,
+    0
+   ],
+   "subgroup_anti": [
+    7,
+    43,
+    9,
+    47
+   ],
+   "cos_parent": [
+    0.267,
+    0.002,
+    0.088,
+    0.146
+   ],
+   "heads": [
+    [
+     "Ficciones",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Calvin and Hobbes",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "The Return of the King (The Lord of the Rings, #3)"
+    ],
+    [
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Winter (The Lunar Chronicles, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "The Complete Maus (Maus, #1-2)",
+     "The Complete Sherlock Holmes",
+     "Words of Radiance (The Stormlight Archive, #2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Crooked Kingdom (Six of Crows, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 480,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    1
+   ],
+   "subgroup_anti": [
+    11,
+    25
+   ],
+   "cos_parent": [
+    0.025,
+    0.223
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Calvin and Hobbes",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "Skin Game (The Dresden Files, #15)"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 480,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    22,
+    39,
+    23
+   ],
+   "cos_parent": [
+    0.102,
+    0.211,
+    -0.007
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Magic Bleeds (Kate Daniels, #4)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)"
+    ],
+    [
+     "The Nightingale",
+     "The Hate U Give",
+     "Edenbrooke (Edenbrooke, #1)",
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "Winter (The Lunar Chronicles, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 480,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    33,
+    29
+   ],
+   "cos_parent": [
+    0.032,
+    0.1
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Cold Days (The Dresden Files, #14)",
+     "Skin Game (The Dresden Files, #15)",
+     "The Final Empire (Mistborn, #1)",
+     "The Way of Kings (The Stormlight Archive, #1)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 485,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    4,
+    2,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    8,
+    4,
+    45,
+    47
+   ],
+   "cos_parent": [
+    0.121,
+    0.268,
+    -0.014,
+    0.173
+   ],
+   "heads": [
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Calvin and Hobbes",
+     "A Storm of Swords (A Song of Ice and Fire, #3)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+     "The Complete Sherlock Holmes",
+     "Words of Radiance (The Stormlight Archive, #2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Crooked Kingdom (Six of Crows, #2)",
+     "Cress (The Lunar Chronicles, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Cress (The Lunar Chronicles, #3)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 485,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    2
+   ],
+   "subgroup_anti": [
+    24,
+    12
+   ],
+   "cos_parent": [
+    0.216,
+    0.066
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Kindly Ones (The Sandman #9)",
+     "Season of Mists (The Sandman #4)",
+     "Skin Game (The Dresden Files, #15)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 485,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    23,
+    36,
+    23
+   ],
+   "cos_parent": [
+    0.013,
+    0.215,
+    0.17
+   ],
+   "heads": [
+    [
+     "Saga, Vol. 2 (Saga, #2)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Daughter of the Forest  (Sevenwaters, #1)",
+     "The Hate U Give"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "The Nightingale",
+     "Shadowfever (Fever, #5)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 485,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    32,
+    31
+   ],
+   "cos_parent": [
+    0.034,
+    0.052
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Small Favor (The Dresden Files, #10)",
+     "Skin Game (The Dresden Files, #15)",
+     "The Gathering Storm (Wheel of Time, #12)",
+     "A Memory of Light (Wheel of Time, #14)",
+     "Words of Radiance (The Stormlight Archive, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 529,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    4,
+    0,
+    0,
+    3
+   ],
+   "subgroup_anti": [
+    9,
+    40,
+    49,
+    9
+   ],
+   "cos_parent": [
+    0.236,
+    0.062,
+    0.202,
+    0.262
+   ],
+   "heads": [
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Ficciones",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+     "The Way of Kings (The Stormlight Archive, #1)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Cress (The Lunar Chronicles, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Crooked Kingdom (Six of Crows, #2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Crown of Midnight (Throne of Glass, #2)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Saga, Vol. 2 (Saga, #2)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "The Aleph and Other Stories"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 529,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    2,
+    1
+   ],
+   "subgroup_anti": [
+    14,
+    25
+   ],
+   "cos_parent": [
+    0.048,
+    0.221
+   ],
+   "heads": [
+    [
+     "Calvin and Hobbes",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Ficciones",
+     "The Complete Calvin and Hobbes",
+     "The Way of Kings (The Stormlight Archive, #1)"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 529,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    37,
+    24
+   ],
+   "cos_parent": [
+    0.16,
+    0.262,
+    -0.004
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Shadowfever (Fever, #5)"
+    ],
+    [
+     "The Hate U Give",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "The Book of Mormon: Another Testament of Jesus Christ",
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "Shadowfever (Fever, #5)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 529,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    34,
+    20
+   ],
+   "cos_parent": [
+    0.065,
+    0.033
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Changes (The Dresden Files, #12)",
+     "The Way of Kings (The Stormlight Archive, #1)",
+     "Turn Coat (The Dresden Files, #11)",
+     "Skin Game (The Dresden Files, #15)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 545,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    6,
+    0,
+    3,
+    2
+   ],
+   "subgroup_anti": [
+    4,
+    47,
+    6,
+    6
+   ],
+   "cos_parent": [
+    0.427,
+    -0.055,
+    0.453,
+    0.333
+   ],
+   "heads": [
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Stoner",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Sherlock Holmes"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Crooked Kingdom (Six of Crows, #2)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "Collected Fictions"
+    ],
+    [
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Sherlock Holmes",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 545,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    2
+   ],
+   "subgroup_anti": [
+    25,
+    12
+   ],
+   "cos_parent": [
+    -0.046,
+    0.045
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Calvin and Hobbes",
+     "The Wake (The Sandman #10)",
+     "Ficciones",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 545,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    26,
+    40,
+    23
+   ],
+   "cos_parent": [
+    -0.007,
+    -0.049,
+    0.117
+   ],
+   "heads": [
+    [
+     "Crooked Kingdom (Six of Crows, #2)",
+     "Redeeming Love",
+     "The Hero of Ages (Mistborn, #3)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Winter (The Lunar Chronicles, #4)"
+    ],
+    [
+     "Magic Rises (Kate Daniels, #6)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "Magic Bleeds (Kate Daniels, #4)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Shadowfever (Fever, #5)"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 545,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    24,
+    36
+   ],
+   "cos_parent": [
+    -0.039,
+    0.083
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "White Night (The Dresden Files, #9)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Cold Days (The Dresden Files, #14)",
+     "Small Favor (The Dresden Files, #10)",
+     "Changes (The Dresden Files, #12)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 558,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    4,
+    0,
+    4,
+    0
+   ],
+   "subgroup_anti": [
+    7,
+    36,
+    9,
+    48
+   ],
+   "cos_parent": [
+    0.373,
+    -0.002,
+    0.443,
+    0.012
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Maus (Maus, #1-2)",
+     "Labyrinths:  Selected Stories and Other Writings",
+     "The Complete Sherlock Holmes",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Saga, Vol. 3 (Saga, #3)",
+     "Calvin and Hobbes",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Lady Midnight (The Dark Artifices, #1)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 558,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    1
+   ],
+   "subgroup_anti": [
+    29,
+    12
+   ],
+   "cos_parent": [
+    -0.017,
+    -0.012
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "Calvin and Hobbes",
+     "The Brothers Karamazov",
+     "The Doll's House (The Sandman #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 558,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    24,
+    38,
+    28
+   ],
+   "cos_parent": [
+    -0.024,
+    -0.018,
+    0.186
+   ],
+   "heads": [
+    [
+     "The Hate U Give",
+     "It Ends with Us",
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "Saga, Vol. 3 (Saga, #3)",
+     "The Book of Mormon: Another Testament of Jesus Christ"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "The Return of the King (The Lord of the Rings, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Shadowfever (Fever, #5)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 558,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    1
+   ],
+   "subgroup_anti": [
+    27,
+    31
+   ],
+   "cos_parent": [
+    -0.001,
+    0.252
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Proven Guilty (The Dresden Files, #8)",
+     "Dead Beat (The Dresden Files, #7)",
+     "Turn Coat (The Dresden Files, #11)",
+     "Blood Rites (The Dresden Files, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 561,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    0,
+    5,
+    0,
+    5
+   ],
+   "subgroup_anti": [
+    48,
+    7,
+    47,
+    9
+   ],
+   "cos_parent": [
+    0.185,
+    0.213,
+    0.171,
+    0.079
+   ],
+   "heads": [
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Crown of Midnight (Throne of Glass, #2)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "Calvin and Hobbes"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Crown of Midnight (Throne of Glass, #2)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Empire of Storms (Throne of Glass, #5)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Saga, Vol. 2 (Saga, #2)",
+     "Between the World and Me"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 561,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    1
+   ],
+   "subgroup_anti": [
+    25,
+    15
+   ],
+   "cos_parent": [
+    0.193,
+    0.06
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "Calvin and Hobbes",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "The Complete Calvin and Hobbes",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 561,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    41,
+    21
+   ],
+   "cos_parent": [
+    -0.017,
+    0.22,
+    0.159
+   ],
+   "heads": [
+    [
+     "The Nightingale",
+     "Golden Son (Red Rising, #2)",
+     "The Hate U Give",
+     "Morning Star (Red Rising, #3)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)"
+    ],
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Magic Rises (Kate Daniels, #6)",
+     "Shadowfever (Fever, #5)",
+     "The House of Hades (The Heroes of Olympus, #4)"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 561,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    31,
+    23
+   ],
+   "cos_parent": [
+    0.044,
+    0.051
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Way of Kings (The Stormlight Archive, #1)",
+     "Changes (The Dresden Files, #12)",
+     "Cold Days (The Dresden Files, #14)",
+     "The Bonehunters (Malazan Book of the Fallen, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 564,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    3,
+    4,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    6,
+    6,
+    48,
+    45
+   ],
+   "cos_parent": [
+    0.01,
+    0.188,
+    -0.004,
+    0.163
+   ],
+   "heads": [
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+     "The Complete Maus (Maus, #1-2)",
+     "Ficciones",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "The Return of the King (The Lord of the Rings, #3)",
+     "The Complete Calvin and Hobbes"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "The Last Olympian (Percy Jackson and the Olympians, #5)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 564,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    3,
+    0
+   ],
+   "subgroup_anti": [
+    12,
+    28
+   ],
+   "cos_parent": [
+    0.066,
+    0.216
+   ],
+   "heads": [
+    [
+     "The Way of Kings (The Stormlight Archive, #1)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Calvin and Hobbes",
+     "Brief Lives (The Sandman #7)",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ],
+    [
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 564,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    22,
+    38,
+    24
+   ],
+   "cos_parent": [
+    0.071,
+    0.204,
+    0.008
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "The Nightingale",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Last Sacrifice (Vampire Academy, #6)"
+    ],
+    [
+     "The Hate U Give",
+     "Edenbrooke (Edenbrooke, #1)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Book of Mormon, Doctrine and Covenants, Pearl of Great Price",
+     "Winter (The Lunar Chronicles, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 564,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    27,
+    22
+   ],
+   "cos_parent": [
+    0.042,
+    0.012
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Changes (The Dresden Files, #12)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Turn Coat (The Dresden Files, #11)",
+     "Skin Game (The Dresden Files, #15)",
+     "Summer Knight (The Dresden Files, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 567,
+   "method": "random",
+   "n_groups": 4,
+   "subgroup_exact": [
+    5,
+    4,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    8,
+    8,
+    43,
+    46
+   ],
+   "cos_parent": [
+    0.152,
+    0.335,
+    -0.022,
+    0.123
+   ],
+   "heads": [
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Between the World and Me",
+     "A Storm of Swords (A Song of Ice and Fire, #3)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Ficciones",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "The Complete Persepolis",
+     "Words of Radiance (The Stormlight Archive, #2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Clockwork Princess (The Infernal Devices, #3)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "The Last Olympian (Percy Jackson and the Olympians, #5)",
+     "Winter (The Lunar Chronicles, #4)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 567,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    9,
+    27
+   ],
+   "cos_parent": [
+    0.067,
+    0.161
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Way of Kings (The Stormlight Archive, #1)",
+     "Between the World and Me",
+     "The Complete Calvin and Hobbes",
+     "Calvin and Hobbes"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 567,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    21,
+    41,
+    23
+   ],
+   "cos_parent": [
+    0.11,
+    0.173,
+    0.028
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Magic Bleeds (Kate Daniels, #4)",
+     "Shadowfever (Fever, #5)",
+     "Magic Slays (Kate Daniels, #5)",
+     "Magic Rises (Kate Daniels, #6)"
+    ],
+    [
+     "The Hate U Give",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "The Book of Mormon: Another Testament of Jesus Christ",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "An Echo in the Darkness (Mark of the Lion, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 567,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    29,
+    28
+   ],
+   "cos_parent": [
+    0.01,
+    0.113
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Small Favor (The Dresden Files, #10)",
+     "White Night (The Dresden Files, #9)",
+     "Dead Beat (The Dresden Files, #7)",
+     "Changes (The Dresden Files, #12)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 649,
+   "method": "random",
+   "n_groups": 5,
+   "subgroup_exact": [
+    2,
+    0,
+    0,
+    3,
+    0
+   ],
+   "subgroup_anti": [
+    8,
+    49,
+    46,
+    6,
+    48
+   ],
+   "cos_parent": [
+    0.135,
+    -0.01,
+    0.124,
+    0.156,
+    0.129
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Maus (Maus, #1-2)",
+     "Between the World and Me",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "The Complete Sherlock Holmes"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Crooked Kingdom (Six of Crows, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Winter (The Lunar Chronicles, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "Shadowfever (Fever, #5)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Magic Rises (Kate Daniels, #6)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Magic Bleeds (Kate Daniels, #4)"
+    ],
+    [
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Saga, Vol. 3 (Saga, #3)",
+     "The Brothers Karamazov",
+     "A Storm of Swords (A Song of Ice and Fire, #3)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Crown of Midnight (Throne of Glass, #2)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 649,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    26
+   ],
+   "cos_parent": [
+    0.155,
+    0.007
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ],
+    [
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "The Hate U Give",
+     "Ender's Shadow (Ender's Shadow, #1)",
+     "Redeeming Love",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 649,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    28,
+    41,
+    23
+   ],
+   "cos_parent": [
+    0.023,
+    0.161,
+    0.128
+   ],
+   "heads": [
+    [
+     "The Hate U Give",
+     "Saga, Vol. 2 (Saga, #2)",
+     "Saga, Vol. 3 (Saga, #3)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "The Book of Mormon: Another Testament of Jesus Christ"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Magic Slays (Kate Daniels, #5)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Dreamfever (Fever, #4)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 649,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    38,
+    9
+   ],
+   "cos_parent": [
+    0.003,
+    -0.039
+   ],
+   "heads": [
+    [
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ],
+    [
+     "Changes (The Dresden Files, #12)",
+     "Turn Coat (The Dresden Files, #11)",
+     "The Walking Dead, Vol. 04: The Heart's Desire",
+     "The Walking Dead, Vol. 05: The Best Defense",
+     "The Walking Dead, Vol. 02: Miles Behind Us"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 653,
+   "method": "random",
+   "n_groups": 5,
+   "subgroup_exact": [
+    1,
+    0,
+    4,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    8,
+    46,
+    5,
+    47,
+    8
+   ],
+   "cos_parent": [
+    0.13,
+    0.006,
+    -0.104,
+    -0.003,
+    0.043
+   ],
+   "heads": [
+    [
+     "Born a Crime: Stories From a South African Childhood",
+     "The Hiding Place: The Triumphant True Story of Corrie Ten Boom",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Just Mercy: A Story of Justice and Redemption",
+     "Being Mortal: Medicine and What Matters in the End"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Six of Crows (Six of Crows, #1)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Complete Sherlock Holmes",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Magic Bleeds (Kate Daniels, #4)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Shadowfever (Fever, #5)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Calvin and Hobbes",
+     "Saga, Vol. 1 (Saga, #1)",
+     "The Return of the King (The Lord of the Rings, #3)",
+     "The Complete Maus (Maus, #1-2)",
+     "A Storm of Swords (A Song of Ice and Fire, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 653,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    30
+   ],
+   "cos_parent": [
+    0.026,
+    -0.0
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "The Hate U Give",
+     "Born a Crime: Stories From a South African Childhood"
+    ],
+    [
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 653,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    42,
+    27
+   ],
+   "cos_parent": [
+    0.128,
+    0.003,
+    0.033
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Magic Rises (Kate Daniels, #6)",
+     "Magic Bleeds (Kate Daniels, #4)",
+     "Shadowfever (Fever, #5)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Saga, Vol. 2 (Saga, #2)",
+     "Saga, Vol. 3 (Saga, #3)",
+     "Queen of Shadows (Throne of Glass, #4)",
+     "Crooked Kingdom (Six of Crows, #2)",
+     "The Hate U Give"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 653,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    1,
+    0
+   ],
+   "subgroup_anti": [
+    35,
+    30
+   ],
+   "cos_parent": [
+    0.022,
+    -0.002
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Small Favor (The Dresden Files, #10)",
+     "Turn Coat (The Dresden Files, #11)",
+     "White Night (The Dresden Files, #9)",
+     "Summer Knight (The Dresden Files, #4)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 703,
+   "method": "random",
+   "n_groups": 5,
+   "subgroup_exact": [
+    2,
+    0,
+    2,
+    0,
+    4
+   ],
+   "subgroup_anti": [
+    5,
+    44,
+    5,
+    47,
+    5
+   ],
+   "cos_parent": [
+    0.265,
+    0.142,
+    0.098,
+    0.142,
+    0.264
+   ],
+   "heads": [
+    [
+     "The Complete Sherlock Holmes",
+     "Calvin and Hobbes",
+     "Ficciones",
+     "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "The Complete Maus (Maus, #1-2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Crooked Kingdom (Six of Crows, #2)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "The Complete Sherlock Holmes",
+     "Between the World and Me",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Calvin and Hobbes"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Cress (The Lunar Chronicles, #3)",
+     "Crooked Kingdom (Six of Crows, #2)"
+    ],
+    [
+     "The Complete Maus (Maus, #1-2)",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+     "The Complete Sherlock Holmes",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "The Brothers Karamazov"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 703,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    29,
+    23
+   ],
+   "cos_parent": [
+    -0.012,
+    0.184
+   ],
+   "heads": [
+    [
+     "The Nightingale",
+     "A Voice in the Wind (Mark of the Lion, #1)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "The Hate U Give",
+     "Origin (Lux, #4)"
+    ],
+    [
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 703,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    26,
+    40,
+    26
+   ],
+   "cos_parent": [
+    0.165,
+    0.182,
+    0.013
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)"
+    ],
+    [
+     "Magic Bleeds (Kate Daniels, #4)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Shadowfever (Fever, #5)",
+     "Magic Rises (Kate Daniels, #6)",
+     "Magic Breaks (Kate Daniels, #7)"
+    ],
+    [
+     "Saga, Vol. 3 (Saga, #3)",
+     "The Hate U Give",
+     "Crown of Midnight (Throne of Glass, #2)",
+     "The One and Only Ivan",
+     "Saga, Vol. 6 (Saga, #6)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 703,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    41,
+    7
+   ],
+   "cos_parent": [
+    0.032,
+    -0.026
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ],
+    [
+     "Saga, Vol. 3 (Saga, #3)",
+     "Saga, Vol. 2 (Saga, #2)",
+     "Locke & Key, Vol. 6: Alpha & Omega",
+     "Locke & Key, Vol. 5: Clockworks",
+     "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 713,
+   "method": "random",
+   "n_groups": 5,
+   "subgroup_exact": [
+    0,
+    0,
+    1,
+    5,
+    0
+   ],
+   "subgroup_anti": [
+    45,
+    42,
+    7,
+    6,
+    46
+   ],
+   "cos_parent": [
+    0.154,
+    0.029,
+    -0.125,
+    0.09,
+    0.145
+   ],
+   "heads": [
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter Boxset (Harry Potter, #1-7)"
+    ],
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Between the World and Me",
+     "The Way of Kings (The Stormlight Archive, #1)",
+     "Calvin and Hobbes",
+     "The Story of the Lost Child (The Neapolitan Novels, #4)"
+    ],
+    [
+     "Ficciones",
+     "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+     "The Complete Maus (Maus, #1-2)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Crooked Kingdom (Six of Crows, #2)",
+     "Crown of Midnight (Throne of Glass, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 713,
+   "method": "mode2",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    42,
+    23
+   ],
+   "cos_parent": [
+    -0.031,
+    0.192
+   ],
+   "heads": [
+    [
+     "Words of Radiance (The Stormlight Archive, #2)",
+     "Magic Strikes (Kate Daniels, #3)",
+     "Shadowfever (Fever, #5)",
+     "Magic Bleeds (Kate Daniels, #4)",
+     "Queen of Shadows (Throne of Glass, #4)"
+    ],
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 713,
+   "method": "mode2q3",
+   "n_groups": 3,
+   "subgroup_exact": [
+    0,
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    25,
+    40,
+    23
+   ],
+   "cos_parent": [
+    0.141,
+    0.159,
+    0.023
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)"
+    ],
+    [
+     "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "Magic Rises (Kate Daniels, #6)",
+     "Shadowfever (Fever, #5)",
+     "Magic Slays (Kate Daniels, #5)",
+     "Magic Bleeds (Kate Daniels, #4)"
+    ],
+    [
+     "The Hate U Give",
+     "Winter (The Lunar Chronicles, #4)",
+     "The One and Only Ivan",
+     "Clockwork Princess (The Infernal Devices, #3)",
+     "Saga, Vol. 2 (Saga, #2)"
+    ]
+   ]
+  },
+  {
+   "parent_idx": 713,
+   "method": "affinity",
+   "n_groups": 2,
+   "subgroup_exact": [
+    0,
+    0
+   ],
+   "subgroup_anti": [
+    33,
+    2
+   ],
+   "cos_parent": [
+    0.037,
+    -0.037
+   ],
+   "heads": [
+    [
+     "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "Harry Potter Boxset (Harry Potter, #1-7)",
+     "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "Harry Potter and the Goblet of Fire (Harry Potter, #4)"
+    ],
+    [
+     "Locke & Key, Vol. 6: Alpha & Omega",
+     "Saga, Vol. 2 (Saga, #2)",
+     "Y: The Last Man, Vol. 7: Paper Dolls (Y: The Last Man, #7)",
+     "Locke & Key, Vol. 5: Clockworks",
+     "Saga, Vol. 4 (Saga, #4)"
+    ]
+   ]
+  }
+ ]
+}

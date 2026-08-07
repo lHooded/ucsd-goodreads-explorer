@@ -81,11 +81,23 @@ function syncCuratorStrictness() {
   const geomWrap = $("geom-score-wrap");
   if (geomWrap) geomWrap.hidden = !isGeom;
   const cs = intNum("curator-strictness", 0, { min: 0, max: 100 });
+  const cd = intNum("curator-deweight", 0, { min: 0, max: 100 });
   const nd = intNum("normie-depth", 0, { min: 0, max: 100 });
   const np = intNum("normie-purity", 0, { min: 0, max: 100 });
   const cov = intNum("coverage-weight", 100, { min: 0, max: 100 });
   const el = $("curator-strictness-val");
   if (el) el.textContent = cs === 0 ? "0 (off)" : String(cs);
+  const cdEl = $("curator-deweight-val");
+  if (cdEl) cdEl.textContent = cd === 0 ? "0 (equal)" : String(cd);
+  const cdRead = $("curator-deweight-readout");
+  if (cdRead) {
+    if (cd <= 0) {
+      cdRead.textContent = " · expo 0 (flat)";
+    } else {
+      const expo = (4.0 * cd) / 100;
+      cdRead.textContent = ` · expo ${expo.toFixed(2)}`;
+    }
+  }
   const ndEl = $("normie-depth-val");
   if (ndEl) ndEl.textContent = nd === 0 ? "0 (off)" : String(nd);
   const npEl = $("normie-purity-val");
@@ -104,7 +116,10 @@ function syncCuratorStrictness() {
       readout.textContent = " · no min depth";
     } else {
       const t = nd / 100;
-      const minDeep = Math.round(Math.exp(Math.log(2) + t * (Math.log(20) - Math.log(2))));
+      const minDeep = Math.max(
+        1,
+        Math.round(Math.exp(Math.log(1) + t * (Math.log(30) - Math.log(1))))
+      );
       readout.textContent = ` · ≥${minDeep} non-normie poll ★≥4`;
     }
   } else if (readout) {
@@ -113,10 +128,10 @@ function syncCuratorStrictness() {
   const pureOut = $("normie-purity-readout");
   if (pureOut && isDeep) {
     if (np <= 0) {
-      pureOut.textContent = " · no share floor";
+      pureOut.textContent = " · no share floor · com cap off";
     } else {
-      const share = 0.35 + (np / 100) * 0.45;
-      const comCap = 0.15 - (np / 100) * 0.07;
+      const share = (np / 100) * 0.8;
+      const comCap = 1.0 - (np / 100) * (1.0 - 0.08);
       pureOut.textContent = ` · deep_share ≥ ${share.toFixed(2)} · com ≤ ${comCap.toFixed(2)}`;
     }
   } else if (pureOut) {
@@ -142,8 +157,15 @@ function syncCuratorStrictness() {
   if (hint) {
     hint.textContent =
       mode === "gate"
-        ? "0 = off (everyone). 100 ≈ top 100 curators by weight. Deep methods still soft-penalize commercial anti-signal share. Log-linear shrink in between."
-        : "0 = off (everyone, full curator weights). 100 ≈ top 100 by weight (log-linear shrink). Mild within-elite deweight as you raise it.";
+        ? "0 = off (everyone who can score). 100 ≈ top 100 by weight. Equal votes among elites; commercial soft-penalize only when purity > 0."
+        : "0 = off (everyone who can score). 100 ≈ top 100 by weight (log-linear). Who votes only — use Curator deweight for weight emphasis.";
+  }
+  const dwHint = $("curator-deweight-hint");
+  if (dwHint) {
+    dwHint.textContent =
+      mode === "gate"
+        ? "Gate mode ignores this slider (equal votes). Switch to Weighted to use stored curator scores."
+        : "How strongly stored curator scores matter. 0 = equal votes (ignore mint weights). Higher → emphasize high curator weights (w^expo). Preferred over equal-votes mode.";
   }
 }
 
@@ -184,6 +206,7 @@ const PERSIST_IDS = [
   "bayesian-m",
   "curator-strictness",
   "curator-strictness-mode",
+  "curator-deweight",
   "normie-depth",
   "normie-purity",
   "geom-ratio",
@@ -442,6 +465,7 @@ function getParams() {
     bayesian_m: num("bayesian-m", 50),
     curator_strictness: intNum("curator-strictness", 0, { min: 0, max: 100 }),
     curator_strictness_mode: $("curator-strictness-mode")?.value || "deweight",
+    curator_deweight: intNum("curator-deweight", 0, { min: 0, max: 100 }),
     normie_depth: intNum("normie-depth", 0, { min: 0, max: 100 }),
     normie_purity: intNum("normie-purity", 0, { min: 0, max: 100 }),
     geom_ratio: intNum("geom-ratio", 20, { min: 10, max: 50 }) / 10,
@@ -527,8 +551,11 @@ async function rerank() {
   if (data.curator_strictness != null && String(params.method || "").startsWith("curator_")) {
     const mode = data.curator_strictness_mode || "deweight";
     summary += ` · curator ${mode} ${Math.round(data.curator_strictness)}`;
+    if (data.curator_deweight != null) {
+      summary += ` · deweight ${Math.round(data.curator_deweight)}`;
+    }
     if (mode === "deweight" && data.curator_deweight_exp != null) {
-      summary += ` (α=${Number(data.curator_deweight_exp).toFixed(2)})`;
+      summary += ` (expo=${Number(data.curator_deweight_exp).toFixed(2)})`;
     }
     if (data.normie_depth != null && String(params.method || "").startsWith("curator_deep_")) {
       summary += ` · depth ${Math.round(data.normie_depth)} · purity ${Math.round(data.normie_purity || 0)}`;
@@ -864,6 +891,13 @@ function wire() {
       scheduleRank();
     });
   }
+  const deweightEl = $("curator-deweight");
+  if (deweightEl) {
+    deweightEl.addEventListener("input", () => {
+      syncCuratorStrictness();
+      scheduleRank();
+    });
+  }
   const modeEl = $("curator-strictness-mode");
   if (modeEl) {
     modeEl.addEventListener("change", () => {
@@ -955,6 +989,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "35";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pure-pct-love") {
@@ -964,6 +999,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "30";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-deep-pct-love") {
@@ -973,6 +1009,7 @@ function wire() {
         $("bayesian-m").value = "30";
         $("curator-strictness").value = "0";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         if ($("normie-depth")) $("normie-depth").value = "40";
         if ($("normie-purity")) $("normie-purity").value = "55";
         $("taste-enabled").checked = false;
@@ -984,6 +1021,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "35";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-deep-pct-tilt") {
@@ -993,6 +1031,7 @@ function wire() {
         $("bayesian-m").value = "30";
         $("curator-strictness").value = "0";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         if ($("normie-depth")) $("normie-depth").value = "40";
         if ($("normie-purity")) $("normie-purity").value = "55";
         $("taste-enabled").checked = false;
@@ -1004,6 +1043,7 @@ function wire() {
         $("bayesian-m").value = "30";
         $("curator-strictness").value = "0";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         if ($("normie-depth")) $("normie-depth").value = "40";
         if ($("normie-purity")) $("normie-purity").value = "55";
         if ($("geom-ratio")) $("geom-ratio").value = "20";
@@ -1018,6 +1058,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "40";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pct-gap") {
@@ -1027,6 +1068,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "40";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pct-gem") {
@@ -1036,6 +1078,7 @@ function wire() {
         $("bayesian-m").value = "35";
         $("curator-strictness").value = "40";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pure-pct-gem") {
@@ -1045,6 +1088,7 @@ function wire() {
         $("bayesian-m").value = "35";
         $("curator-strictness").value = "30";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-pct-top") {
@@ -1054,6 +1098,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "35";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-five") {
@@ -1072,6 +1117,7 @@ function wire() {
         $("bayesian-m").value = "40";
         $("curator-strictness").value = "25";
         $("curator-strictness-mode").value = "deweight";
+        if ($("curator-deweight")) $("curator-deweight").value = "25";
         $("taste-enabled").checked = false;
         syncTasteLabels();
       } else if (p === "curator-gem") {

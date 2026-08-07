@@ -1,0 +1,3164 @@
+{
+  "slider_zero_diagnosis": {
+    "n_deep_mint": 19841,
+    "n_pct_curators": 133366,
+    "mint_stats": {
+      "avg_deep_share": 0.5729477422489058,
+      "p10_deep_share": 0.38867159790693284,
+      "avg_com_share": 0.04173591978650952,
+      "p90_com_share": 0.14536507812919935,
+      "avg_n_deep": 9.029131596189709,
+      "avg_n_normie": 7.898745022932312
+    },
+    "cohort_sizes": {
+      "mint_only_no_query_com": {
+        "n": 19841,
+        "note": "depth/purity only; NO query com_share cap",
+        "com_cap": null
+      },
+      "sliders_0_default_com": {
+        "n": 16605,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": false,
+          "min_deep": 0,
+          "min_deep_rare": 0
+        },
+        "purity_params": {
+          "enabled": false,
+          "min_deep_share": 0.0
+        }
+      },
+      "depth40_pur55": {
+        "n": 4722,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": true,
+          "min_deep": 5,
+          "min_deep_rare": 1
+        },
+        "purity_params": {
+          "enabled": true,
+          "min_deep_share": 0.5975
+        }
+      },
+      "depth40_pur0": {
+        "n": 12307,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": true,
+          "min_deep": 5,
+          "min_deep_rare": 1
+        },
+        "purity_params": {
+          "enabled": false,
+          "min_deep_share": 0.0
+        }
+      },
+      "depth0_pur55": {
+        "n": 6810,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": false,
+          "min_deep": 0,
+          "min_deep_rare": 0
+        },
+        "purity_params": {
+          "enabled": true,
+          "min_deep_share": 0.5975
+        }
+      },
+      "strict50_d40_p55": {
+        "n": 3803,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": true,
+          "min_deep": 5,
+          "min_deep_rare": 1
+        },
+        "purity_params": {
+          "enabled": true,
+          "min_deep_share": 0.5975
+        }
+      },
+      "strict100_d40_p55": {
+        "n": 2367,
+        "com_cap": 0.11149999999999999,
+        "depth_params": {
+          "enabled": true,
+          "min_deep": 5,
+          "min_deep_rare": 1
+        },
+        "purity_params": {
+          "enabled": true,
+          "min_deep_share": 0.5975
+        }
+      },
+      "all_pct_curators": {
+        "n": 133366
+      },
+      "deep_mint_table": {
+        "n": 19841
+      }
+    },
+    "explanation": [
+      "Materialization already keeps only users with n_deep\u22652, deep_share\u22650.35, com_share\u22640.20 (~20k).",
+      "Query-time purity=0 still applies com_share cap as if purity=55 (~0.111) \u2014 so 'all zero' is NOT inactive.",
+      "depth=0/purity=0 still leave that mint floor + com cap; ranking looks 'curated' because the table is pre-curated.",
+      "curator_strictness=0 correctly keeps all passers (no top-K shrink)."
+    ]
+  },
+  "normie_ablation": {
+    "vs_baseline": {
+      "depth_only_d40": {
+        "mean_abs_rank_delta_vs_baseline": 28.157894736842106,
+        "quality_delta": -4.589999999999996,
+        "geo_n_ratio": 2.3836256352792593
+      },
+      "purity_only_p55": {
+        "mean_abs_rank_delta_vs_baseline": 3.857142857142857,
+        "quality_delta": -0.00999999999999801,
+        "geo_n_ratio": 1.1954454250534838
+      },
+      "sliders_zero": {
+        "mean_abs_rank_delta_vs_baseline": 29.05263157894737,
+        "quality_delta": -5.609999999999999,
+        "geo_n_ratio": 2.7047989808267974
+      },
+      "strict_mint_sim_d60_p75": {
+        "mean_abs_rank_delta_vs_baseline": 28.846153846153847,
+        "quality_delta": -9.029999999999994,
+        "geo_n_ratio": 0.47480846077275407
+      },
+      "loose_d25_p35": {
+        "mean_abs_rank_delta_vs_baseline": 21.3,
+        "quality_delta": -4.579999999999998,
+        "geo_n_ratio": 1.4886812591505378
+      }
+    },
+    "runs": [
+      {
+        "label": "baseline_d40_p55",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 40,
+          "normie_purity": 55,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 38.217499999999994,
+          "good": {
+            "n_found": 15,
+            "median": 27,
+            "mean": 31.8,
+            "top50": 12,
+            "top100": 15,
+            "top200": 15,
+            "missing": [
+              "Permutation City"
+            ]
+          },
+          "bad": {
+            "n_found": 6,
+            "median": 211,
+            "mean": 193.83333333333334,
+            "top50": 0,
+            "top100": 0,
+            "top200": 2,
+            "missing": [
+              "Red Rising",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Wool",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 181.0,
+          "mean_n": 274.41,
+          "geo_n": 162.52620228739343
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 31,
+          "The Dispossessed": 4,
+          "Solaris": 10,
+          "Ubik": 12,
+          "Kindred": 27,
+          "Neuromancer": 50,
+          "Blindsight": 53,
+          "A Canticle for Leibowitz": 75,
+          "The Stars My Destination": 23,
+          "Dhalgren": 8,
+          "Hyperion": 33,
+          "The Three-Body Problem": 64,
+          "Roadside Picnic": 39,
+          "The Book of the New Sun": 24,
+          "Shadow of the Torturer": 24,
+          "Permutation City": null,
+          "Ready Player One": 224,
+          "The Martian": 203,
+          "Ender's Game": 108,
+          "Speaker for the Dead": 145,
+          "Red Rising": null,
+          "Old Man's War": 272,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": null,
+          "Dark Matter": 211,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 602,
+            "title": "Gravity's Rainbow",
+            "score": 0.3048936902565873
+          },
+          {
+            "rank": 2,
+            "n": 228,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.24796601363585363
+          },
+          {
+            "rank": 3,
+            "n": 2176,
+            "title": "1984",
+            "score": 0.23607347238084178
+          },
+          {
+            "rank": 4,
+            "n": 247,
+            "title": "The Dispossessed",
+            "score": 0.2320222080785081
+          },
+          {
+            "rank": 5,
+            "n": 55,
+            "title": "Riddley Walker",
+            "score": 0.23084048242098407
+          },
+          {
+            "rank": 6,
+            "n": 537,
+            "title": "Cloud Atlas",
+            "score": 0.2266649398723066
+          },
+          {
+            "rank": 7,
+            "n": 1477,
+            "title": "Slaughterhouse-Five",
+            "score": 0.22535719858464656
+          },
+          {
+            "rank": 8,
+            "n": 92,
+            "title": "Dhalgren",
+            "score": 0.22444037093561237
+          },
+          {
+            "rank": 9,
+            "n": 192,
+            "title": "Against the Day",
+            "score": 0.222773063820546
+          },
+          {
+            "rank": 10,
+            "n": 362,
+            "title": "Solaris",
+            "score": 0.2190896234327375
+          },
+          {
+            "rank": 11,
+            "n": 839,
+            "title": "Blindness",
+            "score": 0.21867472762020843
+          },
+          {
+            "rank": 12,
+            "n": 430,
+            "title": "Ubik",
+            "score": 0.21533159977903268
+          },
+          {
+            "rank": 13,
+            "n": 96,
+            "title": "The Illuminatus! Trilogy",
+            "score": 0.21220329839912933
+          },
+          {
+            "rank": 14,
+            "n": 244,
+            "title": "Cosmicomics",
+            "score": 0.20917445144148236
+          },
+          {
+            "rank": 15,
+            "n": 641,
+            "title": "Dune (Dune Chronicles #1)",
+            "score": 0.20824901883193703
+          }
+        ],
+        "elapsed_s": 0.92,
+        "meta": {
+          "deep_com_share_cap": 0.11149999999999999,
+          "normie_gates": {
+            "enabled": true,
+            "min_deep": 5,
+            "min_deep_rare": 1,
+            "min_deep_share": 0.5975,
+            "depth": 40.0,
+            "purity": 55.0,
+            "share_power": 0.0
+          }
+        }
+      },
+      {
+        "label": "depth_only_d40",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 40,
+          "normie_purity": 0,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 33.6275,
+          "good": {
+            "n_found": 16,
+            "median": 36,
+            "mean": 54.875,
+            "top50": 11,
+            "top100": 13,
+            "top200": 16,
+            "missing": []
+          },
+          "bad": {
+            "n_found": 4,
+            "median": 254,
+            "mean": 212.5,
+            "top50": 0,
+            "top100": 1,
+            "top200": 2,
+            "missing": [
+              "Red Rising",
+              "Old Man's War",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Wool",
+              "Dark Matter",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 321.0,
+          "mean_n": 884.16,
+          "geo_n": 387.4016221768136
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 36,
+          "The Dispossessed": 7,
+          "Solaris": 15,
+          "Ubik": 21,
+          "Kindred": 41,
+          "Neuromancer": 80,
+          "Blindsight": 139,
+          "A Canticle for Leibowitz": 61,
+          "The Stars My Destination": 23,
+          "Dhalgren": 20,
+          "Hyperion": 25,
+          "The Three-Body Problem": 172,
+          "Roadside Picnic": 49,
+          "The Book of the New Sun": 13,
+          "Shadow of the Torturer": 26,
+          "Permutation City": 150,
+          "Ready Player One": 332,
+          "The Martian": 254,
+          "Ender's Game": 84,
+          "Speaker for the Dead": 180,
+          "Red Rising": null,
+          "Old Man's War": null,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": null,
+          "Dark Matter": null,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 1185,
+            "title": "Gravity's Rainbow",
+            "score": 0.2872163569237748
+          },
+          {
+            "rank": 2,
+            "n": 111,
+            "title": "The Last Question",
+            "score": 0.28308057399194453
+          },
+          {
+            "rank": 3,
+            "n": 7890,
+            "title": "1984",
+            "score": 0.2640335223343919
+          },
+          {
+            "rank": 4,
+            "n": 1085,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.2563852664859076
+          },
+          {
+            "rank": 5,
+            "n": 5431,
+            "title": "Slaughterhouse-Five",
+            "score": 0.2417494661799443
+          },
+          {
+            "rank": 6,
+            "n": 1597,
+            "title": "Cloud Atlas",
+            "score": 0.2386977125186948
+          },
+          {
+            "rank": 7,
+            "n": 814,
+            "title": "The Dispossessed",
+            "score": 0.2375336456353086
+          },
+          {
+            "rank": 8,
+            "n": 158,
+            "title": "Riddley Walker",
+            "score": 0.23633110337285856
+          },
+          {
+            "rank": 9,
+            "n": 2357,
+            "title": "Dune (Dune Chronicles #1)",
+            "score": 0.2338883194769093
+          },
+          {
+            "rank": 10,
+            "n": 2149,
+            "title": "Blindness",
+            "score": 0.22494596196208913
+          },
+          {
+            "rank": 11,
+            "n": 303,
+            "title": "Against the Day",
+            "score": 0.2249438032342631
+          },
+          {
+            "rank": 12,
+            "n": 3370,
+            "title": "The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+            "score": 0.2247334364412582
+          },
+          {
+            "rank": 13,
+            "n": 108,
+            "title": "The Citadel of the Autarch (The Book of the New Sun #4)",
+            "score": 0.22214108223283535
+          },
+          {
+            "rank": 14,
+            "n": 579,
+            "title": "Cryptonomicon",
+            "score": 0.22141465532380664
+          },
+          {
+            "rank": 15,
+            "n": 942,
+            "title": "Solaris",
+            "score": 0.22097782128970106
+          }
+        ],
+        "elapsed_s": 0.61,
+        "meta": {
+          "deep_com_share_cap": 0.11149999999999999,
+          "normie_gates": {
+            "enabled": true,
+            "min_deep": 5,
+            "min_deep_rare": 1,
+            "min_deep_share": 0.0,
+            "depth": 40.0,
+            "purity": 0.0,
+            "share_power": 0.0
+          }
+        }
+      },
+      {
+        "label": "purity_only_p55",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 0,
+          "normie_purity": 55,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 38.207499999999996,
+          "good": {
+            "n_found": 15,
+            "median": 28,
+            "mean": 31.866666666666667,
+            "top50": 12,
+            "top100": 15,
+            "top200": 15,
+            "missing": [
+              "Permutation City"
+            ]
+          },
+          "bad": {
+            "n_found": 6,
+            "median": 225,
+            "mean": 203.16666666666666,
+            "top50": 0,
+            "top100": 0,
+            "top200": 2,
+            "missing": [
+              "Red Rising",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Wool",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 210.0,
+          "mean_n": 319.27,
+          "geo_n": 194.29120497578154
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 33,
+          "The Dispossessed": 4,
+          "Solaris": 10,
+          "Ubik": 12,
+          "Kindred": 28,
+          "Neuromancer": 47,
+          "Blindsight": 52,
+          "A Canticle for Leibowitz": 83,
+          "The Stars My Destination": 24,
+          "Dhalgren": 7,
+          "Hyperion": 30,
+          "The Three-Body Problem": 64,
+          "Roadside Picnic": 40,
+          "The Book of the New Sun": 22,
+          "Shadow of the Torturer": 22,
+          "Permutation City": null,
+          "Ready Player One": 235,
+          "The Martian": 207,
+          "Ender's Game": 112,
+          "Speaker for the Dead": 153,
+          "Red Rising": null,
+          "Old Man's War": 287,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": null,
+          "Dark Matter": 225,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 664,
+            "title": "Gravity's Rainbow",
+            "score": 0.3052236632106474
+          },
+          {
+            "rank": 2,
+            "n": 255,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.2497410865455605
+          },
+          {
+            "rank": 3,
+            "n": 2453,
+            "title": "1984",
+            "score": 0.23664573034485506
+          },
+          {
+            "rank": 4,
+            "n": 289,
+            "title": "The Dispossessed",
+            "score": 0.23541574328460124
+          },
+          {
+            "rank": 5,
+            "n": 62,
+            "title": "Riddley Walker",
+            "score": 0.23355785544313803
+          },
+          {
+            "rank": 6,
+            "n": 631,
+            "title": "Cloud Atlas",
+            "score": 0.22886167700525215
+          },
+          {
+            "rank": 7,
+            "n": 105,
+            "title": "Dhalgren",
+            "score": 0.22602086742953428
+          },
+          {
+            "rank": 8,
+            "n": 1657,
+            "title": "Slaughterhouse-Five",
+            "score": 0.2260110094513614
+          },
+          {
+            "rank": 9,
+            "n": 210,
+            "title": "Against the Day",
+            "score": 0.2227137738860222
+          },
+          {
+            "rank": 10,
+            "n": 415,
+            "title": "Solaris",
+            "score": 0.22162530571314404
+          },
+          {
+            "rank": 11,
+            "n": 1011,
+            "title": "Blindness",
+            "score": 0.22097233314107054
+          },
+          {
+            "rank": 12,
+            "n": 486,
+            "title": "Ubik",
+            "score": 0.21808518521696474
+          },
+          {
+            "rank": 13,
+            "n": 106,
+            "title": "The Illuminatus! Trilogy",
+            "score": 0.2145791511034833
+          },
+          {
+            "rank": 14,
+            "n": 283,
+            "title": "Cosmicomics",
+            "score": 0.21178485623119045
+          },
+          {
+            "rank": 15,
+            "n": 759,
+            "title": "Dune (Dune Chronicles #1)",
+            "score": 0.21114726478926427
+          }
+        ],
+        "elapsed_s": 0.36,
+        "meta": {
+          "deep_com_share_cap": 0.11149999999999999,
+          "normie_gates": {
+            "enabled": true,
+            "min_deep": 0,
+            "min_deep_rare": 0,
+            "min_deep_share": 0.5975,
+            "depth": 0.0,
+            "purity": 55.0,
+            "share_power": 0.0
+          }
+        }
+      },
+      {
+        "label": "sliders_zero",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 0,
+          "normie_purity": 0,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 32.607499999999995,
+          "good": {
+            "n_found": 16,
+            "median": 38,
+            "mean": 53.8125,
+            "top50": 10,
+            "top100": 13,
+            "top200": 16,
+            "missing": []
+          },
+          "bad": {
+            "n_found": 4,
+            "median": 265,
+            "mean": 222.75,
+            "top50": 0,
+            "top100": 1,
+            "top200": 2,
+            "missing": [
+              "Red Rising",
+              "Old Man's War",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Wool",
+              "Dark Matter",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 387.0,
+          "mean_n": 1005.23,
+          "geo_n": 439.60070630459165
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 38,
+          "The Dispossessed": 6,
+          "Solaris": 16,
+          "Ubik": 20,
+          "Kindred": 42,
+          "Neuromancer": 78,
+          "Blindsight": 117,
+          "A Canticle for Leibowitz": 63,
+          "The Stars My Destination": 23,
+          "Dhalgren": 21,
+          "Hyperion": 24,
+          "The Three-Body Problem": 169,
+          "Roadside Picnic": 53,
+          "The Book of the New Sun": 13,
+          "Shadow of the Torturer": 25,
+          "Permutation City": 153,
+          "Ready Player One": 352,
+          "The Martian": 265,
+          "Ender's Game": 85,
+          "Speaker for the Dead": 189,
+          "Red Rising": null,
+          "Old Man's War": null,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": null,
+          "Dark Matter": null,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 1288,
+            "title": "Gravity's Rainbow",
+            "score": 0.28796849215136455
+          },
+          {
+            "rank": 2,
+            "n": 126,
+            "title": "The Last Question",
+            "score": 0.28440952881906356
+          },
+          {
+            "rank": 3,
+            "n": 9135,
+            "title": "1984",
+            "score": 0.2654485144706212
+          },
+          {
+            "rank": 4,
+            "n": 1212,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.25823064589777106
+          },
+          {
+            "rank": 5,
+            "n": 6128,
+            "title": "Slaughterhouse-Five",
+            "score": 0.24261846761985142
+          },
+          {
+            "rank": 6,
+            "n": 929,
+            "title": "The Dispossessed",
+            "score": 0.24053848238761996
+          },
+          {
+            "rank": 7,
+            "n": 1825,
+            "title": "Cloud Atlas",
+            "score": 0.24052874906310143
+          },
+          {
+            "rank": 8,
+            "n": 174,
+            "title": "Riddley Walker",
+            "score": 0.23841992301843815
+          },
+          {
+            "rank": 9,
+            "n": 2656,
+            "title": "Dune (Dune Chronicles #1)",
+            "score": 0.23594381588333052
+          },
+          {
+            "rank": 10,
+            "n": 2557,
+            "title": "Blindness",
+            "score": 0.22722453336354087
+          },
+          {
+            "rank": 11,
+            "n": 695,
+            "title": "Cryptonomicon",
+            "score": 0.22709859139509975
+          },
+          {
+            "rank": 12,
+            "n": 3819,
+            "title": "The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+            "score": 0.22682135030458112
+          },
+          {
+            "rank": 13,
+            "n": 136,
+            "title": "The Citadel of the Autarch (The Book of the New Sun #4)",
+            "score": 0.22650756889762488
+          },
+          {
+            "rank": 14,
+            "n": 331,
+            "title": "Against the Day",
+            "score": 0.2246495678284444
+          },
+          {
+            "rank": 15,
+            "n": 96,
+            "title": "Death's End (Remembrance of Earth\u2019s Past, #3)",
+            "score": 0.22427865152379808
+          }
+        ],
+        "elapsed_s": 0.55,
+        "meta": {
+          "deep_com_share_cap": 0.11149999999999999,
+          "normie_gates": {
+            "enabled": false,
+            "min_deep": 0,
+            "min_deep_rare": 0,
+            "min_deep_share": 0.0,
+            "depth": 0.0,
+            "purity": 0.0,
+            "share_power": 0.0
+          }
+        }
+      },
+      {
+        "label": "strict_mint_sim_d60_p75",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 60,
+          "normie_purity": 75,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 29.1875,
+          "good": {
+            "n_found": 10,
+            "median": 30,
+            "mean": 25.4,
+            "top50": 10,
+            "top100": 10,
+            "top200": 10,
+            "missing": [
+              "Kindred",
+              "Blindsight",
+              "The Three-Body Problem",
+              "The Book of the New Sun",
+              "Shadow of the Torturer",
+              "Permutation City"
+            ]
+          },
+          "bad": {
+            "n_found": 3,
+            "median": 105,
+            "mean": 91.66666666666667,
+            "top50": 0,
+            "top100": 1,
+            "top200": 3,
+            "missing": [
+              "Speaker for the Dead",
+              "Red Rising",
+              "Old Man's War",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Wool",
+              "Dark Matter",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 64.0,
+          "mean_n": 100.86,
+          "geo_n": 77.16881594331853
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 43,
+          "The Dispossessed": 23,
+          "Solaris": 13,
+          "Ubik": 4,
+          "Kindred": null,
+          "Neuromancer": 38,
+          "Blindsight": null,
+          "A Canticle for Leibowitz": 33,
+          "The Stars My Destination": 24,
+          "Dhalgren": 6,
+          "Hyperion": 40,
+          "The Three-Body Problem": null,
+          "Roadside Picnic": 30,
+          "The Book of the New Sun": null,
+          "Shadow of the Torturer": null,
+          "Permutation City": null,
+          "Ready Player One": 107,
+          "The Martian": 105,
+          "Ender's Game": 63,
+          "Speaker for the Dead": null,
+          "Red Rising": null,
+          "Old Man's War": null,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": null,
+          "Dark Matter": null,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 288,
+            "title": "Gravity's Rainbow",
+            "score": 0.32854216268214376
+          },
+          {
+            "rank": 2,
+            "n": 112,
+            "title": "Against the Day",
+            "score": 0.2244798360028018
+          },
+          {
+            "rank": 3,
+            "n": 175,
+            "title": "Cloud Atlas",
+            "score": 0.22442846139227132
+          },
+          {
+            "rank": 4,
+            "n": 161,
+            "title": "Ubik",
+            "score": 0.21625575581421952
+          },
+          {
+            "rank": 5,
+            "n": 59,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.2100256298219952
+          },
+          {
+            "rank": 6,
+            "n": 41,
+            "title": "Dhalgren",
+            "score": 0.20935027472085369
+          },
+          {
+            "rank": 7,
+            "n": 425,
+            "title": "Slaughterhouse-Five",
+            "score": 0.20885458320256353
+          },
+          {
+            "rank": 8,
+            "n": 111,
+            "title": "The Sirens of Titan",
+            "score": 0.2048783095192039
+          },
+          {
+            "rank": 9,
+            "n": 510,
+            "title": "1984",
+            "score": 0.19219659641271802
+          },
+          {
+            "rank": 10,
+            "n": 106,
+            "title": "A Scanner Darkly",
+            "score": 0.19137790450948353
+          },
+          {
+            "rank": 11,
+            "n": 100,
+            "title": "Cosmicomics",
+            "score": 0.18930715601010534
+          },
+          {
+            "rank": 12,
+            "n": 81,
+            "title": "The Three Stigmata of Palmer Eldritch",
+            "score": 0.18861708156654844
+          },
+          {
+            "rank": 13,
+            "n": 124,
+            "title": "Solaris",
+            "score": 0.18854545357172456
+          },
+          {
+            "rank": 14,
+            "n": 76,
+            "title": "VALIS (VALIS Trilogy, #1)",
+            "score": 0.18766243807523153
+          },
+          {
+            "rank": 15,
+            "n": 198,
+            "title": "The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+            "score": 0.18537548239057666
+          }
+        ],
+        "elapsed_s": 0.29,
+        "meta": {
+          "deep_com_share_cap": 0.09749999999999999,
+          "normie_gates": {
+            "enabled": true,
+            "min_deep": 8,
+            "min_deep_rare": 3,
+            "min_deep_share": 0.6875,
+            "depth": 60.0,
+            "purity": 75.0,
+            "share_power": 0.0
+          }
+        }
+      },
+      {
+        "label": "loose_d25_p35",
+        "params": {
+          "curator_strictness": 0,
+          "normie_depth": 25,
+          "normie_purity": 35,
+          "coverage_weight": 0.0,
+          "bayesian_m": 30,
+          "min_votes": 25
+        },
+        "quality": {
+          "score": 33.637499999999996,
+          "good": {
+            "n_found": 16,
+            "median": 35,
+            "mean": 43.5625,
+            "top50": 10,
+            "top100": 14,
+            "top200": 16,
+            "missing": []
+          },
+          "bad": {
+            "n_found": 6,
+            "median": 250,
+            "mean": 231.66666666666666,
+            "top50": 0,
+            "top100": 1,
+            "top200": 2,
+            "missing": [
+              "Red Rising",
+              "Old Man's War",
+              "The Hunger Games",
+              "Divergent",
+              "The Name of the Wind",
+              "The Way of Kings",
+              "Artemis"
+            ]
+          }
+        },
+        "voter_mass": {
+          "median_n": 252.0,
+          "mean_n": 506.77,
+          "geo_n": 241.94971146615188
+        },
+        "ranks": {
+          "The Left Hand of Darkness": 35,
+          "The Dispossessed": 5,
+          "Solaris": 12,
+          "Ubik": 17,
+          "Kindred": 43,
+          "Neuromancer": 61,
+          "Blindsight": 68,
+          "A Canticle for Leibowitz": 59,
+          "The Stars My Destination": 28,
+          "Dhalgren": 16,
+          "Hyperion": 26,
+          "The Three-Body Problem": 127,
+          "Roadside Picnic": 51,
+          "The Book of the New Sun": 9,
+          "Shadow of the Torturer": 23,
+          "Permutation City": 117,
+          "Ready Player One": 250,
+          "The Martian": 236,
+          "Ender's Game": 91,
+          "Speaker for the Dead": 133,
+          "Red Rising": null,
+          "Old Man's War": null,
+          "The Hunger Games": null,
+          "Divergent": null,
+          "The Name of the Wind": null,
+          "The Way of Kings": null,
+          "Wool": 312,
+          "Dark Matter": 368,
+          "Artemis": null
+        },
+        "top15": [
+          {
+            "rank": 1,
+            "n": 937,
+            "title": "Gravity's Rainbow",
+            "score": 0.2961545081578012
+          },
+          {
+            "rank": 2,
+            "n": 52,
+            "title": "The Last Question",
+            "score": 0.26727065693077057
+          },
+          {
+            "rank": 3,
+            "n": 533,
+            "title": "The Ultimate Hitchhiker's Guide to the Galaxy",
+            "score": 0.26048511611236175
+          },
+          {
+            "rank": 4,
+            "n": 4278,
+            "title": "1984",
+            "score": 0.2533218112993453
+          },
+          {
+            "rank": 5,
+            "n": 490,
+            "title": "The Dispossessed",
+            "score": 0.23749814886400655
+          },
+          {
+            "rank": 6,
+            "n": 100,
+            "title": "Riddley Walker",
+            "score": 0.23630336695456894
+          },
+          {
+            "rank": 7,
+            "n": 2882,
+            "title": "Slaughterhouse-Five",
+            "score": 0.23451335858204994
+          },
+          {
+            "rank": 8,
+            "n": 964,
+            "title": "Cloud Atlas",
+            "score": 0.23370705209060888
+          },
+          {
+            "rank": 9,
+            "n": 62,
+            "title": "The Citadel of the Autarch (The Book of the New Sun #4)",
+            "score": 0.23186832460270393
+          },
+          {
+            "rank": 10,
+            "n": 1312,
+            "title": "Dune (Dune Chronicles #1)",
+            "score": 0.22983069804212103
+          },
+          {
+            "rank": 11,
+            "n": 277,
+            "title": "Against the Day",
+            "score": 0.22442768882281985
+          },
+          {
+            "rank": 12,
+            "n": 640,
+            "title": "Solaris",
+            "score": 0.22383159677261388
+          },
+          {
+            "rank": 13,
+            "n": 1487,
+            "title": "Blindness",
+            "score": 0.22274687538490065
+          },
+          {
+            "rank": 14,
+            "n": 70,
+            "title": "The Sword of the Lictor",
+            "score": 0.22222646229504023
+          },
+          {
+            "rank": 15,
+            "n": 1707,
+            "title": "The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)",
+            "score": 0.2209859498728802
+          }
+        ],
+        "elapsed_s": 0.37,
+        "meta": {
+          "deep_com_share_cap": 0.1255,
+          "normie_gates": {
+            "enabled": true,
+            "min_deep": 4,
+            "min_deep_rare": 1,
+            "min_deep_share": 0.5075,
+            "depth": 25.0,
+            "purity": 35.0,
+            "share_power": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "inferred_normie": {
+    "n_poll_works": 98,
+    "hand_normie_on_poll": [
+      {
+        "poll_title": "The Great Gatsby",
+        "title": "The Great Gatsby",
+        "n": 180225,
+        "rarity": 0.08263115822026823,
+        "prestige": 0.6919191919191919,
+        "p_all": 0.19870775477030359,
+        "p_deep": 0.3604153016481024,
+        "lift": 1.813795853436746,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Hobbit",
+        "title": "The Hobbit",
+        "n": 154068,
+        "rarity": 0.08371589878074147,
+        "prestige": 0.8333333333333334,
+        "p_all": 0.21308871475041147,
+        "p_deep": 0.24343531072022578,
+        "lift": 1.1424129663805,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "1984",
+        "title": "1984",
+        "n": 152321,
+        "rarity": 0.08379589684269532,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.19996214560211686,
+        "p_deep": 0.4796129227357492,
+        "lift": 2.3985185860631804,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Animal Farm",
+        "title": "Animal Farm",
+        "n": 148699,
+        "rarity": 0.08396522160357309,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.17272553520366224,
+        "p_deep": 0.37805554155536514,
+        "lift": 2.188764626548104,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Catcher in the Rye",
+        "title": "The Catcher in the Rye",
+        "n": 146781,
+        "rarity": 0.08405684856206724,
+        "prestige": 0.8535353535353536,
+        "p_all": 0.15168108783148113,
+        "p_deep": 0.35683685298120055,
+        "lift": 2.3525467682408046,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Wuthering Heights",
+        "title": "Wuthering Heights",
+        "n": 85493,
+        "rarity": 0.08805752275920962,
+        "prestige": 0.6868686868686869,
+        "p_all": 0.09546545136730457,
+        "p_deep": 0.16284461468675973,
+        "lift": 1.7057963101249367,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Brave New World",
+        "title": "Brave New World",
+        "n": 81565,
+        "rarity": 0.08842374034275786,
+        "prestige": 0.7474747474747474,
+        "p_all": 0.09897254999471151,
+        "p_deep": 0.2948944105639837,
+        "lift": 2.9795575700508983,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Frankenstein",
+        "title": "Frankenstein",
+        "n": 78386,
+        "rarity": 0.08873566303756342,
+        "prestige": 0.5757575757575757,
+        "p_all": 0.08689439921916026,
+        "p_deep": 0.17700720729801925,
+        "lift": 2.03703816228226,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Picture of Dorian Gray",
+        "title": "The Picture of Dorian Gray",
+        "n": 64571,
+        "rarity": 0.09028895643171675,
+        "prestige": 0.7828282828282829,
+        "p_all": 0.08381965719502622,
+        "p_deep": 0.2642507938107958,
+        "lift": 3.1526112448295267,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Slaughterhouse-Five",
+        "title": "Slaughterhouse-Five",
+        "n": 63568,
+        "rarity": 0.09041675572849309,
+        "prestige": 0.702020202020202,
+        "p_all": 0.08254299907034052,
+        "p_deep": 0.3036137291467164,
+        "lift": 3.678249307224547,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Hamlet",
+        "title": "Hamlet",
+        "n": 56520,
+        "rarity": 0.09138775319303771,
+        "prestige": 0.9040404040404041,
+        "p_all": 0.07272497852134041,
+        "p_deep": 0.2045259815533491,
+        "lift": 2.8123209619557747,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Old Man and the Sea",
+        "title": "The Old Man and the Sea",
+        "n": 50776,
+        "rarity": 0.09229163240874556,
+        "prestige": 0.6565656565656566,
+        "p_all": 0.05121106239109902,
+        "p_deep": 0.21445491658686558,
+        "lift": 4.187667792342849,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Catch-22",
+        "title": "Catch-22 (Catch-22, #1)",
+        "n": 37916,
+        "rarity": 0.0948480330421989,
+        "prestige": 0.8636363636363636,
+        "p_all": 0.04676688185531084,
+        "p_deep": 0.19066579305478554,
+        "lift": 4.076940464935735,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Heart of Darkness",
+        "title": "Heart of Darkness",
+        "n": 28886,
+        "rarity": 0.09735978220913452,
+        "prestige": 0.7575757575757576,
+        "p_all": 0.02434742914825749,
+        "p_deep": 0.1582077516254221,
+        "lift": 6.497924304946373,
+        "in_hand_normie": true
+      }
+    ],
+    "inferred_normie_top25": [
+      {
+        "poll_title": "The Hobbit",
+        "title": "The Hobbit",
+        "n": 154068,
+        "rarity": 0.08371589878074147,
+        "prestige": 0.8333333333333334,
+        "p_all": 0.21308871475041147,
+        "p_deep": 0.24343531072022578,
+        "lift": 1.1424129663805,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Great Gatsby",
+        "title": "The Great Gatsby",
+        "n": 180225,
+        "rarity": 0.08263115822026823,
+        "prestige": 0.6919191919191919,
+        "p_all": 0.19870775477030359,
+        "p_deep": 0.3604153016481024,
+        "lift": 1.813795853436746,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Lord of the Rings",
+        "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+        "n": 119871,
+        "rarity": 0.08551256308298909,
+        "prestige": 0.8333333333333334,
+        "p_all": 0.16822939765117173,
+        "p_deep": 0.2049291870369437,
+        "lift": 1.218153247281251,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Animal Farm",
+        "title": "Animal Farm",
+        "n": 148699,
+        "rarity": 0.08396522160357309,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.17272553520366224,
+        "p_deep": 0.37805554155536514,
+        "lift": 2.188764626548104,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "1984",
+        "title": "1984",
+        "n": 152321,
+        "rarity": 0.08379589684269532,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.19996214560211686,
+        "p_deep": 0.4796129227357492,
+        "lift": 2.3985185860631804,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Catcher in the Rye",
+        "title": "The Catcher in the Rye",
+        "n": 146781,
+        "rarity": 0.08405684856206724,
+        "prestige": 0.8535353535353536,
+        "p_all": 0.15168108783148113,
+        "p_deep": 0.35683685298120055,
+        "lift": 2.3525467682408046,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Wuthering Heights",
+        "title": "Wuthering Heights",
+        "n": 85493,
+        "rarity": 0.08805752275920962,
+        "prestige": 0.6868686868686869,
+        "p_all": 0.09546545136730457,
+        "p_deep": 0.16284461468675973,
+        "lift": 1.7057963101249367,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Frankenstein",
+        "title": "Frankenstein",
+        "n": 78386,
+        "rarity": 0.08873566303756342,
+        "prestige": 0.5757575757575757,
+        "p_all": 0.08689439921916026,
+        "p_deep": 0.17700720729801925,
+        "lift": 2.03703816228226,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Brave New World",
+        "title": "Brave New World",
+        "n": 81565,
+        "rarity": 0.08842374034275786,
+        "prestige": 0.7474747474747474,
+        "p_all": 0.09897254999471151,
+        "p_deep": 0.2948944105639837,
+        "lift": 2.9795575700508983,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Count of Monte Cristo",
+        "title": "The Count of Monte Cristo",
+        "n": 46706,
+        "rarity": 0.09300880064402448,
+        "prestige": 0.7878787878787878,
+        "p_all": 0.06472730916466106,
+        "p_deep": 0.13996270349276752,
+        "lift": 2.1623439209671713,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Picture of Dorian Gray",
+        "title": "The Picture of Dorian Gray",
+        "n": 64571,
+        "rarity": 0.09028895643171675,
+        "prestige": 0.7828282828282829,
+        "p_all": 0.08381965719502622,
+        "p_deep": 0.2642507938107958,
+        "lift": 3.1526112448295267,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Hamlet",
+        "title": "Hamlet",
+        "n": 56520,
+        "rarity": 0.09138775319303771,
+        "prestige": 0.9040404040404041,
+        "p_all": 0.07272497852134041,
+        "p_deep": 0.2045259815533491,
+        "lift": 2.8123209619557747,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Dune",
+        "title": "Dune (Dune Chronicles #1)",
+        "n": 42545,
+        "rarity": 0.09382302398805244,
+        "prestige": 0.7424242424242424,
+        "p_all": 0.05891925694043685,
+        "p_deep": 0.13693866236580818,
+        "lift": 2.3241749722716865,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Odyssey",
+        "title": "The Odyssey",
+        "n": 55722,
+        "rarity": 0.09150666090952433,
+        "prestige": 0.9292929292929293,
+        "p_all": 0.06122577736047222,
+        "p_deep": 0.19540345748702181,
+        "lift": 3.1915226871937707,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Slaughterhouse-Five",
+        "title": "Slaughterhouse-Five",
+        "n": 63568,
+        "rarity": 0.09041675572849309,
+        "prestige": 0.702020202020202,
+        "p_all": 0.08254299907034052,
+        "p_deep": 0.3036137291467164,
+        "lift": 3.678249307224547,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Les Mis\u00e9rables",
+        "title": "Les Mis\u00e9rables",
+        "n": 42472,
+        "rarity": 0.09383814272754065,
+        "prestige": 0.7373737373737373,
+        "p_all": 0.055770290606728064,
+        "p_deep": 0.14308754599062548,
+        "lift": 2.5656589634726337,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Old Man and the Sea",
+        "title": "The Old Man and the Sea",
+        "n": 50776,
+        "rarity": 0.09229163240874556,
+        "prestige": 0.6565656565656566,
+        "p_all": 0.05121106239109902,
+        "p_deep": 0.21445491658686558,
+        "lift": 4.187667792342849,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Grapes of Wrath",
+        "title": "The Grapes of Wrath",
+        "n": 40897,
+        "rarity": 0.09417205952543393,
+        "prestige": 0.803030303030303,
+        "p_all": 0.04970059769125285,
+        "p_deep": 0.18945617660400182,
+        "lift": 3.8119496626767027,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Catch-22",
+        "title": "Catch-22 (Catch-22, #1)",
+        "n": 37916,
+        "rarity": 0.0948480330421989,
+        "prestige": 0.8636363636363636,
+        "p_all": 0.04676688185531084,
+        "p_deep": 0.19066579305478554,
+        "lift": 4.076940464935735,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "One Hundred Years of Solitude",
+        "title": "One Hundred Years of Solitude",
+        "n": 49684,
+        "rarity": 0.09247718036711154,
+        "prestige": 0.898989898989899,
+        "p_all": 0.061402060095712245,
+        "p_deep": 0.3369789829141676,
+        "lift": 5.488072914636607,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Anna Karenina",
+        "title": "Anna Karenina",
+        "n": 40447,
+        "rarity": 0.09427027884465147,
+        "prestige": 0.9343434343434344,
+        "p_all": 0.04975812153117328,
+        "p_deep": 0.23194395443778035,
+        "lift": 4.661429075301171,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Lolita",
+        "title": "Lolita",
+        "n": 47579,
+        "rarity": 0.09284888301300726,
+        "prestige": 0.98989898989899,
+        "p_all": 0.055087426958640356,
+        "p_deep": 0.3124842497857971,
+        "lift": 5.672514892017198,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "East of Eden",
+        "title": "East of Eden",
+        "n": 24637,
+        "rarity": 0.098891565654545,
+        "prestige": 0.803030303030303,
+        "p_all": 0.03675587810141639,
+        "p_deep": 0.12988256640290308,
+        "lift": 3.533654291825994,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Metamorphosis",
+        "title": "The Metamorphosis",
+        "n": 42093,
+        "rarity": 0.09391713509998849,
+        "prestige": 0.9141414141414141,
+        "p_all": 0.04623803364959075,
+        "p_deep": 0.3045713421702535,
+        "lift": 6.587030592140011,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Siddhartha",
+        "title": "Siddhartha",
+        "n": 33775,
+        "rarity": 0.09589993837435513,
+        "prestige": 0.7727272727272727,
+        "p_all": 0.039452076146719195,
+        "p_deep": 0.21899097827730457,
+        "lift": 5.550809986853269,
+        "in_hand_normie": false
+      }
+    ],
+    "high_lift_deep_signals_top15": [
+      {
+        "poll_title": "JR",
+        "title": "JR",
+        "n": 163,
+        "rarity": 0.19585011338479313,
+        "prestige": 0.7121212121212122,
+        "p_all": 0.00023937339837856996,
+        "p_deep": 0.0060984829393679755,
+        "lift": 25.476861592294398,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Man Without Qualities",
+        "title": "The Man Without Qualities",
+        "n": 384,
+        "rarity": 0.16790250269876933,
+        "prestige": 0.6666666666666667,
+        "p_all": 0.0005381262444169402,
+        "p_deep": 0.012801774104127816,
+        "lift": 23.789536817700718,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Recognitions",
+        "title": "The Recognitions",
+        "n": 341,
+        "rarity": 0.17129944745658357,
+        "prestige": 0.7121212121212122,
+        "p_all": 0.0004973028741508275,
+        "p_deep": 0.011592157653344086,
+        "lift": 23.310055613771276,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Tunnel",
+        "title": "The Tunnel",
+        "n": 102,
+        "rarity": 0.21531348711084464,
+        "prestige": 0.5303030303030303,
+        "p_all": 0.0001187588953196006,
+        "p_deep": 0.002721637014263394,
+        "lift": 22.917331850713172,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Mason & Dixon",
+        "title": "Mason & Dixon",
+        "n": 644,
+        "rarity": 0.1545404087107683,
+        "prestige": 0.9595959595959596,
+        "p_all": 0.0008368790904553105,
+        "p_deep": 0.018547452245350537,
+        "lift": 22.162642676685415,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Journey to the End of the Night",
+        "title": "Journey to the End of the Night",
+        "n": 2216,
+        "rarity": 0.12979661495688088,
+        "prestige": 0.8585858585858586,
+        "p_all": 0.003091442493788353,
+        "p_deep": 0.06824252809838213,
+        "lift": 22.074655516155357,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "V.",
+        "title": "V.",
+        "n": 1324,
+        "rarity": 0.13908356394576527,
+        "prestige": 0.9595959595959596,
+        "p_all": 0.0017182927666554713,
+        "p_deep": 0.035683685298120056,
+        "lift": 20.766941461073415,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Savage Detectives",
+        "title": "The Savage Detectives",
+        "n": 2440,
+        "rarity": 0.1281957164261835,
+        "prestige": 0.8838383838383839,
+        "p_all": 0.003178656057538685,
+        "p_deep": 0.06552089108411874,
+        "lift": 20.612765237284982,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Demons",
+        "title": "Demons",
+        "n": 2315,
+        "rarity": 0.12906509015120854,
+        "prestige": 0.9949494949494949,
+        "p_all": 0.003314115422512604,
+        "p_deep": 0.06829292878383146,
+        "lift": 20.60668385896319,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Magic Mountain",
+        "title": "The Magic Mountain",
+        "n": 2610,
+        "rarity": 0.12709917812214136,
+        "prestige": 0.7626262626262627,
+        "p_all": 0.0035330771357581178,
+        "p_deep": 0.07207298019253063,
+        "lift": 20.399492403684928,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "2666",
+        "title": "2666",
+        "n": 2314,
+        "rarity": 0.129072281485508,
+        "prestige": 0.8838383838383839,
+        "p_all": 0.00317123362658121,
+        "p_deep": 0.06416007257698705,
+        "lift": 20.23189715169477,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Gravity's Rainbow",
+        "title": "Gravity's Rainbow",
+        "n": 2385,
+        "rarity": 0.128571183116092,
+        "prestige": 0.9595959595959596,
+        "p_all": 0.003039485477086028,
+        "p_deep": 0.059624010886548055,
+        "lift": 19.616481584149543,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Book of Disquiet",
+        "title": "The Book of Disquiet",
+        "n": 1706,
+        "rarity": 0.13435301224911916,
+        "prestige": 0.8484848484848485,
+        "p_all": 0.0025403269951958314,
+        "p_deep": 0.04868706214404516,
+        "lift": 19.165667347597477,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Industrial Society and Its Future",
+        "title": "Industrial Society and Its Future: The Unabomber Manifesto",
+        "n": 73,
+        "rarity": 0.23161615589971676,
+        "prestige": 0.5151515151515151,
+        "p_all": 7.607991731411913e-05,
+        "p_deep": 0.001411219192581019,
+        "lift": 18.549168327225836,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Hunger",
+        "title": "Hunger",
+        "n": 3524,
+        "rarity": 0.12243019985421036,
+        "prestige": 0.7676767676767677,
+        "p_all": 0.004596340370416417,
+        "p_deep": 0.08517715840935437,
+        "lift": 18.531516716556293,
+        "in_hand_normie": false
+      }
+    ],
+    "most_popular_poll_top25": [
+      {
+        "poll_title": "The Great Gatsby",
+        "title": "The Great Gatsby",
+        "n": 180225,
+        "rarity": 0.08263115822026823,
+        "prestige": 0.6919191919191919,
+        "p_all": 0.19870775477030359,
+        "p_deep": 0.3604153016481024,
+        "lift": 1.813795853436746,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Hobbit",
+        "title": "The Hobbit",
+        "n": 154068,
+        "rarity": 0.08371589878074147,
+        "prestige": 0.8333333333333334,
+        "p_all": 0.21308871475041147,
+        "p_deep": 0.24343531072022578,
+        "lift": 1.1424129663805,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "1984",
+        "title": "1984",
+        "n": 152321,
+        "rarity": 0.08379589684269532,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.19996214560211686,
+        "p_deep": 0.4796129227357492,
+        "lift": 2.3985185860631804,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Animal Farm",
+        "title": "Animal Farm",
+        "n": 148699,
+        "rarity": 0.08396522160357309,
+        "prestige": 0.8939393939393939,
+        "p_all": 0.17272553520366224,
+        "p_deep": 0.37805554155536514,
+        "lift": 2.188764626548104,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Catcher in the Rye",
+        "title": "The Catcher in the Rye",
+        "n": 146781,
+        "rarity": 0.08405684856206724,
+        "prestige": 0.8535353535353536,
+        "p_all": 0.15168108783148113,
+        "p_deep": 0.35683685298120055,
+        "lift": 2.3525467682408046,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Lord of the Rings",
+        "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+        "n": 119871,
+        "rarity": 0.08551256308298909,
+        "prestige": 0.8333333333333334,
+        "p_all": 0.16822939765117173,
+        "p_deep": 0.2049291870369437,
+        "lift": 1.218153247281251,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Wuthering Heights",
+        "title": "Wuthering Heights",
+        "n": 85493,
+        "rarity": 0.08805752275920962,
+        "prestige": 0.6868686868686869,
+        "p_all": 0.09546545136730457,
+        "p_deep": 0.16284461468675973,
+        "lift": 1.7057963101249367,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Brave New World",
+        "title": "Brave New World",
+        "n": 81565,
+        "rarity": 0.08842374034275786,
+        "prestige": 0.7474747474747474,
+        "p_all": 0.09897254999471151,
+        "p_deep": 0.2948944105639837,
+        "lift": 2.9795575700508983,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Frankenstein",
+        "title": "Frankenstein",
+        "n": 78386,
+        "rarity": 0.08873566303756342,
+        "prestige": 0.5757575757575757,
+        "p_all": 0.08689439921916026,
+        "p_deep": 0.17700720729801925,
+        "lift": 2.03703816228226,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Picture of Dorian Gray",
+        "title": "The Picture of Dorian Gray",
+        "n": 64571,
+        "rarity": 0.09028895643171675,
+        "prestige": 0.7828282828282829,
+        "p_all": 0.08381965719502622,
+        "p_deep": 0.2642507938107958,
+        "lift": 3.1526112448295267,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Slaughterhouse-Five",
+        "title": "Slaughterhouse-Five",
+        "n": 63568,
+        "rarity": 0.09041675572849309,
+        "prestige": 0.702020202020202,
+        "p_all": 0.08254299907034052,
+        "p_deep": 0.3036137291467164,
+        "lift": 3.678249307224547,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Hamlet",
+        "title": "Hamlet",
+        "n": 56520,
+        "rarity": 0.09138775319303771,
+        "prestige": 0.9040404040404041,
+        "p_all": 0.07272497852134041,
+        "p_deep": 0.2045259815533491,
+        "lift": 2.8123209619557747,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "The Odyssey",
+        "title": "The Odyssey",
+        "n": 55722,
+        "rarity": 0.09150666090952433,
+        "prestige": 0.9292929292929293,
+        "p_all": 0.06122577736047222,
+        "p_deep": 0.19540345748702181,
+        "lift": 3.1915226871937707,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Old Man and the Sea",
+        "title": "The Old Man and the Sea",
+        "n": 50776,
+        "rarity": 0.09229163240874556,
+        "prestige": 0.6565656565656566,
+        "p_all": 0.05121106239109902,
+        "p_deep": 0.21445491658686558,
+        "lift": 4.187667792342849,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "One Hundred Years of Solitude",
+        "title": "One Hundred Years of Solitude",
+        "n": 49684,
+        "rarity": 0.09247718036711154,
+        "prestige": 0.898989898989899,
+        "p_all": 0.061402060095712245,
+        "p_deep": 0.3369789829141676,
+        "lift": 5.488072914636607,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Lolita",
+        "title": "Lolita",
+        "n": 47579,
+        "rarity": 0.09284888301300726,
+        "prestige": 0.98989898989899,
+        "p_all": 0.055087426958640356,
+        "p_deep": 0.3124842497857971,
+        "lift": 5.672514892017198,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Count of Monte Cristo",
+        "title": "The Count of Monte Cristo",
+        "n": 46706,
+        "rarity": 0.09300880064402448,
+        "prestige": 0.7878787878787878,
+        "p_all": 0.06472730916466106,
+        "p_deep": 0.13996270349276752,
+        "lift": 2.1623439209671713,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Stranger",
+        "title": "The Stranger",
+        "n": 43833,
+        "rarity": 0.09356122971659975,
+        "prestige": 0.9444444444444444,
+        "p_all": 0.05147641429782875,
+        "p_deep": 0.37513230179930446,
+        "lift": 7.287459837992782,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Dune",
+        "title": "Dune (Dune Chronicles #1)",
+        "n": 42545,
+        "rarity": 0.09382302398805244,
+        "prestige": 0.7424242424242424,
+        "p_all": 0.05891925694043685,
+        "p_deep": 0.13693866236580818,
+        "lift": 2.3241749722716865,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Les Mis\u00e9rables",
+        "title": "Les Mis\u00e9rables",
+        "n": 42472,
+        "rarity": 0.09383814272754065,
+        "prestige": 0.7373737373737373,
+        "p_all": 0.055770290606728064,
+        "p_deep": 0.14308754599062548,
+        "lift": 2.5656589634726337,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Metamorphosis",
+        "title": "The Metamorphosis",
+        "n": 42093,
+        "rarity": 0.09391713509998849,
+        "prestige": 0.9141414141414141,
+        "p_all": 0.04623803364959075,
+        "p_deep": 0.3045713421702535,
+        "lift": 6.587030592140011,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "The Grapes of Wrath",
+        "title": "The Grapes of Wrath",
+        "n": 40897,
+        "rarity": 0.09417205952543393,
+        "prestige": 0.803030303030303,
+        "p_all": 0.04970059769125285,
+        "p_deep": 0.18945617660400182,
+        "lift": 3.8119496626767027,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Anna Karenina",
+        "title": "Anna Karenina",
+        "n": 40447,
+        "rarity": 0.09427027884465147,
+        "prestige": 0.9343434343434344,
+        "p_all": 0.04975812153117328,
+        "p_deep": 0.23194395443778035,
+        "lift": 4.661429075301171,
+        "in_hand_normie": false
+      },
+      {
+        "poll_title": "Catch-22",
+        "title": "Catch-22 (Catch-22, #1)",
+        "n": 37916,
+        "rarity": 0.0948480330421989,
+        "prestige": 0.8636363636363636,
+        "p_all": 0.04676688185531084,
+        "p_deep": 0.19066579305478554,
+        "lift": 4.076940464935735,
+        "in_hand_normie": true
+      },
+      {
+        "poll_title": "Crime and Punishment",
+        "title": "Crime and Punishment",
+        "n": 37267,
+        "rarity": 0.095003597759288,
+        "prestige": 0.9949494949494949,
+        "p_all": 0.050548610428144375,
+        "p_deep": 0.3674713976110075,
+        "lift": 7.269663686074491,
+        "in_hand_normie": false
+      }
+    ],
+    "overlap_hand_in_inferred_top25": 13,
+    "notes": [
+      "lift = P(\u2605\u22654|deep) / P(\u2605\u22654|active). lift\u22481 \u2192 everyone likes it (school/ubiquitous).",
+      "lift\u226b1 \u2192 deep curators disproportionately like it (useful positive signal).",
+      "Popularity\u00d7(1/lift) ranks ubiquitous chart books that don't discriminate \u2014 a data-driven normie proxy.",
+      "Hand list also includes non-poll school books (Gatsby, Mockingbird) that affect deep_share only."
+    ]
+  },
+  "percentile_ablation": {
+    "n_books_scored": 398,
+    "band_obscure_n_lt_500": {
+      "n": 53,
+      "mean_rank_delta_full_vs_adj": -3.9056603773584904,
+      "mean_rank_delta_p5_vs_adj": -14.81132075471698,
+      "pct_adj_better_than_full": 0.49056603773584906,
+      "pct_adj_better_than_p5": 0.32075471698113206
+    },
+    "band_popular_n_ge_5000": {
+      "n": 120,
+      "mean_rank_delta_full_vs_adj": 1.1916666666666667,
+      "mean_rank_delta_p5_vs_adj": 3.75,
+      "pct_adj_better_than_full": 0.5333333333333333,
+      "pct_adj_better_than_p5": 0.575
+    },
+    "literary_probe_obscure": {
+      "n": 8,
+      "mean_rank_delta_full_vs_adj": -2.25,
+      "mean_rank_delta_p5_vs_adj": 7.5,
+      "pct_adj_better_than_full": 0.25,
+      "pct_adj_better_than_p5": 0.25
+    },
+    "probes": {
+      "The Left Hand of Darkness": [
+        {
+          "title": "The Left Hand of Darkness",
+          "catalog_n": 9285,
+          "n_raw": 274,
+          "rank_adj": 60,
+          "rank_full": 69,
+          "rank_p5": 61,
+          "delta_full_minus_adj": 9,
+          "delta_p5_minus_adj": 1,
+          "frac_lit_anchored": 0.9241797904730549
+        }
+      ],
+      "The Dispossessed": [
+        {
+          "title": "The Dispossessed",
+          "catalog_n": 5997,
+          "n_raw": 247,
+          "rank_adj": 14,
+          "rank_full": 15,
+          "rank_p5": 16,
+          "delta_full_minus_adj": 1,
+          "delta_p5_minus_adj": 2,
+          "frac_lit_anchored": 0.8932994778393005
+        }
+      ],
+      "Solaris": [
+        {
+          "title": "Solaris",
+          "catalog_n": 5098,
+          "n_raw": 362,
+          "rank_adj": 25,
+          "rank_full": 26,
+          "rank_p5": 27,
+          "delta_full_minus_adj": 1,
+          "delta_p5_minus_adj": 2,
+          "frac_lit_anchored": 0.943882088134142
+        }
+      ],
+      "Ubik": [
+        {
+          "title": "Ubik",
+          "catalog_n": 5814,
+          "n_raw": 430,
+          "rank_adj": 30,
+          "rank_full": 27,
+          "rank_p5": 26,
+          "delta_full_minus_adj": -3,
+          "delta_p5_minus_adj": -4,
+          "frac_lit_anchored": 0.9405105379008585
+        }
+      ],
+      "Kindred": [
+        {
+          "title": "Kindred",
+          "catalog_n": 7302,
+          "n_raw": 75,
+          "rank_adj": 21,
+          "rank_full": 24,
+          "rank_p5": 32,
+          "delta_full_minus_adj": 3,
+          "delta_p5_minus_adj": 11,
+          "frac_lit_anchored": 0.8982492636645395
+        }
+      ],
+      "Neuromancer": [
+        {
+          "title": "Neuromancer (Sprawl, #1)",
+          "catalog_n": 18348,
+          "n_raw": 528,
+          "rank_adj": 77,
+          "rank_full": 78,
+          "rank_p5": 80,
+          "delta_full_minus_adj": 1,
+          "delta_p5_minus_adj": 3,
+          "frac_lit_anchored": 0.9368249902670972
+        }
+      ],
+      "Blindsight": [
+        {
+          "title": "Blindsight (Firefall, #1)",
+          "catalog_n": 1971,
+          "n_raw": 52,
+          "rank_adj": 40,
+          "rank_full": 36,
+          "rank_p5": 48,
+          "delta_full_minus_adj": -4,
+          "delta_p5_minus_adj": 8,
+          "frac_lit_anchored": 0.8946347255564342
+        }
+      ],
+      "A Canticle for Leibowitz": [
+        {
+          "title": "A Canticle for Leibowitz",
+          "catalog_n": 7161,
+          "n_raw": 194,
+          "rank_adj": 110,
+          "rank_full": 115,
+          "rank_p5": 120,
+          "delta_full_minus_adj": 5,
+          "delta_p5_minus_adj": 10,
+          "frac_lit_anchored": 0.9554691945524484
+        }
+      ],
+      "The Stars My Destination": [
+        {
+          "title": "The Stars My Destination",
+          "catalog_n": 3701,
+          "n_raw": 139,
+          "rank_adj": 31,
+          "rank_full": 31,
+          "rank_p5": 46,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": 15,
+          "frac_lit_anchored": 0.9424468991204983
+        }
+      ],
+      "Dhalgren": [
+        {
+          "title": "Dhalgren",
+          "catalog_n": 868,
+          "n_raw": 92,
+          "rank_adj": 5,
+          "rank_full": 5,
+          "rank_p5": 5,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": 0,
+          "frac_lit_anchored": 0.9576522565726823
+        }
+      ],
+      "Hyperion": [
+        {
+          "title": "Hyperion (Hyperion Cantos, #1)",
+          "catalog_n": 12273,
+          "n_raw": 210,
+          "rank_adj": 58,
+          "rank_full": 62,
+          "rank_p5": 62,
+          "delta_full_minus_adj": 4,
+          "delta_p5_minus_adj": 4,
+          "frac_lit_anchored": 0.8997646200587358
+        },
+        {
+          "title": "The Fall of Hyperion (Hyperion Cantos, #2)",
+          "catalog_n": 6572,
+          "n_raw": 110,
+          "rank_adj": 70,
+          "rank_full": 82,
+          "rank_p5": 83,
+          "delta_full_minus_adj": 12,
+          "delta_p5_minus_adj": 13,
+          "frac_lit_anchored": 0.9026501108256523
+        },
+        {
+          "title": "Endymion (Hyperion Cantos, #3)",
+          "catalog_n": 3242,
+          "n_raw": 52,
+          "rank_adj": 207,
+          "rank_full": 215,
+          "rank_p5": 262,
+          "delta_full_minus_adj": 8,
+          "delta_p5_minus_adj": 55,
+          "frac_lit_anchored": 0.9125575460669192
+        }
+      ],
+      "The Three-Body Problem": [
+        {
+          "title": "The Three-Body Problem (Remembrance of Earth\u2019s Past, #1)",
+          "catalog_n": 5522,
+          "n_raw": 96,
+          "rank_adj": 90,
+          "rank_full": 91,
+          "rank_p5": 93,
+          "delta_full_minus_adj": 1,
+          "delta_p5_minus_adj": 3,
+          "frac_lit_anchored": 0.9273083781667727
+        }
+      ],
+      "Roadside Picnic": [
+        {
+          "title": "Roadside Picnic",
+          "catalog_n": 2500,
+          "n_raw": 205,
+          "rank_adj": 71,
+          "rank_full": 74,
+          "rank_p5": 68,
+          "delta_full_minus_adj": 3,
+          "delta_p5_minus_adj": -3,
+          "frac_lit_anchored": 0.9380488858480044
+        }
+      ],
+      "The Book of the New Sun": [
+        {
+          "title": "The Shadow of the Torturer (The Book of the New Sun #1)",
+          "catalog_n": 2229,
+          "n_raw": 92,
+          "rank_adj": 15,
+          "rank_full": 10,
+          "rank_p5": 14,
+          "delta_full_minus_adj": -5,
+          "delta_p5_minus_adj": -1,
+          "frac_lit_anchored": 0.9238378737286773
+        },
+        {
+          "title": "The Claw of the Conciliator (The Book of the New Sun #2)",
+          "catalog_n": 1028,
+          "n_raw": 51,
+          "rank_adj": 12,
+          "rank_full": 7,
+          "rank_p5": 9,
+          "delta_full_minus_adj": -5,
+          "delta_p5_minus_adj": -3,
+          "frac_lit_anchored": 0.9754096461951873
+        },
+        {
+          "title": "The Citadel of the Autarch (The Book of the New Sun #4)",
+          "catalog_n": 625,
+          "n_raw": 29,
+          "rank_adj": 1,
+          "rank_full": 1,
+          "rank_p5": 1,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": 0,
+          "frac_lit_anchored": 0.9902201158306121
+        }
+      ],
+      "Shadow of the Torturer": [
+        {
+          "title": "The Shadow of the Torturer (The Book of the New Sun #1)",
+          "catalog_n": 2229,
+          "n_raw": 92,
+          "rank_adj": 15,
+          "rank_full": 10,
+          "rank_p5": 14,
+          "delta_full_minus_adj": -5,
+          "delta_p5_minus_adj": -1,
+          "frac_lit_anchored": 0.9238378737286773
+        }
+      ],
+      "Permutation City": [
+        {
+          "title": "Permutation City (Subjective Cosmology #2)",
+          "catalog_n": 536,
+          "n_raw": 27,
+          "rank_adj": 130,
+          "rank_full": 139,
+          "rank_p5": 196,
+          "delta_full_minus_adj": 9,
+          "delta_p5_minus_adj": 66,
+          "frac_lit_anchored": 0.9629507916833631
+        }
+      ],
+      "Ready Player One": [
+        {
+          "title": "Ready Player One",
+          "catalog_n": 49089,
+          "n_raw": 236,
+          "rank_adj": 286,
+          "rank_full": 286,
+          "rank_p5": 309,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": 23,
+          "frac_lit_anchored": 0.9268761596537056
+        }
+      ],
+      "The Martian": [
+        {
+          "title": "The Martian",
+          "catalog_n": 54052,
+          "n_raw": 286,
+          "rank_adj": 272,
+          "rank_full": 278,
+          "rank_p5": 287,
+          "delta_full_minus_adj": 6,
+          "delta_p5_minus_adj": 15,
+          "frac_lit_anchored": 0.8831438098227418
+        }
+      ],
+      "Ender's Game": [
+        {
+          "title": "Ender's Game (Ender's Saga, #1)",
+          "catalog_n": 69810,
+          "n_raw": 447,
+          "rank_adj": 179,
+          "rank_full": 177,
+          "rank_p5": 194,
+          "delta_full_minus_adj": -2,
+          "delta_p5_minus_adj": 15,
+          "frac_lit_anchored": 0.9346974731749454
+        }
+      ],
+      "Speaker for the Dead": [
+        {
+          "title": "Speaker for the Dead (Ender's Saga, #2)",
+          "catalog_n": 16576,
+          "n_raw": 112,
+          "rank_adj": 242,
+          "rank_full": 252,
+          "rank_p5": 270,
+          "delta_full_minus_adj": 10,
+          "delta_p5_minus_adj": 28,
+          "frac_lit_anchored": 0.964376323463419
+        }
+      ],
+      "Red Rising": [],
+      "Old Man's War": [
+        {
+          "title": "Old Man's War (Old Man's War, #1)",
+          "catalog_n": 12445,
+          "n_raw": 76,
+          "rank_adj": 383,
+          "rank_full": 384,
+          "rank_p5": 387,
+          "delta_full_minus_adj": 1,
+          "delta_p5_minus_adj": 4,
+          "frac_lit_anchored": 0.9397755876488654
+        },
+        {
+          "title": "The Ghost Brigades (Old Man's War, #2)",
+          "catalog_n": 5989,
+          "n_raw": 25,
+          "rank_adj": 398,
+          "rank_full": 398,
+          "rank_p5": 398,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": 0,
+          "frac_lit_anchored": 0.9230066535512856
+        }
+      ],
+      "The Hunger Games": [],
+      "Divergent": [],
+      "The Name of the Wind": [],
+      "The Way of Kings": [],
+      "Wool": [],
+      "Dark Matter": [
+        {
+          "title": "Dark Matter",
+          "catalog_n": 12482,
+          "n_raw": 51,
+          "rank_adj": 316,
+          "rank_full": 319,
+          "rank_p5": 321,
+          "delta_full_minus_adj": 3,
+          "delta_p5_minus_adj": 5,
+          "frac_lit_anchored": 0.918733029387915
+        }
+      ],
+      "Artemis": [],
+      "I Love Dick": [],
+      "Nova Swing": [],
+      "Light": [
+        {
+          "title": "Lord of Light",
+          "catalog_n": 2556,
+          "n_raw": 76,
+          "rank_adj": 157,
+          "rank_full": 167,
+          "rank_p5": 193,
+          "delta_full_minus_adj": 10,
+          "delta_p5_minus_adj": 36,
+          "frac_lit_anchored": 0.9379087563481516
+        },
+        {
+          "title": "Virtual Light (Bridge, #1)",
+          "catalog_n": 1790,
+          "n_raw": 56,
+          "rank_adj": 356,
+          "rank_full": 356,
+          "rank_p5": 351,
+          "delta_full_minus_adj": 0,
+          "delta_p5_minus_adj": -5,
+          "frac_lit_anchored": 0.905748764196978
+        },
+        {
+          "title": "Light (Empty Space Trilogy #1)",
+          "catalog_n": 543,
+          "n_raw": 44,
+          "rank_adj": 115,
+          "rank_full": 111,
+          "rank_p5": 115,
+          "delta_full_minus_adj": -4,
+          "delta_p5_minus_adj": 0,
+          "frac_lit_anchored": 0.9127750216722722
+        }
+      ]
+    },
+    "interpretation_hint": "delta_full_minus_adj > 0 means adjusted (lit-anchored) ranks the book BETTER (lower rank number) than full-shelf percentiles."
+  },
+  "pareto": {
+    "n_runs": 27,
+    "pareto_front_labels": [
+      "d0_p0_s0",
+      "d0_p55_s0",
+      "d40_p0_s0",
+      "d40_p55_s0"
+    ],
+    "best_utopia_knee": {
+      "label": "d40_p0_s0",
+      "depth": 40,
+      "purity": 0,
+      "strictness": 0,
+      "quality": 33.6275,
+      "geo_n": 387.4016221768136,
+      "median_n": 321.0,
+      "good_med": 36,
+      "bad_med": 254,
+      "good_top50": 11,
+      "bad_top100": 1,
+      "com_cap": 0.11149999999999999,
+      "q_norm": 0.7992125983902357,
+      "v_norm": 0.941751611110767,
+      "dist_utopia": 0.20906567258493702,
+      "qv_product": 0.7526597521540269,
+      "qv_quality_lean": 0.8491012528424217
+    },
+    "best_product": {
+      "label": "d0_p0_s0",
+      "depth": 0,
+      "purity": 0,
+      "strictness": 0,
+      "quality": 32.607499999999995,
+      "geo_n": 439.60070630459165,
+      "median_n": 387.0,
+      "good_med": 38,
+      "bad_med": 265,
+      "good_top50": 10,
+      "bad_top100": 1,
+      "com_cap": 0.11149999999999999,
+      "q_norm": 0.754593175820009,
+      "v_norm": 0.9999999995391919,
+      "dist_utopia": 0.24540682417999105,
+      "qv_product": 0.7545931754722863,
+      "qv_quality_lean": 0.840485564121723
+    },
+    "best_quality_lean": {
+      "label": "d0_p55_s0",
+      "depth": 0,
+      "purity": 55,
+      "strictness": 0,
+      "quality": 38.207499999999996,
+      "geo_n": 194.29120497578154,
+      "median_n": 210.0,
+      "good_med": 28,
+      "bad_med": 225,
+      "good_top50": 12,
+      "bad_top100": 0,
+      "com_cap": 0.11149999999999999,
+      "q_norm": 0.9995625546369395,
+      "v_norm": 0.6237462182069962,
+      "dist_utopia": 0.3762540360872997,
+      "qv_product": 0.623473363316115,
+      "qv_quality_lean": 0.8680268368864594
+    },
+    "best_quality": {
+      "label": "d40_p55_s0",
+      "depth": 40,
+      "purity": 55,
+      "strictness": 0,
+      "quality": 38.217499999999994,
+      "geo_n": 162.52620228739343,
+      "median_n": 181.0,
+      "good_med": 27,
+      "bad_med": 211,
+      "good_top50": 12,
+      "bad_top100": 0,
+      "com_cap": 0.11149999999999999,
+      "q_norm": 0.9999999999562554,
+      "v_norm": 0.5414832960739642,
+      "dist_utopia": 0.45851670392603583,
+      "qv_product": 0.5414832960502772,
+      "qv_quality_lean": 0.8395191535974535
+    },
+    "best_voter_mass": {
+      "label": "d0_p0_s0",
+      "depth": 0,
+      "purity": 0,
+      "strictness": 0,
+      "quality": 32.607499999999995,
+      "geo_n": 439.60070630459165,
+      "median_n": 387.0,
+      "good_med": 38,
+      "bad_med": 265,
+      "good_top50": 10,
+      "bad_top100": 1,
+      "com_cap": 0.11149999999999999,
+      "q_norm": 0.754593175820009,
+      "v_norm": 0.9999999995391919,
+      "dist_utopia": 0.24540682417999105,
+      "qv_product": 0.7545931754722863,
+      "qv_quality_lean": 0.840485564121723
+    },
+    "grid": [
+      {
+        "label": "d0_p0_s0",
+        "depth": 0,
+        "purity": 0,
+        "strictness": 0,
+        "quality": 32.607499999999995,
+        "geo_n": 439.60070630459165,
+        "median_n": 387.0,
+        "good_med": 38,
+        "bad_med": 265,
+        "good_top50": 10,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.754593175820009,
+        "v_norm": 0.9999999995391919,
+        "dist_utopia": 0.24540682417999105,
+        "qv_product": 0.7545931754722863,
+        "qv_quality_lean": 0.840485564121723
+      },
+      {
+        "label": "d0_p0_s40",
+        "depth": 0,
+        "purity": 0,
+        "strictness": 40,
+        "quality": 35.1575,
+        "geo_n": 140.63372722346764,
+        "median_n": 149.0,
+        "good_med": 33,
+        "bad_med": 170,
+        "good_top50": 11,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.8661417322455758,
+        "v_norm": 0.4748134052848788,
+        "dist_utopia": 0.5419769322717343,
+        "qv_product": 0.41125570534686556,
+        "qv_quality_lean": 0.7291768178093319
+      },
+      {
+        "label": "d0_p0_s80",
+        "depth": 0,
+        "purity": 0,
+        "strictness": 80,
+        "quality": 25.177500000000002,
+        "geo_n": 52.77315684747359,
+        "median_n": 46.0,
+        "good_med": 31,
+        "bad_med": 54,
+        "good_top50": 7,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.42957130356826045,
+        "v_norm": 0.023149577393613615,
+        "dist_utopia": 1.131205395080438,
+        "qv_product": 0.009944394138028934,
+        "qv_quality_lean": 0.2873236994071341
+      },
+      {
+        "label": "d0_p55_s0",
+        "depth": 0,
+        "purity": 55,
+        "strictness": 0,
+        "quality": 38.207499999999996,
+        "geo_n": 194.29120497578154,
+        "median_n": 210.0,
+        "good_med": 28,
+        "bad_med": 225,
+        "good_top50": 12,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.9995625546369395,
+        "v_norm": 0.6237462182069962,
+        "dist_utopia": 0.3762540360872997,
+        "qv_product": 0.623473363316115,
+        "qv_quality_lean": 0.8680268368864594
+      },
+      {
+        "label": "d0_p55_s40",
+        "depth": 0,
+        "purity": 55,
+        "strictness": 40,
+        "quality": 34.2275,
+        "geo_n": 89.7962325663191,
+        "median_n": 79.0,
+        "good_med": 26,
+        "bad_med": 127,
+        "good_top50": 11,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.8254593175491927,
+        "v_norm": 0.2680876386383568,
+        "dist_utopia": 0.752436146489767,
+        "qv_product": 0.22129543923379255,
+        "qv_quality_lean": 0.6303792299304002
+      },
+      {
+        "label": "d0_p55_s80",
+        "depth": 0,
+        "purity": 55,
+        "strictness": 80,
+        "quality": 19.2575,
+        "geo_n": 54.086765545350715,
+        "median_n": 54.0,
+        "good_med": 23,
+        "bad_med": 39,
+        "good_top50": 5,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.1706036745332195,
+        "v_norm": 0.03447939895129069,
+        "dist_utopia": 1.2728426044673624,
+        "qv_product": 0.005882312156787028,
+        "qv_quality_lean": 0.12296017807954443
+      },
+      {
+        "label": "d0_p75_s0",
+        "depth": 0,
+        "purity": 75,
+        "strictness": 0,
+        "quality": 34.707499999999996,
+        "geo_n": 116.99683882011497,
+        "median_n": 116.0,
+        "good_med": 28,
+        "bad_med": 148,
+        "good_top50": 13,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.846456692876358,
+        "v_norm": 0.39001923750507383,
+        "dist_utopia": 0.6290088058019192,
+        "qv_product": 0.33013439393670363,
+        "qv_quality_lean": 0.6867035834964086
+      },
+      {
+        "label": "d0_p75_s40",
+        "depth": 0,
+        "purity": 75,
+        "strictness": 40,
+        "quality": 25.2075,
+        "geo_n": 68.01653672357297,
+        "median_n": 57.0,
+        "good_med": 28,
+        "bad_med": 89,
+        "good_top50": 9,
+        "bad_top100": 3,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.4308836395262082,
+        "v_norm": 0.14007878225778952,
+        "dist_utopia": 1.0311924808115025,
+        "qv_product": 0.06035765551963559,
+        "qv_quality_lean": 0.32910193948226163
+      },
+      {
+        "label": "d0_p75_s80",
+        "depth": 0,
+        "purity": 75,
+        "strictness": 80,
+        "quality": 15.3575,
+        "geo_n": 51.22764131210912,
+        "median_n": 48.0,
+        "good_med": 13,
+        "bad_med": 30,
+        "good_top50": 3,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.0,
+        "v_norm": 0.00945279024466519,
+        "dist_utopia": 1.4075453011374375,
+        "qv_product": 0.0,
+        "qv_quality_lean": 0.0033084765856328164
+      },
+      {
+        "label": "d40_p0_s0",
+        "depth": 40,
+        "purity": 0,
+        "strictness": 0,
+        "quality": 33.6275,
+        "geo_n": 387.4016221768136,
+        "median_n": 321.0,
+        "good_med": 36,
+        "bad_med": 254,
+        "good_top50": 11,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.7992125983902357,
+        "v_norm": 0.941751611110767,
+        "dist_utopia": 0.20906567258493702,
+        "qv_product": 0.7526597521540269,
+        "qv_quality_lean": 0.8491012528424217
+      },
+      {
+        "label": "d40_p0_s40",
+        "depth": 40,
+        "purity": 0,
+        "strictness": 40,
+        "quality": 35.1975,
+        "geo_n": 128.24949576063364,
+        "median_n": 125.0,
+        "good_med": 29,
+        "bad_med": 159,
+        "good_top50": 11,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.8678915135228396,
+        "v_norm": 0.432335531981956,
+        "dist_utopia": 0.5828341105747802,
+        "qv_product": 0.3752203392015218,
+        "qv_quality_lean": 0.7154469199835303
+      },
+      {
+        "label": "d40_p0_s80",
+        "depth": 40,
+        "purity": 0,
+        "strictness": 80,
+        "quality": 25.1975,
+        "geo_n": 52.9438631504498,
+        "median_n": 45.0,
+        "good_med": 29,
+        "bad_med": 53,
+        "good_top50": 7,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.43044619420689234,
+        "v_norm": 0.024637755987685382,
+        "dist_utopia": 1.12947910327644,
+        "qv_product": 0.010605228298697247,
+        "qv_quality_lean": 0.2884132408301699
+      },
+      {
+        "label": "d40_p55_s0",
+        "depth": 40,
+        "purity": 55,
+        "strictness": 0,
+        "quality": 38.217499999999994,
+        "geo_n": 162.52620228739343,
+        "median_n": 181.0,
+        "good_med": 27,
+        "bad_med": 211,
+        "good_top50": 12,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.9999999999562554,
+        "v_norm": 0.5414832960739642,
+        "dist_utopia": 0.45851670392603583,
+        "qv_product": 0.5414832960502772,
+        "qv_quality_lean": 0.8395191535974535
+      },
+      {
+        "label": "d40_p55_s40",
+        "depth": 40,
+        "purity": 55,
+        "strictness": 40,
+        "quality": 34.1975,
+        "geo_n": 83.21709884138919,
+        "median_n": 73.0,
+        "good_med": 29,
+        "bad_med": 130,
+        "good_top50": 11,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.8241469815912448,
+        "v_norm": 0.23302467326657836,
+        "dist_utopia": 0.7868770144700561,
+        "qv_product": 0.19204658110893658,
+        "qv_quality_lean": 0.6172541736776116
+      },
+      {
+        "label": "d40_p55_s80",
+        "depth": 40,
+        "purity": 55,
+        "strictness": 80,
+        "quality": 19.2575,
+        "geo_n": 53.932821715472514,
+        "median_n": 54.0,
+        "good_med": 23,
+        "bad_med": 39,
+        "good_top50": 5,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.1706036745332195,
+        "v_norm": 0.03316595937259631,
+        "dist_utopia": 1.273839207597925,
+        "qv_product": 0.005658234538384402,
+        "qv_quality_lean": 0.12250047422700139
+      },
+      {
+        "label": "d40_p75_s0",
+        "depth": 40,
+        "purity": 75,
+        "strictness": 0,
+        "quality": 35.1975,
+        "geo_n": 98.77239054822398,
+        "median_n": 92.0,
+        "good_med": 29,
+        "bad_med": 137,
+        "good_top50": 13,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.8678915135228396,
+        "v_norm": 0.31199116813300914,
+        "dist_utopia": 0.7005774796025542,
+        "qv_product": 0.27077448711671603,
+        "qv_quality_lean": 0.6733263926363989
+      },
+      {
+        "label": "d40_p75_s40",
+        "depth": 40,
+        "purity": 75,
+        "strictness": 40,
+        "quality": 26.1675,
+        "geo_n": 63.46734714694881,
+        "median_n": 53.0,
+        "good_med": 32,
+        "bad_med": 84,
+        "good_top50": 10,
+        "bad_top100": 3,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.4728783901805392,
+        "v_norm": 0.10817920498886209,
+        "dist_utopia": 1.035954401483462,
+        "qv_product": 0.05115560830614366,
+        "qv_quality_lean": 0.3452336753634522
+      },
+      {
+        "label": "d40_p75_s80",
+        "depth": 40,
+        "purity": 75,
+        "strictness": 80,
+        "quality": 15.3575,
+        "geo_n": 51.067989557630064,
+        "median_n": 48.0,
+        "good_med": 13,
+        "bad_med": 30,
+        "good_top50": 3,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.0,
+        "v_norm": 0.008014432239604612,
+        "dist_utopia": 1.408557903192096,
+        "qv_product": 0.0,
+        "qv_quality_lean": 0.002805051283861614
+      },
+      {
+        "label": "d60_p0_s0",
+        "depth": 60,
+        "purity": 0,
+        "strictness": 0,
+        "quality": 32.677499999999995,
+        "geo_n": 232.0978731524151,
+        "median_n": 210.0,
+        "good_med": 31,
+        "bad_med": 282,
+        "good_top50": 10,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.7576552930552206,
+        "v_norm": 0.7056783737195268,
+        "dist_utopia": 0.38125605133628176,
+        "qv_product": 0.5346609550431995,
+        "qv_quality_lean": 0.7394633712877278
+      },
+      {
+        "label": "d60_p0_s40",
+        "depth": 60,
+        "purity": 0,
+        "strictness": 40,
+        "quality": 34.707499999999996,
+        "geo_n": 90.38610883660003,
+        "median_n": 81.0,
+        "good_med": 28,
+        "bad_med": 156,
+        "good_top50": 11,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.846456692876358,
+        "v_norm": 0.27110481212436555,
+        "dist_utopia": 0.7448917653395838,
+        "qv_product": 0.22947848269365684,
+        "qv_quality_lean": 0.6450835346131607
+      },
+      {
+        "label": "d60_p0_s80",
+        "depth": 60,
+        "purity": 0,
+        "strictness": 80,
+        "quality": 24.1975,
+        "geo_n": 50.18748763750548,
+        "median_n": 45.0,
+        "good_med": 29,
+        "bad_med": 49,
+        "good_top50": 7,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.38670166227529756,
+        "v_norm": 0.0,
+        "dist_utopia": 1.1730877422664867,
+        "qv_product": 0.0,
+        "qv_quality_lean": 0.2513560804789434
+      },
+      {
+        "label": "d60_p55_s0",
+        "depth": 60,
+        "purity": 55,
+        "strictness": 0,
+        "quality": 35.7275,
+        "geo_n": 121.3700405427853,
+        "median_n": 118.0,
+        "good_med": 26,
+        "bad_med": 177,
+        "good_top50": 12,
+        "bad_top100": 0,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.8910761154465848,
+        "v_norm": 0.4069295785099771,
+        "dist_utopia": 0.602989997821323,
+        "qv_product": 0.36260522807898643,
+        "qv_quality_lean": 0.7216248275187721
+      },
+      {
+        "label": "d60_p55_s40",
+        "depth": 60,
+        "purity": 55,
+        "strictness": 40,
+        "quality": 26.6375,
+        "geo_n": 71.78962987695094,
+        "median_n": 63.0,
+        "good_med": 35,
+        "bad_med": 99,
+        "good_top50": 9,
+        "bad_top100": 2,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.4934383201883887,
+        "v_norm": 0.16495742620422335,
+        "dist_utopia": 0.9766784708925637,
+        "qv_product": 0.08139631528881205,
+        "qv_quality_lean": 0.3784700072939308
+      },
+      {
+        "label": "d60_p55_s80",
+        "depth": 60,
+        "purity": 55,
+        "strictness": 80,
+        "quality": 17.2175,
+        "geo_n": 53.42536887625662,
+        "median_n": 51.0,
+        "good_med": 27,
+        "bad_med": 37,
+        "good_top50": 4,
+        "bad_top100": 1,
+        "com_cap": 0.11149999999999999,
+        "q_norm": 0.08136482939276628,
+        "v_norm": 0.028809699603293385,
+        "dist_utopia": 1.336825035769912,
+        "qv_product": 0.0023440962930788125,
+        "qv_quality_lean": 0.06297053396645076
+      },
+      {
+        "label": "d60_p75_s0",
+        "depth": 60,
+        "purity": 75,
+        "strictness": 0,
+        "quality": 29.1875,
+        "geo_n": 77.16881594331853,
+        "median_n": 64.0,
+        "good_med": 30,
+        "bad_med": 105,
+        "good_top50": 10,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.6049868766139553,
+        "v_norm": 0.19825329542993395,
+        "dist_utopia": 0.893774661721935,
+        "qv_product": 0.11994064198057948,
+        "qv_quality_lean": 0.4626301231995479
+      },
+      {
+        "label": "d60_p75_s40",
+        "depth": 60,
+        "purity": 75,
+        "strictness": 40,
+        "quality": 23.267500000000002,
+        "geo_n": 56.05149137070308,
+        "median_n": 47.0,
+        "good_med": 22,
+        "bad_med": 47,
+        "good_top50": 7,
+        "bad_top100": 1,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.3460192475789145,
+        "v_norm": 0.050921596425973034,
+        "dist_utopia": 1.1525799931752558,
+        "qv_product": 0.01761985248083233,
+        "qv_quality_lean": 0.242735069675385
+      },
+      {
+        "label": "d60_p75_s80",
+        "depth": 60,
+        "purity": 75,
+        "strictness": 80,
+        "quality": 18.3675,
+        "geo_n": 50.28092187056838,
+        "median_n": 48.0,
+        "good_med": 12,
+        "bad_med": null,
+        "good_top50": 3,
+        "bad_top100": 0,
+        "com_cap": 0.09749999999999999,
+        "q_norm": 0.13167104111410016,
+        "v_norm": 0.0008570904475438982,
+        "dist_utopia": 1.3237377891972482,
+        "qv_product": 0.00011285399155705513,
+        "qv_quality_lean": 0.08588615838080546
+      }
+    ]
+  }
+}

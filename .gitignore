@@ -46,3 +46,11 @@ Gemini-film-similarity-notes.txt
 
 # Rebuildable seedless-research sparse matrices
 /curators_explorer/data/seedless_*_matrix*.npz
+
+# Large derived data (over GitHub 100MB limit, regenerable)
+curators_explorer/data/temporal_rated_events_full.parquet
+curators_explorer/data/observation_ladder_full.parquet
+curators_explorer/data/drift_exploit_main.npz
+curators_explorer/data/canon_breeding_overnight_directions.npz
+curators_explorer/data/canon_breeding_overnight_b_directions.npz
+curators_explorer/data/multi_origin_behavior_features.npz

@@ -7,6 +7,79 @@
 
 ---
 
+## Latest update: attractor pruning — the ring of hills, audited (2026-08-06)
+
+`research_attractor_pruning.py` / `ATTRACTOR_PRUNING_REPORT.md` / `attractor_pruning.json`
+test whether the year-jury collapse to the Goodreads center can be reversed by removing
+the readers who pull it back. Starts from the year-preference juries, iterates the
+standard nonlinear map, removes the strongest proponents of the converged direction,
+rebuilds the operator on survivors, and restarts from the same literary seed.
+`research_attractor_pruning_audit.py` / `ATTRACTOR_PRUNING_AUDIT_REPORT.md` /
+`attractor_pruning_audit.json` then stress-test the claims.
+
+- Gradual pruning (5%/stage) barely moves the basin. **Removing the co-opted users at
+  once (top-43% by weight gain, not converged weight) is the qualitative change**:
+  the map converges to a fixed point whose projected head is canonical — *Brothers
+  Karamazov* #1, *Pride and Prejudice* #2, Poe, *Hamlet*, *Persuasion*, *Divine
+  Comedy* — with exact literary @50 rising 0→5 and anti @50 collapsing 14–19→3,
+  versus random-removal controls (anti ≥7/21) at equal remaining mass.
+- **The proponents of contraction are old-book-loving omnivores**: removed users have
+  higher old-love share (0.144 vs 0.075 at first hard removal) and positive
+  old-vs-new preference. The pull to the center is the literary-leaning readers' own
+  breadth, not a separate genre population.
+- **Audit corrections to the naive reading:** (i) convergence is genuine (smooth
+  contraction, no early freeze), but (ii) the stage-level "retained direction"
+  metric is weak evidence — by stage 5, 64% of survivors are both-fold seed-jury
+  members (gain-pruning retains them by construction), so it largely restates the
+  seed. (iii) The stronger test passes: random unpaired starts on the stage-5 pruned
+  population land on the literary pole **18/24 vs 6/24** on its paranormal-romance
+  mirror and reproduce the same canonical head (exact 5, broad 12, anti 3 @50) — the
+  valley is a genuine attractor of the pruned geometry, not a seed echo. On the
+  unpruned population no random start finds it (max corr 0.48, love center only).
+
+**Decision direction:** gain-pruning specifically (not equal-mass random pruning)
+creates a geometry where a literary pole exists as the dominant attractor; but the
+geometry was manufactured by the seeded pruning, the mirror pole exists alongside it
+(ratings alone do not say which end is literary), and the head is Anglophone
+school-canon + boxed sets + children's classics — the known year-jury lean. This
+validates old-over-new preference as a genuine anchored signal and locates the
+collapse mechanism (co-opted omnivores); the identifiability boundary stands.
+
+## Latest update: convergence reversal on pre-year candidates (2026-08-06)
+
+`research_attractor_pruning_preexisting.py` / `ATTRACTOR_PRUNING_PREYEAR_REPORT.md` /
+`attractor_pruning_preexisting.json` apply the same gain-hard reversal to the
+literary-leaning constructions from before publication year entered the dataset
+(teacher p65/s25 jury, rebuilt hard/soft juries, contrastive top-25, pairwise
+bilateral top-15) — none had ever been run through the map.
+
+- **Every pre-year candidate collapses at stage 0** exactly like the year juries
+  (retained vs start 0.27–0.44, exact literary 0/1, anti 3–5 @50): the handoff's
+  pre-year "failures" were never observed because the map was never started from them;
+  this run shows they fail too.
+- **User juries stay romance-bound.** Teacher/rebuilt candidates rise to 0.53–0.66
+  retained but end in paranormal-romance heads (anti 17–28 @50, exact ≤4); rebuilt_soft's
+  census pole (21/3) is itself the romance basin (pooled head Shadowfever/Kate Daniels).
+- **Book-space candidates reach the literary valley without years.** Contrastive
+  (25 titles) and pairwise (15 titles) gain-hard paths produce canonical heads
+  (exact 8–9, broad 13–16, anti 4–10 @50 at stages 3–4), and the unpaired census at
+  their most-literary stages is **21/1 and 22/0** with pooled consensus heads at
+  exact/broad/anti @50 = **10/17/7 and 9/14/11** (Middlesex/Poisonwood Bible/Crime
+  and Punishment; East of Eden/Hamlet/Earnest) — deeper than the year jury's
+  18/6 and 5/12/3. The 11/13 coin flip at the peak-retained stages (2–3) resolves as
+  pruning deepens.
+- **What the years still add: enclosing the valley.** For the book candidates the
+  dominant literary basin appears only where retained has dropped below 0.70 (0.50
+  and 0.43), and contrastive's deepest stage re-splits (11/13, anti 18/67). The year
+  jury is the only start whose pruned path sits inside the deep valley at the deepest
+  stage (retained 0.70, census 18/6). Years do not create the literary basin — a
+  pre-year start reaches a deeper one — they keep the gain-hard path in it.
+- Random-removal controls again stay low (0.20–0.29 retained); effect is specific to
+  who is removed. Caveat applies as before: pruned-geometry poles cannot be labeled
+  literary without the seed direction.
+
+---
+
 ## Latest update: BrightData years + old-over-new preference jury (2026-08-06)
 
 The downloaded 7.72 GiB `data/Goodreads-Books.csv` is now cleaned once and joined by exact

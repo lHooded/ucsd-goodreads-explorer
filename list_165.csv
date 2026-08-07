@@ -1,0 +1,112 @@
+rank,book,authors,year,country,language
+116,First Folio,William Shakespeare,1623,British,English
+21,The Bible,Unknown,-1400,Jewish,"Hebrew, aramaic, greek"
+2,In Search of Lost Time,Marcel Proust,1913,French,French
+80,Essays,Michel de Montaigne,1580,French,French
+129,Gargantua and Pantagruel,Francois Rabelais,1532,French,French
+195,The Flowers of Evil,Charles Baudelaire,1857,French,French
+306,Pensées,Blaise Pascal,1670,French,French
+1261,The Works of Moliere,Molière,1666,French,French
+290,The Confessions of Jean-Jacques Rousseau,Jean-Jacques Rousseau,1782,French,French
+43,The Red and the Black,Stendhal,1830,French,French
+420,The Complete Works of Plato,Plato,-387,Greek,Ancient greek
+137,The Charterhouse of Parma,Stendhal,1839,French,French
+1521,The Poems of Francois Villon,François Villon,1489,French,Middle french
+2205,Collected Poems,Arthur Rimbaud,1898,French,French
+3195,Memoirs of Cardinal De Retz,Cardinal de Retz,1717,French,French
+12,War and Peace,Leo Tolstoy,1869,Russian,Russian
+2473,Memoirs of Louis XIV,Louis de Rouvroy Saint-Simon (duc de),1740,French,French
+8,Don Quixote,Miguel de Cervantes,1605,Spanish,Spanish
+3226,The Complete Plays of Jean Racine,Jean Racine,1677,French,French
+278,Oresteia,Aeschylus,-458,Greek,Ancient greek
+1220,Prometheus Bound,Aeschylus,-455,Greek,Ancient greek
+1321,Seven Against Thebes,Aeschylus,-467,Greek,Ancient greek
+589,The Persians,Aeschylus,-471,Greek,Ancient greek
+1322,The Suppliants,Aeschylus,-463,Greek,Ancient greek
+18,The Brothers Karamazov,Fyodor Dostoevsky,1880,Russian,Russian
+1270,Collected Poems,Stéphane Mallarmé,1887,French,French
+669,La Fontaine's Fables,Jean de La Fontaine,1668,French,French
+94,Faust,Johann Wolfgang von Goethe,1808,German,German
+457,Alcools,Guillaume Apollinaire,1913,French,French
+122,A Sentimental Education,Gustave Flaubert,1869,French,French
+26,The Odyssey,Homer,-740,Greek,Ancient greek
+3356,Plays,Pierre Corneille,1641,French,French
+28,The Divine Comedy,Dante Alighieri,1308,Italian,Italian
+489,Memoirs From Beyond the Grave,François-Auguste-René de Chateaubriand,1849,French,French
+362,The Human Comedy,Honoré de Balzac,1830,French,French
+962,Electra,Sophocles,-409,Greek,Ancient greek
+369,Oedipus at Colonus,Sophocles,-401,Greek,Ancient greek
+1088,Ajax,Sophocles,-440,Greek,Ancient greek
+107,Oedipus the King,Sophocles,-429,Greek,Ancient greek
+1089,Philoctetes,Sophocles,-409,Greek,Ancient greek
+1091,Women of Trachis,Sophocles,-450,Greek,Ancient greek
+142,Antigone,Sophocles,-441,Greek,Ancient greek
+1,Ulysses,James Joyce,1922,Irish,English
+200,Dangerous Liaison,Pierre Choderlos de Laclos,1782,French,French
+65,Gulliver's Travels,Jonathan Swift,1726,British,English
+7630,One Hundred and One Poems by Paul Verlaine,Paul Verlaine,1948,French,French
+19,Madame Bovary,Gustave Flaubert,1857,French,French
+248,A Season in Hell,Arthur Rimbaud,1873,French,French
+526,Discourse on Method,Rene Descartes,1637,French,French
+470,Manon Lescaut,Abbe Prevost,1731,French,French
+3428,Selected Poems,Pierre Ronsard,1501,French,French
+848,Lysistrata,Aristophanes,-411,Greek,Ancient greek
+1360,The Birds,Aristophanes,-414,Greek,Ancient greek
+909,The Clouds,Aristophanes,-423,Greek,Ancient greek
+1142,Annals,Cornelius Tacitus,109,Roman,Latin
+1793,Histories,Cornelius Tacitus,100,Roman,Latin
+398,Ethics,Baruch de Spinoza,1677,Dutch,Latin
+3456,Poems of Friedrich Hölderlin,Friedrich Holderlin,1800,German,German
+2623,Daughters of Fire,Gerard de Nerval,1854,French,French
+69,Robinson Crusoe,Daniel Defoe,1719,British,English
+118,Confessions,Augustine,397,Roman,Latin
+446,The Songs of Maldoror,Comte de Lautréamont,1868,French,French
+40,Les Misérables,Victor Hugo,1862,French,French
+36,Alice's Adventures in Wonderland,Lewis Carroll,1865,British,English
+3522,The Complete Writings of Alfred de Musset,Alfred de Musset,1907,French,French
+1858,The Journal of Jules Renard,Jules Renard,1887,French,French
+37,The Iliad,Homer,-750,Greek,Ancient greek
+59,The Idiot,Fyodor Dostoevsky,1869,Russian,Russian
+14,Wuthering Heights,Emily Brontë,1847,British,English
+93,Demons,Fyodor Dostoevsky,1872,Russian,Russian
+74,Candide,Voltaire,1759,French,French
+1075,The Complete Poetry and Prose of William Blake,William Blake,1827,British,English
+13,Crime and Punishment,Fyodor Dostoevsky,1866,Russian,Russian
+350,Parallel Lives,Plutarch,100,Greek,Greek
+277,The Princess of Cleves,Madame de La Fayette,1678,French,French
+341,Das Kapital,Karl Marx,1867,German,German
+740,Adolphe,Benjamin Constant,1816,Swiss,French
+1952,Le Mariage De Figaro,Pierre-Augustin Caron de Beaumarchais,1784,French,French
+2156,Les Tragiques,Agrippa d'Aubigné,1616,French,French
+3530,Les Destinées,Alfred de Vigny,1864,French,French
+1144,Poems of Federico García Lorca,Federico García Lorca,1921,Spanish,Spanish
+168,Man's Fate,Andre Malraux,1933,French,French
+758,Maxims,François duc de La Rochefoucauld,1665,French,French
+2672,Les Caractères,Jean de La Bruyère,1688,French,French
+1441,Lettres de madame de Sévigné,Marie de Rabutin-Chantal marquise de Sévigné,1671,French,French
+1964,King Ubu,Alfred Jarry,1896,French,French
+9531,The Collected Works of Paul Valéry,Paul Valéry,1957,French,French
+1923,The Provincial Letters,Blaise Pascal,1656,French,French
+524,The Seven Pillars of Wisdom,T. E. Lawrence,1926,British,English
+1138,Carmen,Prosper Mérimée,1845,French,French
+1337,Fragments,Heraclitus,-500,Greek,Ancient greek
+5326,Marivaux,Pierre Carlet de Chamblain de Marivaux,1968,French,Unknown
+2693,La légende des siècles,Victor Hugo,1859,French,French
+20,The Trial,Franz Kafka,1925,Czech,German
+3553,Correspondence,Voltaire,1751,French,French
+4528,Calligrammes,Guillaume Apollinaire,1918,French,French
+1984,Journals,André Gide,1948,French,French
+237,Fairy Tales and Stories,Hans Christian Andersen,1835,Danish,Danish
+138,The Three Musketeers,Alexandre Dumas,1844,French,French
+321,History of My Life,Giacomo Casanova,1822,Italian,French
+48,One Thousand and One Nights,Unknown,800,Multiple,Arabic
+150,Lord Jim,Joseph Conrad,1900,British,English
+2701,Philosophical Writings,Novalis,1798,German,German
+239,Thus Spake Zarathustra,Friedrich Nietzsche,1883,German,German
+4042,Three plays,Paul Claudel,1912,French,French
+1559,Wry-Blue Loves,Tristan Corbière,1873,French,French
+2540,Les Contemplations,Victor Hugo,1856,French,French
+2704,Dark Night of the Soul,St. John of the Cross,1578,Spanish,Spanish
+97,Dead Souls,Nikolai Gogol,1842,Russian,Russian
+73,The Aeneid,Virgil,-19,Roman,Latin
+934,The Diary of a Country Priest,Georges Bernanos,1936,French,French

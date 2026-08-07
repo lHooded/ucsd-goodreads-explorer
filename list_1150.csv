@@ -1,0 +1,101 @@
+rank,book,authors,year,country,language
+24,Middlemarch,George Eliot,1871,British,English
+45,Beloved,Toni Morrison,1987,American,English
+1,Ulysses,James Joyce,1922,Irish,English
+25,To the Lighthouse,Virginia Woolf,1927,British,English
+2,In Search of Lost Time,Marcel Proust,1913,French,French
+10,Anna Karenina,Leo Tolstoy,1877,Russian,Russian
+12,War and Peace,Leo Tolstoy,1869,Russian,Russian
+30,Jane Eyre,Charlotte Brontë,1847,British,English
+15,Pride and Prejudice,Jane Austen,1813,British,English
+19,Madame Bovary,Gustave Flaubert,1857,French,French
+3,The Great Gatsby,F. Scott Fitzgerald,1925,American,English
+131,Bleak House,Charles Dickens,1852,British,English
+76,Emma,Jane Austen,1815,British,English
+32,Mrs. Dalloway,Virginia Woolf,1925,British,English
+6,Moby-Dick,Herman Melville,1851,American,English
+7,Nineteen Eighty Four,George Orwell,1949,British,English
+4,One Hundred Years of Solitude,Gabriel García Márquez,1967,Colombian,Spanish
+179,Persuasion,Jane Austen,1817,British,English
+54,The Life And Opinions Of Tristram Shandy,Laurence Sterne,1759,British,English
+14,Wuthering Heights,Emily Brontë,1847,British,English
+66,The Portrait of a Lady,Henry James,1881,American,English
+60,Things Fall Apart,Chinua Achebe,1958,Nigerian,English
+58,Midnight's Children,Salman Rushdie,1981,Indian,English
+190,The Remains of the Day,Kazuo Ishiguro,1989,British,English
+11,Lolita,Vladimir Nabokov,1955,American,English
+8,Don Quixote,Miguel de Cervantes,1605,Spanish,Spanish
+18,The Brothers Karamazov,Fyodor Dostoevsky,1880,Russian,Russian
+20,The Trial,Franz Kafka,1925,Czech,German
+70,Pale Fire,Vladimir Nabokov,1962,American,English
+39,Frankenstein,Mary Shelley,1818,British,English
+155,The Prime of Miss Jean Brodie,Muriel Spark,1961,"British, Scottish",English
+348,The God of Small Things,Arundhati Roy,1997,Indian,English
+46,David Copperfield,Charles Dickens,1849,British,English
+380,Wolf Hall,Hilary Mantel,2009,British,English
+38,Great Expectations,Charles Dickens,1860,British,English
+133,The Handmaid's Tale,Margaret Atwood,1985,Canadian,English
+33,Invisible Man,Ralph Ellison,1952,American,English
+95,The Age of Innocence,Edith Wharton,1920,American,English
+64,Their Eyes Were Watching God,Zora Neale Hurston,1937,American,English
+269,Song of Solomon,Toni Morrison,1977,American,English
+31,Heart of Darkness,Joseph Conrad,1899,British,English
+29,The Magic Mountain,Thomas Mann,1924,German,German
+319,Housekeeping,Marilynne Robinson,1980,American,English
+154,Giovanni's Room,James Baldwin,1956,American,English
+63,The Golden Notebook,Doris May Lessing,1962,British,English
+61,The Leopard,Giuseppe Tomasi di Lampedusa,1958,Italian,Italian
+105,Vanity Fair,William Makepeace Thackeray,1847,British,English
+78,The Metamorphosis,Franz Kafka,1915,Czech,German
+530,A Fine Balance,Rohinton Mistry,1995,Indian,English
+156,Wide Sargasso Sea,Jean Rhys,1966,British,English
+392,My Brilliant Friend,Elena Ferrante,2012,American,Italian
+365,The Golden Bowl,Henry James,1904,American,English
+1060,The Transit of Venus,Shirley Hazzard,1980,Australian,English
+99,Orlando,Virginia Woolf,1928,British,English
+297,The Waves,Virginia Woolf,1931,British,English
+501,Mansfield Park,Jane Austen,1814,British,English
+9,The Sound and the Fury,William Faulkner,1929,American,English
+259,Disgrace,J. M. Coetzee,1999,South African,English
+260,Never Let Me Go,Kazuo Ishiguro,2005,British,English
+184,Howards End,E. M. Forster,1910,British,English
+674,The Rings of Saturn,W. G. Sebald,1995,German,German
+1122,Half of a Yellow Sun,Chimamanda Ngozi Adichie,2006,Nigerian,English
+217,White Teeth,Zadie Smith,2000,British,English
+89,The Good Soldier,Ford Madox Ford,1915,British,English
+152,The Color Purple,Alice Walker,1982,American,English
+34,The Master and Margarita,Mikhail Bulgakov,1967,Russian,Russian
+83,The Man Without Qualities,Robert Musil,1930,Austrian,German
+180,Blood Meridian,Cormac McCarthy,1985,American,English
+13,Crime and Punishment,Fyodor Dostoevsky,1866,Russian,Russian
+280,Jude the Obscure,Thomas Hardy,1895,British,English
+496,Kindred,Octavia E. Butler,1979,American,English
+371,Our Mutual Friend,Charles Dickens,1864,British,English
+256,Austerlitz,W. G. Sebald,2001,German,German
+722,Nervous Conditions,Tsitsi Dangarembga,1988,Zimbabwean,English
+302,The Bluest Eye,Toni Morrison,1970,American,English
+56,Dracula,Bram Stoker,1897,British,English
+468,Rainbow,D.H. Lawrence,1915,British,English
+215,A House for Mr. Biswas,V. S. Naipaul,1961,Trinidadian,English
+342,Go Tell it on the Mountain,James Baldwin,1953,American,English
+55,Rebecca,Daphne du Maurier,1938,British,English
+88,Buddenbrooks,Thomas Mann,1901,German,German
+169,The End of the Affair,Graham Greene,1951,British,English
+71,A Farewell to Arms,Ernest Hemingway,1929,American,English
+145,The Talented Mr. Ripley,Patricia Highsmith,1955,American,English
+784,The Vegetarian,Han Kang,2007,Korean,Korean
+207,The Turn of the Screw,Henry James,1898,American,English
+699,The Line of Beauty,Alan Hollinghurst,2004,British,English
+390,Ragtime,E. L. Doctorow,1975,American,English
+355,The Left Hand Of Darkness,Ursula K. Le Guin,1969,American,English
+3846,Jacob's Room,Virginia Woolf,1922,British,English
+213,Life and Fate,Vasily Grossman,1980,Russian,Russian
+122,A Sentimental Education,Gustave Flaubert,1869,French,French
+203,Invisible Cities,Italo Calvino,1972,Italian,Italian
+556,The Known World,Edward P. Jones,2003,American,English
+715,The Return of the Native,Thomas Hardy,1878,British,English
+144,Pedro Páramo,Juan Rulfo,1955,Mexican,Spanish
+35,Catch-22,Joseph Heller,1961,American,English
+287,The Road,Cormac McCarthy,2006,American,English
+577,The Go-Between,L. P. Hartley,1953,British,English
+151,My Antonia,Willa Cather,1918,American,English
