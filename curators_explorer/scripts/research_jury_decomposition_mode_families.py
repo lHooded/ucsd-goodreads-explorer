@@ -420,7 +420,9 @@ def _spectral_shuffle_null(
 ) -> dict[str, Any]:
     """Parent-set-shuffle null: permute the 120 intact recurrent-mode sets
     across parent identities and re-evaluate the per-child best-cosine and
-    per-parent mode coverage.  ONLY indexing/reductions over the
+    per-parent mode coverage.  Coverage is normalized by the size of the
+    ASSIGNED null mode-set (sizes[pi[j]] for real parent j), never by the
+    real parent's own set size.  ONLY indexing/reductions over the
     precomputed tables (no book-space products, no optimization)."""
     rng = np.random.default_rng(seed)
     n_children = score.shape[0]
@@ -441,7 +443,7 @@ def _spectral_shuffle_null(
         argm = argmode[ch, sj[:, None]]
         so = np.sort(argm, axis=1)
         uniq = np.sum(so[:, 1:] != so[:, :-1], axis=1) + 1
-        stats_coverage[t] = float(np.mean(uniq / sizes))
+        stats_coverage[t] = float(np.mean(uniq / sizes[sj]))
     return {
         "null_mean_best_cos": float(stats_mean.mean()),
         "null_sd_best_cos": float(stats_mean.std()),
@@ -690,6 +692,7 @@ def phase_analyze(args: argparse.Namespace) -> None:
         "family_taus": [float(t) for t in FAMILY_TAUS],
         "source": source_hashes,
         "source_campaign_git_head": provenance["campaign_git_head"],
+        "source_campaign_seed": provenance["campaign_seed"],
         "code_git_head": _git_head(),
         "source_mode_count": n_modes,
         "source_mode_ids": [m["mode_id"] for m in modes],
@@ -807,7 +810,7 @@ def phase_prereport(args: argparse.Namespace) -> None:
         f"- Addendum seed: **{addendum['addendum_seed']}**; "
         f"{addendum['n_permutations']} label-blind permutations "
         f"(indexing only).",
-        f"- Source campaign: seed **{addendum['source_campaign_git_head']}** "
+        f"- Source campaign: seed **{addendum['source_campaign_seed']}**, "
         f"git head `{addendum['source_campaign_git_head'][:12]}`; "
         f"{addendum['source_mode_count']} recurrent random modes at "
         f"tau={addendum['mode_tau']}.",
@@ -1135,6 +1138,55 @@ def phase_smoke(args: argparse.Namespace) -> None:
         "ok": bool(intact_ok),
         "detail": "null mean best-cosine equals brute-force indexing of the "
                   "precomputed score table; intact mode sets preserved",
+    })
+
+    # ---- 6b. coverage null with UNEQUAL intact mode-set sizes ----
+    # parents/sets: 1, 2 and 3 modes; every set is fully selected by any
+    # assigned parent's four children (argmode cycles the set's members),
+    # so the CORRECT coverage is 1.0 for every permutation while the wrong
+    # denominator (real parent's own set size) deviates whenever the
+    # assigned set differs in size.  The whole coverage_stats vector must
+    # equal the brute-force replication of the same permutation stream.
+    sets_unequal = [np.asarray([0]), np.asarray([1, 2]),
+                    np.asarray([3, 4, 5])]
+    sizes_unequal = np.asarray([1, 2, 3], dtype=np.int64)
+    n_ch = 12
+    score_unequal = np.zeros((n_ch, 3), dtype=np.float64)
+    argmode_unequal = np.empty((n_ch, 3), dtype=np.int64)
+    for c in range(n_ch):
+        for j in range(3):
+            g = sets_unequal[j]
+            argmode_unequal[c, j] = g[c % len(g)]
+    child_parent_unequal = np.asarray(
+        [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2], dtype=np.int64)
+    children_unequal = [np.asarray([0, 1, 2, 3]), np.asarray([4, 5, 6, 7]),
+                        np.asarray([8, 9, 10, 11])]
+    n_cov = 500
+    cov_seed = _derive_seed(ADDENDUM_SEED, "coverage_null_test")
+    cov_null = _spectral_shuffle_null(
+        score_unequal, argmode_unequal, child_parent_unequal,
+        children_unequal, sizes_unequal, n_cov, cov_seed)
+    rng_cov = np.random.default_rng(cov_seed)
+    brute_cov = np.empty(n_cov, dtype=np.float64)
+    for t in range(n_cov):
+        pi = rng_cov.permutation(3)
+        vals = []
+        for j in range(3):
+            assigned = pi[j]
+            sel = {int(argmode_unequal[c, assigned]) for c in children_unequal[j]}
+            vals.append(len(sel) / len(sets_unequal[assigned]))
+        brute_cov[t] = float(np.mean(vals))
+    cov_ok = (cov_null["coverage_stats"].shape == (n_cov,)
+              and np.allclose(cov_null["coverage_stats"], brute_cov,
+                              atol=1e-12)
+              and abs(float(np.mean(cov_null["coverage_stats"])) - 1.0) < 1e-12)
+    checks.append({
+        "check": "spectral_coverage_null_uses_shuffled_set_sizes",
+        "ok": bool(cov_ok),
+        "detail": f"unequal set sizes [1,2,3]; whole coverage_stats vector "
+                  f"equals brute force over the same permutation stream; "
+                  f"mean {float(np.mean(cov_null['coverage_stats'])):.6f} "
+                  f"(correct normalization => 1.0)",
     })
 
     # ---- 7. no book-space products / no SLSQP inside permutation loops ----
