@@ -78,13 +78,25 @@ Phases
                 eligible (size >= 5, label-blind even/odd analogue with
                 coverage >= 0.5, A-B cos >= 0.7, mutual best, A and B halves
                 each >= 2) is written, with memberships and frozen top-50
-                book indices, to the eligible-family freeze file. Literary
+                book indices, to the eligible-family freeze file. Each top 50
+                is ranked from that cluster's FROZEN normalized preference
+                centroid (pref_centroid_key in the sealed geometry NPZ) with
+                the posthoc_head convention (np.argsort(-score, stable) over
+                the global book_n >= 25 universe); the legacy raw-centroid
+                top-50 field in the geometry JSON is a structural diagnostic
+                only and is never used for literary inference. Literary
                 metrics can never add or remove a family member.
 - unblind:      additionally runs the PREREGISTERED family-wise permutation
                 test over that frozen family: T_exact / T_broad = max over
                 the family of the exact/broad literary count inside each
-                cluster's FROZEN top-50 eligible indices, T_strong = 1 iff any
+                cluster's FROZEN top-50 eligible indices (of the frozen
+                normalized preference centroid), T_strong = 1 iff any
                 family member has exact_frozen50 >= 3 and anti_frozen50 <= 1.
+                Before any semantic load it recomputes every family top 50
+                from the sealed geometry NPZ and asserts exact equality with
+                the freeze; after the semantic load it asserts the observed
+                frozen50 counts exactly equal the _eval_pref metrics of the
+                same centroid and aborts on any mismatch.
                 Null: 10,000 permutations with seed PERMUTATION_SEED, the
                 eligible universe stratified into 10 approximately equal bins
                 by log1p(book_n), and within each bin the complete joint
@@ -146,6 +158,10 @@ PERMUTATION_N_PERMS = 10000
 PERMUTATION_N_BINS = 10          # strata: approximately equal bins by log1p(book_n)
 PERMUTATION_STRONG_EXACT = 3     # exact_frozen50 >= 3 and anti_frozen50 <= 1
 PERMUTATION_STRONG_ANTI = 1
+PERMUTATION_RANKING_OBJECT = "frozen normalized preference-space centroid"
+PERMUTATION_RANKING_CONVENTION = (
+    "descending score, stable argsort, global book_n>=25 eligibility"
+)
 
 CHECKPOINT_EVERY = 10
 SMOKE_JURIES = 4
@@ -1574,7 +1590,32 @@ def _find_analogue(
     return best
 
 
-def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
+def _centroid_top50(
+    pref_centroid_key: str,
+    centroid_lookup: Any,
+    eligible_idx: np.ndarray,
+) -> list[int]:
+    """Top 50 eligible books of the FROZEN normalized preference-space
+    centroid stored in the sealed geometry NPZ (the same object evaluated by
+    _eval_pref during unblind).
+
+    The stored vector is indexed over the book_n >= 25 eligible universe and
+    is ranked with the SAME stable convention as posthoc_head:
+    np.argsort(-score, kind='stable')[:50], then mapped back to full
+    work-index positions. This is the ranking whose labels the family-wise
+    permutation test counts; the legacy raw-preference-centroid top-50 field
+    in the geometry JSON is a structural diagnostic only and is NOT used.
+    """
+    centroid = np.asarray(centroid_lookup[pref_centroid_key], dtype=np.float64)
+    order = np.argsort(-centroid, kind="stable")[:50]
+    return eligible_idx[order].astype(np.int64).tolist()
+
+
+def _eligible_family(
+    frozen: dict[str, Any],
+    centroid_lookup: Any,
+    eligible_idx: np.ndarray,
+) -> list[dict[str, Any]]:
     """The PREREGISTERED family for the family-wise permutation test: every
     pooled/deepest preference-space cluster (all preregistered taus) that is
     STRUCTURALLY eligible in the sealed label-blind geometry alone:
@@ -1584,9 +1625,12 @@ def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
       coverage >= 0.5), with A-B centroid cosine >= 0.7 and mutual best;
     - the analogue's A and B halves each have >= 2 members.
 
-    Literary metrics can never add or remove a family member. The family is
-    frozen to disk in the prereport phase and asserted unchanged before the
-    unblind phase loads any semantic context.
+    Literary metrics can never add or remove a family member. Each member's
+    permutation-test top 50 is derived from its FROZEN normalized preference
+    centroid (pref_centroid_key in the sealed geometry NPZ), never from the
+    raw preference centroid. The family is frozen to disk in the prereport
+    phase and asserted unchanged before the unblind phase loads any semantic
+    context.
     """
     family: list[dict[str, Any]] = []
     for tau in CLUSTER_TAUS:
@@ -1601,6 +1645,10 @@ def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
                 continue
             if a["a_size"] < 2 or a["b_size"] < 2:
                 continue
+            if not c.get("pref_centroid_key"):
+                raise SystemExit(
+                    f"family member {key} idx {ci} has no pref_centroid_key; refusing"
+                )
             family.append(
                 {
                     "key": key,
@@ -1616,7 +1664,12 @@ def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
                         "cos": a["cos"],
                         "mutual_best": a["mutual_best"],
                     },
-                    "top_eligible_book_indices": c["top_eligible_book_indices"],
+                    "pref_centroid_key": c["pref_centroid_key"],
+                    "ranking_object": PERMUTATION_RANKING_OBJECT,
+                    "ranking_convention": PERMUTATION_RANKING_CONVENTION,
+                    "top_eligible_book_indices": _centroid_top50(
+                        c["pref_centroid_key"], centroid_lookup, eligible_idx
+                    ),
                 }
             )
     family.sort(key=lambda f: (f["key"], f["cluster_index"]))
@@ -1625,7 +1678,8 @@ def _eligible_family(frozen: dict[str, Any]) -> list[dict[str, Any]]:
 
 def _family_signature(family: list[dict[str, Any]]) -> list[tuple[Any, ...]]:
     """Comparable snapshot of the frozen family; any structural change in the
-    memberships, analogue metrics, or frozen top-50 indices breaks equality."""
+    memberships, analogue metrics, centroid key, or frozen top-50 indices
+    breaks equality."""
     return [
         (
             c["key"],
@@ -1633,6 +1687,7 @@ def _family_signature(family: list[dict[str, Any]]) -> list[tuple[Any, ...]]:
             c["members"],
             c["size"],
             c["analogue"],
+            c["pref_centroid_key"],
             c["top_eligible_book_indices"],
         )
         for c in family
@@ -1652,7 +1707,8 @@ def _permutation_test(
     Population: the frozen structurally eligible family (pooled/deepest/pref
     clusters across all preregistered taus). Every statistic is a count of
     literary labels inside a cluster's FROZEN top-50 eligible book indices
-    (frozen in the geometry artifact; never permuted, never re-ranked).
+    (the top 50 of its frozen normalized preference centroid, frozen in the
+    prereport family freeze; never permuted, never re-ranked).
 
     - T_exact   = max over the family of exact_lit count in frozen top-50;
     - T_broad   = max over the family of broad_lit count in frozen top-50;
@@ -1828,10 +1884,18 @@ def phase_unblind(args: argparse.Namespace) -> None:
     manifest_checks = _verify_manifest(args, npz_path, geo_json, geo_npz)
 
     # ---- PREREGISTERED FAMILY FREEZE (must exist and match, before ANY
-    #      semantic load): the permutation-test family was frozen label-blind
-    #      in the prereport phase; recompute it from the sealed geometry and
-    #      refuse to proceed if a single member, membership, analogue metric,
-    #      or frozen top-50 index differs. ----
+    #      semantic load). The permutation-test top 50 of every family member
+    #      is recomputed directly from its FROZEN normalized preference
+    #      centroid (pref_centroid_key) in the sealed geometry NPZ and
+    #      asserted EXACTLY equal to the prereport freeze: family membership,
+    #      analogue metrics, centroid key, and every frozen top-50 work index
+    #      must match, otherwise refuse to unblind. ----
+    payload, _, _ = year.load_matrix()
+    n_books = int(len(payload["work_ids"]))
+    eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
+    eligible_idx = np.flatnonzero(eligible)
+    n_eligible = int(eligible.sum())
+    gblob = np.load(geo_npz, allow_pickle=False)
     fam_path = eligible_family_path(args.tag)
     if not fam_path.exists():
         raise SystemExit(
@@ -1839,19 +1903,14 @@ def phase_unblind(args: argparse.Namespace) -> None:
         )
     fam_doc = json.loads(fam_path.read_text(encoding="utf-8"))
     frozen_family = fam_doc.get("family", [])
-    recomputed = _eligible_family(frozen)
+    recomputed = _eligible_family(frozen, gblob, eligible_idx)
     if _family_signature(recomputed) != _family_signature(frozen_family):
         raise SystemExit(
             "eligible family recomputed from the sealed geometry differs from the "
-            "prereport freeze; refusing to unblind"
+            "prereport freeze (membership, analogue metrics, centroid key, or "
+            "frozen top-50 indices); refusing to unblind"
         )
     family = frozen_family
-
-    payload, _, _ = year.load_matrix()
-    n_books = int(len(payload["work_ids"]))
-    eligible = np.asarray(payload["book_n"] >= ELIG_MIN_BOOK_N)
-    eligible_idx = np.flatnonzero(eligible)
-    n_eligible = int(eligible.sum())
     # ONE preregistered eligibility universe for all semantic preference
     # evaluation: ratings-derived reader mass, zeroed outside book_n >= 25.
     elig_mass = np.where(eligible, payload["book_n"], 0.0).astype(np.float64)
@@ -1884,6 +1943,37 @@ def phase_unblind(args: argparse.Namespace) -> None:
     perm_stats, perm_nulls = _permutation_test(
         family, label_vecs, payload["book_n"], eligible_idx, n_books
     )
+
+    # ---- CONSISTENCY: the permutation test's observed frozen50 counts must
+    #      exactly equal the _eval_pref metrics of the SAME frozen normalized
+    #      preference centroid (the object reported in the primary table).
+    #      Pure consistency check: never alters the family or rankings.
+    #      Abort rather than interpret p-values on any mismatch. ----
+    print("Checking frozen50 <-> _eval_pref consistency", flush=True)
+    for i, c in enumerate(family):
+        _, metrics = _eval_pref(
+            _embed_full(gblob[c["pref_centroid_key"]], eligible_idx, n_books),
+            elig_mass, payload["work_ids"], meta, eval_sets,
+        )
+        row = perm_stats["per_member_frozen50"][i]
+        pairs = (
+            ("exact_lit50", "exact_frozen50"),
+            ("broad_lit50", "broad_frozen50"),
+            ("anti50", "anti_frozen50"),
+            ("filler50", "filler_frozen50"),
+        )
+        bad = [
+            f"{name}={metrics[name]} vs {key}={row[key]}"
+            for name, key in pairs
+            if metrics[name] != row[key]
+        ]
+        if bad:
+            raise SystemExit(
+                f"frozen50 <-> _eval_pref consistency mismatch for family member "
+                f"{c['key']} idx {c['cluster_index']} "
+                f"({c['pref_centroid_key']}): {bad}; refusing to interpret p-values"
+            )
+    print(f"frozen50 consistency OK ({len(family)} family members)", flush=True)
     perm_npz = permutation_null_path(args.tag)
     _write_npz_atomic(perm_npz, perm_nulls)
     perm_json = {
@@ -1961,7 +2051,6 @@ def phase_unblind(args: argparse.Namespace) -> None:
     print(f"endpoint evaluation done ({len(endpoints)})", flush=True)
 
     # 2) every label-blind preference centroid; 3) direction centroids
-    gblob = np.load(geo_npz, allow_pickle=False)
     cluster_evals: list[dict[str, Any]] = []
     for stage_label in ("deepest", "s4"):
         for group in ("20k", "80k", "pooled"):
@@ -2512,9 +2601,13 @@ def _write_report(
             "preregistered taus; size >= 5, label-blind even/odd analogue with coverage "
             ">= 0.5, A-B cos >= 0.7, mutual best, A and B halves each >= 2). Every "
             "statistic counts literary labels inside each member's FROZEN top-50 "
-            "eligible book indices (never re-ranked, never permuted).",
+            "eligible book indices (of the frozen normalized preference-space centroid "
+            "at `pref_centroid_key`, ranked with the posthoc_head convention; never "
+            "re-ranked, never permuted).",
             "",
-            f"- Null: {perm['n_perms']:,} permutations, seed **{perm['seed']}**; the "
+            f"- Ranking object: {PERMUTATION_RANKING_OBJECT}; "
+            f"convention: {PERMUTATION_RANKING_CONVENTION}.",
+            f"- Null: {perm['n_perms']:,} permutations, seed **{perm['seed']}**; the " 
             f"eligible universe (book_n >= {ELIG_MIN_BOOK_N}) is stratified into "
             f"{perm['n_bins']} approximately equal bins by log1p(book_n) ordinal rank, "
             "and within each bin the complete joint (exact_lit, broad_lit, anti, "
@@ -2724,13 +2817,23 @@ def _preunblind_markdown(
             "STRUCTURALLY eligible in the sealed label-blind geometry alone — "
             f"size >= 5, an even/odd analogue with coverage >= 0.5, A-B cos >= "
             "0.7, mutual best, and A and B halves each >= 2. These exact "
-            "memberships, analogue metrics, and frozen top-50 book indices "
-            "were written to the eligible-family freeze file BEFORE any "
-            "semantic context was loaded. Literary metrics can never add or "
-            "remove a family member; the unblind phase will refuse to run if "
-            "the recomputed family differs from this freeze. The family-wise "
-            "permutation test counts literary labels only inside each "
-            "member's FROZEN top-50 indices.",
+            "memberships, analogue metrics, centroid keys, and frozen top-50 "
+            "book indices were written to the eligible-family freeze file "
+            "BEFORE any semantic context was loaded. Literary metrics can "
+            "never add or remove a family member; the unblind phase will "
+            "refuse to run if the recomputed family differs from this freeze.",
+            "",
+            "The permutation-test top 50 of every member is ranked from that "
+            "cluster's FROZEN normalized preference-space centroid "
+            "(`pref_centroid_key` in the sealed geometry NPZ — the exact "
+            "object evaluated by the unblind primary table) using the "
+            "`posthoc_head` convention: `np.argsort(-score, "
+            "kind='stable')[:50]` over the global `book_n >= 25` eligible "
+            "universe. The legacy raw-preference-centroid top-50 field in "
+            "the geometry JSON is a structural diagnostic only and is NOT "
+            "used for the family-wise literary inference. The permutation "
+            "test counts literary labels only inside each member's frozen "
+            "top-50 indices.",
             "",
             f"- **{len(family)} eligible clusters frozen.**",
             "",
@@ -2786,8 +2889,13 @@ def phase_prereport(args: argparse.Namespace) -> None:
 
     # PREREGISTERED FAMILY FREEZE: every structurally eligible
     # pooled/deepest/preference-space cluster, with memberships and frozen
-    # top-50 book indices, written label-blind BEFORE any semantic load.
-    family = _eligible_family(frozen)
+    # top-50 book indices derived from each cluster's FROZEN normalized
+    # preference centroid (pref_centroid_key) in the sealed geometry NPZ,
+    # written label-blind BEFORE any semantic load.
+    gblob = np.load(geo_npz, allow_pickle=False)
+    payload, _, _ = year.load_matrix()
+    eligible_idx = np.flatnonzero(payload["book_n"] >= ELIG_MIN_BOOK_N)
+    family = _eligible_family(frozen, gblob, eligible_idx)
     fam_doc = {
         "method": {
             "phase": "prereport",
@@ -2808,6 +2916,11 @@ def phase_prereport(args: argparse.Namespace) -> None:
             "analogue_mutual_best": True,
             "half_min_size": 2,
             "semantic_metrics_cannot_alter_family": True,
+            "permutation_top50": {
+                "ranking_object": PERMUTATION_RANKING_OBJECT,
+                "ranking_convention": PERMUTATION_RANKING_CONVENTION,
+                "eligibility": f"global book_n >= {ELIG_MIN_BOOK_N}",
+            },
         },
         "n_family": len(family),
         "family": family,
