@@ -59,3 +59,8 @@ curators_explorer/data/multi_origin_behavior_features.npz
 curators_explorer/data/natural_amplification_*.npz
 curators_explorer/data/natural_amplification_chunks/
 curators_explorer/data/natural_amplification_smoke_verify.json
+
+# Full-campaign jury-decomposition artifacts (exceed GitHub 100 MiB/file push limit;
+# sha256 sealed in jury_decomposition.json / jury_decomposition_geometry.json)
+curators_explorer/data/jury_decomposition.npz
+curators_explorer/data/jury_decomposition_geometry.npz
