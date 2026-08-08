@@ -81,3 +81,7 @@ curators_explorer/data/jury_consensus_venn_chunks.json
 # Juror coherence / tail diagnostic: regenerable matrix + state
 curators_explorer/data/juror_coherence_tail.npz
 curators_explorer/data/juror_coherence_tail_state/
+
+# Common literary juror discovery: regenerable matrix + state
+curators_explorer/data/common_literary_jurors.npz
+curators_explorer/data/common_literary_jurors_state/
