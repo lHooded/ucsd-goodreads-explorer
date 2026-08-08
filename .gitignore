@@ -73,3 +73,7 @@ curators_explorer/data/maximum_literary_jury_state/
 # Maximum literary jury addendum: regenerable matrix + checkpoint
 curators_explorer/data/maximum_literary_jury_addendum.npz
 curators_explorer/data/maximum_literary_jury_addendum_chunks.json
+
+# Jury consensus venn census: regenerable matrix + checkpoint
+curators_explorer/data/jury_consensus_venn.npz
+curators_explorer/data/jury_consensus_venn_chunks.json
