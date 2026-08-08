@@ -64,3 +64,8 @@ curators_explorer/data/natural_amplification_smoke_verify.json
 # sha256 sealed in jury_decomposition.json / jury_decomposition_geometry.json)
 curators_explorer/data/jury_decomposition.npz
 curators_explorer/data/jury_decomposition_geometry.npz
+
+# Maximum literary jury campaign: large regenerable matrices + checkpoints
+curators_explorer/data/maximum_literary_jury.npz
+curators_explorer/data/maximum_literary_jury_chunks/
+curators_explorer/data/maximum_literary_jury_state/
