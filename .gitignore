@@ -85,3 +85,7 @@ curators_explorer/data/juror_coherence_tail_state/
 # Common literary juror discovery: regenerable matrix + state
 curators_explorer/data/common_literary_jurors.npz
 curators_explorer/data/common_literary_jurors_state/
+
+# Converged common literary jurors: regenerable matrix + state
+curators_explorer/data/converged_common_literary_jurors.npz
+curators_explorer/data/converged_common_literary_jurors_state/
