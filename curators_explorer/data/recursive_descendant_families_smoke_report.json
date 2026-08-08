@@ -1,0 +1,140 @@
+{
+ "phase": "smoke",
+ "runtime_seconds": 83.76160764694214,
+ "n_checks": 26,
+ "n_passed": 26,
+ "all_ok": true,
+ "checks": [
+  {
+   "check": "previous_breeding_artifact_loads",
+   "ok": true,
+   "detail": "breeding json complete=True"
+  },
+  {
+   "check": "exactly_48_saved_10k_reps",
+   "ok": true,
+   "detail": "shape (48, 26418)"
+  },
+  {
+   "check": "reps_finite_unit",
+   "ok": true,
+   "detail": "norm min/max 1.000000/1.000000"
+  },
+  {
+   "check": "metadata_24_per_root",
+   "ok": true,
+   "detail": "roots {np.int16(0): np.int64(24), np.int16(1): np.int64(24)}"
+  },
+  {
+   "check": "silhouette_selection_deterministic",
+   "ok": true,
+   "detail": "k=2 k2=2 s=0.425963"
+  },
+  {
+   "check": "natural_partition_covers_all_exactly_once",
+   "ok": true,
+   "detail": "every endpoint assigned to exactly one of the k clusters"
+  },
+  {
+   "check": "silhouette_in_range",
+   "ok": true,
+   "detail": "natural k=2 in 2..8, per-k {'2': {'silhouette': 0.4259633073043023, 'n_clusters': 2}, '3': {'silhouette': 0.2731559995931567, 'n_clusters': 3}, '4': {'silhouette': 0.2577948259112082, 'n_clusters': 4}, '5': {'silhouette': 0.25210559572965197, 'n_clusters': 5}, '6': {'silhouette': 0.07181029132612626, 'n_clusters': 6}, '7': {'silhouette': 0.05325461317851057, 'n_clusters': 7}, '8': {'silhouette': 0.030721514157124413, 'n_clusters': 8}}"
+  },
+  {
+   "check": "recurrence_counts_distinct_replicates",
+   "ok": true,
+   "detail": "distinct 2, r0 [0, 1], r1 [0], pairs 3"
+  },
+  {
+   "check": "cross_root_recurrent_flag",
+   "ok": true,
+   "detail": "single distinct root-0 replicate -> not cross-root recurrent (r0 [0])"
+  },
+  {
+   "check": "root_half_centroids_correct",
+   "ok": true,
+   "detail": "got -0.107820 expected -0.107820"
+  },
+  {
+   "check": "strong_flag_ge3_reps",
+   "ok": true,
+   "detail": "size 8, 4 distinct reps per root -> strong recurrent"
+  },
+  {
+   "check": "semantic_flag_set_before_loader",
+   "ok": true,
+   "detail": "SEMANTIC_CONTEXT_LOADED set before load_posthoc_context in phase_analyze10k"
+  },
+  {
+   "check": "clustering_label_blind",
+   "ok": true,
+   "detail": "banned tokens none"
+  },
+  {
+   "check": "G10_deterministic_tie_break",
+   "ok": true,
+   "detail": "chosen family 2 (expect 2: highest exact@50, then broad, then anti, then size, then id)"
+  },
+  {
+   "check": "new_partitions_independent_of_old",
+   "ok": true,
+   "detail": "8/8 replicates differ from old 20260822 partitions"
+  },
+  {
+   "check": "paired_contributions_center_to_zero",
+   "ok": true,
+   "detail": "col sums [-1.11022302e-16 -1.11022302e-16 -5.55111512e-17]"
+  },
+  {
+   "check": "paired_contrib_half_diff",
+   "ok": true,
+   "detail": "groupA 0.3500 groupB -0.3500"
+  },
+  {
+   "check": "g10_fitness_no_semantics_no_f1f0",
+   "ok": true,
+   "detail": "banned tokens none"
+  },
+  {
+   "check": "stage_wise_g10_arithmetic",
+   "ok": true,
+   "detail": "stages ['0.0000', '-0.1543', '-0.5345'], gain -0.5345"
+  },
+  {
+   "check": "smoke_analyze10k_runs",
+   "ok": true,
+   "detail": "natural k=2, families 2, G10 none"
+  },
+  {
+   "check": "smoke_partition_frozen_before_semantics",
+   "ok": true,
+   "detail": "smoke analyze10k completed semantic inspection"
+  },
+  {
+   "check": "smoke_follow10k_machinery_runs",
+   "ok": true,
+   "detail": "real G10=no; mini follow runs with synthetic target (the real 48-endpoint census had no cross-root recurrent family, so the follow machinery is tested with a deterministic synthetic G10)"
+  },
+  {
+   "check": "selections_exactly_10k",
+   "ok": true,
+   "detail": "G_follow/G_avoid/random10k each 10,000 users"
+  },
+  {
+   "check": "desc5k_uses_G_follow_only",
+   "ok": true,
+   "detail": "desc5k pools come from follow10k G_follow selections"
+  },
+  {
+   "check": "no_5k_family_followed",
+   "ok": true,
+   "detail": "analyze5k contains no fitness/selection calls"
+  },
+  {
+   "check": "smoke_5k_census_runs",
+   "ok": true,
+   "detail": "5k natural k=4, families 4"
+  }
+ ],
+ "smoke_seed": 20260825
+}

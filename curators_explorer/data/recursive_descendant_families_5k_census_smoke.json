@@ -1,0 +1,794 @@
+{
+ "source": "new G_follow 10k juries, desc5k campaigns (96 children)",
+ "n_endpoints": 8,
+ "similarity": {
+  "mean": 0.5965874169765931,
+  "q25": 0.5216513236340209,
+  "median": 0.6062838033956015,
+  "q75": 0.6339210261955641,
+  "min": 0.49377915363501224,
+  "max": 0.7647911166505237
+ },
+ "silhouette_by_k": {
+  "2": {
+   "silhouette": 0.20279078516234728,
+   "n_clusters": 2
+  },
+  "3": {
+   "silhouette": 0.16527445142899624,
+   "n_clusters": 3
+  },
+  "4": {
+   "silhouette": 0.21369375285094036,
+   "n_clusters": 4
+  },
+  "5": {
+   "silhouette": 0.14804050058854673,
+   "n_clusters": 5
+  },
+  "6": {
+   "silhouette": 0.11890253713623336,
+   "n_clusters": 6
+  },
+  "7": {
+   "silhouette": 0.0514755319421097,
+   "n_clusters": 7
+  },
+  "8": {
+   "silhouette": 0.0,
+   "n_clusters": 8
+  }
+ },
+ "natural_k": 4,
+ "natural_silhouette": 0.21369375285094036,
+ "fixed_cuts": {
+  "0.30": {
+   "tau": 0.3,
+   "n_clusters": 1,
+   "cluster_sizes": [
+    8
+   ],
+   "n_with_2plus": 1
+  },
+  "0.50": {
+   "tau": 0.5,
+   "n_clusters": 1,
+   "cluster_sizes": [
+    8
+   ],
+   "n_with_2plus": 1
+  },
+  "0.70": {
+   "tau": 0.7,
+   "n_clusters": 6,
+   "cluster_sizes": [
+    1,
+    1,
+    2,
+    2,
+    1,
+    1
+   ],
+   "n_with_2plus": 2
+  }
+ },
+ "families": [
+  {
+   "family_id": 0,
+   "members": [
+    1,
+    2,
+    3
+   ],
+   "n_endpoints": 3,
+   "roots": [
+    0
+   ],
+   "n_distinct_replicates": 2,
+   "replicates_root0": [
+    0,
+    1
+   ],
+   "replicates_root1": [],
+   "n_sibling_pairs": 1,
+   "within_cos_mean": 0.7100027952101797,
+   "within_cos_median": 0.7520735101679934,
+   "within_cos_min": 0.6131437588120221,
+   "cos_f1": 0.7153894317891659,
+   "cos_f0": 0.4857641589423669,
+   "f1_f0_margin": 0.229625272846799,
+   "cross_root_recurrent": false,
+   "strong_cross_root_recurrent": false,
+   "root_half_centroid_cos": null,
+   "centroid_key": "family_cent_5k_0",
+   "semantic": {
+    "exact50": 0,
+    "broad50": 0,
+    "anti50": 20,
+    "exact100": 0,
+    "broad100": 0,
+    "anti100": 32
+   },
+   "head": [
+    {
+     "rank": 1,
+     "work_id": "16482835",
+     "title": "Words of Radiance (The Stormlight Archive, #2)",
+     "author": "Brandon Sanderson",
+     "score": 0.036677420139312744
+    },
+    {
+     "rank": 2,
+     "work_id": "2110010",
+     "title": "Calvin and Hobbes",
+     "author": "Bill Watterson",
+     "score": 0.033476103097200394
+    },
+    {
+     "rank": 3,
+     "work_id": "1164465",
+     "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "author": "George R.R. Martin",
+     "score": 0.0330035537481308
+    },
+    {
+     "rank": 4,
+     "work_id": "6778696",
+     "title": "Changes (The Dresden Files, #12)",
+     "author": "Jim Butcher",
+     "score": 0.032971758395433426
+    },
+    {
+     "rank": 5,
+     "work_id": "17189468",
+     "title": "Cold Days (The Dresden Files, #14)",
+     "author": "Jim Butcher",
+     "score": 0.03273443132638931
+    },
+    {
+     "rank": 6,
+     "work_id": "2502879",
+     "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+     "author": "Patrick Rothfuss",
+     "score": 0.03260106220841408
+    },
+    {
+     "rank": 7,
+     "work_id": "8134945",
+     "title": "The Way of Kings (The Stormlight Archive, #1)",
+     "author": "Brandon Sanderson",
+     "score": 0.03251522406935692
+    },
+    {
+     "rank": 8,
+     "work_id": "25126749",
+     "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "author": "Sarah J. Maas",
+     "score": 0.032229915261268616
+    },
+    {
+     "rank": 9,
+     "work_id": "2964424",
+     "title": "The Return of the King (The Lord of the Rings, #3)",
+     "author": "J.R.R. Tolkien",
+     "score": 0.03188016638159752
+    },
+    {
+     "rank": 10,
+     "work_id": "2244438",
+     "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "author": "Bill Watterson",
+     "score": 0.03119710646569729
+    },
+    {
+     "rank": 11,
+     "work_id": "2502882",
+     "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+     "author": "Patrick Rothfuss",
+     "score": 0.030870020389556885
+    },
+    {
+     "rank": 12,
+     "work_id": "49638190",
+     "title": "The Hate U Give",
+     "author": "Angie Thomas",
+     "score": 0.030838429927825928
+    },
+    {
+     "rank": 13,
+     "work_id": "7492217",
+     "title": "The Complete Sherlock Holmes",
+     "author": "Arthur Conan Doyle",
+     "score": 0.030757330358028412
+    },
+    {
+     "rank": 14,
+     "work_id": "2963218",
+     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "author": "J.K. Rowling",
+     "score": 0.0305826086550951
+    },
+    {
+     "rank": 15,
+     "work_id": "2962492",
+     "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+     "author": "J.K. Rowling",
+     "score": 0.030564000830054283
+    },
+    {
+     "rank": 16,
+     "work_id": "6571827",
+     "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+     "author": "George R.R. Martin",
+     "score": 0.03041980043053627
+    },
+    {
+     "rank": 17,
+     "work_id": "692719",
+     "title": "The Calvin and Hobbes Tenth Anniversary Book",
+     "author": "Bill Watterson",
+     "score": 0.030371148139238358
+    },
+    {
+     "rank": 18,
+     "work_id": "1658562",
+     "title": "The Complete Maus (Maus, #1-2)",
+     "author": "Art Spiegelman",
+     "score": 0.03031795471906662
+    },
+    {
+     "rank": 19,
+     "work_id": "25272067",
+     "title": "Queen of Shadows (Throne of Glass, #4)",
+     "author": "Sarah J. Maas",
+     "score": 0.03027777560055256
+    },
+    {
+     "rank": 20,
+     "work_id": "6614452",
+     "title": "Dead Beat (The Dresden Files, #7)",
+     "author": "Jim Butcher",
+     "score": 0.03009134531021118
+    }
+   ]
+  },
+  {
+   "family_id": 1,
+   "members": [
+    4,
+    6
+   ],
+   "n_endpoints": 2,
+   "roots": [
+    1
+   ],
+   "n_distinct_replicates": 2,
+   "replicates_root0": [],
+   "replicates_root1": [
+    0,
+    1
+   ],
+   "n_sibling_pairs": 0,
+   "within_cos_mean": 0.6710192509718851,
+   "within_cos_median": 0.6710192509718851,
+   "within_cos_min": 0.6710192509718851,
+   "cos_f1": 0.573652838424112,
+   "cos_f0": 0.5609103152235381,
+   "f1_f0_margin": 0.012742523200573896,
+   "cross_root_recurrent": false,
+   "strong_cross_root_recurrent": false,
+   "root_half_centroid_cos": null,
+   "centroid_key": "family_cent_5k_1",
+   "semantic": {
+    "exact50": 0,
+    "broad50": 1,
+    "anti50": 17,
+    "exact100": 1,
+    "broad100": 4,
+    "anti100": 31
+   },
+   "head": [
+    {
+     "rank": 1,
+     "work_id": "632609",
+     "title": "The Qur'an / \u0627\u0644\u0642\u0631\u0622\u0646 \u0627\u0644\u0643\u0631\u064a\u0645",
+     "author": "Anonymous",
+     "score": 0.036560412496328354
+    },
+    {
+     "rank": 2,
+     "work_id": "13336065",
+     "title": "\u0644\u0627 \u062a\u0635\u0627\u0644\u062d",
+     "author": "'ml dnql",
+     "score": 0.03442491218447685
+    },
+    {
+     "rank": 3,
+     "work_id": "6269229",
+     "title": "\u0627\u0644\u0625\u0633\u0644\u0627\u0645 \u0628\u064a\u0646 \u0627\u0644\u0634\u0631\u0642 \u0648\u0627\u0644\u063a\u0631\u0628",
+     "author": "Alija Izetbegovic",
+     "score": 0.0337793193757534
+    },
+    {
+     "rank": 4,
+     "work_id": "532703",
+     "title": "\u0627\u0644\u0631\u062d\u064a\u0642 \u0627\u0644\u0645\u062e\u062a\u0648\u0645",
+     "author": "Safiy al-Rahman al-Mubarakfuri",
+     "score": 0.033726394176483154
+    },
+    {
+     "rank": 5,
+     "work_id": "2963218",
+     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "author": "J.K. Rowling",
+     "score": 0.0336240790784359
+    },
+    {
+     "rank": 6,
+     "work_id": "6400102",
+     "title": "\u0632\u0645\u0646 \u0627\u0644\u062e\u064a\u0648\u0644 \u0627\u0644\u0628\u064a\u0636\u0627\u0621",
+     "author": "Ibrahim Nasrallah - ibrhym nSr llh",
+     "score": 0.03359660506248474
+    },
+    {
+     "rank": 7,
+     "work_id": "7087982",
+     "title": "\u0627\u0644\u062d\u0631\u0627\u0641\u064a\u0634",
+     "author": "Naguib Mahfouz",
+     "score": 0.03346242010593414
+    },
+    {
+     "rank": 8,
+     "work_id": "13086736",
+     "title": "\u0627\u0644\u0637\u0646\u0637\u0648\u0631\u064a\u0629",
+     "author": "Radwa Ashour",
+     "score": 0.03325332701206207
+    },
+    {
+     "rank": 9,
+     "work_id": "1164465",
+     "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "author": "George R.R. Martin",
+     "score": 0.03307286277413368
+    },
+    {
+     "rank": 10,
+     "work_id": "16482835",
+     "title": "Words of Radiance (The Stormlight Archive, #2)",
+     "author": "Brandon Sanderson",
+     "score": 0.0323110893368721
+    },
+    {
+     "rank": 11,
+     "work_id": "2962492",
+     "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+     "author": "J.K. Rowling",
+     "score": 0.03210856020450592
+    },
+    {
+     "rank": 12,
+     "work_id": "25126749",
+     "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "author": "Sarah J. Maas",
+     "score": 0.0318635031580925
+    },
+    {
+     "rank": 13,
+     "work_id": "3046572",
+     "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "author": "J.K. Rowling",
+     "score": 0.0316610112786293
+    },
+    {
+     "rank": 14,
+     "work_id": "8919",
+     "title": "Arabian Nights and Days",
+     "author": "Naguib Mahfouz",
+     "score": 0.031018808484077454
+    },
+    {
+     "rank": 15,
+     "work_id": "48066472",
+     "title": "\u0627\u0644\u062c\u0631\u064a\u0645\u0629 \u0648\u0627\u0644\u0639\u0642\u0627\u0628 # 2",
+     "author": "Fyodor Dostoyevsky",
+     "score": 0.030847886577248573
+    },
+    {
+     "rank": 16,
+     "work_id": "3479009",
+     "title": "\u062b\u0644\u0627\u062b\u064a\u0629 \u063a\u0631\u0646\u0627\u0637\u0629",
+     "author": "Radwa Ashour",
+     "score": 0.030735887587070465
+    },
+    {
+     "rank": 17,
+     "work_id": "6309710",
+     "title": "Clockwork Princess (The Infernal Devices, #3)",
+     "author": "Cassandra Clare",
+     "score": 0.030588308349251747
+    },
+    {
+     "rank": 18,
+     "work_id": "6324198",
+     "title": "\u0644\u0627\u0641\u062a\u0627\u062a - \u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0629 \u0627\u0644\u0643\u0627\u0645\u0644\u0629",
+     "author": "'Hmd mTr",
+     "score": 0.03051069751381874
+    },
+    {
+     "rank": 19,
+     "work_id": "2968690",
+     "title": "\u0631\u064a\u0627\u0636 \u0627\u0644\u0635\u0627\u0644\u062d\u064a\u0646",
+     "author": "yHy~ bn shrf lnwwy",
+     "score": 0.030500372871756554
+    },
+    {
+     "rank": 20,
+     "work_id": "311976",
+     "title": "Mornings in Jenin",
+     "author": "Susan Abulhawa",
+     "score": 0.030460398644208908
+    }
+   ]
+  },
+  {
+   "family_id": 2,
+   "members": [
+    5,
+    7
+   ],
+   "n_endpoints": 2,
+   "roots": [
+    1
+   ],
+   "n_distinct_replicates": 2,
+   "replicates_root0": [],
+   "replicates_root1": [
+    0,
+    1
+   ],
+   "n_sibling_pairs": 0,
+   "within_cos_mean": 0.7557112723870631,
+   "within_cos_median": 0.7557112723870631,
+   "within_cos_min": 0.7557112723870631,
+   "cos_f1": 0.6696278178552914,
+   "cos_f0": 0.47290691695926296,
+   "f1_f0_margin": 0.1967209008960284,
+   "cross_root_recurrent": false,
+   "strong_cross_root_recurrent": false,
+   "root_half_centroid_cos": null,
+   "centroid_key": "family_cent_5k_2",
+   "semantic": {
+    "exact50": 0,
+    "broad50": 0,
+    "anti50": 18,
+    "exact100": 1,
+    "broad100": 1,
+    "anti100": 40
+   },
+   "head": [
+    {
+     "rank": 1,
+     "work_id": "16482835",
+     "title": "Words of Radiance (The Stormlight Archive, #2)",
+     "author": "Brandon Sanderson",
+     "score": 0.03645811975002289
+    },
+    {
+     "rank": 2,
+     "work_id": "8134945",
+     "title": "The Way of Kings (The Stormlight Archive, #1)",
+     "author": "Brandon Sanderson",
+     "score": 0.03385956957936287
+    },
+    {
+     "rank": 3,
+     "work_id": "6778696",
+     "title": "Changes (The Dresden Files, #12)",
+     "author": "Jim Butcher",
+     "score": 0.033016692847013474
+    },
+    {
+     "rank": 4,
+     "work_id": "17189468",
+     "title": "Cold Days (The Dresden Files, #14)",
+     "author": "Jim Butcher",
+     "score": 0.03294423595070839
+    },
+    {
+     "rank": 5,
+     "work_id": "1164465",
+     "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "author": "George R.R. Martin",
+     "score": 0.03198281675577164
+    },
+    {
+     "rank": 6,
+     "work_id": "23811929",
+     "title": "Skin Game (The Dresden Files, #15)",
+     "author": "Jim Butcher",
+     "score": 0.031758371740579605
+    },
+    {
+     "rank": 7,
+     "work_id": "25854",
+     "title": "Season of Mists (The Sandman #4)",
+     "author": "Neil Gaiman",
+     "score": 0.030017130076885223
+    },
+    {
+     "rank": 8,
+     "work_id": "2502882",
+     "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+     "author": "Patrick Rothfuss",
+     "score": 0.029956582933664322
+    },
+    {
+     "rank": 9,
+     "work_id": "2244438",
+     "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+     "author": "Bill Watterson",
+     "score": 0.02992931194603443
+    },
+    {
+     "rank": 10,
+     "work_id": "2502879",
+     "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+     "author": "Patrick Rothfuss",
+     "score": 0.02988855168223381
+    },
+    {
+     "rank": 11,
+     "work_id": "2647",
+     "title": "The Kindly Ones (The Sandman #9)",
+     "author": "Neil Gaiman",
+     "score": 0.02980450540781021
+    },
+    {
+     "rank": 12,
+     "work_id": "40666827",
+     "title": "Brief Lives (The Sandman #7)",
+     "author": "Neil Gaiman",
+     "score": 0.029753653332591057
+    },
+    {
+     "rank": 13,
+     "work_id": "10558806",
+     "title": "A Memory of Light (Wheel of Time, #14)",
+     "author": "Robert Jordan",
+     "score": 0.029715437442064285
+    },
+    {
+     "rank": 14,
+     "work_id": "12946965",
+     "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+     "author": "Laura Hillenbrand",
+     "score": 0.029547568410634995
+    },
+    {
+     "rank": 15,
+     "work_id": "2054834",
+     "title": "Small Favor (The Dresden Files, #10)",
+     "author": "Jim Butcher",
+     "score": 0.02932720258831978
+    },
+    {
+     "rank": 16,
+     "work_id": "3516480",
+     "title": "Turn Coat (The Dresden Files, #11)",
+     "author": "Jim Butcher",
+     "score": 0.029325850307941437
+    },
+    {
+     "rank": 17,
+     "work_id": "2021847",
+     "title": "The Wake (The Sandman #10)",
+     "author": "Neil Gaiman",
+     "score": 0.029085490852594376
+    },
+    {
+     "rank": 18,
+     "work_id": "1466917",
+     "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+     "author": "George R.R. Martin",
+     "score": 0.02901935763657093
+    },
+    {
+     "rank": 19,
+     "work_id": "3272005",
+     "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+     "author": "George R.R. Martin",
+     "score": 0.02897263504564762
+    },
+    {
+     "rank": 20,
+     "work_id": "23857485",
+     "title": "Saga, Vol. 2 (Saga, #2)",
+     "author": "Brian K. Vaughan",
+     "score": 0.028850309550762177
+    }
+   ]
+  },
+  {
+   "family_id": 3,
+   "members": [
+    0
+   ],
+   "n_endpoints": 1,
+   "roots": [
+    0
+   ],
+   "n_distinct_replicates": 1,
+   "replicates_root0": [
+    0
+   ],
+   "replicates_root1": [],
+   "n_sibling_pairs": 0,
+   "within_cos_mean": null,
+   "within_cos_median": null,
+   "within_cos_min": null,
+   "cos_f1": 0.5316794614612268,
+   "cos_f0": 0.5151641120002425,
+   "f1_f0_margin": 0.01651534946098432,
+   "cross_root_recurrent": false,
+   "strong_cross_root_recurrent": false,
+   "root_half_centroid_cos": null,
+   "centroid_key": "family_cent_5k_3",
+   "semantic": {
+    "exact50": 1,
+    "broad50": 1,
+    "anti50": 21,
+    "exact100": 2,
+    "broad100": 3,
+    "anti100": 36
+   },
+   "head": [
+    {
+     "rank": 1,
+     "work_id": "2962492",
+     "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+     "author": "J.K. Rowling",
+     "score": 0.032191574573516846
+    },
+    {
+     "rank": 2,
+     "work_id": "41335427",
+     "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+     "author": "J.K. Rowling",
+     "score": 0.031574781984090805
+    },
+    {
+     "rank": 3,
+     "work_id": "49638190",
+     "title": "The Hate U Give",
+     "author": "Angie Thomas",
+     "score": 0.03140079975128174
+    },
+    {
+     "rank": 4,
+     "work_id": "2963218",
+     "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+     "author": "J.K. Rowling",
+     "score": 0.031230073422193527
+    },
+    {
+     "rank": 5,
+     "work_id": "16482835",
+     "title": "Words of Radiance (The Stormlight Archive, #2)",
+     "author": "Brandon Sanderson",
+     "score": 0.030947338789701462
+    },
+    {
+     "rank": 6,
+     "work_id": "25126749",
+     "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+     "author": "Sarah J. Maas",
+     "score": 0.030411208048462868
+    },
+    {
+     "rank": 7,
+     "work_id": "3046572",
+     "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+     "author": "J.K. Rowling",
+     "score": 0.030166951939463615
+    },
+    {
+     "rank": 8,
+     "work_id": "1215780",
+     "title": "The Great Divorce",
+     "author": "C.S. Lewis",
+     "score": 0.029442163184285164
+    },
+    {
+     "rank": 9,
+     "work_id": "25272067",
+     "title": "Queen of Shadows (Throne of Glass, #4)",
+     "author": "Sarah J. Maas",
+     "score": 0.029347123578190804
+    },
+    {
+     "rank": 10,
+     "work_id": "6309710",
+     "title": "Clockwork Princess (The Infernal Devices, #3)",
+     "author": "Cassandra Clare",
+     "score": 0.029290976002812386
+    },
+    {
+     "rank": 11,
+     "work_id": "2964424",
+     "title": "The Return of the King (The Lord of the Rings, #3)",
+     "author": "J.R.R. Tolkien",
+     "score": 0.029148796573281288
+    },
+    {
+     "rank": 12,
+     "work_id": "1433216",
+     "title": "Preacher, Volume 2: Until the End of the World",
+     "author": "Garth Ennis",
+     "score": 0.028428804129362106
+    },
+    {
+     "rank": 13,
+     "work_id": "1164465",
+     "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+     "author": "George R.R. Martin",
+     "score": 0.027369000017642975
+    },
+    {
+     "rank": 14,
+     "work_id": "16319487",
+     "title": "Wonder (Wonder #1)",
+     "author": "R.J. Palacio",
+     "score": 0.02735777199268341
+    },
+    {
+     "rank": 15,
+     "work_id": "2963845",
+     "title": "The Two Towers (The Lord of the Rings, #2)",
+     "author": "J.R.R. Tolkien",
+     "score": 0.027213312685489655
+    },
+    {
+     "rank": 16,
+     "work_id": "1658562",
+     "title": "The Complete Maus (Maus, #1-2)",
+     "author": "Art Spiegelman",
+     "score": 0.027144135907292366
+    },
+    {
+     "rank": 17,
+     "work_id": "3462456",
+     "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+     "author": "J.R.R. Tolkien",
+     "score": 0.026832470670342445
+    },
+    {
+     "rank": 18,
+     "work_id": "2809203",
+     "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+     "author": "J.K. Rowling",
+     "score": 0.026800107210874557
+    },
+    {
+     "rank": 19,
+     "work_id": "99261",
+     "title": "Preacher, Volume 9: Alamo",
+     "author": "Garth Ennis",
+     "score": 0.02679380401968956
+    },
+    {
+     "rank": 20,
+     "work_id": "2402163",
+     "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+     "author": "J.K. Rowling",
+     "score": 0.02670445665717125
+    }
+   ]
+  }
+ ],
+ "followed_5k_family": null,
+ "note": "No 5k family is followed or selected in this experiment.",
+ "semantic_context_loaded": true,
+ "cross_root_recurrent_families": [],
+ "artifact_sha256": "1fb4be3f680d80c12d6815ee8a5563d722292491d6014ba2b50b8bd5f45c285f",
+ "artifact_bytes": 1172426
+}

@@ -1,0 +1,659 @@
+{
+ "analyze10k": {
+  "source": "recursive_family_breeding.npz root{0,1}_lit_g2_child_reps",
+  "n_endpoints": 48,
+  "endpoints_per_root": 24,
+  "parent_lineage": "literary 20k (root{0,1}_lit_g1_selected)",
+  "similarity": {
+   "mean": 0.7245303049185264,
+   "q25": 0.6516679978084651,
+   "median": 0.6630375329141869,
+   "q75": 0.8092494021654744,
+   "min": 0.618923273741966,
+   "max": 0.8231074115830246
+  },
+  "silhouette_by_k": {
+   "2": {
+    "silhouette": 0.4259633073043023,
+    "n_clusters": 2
+   },
+   "3": {
+    "silhouette": 0.2731559995931567,
+    "n_clusters": 3
+   },
+   "4": {
+    "silhouette": 0.2577948259112082,
+    "n_clusters": 4
+   },
+   "5": {
+    "silhouette": 0.25210559572965197,
+    "n_clusters": 5
+   },
+   "6": {
+    "silhouette": 0.07181029132612626,
+    "n_clusters": 6
+   },
+   "7": {
+    "silhouette": 0.05325461317851057,
+    "n_clusters": 7
+   },
+   "8": {
+    "silhouette": 0.030721514157124413,
+    "n_clusters": 8
+   }
+  },
+  "natural_k": 2,
+  "natural_silhouette": 0.4259633073043023,
+  "fixed_cuts": {
+   "0.30": {
+    "tau": 0.3,
+    "n_clusters": 1,
+    "cluster_sizes": [
+     48
+    ],
+    "n_with_2plus": 1
+   },
+   "0.50": {
+    "tau": 0.5,
+    "n_clusters": 1,
+    "cluster_sizes": [
+     48
+    ],
+    "n_with_2plus": 1
+   },
+   "0.70": {
+    "tau": 0.7,
+    "n_clusters": 2,
+    "cluster_sizes": [
+     24,
+     24
+    ],
+    "n_with_2plus": 2
+   }
+  },
+  "families": [
+   {
+    "family_id": 0,
+    "members": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23
+    ],
+    "n_endpoints": 24,
+    "roots": [
+     0
+    ],
+    "n_distinct_replicates": 12,
+    "replicates_root0": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "replicates_root1": [],
+    "n_sibling_pairs": 12,
+    "within_cos_mean": 0.8037605882635792,
+    "within_cos_median": 0.8108091239178966,
+    "within_cos_min": 0.6341821089697663,
+    "cos_f1": 0.6414412008522703,
+    "cos_f0": 0.6585269264860557,
+    "f1_f0_margin": -0.01708572563378541,
+    "cross_root_recurrent": false,
+    "strong_cross_root_recurrent": false,
+    "root_half_centroid_cos": null,
+    "centroid_key": "family_cent_10k_0",
+    "semantic": {
+     "exact50": 0,
+     "broad50": 0,
+     "anti50": 27,
+     "exact100": 1,
+     "broad100": 1,
+     "anti100": 50
+    },
+    "head": [
+     {
+      "rank": 1,
+      "work_id": "2962492",
+      "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+      "author": "J.K. Rowling",
+      "score": 0.034841377288103104
+     },
+     {
+      "rank": 2,
+      "work_id": "49638190",
+      "title": "The Hate U Give",
+      "author": "Angie Thomas",
+      "score": 0.03413958102464676
+     },
+     {
+      "rank": 3,
+      "work_id": "16482835",
+      "title": "Words of Radiance (The Stormlight Archive, #2)",
+      "author": "Brandon Sanderson",
+      "score": 0.03390999138355255
+     },
+     {
+      "rank": 4,
+      "work_id": "25126749",
+      "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+      "author": "Sarah J. Maas",
+      "score": 0.03373590111732483
+     },
+     {
+      "rank": 5,
+      "work_id": "2963218",
+      "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+      "author": "J.K. Rowling",
+      "score": 0.03356891870498657
+     },
+     {
+      "rank": 6,
+      "work_id": "41335427",
+      "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+      "author": "J.K. Rowling",
+      "score": 0.03264876827597618
+     },
+     {
+      "rank": 7,
+      "work_id": "3046572",
+      "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+      "author": "J.K. Rowling",
+      "score": 0.03197822347283363
+     },
+     {
+      "rank": 8,
+      "work_id": "2402163",
+      "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+      "author": "J.K. Rowling",
+      "score": 0.03147364407777786
+     },
+     {
+      "rank": 9,
+      "work_id": "6309710",
+      "title": "Clockwork Princess (The Infernal Devices, #3)",
+      "author": "Cassandra Clare",
+      "score": 0.03129208832979202
+     },
+     {
+      "rank": 10,
+      "work_id": "41125521",
+      "title": "The Nightingale",
+      "author": "Kristin Hannah",
+      "score": 0.03064834512770176
+     },
+     {
+      "rank": 11,
+      "work_id": "1164465",
+      "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+      "author": "George R.R. Martin",
+      "score": 0.03010833077132702
+     },
+     {
+      "rank": 12,
+      "work_id": "42090179",
+      "title": "Crooked Kingdom (Six of Crows, #2)",
+      "author": "Leigh Bardugo",
+      "score": 0.029944822192192078
+     },
+     {
+      "rank": 13,
+      "work_id": "25272067",
+      "title": "Queen of Shadows (Throne of Glass, #4)",
+      "author": "Sarah J. Maas",
+      "score": 0.02978958748281002
+     },
+     {
+      "rank": 14,
+      "work_id": "16319487",
+      "title": "Wonder (Wonder #1)",
+      "author": "R.J. Palacio",
+      "score": 0.029715601354837418
+     },
+     {
+      "rank": 15,
+      "work_id": "42278179",
+      "title": "We Should All Be Feminists",
+      "author": "Chimamanda Ngozi Adichie",
+      "score": 0.029443642124533653
+     },
+     {
+      "rank": 16,
+      "work_id": "2502879",
+      "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+      "author": "Patrick Rothfuss",
+      "score": 0.029347628355026245
+     },
+     {
+      "rank": 17,
+      "work_id": "12946965",
+      "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+      "author": "Laura Hillenbrand",
+      "score": 0.02931828424334526
+     },
+     {
+      "rank": 18,
+      "work_id": "50150838",
+      "title": "Born a Crime: Stories From a South African Childhood",
+      "author": "Trevor Noah",
+      "score": 0.02909032814204693
+     },
+     {
+      "rank": 19,
+      "work_id": "18390772",
+      "title": "Cress (The Lunar Chronicles, #3)",
+      "author": "Marissa Meyer",
+      "score": 0.028972163796424866
+     },
+     {
+      "rank": 20,
+      "work_id": "4640799",
+      "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+      "author": "J.K. Rowling",
+      "score": 0.02894253470003605
+     },
+     {
+      "rank": 21,
+      "work_id": "2809203",
+      "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+      "author": "J.K. Rowling",
+      "score": 0.028819091618061066
+     },
+     {
+      "rank": 22,
+      "work_id": "6778696",
+      "title": "Changes (The Dresden Files, #12)",
+      "author": "Jim Butcher",
+      "score": 0.028590654954314232
+     },
+     {
+      "rank": 23,
+      "work_id": "1658562",
+      "title": "The Complete Maus (Maus, #1-2)",
+      "author": "Art Spiegelman",
+      "score": 0.02853851579129696
+     },
+     {
+      "rank": 24,
+      "work_id": "18390887",
+      "title": "Winter (The Lunar Chronicles, #4)",
+      "author": "Marissa Meyer",
+      "score": 0.02851748652756214
+     },
+     {
+      "rank": 25,
+      "work_id": "8134945",
+      "title": "The Way of Kings (The Stormlight Archive, #1)",
+      "author": "Brandon Sanderson",
+      "score": 0.028513126075267792
+     },
+     {
+      "rank": 26,
+      "work_id": "2964424",
+      "title": "The Return of the King (The Lord of the Rings, #3)",
+      "author": "J.R.R. Tolkien",
+      "score": 0.028271468356251717
+     },
+     {
+      "rank": 27,
+      "work_id": "66322",
+      "title": "The Final Empire (Mistborn, #1)",
+      "author": "Brandon Sanderson",
+      "score": 0.02824992500245571
+     },
+     {
+      "rank": 28,
+      "work_id": "2502882",
+      "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+      "author": "Patrick Rothfuss",
+      "score": 0.02823224849998951
+     },
+     {
+      "rank": 29,
+      "work_id": "23857485",
+      "title": "Saga, Vol. 2 (Saga, #2)",
+      "author": "Brian K. Vaughan",
+      "score": 0.02797331102192402
+     },
+     {
+      "rank": 30,
+      "work_id": "28323940",
+      "title": "Just Mercy: A Story of Justice and Redemption",
+      "author": "Bryan Stevenson",
+      "score": 0.027826830744743347
+     }
+    ]
+   },
+   {
+    "family_id": 1,
+    "members": [
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47
+    ],
+    "n_endpoints": 24,
+    "roots": [
+     1
+    ],
+    "n_distinct_replicates": 12,
+    "replicates_root0": [],
+    "replicates_root1": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "n_sibling_pairs": 12,
+    "within_cos_mean": 0.7966823341631941,
+    "within_cos_median": 0.8070488122838094,
+    "within_cos_min": 0.618923273741966,
+    "cos_f1": 0.6411235095313768,
+    "cos_f0": 0.6636448194477891,
+    "f1_f0_margin": -0.022521309916412324,
+    "cross_root_recurrent": false,
+    "strong_cross_root_recurrent": false,
+    "root_half_centroid_cos": null,
+    "centroid_key": "family_cent_10k_1",
+    "semantic": {
+     "exact50": 0,
+     "broad50": 0,
+     "anti50": 28,
+     "exact100": 2,
+     "broad100": 2,
+     "anti100": 46
+    },
+    "head": [
+     {
+      "rank": 1,
+      "work_id": "2963218",
+      "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+      "author": "J.K. Rowling",
+      "score": 0.03360654041171074
+     },
+     {
+      "rank": 2,
+      "work_id": "2962492",
+      "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+      "author": "J.K. Rowling",
+      "score": 0.03343188390135765
+     },
+     {
+      "rank": 3,
+      "work_id": "16482835",
+      "title": "Words of Radiance (The Stormlight Archive, #2)",
+      "author": "Brandon Sanderson",
+      "score": 0.03326598182320595
+     },
+     {
+      "rank": 4,
+      "work_id": "3046572",
+      "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+      "author": "J.K. Rowling",
+      "score": 0.032775599509477615
+     },
+     {
+      "rank": 5,
+      "work_id": "2402163",
+      "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+      "author": "J.K. Rowling",
+      "score": 0.03230264037847519
+     },
+     {
+      "rank": 6,
+      "work_id": "41335427",
+      "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+      "author": "J.K. Rowling",
+      "score": 0.0318642221391201
+     },
+     {
+      "rank": 7,
+      "work_id": "1164465",
+      "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+      "author": "George R.R. Martin",
+      "score": 0.031099291518330574
+     },
+     {
+      "rank": 8,
+      "work_id": "25126749",
+      "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+      "author": "Sarah J. Maas",
+      "score": 0.031089527532458305
+     },
+     {
+      "rank": 9,
+      "work_id": "42278179",
+      "title": "We Should All Be Feminists",
+      "author": "Chimamanda Ngozi Adichie",
+      "score": 0.030991248786449432
+     },
+     {
+      "rank": 10,
+      "work_id": "42090179",
+      "title": "Crooked Kingdom (Six of Crows, #2)",
+      "author": "Leigh Bardugo",
+      "score": 0.030960164964199066
+     },
+     {
+      "rank": 11,
+      "work_id": "41125521",
+      "title": "The Nightingale",
+      "author": "Kristin Hannah",
+      "score": 0.030869144946336746
+     },
+     {
+      "rank": 12,
+      "work_id": "49638190",
+      "title": "The Hate U Give",
+      "author": "Angie Thomas",
+      "score": 0.03071923926472664
+     },
+     {
+      "rank": 13,
+      "work_id": "8134945",
+      "title": "The Way of Kings (The Stormlight Archive, #1)",
+      "author": "Brandon Sanderson",
+      "score": 0.030248112976551056
+     },
+     {
+      "rank": 14,
+      "work_id": "23857485",
+      "title": "Saga, Vol. 2 (Saga, #2)",
+      "author": "Brian K. Vaughan",
+      "score": 0.030098775401711464
+     },
+     {
+      "rank": 15,
+      "work_id": "42077459",
+      "title": "Six of Crows (Six of Crows, #1)",
+      "author": "Leigh Bardugo",
+      "score": 0.029534101486206055
+     },
+     {
+      "rank": 16,
+      "work_id": "12946965",
+      "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+      "author": "Laura Hillenbrand",
+      "score": 0.029033606871962547
+     },
+     {
+      "rank": 17,
+      "work_id": "6309710",
+      "title": "Clockwork Princess (The Infernal Devices, #3)",
+      "author": "Cassandra Clare",
+      "score": 0.02885943464934826
+     },
+     {
+      "rank": 18,
+      "work_id": "4640799",
+      "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+      "author": "J.K. Rowling",
+      "score": 0.028801873326301575
+     },
+     {
+      "rank": 19,
+      "work_id": "25272067",
+      "title": "Queen of Shadows (Throne of Glass, #4)",
+      "author": "Sarah J. Maas",
+      "score": 0.028679728507995605
+     },
+     {
+      "rank": 20,
+      "work_id": "66322",
+      "title": "The Final Empire (Mistborn, #1)",
+      "author": "Brandon Sanderson",
+      "score": 0.028632255271077156
+     },
+     {
+      "rank": 21,
+      "work_id": "18390887",
+      "title": "Winter (The Lunar Chronicles, #4)",
+      "author": "Marissa Meyer",
+      "score": 0.02861451916396618
+     },
+     {
+      "rank": 22,
+      "work_id": "2502882",
+      "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+      "author": "Patrick Rothfuss",
+      "score": 0.028476394712924957
+     },
+     {
+      "rank": 23,
+      "work_id": "44848425",
+      "title": "Between the World and Me",
+      "author": "Ta-Nehisi Coates",
+      "score": 0.028420856222510338
+     },
+     {
+      "rank": 24,
+      "work_id": "16319487",
+      "title": "Wonder (Wonder #1)",
+      "author": "R.J. Palacio",
+      "score": 0.02833477407693863
+     },
+     {
+      "rank": 25,
+      "work_id": "18390772",
+      "title": "Cress (The Lunar Chronicles, #3)",
+      "author": "Marissa Meyer",
+      "score": 0.02822035364806652
+     },
+     {
+      "rank": 26,
+      "work_id": "1658562",
+      "title": "The Complete Maus (Maus, #1-2)",
+      "author": "Art Spiegelman",
+      "score": 0.02819671854376793
+     },
+     {
+      "rank": 27,
+      "work_id": "1782551",
+      "title": "Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",
+      "author": "Art Spiegelman",
+      "score": 0.028138821944594383
+     },
+     {
+      "rank": 28,
+      "work_id": "2809203",
+      "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+      "author": "J.K. Rowling",
+      "score": 0.028114186599850655
+     },
+     {
+      "rank": 29,
+      "work_id": "2964424",
+      "title": "The Return of the King (The Lord of the Rings, #3)",
+      "author": "J.R.R. Tolkien",
+      "score": 0.027887696400284767
+     },
+     {
+      "rank": 30,
+      "work_id": "27422060",
+      "title": "Saga, Vol. 3 (Saga, #3)",
+      "author": "Brian K. Vaughan",
+      "score": 0.027619922533631325
+     }
+    ]
+   }
+  ],
+  "semantic_context_loaded": true,
+  "artifact_sha256": "e68ecd627eddd8d892f6305dbcba6a19e4efc842fc4811469210c6b3d8c15bfa",
+  "artifact_bytes": 4896401,
+  "eligible_targets": [],
+  "G10": null,
+  "stopped": "20k F1 descendants did not resolve into a cross-root recurrent 10k family under the fixed natural geometric partition."
+ },
+ "method": {
+  "descendant_seed": 20260825,
+  "natural_k_range": [
+   2,
+   9
+  ],
+  "fixed_taus": [
+   0.3,
+   0.5,
+   0.7
+  ],
+  "semantic_firewall": false,
+  "git_head": "3b4fb12d24f8758de67dc10aafd6ea45df989406",
+  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_recursive_descendant_families.py --phase smoke"
+ },
+ "complete": true
+}
