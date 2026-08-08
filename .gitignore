@@ -69,3 +69,7 @@ curators_explorer/data/jury_decomposition_geometry.npz
 curators_explorer/data/maximum_literary_jury.npz
 curators_explorer/data/maximum_literary_jury_chunks/
 curators_explorer/data/maximum_literary_jury_state/
+
+# Maximum literary jury addendum: regenerable matrix + checkpoint
+curators_explorer/data/maximum_literary_jury_addendum.npz
+curators_explorer/data/maximum_literary_jury_addendum_chunks.json
