@@ -77,3 +77,7 @@ curators_explorer/data/maximum_literary_jury_addendum_chunks.json
 # Jury consensus venn census: regenerable matrix + checkpoint
 curators_explorer/data/jury_consensus_venn.npz
 curators_explorer/data/jury_consensus_venn_chunks.json
+
+# Juror coherence / tail diagnostic: regenerable matrix + state
+curators_explorer/data/juror_coherence_tail.npz
+curators_explorer/data/juror_coherence_tail_state/
