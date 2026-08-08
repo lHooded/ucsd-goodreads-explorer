@@ -87,7 +87,10 @@ def run_jury(
     rng: np.random.Generator,
     retained_target: float,
 ) -> dict[str, Any]:
-    """Standard map from a random-jury seed: collapse then gain-hard reversal."""
+    """Standard map from a random-jury seed: collapse then gain-hard reversal.
+
+    Also returns stage_prefs, the preference score vector of every stage
+    (backwards-compatible addition; dynamics unchanged)."""
     n_users = len(payload["user_ids"])
     full_operator, _ = spectral.make_operator(matrix, payload, attractor.CONFIG)
     reference_direction = attractor.normalize_columns(
@@ -96,6 +99,7 @@ def run_jury(
 
     keep = np.arange(n_users, dtype=np.int64)
     stages: list[dict[str, Any]] = []
+    stage_prefs: list[np.ndarray] = []
     stop_reason = "max_stages"
     stage0_pref: np.ndarray | None = None
     last_pref: np.ndarray | None = None
@@ -112,6 +116,7 @@ def run_jury(
         if stage == 0:
             stage0_pref = preference["score"].astype(np.float32)
         last_pref = preference["score"].astype(np.float32)
+        stage_prefs.append(preference["score"].astype(np.float32))
         stages.append(
             {
                 "stage": stage,
@@ -150,6 +155,7 @@ def run_jury(
         "stages": stages,
         "stage0_pref": stage0_pref,
         "final_pref": last_pref,
+        "stage_prefs": stage_prefs,
     }
 
 

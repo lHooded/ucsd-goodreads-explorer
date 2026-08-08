@@ -1,0 +1,140 @@
+{
+ "phase": "smoke",
+ "runtime_seconds": 120.87959718704224,
+ "n_checks": 24,
+ "n_passed": 24,
+ "all_ok": true,
+ "checks": [
+  {
+   "check": "f0_f1_keys_load_unit",
+   "ok": true,
+   "detail": "dims (26418,) / (26418,) == eligible 26418, norms 1.000000 / 1.000000"
+  },
+  {
+   "check": "endpoint_repr_matches_decomposition",
+   "ok": true,
+   "detail": "endpoint_repr == _pref_rep on random vector"
+  },
+  {
+   "check": "balanced_partitions_cover_and_sizes",
+   "ok": true,
+   "detail": "sizes [1000, 1000, 1000, 1000], exact cover True"
+  },
+  {
+   "check": "two_group_partition_sizes",
+   "ok": true,
+   "detail": "sizes [1000, 1000]"
+  },
+  {
+   "check": "contributions_center_to_zero_per_rep",
+   "ok": true,
+   "detail": "per-rep column sums [-2.02948769e-13  4.76951811e-13  2.65787392e-12]"
+  },
+  {
+   "check": "one_contribution_per_user_per_rep",
+   "ok": true,
+   "detail": "per-user contributions 3/3"
+  },
+  {
+   "check": "k2_agrees_with_paired_contrast",
+   "ok": true,
+   "detail": "group0 0.4000 group1 -0.4000 (paired half-difference)"
+  },
+  {
+   "check": "deterministic_tie_break_top_bottom_partition",
+   "ok": true,
+   "detail": "top [2 5] bottom [1 7]"
+  },
+  {
+   "check": "lit_top_anti_bottom",
+   "ok": true,
+   "detail": "literary retains top fitness half, anti bottom half"
+  },
+  {
+   "check": "random_control_deterministic_nested",
+   "ok": true,
+   "detail": "size 1000 -> 500, deterministic True"
+  },
+  {
+   "check": "no_semantic_tokens_in_fitness_selection",
+   "ok": true,
+   "detail": "banned tokens: none"
+  },
+  {
+   "check": "stage_diagnostics_derivation",
+   "ok": true,
+   "detail": "margins [0.0, 0.0, 0.0], gain 0.0000, best stage 0"
+  },
+  {
+   "check": "stage_diagnostics_sign_cases",
+   "ok": true,
+   "detail": "positive 0.2209, zero 0.0000, negative -0.2209"
+  },
+  {
+   "check": "split_half_diagnostics_computed",
+   "ok": true,
+   "detail": "rho 0.9999999999999999, overlap 500"
+  },
+  {
+   "check": "fitness_uses_final_margins_only",
+   "ok": true,
+   "detail": "fitness identical whether stage data exists or not"
+  },
+  {
+   "check": "real_posthoc_context_loads",
+   "ok": true,
+   "detail": "meta 26418 rows, exact_lit 54 works"
+  },
+  {
+   "check": "smoke_run_consolidated",
+   "ok": true,
+   "detail": "smoke breeding run consolidated"
+  },
+  {
+   "check": "smoke_complete_flag",
+   "ok": true,
+   "detail": "missing []"
+  },
+  {
+   "check": "smoke_child_counts",
+   "ok": true,
+   "detail": "32 children == 32"
+  },
+  {
+   "check": "smoke_stage_prefs_recorded",
+   "ok": true,
+   "detail": "32 child records with margin trajectories of length n_stages"
+  },
+  {
+   "check": "smoke_eval_sizes",
+   "ok": true,
+   "detail": "each branch evaluates pools 4000 -> 2000 -> 1000"
+  },
+  {
+   "check": "smoke_heads_present",
+   "ok": true,
+   "detail": "lit head 50 rows, anti 50, rand 50"
+  },
+  {
+   "check": "npz_lineage_keys_roundtrip",
+   "ok": true,
+   "detail": "31 npz keys, JSON refs resolve"
+  },
+  {
+   "check": "smoke_semantic_metrics_integers",
+   "ok": true,
+   "detail": "eval semantic metrics are ints"
+  }
+ ],
+ "smoke_run": {
+  "seed": 20260823,
+  "root_size": 4000,
+  "pool_sizes": [
+   4000,
+   2000,
+   1000
+  ],
+  "replicates": 4,
+  "n_children": 32
+ }
+}

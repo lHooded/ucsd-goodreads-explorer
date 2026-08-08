@@ -1,0 +1,5841 @@
+{
+ "method": {
+  "experiment": "recursive family breeding (fixed-compass pilot)",
+  "seed": 20260823,
+  "roots": 1,
+  "root_size": 4000,
+  "pool_sizes": [
+   4000,
+   2000,
+   1000
+  ],
+  "replicates": 4,
+  "generations": 3,
+  "selection_steps": 2,
+  "retained_target": 1.01,
+  "elig_min_book_n": 25,
+  "family_centroids": [
+   "family_cent_0.70_f0",
+   "family_cent_0.70_f1"
+  ],
+  "fitness": "mean over partition replicates of the group-centered deepest endpoint F1-minus-F0 margin; no semantic input; ties broken by ascending global user index",
+  "selection": "top half (literary), bottom half (anti), deterministic random half (random)",
+  "stage_diagnostics": "margin_by_stage / stage0 / deepest / max / argmax / reversal_gain recorded for every jury run; selection uses deepest margin only",
+  "semantic_firewall": false,
+  "git_head": "19b10c93539b9ea293afbdc83c96a0a5414690a1",
+  "command": "/home/ifrankling/unsw/novels/curators_explorer/scripts/research_recursive_family_breeding.py --phase smoke",
+  "run_spec_hash": "b8a34e4d2bd564f759b4062007431b797f39f1667c1ba83754513bc0c49f12cd",
+  "runtime_seconds": 0.026355981826782227
+ },
+ "complete": true,
+ "missing": [],
+ "roots": [
+  {
+   "root_id": 0,
+   "root_users_key": "root0_users",
+   "shared_g0": {
+    "pool_size": 4000,
+    "n_groups": 4,
+    "child_size": 1000,
+    "child_runs": [
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 14628,
+      "margin_by_stage": [
+       -0.43266396068606056,
+       0.30149901062560597,
+       0.6113559737496351,
+       0.4149058298927003,
+       0.44897623791867497,
+       0.3579322717209612
+      ],
+      "cos_f1_by_stage": [
+       0.37535126695361937,
+       0.5739953542068612,
+       0.8191857147467403,
+       0.6520133760164795,
+       0.635141424871807,
+       0.5728445946783883
+      ],
+      "cos_f0_by_stage": [
+       0.8080152276396799,
+       0.27249634358125524,
+       0.20782974099710513,
+       0.23710754612377916,
+       0.18616518695313206,
+       0.21491232295742715
+      ],
+      "stage0_margin": -0.43266396068606056,
+      "deepest_margin": 0.3579322717209612,
+      "max_margin": 0.6113559737496351,
+      "argmax_margin_stage": 2,
+      "reversal_gain": 0.7905962324070217,
+      "best_reversal_gain": 1.0440199344356957,
+      "cos_f1": 0.5728445946783883,
+      "cos_f0": 0.21491232295742715,
+      "exact50": 0,
+      "exact200": 1,
+      "broad50": 0,
+      "broad200": 1,
+      "anti50": 6,
+      "anti200": 33,
+      "runtime_seconds": 2.853846311569214,
+      "replicate": 0,
+      "group": 0
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 14398,
+      "margin_by_stage": [
+       -0.4363593287179243,
+       0.4296185941291619,
+       0.40027045717423265,
+       0.4198538344344684,
+       0.3436290960404389,
+       0.19623660294704448
+      ],
+      "cos_f1_by_stage": [
+       0.34195312598036637,
+       0.6766635784288808,
+       0.7209984635296505,
+       0.6742460570786349,
+       0.5766672475851866,
+       0.5082347536740677
+      ],
+      "cos_f0_by_stage": [
+       0.7783124546982907,
+       0.24704498429971888,
+       0.3207280063554178,
+       0.25439222264416655,
+       0.2330381515447477,
+       0.3119981507270232
+      ],
+      "stage0_margin": -0.4363593287179243,
+      "deepest_margin": 0.19623660294704448,
+      "max_margin": 0.4296185941291619,
+      "argmax_margin_stage": 1,
+      "reversal_gain": 0.6325959316649687,
+      "best_reversal_gain": 0.8659779228470863,
+      "cos_f1": 0.5082347536740677,
+      "cos_f0": 0.3119981507270232,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 3,
+      "anti200": 26,
+      "runtime_seconds": 2.7600462436676025,
+      "replicate": 0,
+      "group": 1
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 12945,
+      "margin_by_stage": [
+       0.47437339216894236,
+       -0.4022909157955341,
+       -0.48595436833291533,
+       -0.40001132521795213,
+       -0.24523664731584105,
+       -0.282438123702979
+      ],
+      "cos_f1_by_stage": [
+       0.794786212888202,
+       0.26160164933955943,
+       0.2988770552890066,
+       0.21606127929002705,
+       0.2709177392807657,
+       0.19527715230056059
+      ],
+      "cos_f0_by_stage": [
+       0.3204128207192596,
+       0.6638925651350935,
+       0.7848314236219219,
+       0.6160726045079792,
+       0.5161543865966067,
+       0.4777152760035396
+      ],
+      "stage0_margin": 0.47437339216894236,
+      "deepest_margin": -0.282438123702979,
+      "max_margin": 0.47437339216894236,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.7568115158719213,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.19527715230056059,
+      "cos_f0": 0.4777152760035396,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 17,
+      "anti200": 39,
+      "runtime_seconds": 2.774721145629883,
+      "replicate": 0,
+      "group": 2
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 12573,
+      "margin_by_stage": [
+       0.47464205371098334,
+       -0.41003955404946374,
+       -0.4653025432960197,
+       -0.3676781458099856,
+       -0.19510352648707213,
+       -0.2959795198930027
+      ],
+      "cos_f1_by_stage": [
+       0.7853684191511059,
+       0.2880030265640307,
+       0.28545028026957886,
+       0.2302553039480899,
+       0.2866998668340214,
+       0.252755062778019
+      ],
+      "cos_f0_by_stage": [
+       0.31072636544012255,
+       0.6980425806134944,
+       0.7507528235655986,
+       0.5979334497580755,
+       0.4818033933210935,
+       0.5487345826710217
+      ],
+      "stage0_margin": 0.47464205371098334,
+      "deepest_margin": -0.2959795198930027,
+      "max_margin": 0.47464205371098334,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.7706215736039861,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.252755062778019,
+      "cos_f0": 0.5487345826710217,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 32,
+      "anti200": 81,
+      "runtime_seconds": 2.7131693363189697,
+      "replicate": 0,
+      "group": 3
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13513,
+      "margin_by_stage": [
+       0.42760789468192323,
+       -0.1509891545844697,
+       -0.5579927698105714,
+       -0.36414758559140975,
+       -0.503353854197799,
+       -0.4127320081824941
+      ],
+      "cos_f1_by_stage": [
+       0.7489985262045795,
+       0.487403888619357,
+       0.20404527434247352,
+       0.2364620111013394,
+       0.16760656018812367,
+       0.20138449544179035
+      ],
+      "cos_f0_by_stage": [
+       0.3213906315226563,
+       0.6383930432038267,
+       0.762038044153045,
+       0.6006095966927492,
+       0.6709604143859227,
+       0.6141165036242845
+      ],
+      "stage0_margin": 0.42760789468192323,
+      "deepest_margin": -0.4127320081824941,
+      "max_margin": 0.42760789468192323,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.8403399028644174,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.20138449544179035,
+      "cos_f0": 0.6141165036242845,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 37,
+      "anti200": 92,
+      "runtime_seconds": 2.7335546016693115,
+      "replicate": 1,
+      "group": 0
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 14356,
+      "margin_by_stage": [
+       -0.4077757782556859,
+       0.4442518994580944,
+       0.23781936935838272,
+       0.5171531577065792,
+       0.2165121626964439,
+       0.3053442649436984
+      ],
+      "cos_f1_by_stage": [
+       0.3446202055379226,
+       0.7367567308444642,
+       0.6000290268366499,
+       0.7314848242558878,
+       0.5211061131158962,
+       0.5124474702501767
+      ],
+      "cos_f0_by_stage": [
+       0.7523959837936085,
+       0.29250483138636985,
+       0.3622096574782672,
+       0.21433166654930857,
+       0.30459395041945225,
+       0.20710320530647827
+      ],
+      "stage0_margin": -0.4077757782556859,
+      "deepest_margin": 0.3053442649436984,
+      "max_margin": 0.5171531577065792,
+      "argmax_margin_stage": 3,
+      "reversal_gain": 0.7131200431993843,
+      "best_reversal_gain": 0.9249289359622651,
+      "cos_f1": 0.5124474702501767,
+      "cos_f0": 0.20710320530647827,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 26,
+      "anti200": 54,
+      "runtime_seconds": 2.802523136138916,
+      "replicate": 1,
+      "group": 1
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13815,
+      "margin_by_stage": [
+       0.49234530837826207,
+       -0.3563317755293867,
+       -0.4887725629533781,
+       -0.4352265447418433,
+       -0.4349734766255421,
+       -0.2963403018507881
+      ],
+      "cos_f1_by_stage": [
+       0.8140240005173023,
+       0.2601621019995705,
+       0.29710665849448803,
+       0.20648813311612438,
+       0.23145220549714873,
+       0.24312446062139534
+      ],
+      "cos_f0_by_stage": [
+       0.3216786921390402,
+       0.6164938775289572,
+       0.7858792214478661,
+       0.6417146778579677,
+       0.6664256821226908,
+       0.5394647624721834
+      ],
+      "stage0_margin": 0.49234530837826207,
+      "deepest_margin": -0.2963403018507881,
+      "max_margin": 0.49234530837826207,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.7886856102290501,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.24312446062139534,
+      "cos_f0": 0.5394647624721834,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 42,
+      "anti200": 122,
+      "runtime_seconds": 2.822575569152832,
+      "replicate": 1,
+      "group": 2
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 14894,
+      "margin_by_stage": [
+       -0.4043194542492173,
+       0.266678512249055,
+       0.5586161396981593,
+       0.4813793794708904,
+       0.48064761503148157,
+       0.3708888780475914
+      ],
+      "cos_f1_by_stage": [
+       0.3933782862316862,
+       0.5494213905979616,
+       0.7819601888400214,
+       0.6941412648271436,
+       0.6718096560322169,
+       0.5586152311789785
+      ],
+      "cos_f0_by_stage": [
+       0.7976977404809035,
+       0.2827428783489066,
+       0.22334404914186218,
+       0.21276188535625315,
+       0.1911620410007353,
+       0.18772635313138708
+      ],
+      "stage0_margin": -0.4043194542492173,
+      "deepest_margin": 0.3708888780475914,
+      "max_margin": 0.5586161396981593,
+      "argmax_margin_stage": 2,
+      "reversal_gain": 0.7752083322968086,
+      "best_reversal_gain": 0.9629355939473765,
+      "cos_f1": 0.5586152311789785,
+      "cos_f0": 0.18772635313138708,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 17,
+      "anti200": 36,
+      "runtime_seconds": 2.8641204833984375,
+      "replicate": 1,
+      "group": 3
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13506,
+      "margin_by_stage": [
+       0.2142906186292125,
+       0.11551604853012992,
+       -0.5359372811287499,
+       -0.5062603577876471,
+       -0.35024280361723625,
+       -0.2095344934818945
+      ],
+      "cos_f1_by_stage": [
+       0.6532111296692488,
+       0.5926994857747448,
+       0.23154934489505363,
+       0.22602417216083268,
+       0.23482882643056024,
+       0.3067755389651015
+      ],
+      "cos_f0_by_stage": [
+       0.43892051104003627,
+       0.4771834372446149,
+       0.7674866260238036,
+       0.7322845299484798,
+       0.5850716300477965,
+       0.516310032446996
+      ],
+      "stage0_margin": 0.2142906186292125,
+      "deepest_margin": -0.2095344934818945,
+      "max_margin": 0.2142906186292125,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.423825112111107,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.3067755389651015,
+      "cos_f0": 0.516310032446996,
+      "exact50": 0,
+      "exact200": 2,
+      "broad50": 1,
+      "broad200": 6,
+      "anti50": 15,
+      "anti200": 40,
+      "runtime_seconds": 2.8443777561187744,
+      "replicate": 2,
+      "group": 0
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13158,
+      "margin_by_stage": [
+       0.47667068051463934,
+       -0.33347625692563815,
+       -0.46846038807980633,
+       -0.3534630883937871,
+       -0.4376946609845788,
+       -0.2394823627277639
+      ],
+      "cos_f1_by_stage": [
+       0.7831130950443884,
+       0.318865581783723,
+       0.3050737721092743,
+       0.2658874773223436,
+       0.18252418162359246,
+       0.3076877765076058
+      ],
+      "cos_f0_by_stage": [
+       0.3064424145297491,
+       0.6523418387093611,
+       0.7735341601890806,
+       0.6193505657161307,
+       0.6202188426081713,
+       0.5471701392353697
+      ],
+      "stage0_margin": 0.47667068051463934,
+      "deepest_margin": -0.2394823627277639,
+      "max_margin": 0.47667068051463934,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.7161530432424033,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.3076877765076058,
+      "cos_f0": 0.5471701392353697,
+      "exact50": 0,
+      "exact200": 1,
+      "broad50": 0,
+      "broad200": 1,
+      "anti50": 24,
+      "anti200": 58,
+      "runtime_seconds": 2.8134994506835938,
+      "replicate": 2,
+      "group": 1
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 14688,
+      "margin_by_stage": [
+       -0.3309569235919933,
+       0.16444616569264564,
+       0.568129548977736,
+       0.4478383380348818,
+       0.4619922826547733,
+       0.3053697639925901
+      ],
+      "cos_f1_by_stage": [
+       0.4383032247408812,
+       0.49759331060701145,
+       0.7820010599669486,
+       0.690846808956187,
+       0.6872204300083348,
+       0.5504942523180776
+      ],
+      "cos_f0_by_stage": [
+       0.7692601483328745,
+       0.3331471449143658,
+       0.21387151098921248,
+       0.24300847092130515,
+       0.22522814735356145,
+       0.24512448832548747
+      ],
+      "stage0_margin": -0.3309569235919933,
+      "deepest_margin": 0.3053697639925901,
+      "max_margin": 0.568129548977736,
+      "argmax_margin_stage": 2,
+      "reversal_gain": 0.6363266875845834,
+      "best_reversal_gain": 0.8990864725697294,
+      "cos_f1": 0.5504942523180776,
+      "cos_f0": 0.24512448832548747,
+      "exact50": 0,
+      "exact200": 1,
+      "broad50": 1,
+      "broad200": 3,
+      "anti50": 8,
+      "anti200": 31,
+      "runtime_seconds": 2.9340896606445312,
+      "replicate": 2,
+      "group": 2
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13612,
+      "margin_by_stage": [
+       -0.3709068918219376,
+       0.2287386214301954,
+       0.5734602909368132,
+       0.4460171031481125,
+       0.3649001568722322,
+       0.08858611325638988
+      ],
+      "cos_f1_by_stage": [
+       0.3735117494769308,
+       0.5869830637785268,
+       0.8056131443571632,
+       0.6631202250420865,
+       0.5761778039667445,
+       0.4319669334958173
+      ],
+      "cos_f0_by_stage": [
+       0.7444186412988684,
+       0.3582444423483314,
+       0.23215285342035005,
+       0.21710312189397393,
+       0.21127764709451222,
+       0.3433808202394274
+      ],
+      "stage0_margin": -0.3709068918219376,
+      "deepest_margin": 0.08858611325638988,
+      "max_margin": 0.5734602909368132,
+      "argmax_margin_stage": 2,
+      "reversal_gain": 0.45949300507832747,
+      "best_reversal_gain": 0.9443671827587508,
+      "cos_f1": 0.4319669334958173,
+      "cos_f0": 0.3433808202394274,
+      "exact50": 0,
+      "exact200": 3,
+      "broad50": 1,
+      "broad200": 7,
+      "anti50": 1,
+      "anti200": 11,
+      "runtime_seconds": 2.8447368144989014,
+      "replicate": 2,
+      "group": 3
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13503,
+      "margin_by_stage": [
+       0.4957806341059473,
+       -0.3714827372607389,
+       -0.465346663797984,
+       -0.42052365769524547,
+       -0.4081943043163894,
+       -0.23807631997912226
+      ],
+      "cos_f1_by_stage": [
+       0.8079511224907466,
+       0.27233294890088544,
+       0.30596089157193124,
+       0.20973793139772226,
+       0.235529639911978,
+       0.25924679674654333
+      ],
+      "cos_f0_by_stage": [
+       0.3121704883847993,
+       0.6438156861616243,
+       0.7713075553699152,
+       0.6302615890929677,
+       0.6437239442283674,
+       0.4973231167256656
+      ],
+      "stage0_margin": 0.4957806341059473,
+      "deepest_margin": -0.23807631997912226,
+      "max_margin": 0.4957806341059473,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.7338569540850696,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.25924679674654333,
+      "cos_f0": 0.4973231167256656,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 37,
+      "anti200": 116,
+      "runtime_seconds": 2.94038462638855,
+      "replicate": 3,
+      "group": 0
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13728,
+      "margin_by_stage": [
+       0.4600943951328673,
+       -0.294167914639134,
+       -0.5152532714965193,
+       -0.4194009038957386,
+       -0.5089608514466024,
+       -0.3585020672108835
+      ],
+      "cos_f1_by_stage": [
+       0.8050497046996563,
+       0.28361080652533693,
+       0.28896814579931396,
+       0.22330230365450401,
+       0.17022566525016644,
+       0.23431545232737305
+      ],
+      "cos_f0_by_stage": [
+       0.344955309566789,
+       0.5777787211644709,
+       0.8042214172958333,
+       0.6427032075502426,
+       0.6791865166967689,
+       0.5928175195382566
+      ],
+      "stage0_margin": 0.4600943951328673,
+      "deepest_margin": -0.3585020672108835,
+      "max_margin": 0.4600943951328673,
+      "argmax_margin_stage": 0,
+      "reversal_gain": -0.8185964623437508,
+      "best_reversal_gain": 0.0,
+      "cos_f1": 0.23431545232737305,
+      "cos_f0": 0.5928175195382566,
+      "exact50": 0,
+      "exact200": 0,
+      "broad50": 0,
+      "broad200": 0,
+      "anti50": 34,
+      "anti200": 95,
+      "runtime_seconds": 2.772956371307373,
+      "replicate": 3,
+      "group": 1
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13527,
+      "margin_by_stage": [
+       -0.4243070327373167,
+       0.4846820641631052,
+       0.22225759682535517,
+       0.58941936978358,
+       0.3526598433778291,
+       0.16288465350587022
+      ],
+      "cos_f1_by_stage": [
+       0.3370962215554076,
+       0.7296841999358711,
+       0.6025739251879787,
+       0.777777098689356,
+       0.5695202509747476,
+       0.45497400134223426
+      ],
+      "cos_f0_by_stage": [
+       0.7614032542927243,
+       0.2450021357727659,
+       0.3803163283626235,
+       0.18835772890577593,
+       0.2168604075969185,
+       0.29208934783636403
+      ],
+      "stage0_margin": -0.4243070327373167,
+      "deepest_margin": 0.16288465350587022,
+      "max_margin": 0.58941936978358,
+      "argmax_margin_stage": 3,
+      "reversal_gain": 0.587191686243187,
+      "best_reversal_gain": 1.0137264025208967,
+      "cos_f1": 0.45497400134223426,
+      "cos_f0": 0.29208934783636403,
+      "exact50": 0,
+      "exact200": 5,
+      "broad50": 2,
+      "broad200": 12,
+      "anti50": 4,
+      "anti200": 20,
+      "runtime_seconds": 2.7553608417510986,
+      "replicate": 3,
+      "group": 2
+     },
+     {
+      "jury_size": 1000,
+      "stop_reason": "evidence_floor",
+      "n_stages": 6,
+      "remaining_users": 13904,
+      "margin_by_stage": [
+       -0.4509907151099531,
+       0.45077441870336177,
+       0.47546296407801214,
+       0.4504628382450726,
+       0.3820828174669261,
+       0.19824417452008758
+      ],
+      "cos_f1_by_stage": [
+       0.3390454682827117,
+       0.6799014028285777,
+       0.7550695076579494,
+       0.6721770945083007,
+       0.6088611508156786,
+       0.4651780406389913
+      ],
+      "cos_f0_by_stage": [
+       0.7900361833926648,
+       0.22912698412521593,
+       0.2796065435799373,
+       0.22171425626322802,
+       0.2267783333487525,
+       0.26693386611890374
+      ],
+      "stage0_margin": -0.4509907151099531,
+      "deepest_margin": 0.19824417452008758,
+      "max_margin": 0.47546296407801214,
+      "argmax_margin_stage": 2,
+      "reversal_gain": 0.6492348896300406,
+      "best_reversal_gain": 0.9264536791879652,
+      "cos_f1": 0.4651780406389913,
+      "cos_f0": 0.26693386611890374,
+      "exact50": 0,
+      "exact200": 4,
+      "broad50": 3,
+      "broad200": 12,
+      "anti50": 4,
+      "anti200": 34,
+      "runtime_seconds": 2.833738327026367,
+      "replicate": 3,
+      "group": 3
+     }
+    ],
+    "child_summary": {
+     "n_children": 16,
+     "margin_mean": -0.02172490463091843,
+     "margin_median": -0.06047419011275232,
+     "margin_min": -0.4127320081824941,
+     "margin_max": 0.3708888780475914,
+     "fraction_margin_gt0": 0.5,
+     "fraction_nearest_f1": 0.5,
+     "child_cos_f1_mean": 0.37845762582907,
+     "child_cos_f0_mean": 0.40018253045998853,
+     "stage0_margin_mean": 0.01609530575954304,
+     "stage0_margin_median": -0.0583331524813904,
+     "deepest_margin_mean": -0.02172490463091843,
+     "deepest_margin_median": -0.06047419011275232,
+     "reversal_gain_mean": -0.0378202103904615,
+     "reversal_gain_median": 0.017833946483610225,
+     "fraction_reversal_gain_gt0": 0.5,
+     "fraction_reversal_gain_lt0": 0.5,
+     "median_argmax_margin_stage": 0.5,
+     "semantic": {
+      "exact50_mean": 0.0,
+      "exact50_median": 0.0,
+      "exact50_max": 0,
+      "broad50_mean": 0.5,
+      "anti50_mean": 19.1875,
+      "fraction_exact50_ge1": 0.0,
+      "fraction_exact50_ge3": 0.0
+     }
+    },
+    "fitness_stats": {
+     "mean": 0.0,
+     "sd": 0.14044886106453452,
+     "q05": -0.2382577578537166,
+     "q25": -0.10953169269487262,
+     "q50": 0.0029337783344089985,
+     "q75": 0.10331993782892823,
+     "q95": 0.2352138482965529
+    },
+    "split_half": {
+     "spearman_half_panels": 0.014967542736772943,
+     "half_panel_reps": 2,
+     "top_half_overlap": 1024,
+     "top_half_overlap_fraction": 0.512
+    },
+    "fitness_key": "root0_g0_fitness",
+    "child_reps_key": "root0_g0_child_reps",
+    "eval": {
+     "jury_size": 4000,
+     "stop_reason": "evidence_floor",
+     "n_stages": 6,
+     "remaining_users": 15420,
+     "margin_by_stage": [
+      -0.3493669840474474,
+      0.12549041020015306,
+      0.4752574141208507,
+      0.4037375485587213,
+      0.3461570228440618,
+      0.22663479773088246
+     ],
+     "cos_f1_by_stage": [
+      0.3757982157741346,
+      0.561005919405211,
+      0.7542353521738691,
+      0.7098048131514515,
+      0.6684295216402988,
+      0.623681693375763
+     ],
+     "cos_f0_by_stage": [
+      0.725165199821582,
+      0.435515509205058,
+      0.27897793805301835,
+      0.3060672645927302,
+      0.322272498796237,
+      0.3970468956448805
+     ],
+     "stage0_margin": -0.3493669840474474,
+     "deepest_margin": 0.22663479773088246,
+     "max_margin": 0.4752574141208507,
+     "argmax_margin_stage": 2,
+     "reversal_gain": 0.5760017817783298,
+     "best_reversal_gain": 0.8246243981682981,
+     "cos_f1": 0.623681693375763,
+     "cos_f0": 0.3970468956448805,
+     "exact50": 0,
+     "exact200": 1,
+     "broad50": 0,
+     "broad200": 1,
+     "anti50": 7,
+     "anti200": 33,
+     "head": [
+      {
+       "rank": 1,
+       "work_id": "16482835",
+       "title": "Words of Radiance (The Stormlight Archive, #2)",
+       "author": "Brandon Sanderson",
+       "score": 0.8250635266304016
+      },
+      {
+       "rank": 2,
+       "work_id": "2244438",
+       "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+       "author": "Bill Watterson",
+       "score": 0.8077231645584106
+      },
+      {
+       "rank": 3,
+       "work_id": "1164465",
+       "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+       "author": "George R.R. Martin",
+       "score": 0.8056979179382324
+      },
+      {
+       "rank": 4,
+       "work_id": "6571827",
+       "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+       "author": "George R.R. Martin",
+       "score": 0.8009258508682251
+      },
+      {
+       "rank": 5,
+       "work_id": "8134945",
+       "title": "The Way of Kings (The Stormlight Archive, #1)",
+       "author": "Brandon Sanderson",
+       "score": 0.7913591265678406
+      },
+      {
+       "rank": 6,
+       "work_id": "692719",
+       "title": "The Calvin and Hobbes Tenth Anniversary Book",
+       "author": "Bill Watterson",
+       "score": 0.7733676433563232
+      },
+      {
+       "rank": 7,
+       "work_id": "1010526",
+       "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+       "author": "Bill Watterson",
+       "score": 0.7556710839271545
+      },
+      {
+       "rank": 8,
+       "work_id": "17243368",
+       "title": "A Storm of Swords: Steel and Snow (A Song of Ice and Fire, #3: Part 1 of 2)",
+       "author": "George R.R. Martin",
+       "score": 0.7532831430435181
+      },
+      {
+       "rank": 9,
+       "work_id": "1658562",
+       "title": "The Complete Maus (Maus, #1-2)",
+       "author": "Art Spiegelman",
+       "score": 0.7464110851287842
+      },
+      {
+       "rank": 10,
+       "work_id": "23857485",
+       "title": "Saga, Vol. 2 (Saga, #2)",
+       "author": "Brian K. Vaughan",
+       "score": 0.745344877243042
+      },
+      {
+       "rank": 11,
+       "work_id": "946589",
+       "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.7361438274383545
+      },
+      {
+       "rank": 12,
+       "work_id": "25602",
+       "title": "The Indispensable Calvin and Hobbes",
+       "author": "Bill Watterson",
+       "score": 0.7343397736549377
+      },
+      {
+       "rank": 13,
+       "work_id": "25344",
+       "title": "The Calvin and Hobbes Lazy Sunday Book",
+       "author": "Bill Watterson",
+       "score": 0.7292884588241577
+      },
+      {
+       "rank": 14,
+       "work_id": "2502882",
+       "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+       "author": "Patrick Rothfuss",
+       "score": 0.7266079187393188
+      },
+      {
+       "rank": 15,
+       "work_id": "159847",
+       "title": "Explorers on the Moon (Tintin, #17)",
+       "author": "Herge",
+       "score": 0.7233774065971375
+      },
+      {
+       "rank": 16,
+       "work_id": "2502879",
+       "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+       "author": "Patrick Rothfuss",
+       "score": 0.7222963571548462
+      },
+      {
+       "rank": 17,
+       "work_id": "2110010",
+       "title": "Calvin and Hobbes",
+       "author": "Bill Watterson",
+       "score": 0.7207218408584595
+      },
+      {
+       "rank": 18,
+       "work_id": "2964424",
+       "title": "The Return of the King (The Lord of the Rings, #3)",
+       "author": "J.R.R. Tolkien",
+       "score": 0.7186932563781738
+      },
+      {
+       "rank": 19,
+       "work_id": "7492217",
+       "title": "The Complete Sherlock Holmes",
+       "author": "Arthur Conan Doyle",
+       "score": 0.7153064608573914
+      },
+      {
+       "rank": 20,
+       "work_id": "2369970",
+       "title": "Homicidal Psycho Jungle Cat: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.7135512828826904
+      },
+      {
+       "rank": 21,
+       "work_id": "185697",
+       "title": "Prisoners of the Sun (Tintin, #14)",
+       "author": "Herge",
+       "score": 0.7097947597503662
+      },
+      {
+       "rank": 22,
+       "work_id": "1466917",
+       "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+       "author": "George R.R. Martin",
+       "score": 0.7089055776596069
+      },
+      {
+       "rank": 23,
+       "work_id": "19113524",
+       "title": "Saga, Vol. 1 (Saga, #1)",
+       "author": "Brian K. Vaughan",
+       "score": 0.7079004645347595
+      },
+      {
+       "rank": 24,
+       "work_id": "4358649",
+       "title": "Watchmen",
+       "author": "Alan Moore",
+       "score": 0.7053636312484741
+      },
+      {
+       "rank": 25,
+       "work_id": "27422060",
+       "title": "Saga, Vol. 3 (Saga, #3)",
+       "author": "Brian K. Vaughan",
+       "score": 0.699881374835968
+      },
+      {
+       "rank": 26,
+       "work_id": "25601",
+       "title": "It's a Magical World: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.6991983652114868
+      },
+      {
+       "rank": 27,
+       "work_id": "2244439",
+       "title": "Attack of the Deranged Mutant Killer Monster Snow Goons",
+       "author": "Bill Watterson",
+       "score": 0.6959535479545593
+      },
+      {
+       "rank": 28,
+       "work_id": "25854",
+       "title": "Season of Mists (The Sandman #4)",
+       "author": "Neil Gaiman",
+       "score": 0.6939079761505127
+      },
+      {
+       "rank": 29,
+       "work_id": "25599",
+       "title": "The Complete Calvin and Hobbes",
+       "author": "Bill Watterson",
+       "score": 0.6908418536186218
+      },
+      {
+       "rank": 30,
+       "work_id": "2962492",
+       "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+       "author": "J.K. Rowling",
+       "score": 0.6896111369132996
+      },
+      {
+       "rank": 31,
+       "work_id": "2963218",
+       "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+       "author": "J.K. Rowling",
+       "score": 0.6891905069351196
+      },
+      {
+       "rank": 32,
+       "work_id": "640276",
+       "title": "The Monster at the End of this Book",
+       "author": "Jon Stone",
+       "score": 0.6869804263114929
+      },
+      {
+       "rank": 33,
+       "work_id": "729618",
+       "title": "Red Rackham's Treasure (Tintin, #12)",
+       "author": "Herge",
+       "score": 0.6844579577445984
+      },
+      {
+       "rank": 34,
+       "work_id": "68309",
+       "title": "Weirdos from Another Planet!: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.681129515171051
+      },
+      {
+       "rank": 35,
+       "work_id": "19029792",
+       "title": "Locke & Key, Vol. 5: Clockworks",
+       "author": "Joe Hill",
+       "score": 0.6801027655601501
+      },
+      {
+       "rank": 36,
+       "work_id": "22007627",
+       "title": "Locke & Key, Vol. 6: Alpha & Omega",
+       "author": "Joe Hill",
+       "score": 0.6795051693916321
+      },
+      {
+       "rank": 37,
+       "work_id": "3462456",
+       "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+       "author": "J.R.R. Tolkien",
+       "score": 0.677617609500885
+      },
+      {
+       "rank": 38,
+       "work_id": "3007345",
+       "title": "Scientific Progress Goes \"Boink\": A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.672688364982605
+      },
+      {
+       "rank": 39,
+       "work_id": "899490",
+       "title": "Something Under the Bed is Drooling: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.667988657951355
+      },
+      {
+       "rank": 40,
+       "work_id": "185664",
+       "title": "The Crab with the Golden Claws (Tintin, #9)",
+       "author": "Herge",
+       "score": 0.6621319055557251
+      },
+      {
+       "rank": 41,
+       "work_id": "6778696",
+       "title": "Changes (The Dresden Files, #12)",
+       "author": "Jim Butcher",
+       "score": 0.6575199961662292
+      },
+      {
+       "rank": 42,
+       "work_id": "3272005",
+       "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+       "author": "George R.R. Martin",
+       "score": 0.6536634564399719
+      },
+      {
+       "rank": 43,
+       "work_id": "2402163",
+       "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+       "author": "J.K. Rowling",
+       "score": 0.6533313989639282
+      },
+      {
+       "rank": 44,
+       "work_id": "170846",
+       "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+       "author": "Bill Watterson",
+       "score": 0.6522574424743652
+      },
+      {
+       "rank": 45,
+       "work_id": "23811929",
+       "title": "Skin Game (The Dresden Files, #15)",
+       "author": "Jim Butcher",
+       "score": 0.6504740118980408
+      },
+      {
+       "rank": 46,
+       "work_id": "13492114",
+       "title": "A Monster Calls",
+       "author": "Patrick Ness",
+       "score": 0.6369965672492981
+      },
+      {
+       "rank": 47,
+       "work_id": "89369",
+       "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+       "author": "J.R.R. Tolkien",
+       "score": 0.6368898153305054
+      },
+      {
+       "rank": 48,
+       "work_id": "4873881",
+       "title": "The Last Question",
+       "author": "Isaac Asimov",
+       "score": 0.6368306875228882
+      },
+      {
+       "rank": 49,
+       "work_id": "19054760",
+       "title": "A Dance with Dragons: After the Feast (A Song of Ice and Fire #5, Part 2 of 2)",
+       "author": "George R.R. Martin",
+       "score": 0.6365242600440979
+      },
+      {
+       "rank": 50,
+       "work_id": "1789924",
+       "title": "The Absolute Sandman, Volume One",
+       "author": "Neil Gaiman",
+       "score": 0.6361650824546814
+      }
+     ],
+     "runtime_seconds": 2.8903629779815674
+    }
+   },
+   "branches": {
+    "lit": [
+     {
+      "generation": 0,
+      "pool_size": 4000,
+      "users_key": "root0_users",
+      "selected_key": "root0_lit_g0_selected",
+      "campaign": "shared_g0",
+      "fitness_key": "root0_g0_fitness",
+      "fitness_stats": {
+       "mean": 0.0,
+       "sd": 0.14044886106453452,
+       "q05": -0.2382577578537166,
+       "q25": -0.10953169269487262,
+       "q50": 0.0029337783344089985,
+       "q75": 0.10331993782892823,
+       "q95": 0.2352138482965529
+      },
+      "split_half": {
+       "spearman_half_panels": 0.014967542736772943,
+       "half_panel_reps": 2,
+       "top_half_overlap": 1024,
+       "top_half_overlap_fraction": 0.512
+      },
+      "selection": {
+       "n_selected": 2000,
+       "n_rejected": 2000,
+       "selected_mean_fitness": 0.11464788079168647,
+       "rejected_mean_fitness": -0.11464788079168647,
+       "separation": 0.22929576158337295
+      },
+      "eval": {
+       "jury_size": 4000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 15420,
+       "margin_by_stage": [
+        -0.3493669840474474,
+        0.12549041020015306,
+        0.4752574141208507,
+        0.4037375485587213,
+        0.3461570228440618,
+        0.22663479773088246
+       ],
+       "cos_f1_by_stage": [
+        0.3757982157741346,
+        0.561005919405211,
+        0.7542353521738691,
+        0.7098048131514515,
+        0.6684295216402988,
+        0.623681693375763
+       ],
+       "cos_f0_by_stage": [
+        0.725165199821582,
+        0.435515509205058,
+        0.27897793805301835,
+        0.3060672645927302,
+        0.322272498796237,
+        0.3970468956448805
+       ],
+       "stage0_margin": -0.3493669840474474,
+       "deepest_margin": 0.22663479773088246,
+       "max_margin": 0.4752574141208507,
+       "argmax_margin_stage": 2,
+       "reversal_gain": 0.5760017817783298,
+       "best_reversal_gain": 0.8246243981682981,
+       "cos_f1": 0.623681693375763,
+       "cos_f0": 0.3970468956448805,
+       "exact50": 0,
+       "exact200": 1,
+       "broad50": 0,
+       "broad200": 1,
+       "anti50": 7,
+       "anti200": 33,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.8250635266304016
+        },
+        {
+         "rank": 2,
+         "work_id": "2244438",
+         "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.8077231645584106
+        },
+        {
+         "rank": 3,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.8056979179382324
+        },
+        {
+         "rank": 4,
+         "work_id": "6571827",
+         "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.8009258508682251
+        },
+        {
+         "rank": 5,
+         "work_id": "8134945",
+         "title": "The Way of Kings (The Stormlight Archive, #1)",
+         "author": "Brandon Sanderson",
+         "score": 0.7913591265678406
+        },
+        {
+         "rank": 6,
+         "work_id": "692719",
+         "title": "The Calvin and Hobbes Tenth Anniversary Book",
+         "author": "Bill Watterson",
+         "score": 0.7733676433563232
+        },
+        {
+         "rank": 7,
+         "work_id": "1010526",
+         "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.7556710839271545
+        },
+        {
+         "rank": 8,
+         "work_id": "17243368",
+         "title": "A Storm of Swords: Steel and Snow (A Song of Ice and Fire, #3: Part 1 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.7532831430435181
+        },
+        {
+         "rank": 9,
+         "work_id": "1658562",
+         "title": "The Complete Maus (Maus, #1-2)",
+         "author": "Art Spiegelman",
+         "score": 0.7464110851287842
+        },
+        {
+         "rank": 10,
+         "work_id": "23857485",
+         "title": "Saga, Vol. 2 (Saga, #2)",
+         "author": "Brian K. Vaughan",
+         "score": 0.745344877243042
+        },
+        {
+         "rank": 11,
+         "work_id": "946589",
+         "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7361438274383545
+        },
+        {
+         "rank": 12,
+         "work_id": "25602",
+         "title": "The Indispensable Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7343397736549377
+        },
+        {
+         "rank": 13,
+         "work_id": "25344",
+         "title": "The Calvin and Hobbes Lazy Sunday Book",
+         "author": "Bill Watterson",
+         "score": 0.7292884588241577
+        },
+        {
+         "rank": 14,
+         "work_id": "2502882",
+         "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7266079187393188
+        },
+        {
+         "rank": 15,
+         "work_id": "159847",
+         "title": "Explorers on the Moon (Tintin, #17)",
+         "author": "Herge",
+         "score": 0.7233774065971375
+        },
+        {
+         "rank": 16,
+         "work_id": "2502879",
+         "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7222963571548462
+        },
+        {
+         "rank": 17,
+         "work_id": "2110010",
+         "title": "Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7207218408584595
+        },
+        {
+         "rank": 18,
+         "work_id": "2964424",
+         "title": "The Return of the King (The Lord of the Rings, #3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7186932563781738
+        },
+        {
+         "rank": 19,
+         "work_id": "7492217",
+         "title": "The Complete Sherlock Holmes",
+         "author": "Arthur Conan Doyle",
+         "score": 0.7153064608573914
+        },
+        {
+         "rank": 20,
+         "work_id": "2369970",
+         "title": "Homicidal Psycho Jungle Cat: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7135512828826904
+        },
+        {
+         "rank": 21,
+         "work_id": "185697",
+         "title": "Prisoners of the Sun (Tintin, #14)",
+         "author": "Herge",
+         "score": 0.7097947597503662
+        },
+        {
+         "rank": 22,
+         "work_id": "1466917",
+         "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.7089055776596069
+        },
+        {
+         "rank": 23,
+         "work_id": "19113524",
+         "title": "Saga, Vol. 1 (Saga, #1)",
+         "author": "Brian K. Vaughan",
+         "score": 0.7079004645347595
+        },
+        {
+         "rank": 24,
+         "work_id": "4358649",
+         "title": "Watchmen",
+         "author": "Alan Moore",
+         "score": 0.7053636312484741
+        },
+        {
+         "rank": 25,
+         "work_id": "27422060",
+         "title": "Saga, Vol. 3 (Saga, #3)",
+         "author": "Brian K. Vaughan",
+         "score": 0.699881374835968
+        },
+        {
+         "rank": 26,
+         "work_id": "25601",
+         "title": "It's a Magical World: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6991983652114868
+        },
+        {
+         "rank": 27,
+         "work_id": "2244439",
+         "title": "Attack of the Deranged Mutant Killer Monster Snow Goons",
+         "author": "Bill Watterson",
+         "score": 0.6959535479545593
+        },
+        {
+         "rank": 28,
+         "work_id": "25854",
+         "title": "Season of Mists (The Sandman #4)",
+         "author": "Neil Gaiman",
+         "score": 0.6939079761505127
+        },
+        {
+         "rank": 29,
+         "work_id": "25599",
+         "title": "The Complete Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.6908418536186218
+        },
+        {
+         "rank": 30,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.6896111369132996
+        },
+        {
+         "rank": 31,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.6891905069351196
+        },
+        {
+         "rank": 32,
+         "work_id": "640276",
+         "title": "The Monster at the End of this Book",
+         "author": "Jon Stone",
+         "score": 0.6869804263114929
+        },
+        {
+         "rank": 33,
+         "work_id": "729618",
+         "title": "Red Rackham's Treasure (Tintin, #12)",
+         "author": "Herge",
+         "score": 0.6844579577445984
+        },
+        {
+         "rank": 34,
+         "work_id": "68309",
+         "title": "Weirdos from Another Planet!: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.681129515171051
+        },
+        {
+         "rank": 35,
+         "work_id": "19029792",
+         "title": "Locke & Key, Vol. 5: Clockworks",
+         "author": "Joe Hill",
+         "score": 0.6801027655601501
+        },
+        {
+         "rank": 36,
+         "work_id": "22007627",
+         "title": "Locke & Key, Vol. 6: Alpha & Omega",
+         "author": "Joe Hill",
+         "score": 0.6795051693916321
+        },
+        {
+         "rank": 37,
+         "work_id": "3462456",
+         "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.677617609500885
+        },
+        {
+         "rank": 38,
+         "work_id": "3007345",
+         "title": "Scientific Progress Goes \"Boink\": A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.672688364982605
+        },
+        {
+         "rank": 39,
+         "work_id": "899490",
+         "title": "Something Under the Bed is Drooling: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.667988657951355
+        },
+        {
+         "rank": 40,
+         "work_id": "185664",
+         "title": "The Crab with the Golden Claws (Tintin, #9)",
+         "author": "Herge",
+         "score": 0.6621319055557251
+        },
+        {
+         "rank": 41,
+         "work_id": "6778696",
+         "title": "Changes (The Dresden Files, #12)",
+         "author": "Jim Butcher",
+         "score": 0.6575199961662292
+        },
+        {
+         "rank": 42,
+         "work_id": "3272005",
+         "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+         "author": "George R.R. Martin",
+         "score": 0.6536634564399719
+        },
+        {
+         "rank": 43,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.6533313989639282
+        },
+        {
+         "rank": 44,
+         "work_id": "170846",
+         "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6522574424743652
+        },
+        {
+         "rank": 45,
+         "work_id": "23811929",
+         "title": "Skin Game (The Dresden Files, #15)",
+         "author": "Jim Butcher",
+         "score": 0.6504740118980408
+        },
+        {
+         "rank": 46,
+         "work_id": "13492114",
+         "title": "A Monster Calls",
+         "author": "Patrick Ness",
+         "score": 0.6369965672492981
+        },
+        {
+         "rank": 47,
+         "work_id": "89369",
+         "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+         "author": "J.R.R. Tolkien",
+         "score": 0.6368898153305054
+        },
+        {
+         "rank": 48,
+         "work_id": "4873881",
+         "title": "The Last Question",
+         "author": "Isaac Asimov",
+         "score": 0.6368306875228882
+        },
+        {
+         "rank": 49,
+         "work_id": "19054760",
+         "title": "A Dance with Dragons: After the Feast (A Song of Ice and Fire #5, Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.6365242600440979
+        },
+        {
+         "rank": 50,
+         "work_id": "1789924",
+         "title": "The Absolute Sandman, Volume One",
+         "author": "Neil Gaiman",
+         "score": 0.6361650824546814
+        }
+       ],
+       "runtime_seconds": 2.8903629779815674
+      },
+      "eval_rep_key": "root0_eval_lit_g0_rep",
+      "eval_pref_key": "root0_eval_lit_g0_pref"
+     },
+     {
+      "generation": 1,
+      "pool_size": 2000,
+      "users_key": "root0_lit_g0_selected",
+      "selected_key": "root0_lit_g1_selected",
+      "fitness_key": "root0_lit_g1_fitness",
+      "child_reps_key": "root0_lit_g1_child_reps",
+      "child_runs": [
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14557,
+        "margin_by_stage": [
+         -0.4332329761482431,
+         0.31316430837093656,
+         0.6073386321933368,
+         0.39089178654787693,
+         0.460097144908475,
+         0.31333675395554017
+        ],
+        "cos_f1_by_stage": [
+         0.37486271820400197,
+         0.5797200880875147,
+         0.8188645736438974,
+         0.6363149668495979,
+         0.6414332444768057,
+         0.5506173698546508
+        ],
+        "cos_f0_by_stage": [
+         0.808095694352245,
+         0.2665557797165782,
+         0.21152594145056058,
+         0.24542318030172092,
+         0.18133609956833072,
+         0.23728061589911065
+        ],
+        "stage0_margin": -0.4332329761482431,
+        "deepest_margin": 0.31333675395554017,
+        "max_margin": 0.6073386321933368,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.7465697301037832,
+        "best_reversal_gain": 1.04057160834158,
+        "cos_f1": 0.5506173698546508,
+        "cos_f0": 0.23728061589911065,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 1,
+        "anti50": 5,
+        "anti200": 27,
+        "runtime_seconds": 2.848641872406006,
+        "replicate": 0,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14498,
+        "margin_by_stage": [
+         -0.42949426643039146,
+         0.4437338719998914,
+         0.37058819375907553,
+         0.41888580676931253,
+         0.33420635923329095,
+         0.11795580243351378
+        ],
+        "cos_f1_by_stage": [
+         0.342869239705192,
+         0.6914306696397763,
+         0.7087288520918402,
+         0.6538225549351123,
+         0.5883446736016789,
+         0.4829837634586721
+        ],
+        "cos_f0_by_stage": [
+         0.7723635061355835,
+         0.2476967976398849,
+         0.3381406583327647,
+         0.23493674816579982,
+         0.2541383143683879,
+         0.36502796102515833
+        ],
+        "stage0_margin": -0.42949426643039146,
+        "deepest_margin": 0.11795580243351378,
+        "max_margin": 0.4437338719998914,
+        "argmax_margin_stage": 1,
+        "reversal_gain": 0.5474500688639052,
+        "best_reversal_gain": 0.8732281384302829,
+        "cos_f1": 0.4829837634586721,
+        "cos_f0": 0.36502796102515833,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 18,
+        "anti200": 49,
+        "runtime_seconds": 2.8033204078674316,
+        "replicate": 0,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14320,
+        "margin_by_stage": [
+         -0.44044747406160256,
+         0.41272558763341194,
+         0.49717632546355894,
+         0.3605989094034263,
+         0.3559772360830668,
+         0.1704299092396495
+        ],
+        "cos_f1_by_stage": [
+         0.34598909558783775,
+         0.653671196336829,
+         0.7743758099314959,
+         0.6251926323130406,
+         0.6009962431570973,
+         0.48305727480757693
+        ],
+        "cos_f0_by_stage": [
+         0.7864365696494403,
+         0.2409456087034171,
+         0.27719948446793696,
+         0.26459372290961425,
+         0.24501900707403051,
+         0.3126273655679274
+        ],
+        "stage0_margin": -0.44044747406160256,
+        "deepest_margin": 0.1704299092396495,
+        "max_margin": 0.49717632546355894,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.6108773833012521,
+        "best_reversal_gain": 0.9376237995251615,
+        "cos_f1": 0.48305727480757693,
+        "cos_f0": 0.3126273655679274,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 9,
+        "anti200": 50,
+        "runtime_seconds": 2.9351329803466797,
+        "replicate": 1,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14298,
+        "margin_by_stage": [
+         -0.45301722685545814,
+         0.4187952152201323,
+         0.5231063188703824,
+         0.34384927268833965,
+         0.39960296327815203,
+         0.24203630767411738
+        ],
+        "cos_f1_by_stage": [
+         0.34513470743526925,
+         0.64870951267732,
+         0.7885451309328597,
+         0.6129463844101919,
+         0.6172930993162818,
+         0.5197633640150723
+        ],
+        "cos_f0_by_stage": [
+         0.7981519342907274,
+         0.22991429745718775,
+         0.2654388120624773,
+         0.26909711172185224,
+         0.21769013603812978,
+         0.2777270563409549
+        ],
+        "stage0_margin": -0.45301722685545814,
+        "deepest_margin": 0.24203630767411738,
+        "max_margin": 0.5231063188703824,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.6950535345295755,
+        "best_reversal_gain": 0.9761235457258406,
+        "cos_f1": 0.5197633640150723,
+        "cos_f0": 0.2777270563409549,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 8,
+        "anti200": 30,
+        "runtime_seconds": 2.8285751342773438,
+        "replicate": 1,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14445,
+        "margin_by_stage": [
+         -0.4529932934062512,
+         0.3797077699402265,
+         0.5720251968073421,
+         0.353524151009048,
+         0.42409303704172197,
+         0.3116641591666216
+        ],
+        "cos_f1_by_stage": [
+         0.3529031167825167,
+         0.6229497491784175,
+         0.8019614825659669,
+         0.6126617160304892,
+         0.6285827004582075,
+         0.5428421180801497
+        ],
+        "cos_f0_by_stage": [
+         0.8058964101887679,
+         0.24324197923819105,
+         0.22993628575862476,
+         0.25913756502144125,
+         0.20448966341648553,
+         0.23117795891352813
+        ],
+        "stage0_margin": -0.4529932934062512,
+        "deepest_margin": 0.3116641591666216,
+        "max_margin": 0.5720251968073421,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.7646574525728729,
+        "best_reversal_gain": 1.0250184902135933,
+        "cos_f1": 0.5428421180801497,
+        "cos_f0": 0.23117795891352813,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 11,
+        "anti200": 53,
+        "runtime_seconds": 2.8244590759277344,
+        "replicate": 2,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 13977,
+        "margin_by_stage": [
+         -0.34705736207927895,
+         0.16649457206499102,
+         0.5829196545182547,
+         0.3845479769654207,
+         0.25534640542843584,
+         0.16683966016108998
+        ],
+        "cos_f1_by_stage": [
+         0.3665072344928506,
+         0.62311541966671,
+         0.7865647442428688,
+         0.641407089669292,
+         0.5320275912492575,
+         0.484606811038242
+        ],
+        "cos_f0_by_stage": [
+         0.7135645965721296,
+         0.456620847601719,
+         0.2036450897246142,
+         0.25685911270387135,
+         0.27668118582082163,
+         0.317767150877152
+        ],
+        "stage0_margin": -0.34705736207927895,
+        "deepest_margin": 0.16683966016108998,
+        "max_margin": 0.5829196545182547,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.5138970222403689,
+        "best_reversal_gain": 0.9299770165975336,
+        "cos_f1": 0.484606811038242,
+        "cos_f0": 0.317767150877152,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 1,
+        "anti50": 5,
+        "anti200": 21,
+        "runtime_seconds": 2.825744152069092,
+        "replicate": 2,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14708,
+        "margin_by_stage": [
+         -0.44210210454720905,
+         0.42373560839222246,
+         0.4578100419159537,
+         0.38452274708988515,
+         0.32801135852268926,
+         0.29340710436446676
+        ],
+        "cos_f1_by_stage": [
+         0.3419250119706347,
+         0.6629935200321846,
+         0.7574205891502963,
+         0.6391359553467568,
+         0.5916694127238427,
+         0.5493348354698664
+        ],
+        "cos_f0_by_stage": [
+         0.7840271165178437,
+         0.2392579116399621,
+         0.2996105472343426,
+         0.25461320825687167,
+         0.2636580542011534,
+         0.2559277311053996
+        ],
+        "stage0_margin": -0.44210210454720905,
+        "deepest_margin": 0.29340710436446676,
+        "max_margin": 0.4578100419159537,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.7355092089116758,
+        "best_reversal_gain": 0.8999121464631628,
+        "cos_f1": 0.5493348354698664,
+        "cos_f0": 0.2559277311053996,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 4,
+        "anti200": 19,
+        "runtime_seconds": 2.8031768798828125,
+        "replicate": 3,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 14481,
+        "margin_by_stage": [
+         -0.4341356346803904,
+         0.33166370631220893,
+         0.5856267083856181,
+         0.38593128015955264,
+         0.4233814966532712,
+         0.31859497692061256
+        ],
+        "cos_f1_by_stage": [
+         0.3693143854961354,
+         0.5923418574325146,
+         0.8106252587426813,
+         0.6401344335528805,
+         0.6194370826087227,
+         0.5669853537744843
+        ],
+        "cos_f0_by_stage": [
+         0.8034500201765258,
+         0.2606781511203056,
+         0.2249985503570632,
+         0.25420315339332783,
+         0.19605558595545147,
+         0.24839037685387177
+        ],
+        "stage0_margin": -0.4341356346803904,
+        "deepest_margin": 0.31859497692061256,
+        "max_margin": 0.5856267083856181,
+        "argmax_margin_stage": 2,
+        "reversal_gain": 0.752730611601003,
+        "best_reversal_gain": 1.0197623430660085,
+        "cos_f1": 0.5669853537744843,
+        "cos_f0": 0.24839037685387177,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 2,
+        "anti200": 19,
+        "runtime_seconds": 2.8152084350585938,
+        "replicate": 3,
+        "group": 1
+       }
+      ],
+      "child_summary": {
+       "n_children": 8,
+       "margin_mean": 0.24178308423945147,
+       "margin_median": 0.26772170601929207,
+       "margin_min": 0.11795580243351378,
+       "margin_max": 0.31859497692061256,
+       "fraction_margin_gt0": 1.0,
+       "fraction_nearest_f1": 1.0,
+       "child_cos_f1_mean": 0.5225238613123393,
+       "child_cos_f0_mean": 0.2807407770728878,
+       "stage0_margin_mean": -0.4290600422761031,
+       "stage0_margin_median": -0.4372915543709965,
+       "deepest_margin_mean": 0.24178308423945147,
+       "deepest_margin_median": 0.26772170601929207,
+       "reversal_gain_mean": 0.6708431265155546,
+       "reversal_gain_median": 0.7152813717206257,
+       "fraction_reversal_gain_gt0": 1.0,
+       "fraction_reversal_gain_lt0": 0.0,
+       "median_argmax_margin_stage": 2.0,
+       "semantic": {
+        "exact50_mean": 0.0,
+        "exact50_median": 0.0,
+        "exact50_max": 0,
+        "broad50_mean": 0.0,
+        "anti50_mean": 7.75,
+        "fraction_exact50_ge1": 0.0,
+        "fraction_exact50_ge3": 0.0
+       }
+      },
+      "fitness_stats": {
+       "mean": 0.0,
+       "sd": 0.031638018060477405,
+       "q05": -0.05462496355175972,
+       "q25": -0.030426401644945145,
+       "q50": -0.0005172379314899445,
+       "q75": 0.030426401644945145,
+       "q95": 0.05462496355175972
+      },
+      "split_half": {
+       "spearman_half_panels": 0.0021045772789709304,
+       "half_panel_reps": 2,
+       "top_half_overlap": 502,
+       "top_half_overlap_fraction": 0.502
+      },
+      "selection": {
+       "n_selected": 1000,
+       "n_rejected": 1000,
+       "selected_mean_fitness": 0.025686146959662436,
+       "rejected_mean_fitness": -0.025686146959662436,
+       "separation": 0.05137229391932487
+      },
+      "eval": {
+       "jury_size": 2000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 14663,
+       "margin_by_stage": [
+        -0.44771146172614057,
+        0.41505815168888704,
+        0.46047073648475867,
+        0.3813235586059579,
+        0.315884108032315,
+        0.20473955276986677
+       ],
+       "cos_f1_by_stage": [
+        0.3435571811740667,
+        0.6549458599313965,
+        0.7628298518372973,
+        0.6602909280543671,
+        0.5986253068227634,
+        0.5531027911420432
+       ],
+       "cos_f0_by_stage": [
+        0.7912686429002073,
+        0.23988770824250952,
+        0.3023591153525387,
+        0.27896736944840916,
+        0.2827411987904484,
+        0.3483632383721764
+       ],
+       "stage0_margin": -0.44771146172614057,
+       "deepest_margin": 0.20473955276986677,
+       "max_margin": 0.46047073648475867,
+       "argmax_margin_stage": 2,
+       "reversal_gain": 0.6524510144960074,
+       "best_reversal_gain": 0.9081821982108993,
+       "cos_f1": 0.5531027911420432,
+       "cos_f0": 0.3483632383721764,
+       "exact50": 0,
+       "exact200": 0,
+       "broad50": 0,
+       "broad200": 0,
+       "anti50": 3,
+       "anti200": 16,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.8877662420272827
+        },
+        {
+         "rank": 2,
+         "work_id": "6791",
+         "title": "Death Note, Vol. 3: Hard Run (Death Note, #3)",
+         "author": "Tsugumi Ohba",
+         "score": 0.8215634226799011
+        },
+        {
+         "rank": 3,
+         "work_id": "2431088",
+         "title": "The Walking Dead, Vol. 03: Safety Behind Bars",
+         "author": "Robert Kirkman",
+         "score": 0.8133869767189026
+        },
+        {
+         "rank": 4,
+         "work_id": "1347600",
+         "title": "Fullmetal Alchemist, Vol. 3 (Fullmetal Alchemist, #3)",
+         "author": "Hiromu Arakawa",
+         "score": 0.8095113635063171
+        },
+        {
+         "rank": 5,
+         "work_id": "2964424",
+         "title": "The Return of the King (The Lord of the Rings, #3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.8073969483375549
+        },
+        {
+         "rank": 6,
+         "work_id": "133402",
+         "title": "The Walking Dead, Vol. 06: This Sorrowful Life",
+         "author": "Robert Kirkman",
+         "score": 0.8036640882492065
+        },
+        {
+         "rank": 7,
+         "work_id": "1782154",
+         "title": "Death Note, Vol. 7: Zero (Death Note, #7)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7991431355476379
+        },
+        {
+         "rank": 8,
+         "work_id": "6571827",
+         "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.793165922164917
+        },
+        {
+         "rank": 9,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.7927762269973755
+        },
+        {
+         "rank": 10,
+         "work_id": "1895743",
+         "title": "The Walking Dead, Vol. 08: Made to Suffer",
+         "author": "Robert Kirkman",
+         "score": 0.7910497188568115
+        },
+        {
+         "rank": 11,
+         "work_id": "30468",
+         "title": "The Walking Dead, Vol. 05: The Best Defense",
+         "author": "Robert Kirkman",
+         "score": 0.7869381308555603
+        },
+        {
+         "rank": 12,
+         "work_id": "1782161",
+         "title": "Death Note, Vol. 5: Whiteout (Death Note, #5)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7864030003547668
+        },
+        {
+         "rank": 13,
+         "work_id": "8134945",
+         "title": "The Way of Kings (The Stormlight Archive, #1)",
+         "author": "Brandon Sanderson",
+         "score": 0.7847568392753601
+        },
+        {
+         "rank": 14,
+         "work_id": "3001807",
+         "title": "Fullmetal Alchemist, Vol. 10 (Fullmetal Alchemist, #10)",
+         "author": "Hiromu Arakawa",
+         "score": 0.783791184425354
+        },
+        {
+         "rank": 15,
+         "work_id": "7192171",
+         "title": "Fullmetal Alchemist, Vol. 22 (Fullmetal Alchemist, #22)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7698010206222534
+        },
+        {
+         "rank": 16,
+         "work_id": "2276647",
+         "title": "Fullmetal Alchemist, Vol. 6 (Fullmetal Alchemist, #6)",
+         "author": "Hiromu Arakawa",
+         "score": 0.768174946308136
+        },
+        {
+         "rank": 17,
+         "work_id": "1959820",
+         "title": "Fullmetal Alchemist, Vol. 1 (Fullmetal Alchemist, #1)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7665638327598572
+        },
+        {
+         "rank": 18,
+         "work_id": "133404",
+         "title": "The Walking Dead, Vol. 04: The Heart's Desire",
+         "author": "Robert Kirkman",
+         "score": 0.7661536931991577
+        },
+        {
+         "rank": 19,
+         "work_id": "7492217",
+         "title": "The Complete Sherlock Holmes",
+         "author": "Arthur Conan Doyle",
+         "score": 0.7654169201850891
+        },
+        {
+         "rank": 20,
+         "work_id": "1782155",
+         "title": "Death Note, Vol. 1: Boredom (Death Note, #1)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7640122175216675
+        },
+        {
+         "rank": 21,
+         "work_id": "6656179",
+         "title": "The Walking Dead, Compendium 1",
+         "author": "Robert Kirkman",
+         "score": 0.7596401572227478
+        },
+        {
+         "rank": 22,
+         "work_id": "1072542",
+         "title": "The Walking Dead, Vol. 07: The Calm Before",
+         "author": "Robert Kirkman",
+         "score": 0.7575917840003967
+        },
+        {
+         "rank": 23,
+         "work_id": "4778526",
+         "title": "The Walking Dead, Vol. 09: Here We Remain",
+         "author": "Robert Kirkman",
+         "score": 0.7568488121032715
+        },
+        {
+         "rank": 24,
+         "work_id": "1347602",
+         "title": "Fullmetal Alchemist, Vol. 4 (Fullmetal Alchemist, #4)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7553850412368774
+        },
+        {
+         "rank": 25,
+         "work_id": "1347595",
+         "title": "Fullmetal Alchemist, Vol. 11 (Fullmetal Alchemist, #11)",
+         "author": "Hiromu Arakawa",
+         "score": 0.75525963306427
+        },
+        {
+         "rank": 26,
+         "work_id": "1347603",
+         "title": "Fullmetal Alchemist, Vol. 9 (Fullmetal Alchemist, #9)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7546594142913818
+        },
+        {
+         "rank": 27,
+         "work_id": "13285879",
+         "title": "Fullmetal Alchemist, Vol. 25 (Fullmetal Alchemist, #25)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7524951696395874
+        },
+        {
+         "rank": 28,
+         "work_id": "1321122",
+         "title": "Fullmetal Alchemist, Vol. 8 (Fullmetal Alchemist, #8)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7496903538703918
+        },
+        {
+         "rank": 29,
+         "work_id": "2276648",
+         "title": "Fullmetal Alchemist, Vol. 2 (Fullmetal Alchemist, #2)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7441573739051819
+        },
+        {
+         "rank": 30,
+         "work_id": "3078639",
+         "title": "Heartless (Pretty Little Liars, #7)",
+         "author": "Sara Shepard",
+         "score": 0.7402615547180176
+        },
+        {
+         "rank": 31,
+         "work_id": "89369",
+         "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7386588454246521
+        },
+        {
+         "rank": 32,
+         "work_id": "2502882",
+         "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7383484840393066
+        },
+        {
+         "rank": 33,
+         "work_id": "1466917",
+         "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.7377727031707764
+        },
+        {
+         "rank": 34,
+         "work_id": "8940792",
+         "title": "Fullmetal Alchemist, Vol. 23 (Fullmetal Alchemist, #23)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7338557839393616
+        },
+        {
+         "rank": 35,
+         "work_id": "790192",
+         "title": "Fullmetal Alchemist, Vol. 7 (Fullmetal Alchemist, #7)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7334039807319641
+        },
+        {
+         "rank": 36,
+         "work_id": "6597472",
+         "title": "Fullmetal Alchemist, Vol. 20 (Fullmetal Alchemist, #20)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7332497835159302
+        },
+        {
+         "rank": 37,
+         "work_id": "6790",
+         "title": "Death Note, Vol. 4: Love (Death Note, #4)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7331027984619141
+        },
+        {
+         "rank": 38,
+         "work_id": "433772",
+         "title": "Death Note, Vol. 12: Finis (Death Note, #12)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7317448258399963
+        },
+        {
+         "rank": 39,
+         "work_id": "3272005",
+         "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+         "author": "George R.R. Martin",
+         "score": 0.73158860206604
+        },
+        {
+         "rank": 40,
+         "work_id": "6697671",
+         "title": "Fullmetal Alchemist, Vol. 21 (Fullmetal Alchemist, #21)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7288185358047485
+        },
+        {
+         "rank": 41,
+         "work_id": "2244438",
+         "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.7282774448394775
+        },
+        {
+         "rank": 42,
+         "work_id": "2502879",
+         "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7265857458114624
+        },
+        {
+         "rank": 43,
+         "work_id": "3078640",
+         "title": "Killer (Pretty Little Liars, #6)",
+         "author": "Sara Shepard",
+         "score": 0.7211480140686035
+        },
+        {
+         "rank": 44,
+         "work_id": "1902274",
+         "title": "Death Note, Vol. 2: Confluence (Death Note, #2)",
+         "author": "Tsugumi Ohba",
+         "score": 0.7138609886169434
+        },
+        {
+         "rank": 45,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.7137329578399658
+        },
+        {
+         "rank": 46,
+         "work_id": "9554419",
+         "title": "The Walking Dead, Vol. 12: Life Among Them",
+         "author": "Robert Kirkman",
+         "score": 0.7127715349197388
+        },
+        {
+         "rank": 47,
+         "work_id": "3821158",
+         "title": "Wicked (Pretty Little Liars, #5)",
+         "author": "Sara Shepard",
+         "score": 0.7118927836418152
+        },
+        {
+         "rank": 48,
+         "work_id": "692719",
+         "title": "The Calvin and Hobbes Tenth Anniversary Book",
+         "author": "Bill Watterson",
+         "score": 0.7112683653831482
+        },
+        {
+         "rank": 49,
+         "work_id": "2881299",
+         "title": "Fullmetal Alchemist, Vol. 17 (Fullmetal Alchemist, #17)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7107052206993103
+        },
+        {
+         "rank": 50,
+         "work_id": "79784",
+         "title": "Fullmetal Alchemist, Vol. 13 (Fullmetal Alchemist, #13)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7101250886917114
+        }
+       ],
+       "runtime_seconds": 2.8273606300354004
+      },
+      "eval_rep_key": "root0_eval_lit_g1_rep",
+      "eval_pref_key": "root0_eval_lit_g1_pref"
+     },
+     {
+      "generation": 2,
+      "pool_size": 1000,
+      "users_key": "root0_lit_g1_selected",
+      "eval": {
+       "jury_size": 1000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 14439,
+       "margin_by_stage": [
+        -0.402303971100211,
+        0.26095699498154806,
+        0.5803253510314185,
+        0.4395010882600574,
+        0.4832100615415943,
+        0.31100630112616623
+       ],
+       "cos_f1_by_stage": [
+        0.3930989770431417,
+        0.5493588373527794,
+        0.80238930187912,
+        0.6661611109542405,
+        0.6606408736134044,
+        0.5498357793389866
+       ],
+       "cos_f0_by_stage": [
+        0.7954029481433527,
+        0.2884018423712313,
+        0.22206395084770159,
+        0.2266600226941831,
+        0.1774308120718101,
+        0.23882947821282044
+       ],
+       "stage0_margin": -0.402303971100211,
+       "deepest_margin": 0.31100630112616623,
+       "max_margin": 0.5803253510314185,
+       "argmax_margin_stage": 2,
+       "reversal_gain": 0.7133102722263772,
+       "best_reversal_gain": 0.9826293221316295,
+       "cos_f1": 0.5498357793389866,
+       "cos_f0": 0.23882947821282044,
+       "exact50": 0,
+       "exact200": 2,
+       "broad50": 0,
+       "broad200": 2,
+       "anti50": 3,
+       "anti200": 20,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "1881100",
+         "title": "Bumi Manusia",
+         "author": "Pramoedya Ananta Toer",
+         "score": 0.8414708971977234
+        },
+        {
+         "rank": 2,
+         "work_id": "2110010",
+         "title": "Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.8381226062774658
+        },
+        {
+         "rank": 3,
+         "work_id": "6571827",
+         "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.8280903697013855
+        },
+        {
+         "rank": 4,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.8258575201034546
+        },
+        {
+         "rank": 5,
+         "work_id": "2244438",
+         "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.81500244140625
+        },
+        {
+         "rank": 6,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.8103847503662109
+        },
+        {
+         "rank": 7,
+         "work_id": "23857485",
+         "title": "Saga, Vol. 2 (Saga, #2)",
+         "author": "Brian K. Vaughan",
+         "score": 0.8037406206130981
+        },
+        {
+         "rank": 8,
+         "work_id": "17243368",
+         "title": "A Storm of Swords: Steel and Snow (A Song of Ice and Fire, #3: Part 1 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.8019053339958191
+        },
+        {
+         "rank": 9,
+         "work_id": "2964424",
+         "title": "The Return of the King (The Lord of the Rings, #3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7978888750076294
+        },
+        {
+         "rank": 10,
+         "work_id": "89369",
+         "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7895873188972473
+        },
+        {
+         "rank": 11,
+         "work_id": "1600206",
+         "title": "Child of All Nations",
+         "author": "Pramoedya Ananta Toer",
+         "score": 0.7881281971931458
+        },
+        {
+         "rank": 12,
+         "work_id": "8134945",
+         "title": "The Way of Kings (The Stormlight Archive, #1)",
+         "author": "Brandon Sanderson",
+         "score": 0.7837334275245667
+        },
+        {
+         "rank": 13,
+         "work_id": "185697",
+         "title": "Prisoners of the Sun (Tintin, #14)",
+         "author": "Herge",
+         "score": 0.7730167508125305
+        },
+        {
+         "rank": 14,
+         "work_id": "7492217",
+         "title": "The Complete Sherlock Holmes",
+         "author": "Arthur Conan Doyle",
+         "score": 0.7651844024658203
+        },
+        {
+         "rank": 15,
+         "work_id": "1658562",
+         "title": "The Complete Maus (Maus, #1-2)",
+         "author": "Art Spiegelman",
+         "score": 0.7583982944488525
+        },
+        {
+         "rank": 16,
+         "work_id": "27422060",
+         "title": "Saga, Vol. 3 (Saga, #3)",
+         "author": "Brian K. Vaughan",
+         "score": 0.7560290694236755
+        },
+        {
+         "rank": 17,
+         "work_id": "2278369",
+         "title": "Destination Moon (Tintin, #16)",
+         "author": "Herge",
+         "score": 0.7537371516227722
+        },
+        {
+         "rank": 18,
+         "work_id": "12946965",
+         "title": "Unbroken: A World War II Story of Survival, Resilience, and Redemption",
+         "author": "Laura Hillenbrand",
+         "score": 0.7424268126487732
+        },
+        {
+         "rank": 19,
+         "work_id": "21892386",
+         "title": "A F\u00faria dos Reis (As Cr\u00f3nicas de Gelo e Fogo #3)",
+         "author": "George R.R. Martin",
+         "score": 0.7334156632423401
+        },
+        {
+         "rank": 20,
+         "work_id": "1324746",
+         "title": "Jejak Langkah",
+         "author": "Pramoedya Ananta Toer",
+         "score": 0.7332124710083008
+        },
+        {
+         "rank": 21,
+         "work_id": "3462456",
+         "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.732360303401947
+        },
+        {
+         "rank": 22,
+         "work_id": "159847",
+         "title": "Explorers on the Moon (Tintin, #17)",
+         "author": "Herge",
+         "score": 0.7293939590454102
+        },
+        {
+         "rank": 23,
+         "work_id": "21886036",
+         "title": "O Despertar da Magia (As Cr\u00f3nicas de Gelo e Fogo #4)",
+         "author": "George R.R. Martin",
+         "score": 0.7262033820152283
+        },
+        {
+         "rank": 24,
+         "work_id": "45629367",
+         "title": "Die Herren von Winterfell (Das Lied von Eis und Feuer, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.723962128162384
+        },
+        {
+         "rank": 25,
+         "work_id": "2146706",
+         "title": "The Slippery Slope (A Series of Unfortunate Events, #10)",
+         "author": "Lemony Snicket",
+         "score": 0.7226597666740417
+        },
+        {
+         "rank": 26,
+         "work_id": "40666827",
+         "title": "Brief Lives (The Sandman #7)",
+         "author": "Neil Gaiman",
+         "score": 0.7200618386268616
+        },
+        {
+         "rank": 27,
+         "work_id": "518712",
+         "title": "Asterix the Legionary (Asterix, #10)",
+         "author": "Rene Goscinny",
+         "score": 0.7192491292953491
+        },
+        {
+         "rank": 28,
+         "work_id": "19113524",
+         "title": "Saga, Vol. 1 (Saga, #1)",
+         "author": "Brian K. Vaughan",
+         "score": 0.7187948226928711
+        },
+        {
+         "rank": 29,
+         "work_id": "21855986",
+         "title": "A Dance with Dragons: Dreams and Dust (A Song of Ice and Fire #5, Part 1 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.7180637121200562
+        },
+        {
+         "rank": 30,
+         "work_id": "25601",
+         "title": "It's a Magical World: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7168640494346619
+        },
+        {
+         "rank": 31,
+         "work_id": "230588",
+         "title": "Asterix and Cleopatra (Asterix, #6)",
+         "author": "Rene Goscinny",
+         "score": 0.7147526741027832
+        },
+        {
+         "rank": 32,
+         "work_id": "1466917",
+         "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.7138344049453735
+        },
+        {
+         "rank": 33,
+         "work_id": "86823",
+         "title": "The Constitution of the United States of America",
+         "author": "Founding Fathers",
+         "score": 0.7117822766304016
+        },
+        {
+         "rank": 34,
+         "work_id": "885675",
+         "title": "Tintin in Tibet (Tintin, #20)",
+         "author": "Herge",
+         "score": 0.7110182046890259
+        },
+        {
+         "rank": 35,
+         "work_id": "25788654",
+         "title": "A Muralha de Gelo (As Cr\u00f3nicas de Gelo e Fogo #2)",
+         "author": "George R.R. Martin",
+         "score": 0.708442211151123
+        },
+        {
+         "rank": 36,
+         "work_id": "25599",
+         "title": "The Complete Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7074915766716003
+        },
+        {
+         "rank": 37,
+         "work_id": "2963845",
+         "title": "The Two Towers (The Lord of the Rings, #2)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7064635157585144
+        },
+        {
+         "rank": 38,
+         "work_id": "692719",
+         "title": "The Calvin and Hobbes Tenth Anniversary Book",
+         "author": "Bill Watterson",
+         "score": 0.7004876732826233
+        },
+        {
+         "rank": 39,
+         "work_id": "1947012",
+         "title": "Maus I: A Survivor's Tale: My Father Bleeds History (Maus, #1)",
+         "author": "Art Spiegelman",
+         "score": 0.6986307501792908
+        },
+        {
+         "rank": 40,
+         "work_id": "1010526",
+         "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.6976405382156372
+        },
+        {
+         "rank": 41,
+         "work_id": "1320323",
+         "title": "Asterix in Britain (Asterix, #8)",
+         "author": "Rene Goscinny",
+         "score": 0.6950854659080505
+        },
+        {
+         "rank": 42,
+         "work_id": "2648",
+         "title": "The Doll's House (The Sandman #2)",
+         "author": "Neil Gaiman",
+         "score": 0.6948109865188599
+        },
+        {
+         "rank": 43,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.6906371116638184
+        },
+        {
+         "rank": 44,
+         "work_id": "25854",
+         "title": "Season of Mists (The Sandman #4)",
+         "author": "Neil Gaiman",
+         "score": 0.6890119910240173
+        },
+        {
+         "rank": 45,
+         "work_id": "42643523",
+         "title": "Saga, Vol. 4 (Saga, #4)",
+         "author": "Brian K. Vaughan",
+         "score": 0.6883684992790222
+        },
+        {
+         "rank": 46,
+         "work_id": "25602",
+         "title": "The Indispensable Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.6883609294891357
+        },
+        {
+         "rank": 47,
+         "work_id": "17411497",
+         "title": "O Mar de Ferro (As Cr\u00f3nicas de Gelo e Fogo, #8)",
+         "author": "George R.R. Martin",
+         "score": 0.68819659948349
+        },
+        {
+         "rank": 48,
+         "work_id": "45216378",
+         "title": "Saga, Vol. 5 (Saga, #5)",
+         "author": "Brian K. Vaughan",
+         "score": 0.6874152421951294
+        },
+        {
+         "rank": 49,
+         "work_id": "19054760",
+         "title": "A Dance with Dragons: After the Feast (A Song of Ice and Fire #5, Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.6821824312210083
+        },
+        {
+         "rank": 50,
+         "work_id": "1988464",
+         "title": "Asterix and the Golden Sickle (Asterix, #2)",
+         "author": "Rene Goscinny",
+         "score": 0.6814340949058533
+        }
+       ],
+       "runtime_seconds": 2.8598978519439697
+      },
+      "eval_rep_key": "root0_eval_lit_g2_rep",
+      "eval_pref_key": "root0_eval_lit_g2_pref"
+     }
+    ],
+    "anti": [
+     {
+      "generation": 0,
+      "pool_size": 4000,
+      "users_key": "root0_users",
+      "selected_key": "root0_anti_g0_selected",
+      "campaign": "shared_g0",
+      "fitness_key": "root0_g0_fitness",
+      "fitness_stats": {
+       "mean": 0.0,
+       "sd": 0.14044886106453452,
+       "q05": -0.2382577578537166,
+       "q25": -0.10953169269487262,
+       "q50": 0.0029337783344089985,
+       "q75": 0.10331993782892823,
+       "q95": 0.2352138482965529
+      },
+      "split_half": {
+       "spearman_half_panels": 0.014967542736772943,
+       "half_panel_reps": 2,
+       "top_half_overlap": 1024,
+       "top_half_overlap_fraction": 0.512
+      },
+      "selection": {
+       "n_selected": 2000,
+       "n_rejected": 2000,
+       "selected_mean_fitness": -0.11464788079168647,
+       "rejected_mean_fitness": 0.11464788079168647,
+       "separation": -0.22929576158337295
+      },
+      "eval": {
+       "jury_size": 4000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 15420,
+       "margin_by_stage": [
+        -0.3493669840474474,
+        0.12549041020015306,
+        0.4752574141208507,
+        0.4037375485587213,
+        0.3461570228440618,
+        0.22663479773088246
+       ],
+       "cos_f1_by_stage": [
+        0.3757982157741346,
+        0.561005919405211,
+        0.7542353521738691,
+        0.7098048131514515,
+        0.6684295216402988,
+        0.623681693375763
+       ],
+       "cos_f0_by_stage": [
+        0.725165199821582,
+        0.435515509205058,
+        0.27897793805301835,
+        0.3060672645927302,
+        0.322272498796237,
+        0.3970468956448805
+       ],
+       "stage0_margin": -0.3493669840474474,
+       "deepest_margin": 0.22663479773088246,
+       "max_margin": 0.4752574141208507,
+       "argmax_margin_stage": 2,
+       "reversal_gain": 0.5760017817783298,
+       "best_reversal_gain": 0.8246243981682981,
+       "cos_f1": 0.623681693375763,
+       "cos_f0": 0.3970468956448805,
+       "exact50": 0,
+       "exact200": 1,
+       "broad50": 0,
+       "broad200": 1,
+       "anti50": 7,
+       "anti200": 33,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.8250635266304016
+        },
+        {
+         "rank": 2,
+         "work_id": "2244438",
+         "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.8077231645584106
+        },
+        {
+         "rank": 3,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.8056979179382324
+        },
+        {
+         "rank": 4,
+         "work_id": "6571827",
+         "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.8009258508682251
+        },
+        {
+         "rank": 5,
+         "work_id": "8134945",
+         "title": "The Way of Kings (The Stormlight Archive, #1)",
+         "author": "Brandon Sanderson",
+         "score": 0.7913591265678406
+        },
+        {
+         "rank": 6,
+         "work_id": "692719",
+         "title": "The Calvin and Hobbes Tenth Anniversary Book",
+         "author": "Bill Watterson",
+         "score": 0.7733676433563232
+        },
+        {
+         "rank": 7,
+         "work_id": "1010526",
+         "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.7556710839271545
+        },
+        {
+         "rank": 8,
+         "work_id": "17243368",
+         "title": "A Storm of Swords: Steel and Snow (A Song of Ice and Fire, #3: Part 1 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.7532831430435181
+        },
+        {
+         "rank": 9,
+         "work_id": "1658562",
+         "title": "The Complete Maus (Maus, #1-2)",
+         "author": "Art Spiegelman",
+         "score": 0.7464110851287842
+        },
+        {
+         "rank": 10,
+         "work_id": "23857485",
+         "title": "Saga, Vol. 2 (Saga, #2)",
+         "author": "Brian K. Vaughan",
+         "score": 0.745344877243042
+        },
+        {
+         "rank": 11,
+         "work_id": "946589",
+         "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7361438274383545
+        },
+        {
+         "rank": 12,
+         "work_id": "25602",
+         "title": "The Indispensable Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7343397736549377
+        },
+        {
+         "rank": 13,
+         "work_id": "25344",
+         "title": "The Calvin and Hobbes Lazy Sunday Book",
+         "author": "Bill Watterson",
+         "score": 0.7292884588241577
+        },
+        {
+         "rank": 14,
+         "work_id": "2502882",
+         "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7266079187393188
+        },
+        {
+         "rank": 15,
+         "work_id": "159847",
+         "title": "Explorers on the Moon (Tintin, #17)",
+         "author": "Herge",
+         "score": 0.7233774065971375
+        },
+        {
+         "rank": 16,
+         "work_id": "2502879",
+         "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7222963571548462
+        },
+        {
+         "rank": 17,
+         "work_id": "2110010",
+         "title": "Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7207218408584595
+        },
+        {
+         "rank": 18,
+         "work_id": "2964424",
+         "title": "The Return of the King (The Lord of the Rings, #3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7186932563781738
+        },
+        {
+         "rank": 19,
+         "work_id": "7492217",
+         "title": "The Complete Sherlock Holmes",
+         "author": "Arthur Conan Doyle",
+         "score": 0.7153064608573914
+        },
+        {
+         "rank": 20,
+         "work_id": "2369970",
+         "title": "Homicidal Psycho Jungle Cat: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7135512828826904
+        },
+        {
+         "rank": 21,
+         "work_id": "185697",
+         "title": "Prisoners of the Sun (Tintin, #14)",
+         "author": "Herge",
+         "score": 0.7097947597503662
+        },
+        {
+         "rank": 22,
+         "work_id": "1466917",
+         "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.7089055776596069
+        },
+        {
+         "rank": 23,
+         "work_id": "19113524",
+         "title": "Saga, Vol. 1 (Saga, #1)",
+         "author": "Brian K. Vaughan",
+         "score": 0.7079004645347595
+        },
+        {
+         "rank": 24,
+         "work_id": "4358649",
+         "title": "Watchmen",
+         "author": "Alan Moore",
+         "score": 0.7053636312484741
+        },
+        {
+         "rank": 25,
+         "work_id": "27422060",
+         "title": "Saga, Vol. 3 (Saga, #3)",
+         "author": "Brian K. Vaughan",
+         "score": 0.699881374835968
+        },
+        {
+         "rank": 26,
+         "work_id": "25601",
+         "title": "It's a Magical World: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6991983652114868
+        },
+        {
+         "rank": 27,
+         "work_id": "2244439",
+         "title": "Attack of the Deranged Mutant Killer Monster Snow Goons",
+         "author": "Bill Watterson",
+         "score": 0.6959535479545593
+        },
+        {
+         "rank": 28,
+         "work_id": "25854",
+         "title": "Season of Mists (The Sandman #4)",
+         "author": "Neil Gaiman",
+         "score": 0.6939079761505127
+        },
+        {
+         "rank": 29,
+         "work_id": "25599",
+         "title": "The Complete Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.6908418536186218
+        },
+        {
+         "rank": 30,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.6896111369132996
+        },
+        {
+         "rank": 31,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.6891905069351196
+        },
+        {
+         "rank": 32,
+         "work_id": "640276",
+         "title": "The Monster at the End of this Book",
+         "author": "Jon Stone",
+         "score": 0.6869804263114929
+        },
+        {
+         "rank": 33,
+         "work_id": "729618",
+         "title": "Red Rackham's Treasure (Tintin, #12)",
+         "author": "Herge",
+         "score": 0.6844579577445984
+        },
+        {
+         "rank": 34,
+         "work_id": "68309",
+         "title": "Weirdos from Another Planet!: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.681129515171051
+        },
+        {
+         "rank": 35,
+         "work_id": "19029792",
+         "title": "Locke & Key, Vol. 5: Clockworks",
+         "author": "Joe Hill",
+         "score": 0.6801027655601501
+        },
+        {
+         "rank": 36,
+         "work_id": "22007627",
+         "title": "Locke & Key, Vol. 6: Alpha & Omega",
+         "author": "Joe Hill",
+         "score": 0.6795051693916321
+        },
+        {
+         "rank": 37,
+         "work_id": "3462456",
+         "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.677617609500885
+        },
+        {
+         "rank": 38,
+         "work_id": "3007345",
+         "title": "Scientific Progress Goes \"Boink\": A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.672688364982605
+        },
+        {
+         "rank": 39,
+         "work_id": "899490",
+         "title": "Something Under the Bed is Drooling: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.667988657951355
+        },
+        {
+         "rank": 40,
+         "work_id": "185664",
+         "title": "The Crab with the Golden Claws (Tintin, #9)",
+         "author": "Herge",
+         "score": 0.6621319055557251
+        },
+        {
+         "rank": 41,
+         "work_id": "6778696",
+         "title": "Changes (The Dresden Files, #12)",
+         "author": "Jim Butcher",
+         "score": 0.6575199961662292
+        },
+        {
+         "rank": 42,
+         "work_id": "3272005",
+         "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+         "author": "George R.R. Martin",
+         "score": 0.6536634564399719
+        },
+        {
+         "rank": 43,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.6533313989639282
+        },
+        {
+         "rank": 44,
+         "work_id": "170846",
+         "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6522574424743652
+        },
+        {
+         "rank": 45,
+         "work_id": "23811929",
+         "title": "Skin Game (The Dresden Files, #15)",
+         "author": "Jim Butcher",
+         "score": 0.6504740118980408
+        },
+        {
+         "rank": 46,
+         "work_id": "13492114",
+         "title": "A Monster Calls",
+         "author": "Patrick Ness",
+         "score": 0.6369965672492981
+        },
+        {
+         "rank": 47,
+         "work_id": "89369",
+         "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+         "author": "J.R.R. Tolkien",
+         "score": 0.6368898153305054
+        },
+        {
+         "rank": 48,
+         "work_id": "4873881",
+         "title": "The Last Question",
+         "author": "Isaac Asimov",
+         "score": 0.6368306875228882
+        },
+        {
+         "rank": 49,
+         "work_id": "19054760",
+         "title": "A Dance with Dragons: After the Feast (A Song of Ice and Fire #5, Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.6365242600440979
+        },
+        {
+         "rank": 50,
+         "work_id": "1789924",
+         "title": "The Absolute Sandman, Volume One",
+         "author": "Neil Gaiman",
+         "score": 0.6361650824546814
+        }
+       ],
+       "runtime_seconds": 2.8903629779815674
+      },
+      "eval_rep_key": "root0_eval_anti_g0_rep",
+      "eval_pref_key": "root0_eval_anti_g0_pref"
+     },
+     {
+      "generation": 1,
+      "pool_size": 2000,
+      "users_key": "root0_anti_g0_selected",
+      "selected_key": "root0_anti_g1_selected",
+      "fitness_key": "root0_anti_g1_fitness",
+      "child_reps_key": "root0_anti_g1_child_reps",
+      "child_runs": [
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 13214,
+        "margin_by_stage": [
+         0.004208263444957616,
+         0.4364777199579406,
+         -0.3524284739574748,
+         -0.4911371997851227,
+         -0.27467675372448475,
+         -0.14375352409958825
+        ],
+        "cos_f1_by_stage": [
+         0.5494648104635869,
+         0.7622689483553375,
+         0.29913051898963794,
+         0.23409026530355426,
+         0.2244473310522041,
+         0.29499513721292814
+        ],
+        "cos_f0_by_stage": [
+         0.5452565470186292,
+         0.32579122839739694,
+         0.6515589929471127,
+         0.725227465088677,
+         0.49912408477668885,
+         0.4387486613125164
+        ],
+        "stage0_margin": 0.004208263444957616,
+        "deepest_margin": -0.14375352409958825,
+        "max_margin": 0.4364777199579406,
+        "argmax_margin_stage": 1,
+        "reversal_gain": -0.14796178754454586,
+        "best_reversal_gain": 0.432269456512983,
+        "cos_f1": 0.29499513721292814,
+        "cos_f0": 0.4387486613125164,
+        "exact50": 0,
+        "exact200": 4,
+        "broad50": 3,
+        "broad200": 11,
+        "anti50": 7,
+        "anti200": 54,
+        "runtime_seconds": 3.012850522994995,
+        "replicate": 0,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 13521,
+        "margin_by_stage": [
+         0.4822236368213636,
+         -0.4064721556003695,
+         -0.4528548508146506,
+         -0.4540118283289326,
+         -0.24131605158944036,
+         -0.2954451900904723
+        ],
+        "cos_f1_by_stage": [
+         0.7934688398399552,
+         0.27541228422658265,
+         0.29287732274984846,
+         0.2154700914923743,
+         0.2897520959804025,
+         0.18635378805774777
+        ],
+        "cos_f0_by_stage": [
+         0.3112452030185916,
+         0.6818844398269521,
+         0.7457321735644991,
+         0.6694819198213069,
+         0.5310681475698429,
+         0.4817989781482201
+        ],
+        "stage0_margin": 0.4822236368213636,
+        "deepest_margin": -0.2954451900904723,
+        "max_margin": 0.4822236368213636,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.7776688269118359,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.18635378805774777,
+        "cos_f0": 0.4817989781482201,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 17,
+        "anti200": 56,
+        "runtime_seconds": 2.806121587753296,
+        "replicate": 0,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 13276,
+        "margin_by_stage": [
+         0.48862442601525463,
+         -0.39182514537915136,
+         -0.4759000407483609,
+         -0.3685384799137318,
+         -0.3859645187056615,
+         -0.18521724393262848
+        ],
+        "cos_f1_by_stage": [
+         0.7989351897729469,
+         0.2698164495406573,
+         0.31027670668706564,
+         0.2433289303290349,
+         0.1999416180318293,
+         0.24980211518702397
+        ],
+        "cos_f0_by_stage": [
+         0.31031076375769223,
+         0.6616415949198087,
+         0.7861767474354265,
+         0.6118674102427667,
+         0.5859061367374908,
+         0.43501935911965245
+        ],
+        "stage0_margin": 0.48862442601525463,
+        "deepest_margin": -0.18521724393262848,
+        "max_margin": 0.48862442601525463,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.6738416699478831,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.24980211518702397,
+        "cos_f0": 0.43501935911965245,
+        "exact50": 0,
+        "exact200": 3,
+        "broad50": 2,
+        "broad200": 9,
+        "anti50": 5,
+        "anti200": 25,
+        "runtime_seconds": 2.814840316772461,
+        "replicate": 1,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 12606,
+        "margin_by_stage": [
+         0.4721301824962143,
+         -0.4012995012500704,
+         -0.4515569686279671,
+         -0.3926767755130142,
+         -0.21245432585511742,
+         -0.29047460891154997
+        ],
+        "cos_f1_by_stage": [
+         0.7845490507976364,
+         0.2963652735988589,
+         0.2870636612830121,
+         0.2121138279337264,
+         0.28298701980841323,
+         0.25710757724805
+        ],
+        "cos_f0_by_stage": [
+         0.31241886830142207,
+         0.6976647748489293,
+         0.7386206299109792,
+         0.6047906034467406,
+         0.49544134566353065,
+         0.5475821861596
+        ],
+        "stage0_margin": 0.4721301824962143,
+        "deepest_margin": -0.29047460891154997,
+        "max_margin": 0.4721301824962143,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.7626047914077643,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.25710757724805,
+        "cos_f0": 0.5475821861596,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 25,
+        "anti200": 67,
+        "runtime_seconds": 2.747636079788208,
+        "replicate": 1,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 12975,
+        "margin_by_stage": [
+         0.46876977595987723,
+         -0.39213893516049614,
+         -0.5026300477855529,
+         -0.390248854660888,
+         -0.2561027836589078,
+         -0.3210182431086076
+        ],
+        "cos_f1_by_stage": [
+         0.7998766326696295,
+         0.2608082772142448,
+         0.2903055970297199,
+         0.22246289168301328,
+         0.22514143916369786,
+         0.21318305107276658
+        ],
+        "cos_f0_by_stage": [
+         0.33110685670975226,
+         0.652947212374741,
+         0.7929356448152728,
+         0.6127117463439012,
+         0.4812442228226057,
+         0.5342012941813742
+        ],
+        "stage0_margin": 0.46876977595987723,
+        "deepest_margin": -0.3210182431086076,
+        "max_margin": 0.46876977595987723,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.7897880190684848,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.21318305107276658,
+        "cos_f0": 0.5342012941813742,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 43,
+        "anti200": 135,
+        "runtime_seconds": 2.8516886234283447,
+        "replicate": 2,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 12719,
+        "margin_by_stage": [
+         0.47424285115825,
+         -0.39286647552973536,
+         -0.4875543999336785,
+         -0.3396133215345647,
+         -0.27488527044319805,
+         -0.20206862507803147
+        ],
+        "cos_f1_by_stage": [
+         0.7828723693596658,
+         0.2996083576376855,
+         0.2817840419000404,
+         0.24481929232406444,
+         0.2411469429784972,
+         0.296344806267565
+        ],
+        "cos_f0_by_stage": [
+         0.30862951820141576,
+         0.6924748331674209,
+         0.7693384418337189,
+         0.5844326138586291,
+         0.5160322134216953,
+         0.49841343134559646
+        ],
+        "stage0_margin": 0.47424285115825,
+        "deepest_margin": -0.20206862507803147,
+        "max_margin": 0.47424285115825,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.6763114762362814,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.296344806267565,
+        "cos_f0": 0.49841343134559646,
+        "exact50": 0,
+        "exact200": 1,
+        "broad50": 0,
+        "broad200": 1,
+        "anti50": 19,
+        "anti200": 52,
+        "runtime_seconds": 2.8191640377044678,
+        "replicate": 2,
+        "group": 1
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 13182,
+        "margin_by_stage": [
+         0.404136420097158,
+         -0.22179899823251237,
+         -0.5367085869608528,
+         -0.3423653546236566,
+         -0.3531153974045287,
+         -0.14103313917104993
+        ],
+        "cos_f1_by_stage": [
+         0.7388746153352534,
+         0.4546947054444136,
+         0.2275262872659363,
+         0.23403220371856384,
+         0.19330441596092598,
+         0.3015441272050795
+        ],
+        "cos_f0_by_stage": [
+         0.33473819523809545,
+         0.676493703676926,
+         0.764234874226789,
+         0.5763975583422204,
+         0.5464198133654546,
+         0.44257726637612943
+        ],
+        "stage0_margin": 0.404136420097158,
+        "deepest_margin": -0.14103313917104993,
+        "max_margin": 0.404136420097158,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.545169559268208,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.3015441272050795,
+        "cos_f0": 0.44257726637612943,
+        "exact50": 0,
+        "exact200": 4,
+        "broad50": 1,
+        "broad200": 10,
+        "anti50": 22,
+        "anti200": 41,
+        "runtime_seconds": 2.8311967849731445,
+        "replicate": 3,
+        "group": 0
+       },
+       {
+        "jury_size": 1000,
+        "stop_reason": "evidence_floor",
+        "n_stages": 6,
+        "remaining_users": 12922,
+        "margin_by_stage": [
+         0.4796352381101271,
+         -0.4015517611299322,
+         -0.4506843143435673,
+         -0.4751203005482456,
+         -0.220333677028546,
+         -0.3807808354042971
+        ],
+        "cos_f1_by_stage": [
+         0.7924137572957928,
+         0.27242686015698125,
+         0.30025293436478445,
+         0.20341207909522208,
+         0.2657538233021006,
+         0.23009251956099874
+        ],
+        "cos_f0_by_stage": [
+         0.3127785191856657,
+         0.6739786212869134,
+         0.7509372487083518,
+         0.6785323796434677,
+         0.4860875003306466,
+         0.6108733549652958
+        ],
+        "stage0_margin": 0.4796352381101271,
+        "deepest_margin": -0.3807808354042971,
+        "max_margin": 0.4796352381101271,
+        "argmax_margin_stage": 0,
+        "reversal_gain": -0.8604160735144242,
+        "best_reversal_gain": 0.0,
+        "cos_f1": 0.23009251956099874,
+        "cos_f0": 0.6108733549652958,
+        "exact50": 0,
+        "exact200": 0,
+        "broad50": 0,
+        "broad200": 0,
+        "anti50": 38,
+        "anti200": 115,
+        "runtime_seconds": 2.8337485790252686,
+        "replicate": 3,
+        "group": 1
+       }
+      ],
+      "child_summary": {
+       "n_children": 8,
+       "margin_mean": -0.24497392622452815,
+       "margin_median": -0.24627161699479072,
+       "margin_min": -0.3807808354042971,
+       "margin_max": -0.14103313917104993,
+       "fraction_margin_gt0": 0.0,
+       "fraction_nearest_f1": 0.0,
+       "child_cos_f1_mean": 0.25367789022652,
+       "child_cos_f0_mean": 0.4986518164510481,
+       "stage0_margin_mean": 0.40924634926290027,
+       "stage0_margin_median": 0.4731865168272321,
+       "deepest_margin_mean": -0.24497392622452815,
+       "deepest_margin_median": -0.24627161699479072,
+       "reversal_gain_mean": -0.6542202754874284,
+       "reversal_gain_median": -0.7194581338220228,
+       "fraction_reversal_gain_gt0": 0.0,
+       "fraction_reversal_gain_lt0": 1.0,
+       "median_argmax_margin_stage": 0.0,
+       "semantic": {
+        "exact50_mean": 0.0,
+        "exact50_median": 0.0,
+        "exact50_max": 0,
+        "broad50_mean": 0.75,
+        "anti50_mean": 22.0,
+        "fraction_exact50_ge1": 0.0,
+        "fraction_exact50_ge3": 0.0
+       }
+      },
+      "fitness_stats": {
+       "mean": 0.0,
+       "sd": 0.04086454662458308,
+       "q05": -0.07695579715073109,
+       "q25": -0.03903287835419178,
+       "q50": 0.009295472875237465,
+       "q75": 0.03903287835419178,
+       "q95": 0.07695579715073109
+      },
+      "split_half": {
+       "spearman_half_panels": 0.028025268493746876,
+       "half_panel_reps": 2,
+       "top_half_overlap": 514,
+       "top_half_overlap_fraction": 0.514
+      },
+      "selection": {
+       "n_selected": 1000,
+       "n_rejected": 1000,
+       "selected_mean_fitness": -0.034500755552202465,
+       "rejected_mean_fitness": 0.034500755552202465,
+       "separation": -0.06900151110440493
+      },
+      "eval": {
+       "jury_size": 2000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 13333,
+       "margin_by_stage": [
+        0.4751530065816263,
+        -0.4022137682542927,
+        -0.4182009976211961,
+        -0.3832124186188769,
+        -0.22749191562408183,
+        -0.2850191171023542
+       ],
+       "cos_f1_by_stage": [
+        0.7854426928090463,
+        0.29108991906460785,
+        0.323234510384499,
+        0.24149596699038833,
+        0.31458258836667813,
+        0.2502807773411773
+       ],
+       "cos_f0_by_stage": [
+        0.31028968622742004,
+        0.6933036873189006,
+        0.7414355080056951,
+        0.6247083856092652,
+        0.54207450399076,
+        0.5352998944435315
+       ],
+       "stage0_margin": 0.4751530065816263,
+       "deepest_margin": -0.2850191171023542,
+       "max_margin": 0.4751530065816263,
+       "argmax_margin_stage": 0,
+       "reversal_gain": -0.7601721236839805,
+       "best_reversal_gain": 0.0,
+       "cos_f1": 0.2502807773411773,
+       "cos_f0": 0.5352998944435315,
+       "exact50": 0,
+       "exact200": 1,
+       "broad50": 0,
+       "broad200": 1,
+       "anti50": 21,
+       "anti200": 61,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "17441876",
+         "title": "The Golden Dynasty (Fantasyland, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.8112204074859619
+        },
+        {
+         "rank": 2,
+         "work_id": "18365634",
+         "title": "Rock Chick Regret (Rock Chick, #7)",
+         "author": "Kristen Ashley",
+         "score": 0.8015264272689819
+        },
+        {
+         "rank": 3,
+         "work_id": "6967072",
+         "title": "Shadowfever (Fever, #5)",
+         "author": "Karen Marie Moning",
+         "score": 0.7854773998260498
+        },
+        {
+         "rank": 4,
+         "work_id": "16610933",
+         "title": "At Peace (The 'Burg, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.7838274240493774
+        },
+        {
+         "rank": 5,
+         "work_id": "25126749",
+         "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+         "author": "Sarah J. Maas",
+         "score": 0.7769626975059509
+        },
+        {
+         "rank": 6,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.7621961236000061
+        },
+        {
+         "rank": 7,
+         "work_id": "41452434",
+         "title": "Souls Unfractured (Hades Hangmen, #3)",
+         "author": "Tillie Cole",
+         "score": 0.7510623335838318
+        },
+        {
+         "rank": 8,
+         "work_id": "18230763",
+         "title": "Rock Chick Reckoning (Rock Chick, #6)",
+         "author": "Kristen Ashley",
+         "score": 0.7438836097717285
+        },
+        {
+         "rank": 9,
+         "work_id": "21429192",
+         "title": "Breathe (Colorado Mountain, #4)",
+         "author": "Kristen Ashley",
+         "score": 0.7437596321105957
+        },
+        {
+         "rank": 10,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.7425020337104797
+        },
+        {
+         "rank": 11,
+         "work_id": "6225943",
+         "title": "Dreamfever (Fever, #4)",
+         "author": "Karen Marie Moning",
+         "score": 0.740169107913971
+        },
+        {
+         "rank": 12,
+         "work_id": "15727084",
+         "title": "Rock Chick Renegade (Rock Chick, #4)",
+         "author": "Kristen Ashley",
+         "score": 0.7238290905952454
+        },
+        {
+         "rank": 13,
+         "work_id": "2728068",
+         "title": "Faefever (Fever, #3)",
+         "author": "Karen Marie Moning",
+         "score": 0.7214664816856384
+        },
+        {
+         "rank": 14,
+         "work_id": "16152938",
+         "title": "Rock Chick Revenge (Rock Chick, #5)",
+         "author": "Kristen Ashley",
+         "score": 0.72056645154953
+        },
+        {
+         "rank": 15,
+         "work_id": "18968802",
+         "title": "Motorcycle Man (Dream Man, #4)",
+         "author": "Kristen Ashley",
+         "score": 0.7172292470932007
+        },
+        {
+         "rank": 16,
+         "work_id": "1214837",
+         "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+         "author": "J.R. Ward",
+         "score": 0.7159485816955566
+        },
+        {
+         "rank": 17,
+         "work_id": "16152935",
+         "title": "Sweet Dreams (Colorado Mountain, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.7146265506744385
+        },
+        {
+         "rank": 18,
+         "work_id": "5220803",
+         "title": "Father Mine (Black Dagger Brotherhood, #6.5)",
+         "author": "J.R. Ward",
+         "score": 0.7146087288856506
+        },
+        {
+         "rank": 19,
+         "work_id": "14689744",
+         "title": "Rock Chick Redemption (Rock Chick, #3)",
+         "author": "Kristen Ashley",
+         "score": 0.713189959526062
+        },
+        {
+         "rank": 20,
+         "work_id": "41335427",
+         "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+         "author": "J.K. Rowling",
+         "score": 0.7011249661445618
+        },
+        {
+         "rank": 21,
+         "work_id": "18211575",
+         "title": "Onyx (Lux, #2)",
+         "author": "Jennifer L. Armentrout",
+         "score": 0.6939741969108582
+        },
+        {
+         "rank": 22,
+         "work_id": "43940889",
+         "title": "It Ends with Us",
+         "author": "Colleen Hoover",
+         "score": 0.6924490928649902
+        },
+        {
+         "rank": 23,
+         "work_id": "25720207",
+         "title": "Until You (Fall Away, #1.5)",
+         "author": "Penelope Douglas",
+         "score": 0.692043662071228
+        },
+        {
+         "rank": 24,
+         "work_id": "21447897",
+         "title": "Rock Chick Revolution (Rock Chick, #8)",
+         "author": "Kristen Ashley",
+         "score": 0.6839679479598999
+        },
+        {
+         "rank": 25,
+         "work_id": "21366587",
+         "title": "The Prince (The Original Sinners, #3)",
+         "author": "Tiffany Reisz",
+         "score": 0.682526707649231
+        },
+        {
+         "rank": 26,
+         "work_id": "3202442",
+         "title": "Acheron (Dark-Hunter #14)",
+         "author": "Sherrilyn Kenyon",
+         "score": 0.6809971332550049
+        },
+        {
+         "rank": 27,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.6767547726631165
+        },
+        {
+         "rank": 28,
+         "work_id": "21932118",
+         "title": "Unbeautifully (Undeniable, #2)",
+         "author": "Madeline Sheehan",
+         "score": 0.6762458682060242
+        },
+        {
+         "rank": 29,
+         "work_id": "26343327",
+         "title": "Archer's Voice",
+         "author": "Mia Sheridan",
+         "score": 0.6744218468666077
+        },
+        {
+         "rank": 30,
+         "work_id": "51168550",
+         "title": "Rock Chick Reawakening (Rock Chick, #0.5)",
+         "author": "Kristen Ashley",
+         "score": 0.6742525696754456
+        },
+        {
+         "rank": 31,
+         "work_id": "3046572",
+         "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+         "author": "J.K. Rowling",
+         "score": 0.6686714887619019
+        },
+        {
+         "rank": 32,
+         "work_id": "18115826",
+         "title": "Lady Luck (Colorado Mountain, #3)",
+         "author": "Kristen Ashley",
+         "score": 0.6627559661865234
+        },
+        {
+         "rank": 33,
+         "work_id": "42456190",
+         "title": "Twisted (Blood & Roses, #5)",
+         "author": "Callie Hart",
+         "score": 0.6616760492324829
+        },
+        {
+         "rank": 34,
+         "work_id": "22165967",
+         "title": "Faithful (Wanted, #3)",
+         "author": "Kelly Elliott",
+         "score": 0.6600252985954285
+        },
+        {
+         "rank": 35,
+         "work_id": "19113247",
+         "title": "The Angel (The Original Sinners, #2)",
+         "author": "Tiffany Reisz",
+         "score": 0.6578546166419983
+        },
+        {
+         "rank": 36,
+         "work_id": "25040772",
+         "title": "Crashed (Driven, #3)",
+         "author": "K. Bromberg",
+         "score": 0.6577525734901428
+        },
+        {
+         "rank": 37,
+         "work_id": "2809203",
+         "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+         "author": "J.K. Rowling",
+         "score": 0.6546927690505981
+        },
+        {
+         "rank": 38,
+         "work_id": "24878180",
+         "title": "Maybe Someday (Maybe, #1)",
+         "author": "Colleen Hoover",
+         "score": 0.6544672250747681
+        },
+        {
+         "rank": 39,
+         "work_id": "25435355",
+         "title": "Fallen Crest Public (Fallen Crest High, #3)",
+         "author": "Tijan",
+         "score": 0.6516551971435547
+        },
+        {
+         "rank": 40,
+         "work_id": "25209900",
+         "title": "Taunting Destiny (The Fae Chronicles, #2)",
+         "author": "Amelia Hutchins",
+         "score": 0.6461384892463684
+        },
+        {
+         "rank": 41,
+         "work_id": "6651007",
+         "title": "Blood Promise (Vampire Academy, #4)",
+         "author": "Richelle Mead",
+         "score": 0.6460587382316589
+        },
+        {
+         "rank": 42,
+         "work_id": "45363962",
+         "title": "Tyrant (King, #2)",
+         "author": "T.M. Frazier",
+         "score": 0.6445039510726929
+        },
+        {
+         "rank": 43,
+         "work_id": "25272067",
+         "title": "Queen of Shadows (Throne of Glass, #4)",
+         "author": "Sarah J. Maas",
+         "score": 0.6404623985290527
+        },
+        {
+         "rank": 44,
+         "work_id": "6309710",
+         "title": "Clockwork Princess (The Infernal Devices, #3)",
+         "author": "Cassandra Clare",
+         "score": 0.6340706944465637
+        },
+        {
+         "rank": 45,
+         "work_id": "13385418",
+         "title": "Last Sacrifice (Vampire Academy, #6)",
+         "author": "Richelle Mead",
+         "score": 0.6298964023590088
+        },
+        {
+         "rank": 46,
+         "work_id": "26743920",
+         "title": "Unexpected Fate (Hope Town, #1)",
+         "author": "Harper Sloan",
+         "score": 0.6295700669288635
+        },
+        {
+         "rank": 47,
+         "work_id": "45800086",
+         "title": "A Thousand Boy Kisses",
+         "author": "Tillie Cole",
+         "score": 0.6276184916496277
+        },
+        {
+         "rank": 48,
+         "work_id": "18551353",
+         "title": "Heaven and Hell (Heaven and Hell, #1)",
+         "author": "Kristen Ashley",
+         "score": 0.6259679198265076
+        },
+        {
+         "rank": 49,
+         "work_id": "25364368",
+         "title": "Rock Bottom (Tristan & Danika, #2)",
+         "author": "R.K. Lilley",
+         "score": 0.6238097548484802
+        },
+        {
+         "rank": 50,
+         "work_id": "21389085",
+         "title": "Hopeless (Hopeless, #1)",
+         "author": "Colleen Hoover",
+         "score": 0.6191148161888123
+        }
+       ],
+       "runtime_seconds": 2.855214834213257
+      },
+      "eval_rep_key": "root0_eval_anti_g1_rep",
+      "eval_pref_key": "root0_eval_anti_g1_pref"
+     },
+     {
+      "generation": 2,
+      "pool_size": 1000,
+      "users_key": "root0_anti_g1_selected",
+      "eval": {
+       "jury_size": 1000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 13031,
+       "margin_by_stage": [
+        0.4762760566313092,
+        -0.400339508328527,
+        -0.45379141489593466,
+        -0.4568215724951066,
+        -0.25756866776234794,
+        -0.279197399520637
+       ],
+       "cos_f1_by_stage": [
+        0.7916315149472042,
+        0.274720158834774,
+        0.29509170653206407,
+        0.2156300554670907,
+        0.26491295012576094,
+        0.2091716393803053
+       ],
+       "cos_f0_by_stage": [
+        0.315355458315895,
+        0.675059667163301,
+        0.7488831214279987,
+        0.6724516279621973,
+        0.5224816178881089,
+        0.4883690389009423
+       ],
+       "stage0_margin": 0.4762760566313092,
+       "deepest_margin": -0.279197399520637,
+       "max_margin": 0.4762760566313092,
+       "argmax_margin_stage": 0,
+       "reversal_gain": -0.7554734561519462,
+       "best_reversal_gain": 0.0,
+       "cos_f1": 0.2091716393803053,
+       "cos_f0": 0.4883690389009423,
+       "exact50": 0,
+       "exact200": 1,
+       "broad50": 0,
+       "broad200": 1,
+       "anti50": 25,
+       "anti200": 66,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.7817953824996948
+        },
+        {
+         "rank": 2,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.7810205817222595
+        },
+        {
+         "rank": 3,
+         "work_id": "45363962",
+         "title": "Tyrant (King, #2)",
+         "author": "T.M. Frazier",
+         "score": 0.7580600380897522
+        },
+        {
+         "rank": 4,
+         "work_id": "122832",
+         "title": "The Mark (Left Behind, #8)",
+         "author": "Tim LaHaye",
+         "score": 0.7480823397636414
+        },
+        {
+         "rank": 5,
+         "work_id": "21932118",
+         "title": "Unbeautifully (Undeniable, #2)",
+         "author": "Madeline Sheehan",
+         "score": 0.7412235140800476
+        },
+        {
+         "rank": 6,
+         "work_id": "41452434",
+         "title": "Souls Unfractured (Hades Hangmen, #3)",
+         "author": "Tillie Cole",
+         "score": 0.7353442907333374
+        },
+        {
+         "rank": 7,
+         "work_id": "25040772",
+         "title": "Crashed (Driven, #3)",
+         "author": "K. Bromberg",
+         "score": 0.7275938391685486
+        },
+        {
+         "rank": 8,
+         "work_id": "3046572",
+         "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+         "author": "J.K. Rowling",
+         "score": 0.7267611026763916
+        },
+        {
+         "rank": 9,
+         "work_id": "25126749",
+         "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+         "author": "Sarah J. Maas",
+         "score": 0.7171083688735962
+        },
+        {
+         "rank": 10,
+         "work_id": "709793",
+         "title": "Tribulation Force (Left Behind, #2)",
+         "author": "Tim LaHaye",
+         "score": 0.714775562286377
+        },
+        {
+         "rank": 11,
+         "work_id": "41335427",
+         "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+         "author": "J.K. Rowling",
+         "score": 0.7126936912536621
+        },
+        {
+         "rank": 12,
+         "work_id": "122876",
+         "title": "Assassins (Left Behind, #6)",
+         "author": "Tim LaHaye",
+         "score": 0.711782693862915
+        },
+        {
+         "rank": 13,
+         "work_id": "25435355",
+         "title": "Fallen Crest Public (Fallen Crest High, #3)",
+         "author": "Tijan",
+         "score": 0.7044901251792908
+        },
+        {
+         "rank": 14,
+         "work_id": "709790",
+         "title": "The Indwelling (Left Behind, #7)",
+         "author": "Tim LaHaye",
+         "score": 0.6990097761154175
+        },
+        {
+         "rank": 15,
+         "work_id": "26343327",
+         "title": "Archer's Voice",
+         "author": "Mia Sheridan",
+         "score": 0.6983257532119751
+        },
+        {
+         "rank": 16,
+         "work_id": "122831",
+         "title": "Soul Harvest: The World Takes Sides (Left Behind, #4)",
+         "author": "Tim LaHaye",
+         "score": 0.6978780627250671
+        },
+        {
+         "rank": 17,
+         "work_id": "16610933",
+         "title": "At Peace (The 'Burg, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.6964395642280579
+        },
+        {
+         "rank": 18,
+         "work_id": "1808005",
+         "title": "Dead to the World (Sookie Stackhouse, #4)",
+         "author": "Charlaine Harris",
+         "score": 0.6963024139404297
+        },
+        {
+         "rank": 19,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.6909223198890686
+        },
+        {
+         "rank": 20,
+         "work_id": "43826613",
+         "title": "Conviction (Salvation, #4)",
+         "author": "Corinne Michaels",
+         "score": 0.6841327548027039
+        },
+        {
+         "rank": 21,
+         "work_id": "602144",
+         "title": "Club Dead (Sookie Stackhouse, #3)",
+         "author": "Charlaine Harris",
+         "score": 0.6830033659934998
+        },
+        {
+         "rank": 22,
+         "work_id": "17441876",
+         "title": "The Golden Dynasty (Fantasyland, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.6826896667480469
+        },
+        {
+         "rank": 23,
+         "work_id": "18365634",
+         "title": "Rock Chick Regret (Rock Chick, #7)",
+         "author": "Kristen Ashley",
+         "score": 0.6818149089813232
+        },
+        {
+         "rank": 24,
+         "work_id": "1214837",
+         "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+         "author": "J.R. Ward",
+         "score": 0.6810976266860962
+        },
+        {
+         "rank": 25,
+         "work_id": "76935",
+         "title": "Apollyon (Left Behind, #5)",
+         "author": "Tim LaHaye",
+         "score": 0.6802708506584167
+        },
+        {
+         "rank": 26,
+         "work_id": "3202442",
+         "title": "Acheron (Dark-Hunter #14)",
+         "author": "Sherrilyn Kenyon",
+         "score": 0.6781446933746338
+        },
+        {
+         "rank": 27,
+         "work_id": "25040765",
+         "title": "Fueled (Driven, #2)",
+         "author": "K. Bromberg",
+         "score": 0.6744460463523865
+        },
+        {
+         "rank": 28,
+         "work_id": "25364368",
+         "title": "Rock Bottom (Tristan & Danika, #2)",
+         "author": "R.K. Lilley",
+         "score": 0.6710790395736694
+        },
+        {
+         "rank": 29,
+         "work_id": "6309710",
+         "title": "Clockwork Princess (The Infernal Devices, #3)",
+         "author": "Cassandra Clare",
+         "score": 0.6701805591583252
+        },
+        {
+         "rank": 30,
+         "work_id": "25209900",
+         "title": "Taunting Destiny (The Fae Chronicles, #2)",
+         "author": "Amelia Hutchins",
+         "score": 0.6667776107788086
+        },
+        {
+         "rank": 31,
+         "work_id": "4640799",
+         "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+         "author": "J.K. Rowling",
+         "score": 0.6657885313034058
+        },
+        {
+         "rank": 32,
+         "work_id": "2172654",
+         "title": "The Remnant (Left Behind, #10)",
+         "author": "Tim LaHaye",
+         "score": 0.6602485179901123
+        },
+        {
+         "rank": 33,
+         "work_id": "51168550",
+         "title": "Rock Chick Reawakening (Rock Chick, #0.5)",
+         "author": "Kristen Ashley",
+         "score": 0.6552455425262451
+        },
+        {
+         "rank": 34,
+         "work_id": "1008407",
+         "title": "Desecration (Left Behind, #9)",
+         "author": "Tim LaHaye",
+         "score": 0.6547334790229797
+        },
+        {
+         "rank": 35,
+         "work_id": "16152935",
+         "title": "Sweet Dreams (Colorado Mountain, #2)",
+         "author": "Kristen Ashley",
+         "score": 0.6501583456993103
+        },
+        {
+         "rank": 36,
+         "work_id": "26743920",
+         "title": "Unexpected Fate (Hope Town, #1)",
+         "author": "Harper Sloan",
+         "score": 0.6491379141807556
+        },
+        {
+         "rank": 37,
+         "work_id": "3159810",
+         "title": "All Together Dead (Sookie Stackhouse, #7)",
+         "author": "Charlaine Harris",
+         "score": 0.6416375637054443
+        },
+        {
+         "rank": 38,
+         "work_id": "42456190",
+         "title": "Twisted (Blood & Roses, #5)",
+         "author": "Callie Hart",
+         "score": 0.6398422122001648
+        },
+        {
+         "rank": 39,
+         "work_id": "41263669",
+         "title": "Monster in His Eyes (Monster in His Eyes, #1)",
+         "author": "J.M. Darhower",
+         "score": 0.637615978717804
+        },
+        {
+         "rank": 40,
+         "work_id": "26026261",
+         "title": "Quintessentially Q (Monsters in the Dark, #2)",
+         "author": "Pepper Winters",
+         "score": 0.6372618675231934
+        },
+        {
+         "rank": 41,
+         "work_id": "25720207",
+         "title": "Until You (Fall Away, #1.5)",
+         "author": "Penelope Douglas",
+         "score": 0.6369752287864685
+        },
+        {
+         "rank": 42,
+         "work_id": "25272067",
+         "title": "Queen of Shadows (Throne of Glass, #4)",
+         "author": "Sarah J. Maas",
+         "score": 0.6361728310585022
+        },
+        {
+         "rank": 43,
+         "work_id": "5220803",
+         "title": "Father Mine (Black Dagger Brotherhood, #6.5)",
+         "author": "J.R. Ward",
+         "score": 0.6298895478248596
+        },
+        {
+         "rank": 44,
+         "work_id": "534981",
+         "title": "Nicolae (Left Behind, #3)",
+         "author": "Tim LaHaye",
+         "score": 0.6298099160194397
+        },
+        {
+         "rank": 45,
+         "work_id": "22165967",
+         "title": "Faithful (Wanted, #3)",
+         "author": "Kelly Elliott",
+         "score": 0.6292269229888916
+        },
+        {
+         "rank": 46,
+         "work_id": "50617156",
+         "title": "Beholden (Salvation, #2)",
+         "author": "Corinne Michaels",
+         "score": 0.6235014796257019
+        },
+        {
+         "rank": 47,
+         "work_id": "41738760",
+         "title": "Three Years (Gypsy Brothers, #5)",
+         "author": "Lili St. Germain",
+         "score": 0.6225830912590027
+        },
+        {
+         "rank": 48,
+         "work_id": "24075414",
+         "title": "Losing Hope (Hopeless, #2)",
+         "author": "Colleen Hoover",
+         "score": 0.6212426424026489
+        },
+        {
+         "rank": 49,
+         "work_id": "45800086",
+         "title": "A Thousand Boy Kisses",
+         "author": "Tillie Cole",
+         "score": 0.6209793090820312
+        },
+        {
+         "rank": 50,
+         "work_id": "41366334",
+         "title": "Resisting Temptation (Men of Honor, #3)",
+         "author": "K.C. Lynn",
+         "score": 0.6194231510162354
+        }
+       ],
+       "runtime_seconds": 2.7994272708892822
+      },
+      "eval_rep_key": "root0_eval_anti_g2_rep",
+      "eval_pref_key": "root0_eval_anti_g2_pref"
+     }
+    ],
+    "rand": [
+     {
+      "generation": 0,
+      "pool_size": 4000,
+      "users_key": "root0_users",
+      "selected_key": "root0_rand_g0_selected",
+      "selection": {
+       "n_selected": 2000
+      },
+      "eval": {
+       "jury_size": 4000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 15420,
+       "margin_by_stage": [
+        -0.3493669840474474,
+        0.12549041020015306,
+        0.4752574141208507,
+        0.4037375485587213,
+        0.3461570228440618,
+        0.22663479773088246
+       ],
+       "cos_f1_by_stage": [
+        0.3757982157741346,
+        0.561005919405211,
+        0.7542353521738691,
+        0.7098048131514515,
+        0.6684295216402988,
+        0.623681693375763
+       ],
+       "cos_f0_by_stage": [
+        0.725165199821582,
+        0.435515509205058,
+        0.27897793805301835,
+        0.3060672645927302,
+        0.322272498796237,
+        0.3970468956448805
+       ],
+       "stage0_margin": -0.3493669840474474,
+       "deepest_margin": 0.22663479773088246,
+       "max_margin": 0.4752574141208507,
+       "argmax_margin_stage": 2,
+       "reversal_gain": 0.5760017817783298,
+       "best_reversal_gain": 0.8246243981682981,
+       "cos_f1": 0.623681693375763,
+       "cos_f0": 0.3970468956448805,
+       "exact50": 0,
+       "exact200": 1,
+       "broad50": 0,
+       "broad200": 1,
+       "anti50": 7,
+       "anti200": 33,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.8250635266304016
+        },
+        {
+         "rank": 2,
+         "work_id": "2244438",
+         "title": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.8077231645584106
+        },
+        {
+         "rank": 3,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.8056979179382324
+        },
+        {
+         "rank": 4,
+         "work_id": "6571827",
+         "title": "A Storm of Swords: Blood and Gold (A Song of Ice and Fire, #3: Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.8009258508682251
+        },
+        {
+         "rank": 5,
+         "work_id": "8134945",
+         "title": "The Way of Kings (The Stormlight Archive, #1)",
+         "author": "Brandon Sanderson",
+         "score": 0.7913591265678406
+        },
+        {
+         "rank": 6,
+         "work_id": "692719",
+         "title": "The Calvin and Hobbes Tenth Anniversary Book",
+         "author": "Bill Watterson",
+         "score": 0.7733676433563232
+        },
+        {
+         "rank": 7,
+         "work_id": "1010526",
+         "title": "The Authoritative Calvin and Hobbes: A Calvin and Hobbes Treasury",
+         "author": "Bill Watterson",
+         "score": 0.7556710839271545
+        },
+        {
+         "rank": 8,
+         "work_id": "17243368",
+         "title": "A Storm of Swords: Steel and Snow (A Song of Ice and Fire, #3: Part 1 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.7532831430435181
+        },
+        {
+         "rank": 9,
+         "work_id": "1658562",
+         "title": "The Complete Maus (Maus, #1-2)",
+         "author": "Art Spiegelman",
+         "score": 0.7464110851287842
+        },
+        {
+         "rank": 10,
+         "work_id": "23857485",
+         "title": "Saga, Vol. 2 (Saga, #2)",
+         "author": "Brian K. Vaughan",
+         "score": 0.745344877243042
+        },
+        {
+         "rank": 11,
+         "work_id": "946589",
+         "title": "The Days Are Just Packed: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7361438274383545
+        },
+        {
+         "rank": 12,
+         "work_id": "25602",
+         "title": "The Indispensable Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7343397736549377
+        },
+        {
+         "rank": 13,
+         "work_id": "25344",
+         "title": "The Calvin and Hobbes Lazy Sunday Book",
+         "author": "Bill Watterson",
+         "score": 0.7292884588241577
+        },
+        {
+         "rank": 14,
+         "work_id": "2502882",
+         "title": "The Wise Man's Fear (The Kingkiller Chronicle, #2)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7266079187393188
+        },
+        {
+         "rank": 15,
+         "work_id": "159847",
+         "title": "Explorers on the Moon (Tintin, #17)",
+         "author": "Herge",
+         "score": 0.7233774065971375
+        },
+        {
+         "rank": 16,
+         "work_id": "2502879",
+         "title": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+         "author": "Patrick Rothfuss",
+         "score": 0.7222963571548462
+        },
+        {
+         "rank": 17,
+         "work_id": "2110010",
+         "title": "Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.7207218408584595
+        },
+        {
+         "rank": 18,
+         "work_id": "2964424",
+         "title": "The Return of the King (The Lord of the Rings, #3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.7186932563781738
+        },
+        {
+         "rank": 19,
+         "work_id": "7492217",
+         "title": "The Complete Sherlock Holmes",
+         "author": "Arthur Conan Doyle",
+         "score": 0.7153064608573914
+        },
+        {
+         "rank": 20,
+         "work_id": "2369970",
+         "title": "Homicidal Psycho Jungle Cat: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.7135512828826904
+        },
+        {
+         "rank": 21,
+         "work_id": "185697",
+         "title": "Prisoners of the Sun (Tintin, #14)",
+         "author": "Herge",
+         "score": 0.7097947597503662
+        },
+        {
+         "rank": 22,
+         "work_id": "1466917",
+         "title": "A Game of Thrones (A Song of Ice and Fire, #1)",
+         "author": "George R.R. Martin",
+         "score": 0.7089055776596069
+        },
+        {
+         "rank": 23,
+         "work_id": "19113524",
+         "title": "Saga, Vol. 1 (Saga, #1)",
+         "author": "Brian K. Vaughan",
+         "score": 0.7079004645347595
+        },
+        {
+         "rank": 24,
+         "work_id": "4358649",
+         "title": "Watchmen",
+         "author": "Alan Moore",
+         "score": 0.7053636312484741
+        },
+        {
+         "rank": 25,
+         "work_id": "27422060",
+         "title": "Saga, Vol. 3 (Saga, #3)",
+         "author": "Brian K. Vaughan",
+         "score": 0.699881374835968
+        },
+        {
+         "rank": 26,
+         "work_id": "25601",
+         "title": "It's a Magical World: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6991983652114868
+        },
+        {
+         "rank": 27,
+         "work_id": "2244439",
+         "title": "Attack of the Deranged Mutant Killer Monster Snow Goons",
+         "author": "Bill Watterson",
+         "score": 0.6959535479545593
+        },
+        {
+         "rank": 28,
+         "work_id": "25854",
+         "title": "Season of Mists (The Sandman #4)",
+         "author": "Neil Gaiman",
+         "score": 0.6939079761505127
+        },
+        {
+         "rank": 29,
+         "work_id": "25599",
+         "title": "The Complete Calvin and Hobbes",
+         "author": "Bill Watterson",
+         "score": 0.6908418536186218
+        },
+        {
+         "rank": 30,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.6896111369132996
+        },
+        {
+         "rank": 31,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.6891905069351196
+        },
+        {
+         "rank": 32,
+         "work_id": "640276",
+         "title": "The Monster at the End of this Book",
+         "author": "Jon Stone",
+         "score": 0.6869804263114929
+        },
+        {
+         "rank": 33,
+         "work_id": "729618",
+         "title": "Red Rackham's Treasure (Tintin, #12)",
+         "author": "Herge",
+         "score": 0.6844579577445984
+        },
+        {
+         "rank": 34,
+         "work_id": "68309",
+         "title": "Weirdos from Another Planet!: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.681129515171051
+        },
+        {
+         "rank": 35,
+         "work_id": "19029792",
+         "title": "Locke & Key, Vol. 5: Clockworks",
+         "author": "Joe Hill",
+         "score": 0.6801027655601501
+        },
+        {
+         "rank": 36,
+         "work_id": "22007627",
+         "title": "Locke & Key, Vol. 6: Alpha & Omega",
+         "author": "Joe Hill",
+         "score": 0.6795051693916321
+        },
+        {
+         "rank": 37,
+         "work_id": "3462456",
+         "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+         "author": "J.R.R. Tolkien",
+         "score": 0.677617609500885
+        },
+        {
+         "rank": 38,
+         "work_id": "3007345",
+         "title": "Scientific Progress Goes \"Boink\": A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.672688364982605
+        },
+        {
+         "rank": 39,
+         "work_id": "899490",
+         "title": "Something Under the Bed is Drooling: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.667988657951355
+        },
+        {
+         "rank": 40,
+         "work_id": "185664",
+         "title": "The Crab with the Golden Claws (Tintin, #9)",
+         "author": "Herge",
+         "score": 0.6621319055557251
+        },
+        {
+         "rank": 41,
+         "work_id": "6778696",
+         "title": "Changes (The Dresden Files, #12)",
+         "author": "Jim Butcher",
+         "score": 0.6575199961662292
+        },
+        {
+         "rank": 42,
+         "work_id": "3272005",
+         "title": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+         "author": "George R.R. Martin",
+         "score": 0.6536634564399719
+        },
+        {
+         "rank": 43,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.6533313989639282
+        },
+        {
+         "rank": 44,
+         "work_id": "170846",
+         "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+         "author": "Bill Watterson",
+         "score": 0.6522574424743652
+        },
+        {
+         "rank": 45,
+         "work_id": "23811929",
+         "title": "Skin Game (The Dresden Files, #15)",
+         "author": "Jim Butcher",
+         "score": 0.6504740118980408
+        },
+        {
+         "rank": 46,
+         "work_id": "13492114",
+         "title": "A Monster Calls",
+         "author": "Patrick Ness",
+         "score": 0.6369965672492981
+        },
+        {
+         "rank": 47,
+         "work_id": "89369",
+         "title": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+         "author": "J.R.R. Tolkien",
+         "score": 0.6368898153305054
+        },
+        {
+         "rank": 48,
+         "work_id": "4873881",
+         "title": "The Last Question",
+         "author": "Isaac Asimov",
+         "score": 0.6368306875228882
+        },
+        {
+         "rank": 49,
+         "work_id": "19054760",
+         "title": "A Dance with Dragons: After the Feast (A Song of Ice and Fire #5, Part 2 of 2)",
+         "author": "George R.R. Martin",
+         "score": 0.6365242600440979
+        },
+        {
+         "rank": 50,
+         "work_id": "1789924",
+         "title": "The Absolute Sandman, Volume One",
+         "author": "Neil Gaiman",
+         "score": 0.6361650824546814
+        }
+       ],
+       "runtime_seconds": 2.8307251930236816
+      },
+      "eval_rep_key": "root0_eval_rand_g0_rep",
+      "eval_pref_key": "root0_eval_rand_g0_pref"
+     },
+     {
+      "generation": 1,
+      "pool_size": 2000,
+      "users_key": "root0_rand_g0_selected",
+      "selected_key": "root0_rand_g1_selected",
+      "selection": {
+       "n_selected": 1000
+      },
+      "eval": {
+       "jury_size": 2000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 13561,
+       "margin_by_stage": [
+        0.413939960384589,
+        -0.13614547018015571,
+        -0.47498658076545863,
+        -0.5595411273665161,
+        -0.3620564710277602,
+        -0.3453324476615396
+       ],
+       "cos_f1_by_stage": [
+        0.7408680169557909,
+        0.49839171758664563,
+        0.22137137535742943,
+        0.24734078347860627,
+        0.22298737731576757,
+        0.2766362061065486
+       ],
+       "cos_f0_by_stage": [
+        0.32692805657120183,
+        0.6345371877668013,
+        0.6963579561228881,
+        0.8068819108451224,
+        0.5850438483435277,
+        0.6219686537680882
+       ],
+       "stage0_margin": 0.413939960384589,
+       "deepest_margin": -0.3453324476615396,
+       "max_margin": 0.413939960384589,
+       "argmax_margin_stage": 0,
+       "reversal_gain": -0.7592724080461286,
+       "best_reversal_gain": 0.0,
+       "cos_f1": 0.2766362061065486,
+       "cos_f0": 0.6219686537680882,
+       "exact50": 0,
+       "exact200": 0,
+       "broad50": 0,
+       "broad200": 0,
+       "anti50": 40,
+       "anti200": 95,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "349431",
+         "title": "Fruits Basket, Vol. 4",
+         "author": "Natsuki Takaya",
+         "score": 0.8294026851654053
+        },
+        {
+         "rank": 2,
+         "work_id": "2201585",
+         "title": "Fruits Basket, Vol. 11",
+         "author": "Natsuki Takaya",
+         "score": 0.811648428440094
+        },
+        {
+         "rank": 3,
+         "work_id": "25126749",
+         "title": "A Court of Mist and Fury (A Court of Thorns and Roses, #2)",
+         "author": "Sarah J. Maas",
+         "score": 0.8090816736221313
+        },
+        {
+         "rank": 4,
+         "work_id": "262961",
+         "title": "Fruits Basket, Vol. 2",
+         "author": "Natsuki Takaya",
+         "score": 0.8043999671936035
+        },
+        {
+         "rank": 5,
+         "work_id": "237192",
+         "title": "Fruits Basket, Vol. 16",
+         "author": "Natsuki Takaya",
+         "score": 0.7957392930984497
+        },
+        {
+         "rank": 6,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.7923833727836609
+        },
+        {
+         "rank": 7,
+         "work_id": "4551489",
+         "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+         "author": "Rick Riordan",
+         "score": 0.7857586145401001
+        },
+        {
+         "rank": 8,
+         "work_id": "1214837",
+         "title": "Lover Awakened (Black Dagger Brotherhood, #3)",
+         "author": "J.R. Ward",
+         "score": 0.7856557369232178
+        },
+        {
+         "rank": 9,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.7828884720802307
+        },
+        {
+         "rank": 10,
+         "work_id": "5220803",
+         "title": "Father Mine (Black Dagger Brotherhood, #6.5)",
+         "author": "J.R. Ward",
+         "score": 0.7792296409606934
+        },
+        {
+         "rank": 11,
+         "work_id": "2267601",
+         "title": "Fruits Basket, Vol. 7",
+         "author": "Natsuki Takaya",
+         "score": 0.7762325406074524
+        },
+        {
+         "rank": 12,
+         "work_id": "1246841",
+         "title": "Fruits Basket, Vol. 19",
+         "author": "Natsuki Takaya",
+         "score": 0.775018572807312
+        },
+        {
+         "rank": 13,
+         "work_id": "2275353",
+         "title": "Fruits Basket, Vol. 9",
+         "author": "Natsuki Takaya",
+         "score": 0.773511528968811
+        },
+        {
+         "rank": 14,
+         "work_id": "237199",
+         "title": "Fruits Basket, Vol. 5",
+         "author": "Natsuki Takaya",
+         "score": 0.7720296382904053
+        },
+        {
+         "rank": 15,
+         "work_id": "2201581",
+         "title": "Fruits Basket, Vol. 12",
+         "author": "Natsuki Takaya",
+         "score": 0.7703514099121094
+        },
+        {
+         "rank": 16,
+         "work_id": "262967",
+         "title": "Fruits Basket, Vol. 18",
+         "author": "Natsuki Takaya",
+         "score": 0.7666219472885132
+        },
+        {
+         "rank": 17,
+         "work_id": "1142652",
+         "title": "Fruits Basket, Vol. 17",
+         "author": "Natsuki Takaya",
+         "score": 0.766197144985199
+        },
+        {
+         "rank": 18,
+         "work_id": "237200",
+         "title": "Fruits Basket, Vol. 6",
+         "author": "Natsuki Takaya",
+         "score": 0.7608798146247864
+        },
+        {
+         "rank": 19,
+         "work_id": "3046572",
+         "title": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+         "author": "J.K. Rowling",
+         "score": 0.7490925788879395
+        },
+        {
+         "rank": 20,
+         "work_id": "1579830",
+         "title": "Fruits Basket, Vol. 20",
+         "author": "Natsuki Takaya",
+         "score": 0.7384166717529297
+        },
+        {
+         "rank": 21,
+         "work_id": "237197",
+         "title": "Fruits Basket, Vol. 8",
+         "author": "Natsuki Takaya",
+         "score": 0.7366266250610352
+        },
+        {
+         "rank": 22,
+         "work_id": "237194",
+         "title": "Fruits Basket, Vol. 10",
+         "author": "Natsuki Takaya",
+         "score": 0.7331525087356567
+        },
+        {
+         "rank": 23,
+         "work_id": "6967072",
+         "title": "Shadowfever (Fever, #5)",
+         "author": "Karen Marie Moning",
+         "score": 0.730328381061554
+        },
+        {
+         "rank": 24,
+         "work_id": "21539506",
+         "title": "The House of Hades (The Heroes of Olympus, #4)",
+         "author": "Rick Riordan",
+         "score": 0.7237979173660278
+        },
+        {
+         "rank": 25,
+         "work_id": "1854936",
+         "title": "Fruits Basket, Vol. 21",
+         "author": "Natsuki Takaya",
+         "score": 0.7237841486930847
+        },
+        {
+         "rank": 26,
+         "work_id": "6309710",
+         "title": "Clockwork Princess (The Infernal Devices, #3)",
+         "author": "Cassandra Clare",
+         "score": 0.7203844785690308
+        },
+        {
+         "rank": 27,
+         "work_id": "11862",
+         "title": "Trials of Death (Cirque Du Freak, #5)",
+         "author": "Darren Shan",
+         "score": 0.7189279794692993
+        },
+        {
+         "rank": 28,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.7179790139198303
+        },
+        {
+         "rank": 29,
+         "work_id": "262960",
+         "title": "Fruits Basket, Vol. 13",
+         "author": "Natsuki Takaya",
+         "score": 0.7098045945167542
+        },
+        {
+         "rank": 30,
+         "work_id": "2267602",
+         "title": "Fruits Basket, Vol. 3",
+         "author": "Natsuki Takaya",
+         "score": 0.7078236937522888
+        },
+        {
+         "rank": 31,
+         "work_id": "41335427",
+         "title": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+         "author": "J.K. Rowling",
+         "score": 0.7027217149734497
+        },
+        {
+         "rank": 32,
+         "work_id": "2267568",
+         "title": "Fruits Basket, Vol. 22",
+         "author": "Natsuki Takaya",
+         "score": 0.7010266184806824
+        },
+        {
+         "rank": 33,
+         "work_id": "45979",
+         "title": "Fruits Basket, Vol. 14",
+         "author": "Natsuki Takaya",
+         "score": 0.6997714042663574
+        },
+        {
+         "rank": 34,
+         "work_id": "1285890",
+         "title": "Allies of the Night (Cirque du Freak, #8)",
+         "author": "Darren Shan",
+         "score": 0.6996511816978455
+        },
+        {
+         "rank": 35,
+         "work_id": "42090179",
+         "title": "Crooked Kingdom (Six of Crows, #2)",
+         "author": "Leigh Bardugo",
+         "score": 0.6889914870262146
+        },
+        {
+         "rank": 36,
+         "work_id": "2267567",
+         "title": "Fruits Basket, Vol. 23",
+         "author": "Natsuki Takaya",
+         "score": 0.6864169239997864
+        },
+        {
+         "rank": 37,
+         "work_id": "9117451",
+         "title": "Black Butler, Vol. 3 (Black Butler, #3)",
+         "author": "Yana Toboso",
+         "score": 0.6847268342971802
+        },
+        {
+         "rank": 38,
+         "work_id": "2403384",
+         "title": "Killers of the Dawn (Cirque Du Freak, #9)",
+         "author": "Darren Shan",
+         "score": 0.6820632815361023
+        },
+        {
+         "rank": 39,
+         "work_id": "1593685",
+         "title": "Lover Eternal (Black Dagger Brotherhood, #2)",
+         "author": "J.R. Ward",
+         "score": 0.6811545491218567
+        },
+        {
+         "rank": 40,
+         "work_id": "846981",
+         "title": "Lord of the Shadows (Cirque Du Freak, #11)",
+         "author": "Darren Shan",
+         "score": 0.6631553173065186
+        },
+        {
+         "rank": 41,
+         "work_id": "166363",
+         "title": "Vampire Mountain (Cirque Du Freak, #4)",
+         "author": "Darren Shan",
+         "score": 0.662375271320343
+        },
+        {
+         "rank": 42,
+         "work_id": "2809203",
+         "title": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+         "author": "J.K. Rowling",
+         "score": 0.6593112945556641
+        },
+        {
+         "rank": 43,
+         "work_id": "43940889",
+         "title": "It Ends with Us",
+         "author": "Colleen Hoover",
+         "score": 0.6575786471366882
+        },
+        {
+         "rank": 44,
+         "work_id": "7051029",
+         "title": "Ouran High School Host Club, Vol. 15 (Ouran High School Host Club, #15)",
+         "author": "Bisco Hatori",
+         "score": 0.6546325087547302
+        },
+        {
+         "rank": 45,
+         "work_id": "14406312",
+         "title": "The Son of Neptune (The Heroes of Olympus, #2)",
+         "author": "Rick Riordan",
+         "score": 0.6537205576896667
+        },
+        {
+         "rank": 46,
+         "work_id": "45977",
+         "title": "Fruits Basket, Vol. 15",
+         "author": "Natsuki Takaya",
+         "score": 0.6497549414634705
+        },
+        {
+         "rank": 47,
+         "work_id": "11863",
+         "title": "The Vampire Prince (Cirque Du Freak, #6)",
+         "author": "Darren Shan",
+         "score": 0.6497495770454407
+        },
+        {
+         "rank": 48,
+         "work_id": "7083417",
+         "title": "Black Butler, Vol. 2 (Black Butler, #2)",
+         "author": "Yana Toboso",
+         "score": 0.6483680009841919
+        },
+        {
+         "rank": 49,
+         "work_id": "473388",
+         "title": "Ouran High School Host Club, Vol. 8 (Ouran High School Host Club, #8)",
+         "author": "Bisco Hatori",
+         "score": 0.6468660235404968
+        },
+        {
+         "rank": 50,
+         "work_id": "542633",
+         "title": "Fruits Basket, Vol. 1",
+         "author": "Natsuki Takaya",
+         "score": 0.6452417969703674
+        }
+       ],
+       "runtime_seconds": 2.793347120285034
+      },
+      "eval_rep_key": "root0_eval_rand_g1_rep",
+      "eval_pref_key": "root0_eval_rand_g1_pref"
+     },
+     {
+      "generation": 2,
+      "pool_size": 1000,
+      "users_key": "root0_rand_g1_selected",
+      "eval": {
+       "jury_size": 1000,
+       "stop_reason": "evidence_floor",
+       "n_stages": 6,
+       "remaining_users": 13348,
+       "margin_by_stage": [
+        0.4946533117529384,
+        -0.38285636718216876,
+        -0.4451745228799631,
+        -0.4123511479947241,
+        -0.44044199113035987,
+        -0.27257764650555155
+       ],
+       "cos_f1_by_stage": [
+        0.8021536398474503,
+        0.2707972125447794,
+        0.3127827582712181,
+        0.21097495459088517,
+        0.22610867015064237,
+        0.2844105846857166
+       ],
+       "cos_f0_by_stage": [
+        0.30750032809451183,
+        0.6536535797269482,
+        0.7579572811511812,
+        0.6233261025856093,
+        0.6665506612810023,
+        0.5569882311912682
+       ],
+       "stage0_margin": 0.4946533117529384,
+       "deepest_margin": -0.27257764650555155,
+       "max_margin": 0.4946533117529384,
+       "argmax_margin_stage": 0,
+       "reversal_gain": -0.76723095825849,
+       "best_reversal_gain": 0.0,
+       "cos_f1": 0.2844105846857166,
+       "cos_f0": 0.5569882311912682,
+       "exact50": 0,
+       "exact200": 0,
+       "broad50": 0,
+       "broad200": 0,
+       "anti50": 26,
+       "anti200": 64,
+       "head": [
+        {
+         "rank": 1,
+         "work_id": "237199",
+         "title": "Fruits Basket, Vol. 5",
+         "author": "Natsuki Takaya",
+         "score": 0.8134375810623169
+        },
+        {
+         "rank": 2,
+         "work_id": "1246841",
+         "title": "Fruits Basket, Vol. 19",
+         "author": "Natsuki Takaya",
+         "score": 0.8043592572212219
+        },
+        {
+         "rank": 3,
+         "work_id": "2962492",
+         "title": "Harry Potter Boxset (Harry Potter, #1-7)",
+         "author": "J.K. Rowling",
+         "score": 0.7978257536888123
+        },
+        {
+         "rank": 4,
+         "work_id": "1347600",
+         "title": "Fullmetal Alchemist, Vol. 3 (Fullmetal Alchemist, #3)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7971380949020386
+        },
+        {
+         "rank": 5,
+         "work_id": "237194",
+         "title": "Fruits Basket, Vol. 10",
+         "author": "Natsuki Takaya",
+         "score": 0.7954192161560059
+        },
+        {
+         "rank": 6,
+         "work_id": "2201585",
+         "title": "Fruits Basket, Vol. 11",
+         "author": "Natsuki Takaya",
+         "score": 0.7929862141609192
+        },
+        {
+         "rank": 7,
+         "work_id": "1347602",
+         "title": "Fullmetal Alchemist, Vol. 4 (Fullmetal Alchemist, #4)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7913637161254883
+        },
+        {
+         "rank": 8,
+         "work_id": "262961",
+         "title": "Fruits Basket, Vol. 2",
+         "author": "Natsuki Takaya",
+         "score": 0.7896603941917419
+        },
+        {
+         "rank": 9,
+         "work_id": "3001807",
+         "title": "Fullmetal Alchemist, Vol. 10 (Fullmetal Alchemist, #10)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7886846661567688
+        },
+        {
+         "rank": 10,
+         "work_id": "2963218",
+         "title": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+         "author": "J.K. Rowling",
+         "score": 0.7851089835166931
+        },
+        {
+         "rank": 11,
+         "work_id": "237192",
+         "title": "Fruits Basket, Vol. 16",
+         "author": "Natsuki Takaya",
+         "score": 0.7841229438781738
+        },
+        {
+         "rank": 12,
+         "work_id": "4393420",
+         "title": "Magic Strikes (Kate Daniels, #3)",
+         "author": "Ilona Andrews",
+         "score": 0.7839694619178772
+        },
+        {
+         "rank": 13,
+         "work_id": "2275353",
+         "title": "Fruits Basket, Vol. 9",
+         "author": "Natsuki Takaya",
+         "score": 0.7837312817573547
+        },
+        {
+         "rank": 14,
+         "work_id": "1142652",
+         "title": "Fruits Basket, Vol. 17",
+         "author": "Natsuki Takaya",
+         "score": 0.7707009315490723
+        },
+        {
+         "rank": 15,
+         "work_id": "45979",
+         "title": "Fruits Basket, Vol. 14",
+         "author": "Natsuki Takaya",
+         "score": 0.7687850594520569
+        },
+        {
+         "rank": 16,
+         "work_id": "2267601",
+         "title": "Fruits Basket, Vol. 7",
+         "author": "Natsuki Takaya",
+         "score": 0.7678701281547546
+        },
+        {
+         "rank": 17,
+         "work_id": "1579830",
+         "title": "Fruits Basket, Vol. 20",
+         "author": "Natsuki Takaya",
+         "score": 0.7637034058570862
+        },
+        {
+         "rank": 18,
+         "work_id": "349431",
+         "title": "Fruits Basket, Vol. 4",
+         "author": "Natsuki Takaya",
+         "score": 0.762592077255249
+        },
+        {
+         "rank": 19,
+         "work_id": "7192171",
+         "title": "Fullmetal Alchemist, Vol. 22 (Fullmetal Alchemist, #22)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7614953517913818
+        },
+        {
+         "rank": 20,
+         "work_id": "4551489",
+         "title": "The Last Olympian (Percy Jackson and the Olympians, #5)",
+         "author": "Rick Riordan",
+         "score": 0.7580112218856812
+        },
+        {
+         "rank": 21,
+         "work_id": "237200",
+         "title": "Fruits Basket, Vol. 6",
+         "author": "Natsuki Takaya",
+         "score": 0.7568347454071045
+        },
+        {
+         "rank": 22,
+         "work_id": "6697671",
+         "title": "Fullmetal Alchemist, Vol. 21 (Fullmetal Alchemist, #21)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7542487382888794
+        },
+        {
+         "rank": 23,
+         "work_id": "2201581",
+         "title": "Fruits Basket, Vol. 12",
+         "author": "Natsuki Takaya",
+         "score": 0.7530062794685364
+        },
+        {
+         "rank": 24,
+         "work_id": "6597472",
+         "title": "Fullmetal Alchemist, Vol. 20 (Fullmetal Alchemist, #20)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7510836124420166
+        },
+        {
+         "rank": 25,
+         "work_id": "2276647",
+         "title": "Fullmetal Alchemist, Vol. 6 (Fullmetal Alchemist, #6)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7482353448867798
+        },
+        {
+         "rank": 26,
+         "work_id": "1347595",
+         "title": "Fullmetal Alchemist, Vol. 11 (Fullmetal Alchemist, #11)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7470930218696594
+        },
+        {
+         "rank": 27,
+         "work_id": "1321122",
+         "title": "Fullmetal Alchemist, Vol. 8 (Fullmetal Alchemist, #8)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7461841702461243
+        },
+        {
+         "rank": 28,
+         "work_id": "17115055",
+         "title": "The Mark of Athena (The Heroes of Olympus, #3)",
+         "author": "Rick Riordan",
+         "score": 0.7458854913711548
+        },
+        {
+         "rank": 29,
+         "work_id": "3124176",
+         "title": "The Vampire's Assistant",
+         "author": "Darren Shan",
+         "score": 0.7431737184524536
+        },
+        {
+         "rank": 30,
+         "work_id": "7083417",
+         "title": "Black Butler, Vol. 2 (Black Butler, #2)",
+         "author": "Yana Toboso",
+         "score": 0.7405973672866821
+        },
+        {
+         "rank": 31,
+         "work_id": "6967072",
+         "title": "Shadowfever (Fever, #5)",
+         "author": "Karen Marie Moning",
+         "score": 0.739823579788208
+        },
+        {
+         "rank": 32,
+         "work_id": "2276648",
+         "title": "Fullmetal Alchemist, Vol. 2 (Fullmetal Alchemist, #2)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7383821606636047
+        },
+        {
+         "rank": 33,
+         "work_id": "1347603",
+         "title": "Fullmetal Alchemist, Vol. 9 (Fullmetal Alchemist, #9)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7369407415390015
+        },
+        {
+         "rank": 34,
+         "work_id": "790192",
+         "title": "Fullmetal Alchemist, Vol. 7 (Fullmetal Alchemist, #7)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7359036207199097
+        },
+        {
+         "rank": 35,
+         "work_id": "2432542",
+         "title": "Skip Beat!, Vol. 13",
+         "author": "Yoshiki Nakamura",
+         "score": 0.7340987324714661
+        },
+        {
+         "rank": 36,
+         "work_id": "2402163",
+         "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+         "author": "J.K. Rowling",
+         "score": 0.7334046959877014
+        },
+        {
+         "rank": 37,
+         "work_id": "13285879",
+         "title": "Fullmetal Alchemist, Vol. 25 (Fullmetal Alchemist, #25)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7333506941795349
+        },
+        {
+         "rank": 38,
+         "work_id": "21539506",
+         "title": "The House of Hades (The Heroes of Olympus, #4)",
+         "author": "Rick Riordan",
+         "score": 0.7322642803192139
+        },
+        {
+         "rank": 39,
+         "work_id": "273822",
+         "title": "Skip Beat!, Vol. 06",
+         "author": "Yoshiki Nakamura",
+         "score": 0.7304573059082031
+        },
+        {
+         "rank": 40,
+         "work_id": "1285890",
+         "title": "Allies of the Night (Cirque du Freak, #8)",
+         "author": "Darren Shan",
+         "score": 0.7303714752197266
+        },
+        {
+         "rank": 41,
+         "work_id": "237197",
+         "title": "Fruits Basket, Vol. 8",
+         "author": "Natsuki Takaya",
+         "score": 0.7302709221839905
+        },
+        {
+         "rank": 42,
+         "work_id": "1164465",
+         "title": "A Storm of Swords (A Song of Ice and Fire, #3)",
+         "author": "George R.R. Martin",
+         "score": 0.728718101978302
+        },
+        {
+         "rank": 43,
+         "work_id": "262967",
+         "title": "Fruits Basket, Vol. 18",
+         "author": "Natsuki Takaya",
+         "score": 0.7282686829566956
+        },
+        {
+         "rank": 44,
+         "work_id": "8940792",
+         "title": "Fullmetal Alchemist, Vol. 23 (Fullmetal Alchemist, #23)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7278688549995422
+        },
+        {
+         "rank": 45,
+         "work_id": "1854936",
+         "title": "Fruits Basket, Vol. 21",
+         "author": "Natsuki Takaya",
+         "score": 0.7265200614929199
+        },
+        {
+         "rank": 46,
+         "work_id": "27110",
+         "title": "Fullmetal Alchemist, Vol. 14 (Fullmetal Alchemist, #14)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7237817049026489
+        },
+        {
+         "rank": 47,
+         "work_id": "16482835",
+         "title": "Words of Radiance (The Stormlight Archive, #2)",
+         "author": "Brandon Sanderson",
+         "score": 0.7233011722564697
+        },
+        {
+         "rank": 48,
+         "work_id": "1720334",
+         "title": "Skip Beat!, Vol. 12",
+         "author": "Yoshiki Nakamura",
+         "score": 0.7211582660675049
+        },
+        {
+         "rank": 49,
+         "work_id": "273823",
+         "title": "Skip Beat!, Vol. 03",
+         "author": "Yoshiki Nakamura",
+         "score": 0.719607949256897
+        },
+        {
+         "rank": 50,
+         "work_id": "1604674",
+         "title": "Fullmetal Alchemist, Vol. 16 (Fullmetal Alchemist, #16)",
+         "author": "Hiromu Arakawa",
+         "score": 0.7171050906181335
+        }
+       ],
+       "runtime_seconds": 2.7776029109954834
+      },
+      "eval_rep_key": "root0_eval_rand_g2_rep",
+      "eval_pref_key": "root0_eval_rand_g2_pref"
+     }
+    ]
+   }
+  }
+ ],
+ "artifact_sha256": "0df6b27dc168ce6b50394bce9c5d6bd0b6ee55e08d7712c94740f70c2414b4aa",
+ "artifact_bytes": 4876627,
+ "npz_keys": [
+  "root0_anti_g0_selected",
+  "root0_anti_g1_child_reps",
+  "root0_anti_g1_fitness",
+  "root0_anti_g1_selected",
+  "root0_eval_anti_g0_pref",
+  "root0_eval_anti_g0_rep",
+  "root0_eval_anti_g1_pref",
+  "root0_eval_anti_g1_rep",
+  "root0_eval_anti_g2_pref",
+  "root0_eval_anti_g2_rep",
+  "root0_eval_lit_g0_pref",
+  "root0_eval_lit_g0_rep",
+  "root0_eval_lit_g1_pref",
+  "root0_eval_lit_g1_rep",
+  "root0_eval_lit_g2_pref",
+  "root0_eval_lit_g2_rep",
+  "root0_eval_rand_g0_pref",
+  "root0_eval_rand_g0_rep",
+  "root0_eval_rand_g1_pref",
+  "root0_eval_rand_g1_rep",
+  "root0_eval_rand_g2_pref",
+  "root0_eval_rand_g2_rep",
+  "root0_g0_child_reps",
+  "root0_g0_fitness",
+  "root0_lit_g0_selected",
+  "root0_lit_g1_child_reps",
+  "root0_lit_g1_fitness",
+  "root0_lit_g1_selected",
+  "root0_rand_g0_selected",
+  "root0_rand_g1_selected",
+  "root0_users"
+ ]
+}
