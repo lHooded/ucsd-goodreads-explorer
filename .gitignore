@@ -102,3 +102,6 @@ curators_explorer/data/literary_basin_refinement_state/
 
 # Literary user-basin affiliation: resumable diagnostic state
 curators_explorer/data/literary_user_basin_affiliation_state/
+
+# Literary B1+B2 super-mode: resumable diagnostic state
+curators_explorer/data/literary_supermode_state/

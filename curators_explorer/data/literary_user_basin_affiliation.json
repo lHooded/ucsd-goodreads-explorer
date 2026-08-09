@@ -7,18 +7,25 @@
   "match_bin_size": 200,
   "match_tail_fraction": 0.25,
   "semantic_annotations_posthoc": true,
-  "runtime_seconds": 57.33607840538025
+  "runtime_seconds": 60.908989906311035
+ },
+ "correction_pass": {
+  "head_mass_bug_fixed": true,
+  "percentile_margin_bug_fixed": true,
+  "audit_working_tree_bytes_compared_to_HEAD": true,
+  "trajectories_rerun": false,
+  "note": "Matched-group heads now use their actual reader masses; percentile hard-partition rows now use percentile margins."
  },
  "audit": {
   "seed": 20260904,
-  "starting_commit": "577698fde5465c0e37b838c1626e58f521f3b134",
+  "starting_commit": "b3371b5bec39ecca9e3372ad8b3dac8f7b85a248",
   "required_start_commit": "577698fde5465c0e37b838c1626e58f521f3b134",
   "source_basin_commit": "bff6d6d9b91410daac1c302382f9e5a02892d02e",
   "checks": [
    {
-    "check": "starting_commit_exact",
+    "check": "starting_commit_inherited_or_correction_successor",
     "ok": true,
-    "detail": "HEAD=577698fde5465c0e37b838c1626e58f521f3b134"
+    "detail": "HEAD=b3371b5bec39ecca9e3372ad8b3dac8f7b85a248 allowed=577698fde5465c0e37b838c1626e58f521f3b134,b3371b5bec39ecca9e3372ad8b3dac8f7b85a248"
    },
    {
     "check": "inherited_artifacts_present",
@@ -26,9 +33,9 @@
     "detail": "prior_json=True, prior_npz=True, prior_report=True, prior_basin_heads=True, prior_expansion_heads=True, prior_script=True, prior_state=True"
    },
    {
-    "check": "inherited_committed_hashes_match",
+    "check": "inherited_working_tree_bytes_match_HEAD_or_correction_manifest",
     "ok": true,
-    "detail": "{\"basin_heads\": \"0a77fdbef8390d77535613fe26a324d23743aa90\", \"expansion_heads\": \"f062abce3ce09a67f70aa99d92468036cc36eb98\", \"json\": \"a7365925c8da5bc9972d78416c20fc65af53da91\", \"npz\": \"e09fc188ffb2b0cd015f54d82d256357955583c2\", \"report\": \"738786e9ec0d665c316f3c0e207e985909867f04\", \"script\": \"f9e9b2f04bf0834fdb981f6dacf6398f9f209bd8\"}"
+    "detail": "{\"correction_declared\": true, \"working_tree_matches_HEAD\": {\"/home/ifrankling/unsw/novels/curators_explorer/data/LITERARY_BASIN_HEADS.md\": true, \"/home/ifrankling/unsw/novels/curators_explorer/data/LITERARY_BASIN_REFINEMENT_REPORT.md\": true, \"/home/ifrankling/unsw/novels/curators_explorer/data/LITERARY_REFINED_EXPANSION_HEADS.md\": true, \"/home/ifrankling/unsw/novels/curators_explorer/data/literary_basin_refinement.json\": true, \"/home/ifrankling/unsw/novels/curators_explorer/data/literary_basin_refinement.npz\": true, \"/home/ifrankling/unsw/novels/curators_explorer/scripts/research_literary_basin_refinement.py\": true}}"
    },
    {
     "check": "source_campaign_commit_exact",
@@ -51009,12 +51016,12 @@
       "pearson": 0.27205453441539723,
       "spearman": 0.06376733626679469
      },
-     "top50_overlap": 0,
-     "top50_overlap_fraction": 0.0,
-     "top200_overlap": 0,
-     "top200_overlap_fraction": 0.0,
-     "common_top200_n": 0,
-     "common_top200_spearman": null
+     "top50_overlap": 9,
+     "top50_overlap_fraction": 0.18,
+     "top200_overlap": 43,
+     "top200_overlap_fraction": 0.215,
+     "common_top200_n": 43,
+     "common_top200_spearman": 0.09891271519178495
     }
    },
    "S1": {
@@ -56495,12 +56502,12 @@
       "pearson": 0.2830600154420638,
       "spearman": 0.09203151488061972
      },
-     "top50_overlap": 0,
-     "top50_overlap_fraction": 0.0,
-     "top200_overlap": 0,
-     "top200_overlap_fraction": 0.0,
-     "common_top200_n": 0,
-     "common_top200_spearman": null
+     "top50_overlap": 10,
+     "top50_overlap_fraction": 0.2,
+     "top200_overlap": 62,
+     "top200_overlap_fraction": 0.31,
+     "common_top200_n": 62,
+     "common_top200_spearman": 0.29737216537443395
     }
    },
    "S2": {
@@ -67206,12 +67213,12 @@
       "pearson": 0.2685145159079442,
       "spearman": 0.055153421989769684
      },
-     "top50_overlap": 0,
-     "top50_overlap_fraction": 0.0,
-     "top200_overlap": 0,
-     "top200_overlap_fraction": 0.0,
-     "common_top200_n": 0,
-     "common_top200_spearman": null
+     "top50_overlap": 9,
+     "top50_overlap_fraction": 0.18,
+     "top200_overlap": 54,
+     "top200_overlap_fraction": 0.27,
+     "common_top200_n": 54,
+     "common_top200_spearman": -0.08160853821231179
     }
    }
   },
@@ -69750,19 +69757,19 @@
      },
      "margin": {
       "n": 5469,
-      "mean": 0.2327402216183467,
-      "std": 0.22308581236864164,
-      "p01": 0.0016269946098327636,
-      "p10": 0.019969952106475834,
-      "p25": 0.06651449203491211,
-      "median": 0.15750336647033691,
-      "p75": 0.3501574397087097,
-      "p90": 0.553940737247467,
-      "p99": 0.8130872750282285,
-      "min": 1.424551010131836e-05,
-      "max": 1.926456534769386,
-      "cv": 0.9585185182751239,
-      "skew": 1.8913404321639387
+      "mean": 0.1327658895593344,
+      "std": 0.11192400267414407,
+      "p01": 0.0011840000000000917,
+      "p10": 0.016040000000000013,
+      "p25": 0.04490000000000005,
+      "median": 0.10639999999999994,
+      "p75": 0.19684999999999997,
+      "p90": 0.2872599999999999,
+      "p99": 0.42612599999999984,
+      "min": 0.0,
+      "max": 0.99195,
+      "cv": 0.843017758896001,
+      "skew": 1.5692142097467165
      }
     },
     "percentile_B2": {
@@ -69928,19 +69935,19 @@
      },
      "margin": {
       "n": 4816,
-      "mean": 0.2228321765924918,
-      "std": 0.20961061446356252,
-      "p01": 0.006456586718559265,
-      "p10": 0.027396708726882935,
-      "p25": 0.06911639869213104,
-      "median": 0.14043816924095154,
-      "p75": 0.3295355886220932,
-      "p90": 0.5280147790908813,
-      "p99": 0.8165108740329781,
-      "min": 1.817941665649414e-05,
-      "max": 1.9425685460446402,
-      "cv": 0.940665830531699,
-      "skew": 1.7595172836516593
+      "mean": 0.12256166943521596,
+      "std": 0.10589341833711644,
+      "p01": 0.0010499999999999954,
+      "p10": 0.013725000000000043,
+      "p25": 0.03853750000000006,
+      "median": 0.09532500000000005,
+      "p75": 0.18064999999999998,
+      "p90": 0.27642500000000003,
+      "p99": 0.416322500000001,
+      "min": 4.999999999999449e-05,
+      "max": 0.99805,
+      "cv": 0.8640011091974389,
+      "skew": 1.4494410713737254
      }
     },
     "percentile_B3": {
@@ -70106,19 +70113,19 @@
      },
      "margin": {
       "n": 5185,
-      "mean": 0.30246872639298356,
-      "std": 0.27643444072745127,
-      "p01": 0.0018854618072509765,
-      "p10": 0.021195578575134277,
-      "p25": 0.09691804647445679,
-      "median": 0.2285076379776001,
-      "p75": 0.44508302211761475,
-      "p90": 0.6649883747100832,
-      "p99": 1.07302186191082,
-      "min": 3.8743019104003906e-05,
-      "max": 2.0480093642836437,
-      "cv": 0.9139273472137177,
-      "skew": 1.8320953704966119
+      "mean": 0.12824979267116685,
+      "std": 0.11626952429683608,
+      "p01": 0.0012500000000000666,
+      "p10": 0.014689999999999934,
+      "p25": 0.04280000000000006,
+      "median": 0.09945000000000004,
+      "p75": 0.18179999999999996,
+      "p90": 0.2781600000000003,
+      "p99": 0.46235199999999993,
+      "min": 0.0,
+      "max": 0.9935999999999999,
+      "cv": 0.9065864503574814,
+      "skew": 2.0719885196519128
      }
     },
     "percentile_B4": {
@@ -70284,19 +70291,19 @@
      },
      "margin": {
       "n": 4530,
-      "mean": 0.29492085540644564,
-      "std": 0.26645848360502394,
-      "p01": 0.007352802157402039,
-      "p10": 0.036106789112091066,
-      "p25": 0.10863108932971954,
-      "median": 0.21566781401634216,
-      "p75": 0.42099863290786743,
-      "p90": 0.6657790422439575,
-      "p99": 1.055882842168212,
-      "min": 2.86102294921875e-05,
-      "max": 2.048976819962263,
-      "cv": 0.9034914917692198,
-      "skew": 2.0013217035926005
+      "mean": 0.11929660596026491,
+      "std": 0.11220658484511063,
+      "p01": 0.0011144999999999883,
+      "p10": 0.012745000000000041,
+      "p25": 0.0363125,
+      "median": 0.090775,
+      "p75": 0.17192499999999997,
+      "p90": 0.26345499999999994,
+      "p99": 0.45857275000000003,
+      "min": 4.999999999999449e-05,
+      "max": 0.9783499999999999,
+      "cv": 0.9405681238113697,
+      "skew": 2.1892932416287714
      }
     }
    }

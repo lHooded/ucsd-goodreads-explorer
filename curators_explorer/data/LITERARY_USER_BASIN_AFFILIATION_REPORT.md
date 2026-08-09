@@ -1,7 +1,7 @@
 # Literary user-basin affiliation report
 
 Campaign seed: `20260904`. Starting commit: `577698fde5465c0e37b838c1626e58f521f3b134`.
-Wall-clock estimate including resumable phases: `57.3` seconds.
+Wall-clock estimate including resumable phases: `60.9` seconds.
 
 This diagnostic preserves all four local basins. No semantic label, J5-agreement score, fitted combined score, or jury-size optimization enters affiliation, matching, or context mapping.
 
@@ -106,12 +106,12 @@ Matching rule frozen before head inspection: sort by common-L and user ID, use c
 
 |population|high n|low n|high L med|low L med|KS|Wasserstein|max |Δ quantile||head cosine|top50|top200|
 |---|---|---|---|---|---|---|---|---|---|---|
-|J20_outer|3750|3750|0.741|0.740|0.006|0.000|0.000|0.272|0/50|0/200|
-|S1|1250|1250|0.767|0.767|0.013|0.000|0.001|0.283|0/50|0/200|
-|S2|2500|2500|0.730|0.730|0.010|0.000|0.000|0.269|0/50|0/200|
-- J20_outer: high/low direct heads have centered book cosine `0.272` and common-top-200 Spearman `—`.
-- S1: high/low direct heads have centered book cosine `0.283` and common-top-200 Spearman `—`.
-- S2: high/low direct heads have centered book cosine `0.269` and common-top-200 Spearman `—`.
+|J20_outer|3750|3750|0.741|0.740|0.006|0.000|0.000|0.272|9/50|43/200|
+|S1|1250|1250|0.767|0.767|0.013|0.000|0.001|0.283|10/50|62/200|
+|S2|2500|2500|0.730|0.730|0.010|0.000|0.000|0.269|9/50|54/200|
+- J20_outer: high/low direct heads have centered book cosine `0.272` and common-top-200 Spearman `0.099`.
+- S1: high/low direct heads have centered book cosine `0.283` and common-top-200 Spearman `0.297`.
+- S2: high/low direct heads have centered book cosine `0.269` and common-top-200 Spearman `-0.082`.
 
 Complete direct top-100 heads and post-hoc descriptors are in `LITERARY_USER_AFFILIATION_HEADS.md`.
 
@@ -170,10 +170,10 @@ Raw and percentile argmax partitions are descriptive only; no partition is calle
 |raw|raw_B2|4237|{"S0": 1275, "S1": 1040, "S2": 1922}|0.758|0.175|
 |raw|raw_B3|5472|{"S0": 1094, "S1": 1368, "S2": 3010}|0.748|0.213|
 |raw|raw_B4|5516|{"S0": 1257, "S1": 1330, "S2": 2929}|0.750|0.167|
-|percentile|percentile_B1|5469|{"S0": 1559, "S1": 1445, "S2": 2465}|0.758|0.158|
-|percentile|percentile_B2|4816|{"S0": 1416, "S1": 1212, "S2": 2188}|0.758|0.140|
-|percentile|percentile_B3|5185|{"S0": 1008, "S1": 1283, "S2": 2894}|0.747|0.229|
-|percentile|percentile_B4|4530|{"S0": 1017, "S1": 1060, "S2": 2453}|0.749|0.216|
+|percentile|percentile_B1|5469|{"S0": 1559, "S1": 1445, "S2": 2465}|0.758|0.106|
+|percentile|percentile_B2|4816|{"S0": 1416, "S1": 1212, "S2": 2188}|0.758|0.095|
+|percentile|percentile_B3|5185|{"S0": 1008, "S1": 1283, "S2": 2894}|0.747|0.099|
+|percentile|percentile_B4|4530|{"S0": 1017, "S1": 1060, "S2": 2453}|0.749|0.091|
 
 ## Interpretation and stop condition
 

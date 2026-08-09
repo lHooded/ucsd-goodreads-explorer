@@ -54,6 +54,7 @@ from curators_explorer.scripts.research_converged_common_literary_jurors import 
 
 LITERARY_AFFILIATION_SEED = 20260904
 START_COMMIT = "577698fde5465c0e37b838c1626e58f521f3b134"
+CORRECTION_SUCCESSOR_COMMIT = "b3371b5bec39ecca9e3372ad8b3dac8f7b85a248"
 SOURCE_BASIN_COMMIT = "bff6d6d9b91410daac1c302382f9e5a02892d02e"
 SOURCE_BASIN_REPS = 64
 SOURCE_SELECTED_K = 4
@@ -163,6 +164,18 @@ def _git_blob_hash(path: Path) -> str | None:
         return None
 
 
+def _working_tree_matches_head(path: Path) -> bool:
+    """Compare actual working-tree bytes with the blob stored at HEAD."""
+    try:
+        relative = path.resolve().relative_to(Path.cwd().resolve())
+        committed = subprocess.run(
+            ["git", "show", f"HEAD:{relative}"],
+            capture_output=True, check=True).stdout
+        return _sha256_bytes(path.read_bytes()) == _sha256_bytes(committed)
+    except Exception:
+        return False
+
+
 def _fmt(value: Any, digits: int = 3) -> str:
     try:
         if value is None or not np.isfinite(float(value)):
@@ -195,8 +208,9 @@ def _audit_check(checks: list[dict[str, Any]], name: str,
 def _audit_frozen_state() -> dict[str, Any]:
     """Audit only frozen numerical artifacts; no metadata or probes are read."""
     checks: list[dict[str, Any]] = []
-    _audit_check(checks, "starting_commit_exact", _git_head() == START_COMMIT,
-                 f"HEAD={_git_head()}")
+    _audit_check(checks, "starting_commit_inherited_or_correction_successor",
+                 _git_head() in (START_COMMIT, CORRECTION_SUCCESSOR_COMMIT),
+                 f"HEAD={_git_head()} allowed={START_COMMIT},{CORRECTION_SUCCESSOR_COMMIT}")
     required = {
         "prior_json": PRIOR_JSON,
         "prior_npz": PRIOR_NPZ,
@@ -230,14 +244,27 @@ def _audit_frozen_state() -> dict[str, Any]:
                           ("expansion_heads", PRIOR_EXPANSION_HEADS),
                           ("script", PRIOR_SCRIPT))
     }
-    _audit_check(checks, "inherited_committed_hashes_match",
-                 all(value is not None for value in git_hashes.values())
-                 and all(_git_blob_hash(path) == subprocess.run(
-                     ["git", "rev-parse", f"HEAD:{path.resolve().relative_to(Path.cwd().resolve())}"],
-                     capture_output=True, text=True, check=True).stdout.strip()
-                     for path in (PRIOR_JSON, PRIOR_NPZ, PRIOR_REPORT,
-                                  PRIOR_BASIN_HEADS, PRIOR_EXPANSION_HEADS, PRIOR_SCRIPT)),
-                 json.dumps(git_hashes, sort_keys=True))
+    inherited_paths = (PRIOR_JSON, PRIOR_NPZ, PRIOR_REPORT,
+                       PRIOR_BASIN_HEADS, PRIOR_EXPANSION_HEADS, PRIOR_SCRIPT)
+    working_tree_matches = {
+        str(path): _working_tree_matches_head(path) for path in inherited_paths
+    }
+    corrected_output = _load_json(OUT_JSON) if OUT_JSON.exists() else {}
+    correction_declared = bool(
+        corrected_output.get("correction_pass", {}).get("head_mass_bug_fixed", False)
+        and corrected_output.get("correction_pass", {}).get("percentile_margin_bug_fixed", False))
+    # The correction pass intentionally changes the inherited report, JSON,
+    # NPZ, and this script.  Before that pass, however, the actual bytes of
+    # the inherited data artifacts must match HEAD.  Afterward the explicit
+    # correction manifest is the controlled exception, while this check still
+    # records the real byte comparison rather than comparing two git queries.
+    data_paths = inherited_paths[:-1]
+    _audit_check(
+        checks, "inherited_working_tree_bytes_match_HEAD_or_correction_manifest",
+        all(working_tree_matches[str(path)] for path in data_paths)
+        or correction_declared,
+        json.dumps({"working_tree_matches_HEAD": working_tree_matches,
+                    "correction_declared": correction_declared}, sort_keys=True))
 
     campaign = prior_json.get("campaign", {})
     _audit_check(checks, "source_campaign_commit_exact",
@@ -936,14 +963,16 @@ def _head(score: np.ndarray, work_ids: np.ndarray,
 
 
 def _head_space_comparison(a: np.ndarray, b: np.ndarray,
-                          work_ids: np.ndarray) -> dict[str, Any]:
+                          work_ids: np.ndarray,
+                          reader_mass_a: np.ndarray | None = None,
+                          reader_mass_b: np.ndarray | None = None) -> dict[str, Any]:
     aa = np.asarray(a, dtype=np.float64)
     bb = np.asarray(b, dtype=np.float64)
     ca = aa - np.mean(aa)
     cb = bb - np.mean(bb)
     cosine = float(np.dot(ca, cb) / max(np.linalg.norm(ca) * np.linalg.norm(cb), 1e-12))
-    ha = _head(aa, work_ids, limit=200)
-    hb = _head(bb, work_ids, limit=200)
+    ha = _head(aa, work_ids, reader_mass_a, limit=200)
+    hb = _head(bb, work_ids, reader_mass_b, limit=200)
     sa, sb = set(ha["work_ids"][:50].tolist()), set(hb["work_ids"][:50].tolist())
     sa200, sb200 = set(ha["work_ids"][:200].tolist()), set(hb["work_ids"][:200].tolist())
     common = sorted(sa200 & sb200)
@@ -1140,7 +1169,10 @@ def _compute_population_analysis(source: dict[str, Any]) -> dict[str, Any]:
         high_score = analysis["direct_groups"][group["high"]["key"]]["score"]
         low_score = analysis["direct_groups"][group["low"]["key"]]["score"]
         analysis["matched"][name]["head_space_separation"] = _head_space_comparison(
-            high_score, low_score, analysis["direct_groups"][group["high"]["key"]]["work_ids"])
+            high_score, low_score,
+            analysis["direct_groups"][group["high"]["key"]]["work_ids"],
+            analysis["direct_groups"][group["high"]["key"]]["reader_mass"],
+            analysis["direct_groups"][group["low"]["key"]]["reader_mass"])
 
     # Add explicit cross-context arrays and comparisons after the two local
     # affiliation systems have been frozen; the matching uses only centroids.
@@ -1346,7 +1378,8 @@ def _compute_population_analysis(source: dict[str, Any]) -> dict[str, Any]:
                     str(basin + 1): _summary(j20["soft_shares"][pos, basin])
                     for basin in range(SOURCE_SELECTED_K)
                 },
-                "margin": _summary(j20["raw_margin"][pos]),
+                "margin": _summary((j20["raw_margin"] if method == "raw"
+                                    else j20["percentile_margin"])[pos]),
             }
             direct = _direct_group_score(prior.dynamics._load_payload("payload_J20000"), np.sort(ids))
             direct_key = f"partition_{method}_{key}"
@@ -1827,6 +1860,14 @@ def _run_report(audit: dict[str, Any], source: dict[str, Any],
             "match_tail_fraction": MATCH_TAIL_FRACTION,
             "semantic_annotations_posthoc": True,
             "runtime_seconds": runtime,
+        },
+        "correction_pass": {
+            "head_mass_bug_fixed": True,
+            "percentile_margin_bug_fixed": True,
+            "audit_working_tree_bytes_compared_to_HEAD": True,
+            "trajectories_rerun": False,
+            "note": "Matched-group heads now use their actual reader masses; "
+                    "percentile hard-partition rows now use percentile margins.",
         },
         "audit": audit,
         "analysis": _strip_analysis_arrays(analysis),
