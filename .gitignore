@@ -99,3 +99,6 @@ curators_explorer/data/literary_dynamics_decomposition_state/
 
 # Literary basin refinement: resumable local trajectory checkpoints
 curators_explorer/data/literary_basin_refinement_state/
+
+# Literary user-basin affiliation: resumable diagnostic state
+curators_explorer/data/literary_user_basin_affiliation_state/
