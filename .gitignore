@@ -96,3 +96,6 @@ curators_explorer/data/true_converged_literary_jurors_state/
 
 # Literary dynamics decomposition: resumable local trajectory checkpoints
 curators_explorer/data/literary_dynamics_decomposition_state/
+
+# Literary basin refinement: resumable local trajectory checkpoints
+curators_explorer/data/literary_basin_refinement_state/
