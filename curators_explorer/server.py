@@ -15,6 +15,8 @@ from curators_explorer.distributed_canon import (
     distributed_canon_detail,
 )
 from curators_explorer.hist import book_hists
+from curators_explorer.genre_gates import GATE_DEFS, GATE_IDS, has_genre_gates
+from curators_explorer.genres import SF_PRESET_INCLUDE, has_genre_tables, search_genres
 from curators_explorer.ranking import METRICS, SCALE_MODES, rank_books
 from curators_explorer.taste_packs import (
     get_active_pack,
@@ -166,9 +168,29 @@ class Handler(BaseHTTPRequestHandler):
                     "meta": META,
                     "defaults": pack.get("sliders") or {},
                     "catalog_defaults": pack.get("catalog_defaults") or {},
+                    "genres_available": has_genre_tables(),
+                    "genre_gates_available": has_genre_gates(),
+                    "genre_gate_presets": [
+                        {
+                            "id": gid,
+                            "label": GATE_DEFS[gid].get("label", gid),
+                            "strictness": GATE_DEFS[gid].get("strictness", "copied"),
+                        }
+                        for gid in GATE_IDS
+                    ],
+                    "sf_preset_include": list(SF_PRESET_INCLUDE),
                     "note": "Python does not hot-reload; restart the server after code changes.",
                 },
             )
+            return
+
+        if path == "/api/genres":
+            try:
+                q = str(qs.get("q") or "")
+                limit = int(qs.get("limit") or 40)
+                self._json(200, {"genres": search_genres(q, limit=limit)})
+            except Exception as exc:
+                self._json(400, {"error": str(exc)})
             return
 
         if path == "/api/taste":

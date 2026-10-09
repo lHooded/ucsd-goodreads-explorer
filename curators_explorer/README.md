@@ -20,6 +20,12 @@ Uses the existing DuckDB warehouse at `data/ucsd_goodreads/explorer.duckdb` (rea
 - Metrics: fixed distributed consensus, fixed community esteem, love, Bayesian mean, raw mean, % top, curator reads
 - Scale modes: adjusted percentiles (default), raw full-shelf percentiles, raw stars
 - Knobs: **deweight**, **purity**, min ratings, Bayesian m, SF toggle, catalog filters
+- Genre gates copied from UCSD: SF, fantasy, coming-of-age, LGBTQ, and western
+- Additional genre gates: children's, religion, philosophy, magical realism, weird,
+  satire, dystopian, short story, comedy, low fantasy, poetry, graphic novel,
+  horror, apocalyptic, hard science fiction, psychological depth, road novel,
+  slice of life, and YA
+- Raw Goodreads tags support **Require**, **Any of**, and **Exclude** filters
 - Fixed: coverage = among-raters (0); strictness/depth hidden at 0
 - Editable positive/negative author packs + school-neutral titles (Reset restores shipped preset)
 - Dual histograms: curator cohort vs global
@@ -43,3 +49,17 @@ fixed metric raises the display limit to 5,000 so the full exploratory tail is v
 | Everyone (debug) | 0 | 0 |
 
 See `ucsd_explorer/data/SIMPLIFIED_REBUILD_REPORT.md` and `PARETO_TASTE_SIGNALS_REPORT.md`.
+
+## Genre validation
+
+The gate definitions are in `curators_explorer/genre_gates.py`. Run the
+assertion-style anchor checks against the shared warehouse with:
+
+```bash
+PYTHONPATH=. .venv/bin/python -m curators_explorer.genre_gates --validate
+```
+
+The requested strictness is encoded in the gate metadata; `weird` is treated as
+strict because it appears in the later strictness list as well as the loose list.
+Low-volume requested shelves are read from the existing parquet source into a
+temporary table and do not modify the shared DuckDB warehouse.

@@ -1,0 +1,109 @@
+I feel like I could use machine learning for the curating model.
+
+More duplicates:
+- The Divine Comedy
+
+
+Why it feels like whack-a-mole — and better directions
+
+Shelf-ratio gates fight Goodreads’ messiness: famous books get school/YA/classic noise; sequels don’t. Threshold tweaks always leak somewhere else.
+
+Stronger approaches, in order of leverage:
+
+Series/author priors (we started this) — Treat series as the unit of genre belief; volumes inherit with a confidence prior. Extends cleanly to author-level (“Le Guin Earthsea = fantasy”).
+
+Two-layer model — (a) soft multi-label scores (fantasy 0–1, SF 0–1, …) from shelves, (b) hard filters only for ranking presets. Stop forcing a single boolean when books are genuinely dual (New Sun, Earthsea).
+
+Calibration set — ~200 hand-labeled anchors per gate (positives + hard negatives). Fit weights/thresholds once; refuse changes that fail the set. Turns mole-whacking into regression tests.
+
+Community shelves with reliability weights — Downweight school / read-for-school / generic fiction; trust high-fantasy, space-opera, etc. more.
+
+Optional LLM/embeddings assist — Only for borderline band (e.g. ratio 0.25–0.55), not the whole catalog.
+
+If you want a next step, I’d do (3) calibration fixtures + keep series inheritance — highest accuracy per hour, and it stops silent regressions.
+
+
+
+Hmm, maybe improve coming of age genre classification
+
+---
+
+## Research back burner (curators / unseeded classic scorer)
+
+**Trajectory limit analysis (parked):** As we make the "serious reader" filter stricter and stricter, track each book's place *among books that still survive* (relative position, not raw rank — so dropouts don't fake climbs). Sketch where that place plateaus before the data runs out. Revisit after we have a more settled/canonical scoring formula; don't mix into stability testing.
+
+
+If we get a generic model working, I'd want to build a pipeline in which you input a literary canon (e.g. TheGreatestBooks, r/TrueLit, 4chan) + different sets of negative books, and it outputs the 'distributed literary canon'. That way we can see how stable the results are based on different inputs.
+
+
+
+See how assigning weights to users would help the generic system.
+
+
+https://www.kaggle.com/datasets/tliocastro/letterboxd-sample-apr-2026?select=letterboxd_interactions.csv
+
+https://grouplens.org/datasets/movielens/
+
+https://huggingface.co/datasets/harijt7/letterboxd-recommender-dataset ?
+
+
+
+
+
+Hmm, attraction back to the Goodreads centre is indeed an interesting discovery.
+
+This might be a stretch, but it leads me to think that the ~14 literary origins we tested previously have more validity than this year-based one.
+
+I wonder if we could reverse the direction of convergence by systematically removing the readers that are the strongest proponents of contracting back to the Goodreads norm. You could also try removing all jurors in the converged set from the original set. In my head this is like pushing the canon up over a ring of hills and down into an enclosed valley.
+
+
+
+
+
+Try 'breeding' literary canons. That is, take any two converged literary canons, take half jurors from one, half from another (or something more complex or even polyamorous method if you like). Then treat them as a new candidate literary canon before running convergence on them.
+
+Then we can ask the new question, does breeding converge? Will it converge to that of one of its parents? If that happens commonly, the parent has a stronger pull than the others. If it converges to neither, we have created a new literary canon.
+
+If we do this a lot, do we eventually get a representative sample of literary canons with their corresponding strengths? We don't know - how would we ensure a basis of literary canons?
+
+Also, if there are lots of different converging literary canons, does that mean there are lots of local stability zones? If we increase the increment size, would we be able to converge more strongly?
+
+Anyway, altogether these ideas leave more credence to finding a natural distributed canon according to Goodreads.
+
+
+
+
+
+We know that the dominant reader on Goodreads is non-literary. Therefore, if some literary center exists, the average randomly selected jury should converge away from that literary head. But what if we reverse the convergence. They should tend towards a more literary (not necessarily literary) group. And what if we consider all such groups together? Does their average (it couldn't be a plain average, but perhaps some sort of processed average?) give us some sort of literary center? Possibly not, but information about each of the groups trajectories could also help find a literary center.
+
+Note, we would need to select juries to be a size small enough that there is decent variation between each of the runs, but large enough to contain a decent number of literary readers.
+
+What are your thoughts on this hypothesis?
+
+I am going to go to bed soon and would like leave my computer running overnight (without excessive token usage). Do you think you could research, design and develop tools to collect data to test this hypothesis overnight (~8 hours)? Tell me what data you plan to collect and how its going to be useful. I'd suggest a shorter pilot run first to search the code for bugs and issues.
+
+You will need to be careful of disk space and memory.
+
+
+
+
+
+
+
+
+IDEA: Make a website that assigns ELO to candidate literary canons
+
+
+
+Would creating a user/book similarity graph help in finding novel converging literary canons.
+
+
+
+
+Suppose we do find a natural distributed literary canon. Then, suppose this generalises to other artforms (given human, artwork, rating tuples of enough quantity). Does this mean 'quality' AI art can be trained simply by having users rate generated art/poems/videos/lit. I imagine the underlying behaviour of humans rating AI art would differ to humans rating human art, however Even further, can we train AIs
+
+
+
+Looks like we got some interesting results with reversal of convergence and random Jury's at 80k.
+Many contained Karamazov, C&P, Stoner, Ficciones. However some still contain Harry Potter, and graphic novels.
+My guess is that these are actually multiple literary canons in a trench coat. Naturally larger juries aren't containable in smaller literary basins. Thus, to analyse them better, we need to randomly split these juries up and see what smaller basins they might fall into as they converge. Can you design, test and run an experiment to test this theory? Continue to be careful of storage and memory limits.

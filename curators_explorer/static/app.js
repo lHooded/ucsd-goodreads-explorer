@@ -7,6 +7,14 @@ let PACK = null;
 let LAST = [];
 let TIMER = null;
 let SEARCH_TIMER = null;
+let GENRE_TIMER = null;
+let GENRE_GATE_PRESETS = [];
+let GENRE_STATE = {
+  require: [],
+  include: [],
+  exclude: [],
+};
+let GATE_STATE = [];
 
 const DISTRIBUTED_CANON_METRIC = "distributed_canon";
 const DISTRIBUTED_ESTEEM_METRIC = "distributed_esteem";
@@ -98,6 +106,10 @@ function collectParams() {
     limit: Math.trunc(num("limit", 200)),
     q: ($("q").value || "").trim(),
     sf_only: checked("sf-only"),
+    genre_require: [...GENRE_STATE.require],
+    genre_include: [...GENRE_STATE.include],
+    genre_exclude: [...GENRE_STATE.exclude],
+    genre_gates: [...GATE_STATE],
     fiction_only: checked("fiction-only"),
     exclude_comics: checked("exclude-comics"),
     exclude_picture_books: checked("exclude-picture"),
@@ -131,6 +143,133 @@ function renderPresets() {
     btn.title = p.notes || "";
     btn.addEventListener("click", () => applySliderPreset(id));
     box.appendChild(btn);
+  }
+}
+
+function genreAddBucket() {
+  const el = document.querySelector('input[name="genre-add-bucket"]:checked');
+  return el?.value || "include";
+}
+
+function addGenreTag(shelf) {
+  const g = String(shelf || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[’']/g, "")
+    .replace(/\s+/g, "-");
+  if (!g) return;
+  const bucket = genreAddBucket();
+  for (const b of ["require", "include", "exclude"]) {
+    GENRE_STATE[b] = GENRE_STATE[b].filter((x) => x !== g);
+  }
+  GENRE_STATE[bucket].push(g);
+  renderGenreChips();
+  scheduleRank();
+}
+
+function removeGenreTag(bucket, shelf) {
+  if (!GENRE_STATE[bucket]) return;
+  GENRE_STATE[bucket] = GENRE_STATE[bucket].filter((x) => x !== shelf);
+  renderGenreChips();
+  scheduleRank();
+}
+
+function toggleGenreGate(gateId) {
+  const i = GATE_STATE.indexOf(gateId);
+  if (i >= 0) GATE_STATE.splice(i, 1);
+  else GATE_STATE.push(gateId);
+  renderGateToggles();
+  renderGenreChips();
+  scheduleRank();
+}
+
+function renderGateToggles() {
+  const box = $("genre-gate-presets");
+  if (!box) return;
+  box.innerHTML =
+    GENRE_GATE_PRESETS.map(
+      (g) =>
+        `<button type="button" class="gate-toggle" data-gate="${escapeHtml(g.id)}" title="${escapeHtml(
+          g.strictness ? `${g.strictness} gate` : "copied UCSD gate"
+        )}">${escapeHtml(g.label || g.id)}</button>`
+    ).join("") +
+    `<button type="button" id="genre-preset-clear">Clear gates</button>`;
+  box.querySelectorAll("button[data-gate]").forEach((btn) => {
+    btn.classList.toggle("active", GATE_STATE.includes(btn.dataset.gate));
+    btn.addEventListener("click", () => toggleGenreGate(btn.dataset.gate));
+  });
+  $("genre-preset-clear")?.addEventListener("click", () => {
+    GATE_STATE = [];
+    renderGateToggles();
+    renderGenreChips();
+    scheduleRank();
+  });
+  const summary = $("gate-summary");
+  if (!summary) return;
+  const labels = Object.fromEntries(GENRE_GATE_PRESETS.map((g) => [g.id, g.label || g.id]));
+  if (!GATE_STATE.length) {
+    summary.textContent = "No named gate (raw tags / all genres).";
+  } else {
+    const names = GATE_STATE.map((g) => labels[g] || g);
+    summary.textContent =
+      names.length === 1
+        ? `Gate: ${names[0]} (prevalence)`
+        : `Gates ∩: ${names.join(" ∩ ")} (must pass all)`;
+  }
+}
+
+function renderGenreChips() {
+  for (const bucket of ["require", "include", "exclude"]) {
+    const el = $(`genre-${bucket}-chips`);
+    if (!el) continue;
+    el.innerHTML = (GENRE_STATE[bucket] || [])
+      .map(
+        (g) =>
+          `<button type="button" class="chip genre-chip" data-bucket="${bucket}" data-shelf="${escapeHtml(
+            g
+          )}" title="Remove">${escapeHtml(g)} ×</button>`
+      )
+      .join("");
+  }
+  const bits = [];
+  if (GATE_STATE.length) bits.push(`gates ∩ ${GATE_STATE.join(" ∩ ")}`);
+  if (GENRE_STATE.require.length) bits.push(`require ${GENRE_STATE.require.join(", ")}`);
+  if (GENRE_STATE.include.length) bits.push(`any of ${GENRE_STATE.include.join(", ")}`);
+  if (GENRE_STATE.exclude.length) bits.push(`exclude ${GENRE_STATE.exclude.join(", ")}`);
+  const summary = $("genre-summary");
+  if (summary) summary.textContent = bits.length ? bits.join(" · ") : "No genre filter (all genres).";
+  renderGateToggles();
+}
+
+async function suggestGenres(q) {
+  const box = $("genre-suggest");
+  if (!box) return;
+  if (!q) {
+    box.hidden = true;
+    box.innerHTML = "";
+    return;
+  }
+  try {
+    const res = await fetch(`/api/genres?q=${encodeURIComponent(q)}&limit=25`);
+    const data = await res.json();
+    const rows = data.genres || [];
+    if (!rows.length) {
+      box.hidden = true;
+      box.innerHTML = "";
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML = rows
+      .map(
+        (r) =>
+          `<button type="button" data-shelf="${escapeHtml(r.shelf)}">${escapeHtml(
+            r.shelf
+          )} <span class="mono">${Number(r.n_works).toLocaleString()} works</span></button>`
+      )
+      .join("");
+  } catch (_) {
+    box.hidden = true;
+    box.innerHTML = "";
   }
 }
 
@@ -433,6 +572,7 @@ async function init() {
   const meta = await (await fetch("/api/meta")).json();
   METRICS = meta.metrics || [];
   SCALE_MODES = meta.scale_modes || [];
+  GENRE_GATE_PRESETS = meta.genre_gate_presets || [];
   const d = meta.defaults || {};
 
   $("metric").innerHTML = METRICS.map(
@@ -450,6 +590,8 @@ async function init() {
   if (d.min_votes != null) $("min-votes").value = d.min_votes;
   if (d.limit != null) $("limit").value = d.limit;
   if (d.sf_only != null) $("sf-only").checked = Boolean(d.sf_only);
+  renderGateToggles();
+  renderGenreChips();
 
   const taste = await (await fetch("/api/taste")).json();
   PACK = taste.pack;
@@ -493,6 +635,36 @@ async function init() {
     "collapse-duplicates",
     "format-weight",
   ].forEach((id) => $(id).addEventListener("change", scheduleRank));
+
+  const genreSearch = $("genre-search");
+  if (genreSearch) {
+    genreSearch.addEventListener("input", () => {
+      clearTimeout(GENRE_TIMER);
+      GENRE_TIMER = setTimeout(() => suggestGenres(genreSearch.value.trim()), 120);
+    });
+    genreSearch.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      const value = genreSearch.value.trim();
+      if (!value) return;
+      addGenreTag(value);
+      genreSearch.value = "";
+      suggestGenres("");
+    });
+  }
+  $("genre-suggest")?.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-shelf]");
+    if (!button) return;
+    addGenreTag(button.dataset.shelf);
+    if (genreSearch) genreSearch.value = "";
+    suggestGenres("");
+  });
+  for (const bucket of ["require", "include", "exclude"]) {
+    $(`genre-${bucket}-chips`)?.addEventListener("click", (event) => {
+      const chip = event.target.closest(".genre-chip[data-shelf]");
+      if (chip) removeGenreTag(chip.dataset.bucket, chip.dataset.shelf);
+    });
+  }
 
   $("recompute").addEventListener("click", rank);
   $("copy-list").addEventListener("click", copyList);

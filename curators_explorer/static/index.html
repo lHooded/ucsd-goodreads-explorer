@@ -81,6 +81,35 @@
           <label class="check"><input type="checkbox" id="format-weight" checked /> Soft format weight</label>
         </section>
 
+        <section id="genre-section">
+          <h2>Genres / tags</h2>
+          <p class="hint">
+            Named gates use shelf prevalence rather than one loose tag. The five
+            UCSD gates are carried over; the added gates use deliberately loose
+            or strict thresholds by genre. Combine gates to require all of them.
+            Raw tags can be required, matched as any-of, or excluded.
+          </p>
+          <div class="genre-presets presets" id="genre-gate-presets"></div>
+          <p class="hint" id="gate-summary"></p>
+          <label class="field">
+            <span>Add tag</span>
+            <input type="search" id="genre-search" placeholder="philosophy, horror, slice-of-life…" autocomplete="off" />
+          </label>
+          <div class="genre-suggest" id="genre-suggest" hidden></div>
+          <div class="genre-add-mode">
+            <label class="check"><input type="radio" name="genre-add-bucket" value="include" checked /> Any of</label>
+            <label class="check"><input type="radio" name="genre-add-bucket" value="require" /> Require</label>
+            <label class="check"><input type="radio" name="genre-add-bucket" value="exclude" /> Exclude</label>
+          </div>
+          <h3 class="taste-subhead">Require <em>(AND)</em></h3>
+          <div class="chip-list" id="genre-require-chips"></div>
+          <h3 class="taste-subhead">Any of <em>(OR)</em></h3>
+          <div class="chip-list" id="genre-include-chips"></div>
+          <h3 class="taste-subhead">Exclude</h3>
+          <div class="chip-list" id="genre-exclude-chips"></div>
+          <p class="hint" id="genre-summary"></p>
+        </section>
+
         <section>
           <h2>Taste packs</h2>
           <p class="hint" id="pack-meta">Loading packs…</p>

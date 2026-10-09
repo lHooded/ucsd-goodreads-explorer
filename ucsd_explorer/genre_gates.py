@@ -157,15 +157,26 @@ GATE_DEFS: dict[str, dict[str, Any]] = {
     "coming_of_age": {
         "label": "Coming of age",
         "mode": "theme",
-        "core": ("coming-of-age", "bildungsroman"),
-        "soft": ("ya-coming-of-age", "growing-up"),
+        # Explicit COA / girlhood / boyhood only — not broad YA or the kid-lit
+        # ``childhood`` shelf (Harry Potter, Narnia, Hobbit noise).
+        "core": (
+            "coming-of-age",
+            "bildungsroman",
+            "girlhood",
+            "boyhood",
+        ),
+        "soft": (
+            "ya-coming-of-age",
+            "growing-up",
+        ),
         "soft_weight": 0.5,
-        "min_core": 40,
-        "min_core_obscure": 15,
-        "obscure_n": 200,
-        # vs fiction: Catcher ~0.085, Mockingbird ~0.78, Perks ~0.23
-        "min_vs_fiction": 0.06,
-        "min_vs_fiction_obscure": 0.04,
+        "min_core": 6,
+        "min_core_obscure": 3,
+        # Obscure literary COA (e.g. Ice Palace n≈368) vs fiction mass.
+        "obscure_n": 400,
+        # vs fiction: Ice Palace ~0.026, GE ~0.07, Brothers K ~0.02 (fail)
+        "min_vs_fiction": 0.025,
+        "min_vs_fiction_obscure": 0.015,
     },
     "lgbtq": {
         "label": "LGBTQ / identity",
@@ -815,6 +826,12 @@ def validate_gates() -> None:
         ("coming_of_age", "The Catcher in the Rye", True),
         ("coming_of_age", "The Perks of Being a Wallflower", True),
         ("coming_of_age", "To Kill a Mockingbird", True),
+        ("coming_of_age", "Great Expectations", True),
+        ("coming_of_age", "The Ice Palace", True),
+        ("coming_of_age", "The Fellowship of the Ring%", False),
+        ("coming_of_age", "The Hobbit%", False),
+        ("coming_of_age", "The Hitchhiker's Guide to the Galaxy%", False),
+        ("coming_of_age", "The Brothers K", False),
         ("coming_of_age", "Pride and Prejudice", False),
         ("lgbtq", "Giovanni's Room", True),
         ("lgbtq", "Call Me by Your Name", True),

@@ -18,6 +18,8 @@ from curators_explorer.distributed_canon import (
     DISTRIBUTED_METRICS,
     rank_distributed_canon,
 )
+from curators_explorer.genre_gates import parse_genre_gates
+from curators_explorer.genres import parse_genre_params
 from curators_explorer.taste_packs import get_active_pack
 
 METRICS = [
@@ -295,7 +297,28 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     )
 
     sf_only = parse_sf_only(params)
+    genres = parse_genre_params(params)
+    genre_gates = parse_genre_gates(params)
     catalog = parse_catalog_params(params)
+
+    # These genre controls are explicit requests for formats that the normal
+    # literary browse defaults hide.  Keep the default hygiene settings for
+    # ordinary browsing, but do not make a selected children's / graphic-novel
+    # gate silently return zero primary examples.
+    positive_genre_tags = {
+        *genres.get("require", []),
+        *genres.get("include", []),
+    }
+    if "graphic_novel" in genre_gates or "slice_of_life" in genre_gates or any(
+        "graphic" in tag or "comic" in tag or "manga" in tag
+        for tag in positive_genre_tags
+    ):
+        catalog["exclude_comics"] = False
+    if "children" in genre_gates or any(
+        "child" in tag or "juvenile" in tag or "kid" in tag
+        for tag in positive_genre_tags
+    ):
+        catalog["exclude_picture_books"] = False
     p0, c0 = scope_globals(sf_only)
 
     pack = params.get("pack")
@@ -306,7 +329,12 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
         deweight=deweight, purity=purity, pack=pack
     )
 
-    early = eligible_works_cte(sf_only=sf_only, catalog=catalog)
+    early, early_args = eligible_works_cte(
+        sf_only=sf_only,
+        catalog=catalog,
+        genres=genres,
+        genre_gates=genre_gates,
+    )
     works_join = "JOIN eligible_works ew USING (work_id)" if early else ""
 
     scale_join, scale_val, top_pred = _scale_value_sql(scale_mode)
@@ -326,7 +354,9 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
     soft_join, soft_where, scored = catalog_score_bits(catalog, score_expr, work_alias="w")
 
     ctes: list[str] = []
-    args: list[Any] = list(cohort_args)
+    # The eligible-work CTE is first in the WITH clause, so its placeholders
+    # precede cohort placeholders in DuckDB's positional argument list.
+    args: list[Any] = list(early_args) + list(cohort_args)
     if early:
         ctes.append(early)
     ctes.extend(cohort_ctes)
@@ -455,6 +485,8 @@ def rank_books(params: dict[str, Any]) -> dict[str, Any]:
             "bayesian_m": bayesian_m,
             "limit": limit,
             "sf_only": sf_only,
+            "genres": genres,
+            "genre_gates": genre_gates,
             "coverage": COVERAGE,
             "catalog": catalog,
             "q": q,

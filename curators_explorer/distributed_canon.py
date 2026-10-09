@@ -8,6 +8,9 @@ from functools import lru_cache
 from typing import Any
 
 from curators_explorer.db import DATA, execute, truthy
+from curators_explorer.catalog import parse_sf_only
+from curators_explorer.genre_gates import gate_sql_bits, parse_genre_gates
+from curators_explorer.genres import genre_sql_bits, parse_genre_params
 
 DISTRIBUTED_CANON_METRIC = "distributed_canon"
 DISTRIBUTED_ESTEEM_METRIC = "distributed_esteem"
@@ -134,11 +137,31 @@ def rank_distributed_canon(params: dict[str, Any]) -> dict[str, Any]:
         metric = DISTRIBUTED_CANON_METRIC
     limit = max(1, min(5000, _int_param(params, "limit", 200)))
     q = str(params.get("q") or "").strip().casefold()
-    sf_only = truthy(params.get("sf_only"))
+    sf_only = parse_sf_only(params)
+    genres = parse_genre_params(params)
+    genre_gates = parse_genre_gates(params)
 
     rows = artifact["books"]
-    if sf_only:
-        rows = [row for row in rows if row.get("is_sf")]
+    gate_where, gate_args = gate_sql_bits(genre_gates, work_alias="w")
+    genre_where, genre_args = genre_sql_bits(
+        genres,
+        work_alias="w",
+        sf_via_prevalence=not bool(genre_gates),
+    )
+    scope_where = " AND coalesce(w.is_sf, FALSE)" if sf_only else ""
+    if scope_where or gate_where or genre_where:
+        allowed = {
+            str(r[0])
+            for r in execute(
+                f"""
+                SELECT w.work_id
+                FROM work_scores w
+                WHERE TRUE{scope_where}{gate_where}{genre_where}
+                """,
+                gate_args + genre_args,
+            ).fetchall()
+        }
+        rows = [row for row in rows if str(row.get("work_id")) in allowed]
     if q:
         rows = [
             row
@@ -164,6 +187,8 @@ def rank_distributed_canon(params: dict[str, Any]) -> dict[str, Any]:
             "limit": limit,
             "q": q,
             "sf_only": sf_only,
+            "genres": genres,
+            "genre_gates": genre_gates,
             "audited_top": int(method.get("ranked_books") or len(artifact["books"])),
             "point_rankable": len(artifact["books"]),
             "publication_pair_mass": method.get("publication_pair_mass"),

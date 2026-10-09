@@ -35,8 +35,10 @@ def parse_catalog_params(params: dict[str, Any]) -> dict[str, bool]:
 
 
 def parse_sf_only(params: dict[str, Any]) -> bool:
-    if "sf_only" in params:
-        return truthy(params.get("sf_only"))
+    # A visible checkbox is sent on every UI request.  A false checkbox must
+    # not mask an explicit named SF gate.
+    if truthy(params.get("sf_only")):
+        return True
     gates = params.get("genre_gates") or params.get("gates")
     if isinstance(gates, str):
         gates = [g.strip() for g in gates.split(",") if g.strip()]
@@ -49,10 +51,31 @@ def eligible_works_cte(
     *,
     sf_only: bool = False,
     catalog: dict[str, bool] | None = None,
-) -> str | None:
+    genres: dict[str, list[str]] | None = None,
+    genre_gates: list[str] | None = None,
+) -> tuple[str | None, list[Any]]:
     """Pre-filter work_ids before scanning ~100M rating events."""
     where_parts: list[str] = []
     joins: list[str] = []
+    args: list[Any] = []
+
+    # Import lazily: the genre modules use the same DB helpers and discover
+    # their low-volume shelf supplement on first use.
+    from curators_explorer.genre_gates import gate_sql_bits
+    from curators_explorer.genres import genre_sql_bits
+
+    gates = list(genre_gates or [])
+    gate_where, gate_args = gate_sql_bits(gates, work_alias="w")
+    genre_where, genre_args = genre_sql_bits(
+        genres,
+        work_alias="w",
+        sf_via_prevalence=not bool(gates),
+    )
+    for suffix in (gate_where, genre_where):
+        if suffix.startswith(" AND "):
+            where_parts.append(suffix[5:])
+    args.extend(gate_args)
+    args.extend(genre_args)
 
     if sf_only and has_genre_gates():
         joins.append(
@@ -79,7 +102,7 @@ def eligible_works_cte(
             where_parts.append("NOT coalesce(cf.is_duplicate, FALSE)")
 
     if not joins and not where_parts:
-        return None
+        return None, []
 
     join_sql = ("\n                " + "\n                ".join(joins)) if joins else ""
     where_sql = (
@@ -90,11 +113,11 @@ def eligible_works_cte(
     return f"""
             eligible_works AS (
                 SELECT w.work_id
-                FROM works w
+                FROM work_scores w
                 {join_sql}
                 {where_sql}
             )
-    """
+    """, args
 
 
 def catalog_score_bits(
